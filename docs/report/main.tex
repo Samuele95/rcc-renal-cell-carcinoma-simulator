@@ -1,0 +1,87 @@
+\documentclass[12pt,a4paper]{report}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit}
+
+% Listing style
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue}\bfseries,
+  stringstyle=\color{red!70!black},
+  commentstyle=\color{green!60!black}\itshape,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,
+  numbersep=5pt,
+  backgroundcolor=\color{gray!5},
+  frame=single,
+  rulecolor=\color{gray!30},
+  breaklines=true,
+  captionpos=b,
+  tabsize=4,
+  showstringspaces=false
+}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!70!black,
+  citecolor=green!50!black,
+  urlcolor=blue!60!black
+}
+
+% Title
+\title{
+  \vspace{-2cm}
+  \textbf{Agent-Based Modeling of Renal Cell Carcinoma\\
+  Tumor Microenvironment with Glucose Sensing}\\[0.5cm]
+  \large A Repast4Py Implementation with Metabolic\\
+  Microenvironment Dynamics
+}
+\author{MASL Project}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This report presents a comprehensive agent-based model (ABM) of the Renal Cell Carcinoma (RCC) tumor microenvironment, implemented using the Repast4Py framework for distributed parallel simulation. The model captures interactions among 18 distinct agent types---including tumor cells, various immune cell populations, blood vessels, sex hormones, and cytokines---within a 3D spatial grid. A novel glucose concentration field is overlaid on the discrete agent grid, modeling metabolic dynamics via Fick's diffusion, the Warburg effect for tumor metabolism, and gradient-based immune cell chemotaxis. The implementation ports an existing Mesa-based model to Repast4Py, leveraging MPI-based parallelism, and extends it with 8 additional glucose-related parameters. The model incorporates a 16-gene DNA mutation system, PD-1/PD-L1 immune checkpoint interactions, ICI and TKI treatment modalities, sex hormone effects on immune response, and Bayesian parameter optimization via Optuna against ARON-1 clinical trial data. This document describes the biological motivation, mathematical formulation, software architecture, and implementation details of the complete system.
+\end{abstract}
+
+\tableofcontents
+
+\input{chapters/01_introduction}
+\input{chapters/02_theoretical_background}
+\input{chapters/03_model_description}
+\input{chapters/04_glucose_system}
+\input{chapters/05_dna_mutation_system}
+\input{chapters/06_treatment_system}
+\input{chapters/07_sex_hormone_system}
+\input{chapters/08_implementation}
+\input{chapters/09_parameters}
+\input{chapters/10_simulation_results}
+\input{chapters/11_conclusion}
+
+\bibliographystyle{plain}
+\bibliography{bibliography}
+
+\end{document}

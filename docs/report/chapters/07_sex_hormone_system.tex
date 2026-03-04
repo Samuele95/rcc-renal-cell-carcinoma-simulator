@@ -1,0 +1,223 @@
+\chapter{Sex Hormone System}
+\label{ch:sex-hormones}
+
+This chapter describes the sex hormone subsystem, which models the immunomodulatory effects of estrogen, testosterone, and progesterone on the tumor microenvironment.  Sex-specific differences in hormone profiles produce distinct immune dynamics, contributing to the well-documented sex disparity in RCC incidence and treatment response.
+
+%% ====================================================================
+\section{Biological Basis}
+\label{sec:hormone-bio}
+
+\subsection{Sex Differences in Renal Cell Carcinoma}
+
+Renal cell carcinoma exhibits a pronounced sex disparity: males are affected approximately twice as often as females (roughly 2:1 incidence ratio).  However, the relationship between sex and treatment outcome is more nuanced.  A landmark meta-analysis by Conforti et al.~\cite{conforti2018} demonstrated that the efficacy of immune checkpoint inhibitors varies significantly between sexes across multiple cancer types, with males generally showing a larger benefit from anti-PD-1/PD-L1 therapy.  The ARON-1 study~\cite{santoni2024} further investigated sex-specific responses to ICI + TKI combination therapy in RCC, finding differential immune activation patterns between male and female patients.
+
+These clinical observations suggest that sex hormones modulate the immune response in ways that affect both tumor susceptibility and treatment efficacy.
+
+\subsection{Estrogen}
+
+Estrogen exerts complex, concentration-dependent effects on the immune system.  At low to moderate levels, estrogen promotes Th1-type (pro-inflammatory) immune responses, enhances IFN-$\gamma$ production, upregulates MHC expression, and stimulates T cell activation and costimulation via CD28.  At high concentrations, however, estrogen shifts the balance towards Th2-type (anti-inflammatory) responses, increases IL-4 and IL-13 production, upregulates CTLA-4 and PD-1 inhibitory pathways, and suppresses T cell activation.  This biphasic behavior reflects the known immunological dichotomy between low-dose immunostimulatory and high-dose immunosuppressive effects of estrogen.
+
+\subsection{Testosterone}
+
+Testosterone is generally immunosuppressive at elevated levels.  High testosterone concentrations reduce Th1 proliferation, decrease IFN-$\gamma$ production, and promote immune checkpoint engagement (CTLA-4, PD-1).  Conversely, low testosterone levels are associated with enhanced Th1 responses and T cell activation.  Testosterone also directly influences CD8$^+$ T cell population dynamics (see Section~\ref{sec:sex-drift}).
+
+\subsection{Progesterone}
+
+Progesterone has immunomodulatory properties that depend on concentration.  At low levels, its effects are minimal.  At moderate levels, progesterone promotes T cell differentiation and mildly enhances checkpoint inhibition.  At high concentrations, progesterone strongly suppresses Th1 proliferation, promotes Th2 differentiation, and upregulates inhibitory checkpoints (CTLA-4, PD-1), producing a net immunosuppressive effect.
+
+%% ====================================================================
+\section{Hormone Agent Model}
+\label{sec:hormone-agent}
+
+Sex hormones are modeled as discrete agents that diffuse through the simulation grid, interact with nearby immune cells, and decay over time.
+
+\subsection{Agent Type and Inheritance}
+
+The \texttt{SexHormone} class inherits directly from \texttt{repast4py.core.Agent} (rather than from the \texttt{Cell} base class used by other agents), reflecting the fact that hormones are signaling molecules rather than cells.  Sex hormones are registered as agent type ID 16 (\texttt{AgentType.SEX\_HORMONE}).
+
+\subsection{Hormone Types}
+
+Three hormone types are modeled, defined as an enumeration (\texttt{SexHormoneType}):
+
+\begin{itemize}[nosep]
+  \item \texttt{ESTROGEN} -- primary female sex hormone,
+  \item \texttt{TESTOSTERONE} -- primary male sex hormone,
+  \item \texttt{PROGESTERONE} -- steroid hormone involved in immune regulation.
+\end{itemize}
+
+\subsection{Spawning Mechanism}
+
+Hormone agents are spawned from blood vessel positions at each simulation step via the model's \texttt{spawn\_hormones()} method.  For each hormone type, a single spawn attempt is made per step, with success probability depending on the patient's sex:
+
+\begin{table}[H]
+\centering
+\caption{Hormone spawn probabilities by patient sex.}
+\label{tab:hormone-spawn}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Sex} & \textbf{Estrogen} & \textbf{Progesterone} & \textbf{Testosterone} \\
+\midrule
+Male   & 0.2 & 0.1 & 1.0 \\
+Female & 0.9 & 0.8 & 0.2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent When a hormone is spawned, it is placed at the position of a randomly selected blood vessel agent, simulating hormonal delivery via the bloodstream.
+
+\subsection{Hormone Diffusion}
+
+Once spawned, hormone agents perform a biased random walk through the grid.  At each step, the agent selects one of two movement strategies with equal probability:
+
+\begin{enumerate}[nosep]
+  \item \textbf{Biased diffusion:} the agent evaluates its Moore neighborhood (radius 1) and selects a target position with probability biased towards greater distance from blood vessels.  The selection probability for neighbor $c$ is:
+  \begin{equation}
+  \label{eq:hormone-diffusion}
+  P(c) = (1 - \alpha) \cdot \frac{1}{|\mathcal{N}|} + \alpha \cdot \frac{d(c)}{d_{\max} \cdot |\mathcal{N}|},
+  \end{equation}
+  where $\alpha = 0.25$ is the drift strength, $d(c)$ is the Manhattan distance from $c$ to the nearest blood vessel, $d_{\max}$ is the maximum such distance among all neighbors, and $|\mathcal{N}|$ is the neighborhood size.
+
+  \item \textbf{Simple diffusion:} the agent selects a move from a predefined set of directions, biased towards the positive $y$ and $z$ directions (away from the vascular channel).
+\end{enumerate}
+
+\noindent Hormones that exit the grid boundaries are removed from the simulation, providing a natural mechanism for hormone clearance at the domain edges.  The combination of biased diffusion and boundary removal limits the effective lifespan of hormone agents to approximately 50 steps, depending on grid dimensions and diffusion trajectory.
+
+%% ====================================================================
+\section{Hormone Effects on T Cells}
+\label{sec:hormone-effects}
+
+T cells perceive nearby sex hormones and modulate their behavior accordingly.  This mechanism is implemented in the \texttt{TCell} base class, ensuring that all T cell subtypes (CD8 cytotoxic, CD8 naive, CD4 naive, CD4 Th1, CD4 Th2, Treg) are affected.
+
+\subsection{Hormone Perception}
+
+T cells detect sex hormones in their local neighborhood via the \texttt{perceive\_sex\_hormone()} method, which queries the spatial index using \texttt{grid\_utils} neighbor queries.  Each T cell maintains a dictionary of perceived hormone levels, keyed by hormone type.  When a hormone agent is perceived:
+
+\begin{enumerate}[nosep]
+  \item The T cell's perceived level for that hormone type is incremented.
+  \item The hormone agent is removed from the simulation (consumed).
+  \item A maximum of 9 hormones of each type can be perceived per step (capped at \texttt{MAX\_LEVEL}).
+\end{enumerate}
+
+\noindent Perceived hormone levels decay by 10\% per step, modeling the transient nature of hormonal signaling.
+
+\subsection{Stimulation Level}
+
+The \texttt{sex\_hormone\_stimulation\_level()} method returns the current perceived level of a given hormone type, providing a scalar measure of hormonal influence that is used by downstream effect computations.
+
+\subsection{Hormonal Influence Effects}
+
+The \texttt{CellHormonalInfluenceEffect} enumeration (in \texttt{src/systems/hormonal\_effect.py}) defines 17 distinct effect channels through which hormones modulate T cell behavior:
+
+\begin{longtable}{lp{9cm}}
+\caption{Hormonal influence effect channels.}
+\label{tab:hormonal-effects} \\
+\toprule
+\textbf{Effect} & \textbf{Description} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Effect} & \textbf{Description} \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+KILL\_RATE            & Cytotoxic kill rate modulation. \\
+PROLIFERATION         & General proliferation rate. \\
+APOPTOSIS             & Programmed cell death susceptibility. \\
+ACTIVATION            & T cell activation state. \\
+DIFFERENTIATION       & Differentiation probability (e.g., naive to effector). \\
+TH1\_PROLIFERATION    & Th1-specific proliferation. \\
+TH2\_PROLIFERATION    & Th2-specific proliferation. \\
+IL\_4                 & Interleukin-4 signaling effect. \\
+IL\_6                 & Interleukin-6 signaling effect. \\
+IL\_13                & Interleukin-13 signaling effect. \\
+IFN\_GAMMA            & Interferon-gamma signaling effect. \\
+TNF\_ALPHA            & Tumor necrosis factor alpha effect. \\
+MHC\_I\_UPREGULATION  & MHC class I expression modulation. \\
+MHC\_II\_UPREGULATION & MHC class II expression modulation. \\
+COSTIMULATION\_CD28   & CD28 costimulatory signal strength. \\
+CTLA4\_SUPPRESSION    & CTLA-4 inhibitory checkpoint engagement. \\
+PD1\_INHIBITION       & PD-1 inhibitory checkpoint engagement. \\
+\end{longtable}
+
+\subsection{Concentration-Dependent Effect Mapping}
+
+Each hormone type exerts different effects depending on its normalized concentration level.  The perceived hormone level is normalized to a $[0, 1]$ scale using a threshold of 9 (the maximum level):
+
+\begin{equation}
+\label{eq:hormone-normalize}
+\hat{h} = \frac{h - 1}{\text{MAX\_LEVEL} - 1},
+\end{equation}
+
+\noindent where $h$ is the raw perceived level.  Three concentration regimes are defined:
+
+\begin{itemize}[nosep]
+  \item \textbf{Low:} $\hat{h} < 0.33$
+  \item \textbf{Medium:} $0.33 \leq \hat{h} < 0.66$
+  \item \textbf{High:} $\hat{h} \geq 0.66$
+\end{itemize}
+
+\noindent For each regime, a predefined effect vector specifies integer-valued influence scores (typically ranging from $-3$ to $+3$) for each effect channel.  These scores are weighted by hormone-specific importance weights before being accumulated:
+
+\begin{equation}
+\label{eq:hormone-weights}
+w_{\text{estrogen}} = 0.45, \qquad w_{\text{testosterone}} = 0.30, \qquad w_{\text{progesterone}} = 0.25.
+\end{equation}
+
+\noindent The weighted effects are accumulated into the T cell's \texttt{accumulated\_effects} dictionary and subsequently transferred to the cell's \texttt{experienced\_effects} via the \texttt{update\_effects()} method.
+
+\paragraph{Example: Estrogen at High Concentration.}
+When estrogen is at high concentration ($\hat{h} \geq 0.66$), the effect vector includes: TH1\_PROLIFERATION $= -3$ (strong suppression), TH2\_PROLIFERATION $= +3$ (strong promotion), IL\_4 $= +3$, IL\_13 $= +3$, IFN\_GAMMA $= -3$, ACTIVATION $= -2$, CTLA4\_SUPPRESSION $= +3$, PD1\_INHIBITION $= +2$, KILL\_RATE $= -2$, and PROLIFERATION $= -1$.  After weighting by $w_{\text{estrogen}} = 0.45$, these effects produce a net immunosuppressive shift consistent with the biological role of high-dose estrogen.
+
+%% ====================================================================
+\section{Sex Drift}
+\label{sec:sex-drift}
+
+In addition to the direct hormonal effects on T cell behavior, the model implements a population-level sex drift mechanism that adjusts the CD8$^+$ naive T cell population based on patient sex.
+
+\subsection{Biological Basis}
+
+Testosterone stimulates the production and maturation of CD8$^+$ T cells in the thymus.  Male patients, with higher testosterone levels, maintain larger CD8$^+$ T cell populations, which contributes to stronger cytotoxic anti-tumor responses.  Conversely, female patients tend to have relatively fewer CD8$^+$ T cells but may exhibit enhanced CD4$^+$ T helper and antibody-mediated responses.
+
+\subsection{Implementation}
+
+The sex drift is implemented in the \texttt{RCCModel} class via the \texttt{init\_sex\_drift()} and \texttt{apply\_sex\_drift()} methods.  The drift operates as a gradual population adjustment over the first $n$ simulation steps (default $n = 15$):
+
+\begin{equation}
+\label{eq:drift-per-step}
+\delta = \frac{d_{\max}}{n},
+\end{equation}
+
+\noindent where $d_{\max}$ is the \texttt{w\_max\_drift} parameter (default $0.25$), representing the maximum fraction of the CD8 naive T cell population affected over the entire drift period.  The drift direction depends on sex:
+
+\begin{equation}
+\label{eq:drift-direction}
+\sigma = \begin{cases} +1 & \text{if sex = Male (positive drift, population increase),} \\ -1 & \text{if sex = Female (negative drift, population decrease).} \end{cases}
+\end{equation}
+
+At each step during the drift period, the step factor is computed as:
+
+\begin{equation}
+\label{eq:step-factor}
+f_{\text{step}} = 1 + \sigma \cdot \delta.
+\end{equation}
+
+The population adjustment proceeds as follows:
+
+\begin{itemize}[nosep]
+  \item If $f_{\text{step}} > 1$ (male, population increase): each CD8 naive T cell is duplicated with probability $|f_{\text{step}} - 1|$.
+  \item If $f_{\text{step}} < 1$ (female, population decrease): each CD8 naive T cell is removed with probability $|f_{\text{step}} - 1|$.
+\end{itemize}
+
+\noindent The drift terminates after $n$ steps, at which point the CD8 naive T cell population has been adjusted by approximately $\pm d_{\max} \times 100\%$ relative to its initial size.  For the default parameters ($d_{\max} = 0.25$, $n = 15$), this produces a ${\sim}25\%$ population increase in males and a ${\sim}25\%$ decrease in females over the first 15 simulation steps.
+
+\subsection{Interaction with Hormonal Effects}
+
+The sex drift and the direct hormonal effects operate through complementary mechanisms:
+
+\begin{itemize}[nosep]
+  \item The \textbf{sex drift} adjusts the \emph{initial population size} of CD8$^+$ T cells, reflecting the baseline sex difference in T cell counts.
+  \item The \textbf{hormonal effects} modulate the \emph{functional behavior} (kill rates, proliferation, activation) of all T cell types throughout the simulation.
+\end{itemize}
+
+\noindent Together, these mechanisms produce sex-specific immune dynamics that are consistent with clinical observations: male patients start with more CD8$^+$ T cells and experience testosterone-driven immune modulation, while female patients have fewer CD8$^+$ T cells but benefit from estrogen-mediated immune activation at low concentrations.  The net effect on treatment outcome depends on the interplay between these factors and the treatment modality applied~\cite{conforti2018,santoni2024}.

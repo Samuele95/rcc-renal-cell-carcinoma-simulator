@@ -1,0 +1,87 @@
+\chapter{Introduction}
+\label{ch:introduction}
+
+\section{Renal Cell Carcinoma: Epidemiology and Clinical Significance}
+\label{sec:intro_epidemiology}
+
+Renal cell carcinoma (RCC) is the third most common urological malignancy and accounts for approximately 90\% of all kidney cancers \cite{santoni2024}. Globally, RCC is responsible for roughly 400,000 new diagnoses per year, with incidence rates that have been steadily rising over the past several decades---a trend attributed in part to the increased use of abdominal imaging and in part to the growing prevalence of established risk factors such as obesity, hypertension, and tobacco use \cite{hanahan2011}.
+
+The prognosis for RCC is strongly stage-dependent. When the disease is detected in a localized state---confined to the kidney---five-year survival rates range from 50\% to 75\%, and for early-stage tumors treated with partial or radical nephrectomy, outcomes can be even more favorable. However, RCC has a marked propensity for late diagnosis: approximately one-third of patients present with locally advanced or metastatic disease at the time of initial detection. For metastatic RCC (mRCC), the five-year survival rate drops to below 15\%, underscoring the aggressive nature of late-stage disease and the limitations of currently available systemic therapies \cite{rini2019}.
+
+Clear cell RCC (ccRCC) constitutes 70--80\% of all RCC cases and is characterized by mutations in the \emph{VHL} gene, which lead to constitutive activation of the hypoxia-inducible factor (HIF) pathway and consequent overexpression of vascular endothelial growth factor (VEGF). This molecular hallmark has made ccRCC a prototypical target for anti-angiogenic therapies, while its relatively high immunogenicity---evidenced by dense immune infiltrates and occasional spontaneous regressions---has positioned it as one of the tumors most responsive to immunotherapy \cite{pardoll2012}.
+
+\section{The Tumor Microenvironment}
+\label{sec:intro_tme}
+
+The tumor microenvironment (TME) is a complex, spatially heterogeneous ecosystem that extends far beyond the neoplastic cells themselves. It encompasses:
+
+\begin{itemize}[nosep]
+    \item \textbf{Tumor cells} with diverse genetic and phenotypic profiles arising from genomic instability and clonal evolution.
+    \item \textbf{Immune cells} of both innate and adaptive lineages, including cytotoxic T lymphocytes (CTLs), helper T cells (Th1 and Th2), regulatory T cells (Tregs), dendritic cells (DCs), macrophages (M1 and M2 polarization states), natural killer (NK) cells, mast cells, and neutrophils.
+    \item \textbf{Stromal cells} such as adipocytes and fibroblasts that provide structural and metabolic support.
+    \item \textbf{Vasculature}, both pre-existing and tumor-induced (via angiogenesis), which supplies oxygen, glucose, and other nutrients while also serving as a route for immune cell trafficking and hormone delivery.
+    \item \textbf{Signaling molecules} including cytokines, chemokines, and sex hormones that mediate cell-cell communication over varying spatial scales.
+\end{itemize}
+
+The interactions among these components are bidirectional and highly nonlinear. Immune cells can recognize and kill tumor cells, but tumors can also co-opt immune cells---for instance, by promoting M2 macrophage polarization or Treg expansion---to create an immunosuppressive niche. Understanding these dynamics requires approaches that can capture spatial heterogeneity, stochasticity, and the emergent behaviors that arise from local cell-cell interactions \cite{hanahan2011}.
+
+\section{Sex Differences in RCC}
+\label{sec:intro_sex_differences}
+
+A striking and incompletely understood feature of RCC is its pronounced sex bias: males exhibit approximately twice the incidence of females across virtually all populations studied. While differential exposure to risk factors (e.g., smoking, occupational hazards) accounts for part of this disparity, accumulating evidence implicates sex hormones---particularly estrogen, testosterone, and progesterone---as modulators of both tumor biology and immune response.
+
+Estrogen has been shown to enhance several arms of the anti-tumor immune response. At low concentrations, estrogen promotes Th1 polarization, increases interferon-gamma (IFN-$\gamma$) production, upregulates MHC class I and II expression, and enhances cytotoxic T cell activity. At higher concentrations, however, estrogen can shift the balance toward Th2 responses, increase regulatory T cell differentiation, and upregulate immune checkpoint molecules such as CTLA-4 and PD-1, thereby dampening anti-tumor immunity. Testosterone, conversely, tends to suppress immune responses at elevated levels, reducing Th1 proliferation and IFN-$\gamma$ production while promoting checkpoint-mediated immune evasion \cite{conforti2018}.
+
+These observations have motivated the ARON-1 clinical study, which investigates whether sex-specific immune landscapes translate into differential responses to combination immunotherapy-targeted therapy regimens in RCC patients. The ARON-1 study provides the clinical context and validation data for the computational model presented in this work, and its findings regarding sex-dependent treatment outcomes serve as key calibration targets for the simulation \cite{santoni2024}.
+
+\section{Motivation for Computational Modeling}
+\label{sec:intro_motivation}
+
+The complexity of the RCC tumor microenvironment---with its heterogeneous cell populations, spatial organization, stochastic interactions, metabolic competition, hormonal modulation, and treatment effects---presents a formidable challenge for traditional analytical and experimental approaches. Clinical trials, while indispensable, are expensive, time-consuming, and inherently limited in the number of treatment combinations, dosing schedules, and patient stratifications they can explore. \emph{In vitro} and \emph{in vivo} models capture some aspects of tumor-immune dynamics but cannot easily reproduce the full complexity of the human TME.
+
+Computational modeling offers a complementary approach that addresses several of these limitations:
+
+\begin{enumerate}[nosep]
+    \item \textbf{In silico experimentation.} Simulations allow researchers to conduct virtual experiments that would be impractical, unethical, or prohibitively expensive in clinical settings. Thousands of virtual patients with varying immune profiles, hormonal states, and treatment regimens can be simulated in hours rather than years.
+    \item \textbf{Parameter exploration.} The model's behavior can be systematically mapped across high-dimensional parameter spaces, identifying which biological variables most strongly influence treatment outcomes.
+    \item \textbf{Treatment optimization.} By coupling the simulation with optimization algorithms, it becomes possible to search for treatment schedules and drug combinations that maximize predicted patient survival for specific patient subgroups.
+    \item \textbf{Hypothesis generation.} Emergent behaviors observed in simulation---such as unexpected immune cell population dynamics or treatment resistance mechanisms---can generate testable hypotheses for subsequent experimental validation.
+\end{enumerate}
+
+Previous work by Merelli et al.\ \cite{merelli2021} and the MASL research group \cite{masl_paper_a} demonstrated the feasibility of agent-based approaches for modeling the RCC microenvironment, establishing a Mesa-based prototype that captured the core immune-tumor interactions. The present work extends this foundation substantially.
+
+\section{Agent-Based Modeling Approach}
+\label{sec:intro_abm}
+
+Agent-based modeling (ABM) is a computational paradigm in which a system is represented as a collection of autonomous entities---agents---that interact with each other and their environment according to defined rules. The macroscopic behavior of the system emerges from the aggregate of these local interactions, rather than being prescribed by top-down equations.
+
+ABM is particularly well suited to modeling the tumor microenvironment for several reasons:
+
+\begin{itemize}[nosep]
+    \item \textbf{Natural representation of heterogeneity.} Each agent (cell) can carry its own state: a unique genome with specific mutations, a particular activation level, a spatial position, and accumulated effects from neighbors. This heterogeneity is intrinsic to the formalism rather than an approximation.
+    \item \textbf{Spatial dynamics.} Agents occupy positions in a 3D grid and interact with their local neighborhood, capturing the spatial structure of the TME---including the formation of immune-excluded regions, angiogenesis-driven vascular networks, and glucose gradients.
+    \item \textbf{Stochasticity.} Biological processes such as cell division, apoptosis, immune recognition, and mutation are inherently probabilistic. ABM naturally incorporates stochastic decision-making at the individual agent level.
+    \item \textbf{Emergent behavior.} Complex phenomena such as immune evasion, tumor dormancy, and treatment resistance can emerge from simple local rules without being explicitly programmed, providing mechanistic insight into system-level dynamics.
+\end{itemize}
+
+The choice of Repast4Py \cite{repast4py} as the simulation framework is motivated by its support for MPI-based parallel execution, which enables the model to scale to larger grid sizes and agent populations than would be feasible with single-process frameworks such as Mesa \cite{mesa}. Repast4Py provides core abstractions---\texttt{SharedContext}, \texttt{SharedGrid}, and an MPI-aware scheduling mechanism---that allow the model to distribute agents across multiple processes while maintaining consistent spatial queries and inter-agent communication.
+
+\section{Project Objectives}
+\label{sec:intro_objectives}
+
+The work presented in this report pursues four principal objectives:
+
+\begin{enumerate}
+    \item \textbf{Port the existing Mesa model to Repast4Py for MPI parallelism.} The original RCC agent-based model was implemented using the Mesa framework, which is restricted to single-process execution. This project re-implements the model using Repast4Py, restructuring the agent hierarchy, spatial indexing, and scheduling to leverage MPI-based distribution. The port preserves the 18 agent types and their interaction logic while adapting to Repast4Py's \texttt{Agent}, \texttt{SharedContext}, and \texttt{SharedGrid} abstractions.
+
+    \item \textbf{Add a glucose microenvironment sensing layer.} A novel continuous 3D glucose concentration field is overlaid on the discrete agent grid. Blood vessels inject glucose, which diffuses according to Fick's law and decays over time. Tumor cells consume glucose at elevated rates consistent with the Warburg effect, creating local depletion zones. Immune cells both consume glucose and use its gradient for chemotaxis when no direct target is available. This metabolic layer introduces 8 new parameters governing glucose dynamics and their coupling to agent behavior.
+
+    \item \textbf{Validate against ARON-1 clinical data.} The model's predictions regarding tumor growth trajectories, immune cell population dynamics, and treatment outcomes are compared against data from the ARON-1 clinical trial, with particular attention to sex-stratified responses to ICI, TKI, and combination ICI+TKI therapy.
+
+    \item \textbf{Optimize parameters via Bayesian optimization.} An Optuna-based \cite{optuna} Bayesian optimization pipeline is implemented to search the model's parameter space for configurations that best reproduce clinical observations. This optimization operates over the model's weight parameters, including the newly introduced glucose-related parameters, and targets fitness metrics derived from ARON-1 patient outcomes.
+\end{enumerate}
+
+\section{Report Structure}
+\label{sec:intro_structure}
+
+The remainder of this report is organized as follows. Chapter~\ref{ch:theoretical_background} provides the theoretical background on agent-based modeling, RCC immunology, tumor metabolism, and treatment modalities. Chapter~\ref{ch:model_description} presents a detailed description of the model architecture, including the agent hierarchy, effect system, interaction rules, and terminal conditions. Chapter~\ref{ch:glucose} describes the glucose concentration field and its integration with agent behavior. Chapter~\ref{ch:dna} details the DNA mutation system that governs tumor evolution and antigen presentation. Chapter~\ref{ch:treatment} covers the treatment system, including ICI and TKI drug mechanisms. Chapter~\ref{ch:sex-hormones} describes the sex hormone system and its modulation of immune responses. Chapter~\ref{ch:implementation} discusses implementation details and the software architecture. Chapter~\ref{ch:parameters} catalogs the full parameter set. Chapter~\ref{ch:simulation-results} presents simulation results and validation against clinical data. Chapter~\ref{ch:conclusion} concludes with a summary and directions for future work.

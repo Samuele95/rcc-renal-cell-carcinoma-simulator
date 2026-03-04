@@ -1,0 +1,182 @@
+\chapter{Simulation Results}
+\label{ch:simulation-results}
+
+This chapter describes the expected simulation outcomes for the RCC agent-based model across different scenarios: baseline (no treatment), treatment modalities, sex-specific responses, glucose field dynamics, and validation against clinical data. Since the model is designed for systematic calibration via Bayesian optimization (Chapter~\ref{ch:parameters}), the results presented here describe the qualitative behavior and expected trends rather than specific numerical outputs, which depend on the optimized parameter configuration.
+
+% ======================================================================
+\section{Baseline Simulation}
+\label{sec:baseline-sim}
+
+The baseline scenario runs the simulation with default parameters and no treatment (\texttt{treatment='None'}). This configuration serves as a control against which treatment effects are measured.
+
+\subsection{Expected Tumor Dynamics}
+
+In the absence of treatment, the model is expected to produce unbounded tumor growth. The initial tumor mass of approximately 10 cells proliferates driven by the combined effects of the tumor growth rate, blood vessel access via angiogenesis, and DNA-encoded proliferation advantages. The growth dynamics follow an approximately sigmoid curve:
+
+\begin{enumerate}
+    \item \textbf{Early phase (steps 0--50)}: Slow growth as the small tumor mass has limited blood vessel access and the immune system is still active. Glucose is abundant throughout the grid.
+    \item \textbf{Exponential phase (steps 50--200)}: Angiogenesis establishes blood supply to the tumor periphery, accelerating growth. Tumor cells with favorable DNA mutations (oncogene activation, tumor suppressor loss) dominate the population.
+    \item \textbf{Saturation phase (steps 200+)}: Growth slows as glucose depletion zones form around the tumor mass, spatial constraints limit expansion into occupied regions, and the terminal condition ($n_{\mathrm{tumor}} \geq 2000$ or mean growth rate $\geq$ threshold) triggers simulation termination.
+\end{enumerate}
+
+\subsection{Expected Immune Response}
+
+The immune cell populations are expected to show a characteristic depletion pattern:
+
+\begin{itemize}
+    \item \textbf{Cytotoxic T cells}: Initially active in killing tumor cells, but progressively exhausted through PD-1/PD-L1 checkpoint inhibition and the \texttt{w\_progressive\_exhaustion} parameter.
+    \item \textbf{NK cells}: Provide early innate immune killing, but their effectiveness decreases as tumor cells establish PD-1 inhibition.
+    \item \textbf{M1 macrophages}: Phagocytose tumor cells and present antigens, but may mutate to M2 phenotype under the influence of the tumor microenvironment.
+    \item \textbf{M2 macrophages}: Accumulate over time as M1-to-M2 polarization occurs, promoting tumor growth and angiogenesis.
+    \item \textbf{Tregs}: Differentiate from na\"ive CD4+ T cells and suppress anti-tumor immunity, further impairing immune control.
+\end{itemize}
+
+\subsection{Glucose Field Behavior}
+
+The glucose field begins at a uniform concentration of 1.0 across all grid positions. As the simulation progresses, blood vessels inject glucose at their locations (rate \texttt{w\_glucose\_source\_rate} = 5.0 per vessel per step), creating localized high-concentration zones. Tumor cells consume glucose at a high rate (\texttt{w\_glucose\_tumor\_consumption} = 2.0 per cell per step), creating depletion zones around the growing tumor mass. The steady-state glucose profile is expected to show a characteristic spatial gradient: high near blood vessels, decreasing towards the tumor interior.
+
+% ======================================================================
+\section{Treatment Scenarios}
+\label{sec:treatment-scenarios}
+
+The model supports four treatment configurations, applied starting at step \texttt{treatment\_start} (default 100). The treatment modalities are compared via their effects on tumor population dynamics and patient survival.
+
+\subsection{ICI Only}
+
+Immune checkpoint inhibitor therapy blocks the PD-1/PD-L1 pathway by setting \texttt{TumorCell.ICI\_effect = True}, which causes \texttt{get\_PD1\_inhibition()} to return \texttt{False} unconditionally. The expected effects are:
+
+\begin{itemize}
+    \item Partial restoration of cytotoxic T cell killing efficiency.
+    \item Reduced T cell exhaustion, allowing sustained anti-tumor immune responses.
+    \item Moderate tumor control: tumor growth rate decreases but may not be fully arrested, as ICI does not directly affect tumor cell proliferation or angiogenesis.
+\end{itemize}
+
+The model is expected to show a reduction in tumor cell count growth rate after step 100, with the immune cell populations stabilizing at higher levels compared to the baseline.
+
+\subsection{TKI Only}
+
+Tyrosine kinase inhibitor therapy targets the angiogenesis pathway by setting \texttt{TumorCell.TKI\_effect = True}, which modulates tumor cell behavior upon apoptosis (releasing neoantigens to nearby dendritic cells). The expected effects are:
+
+\begin{itemize}
+    \item Inhibition of new blood vessel formation, reducing glucose supply to the tumor.
+    \item Indirect anti-tumor effects through glucose starvation, as the Warburg-dependent tumor cells are deprived of their metabolic substrate.
+    \item Enhanced antigen presentation due to neoantigen release during TKI-induced apoptosis.
+\end{itemize}
+
+Simulation results are expected to show slower tumor growth compared to baseline, with the glucose depletion zone expanding more rapidly as blood vessel formation is inhibited.
+
+\subsection{ICI+TKI Combination}
+
+The combination therapy applies both ICI and TKI effects simultaneously. The expected synergistic benefits are:
+
+\begin{itemize}
+    \item ICI restores immune checkpoint function while TKI reduces tumor blood supply.
+    \item TKI-induced apoptosis releases neoantigens, which are more effectively recognized by the ICI-restored immune system.
+    \item The glucose starvation effect of TKI compounds with the restored immune killing from ICI.
+\end{itemize}
+
+The combination is expected to produce the strongest tumor control, consistent with clinical evidence from the KEYNOTE-426~\cite{rini2019} and JAVELIN Renal 101~\cite{motzer2019} trials that demonstrated superior outcomes for ICI+TKI combinations over monotherapy in advanced RCC.
+
+\subsection{Expected Visualizations}
+
+The simulation produces several types of output suitable for visualization:
+
+\begin{enumerate}
+    \item \textbf{Cell count time series}: Population dynamics of all 18 agent types over simulation steps, plotted from the \texttt{simulation\_log.csv} output. These plots show the rise and fall of tumor and immune cell populations under different treatment regimes.
+    \item \textbf{Survival curves}: Kaplan--Meier-style curves comparing survival outcomes across treatment groups, generated by running the model across multiple ARON-1 patient cases.
+    \item \textbf{Glucose field heatmaps}: 2D slices of the 3D glucose field at selected time points, showing the spatial distribution of glucose concentration and its evolution over time.
+\end{enumerate}
+
+% ======================================================================
+\section{Sex-Specific Responses}
+\label{sec:sex-responses}
+
+The model captures sex-specific differences in immune response through three mechanisms: hormone environment, CD8+ T cell drift, and initial DNA mutation load.
+
+\subsection{Male vs.\ Female Comparison}
+
+\begin{itemize}
+    \item \textbf{Hormone environment}: Male patients have high testosterone (\texttt{chance = 1.0}) and low estrogen (\texttt{chance = 0.2}), while female patients have the inverse pattern (estrogen \texttt{chance = 0.9}, testosterone \texttt{chance = 0.2}). These hormones differentially affect CD4+ T cell differentiation, Treg activation, and macrophage polarization.
+
+    \item \textbf{CD8+ drift}: Males undergo a positive drift in CD8+ na\"ive T cell population (drift sign $= +1$), while females undergo a negative drift (drift sign $= -1$). Over the first 15 steps, the drift adjusts the CD8+ population by up to \texttt{w\_max\_drift} = 25\%. This reflects epidemiological observations of sex differences in T cell counts~\cite{conforti2018}.
+
+    \item \textbf{Initial mutations}: Male patients' tumor cells are initialized with 3 injected mutations, while female patients start with 1. This models the observed higher mutational burden in male RCC patients, which can lead to both increased neoantigen presentation and more aggressive tumor behavior.
+\end{itemize}
+
+\subsection{Expected Outcomes}
+
+The model is expected to show that male patients have a stronger initial CD8+ T cell response (due to positive drift and higher mutation-driven neoantigen presentation), but this advantage may be offset by the higher initial mutational burden promoting more aggressive tumor growth. Female patients may show a more balanced but sustained immune response due to estrogen-mediated immune modulation. The net effect on survival depends on the interplay of these factors, which is captured through the optimized weight parameters.
+
+% ======================================================================
+\section{Glucose Field Dynamics}
+\label{sec:glucose-dynamics}
+
+The glucose field provides a continuous metabolic overlay on the discrete agent grid, capturing the spatial competition for metabolic resources between tumor and immune cells.
+
+\subsection{Initial State}
+
+At step 0, the glucose field is initialized to a uniform concentration of 1.0 at every grid position. Blood vessels have been placed during initialization but have not yet injected glucose.
+
+\subsection{Source--Diffusion--Consumption Cycle}
+
+At each simulation step, the glucose field undergoes the following cycle:
+
+\begin{enumerate}
+    \item \textbf{Source injection}: Each blood vessel agent injects \texttt{w\_glucose\_source\_rate} = 5.0 units of glucose at its position. This creates localized ``hot spots'' of high glucose concentration near the vasculature.
+    \item \textbf{Diffusion}: The 3D Laplacian diffusion operator spreads glucose from high-concentration regions to low-concentration regions with coefficient $D = 0.1$. The zero-flux boundary conditions ensure that glucose does not leak out of the simulation domain.
+    \item \textbf{Decay}: A uniform decay of 1\% per step ($d = 0.01$) is applied, modeling background tissue metabolism.
+    \item \textbf{Consumption}: During their individual \texttt{step()} calls, tumor cells consume \texttt{w\_glucose\_tumor\_consumption} = 2.0 per cell and immune cells consume \texttt{w\_glucose\_immune\_consumption} = 0.5 per cell.
+\end{enumerate}
+
+\subsection{Spatial Profile Evolution}
+
+The glucose field is expected to develop a characteristic spatial profile over time:
+
+\begin{itemize}
+    \item \textbf{Near blood vessels}: Glucose concentration remains high (well above 1.0 due to continuous injection), creating metabolically favorable zones.
+    \item \textbf{Tumor interior}: Glucose is heavily depleted due to the Warburg effect, with concentrations approaching zero in densely populated tumor regions. This depletion reflects the clinical observation that solid tumors are metabolically hypoxic and glucose-starved in their cores~\cite{hanahan2011}.
+    \item \textbf{Tumor periphery}: A gradient exists between the vessel-supplied exterior and the depleted interior. This gradient drives immune cell chemotaxis: with probability \texttt{w\_glucose\_chemotaxis\_strength} = 0.3, immune cells move up the glucose gradient, which tends to direct them towards the tumor--vessel interface where metabolic resources are available.
+    \item \textbf{Distant regions}: Glucose concentration equilibrates near the decay-adjusted injection rate, providing a metabolic ``background'' for immune cells that have not yet encountered the tumor.
+\end{itemize}
+
+\subsection{Warburg Effect Manifestation}
+
+The elevated tumor consumption rate (4$\times$ that of immune cells) creates a metabolic asymmetry that has two consequences:
+
+\begin{enumerate}
+    \item \textbf{Tumor growth suppression}: As the tumor mass grows, local glucose is depleted, reducing the glucose factor $\min(1, C \cdot \texttt{w\_glucose\_growth\_sensitivity})$ and thereby suppressing further proliferation. This provides a natural negative feedback loop on tumor growth.
+    \item \textbf{Immune impairment}: Glucose depletion in the tumor microenvironment also reduces the effectiveness of infiltrating immune cells, which depend on glucose for activation and effector function. This creates a ``metabolic immune checkpoint'' that complements the receptor-based PD-1/PD-L1 checkpoint.
+\end{enumerate}
+
+The data log records four glucose field statistics at each step: mean, total, minimum, and maximum concentration. These provide a time-series view of the global metabolic state of the simulation.
+
+% ======================================================================
+\section{Validation}
+\label{sec:validation}
+
+\subsection{Comparison Against ARON-1 Data}
+
+The primary validation strategy compares the model's survival predictions against the ARON-1 clinical dataset (Section~\ref{sec:clinical-dataset}). For each patient case, the model is run with the patient's clinical features and the optimized weight parameters. The simulation's binary survival prediction and the number of steps to termination are compared against the clinical outcome.
+
+\subsection{Expected Accuracy}
+
+The Bayesian optimization procedure (Section~\ref{sec:bayesian-optimization}) minimizes the mean squared error across all ARON-1 cases. After 250 Optuna trials, the model is expected to achieve:
+
+\begin{itemize}
+    \item Correct survival prediction (binary match) for the majority of patient cases.
+    \item Per-treatment-group accuracy that reflects the relative difficulty of predicting outcomes for each treatment modality.
+    \item Convergence of the optimization error, visible in the trial error time series logged to \texttt{data/trial\_errors.csv}.
+\end{itemize}
+
+\subsection{Parameter Sensitivity Analysis}
+
+The Optuna optimization also provides implicit sensitivity information through the trial history. Parameters that are consistently selected near the bounds of their search range, or that show high variance across successful trials, are likely to have a strong influence on the model's behavior. In particular:
+
+\begin{itemize}
+    \item \textbf{Tumor growth weights} (\texttt{w\_tumor\_growth\_eff}, \texttt{w\_tumor\_growth\_dna}): Expected to be among the most sensitive parameters, as they directly control the primary outcome variable.
+    \item \textbf{Glucose parameters}: The balance between \texttt{w\_glucose\_source\_rate} and \texttt{w\_glucose\_tumor\_consumption} is expected to show high sensitivity, as it determines whether the glucose feedback loop effectively limits tumor growth.
+    \item \textbf{Treatment effectiveness} (\texttt{w\_ici\_effectiveness}, \texttt{w\_tki\_effectiveness}): These parameters directly scale the treatment effect and are expected to be tightly constrained by the clinical data.
+    \item \textbf{PD-1 inhibition weight} (\texttt{w\_gene\_pd1\_inhibition}): Controls the strength of immune checkpoint evasion by tumor cells, with significant impact on the ICI treatment arm.
+\end{itemize}
+
+Formal sensitivity analysis (e.g., Sobol indices or Morris screening) can be performed as a post-processing step using the Optuna trial database, but is beyond the scope of the current implementation.

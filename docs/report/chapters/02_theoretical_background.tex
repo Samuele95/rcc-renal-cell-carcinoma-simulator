@@ -1,0 +1,275 @@
+\chapter{Theoretical Background}
+\label{ch:theoretical_background}
+
+This chapter presents the theoretical foundations upon which the RCC agent-based model is constructed. We begin with a formal introduction to agent-based modeling and the Repast4Py framework (Section~\ref{sec:bg_abm}), then review the immunology of renal cell carcinoma with emphasis on the cell types represented in the model (Section~\ref{sec:bg_immunology}), discuss the metabolic characteristics of the tumor microenvironment (Section~\ref{sec:bg_metabolism}), and conclude with an overview of the treatment modalities implemented in the simulation (Section~\ref{sec:bg_treatments}).
+
+% ============================================================================
+\section{Agent-Based Modeling}
+\label{sec:bg_abm}
+% ============================================================================
+
+\subsection{Formalism and Core Concepts}
+\label{subsec:bg_abm_formalism}
+
+An agent-based model (ABM) is a computational model consisting of three fundamental components:
+
+\begin{enumerate}
+    \item \textbf{Agents.} Autonomous entities characterized by a set of internal state variables and behavioral rules. Each agent perceives its local environment, makes decisions based on its state and perception, and executes actions that may modify its own state, the state of other agents, or the environment.
+    \item \textbf{Environment.} A shared space---typically a discrete grid or continuous domain---in which agents are situated. The environment may carry its own state variables (e.g., chemical concentrations, nutrient fields) that evolve according to physical laws and are modified by agent actions.
+    \item \textbf{Rules.} The behavioral logic governing agent actions. Rules are typically local (each agent acts based on information in its neighborhood) and stochastic (outcomes are drawn from probability distributions parameterized by the agent's state and accumulated effects).
+\end{enumerate}
+
+The distinguishing feature of ABM is that system-level behavior is \emph{emergent}: it arises from the aggregate of individual agent actions and interactions rather than being prescribed by global equations. This makes ABM particularly powerful for systems characterized by heterogeneity, spatial structure, and nonlinear feedback---properties that are hallmarks of the tumor microenvironment.
+
+Formally, at each discrete time step $t$, the state of agent $i$ is updated according to:
+\begin{equation}
+    s_i(t+1) = f\bigl(s_i(t),\, \mathcal{N}_i(t),\, E(t),\, \xi_i(t)\bigr)
+    \label{eq:agent_update}
+\end{equation}
+where $s_i(t)$ is the agent's internal state, $\mathcal{N}_i(t)$ is the set of neighboring agents within a defined radius, $E(t)$ is the local environmental state (e.g., glucose concentration), and $\xi_i(t)$ represents stochastic noise. The environment itself evolves as:
+\begin{equation}
+    E(t+1) = g\bigl(E(t),\, \{a_i(t)\}_{i=1}^{N}\bigr)
+    \label{eq:env_update}
+\end{equation}
+where $\{a_i(t)\}$ denotes the actions taken by all $N$ agents at time $t$.
+
+\subsection{Advantages for Biological Systems}
+\label{subsec:bg_abm_advantages}
+
+ABM offers several advantages for modeling biological systems in general and the tumor microenvironment in particular:
+
+\begin{itemize}
+    \item \textbf{Heterogeneity.} Unlike equation-based models that track population-level averages, ABM represents each cell individually. In the present model, each tumor cell carries a unique 16-gene DNA sequence that determines its antigen presentation, proliferation potential, and susceptibility to immune attack. This cell-level heterogeneity is critical for capturing clonal evolution and immune escape.
+    \item \textbf{Spatial dynamics.} Agent positions in a 3D grid determine which cells can interact. Spatial phenomena such as immune exclusion zones around tumors, angiogenesis-driven vascular networks, and nutrient gradients emerge naturally from local interactions.
+    \item \textbf{Stochasticity.} Biological events---mitosis, apoptosis, antigen recognition, cytokine release---are inherently probabilistic. ABM incorporates stochasticity at the individual agent level, and ensemble statistics over multiple simulation runs capture the variability observed in clinical data.
+    \item \textbf{Modularity.} New agent types, interaction rules, or environmental layers (such as the glucose field introduced in this work) can be added without restructuring the entire model, facilitating iterative model development.
+\end{itemize}
+
+\subsection{The Repast4Py Framework}
+\label{subsec:bg_repast4py}
+
+Repast4Py \cite{repast4py} is a Python-based agent-based modeling framework designed for large-scale distributed simulations. It extends the Repast HPC (High-Performance Computing) toolkit to the Python ecosystem, leveraging MPI (Message Passing Interface) \cite{mpi4py} for inter-process communication. The key abstractions provided by Repast4Py are:
+
+\begin{itemize}
+    \item \textbf{\texttt{repast4py.core.Agent}.} The base class for all agents. Each agent is identified by a tuple \texttt{(id, type, rank)} where \texttt{id} is a locally unique integer, \texttt{type} is an integer agent type identifier, and \texttt{rank} is the MPI rank of the process that owns the agent.
+    \item \textbf{\texttt{SharedContext}.} A distributed container for agents. The context manages agent ownership across MPI ranks and provides methods for adding, removing, and iterating over agents.
+    \item \textbf{\texttt{SharedGrid}.} A distributed spatial projection that maps agents to discrete grid coordinates. Repast4Py supports multiple grid configurations:
+    \begin{itemize}[nosep]
+        \item \texttt{BorderType.Sticky}: agents that attempt to move beyond grid boundaries are clamped to the boundary (used in the present model).
+        \item \texttt{OccupancyType.Multiple}: multiple agents can occupy the same grid cell (necessary for a dense microenvironment).
+    \end{itemize}
+    \item \textbf{Schedule runner.} The scheduling mechanism, initialized via \texttt{schedule.init\_schedule\_runner}, manages the execution order of model steps across MPI ranks, ensuring synchronization where required.
+\end{itemize}
+
+\subsection{Comparison with Mesa}
+\label{subsec:bg_mesa_comparison}
+
+The original RCC model was implemented in Mesa \cite{mesa}, a widely used Python ABM framework. Table~\ref{tab:mesa_vs_repast} summarizes the key differences between Mesa and Repast4Py that motivated the port.
+
+\begin{table}[H]
+\centering
+\caption{Comparison of Mesa and Repast4Py for the RCC model.}
+\label{tab:mesa_vs_repast}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Feature} & \textbf{Mesa} & \textbf{Repast4Py} \\
+\midrule
+Execution model     & Single-process          & MPI-distributed \\
+Grid type           & \texttt{MultiGrid} (2D/3D) & \texttt{SharedGrid} (distributed) \\
+Agent base class    & \texttt{mesa.Agent}     & \texttt{repast4py.core.Agent} \\
+Scheduling          & \texttt{RandomActivation} & \texttt{schedule.init\_schedule\_runner} \\
+Scalability         & Limited by single core  & Scales across MPI ranks \\
+Neighbor queries    & Built-in grid methods   & Custom spatial index \\
+Serialization       & Not required            & \texttt{save()} / restore functions \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The port to Repast4Py required significant restructuring. In Mesa, neighbor queries are handled by the grid object directly (e.g., \texttt{grid.get\_neighbors()}). In the Repast4Py implementation, a custom \texttt{spatial\_index} dictionary maps grid positions to agent lists, and utility functions in \texttt{grid\_utils} provide 3D neighborhood queries, empty-cell detection, and Moore neighborhood enumeration. Additionally, Repast4Py requires explicit \texttt{save()} methods on agents for MPI serialization, and the model manages agent lifecycle (creation, movement, removal) through centralized methods on the \texttt{RCCModel} class rather than through Mesa's scheduler.
+
+% ============================================================================
+\section{Immunology of Renal Cell Carcinoma}
+\label{sec:bg_immunology}
+% ============================================================================
+
+\subsection{Innate and Adaptive Immunity}
+\label{subsec:bg_innate_adaptive}
+
+The immune system's response to cancer involves both the innate and adaptive arms. Innate immunity provides a rapid, non-specific first line of defense through cells such as natural killer (NK) cells, macrophages, dendritic cells, mast cells, and neutrophils. Adaptive immunity, mediated primarily by T and B lymphocytes, provides antigen-specific responses that can be highly effective against tumors expressing recognizable neoantigens.
+
+In the context of RCC, the interplay between innate and adaptive immunity is critical. Dendritic cells serve as the bridge between the two arms: they phagocytose tumor cells, process their antigens, and present them to naive T cells, thereby initiating adaptive responses. The effectiveness of this chain depends on the tumor's ability to present antigens (governed by MHC expression and the antigen-processing machinery) and the availability and activation state of T cells in the tumor neighborhood.
+
+\subsection{T Cell Subtypes}
+\label{subsec:bg_tcells}
+
+The model distinguishes six T cell populations, reflecting the major functional categories relevant to anti-tumor immunity:
+
+\begin{enumerate}
+    \item \textbf{CD8$^+$ Cytotoxic T Cells (CTLs).} The primary effectors of adaptive anti-tumor immunity. CTLs recognize tumor-specific antigens presented on MHC class I molecules and kill target cells through the release of perforin and granzymes. Their effectiveness is modulated by activation level, PD-1/PD-L1 checkpoint interactions, and local glucose availability.
+
+    \item \textbf{CD8$^+$ Naive T Cells.} Antigen-inexperienced CD8$^+$ cells residing in the microenvironment. Upon encountering a dendritic cell presenting a matching neoantigen (determined by TCR-antigen Hamming distance), they differentiate into cytotoxic T cells.
+
+    \item \textbf{CD4$^+$ Naive T Cells.} Precursors to helper and regulatory T cells. Depending on the local cytokine milieu and hormonal environment, they can differentiate into Th1, Th2, or Treg cells. Antigen presentation by dendritic cells or macrophages triggers differentiation into Th1 or Th2 with equal probability, conditional on TCR-antigen matching.
+
+    \item \textbf{CD4$^+$ Th1 Helper T Cells.} Pro-inflammatory cells that produce IFN-$\gamma$ and promote anti-tumor immunity. In the model, Th1 cells recruit M1 macrophages and dendritic cells, promote tumor apoptosis, and can proliferate under the influence of accumulated Th1-proliferation effects. Their proliferation is modulated by sex hormones, with low estrogen favoring Th1 expansion and high estrogen suppressing it.
+
+    \item \textbf{CD4$^+$ Th2 Helper T Cells.} Cells associated with a humoral immune response that produce IL-4, IL-5, and IL-13. In the tumor context, Th2 cells recruit M1 macrophages and cytotoxic T cells, but they also exert a mild pro-tumorigenic effect by increasing tumor growth. Th2 proliferation is enhanced by estrogen and progesterone, consistent with the shift toward Th2-dominant responses at high hormonal levels.
+
+    \item \textbf{Regulatory T Cells (Tregs).} Immunosuppressive cells that play a central role in tumor immune evasion. Tregs inhibit cytotoxic T cell killing (reducing \texttt{t\_kill\_rate\_effect}), suppress T cell proliferation and activation, increase T cell apoptosis, and reduce dendritic cell phagocytosis. They differentiate from CD4$^+$ naive cells under the influence of the \texttt{treg\_differentiation\_effect}, which is promoted by high BMI and specific hormonal conditions.
+\end{enumerate}
+
+\subsection{Antigen-Presenting Cells}
+\label{subsec:bg_apcs}
+
+\begin{itemize}
+    \item \textbf{Dendritic Cells (DCs).} Professional antigen-presenting cells that form the critical link between innate and adaptive immunity. In the model, DCs migrate toward tumor cells, phagocytose them (with probability modulated by the \texttt{dc\_phagocitosis\_effect}), and then migrate toward naive T cells (CD4$^+$ or CD8$^+$, chosen randomly at creation) to present the captured antigens. A successful antigen presentation event triggers T cell activation---differentiation of a CD8$^+$ naive cell into a cytotoxic T cell or a CD4$^+$ naive cell into a Th1 or Th2 cell. When no tumor cells are in the neighborhood, DCs employ glucose chemotaxis to navigate toward nutrient-rich regions likely to harbor tumor activity.
+
+    \item \textbf{Plasmacytoid Dendritic Cells (pDCs).} A specialized DC subtype with distinct functional properties. Like conventional DCs, pDCs phagocytose tumor cells and activate T cells. Additionally, pDCs can spawn new NK cells, providing a direct link between antigen presentation and innate cytotoxic capacity. pDCs also exert paracrine effects on their neighborhood: promoting angiogenesis, increasing Treg differentiation, modulating T cell proliferation, and enhancing both T cell and NK cell kill rates.
+\end{itemize}
+
+\subsection{Macrophages}
+\label{subsec:bg_macrophages}
+
+Tumor-associated macrophages (TAMs) exist along a polarization spectrum, with M1 and M2 representing the two extremes:
+
+\begin{itemize}
+    \item \textbf{M1 Macrophages (pro-inflammatory).} M1 macrophages are classically activated and exhibit anti-tumor properties. They phagocytose tumor cells, present antigens to CD4$^+$ naive T cells (similar to DCs), and exert local effects that increase T cell kill rates and promote Th1 proliferation. When no tumor target is available, M1 macrophages use glucose chemotaxis as a fallback navigation strategy. M1 macrophages can polarize to M2 under the influence of the \texttt{macrophage\_m1\_mutation\_effect}, which is enhanced by high BMI.
+
+    \item \textbf{M2 Macrophages (anti-inflammatory / pro-tumorigenic).} Alternatively activated M2 macrophages promote tumor progression. They suppress T cell killing (negative \texttt{t\_kill\_rate\_effect}), increase tumor growth, and promote angiogenesis. M2 macrophages migrate toward tumor cells and can repolarize to M1 under appropriate conditions, although this transition is less likely than the M1-to-M2 shift in the tumor microenvironment.
+\end{itemize}
+
+The M1/M2 balance is a critical determinant of tumor outcome. A TME dominated by M1 macrophages favors immune-mediated tumor control, while M2 dominance promotes immune evasion and tumor progression. BMI influences this balance through the \texttt{macrophage\_m1\_mutation\_effect} and \texttt{macrophage\_m2\_mutation\_effect} fields in the effect system, reflecting clinical observations that obesity is associated with increased M2 polarization \cite{hanahan2011}.
+
+\subsection{Natural Killer Cells}
+\label{subsec:bg_nk}
+
+Natural killer (NK) cells are innate lymphocytes capable of recognizing and killing tumor cells without prior antigen sensitization. NK cell cytotoxicity is governed by the balance between activating and inhibitory receptors on the NK cell surface. In particular, NK cells are inhibited by MHC class I molecules on target cells; tumors that downregulate MHC-I to evade CTL recognition become more susceptible to NK-mediated killing---a phenomenon known as the ``missing self'' hypothesis.
+
+In the model, NK cell kill probability is determined by the \texttt{nkl\_kill\_rate\_effect}, which is influenced by BMI (higher BMI reduces NK effectiveness), neighboring immune cells, and local glucose concentration. NK cells also exert a positive effect on T cell kill rates in their neighborhood, providing paracrine support for adaptive immunity.
+
+\subsection{Mast Cells and Neutrophils}
+\label{subsec:bg_mast_neutrophils}
+
+\begin{itemize}
+    \item \textbf{Mast Cells.} These innate immune cells play a dual role in the TME. Depending on stochastic initialization, individual mast cells may promote or suppress tumor growth, enhance or inhibit T cell killing, promote angiogenesis, and modulate M1 macrophage recruitment. Mast cells can also spawn dendritic cells, amplifying the antigen presentation capacity of the TME. This functional heterogeneity---captured in the model by randomly assigning effect polarities at creation---reflects the biological observation that mast cells can be either pro- or anti-tumorigenic depending on context.
+
+    \item \textbf{Neutrophils.} The most abundant innate immune cells in circulation. In the current model, neutrophils are present in the microenvironment but have minimal active behavior, serving primarily as a population marker. Future extensions may incorporate neutrophil-mediated tumor killing and NETosis.
+\end{itemize}
+
+\subsection{Immune Checkpoints: The PD-1/PD-L1 Pathway}
+\label{subsec:bg_checkpoints}
+
+Immune checkpoints are inhibitory pathways that normally prevent autoimmunity but are co-opted by tumors to evade immune destruction. The PD-1/PD-L1 (programmed death-1 / programmed death-ligand 1) axis is the most clinically relevant checkpoint in RCC \cite{pardoll2012}.
+
+PD-L1 (encoded by the \emph{CD274} gene) is expressed on tumor cells and binds to PD-1 on activated T cells, delivering an inhibitory signal that reduces T cell proliferation, cytokine production, and cytotoxic activity. In the model, when a cytotoxic T cell encounters a tumor cell, the tumor cell's \texttt{get\_PD1\_inhibition()} method determines whether PD-1/PD-L1 engagement occurs, based on the \emph{CD274} gene's mutation-expression score. If the checkpoint is engaged, the T cell's activation level is reduced rather than the tumor cell being killed.
+
+\subsection{Tumor Immune Evasion Mechanisms}
+\label{subsec:bg_evasion}
+
+RCC tumors employ multiple strategies to evade immune destruction, several of which are captured in the model:
+
+\begin{enumerate}[nosep]
+    \item \textbf{Antigen presentation loss.} Mutations in MHC, B2M, JAK1, JAK2, TAP1, or TAP2 genes reduce the probability of neoantigen presentation, making tumor cells invisible to T cells.
+    \item \textbf{PD-L1 upregulation.} Overexpression of the \emph{CD274} gene product enables immune checkpoint engagement, suppressing T cell activity.
+    \item \textbf{Treg recruitment.} The tumor microenvironment promotes differentiation of CD4$^+$ naive T cells into immunosuppressive Tregs.
+    \item \textbf{M2 macrophage polarization.} Tumor-derived signals (represented through the effect system) promote M1-to-M2 repolarization, shifting the macrophage balance toward pro-tumorigenic phenotypes.
+    \item \textbf{Metabolic competition.} Tumor cells consume glucose at elevated rates (Warburg effect), creating nutrient-depleted zones that impair immune cell function (see Section~\ref{sec:bg_metabolism}).
+\end{enumerate}
+
+% ============================================================================
+\section{Tumor Metabolism}
+\label{sec:bg_metabolism}
+% ============================================================================
+
+\subsection{The Warburg Effect}
+\label{subsec:bg_warburg}
+
+In 1956, Otto Warburg observed that cancer cells preferentially metabolize glucose through glycolysis rather than oxidative phosphorylation, even in the presence of adequate oxygen---a phenomenon now known as aerobic glycolysis or the Warburg effect \cite{warburg1956}. While glycolysis is far less efficient than oxidative phosphorylation in terms of ATP yield per glucose molecule (2 versus $\sim$36 ATP), it provides several advantages to rapidly proliferating tumor cells:
+
+\begin{itemize}[nosep]
+    \item Faster ATP production rate (glycolysis has a higher flux despite lower yield).
+    \item Generation of biosynthetic precursors (nucleotides, amino acids, lipids) for cell division.
+    \item Acidification of the microenvironment through lactate secretion, which inhibits immune cell function.
+\end{itemize}
+
+In the model, the Warburg effect is represented by a higher glucose consumption rate for tumor cells (\texttt{w\_glucose\_tumor\_consumption}) compared to immune cells (\texttt{w\_glucose\_immune\_consumption}). This differential consumption creates local glucose depletion around tumor masses, particularly in poorly vascularized regions.
+
+\subsection{Metabolic Competition in the TME}
+\label{subsec:bg_metabolic_competition}
+
+The metabolic demands of tumor cells place them in direct competition with immune cells for limited glucose. Activated T cells, in particular, undergo a metabolic switch upon activation, becoming heavily dependent on glycolysis for their effector functions. When glucose is scarce, T cell proliferation, cytokine production, and cytotoxic capacity are all impaired \cite{hanahan2011}.
+
+This metabolic competition creates a positive feedback loop that favors the tumor: as tumor cells consume glucose, immune cells in the depleted zone become less effective, allowing further tumor expansion and greater glucose depletion. Breaking this cycle---for instance, through anti-angiogenic therapy that paradoxically normalizes vasculature and improves nutrient delivery, or through direct metabolic intervention---is an active area of therapeutic research.
+
+\subsection{Glucose as a Limiting Factor for Immune Function}
+\label{subsec:bg_glucose_immune}
+
+In the model, glucose availability modulates immune cell behavior through two mechanisms:
+
+\begin{enumerate}
+    \item \textbf{Kill probability impairment.} The kill probability of cytotoxic T cells and NK cells is scaled by a glucose factor:
+    \begin{equation}
+        p_{\text{kill,effective}} = p_{\text{kill,base}} \times \min\bigl(1,\; C_{\text{glucose}}(\mathbf{x}) \cdot w_{\text{glucose\_immune\_sensitivity}}\bigr)
+        \label{eq:glucose_impairment}
+    \end{equation}
+    where $C_{\text{glucose}}(\mathbf{x})$ is the local glucose concentration at position $\mathbf{x}$. When glucose is plentiful, the factor saturates at 1; when glucose is depleted, the kill probability is proportionally reduced.
+
+    \item \textbf{Chemotaxis.} When immune cells (CTLs, M1 macrophages, DCs, NK cells) have no direct target in their neighborhood, they follow the local glucose gradient as a fallback navigation strategy:
+    \begin{equation}
+        \Delta\mathbf{x} = \text{sign}\bigl(\nabla C_{\text{glucose}}(\mathbf{x})\bigr)
+        \label{eq:chemotaxis}
+    \end{equation}
+    This behavior reflects the biological observation that immune cells are attracted to metabolically active regions, and it provides a plausible mechanism for immune cell infiltration toward tumor masses that have not yet been directly detected.
+\end{enumerate}
+
+% ============================================================================
+\section{Treatment Modalities}
+\label{sec:bg_treatments}
+% ============================================================================
+
+\subsection{Immune Checkpoint Inhibitors (ICI)}
+\label{subsec:bg_ici}
+
+Immune checkpoint inhibitors (ICIs) are monoclonal antibodies that block inhibitory receptor-ligand interactions on T cells, thereby restoring anti-tumor immune activity. In the context of RCC, the most clinically relevant checkpoint is the PD-1/PD-L1 axis \cite{pardoll2012}.
+
+Anti-PD-1 antibodies (e.g., nivolumab, pembrolizumab) bind to PD-1 on T cells, while anti-PD-L1 antibodies (e.g., avelumab, atezolizumab) bind to PD-L1 on tumor cells. In both cases, the inhibitory signal is blocked, allowing T cells to recognize and kill PD-L1-expressing tumor cells.
+
+In the model, ICI treatment is implemented through three mechanisms, each applied with probability proportional to the drug's effectiveness parameter (\texttt{w\_ici\_effectiveness}):
+
+\begin{enumerate}[nosep]
+    \item \textbf{PD-1/PD-L1 blockade.} The \texttt{ICI\_effect} flag on tumor cells is set to \texttt{True}, causing \texttt{get\_PD1\_inhibition()} to return \texttt{False}---the tumor cell can no longer inhibit T cells through the PD-1 pathway.
+    \item \textbf{T cell reactivation.} The \texttt{t\_activation\_effect} of affected T cells is restored to 1.0, counteracting prior exhaustion from checkpoint engagement.
+    \item \textbf{Immune infiltration enhancement.} The \texttt{immune\_infiltration\_factor} of Th1, Th2, and mast cells is incremented, increasing the number of immune cells recruited per spawning event.
+\end{enumerate}
+
+\subsection{Tyrosine Kinase Inhibitors (TKI)}
+\label{subsec:bg_tki}
+
+Tyrosine kinase inhibitors (TKIs) target the VEGF receptor signaling pathway, inhibiting angiogenesis and depriving the tumor of its blood supply. In ccRCC, where VEGF overexpression is driven by VHL loss, TKIs have been a cornerstone of treatment \cite{rini2019}.
+
+In the model, TKI treatment exerts three effects:
+
+\begin{enumerate}[nosep]
+    \item \textbf{Growth inhibition.} The \texttt{tumour\_growth\_effect} of affected tumor cells is reduced proportionally to the drug's effectiveness.
+    \item \textbf{Anti-angiogenesis.} The \texttt{angiogenesis\_effect} of affected tumor cells is similarly reduced, decreasing the probability of new blood vessel formation.
+    \item \textbf{Neoantigen release.} Tumor cells with the \texttt{TKI\_effect} flag set release neoantigens to nearby dendritic cells upon apoptosis, potentially enhancing subsequent adaptive immune responses---a mechanism that provides the immunological rationale for combining TKI with ICI.
+\end{enumerate}
+
+Additionally, TKI treatment reduces Treg differentiation by decreasing the \texttt{treg\_differentiation\_effect} of CD4$^+$ naive T cells, counteracting one of the tumor's immune evasion strategies.
+
+\subsection{Combination ICI+TKI Therapy}
+\label{subsec:bg_combination}
+
+The combination of ICI and TKI has emerged as the standard first-line treatment for advanced RCC, based on results from landmark clinical trials including KEYNOTE-426 \cite{rini2019} and JAVELIN Renal 101 \cite{motzer2019}. The rationale for combination therapy is synergistic: TKI reduces tumor burden and normalizes vasculature (improving immune cell access), while simultaneously releasing neoantigens that prime adaptive immunity; ICI then removes the PD-1/PD-L1 brake, allowing the primed immune system to mount an effective anti-tumor response.
+
+The ARON-1 study \cite{santoni2024} extends this paradigm by investigating whether the optimal treatment strategy depends on patient sex, motivated by the observation that sex hormones differentially modulate both the tumor and the immune response. In the model, combination therapy is implemented by applying both \texttt{ICIDrug.step()} and \texttt{TKIDrug.step()} at each treatment step, with treatment initiation occurring at the step specified by the \texttt{treatment\_start} parameter.
+
+The model supports four treatment configurations:
+\begin{itemize}[nosep]
+    \item \textbf{None}: No drug treatment (control/untreated arm).
+    \item \textbf{ICI}: Immune checkpoint inhibitor monotherapy.
+    \item \textbf{TKI}: Tyrosine kinase inhibitor monotherapy.
+    \item \textbf{ICI+TKI}: Combination immunotherapy and targeted therapy.
+\end{itemize}
+
+This treatment framework, combined with the sex hormone system described in Chapter~7, enables the model to investigate sex-stratified treatment responses---the central question of the ARON-1 study.

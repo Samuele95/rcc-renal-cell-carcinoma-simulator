@@ -1,0 +1,70 @@
+\chapter{Conclusion}
+\label{ch:conclusion}
+
+This chapter summarizes the contributions of the RCC agent-based model with glucose sensing, discusses its current limitations, and outlines directions for future work.
+
+% ======================================================================
+\section{Summary of Contributions}
+\label{sec:contributions}
+
+This project has produced the following contributions:
+
+\begin{enumerate}
+    \item \textbf{Successful port from Mesa to Repast4Py.} The original Mesa-based RCC agent-based model~\cite{masl_paper_a} has been systematically ported to the Repast4Py framework~\cite{repast4py}. This involved replacing Mesa's \texttt{MultiGrid} with Repast4Py's native 3D \texttt{SharedGrid}, implementing a custom spatial index (\texttt{defaultdict(list)}) with accompanying grid utility functions to compensate for the lack of built-in neighbor queries, converting all agents to the \texttt{repast4py.core.Agent(id, type, rank)} identity model, and adapting the scheduling system to Repast4Py's event-driven \texttt{schedule\_runner}. The port preserves the full behavioral fidelity of the original model, including 18 agent types, the 16-gene DNA mutation system, PD-1/PD-L1 immune checkpoint interactions, and the effect propagation mechanism.
+
+    \item \textbf{Novel glucose microenvironment system.} A 3D continuous glucose concentration field has been designed and implemented as an overlay on the discrete agent grid. The system models glucose dynamics through three coupled processes: source injection from blood vessel agents, Fick's law diffusion via the discrete 3D Laplacian~\cite{fick1855}, and consumption by tumor cells (at elevated Warburg rates~\cite{warburg1956}) and immune cells. The implementation uses pure NumPy arrays with SciPy's \texttt{ndimage.convolve} for efficient vectorized computation, and enforces zero-flux (Neumann) boundary conditions consistent with the sealed tissue volume assumption.
+
+    \item \textbf{Integration of metabolic dynamics with immune--tumor interactions.} The glucose field is coupled bidirectionally with agent behavior. Tumor cell proliferation is modulated by local glucose availability through a multiplicative glucose factor, creating a natural negative feedback loop on growth. Immune cell effector function is similarly modulated by glucose concentration, capturing the concept of a ``metabolic immune checkpoint'' that complements the receptor-based PD-1/PD-L1 checkpoint. Immune cell chemotaxis toward glucose-rich regions provides a spatial coupling between metabolic gradients and cell migration patterns.
+
+    \item \textbf{Extended parameter space.} The original model's 84 weight parameters have been extended with 8 glucose-related parameters (diffusion coefficient, decay rate, source rate, tumor consumption, immune consumption, growth sensitivity, immune sensitivity, and chemotaxis strength), bringing the total to 92 tunable parameters. Each glucose parameter has been integrated into the Optuna search space with biologically motivated bounds (e.g., the diffusion coefficient is constrained below $1/6$ for numerical stability).
+
+    \item \textbf{Maintained compatibility with the Optuna optimization pipeline.} The training infrastructure has been adapted to include the 8 new glucose parameters in the Bayesian optimization search space, while preserving compatibility with the ARON-1 clinical dataset and the existing evaluation methodology. The \texttt{suggest\_parameters()} function, objective function, and trial logging have all been updated to accommodate the extended parameter space.
+\end{enumerate}
+
+% ======================================================================
+\section{Model Limitations}
+\label{sec:limitations}
+
+Despite the contributions described above, the current implementation has several limitations that should be acknowledged:
+
+\begin{enumerate}
+    \item \textbf{Single-rank execution.} Although Repast4Py supports multi-rank MPI parallelism, the current model operates on a single MPI rank (\texttt{mpirun -n 1}). The glucose field, in particular, would require halo exchange (ghost cell synchronization) to distribute the NumPy array across ranks, since the \texttt{scipy.ndimage.convolve} operation requires access to neighboring voxels that may reside on different ranks. Implementing this halo exchange is a non-trivial engineering task that has been deferred.
+
+    \item \textbf{Simplified glucose dynamics.} The glucose field models only a single metabolite (glucose) with linear diffusion and constant consumption rates. Real tumor microenvironments exhibit coupled dynamics involving oxygen (hypoxia), lactate (acidification from glycolysis), and amino acids. The current model does not capture these additional metabolites or the switch between aerobic and anaerobic glycolysis that characterizes the full Warburg phenotype.
+
+    \item \textbf{Fixed blood vessel topology.} While the model supports angiogenesis (creation of new blood vessels by tumor cells), the glucose source locations are determined by blood vessel agent positions at the time of injection. There is no dynamic remodeling of the vascular network in response to glucose field state or tumor growth pressure. Blood vessels, once placed, continue to inject glucose at a fixed rate regardless of surrounding conditions.
+
+    \item \textbf{No spatial heterogeneity in initial immune cell distribution.} All immune cells are initialized at random positions throughout the grid, without modeling the spatial organization of immune cell infiltration from the vascular periphery. In real tumors, immune cells enter the microenvironment through blood vessels and lymphatics, creating characteristic infiltration patterns (immune-excluded, immune-inflamed, immune-desert phenotypes) that are not captured.
+
+    \item \textbf{Simplified TCR matching model.} The T cell receptor matching system uses a discrete threshold-based comparison between antigen sequences and receptor sequences, with a configurable variation parameter. Real TCR--antigen interactions involve continuous binding affinities, cross-reactivity, and affinity maturation processes that are not modeled.
+
+    \item \textbf{Deferred multi-rank validation.} The \texttt{SharedContext} and \texttt{SharedGrid} infrastructure is in place for distributed execution, but the model has not been validated in multi-rank configurations. Ghost agent synchronization, spatial index consistency across rank boundaries, and glucose field halo exchange all require systematic testing before multi-rank deployment.
+\end{enumerate}
+
+% ======================================================================
+\section{Future Work}
+\label{sec:future-work}
+
+Several directions for extending the model are identified:
+
+\begin{enumerate}
+    \item \textbf{Multi-rank MPI with glucose field halo exchange.} The most impactful near-term extension would be to implement distributed glucose field computation using MPI halo exchange. Each rank would own a sub-volume of the glucose array, with ghost cells at rank boundaries synchronized after each diffusion step. This would enable simulation of larger tissue volumes (e.g., full tumor cross-sections at cellular resolution) that exceed the memory capacity of a single process.
+
+    \item \textbf{Additional metabolites.} Extending the glucose field to a multi-species reaction--diffusion system would capture oxygen--glucose coupling (hypoxia-driven metabolic switching), lactate production and its immunosuppressive effects, and amino acid competition (particularly arginine and tryptophan, which are depleted by tumor-associated enzymes such as arginase and IDO). Each additional metabolite would introduce a corresponding NumPy array with its own diffusion coefficient, source/sink terms, and agent coupling parameters.
+
+    \item \textbf{Dynamic blood vessel remodeling.} Future versions could model blood vessel pruning (regression of poorly perfused vessels), maturation (vessels becoming less permeable over time), and flow-dependent glucose delivery (vessels in high-flow regions deliver more glucose). This would create a dynamic feedback loop between the vascular network, glucose supply, and tumor growth.
+
+    \item \textbf{Spatial tumor heterogeneity and clonal evolution.} The DNA mutation system already supports heterogeneous mutations across tumor cells, but the current model does not explicitly model clonal evolution---the process by which genetically distinct subpopulations compete for space and resources within the tumor. Extending the model to track clonal lineages and their spatial distribution would enable study of therapy-resistant subclone emergence.
+
+    \item \textbf{Integration with real patient imaging data.} Initializing the model from patient-specific CT or MRI scans would allow simulation of realistic tumor geometries, blood vessel distributions, and organ boundaries. The 3D grid could be populated with voxel-level tissue classifications derived from imaging segmentation, providing a patient-specific digital twin for treatment planning.
+
+    \item \textbf{GPU acceleration for glucose field computation.} The glucose field's diffusion, decay, and consumption operations are embarrassingly parallel across the 3D grid. Porting these operations to GPU (e.g., via CuPy as a drop-in NumPy replacement, or JAX for automatic differentiation) would enable real-time simulation of large grids and could support gradient-based parameter optimization as an alternative or complement to Bayesian optimization.
+
+    \item \textbf{Extended validation with larger clinical cohorts.} The current calibration uses the ARON-1 dataset, which represents a specific patient population. Validating the model against additional clinical cohorts---including the CheckMate 214~\cite{motzer2019}, KEYNOTE-426~\cite{rini2019}, and JAVELIN Renal 101 trials---would strengthen confidence in the model's generalizability. Cross-validation strategies (training on one cohort, testing on another) would provide rigorous assessment of overfitting.
+
+    \item \textbf{Formal sensitivity analysis.} Implementing Sobol indices or Morris screening on the 92-parameter space would quantify the relative importance of each parameter and identify parameter interactions. This analysis could guide parameter space reduction for faster optimization and identify the minimum set of patient features needed for clinically useful predictions.
+\end{enumerate}
+
+\bigskip
+
+In summary, the Repast4Py-based RCC agent-based model with glucose sensing represents a step toward more biologically realistic simulation of the tumor microenvironment. By integrating metabolic dynamics with the established immune--tumor interaction framework, the model captures an additional dimension of biological complexity that is increasingly recognized as central to cancer progression and treatment response~\cite{hanahan2011, warburg1956}. The modular architecture and compatibility with the Optuna optimization pipeline provide a foundation for systematic extension and clinical calibration.
