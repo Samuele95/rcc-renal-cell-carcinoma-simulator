@@ -35,6 +35,12 @@ class Observer:
         if field_name is not None:
             setattr(self, field_name, getattr(self, field_name) + 1)
 
+    def total_kills(self):
+        """Total immune kills (excludes apoptosis)."""
+        return (self.m1_macrophage_kills + self.dendritic_cell_kills +
+                self.pdc_kills + self.cytotoxic_T_cell_kills +
+                self.nkl_kill_count + self.neutrophil_kills)
+
     def to_dict(self):
         return asdict(self)
 

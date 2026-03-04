@@ -133,7 +133,8 @@ class DNA:
 
     def gene_to_protein(self, gene_name: str) -> str:
         parts = []
-        start = DNA.gene_metadata[gene_name]["start"]
+        # Skip the 30-base promoter region to reach coding sequence
+        start = DNA.gene_metadata[gene_name]["start"] + 30
         for i in range(start, len(self.dna) - 2, 3):
             codon = self.dna[i:i + 3]
             aa = self.codon_table.get(codon, 'X')

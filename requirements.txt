@@ -1,0 +1,12 @@
+mpi4py>=4.0
+repast4py>=1.2
+numpy>=2.0
+Levenshtein>=0.25
+PyYAML>=6.0
+
+# Visualization (optional)
+matplotlib>=3.8
+pandas>=2.0
+
+# Parameter optimization (optional)
+optuna>=3.0

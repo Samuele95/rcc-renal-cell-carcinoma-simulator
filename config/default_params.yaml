@@ -1,15 +1,19 @@
-# Default parameters for the RCC Repast4Py model
+# RCC Tumor Microenvironment Simulation — Default Parameters
+# Override any value via CLI: python run.py --sex M --bmi 28
+
 model:
-  volume: 0.0001
-  block_size: 10
-  random_seed: 1
-  max_steps: 500
+  volume: 0.0001          # Simulated tissue volume in mL
+  block_size: 10          # Grid block size in μm
+  random_seed: 1          # RNG seed (reproducibility)
+  max_steps: 500          # Maximum simulation steps
 
 patient:
-  sex: F
-  BMI: 22.0
-  treatment: ICI+TKI
-  treatment_start: 100
+  sex: F                  # Patient sex: F or M
+  BMI: 22.0               # Body Mass Index (kg/m²)
+  treatment: ICI+TKI      # Treatment: None, ICI, TKI, or ICI+TKI
+  treatment_start: 100    # Step at which treatment begins
+
+  # Immune cell concentrations (cells/mL)
   ctc_concentration: 80000
   neutrophil_concentration: 40000
   mast_cell_concentration: 40000
@@ -25,11 +29,11 @@ patient:
   cd8_concentration: 80000
 
 glucose:
-  w_glucose_diffusion: 0.1
-  w_glucose_decay: 0.01
-  w_glucose_source_rate: 5.0
-  w_glucose_tumor_consumption: 2.0
-  w_glucose_immune_consumption: 0.5
-  w_glucose_growth_sensitivity: 1.0
-  w_glucose_immune_sensitivity: 1.0
-  w_glucose_chemotaxis_strength: 0.3
+  w_glucose_diffusion: 0.1           # Diffusion coefficient (must be < 1/6)
+  w_glucose_decay: 0.01              # Natural decay rate
+  w_glucose_source_rate: 5.0         # Blood vessel injection rate
+  w_glucose_tumor_consumption: 2.0   # Tumor consumption (Warburg effect)
+  w_glucose_immune_consumption: 0.5  # Immune cell consumption
+  w_glucose_growth_sensitivity: 1.0  # Tumor growth sensitivity to glucose
+  w_glucose_immune_sensitivity: 1.0  # Immune function sensitivity to glucose
+  w_glucose_chemotaxis_strength: 0.3 # Immune cell chemotaxis strength

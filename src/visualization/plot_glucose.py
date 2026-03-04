@@ -1,10 +1,14 @@
 """Glucose field visualization.
 
-Generates 3D glucose field heatmap slices and gradient vector plots.
+Usage:
+    python -m src.visualization.plot_glucose                        # defaults
+    python -m src.visualization.plot_glucose logs/run1.csv -o run1  # custom
 """
+import argparse
 import os
-import sys
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -100,5 +104,10 @@ def plot_glucose_gradient(field_3d, slice_z=None, output_path="plots/glucose_gra
 
 
 if __name__ == '__main__':
-    csv_path = sys.argv[1] if len(sys.argv) > 1 else "logs/simulation_log.csv"
-    plot_glucose_timeseries(csv_path)
+    parser = argparse.ArgumentParser(description="Plot glucose field statistics")
+    parser.add_argument("csv", nargs="?", default="logs/simulation_log.csv",
+                        help="Path to simulation CSV log (default: logs/simulation_log.csv)")
+    parser.add_argument("-o", "--output-dir", default="plots",
+                        help="Output directory for plots (default: plots)")
+    args = parser.parse_args()
+    plot_glucose_timeseries(args.csv, args.output_dir)

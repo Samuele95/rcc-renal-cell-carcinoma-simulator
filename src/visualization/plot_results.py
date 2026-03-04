@@ -1,11 +1,15 @@
 """Post-hoc visualization of simulation results.
 
-Reads simulation_log.csv and generates population time series and kill count plots.
+Usage:
+    python -m src.visualization.plot_results                        # defaults
+    python -m src.visualization.plot_results logs/run1.csv -o run1  # custom
 """
+import argparse
 import os
-import sys
-import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import pandas as pd
 
 
 def plot_population_dynamics(csv_path="logs/simulation_log.csv", output_dir="plots"):
@@ -14,11 +18,12 @@ def plot_population_dynamics(csv_path="logs/simulation_log.csv", output_dir="plo
     df = pd.read_csv(csv_path)
 
     # Cell population counts
-    cell_cols = [c for c in df.columns if c not in [
+    non_cell_cols = {
         'step', 'apoptosis_count', 'm1_kills', 'dc_kills', 'pdc_kills',
-        'ctc_kills', 'nkl_kills', 'mean_glucose', 'total_glucose',
-        'min_glucose', 'max_glucose'
-    ]]
+        'ctc_kills', 'nkl_kills', 'neutrophil_kills',
+        'mean_glucose', 'total_glucose', 'min_glucose', 'max_glucose',
+    }
+    cell_cols = [c for c in df.columns if c not in non_cell_cols]
 
     fig, ax = plt.subplots(figsize=(14, 8))
     for col in cell_cols:
@@ -44,7 +49,7 @@ def plot_population_dynamics(csv_path="logs/simulation_log.csv", output_dir="plo
     plt.close()
 
     # Kill counts
-    kill_cols = ['apoptosis_count', 'm1_kills', 'dc_kills', 'pdc_kills', 'ctc_kills', 'nkl_kills']
+    kill_cols = ['apoptosis_count', 'm1_kills', 'dc_kills', 'pdc_kills', 'ctc_kills', 'nkl_kills', 'neutrophil_kills']
     existing_kill_cols = [c for c in kill_cols if c in df.columns]
     if existing_kill_cols:
         fig, ax = plt.subplots(figsize=(10, 6))
@@ -62,5 +67,10 @@ def plot_population_dynamics(csv_path="logs/simulation_log.csv", output_dir="plo
 
 
 if __name__ == '__main__':
-    csv_path = sys.argv[1] if len(sys.argv) > 1 else "logs/simulation_log.csv"
-    plot_population_dynamics(csv_path)
+    parser = argparse.ArgumentParser(description="Plot RCC simulation results")
+    parser.add_argument("csv", nargs="?", default="logs/simulation_log.csv",
+                        help="Path to simulation CSV log (default: logs/simulation_log.csv)")
+    parser.add_argument("-o", "--output-dir", default="plots",
+                        help="Output directory for plots (default: plots)")
+    args = parser.parse_args()
+    plot_population_dynamics(args.csv, args.output_dir)

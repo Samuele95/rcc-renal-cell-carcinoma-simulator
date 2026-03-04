@@ -10,7 +10,7 @@ class TestEffect(unittest.TestCase):
         self.assertEqual(effect.t_kill_rate_effect, 0)
         self.assertEqual(effect.angiogenesis_effect, 0)
 
-    def test_sum_with(self):
+    def test_add_in_place(self):
         e1 = Effect()
         e1.t_kill_rate_effect = 0.5
         e1.angiogenesis_effect = 0.1
@@ -19,18 +19,16 @@ class TestEffect(unittest.TestCase):
         e2.t_kill_rate_effect = 0.3
         e2.tumour_growth_effect = 0.2
 
-        result = e1.sum_with(e2)
-        self.assertAlmostEqual(result.t_kill_rate_effect, 0.8)
-        self.assertAlmostEqual(result.angiogenesis_effect, 0.1)
-        self.assertAlmostEqual(result.tumour_growth_effect, 0.2)
+        e1.add_in_place(e2)
+        self.assertAlmostEqual(e1.t_kill_rate_effect, 0.8)
+        self.assertAlmostEqual(e1.angiogenesis_effect, 0.1)
+        self.assertAlmostEqual(e1.tumour_growth_effect, 0.2)
 
-    def test_copy(self):
-        e = Effect()
-        e.t_kill_rate_effect = 1.5
-        e_copy = e.__copy__()
-        self.assertAlmostEqual(e_copy.t_kill_rate_effect, 1.5)
-        e_copy.t_kill_rate_effect = 0
-        self.assertAlmostEqual(e.t_kill_rate_effect, 1.5)
+    def test_all_slots_initialized(self):
+        """All slots should be initialized to 0."""
+        effect = Effect()
+        for attr in Effect.__slots__:
+            self.assertEqual(getattr(effect, attr), 0)
 
 
 if __name__ == '__main__':

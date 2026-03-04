@@ -21,13 +21,14 @@ class TestDNA(unittest.TestCase):
             self.assertIsInstance(protein, str)
             self.assertGreater(len(protein), 0)
 
-    def test_mutation_score_wildtype(self):
+    def test_wildtype_mutation_scores_low(self):
+        """Wildtype DNA should have low mutation scores for all genes."""
         dna = DNA(rng=self.rng)
-        # Wildtype should have low but possibly non-zero mutation scores
-        # due to random promoter regions
-        burden = dna.get_mutation_burden()
-        self.assertGreaterEqual(burden, 0.0)
-        self.assertLessEqual(burden, 1.0)
+        for gene_name in DNA.gene_metadata:
+            score = dna.mutation_score[gene_name]
+            self.assertGreaterEqual(score, 0.0)
+            self.assertLessEqual(score, 0.1,
+                                 f"Wildtype {gene_name} has unexpectedly high mutation score: {score}")
 
     def test_duplication(self):
         dna = DNA(rng=self.rng, injected_mutations=3)
@@ -56,6 +57,13 @@ class TestDNA(unittest.TestCase):
         protein = "YLGRC"
         gene = DNA.protein_to_gene(protein)
         self.assertEqual(len(gene), len(protein) * 3)
+
+    def test_duplication_zero_instability(self):
+        """Duplication with zero genomic instability returns identical DNA."""
+        dna = DNA(rng=self.rng)
+        dna.genomic_instability = 0.0
+        new_dna = dna.duplicate()
+        self.assertEqual(new_dna.dna, dna.dna)
 
 
 if __name__ == '__main__':
