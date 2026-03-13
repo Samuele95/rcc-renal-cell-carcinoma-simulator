@@ -25,25 +25,9 @@ Repast4Py offers several features that are critical for the present model:
 
 \subsection{Comparison with Mesa}
 
-Table~\ref{tab:mesa-vs-repast4py} summarizes the key differences between Mesa and Repast4Py that influenced the framework selection.
+Table~\ref{tab:detailed-mesa-vs-repast4py} presents a comprehensive comparison between Mesa and Repast4Py implementations, highlighting the key architectural differences and enhancements made during the porting process.
 
-\begin{table}[H]
-\centering
-\caption{Feature comparison between Mesa and Repast4Py for the RCC model.}
-\label{tab:mesa-vs-repast4py}
-\begin{tabular}{@{}lll@{}}
-\toprule
-\textbf{Feature} & \textbf{Mesa} & \textbf{Repast4Py} \\
-\midrule
-Grid & \texttt{MultiGrid} (custom 3D) & \texttt{SharedGrid} (native 3D) \\
-Parallelism & None (single process) & MPI via \texttt{mpi4py} \\
-Scheduling & Mesa scheduler & \texttt{schedule.init\_schedule\_runner} \\
-Agent base class & \texttt{mesa.Agent(model)} & \texttt{repast4py.core.Agent(id, type, rank)} \\
-Border handling & Torus / Non-torus & Sticky / Periodic \\
-Occupancy & Single / Multi & Single / Multiple \\
-\bottomrule
-\end{tabular}
-\end{table}
+\input{figures/comparison_table}
 
 The most consequential difference for this project is the parallelism model. Mesa is inherently single-process: all agents live in a single Python interpreter, and there is no built-in mechanism for distributing computation across cores or nodes. Repast4Py, by contrast, is architected from the ground up around MPI, making it possible to scale the simulation to larger tissue volumes in the future without redesigning the agent management infrastructure.
 
