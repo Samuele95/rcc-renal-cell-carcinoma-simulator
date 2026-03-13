@@ -5,10 +5,10 @@ BIBTEX = bibtex
 all: $(MAIN).pdf
 
 $(MAIN).pdf: $(MAIN).tex chapters/*.tex bibliography.bib
-	$(LATEX) $(MAIN)
+	$(LATEX) -interaction=nonstopmode $(MAIN)
 	$(BIBTEX) $(MAIN)
-	$(LATEX) $(MAIN)
-	$(LATEX) $(MAIN)
+	$(LATEX) -interaction=nonstopmode $(MAIN)
+	$(LATEX) -interaction=nonstopmode $(MAIN)
 
 clean:
 	rm -f $(MAIN).aux $(MAIN).bbl $(MAIN).blg $(MAIN).log $(MAIN).out \
