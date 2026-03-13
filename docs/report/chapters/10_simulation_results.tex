@@ -87,6 +87,36 @@ The simulation produces several types of output suitable for visualization:
     \item \textbf{Glucose field heatmaps}: 2D slices of the 3D glucose field at selected time points, showing the spatial distribution of glucose concentration and its evolution over time.
 \end{enumerate}
 
+Figures~\ref{fig:population_dynamics}--\ref{fig:kill_statistics} present example simulation results from a successful tumor elimination scenario, demonstrating the characteristic dynamics of the RCC model.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/population_dynamics.pdf}
+\caption{Population dynamics from an example simulation showing successful tumor elimination. The simulation used ICI+TKI combination therapy starting at step 100. Tumor cells (red) were successfully eliminated by step 98, primarily through dendritic cell phagocytosis (7 kills) and cytotoxic T cell activity (4 kills). Note the initial tumor growth followed by immune system activation and subsequent tumor clearance.}
+\label{fig:population_dynamics}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/tumor_growth.pdf}
+\caption{Tumor cell count over time in the example simulation. The tumor initially grew from 11 to a peak, then underwent rapid elimination starting around step 80, reaching zero by step 98. This represents a survival outcome in the model's terminology.}
+\label{fig:tumor_growth}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/glucose_dynamics.pdf}
+\caption{Glucose field statistics over the simulation. Mean glucose concentration increased over time as tumor consumption decreased due to tumor cell elimination. The minimum glucose remained above zero, indicating adequate nutrient supply for immune function throughout the simulation.}
+\label{fig:glucose_dynamics}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/kill_statistics.pdf}
+\caption{Total tumor cell kills by agent type in the example simulation. Dendritic cells were the primary tumor eliminators (7 kills), followed by cytotoxic T cells (4 kills). This pattern reflects the model's emphasis on antigen presentation and adaptive immune responses.}
+\label{fig:kill_statistics}
+\end{figure}
+
 % ======================================================================
 \section{Sex-Specific Responses}
 \label{sec:sex-responses}

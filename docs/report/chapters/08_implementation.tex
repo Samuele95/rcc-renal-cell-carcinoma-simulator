@@ -136,6 +136,15 @@ Unlike Mesa, which requires the model class to inherit from \texttt{mesa.Model} 
 
 There is no framework-imposed scheduler. Instead, Repast4Py's \texttt{schedule.init\_schedule\_runner()} creates an event-driven runner that invokes \texttt{model.step()} at each tick. The \texttt{step()} method itself handles the ordering of sub-steps (effect collection, treatment application, glucose field update, agent stepping, deferred movement, and hormone spawning) explicitly, providing full control over the simulation loop.
 
+Figure~\ref{fig:model_architecture} illustrates the overall architecture of the RCCModel, showing the main components and their data flow relationships.
+
+\begin{figure}[H]
+\centering
+\input{figures/model_architecture.tex}
+\caption{Architecture of the RCCModel system. The main model coordinates interactions between the glucose field (3D diffusion), agent management (cell adder, spatial index, shared grid), data collection (observer), and treatment systems. The step sequence annotation shows the ordered execution of simulation phases.}
+\label{fig:model_architecture}
+\end{figure}
+
 % ======================================================================
 \section{Spatial Index Design}
 \label{sec:spatial-index}
@@ -425,3 +434,12 @@ The Repast4Py schedule runner calls \texttt{model.step()} at every tick (startin
 \end{enumerate}
 
 When the simulation terminates (either by the schedule runner reaching \texttt{max\_steps} or by the model setting \texttt{self.running = False}), the end event triggers \texttt{model.log\_data()}, which writes the collected time-series data to \texttt{logs/simulation\_log.csv}.
+
+Figure~\ref{fig:simulation_pipeline} provides a detailed view of the simulation pipeline, showing the complete sequence of operations executed in each time step and the decision points that control simulation flow.
+
+\begin{figure}[H]
+\centering
+\input{figures/simulation_pipeline.tex}
+\caption{Simulation pipeline for the RCC model. Each time step follows a fixed sequence of 11 operations, from data collection through hormone spawning. The termination condition check determines whether to continue the simulation or write final results. Side annotations detail the specific operations performed in each phase.}
+\label{fig:simulation_pipeline}
+\end{figure}

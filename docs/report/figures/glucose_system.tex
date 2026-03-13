@@ -1,27 +1,27 @@
 \begin{tikzpicture}[
-  node/.style={circle, minimum size=1.5cm, text centered, font=\footnotesize, thick},
+  node/.style={circle, minimum size=1.5cm, align=center, font=\footnotesize, thick},
   source/.style={node, fill=red!20, draw=red!80},
-  process/.style={rectangle, rounded corners, minimum width=2.5cm, minimum height=1cm, text centered, font=\footnotesize, fill=blue!15, draw=blue!80, thick},
-  field/.style={rectangle, rounded corners, minimum width=3cm, minimum height=2cm, text centered, font=\footnotesize, fill=green!15, draw=green!80, thick},
+  process/.style={rectangle, rounded corners, minimum width=2.5cm, minimum height=1cm, align=center, font=\footnotesize, fill=blue!15, draw=blue!80, thick},
+  field/.style={rectangle, rounded corners, minimum width=3cm, minimum height=2cm, align=center, font=\footnotesize, fill=green!15, draw=green!80, thick},
   consumer/.style={node, fill=orange!20, draw=orange!80},
   arrow/.style={->, >=stealth, thick, shorten >=2pt, shorten <=2pt}
 ]
 
 % Central glucose field
-\node[field] (field) at (0, 0) {\textbf{Glucose Field}\\[0.2cm]3D continuous\\concentration\\$C(\mathbf{x}, t)$};
+\node[field] (field) at (0, 0) {\textbf{Glucose Field}\\ 3D continuous\\ concentration\\ $C(\mathbf{x}, t)$};
 
 % Sources
-\node[source] (blood) at (-4, 2) {\textbf{Blood}\\[0.1cm]Vessels};
-\node[source] (inject) at (-4, -2) {\textbf{Injection}\\[0.1cm]Rate};
+\node[source] (blood) at (-4, 2) {\textbf{Blood}\\Vessels};
+\node[source] (inject) at (-4, -2) {\textbf{Injection}\\Rate};
 
 % Processes
-\node[process] (diffusion) at (0, 3) {\textbf{Diffusion}\\[0.1cm]Fick's Law\\$\nabla^2 C$};
-\node[process] (decay) at (0, -3) {\textbf{Natural Decay}\\[0.1cm]$-\lambda C$};
-\node[process] (gradient) at (4, 0) {\textbf{Gradient}\\[0.1cm]$\nabla C$\\Chemotaxis};
+\node[process] (diffusion) at (0, 3) {\textbf{Diffusion}\\Fick's Law\\$\nabla^2 C$};
+\node[process] (decay) at (0, -3) {\textbf{Natural Decay}\\$-\lambda C$};
+\node[process] (gradient) at (4, 0) {\textbf{Gradient}\\$\nabla C$\\Chemotaxis};
 
 % Consumers
-\node[consumer] (tumor) at (-2, -5) {\textbf{Tumor}\\[0.1cm]Warburg};
-\node[consumer] (immune) at (2, -5) {\textbf{Immune}\\[0.1cm]Cells};
+\node[consumer] (tumor) at (-2, -5) {\textbf{Tumor}\\Warburg};
+\node[consumer] (immune) at (2, -5) {\textbf{Immune}\\Cells};
 
 % Arrows showing the cycle
 % Sources to field
