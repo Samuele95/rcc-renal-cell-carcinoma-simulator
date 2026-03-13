@@ -9,7 +9,7 @@ from abc import ABC
 
 from repast4py.core import Agent
 
-from src.systems.effect import Effect
+from src.systems.effect import Effect, _ZERO_EFFECT
 from src.systems import grid_utils
 
 
@@ -32,13 +32,21 @@ class Cell(ABC, Agent):
         self.model = model
         self.pos = pos
         self._desired_pos = pos
-        self.experienced_effects = Effect.with_bmi(model)
+        self.experienced_effects = model._bmi_baseline_effect.copy()
         self.search_dimension = model.cell_search_dimension
         self._alive = True
 
     @property
     def alive(self):
         return self._alive
+
+    @property
+    def desired_pos(self):
+        return self._desired_pos
+
+    def die(self):
+        """Mark this cell as dead. Called by model.remove_agent()."""
+        self._alive = False
 
     def base_step(self):
         """Common actions for all cells before specific behavior.
@@ -60,9 +68,14 @@ class Cell(ABC, Agent):
         The actual grid movement happens in model.move_all_agents().
         """
         self._desired_pos = new_pos
+        self.model._pending_moves.add(self)
 
     def move_towards(self, target_agent_type_id, look_up_size=sys.maxsize, distance=1):
         """Move towards the nearest agent of the specified type.
+
+        Uses expanding-radius spatial index search (O(k) local) instead of
+        global scan (O(N)), bounded by look_up_size. Falls back to global
+        scan only if spatial search fails and look_up_size is large.
 
         Args:
             target_agent_type_id: AgentType int ID of target type.
@@ -77,17 +90,28 @@ class Cell(ABC, Agent):
 
         x0, y0, z0 = self.pos
         grid_dims = self.model.grid_dims
+        spatial_index = self.model.spatial_index
 
-        # Find closest agent of specified type (dict values view, no list copy)
-        target_dict = self.model._agents_by_type.get(target_agent_type_id, {})
-        if not target_dict:
-            return False
+        # Expanding-radius spatial search up to look_up_size
+        max_radius = min(look_up_size, max(grid_dims))
+        closest_pos = None
+        best_dist = float('inf')
 
-        closest_pos = min(
-            (a.pos for a in target_dict.values() if a.pos is not None),
-            key=lambda p: abs(p[0] - x0) + abs(p[1] - y0) + abs(p[2] - z0),
-            default=None
-        )
+        # Search in expanding shells: 1, 2, 4, 8, ... up to max_radius
+        radius = 1
+        while radius <= max_radius:
+            neighbors = grid_utils.get_neighbors_3d(
+                spatial_index, grid_dims, self.pos, radius=radius, moore=True
+            )
+            for agent in neighbors:
+                if agent.uid[1] == target_agent_type_id and agent.pos is not None:
+                    d = abs(agent.pos[0] - x0) + abs(agent.pos[1] - y0) + abs(agent.pos[2] - z0)
+                    if d < best_dist:
+                        best_dist = d
+                        closest_pos = agent.pos
+            if closest_pos is not None:
+                break  # Found at least one target in this radius
+            radius = min(radius * 2, max_radius + 1) if radius < max_radius else max_radius + 1
 
         if closest_pos is None:
             return False
@@ -98,8 +122,6 @@ class Cell(ABC, Agent):
         norm = math.sqrt(dx ** 2 + dy ** 2 + dz ** 2)
         if norm == 0:
             return False
-        if norm > look_up_size:
-            return False
 
         move_vector = (
             round(dx / norm * distance),
@@ -107,17 +129,17 @@ class Cell(ABC, Agent):
             round(dz / norm * distance)
         )
 
-        w, h, d = grid_dims
-        new_pos = (
-            max(0, min(w - 1, x0 + move_vector[0])),
-            max(0, min(h - 1, y0 + move_vector[1])),
-            max(0, min(d - 1, z0 + move_vector[2]))
+        new_pos = grid_utils.clamp_to_grid(
+            (x0 + move_vector[0], y0 + move_vector[1], z0 + move_vector[2]),
+            grid_dims
         )
         self.move(new_pos)
         return True
 
     def find_one(self, agent_type_id, radius=1):
         """Find one agent of the specified type in the neighborhood.
+
+        Uses generator to avoid materializing the full neighbor list.
 
         Args:
             agent_type_id: AgentType int ID.
@@ -128,10 +150,9 @@ class Cell(ABC, Agent):
         """
         if self.pos is None:
             return None
-        neighbors = grid_utils.get_neighbors_3d(
+        for agent in grid_utils.iter_neighbors_3d(
             self.model.spatial_index, self.model.grid_dims, self.pos, radius=radius, moore=True
-        )
-        for agent in neighbors:
+        ):
             if agent.uid[1] == agent_type_id:
                 return agent
         return None
@@ -209,11 +230,9 @@ class Cell(ABC, Agent):
         if self.model.rng.random() < wp.w_glucose_chemotaxis_strength:
             dx, dy, dz = self.model.glucose_field.discretized_gradient_step(self.pos)
             if dx != 0 or dy != 0 or dz != 0:
-                w, h, d = self.model.grid_dims
-                new_pos = (
-                    max(0, min(w - 1, self.pos[0] + dx)),
-                    max(0, min(h - 1, self.pos[1] + dy)),
-                    max(0, min(d - 1, self.pos[2] + dz)),
+                new_pos = grid_utils.clamp_to_grid(
+                    (self.pos[0] + dx, self.pos[1] + dy, self.pos[2] + dz),
+                    self.model.grid_dims
                 )
                 self.move(new_pos)
 
@@ -232,6 +251,43 @@ class Cell(ABC, Agent):
             self.try_glucose_chemotaxis()
         return moved
 
+    def chance(self, probability):
+        """Return True with the given probability."""
+        return self.model.rng.random() < probability
+
+    def try_kill_nearby(self, target_type_id, probability, radius=1):
+        """Find a nearby agent of the given type and kill it with probability.
+
+        Args:
+            target_type_id: AgentType int ID of target.
+            probability: Kill probability.
+            radius: Search radius.
+
+        Returns:
+            The killed agent, or None.
+        """
+        nearby = self.find_one(target_type_id, radius=radius)
+        if nearby is not None and self.chance(probability):
+            self.model.remove_agent(nearby)
+            self.record_kill()
+            return nearby
+        return None
+
+    def move_towards_or_random_walk(self, target_type_id, look_up_size=sys.maxsize):
+        """Move towards target agent type, falling back to random walk.
+
+        Args:
+            target_type_id: AgentType int ID.
+            look_up_size: Maximum radius to search.
+
+        Returns:
+            True if moved towards a target, False otherwise.
+        """
+        moved = self.move_towards(target_type_id, look_up_size=look_up_size)
+        if not moved:
+            self.random_walk()
+        return moved
+
     def random_walk(self):
         """Move to a random empty neighboring position."""
         if self.pos is None:
@@ -244,11 +300,10 @@ class Cell(ABC, Agent):
         """Collect and apply effects from neighboring cells in-place."""
         if self.pos is None:
             return
-        neighbors = grid_utils.get_neighbors_3d(
+        for ngbr in grid_utils.iter_neighbors_3d(
             self.model.spatial_index, self.model.grid_dims, self.pos, radius=1, moore=True
-        )
-        for ngbr in neighbors:
-            if getattr(ngbr, 'has_effect', False):
+        ):
+            if ngbr.has_effect:
                 self.experienced_effects.add_in_place(ngbr.get_effect())
 
     @staticmethod
@@ -259,10 +314,14 @@ class Cell(ABC, Agent):
     # Class-level flags — override in subclasses instead of trivial method overrides.
     has_effect = False
     needs_effect = False
+    has_step = True
 
     def get_effect(self):
-        """Get the effect this cell exerts on neighbors. Override in subclasses."""
-        return Effect()
+        """Get the effect this cell exerts on neighbors.
+
+        Subclasses that set self._cached_effect get this behavior for free.
+        """
+        return getattr(self, '_cached_effect', _ZERO_EFFECT)
 
     def record_kill(self):
         """Record a kill by this agent type via the Observer."""

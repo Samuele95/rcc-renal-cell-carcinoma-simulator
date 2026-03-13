@@ -1,6 +1,5 @@
 """Cytotoxic T Cell (activated CD8+) with glucose chemotaxis fallback."""
 from src.agents.t_cell import TCell
-from src.agents.sex_hormone import SexHormoneType
 from src.agents.agent_types import AgentType
 
 
@@ -15,16 +14,16 @@ class CytotoxicTCell(TCell):
         self.experienced_effects.t_activation_effect = self.initial_t_activation_effect
 
     def step(self):
-        if super().base_step():
+        if self.base_step():
             return
 
-        self.apply_sex_hormones_stimulation()
+        hormone_mod = self._compute_hormone_modifiers()
 
         wp = self.model.weight_params
         eff = self.experienced_effects
 
-        p_apoptosis = eff.t_apoptosis_effect * wp.w_cytotoxic_apoptosis + wp.b_cytotoxic_apoptosis
-        p_proliferation = self.proliferation_chance * wp.w_cytotoxic_proliferation * eff.t_activation_effect
+        p_apoptosis = (eff.t_apoptosis_effect + hormone_mod.apoptosis) * wp.w_cytotoxic_apoptosis + wp.b_cytotoxic_apoptosis
+        p_proliferation = (self.proliferation_chance + hormone_mod.proliferation) * wp.w_cytotoxic_proliferation * eff.t_activation_effect
         p_kill = (eff.t_kill_rate_effect * wp.w_cytotoxic_kill + wp.b_cytotoxic_kill) * eff.t_activation_effect
 
         # Glucose impairment
@@ -55,23 +54,21 @@ class CytotoxicTCell(TCell):
 
     needs_effect = True
 
-    def apply_sex_hormones_stimulation(self):
-        self.apply_hormonal_decay()
+    class _HormoneModifiers:
+        __slots__ = ('proliferation', 'apoptosis')
+        def __init__(self, proliferation, apoptosis):
+            self.proliferation = proliferation
+            self.apoptosis = apoptosis
 
-        self.perceive_sex_hormone(SexHormoneType.ESTROGEN, quantity=1, search_radius=2)
-        self.perceive_sex_hormone(SexHormoneType.PROGESTERONE, quantity=1, search_radius=2)
-        self.perceive_sex_hormone(SexHormoneType.TESTOSTERONE, quantity=1, search_radius=2)
-
-        E = self.sex_hormone_stimulation_level(SexHormoneType.ESTROGEN)
-        P = self.sex_hormone_stimulation_level(SexHormoneType.PROGESTERONE)
-        T = self.sex_hormone_stimulation_level(SexHormoneType.TESTOSTERONE)
+    def _compute_hormone_modifiers(self):
+        """Perceive hormones and return per-step modifiers (non-mutating)."""
+        E, P, T = self.perceive_all_hormones(e_qty=1, p_qty=1, t_qty=1)
 
         wp = self.model.weight_params
-        self.experienced_effects.t_kill_rate_effect += 0.1 * wp.w_sex_hormone_cd8 * E
-        self.proliferation_chance += 0.005 * wp.w_sex_hormone_cd8 * E
-        self.experienced_effects.t_apoptosis_effect -= 0.005 * wp.w_sex_hormone_cd8 * E
-        self.experienced_effects.t_kill_rate_effect -= 0.1 * wp.w_sex_hormone_cd8 * T
-        self.proliferation_chance -= 0.005 * wp.w_sex_hormone_cd8 * T
-        self.experienced_effects.t_apoptosis_effect += 0.005 * wp.w_sex_hormone_cd8 * T
-        self.proliferation_chance -= 0.005 * wp.w_sex_hormone_cd8 * P
-        self.experienced_effects.t_apoptosis_effect += 0.005 * wp.w_sex_hormone_cd8 * P
+        w = wp.w_sex_hormone_cd8
+        # Apply kill rate modifier directly (additive on accumulated effects is intentional)
+        self.experienced_effects.t_kill_rate_effect += 0.1 * w * (E - T)
+        return self._HormoneModifiers(
+            proliferation=0.005 * w * (E - T - P),
+            apoptosis=0.005 * w * (-E + T + P),
+        )

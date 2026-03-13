@@ -119,9 +119,15 @@ class WeightParameters(Parameters):
     # Neutrophil parameters
     w_neutrophil_kill_rate: float = 1.0
     b_neutrophil_kill_rate: float = 0.0
+    neutrophil_max_lifespan: int = 15
     # Adipocyte parameters
     w_adipocyte_tumour_growth: float = 1.0
     w_adipocyte_m2_mutation: float = 1.0
+    # CD4 T cell differentiation
+    w_cd4_th1_ratio: float = 0.5
+    # Hormone perception / decay
+    w_hormone_decay_rate: float = 0.9
+    w_hormone_perception_cap: int = 9
 
     param_labels = {
         "w_BMI_on_treg_diff": "Weight of BMI on Treg Differentiation",

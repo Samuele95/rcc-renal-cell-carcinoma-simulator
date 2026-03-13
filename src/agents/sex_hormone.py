@@ -1,7 +1,7 @@
 """Sex Hormone agent — diffuses through the microenvironment."""
 from enum import Enum
-from repast4py.core import Agent
 
+from src.agents.cell import Cell
 from src.agents.agent_types import AgentType
 from src.systems import grid_utils
 
@@ -10,31 +10,23 @@ class SexHormoneType(Enum):
     TESTOSTERONE = "testosterone"
     ESTROGEN = "estrogen"
     PROGESTERONE = "progesterone"
-    ANDROGEN = "androgen"
 
 
-class SexHormone(Agent):
-    """Sex hormone agent that diffuses through the grid with biased movement."""
+class SexHormone(Cell):
+    """Sex hormone agent that diffuses through the grid with biased movement.
 
-    MAX_LEVEL = 9
-    ESTROGEN_WEIGHT = 0.45
-    TESTOSTERONE_WEIGHT = 0.3
-    PROGESTERONE_WEIGHT = 0.25
+    Uses immediate movement (model.move_agent) instead of deferred movement
+    because hormones need to diffuse each tick independently of the agent step loop.
+    """
+
     drift_strength = 0.25
 
     possible_moves_1 = [(dx, dy, dz) for dx in (-1, 0, 1) for dy in (0, 1) for dz in (0, 1)]
     possible_moves_2 = [(0, 0, 1), (0, 1, 0)]
 
     def __init__(self, local_id, rank, model, init_pos, hormone_type):
-        super().__init__(id=local_id, type=AgentType.SEX_HORMONE, rank=rank)
-        self.model = model
-        self.pos = init_pos
-        self.hormone_type = hormone_type.value if isinstance(hormone_type, SexHormoneType) else hormone_type
-        self._alive = True
-
-    @property
-    def alive(self):
-        return self._alive
+        super().__init__(local_id, AgentType.SEX_HORMONE, rank, model, init_pos)
+        self.hormone_type = hormone_type if isinstance(hormone_type, SexHormoneType) else SexHormoneType(hormone_type)
 
     def step(self):
         if self.pos is not None:
@@ -53,10 +45,12 @@ class SexHormone(Agent):
             return
 
         # Local blood search (radius 3) instead of global O(B) scan
-        nearby = grid_utils.get_neighbors_3d(
-            self.model.spatial_index, self.model.grid_dims, self.pos, radius=3, moore=True
-        )
-        nearby_blood = [a for a in nearby if a.uid[1] == AgentType.BLOOD and a.pos is not None]
+        nearby_blood = [
+            a for a in grid_utils.iter_neighbors_3d(
+                self.model.spatial_index, self.model.grid_dims, self.pos, radius=3, moore=True
+            )
+            if a.uid[1] == AgentType.BLOOD and a.pos is not None
+        ]
 
         if not nearby_blood:
             self.model.move_agent(self, self.model.rng.choice(coords))
@@ -85,18 +79,17 @@ class SexHormone(Agent):
         if self.pos is None:
             return
         if self.model.rng.random() < 0.5:
-            move = self.model.rng.choice(self.possible_moves_1)
+            move_delta = self.model.rng.choice(self.possible_moves_1)
         else:
-            move = self.model.rng.choice(self.possible_moves_2)
+            move_delta = self.model.rng.choice(self.possible_moves_2)
 
         new_pos = (
-            self.pos[0] + move[0],
-            self.pos[1] + move[1],
-            self.pos[2] + move[2]
+            self.pos[0] + move_delta[0],
+            self.pos[1] + move_delta[1],
+            self.pos[2] + move_delta[2]
         )
 
-        w, h, d = self.model.grid_dims
-        if not (0 <= new_pos[0] < w and 0 <= new_pos[1] < h and 0 <= new_pos[2] < d):
+        if not grid_utils.is_in_bounds(new_pos, self.model.grid_dims):
             self.model.remove_agent(self)
         else:
             self.model.move_agent(self, new_pos)

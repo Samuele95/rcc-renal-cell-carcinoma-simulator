@@ -45,4 +45,4 @@ class Observer:
         return asdict(self)
 
     def __getitem__(self, item):
-        return self.to_dict()[item]
+        return getattr(self, item)

@@ -1,12 +1,26 @@
 from dataclasses import dataclass
+from enum import Enum
+
 from src.parameters.parameters import Parameters
+
+
+class Sex(str, Enum):
+    FEMALE = 'F'
+    MALE = 'M'
+
+
+class TreatmentType(str, Enum):
+    NONE = 'None'
+    ICI = 'ICI'
+    TKI = 'TKI'
+    ICI_TKI = 'ICI+TKI'
 
 
 @dataclass
 class PatientParameters(Parameters):
-    sex: str = 'F'
+    sex: Sex = Sex.FEMALE
     BMI: float = 22.0
-    treatment: str = 'ICI+TKI'
+    treatment: TreatmentType = TreatmentType.ICI_TKI
     treatment_start: int = 100
     ctc_concentration: int = 80000
     neutrophil_concentration: int = 40000
@@ -21,7 +35,6 @@ class PatientParameters(Parameters):
     nkl_concentration: int = 160000
     cd4_concentration: int = 80000
     cd8_concentration: int = 80000
-    NKL_delta: int = 16000
 
     param_labels = {
         "sex": "Sex (F/M)",
@@ -41,7 +54,6 @@ class PatientParameters(Parameters):
         "nkl_concentration": "NKL Cell Concentration (cells/mL)",
         "cd4_concentration": "CD4 T Cell Concentration (cells/mL)",
         "cd8_concentration": "CD8 T Cell Concentration (cells/mL)",
-        "NKL_delta": "NK Cells Difference",
     }
     param_steps = {
         "BMI": 0.1,
@@ -59,8 +71,8 @@ class PatientParameters(Parameters):
         "nkl_concentration": 1000,
         "cd4_concentration": 1000,
         "cd8_concentration": 1000,
-        "NKL_delta": 100
     }
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+

@@ -8,16 +8,12 @@ from src.treatments.drug import Drug
 
 class ICIDrug(Drug):
 
-    def __init__(self, model):
-        super().__init__(model)
-
     def step(self, proportion=1.0):
         effectiveness = proportion * self.model.weight_params.w_ici_effectiveness
 
-        # Set PD-1/PD-L1 inhibition to False for X% of tumor cells
-        for tumor_cell in self.model.get_agents_by_type_id(AgentType.TUMOR_CELL):
-            if self.model.rng.random() < effectiveness:
-                tumor_cell.ICI_effect = True
+        # Set PD-1/PD-L1 inhibition for X% of tumor cells
+        self.apply_to_type(AgentType.TUMOR_CELL, effectiveness,
+                           lambda tc: setattr(tc, 'ICI_effect', True))
 
         # Restore T cell activity
         t_cell_types = [
@@ -26,13 +22,11 @@ class ICIDrug(Drug):
             AgentType.CD4_HELPER2_T_CELL, AgentType.REGULATORY_T_CELL
         ]
         for type_id in t_cell_types:
-            for t_cell in self.model.get_agents_by_type_id(type_id):
-                if self.model.rng.random() < effectiveness:
-                    t_cell.experienced_effects.t_activation_effect = 1.0
+            self.apply_to_type(type_id, effectiveness,
+                               lambda t: setattr(t.experienced_effects, 't_activation_effect', 1.0))
 
         # Increase immune infiltration
         infiltrating_types = [AgentType.CD4_HELPER1_T_CELL, AgentType.CD4_HELPER2_T_CELL, AgentType.MAST_CELL]
         for type_id in infiltrating_types:
-            for immune_cell in self.model.get_agents_by_type_id(type_id):
-                if self.model.rng.random() < effectiveness:
-                    immune_cell.immune_infiltration_factor += 1
+            self.apply_to_type(type_id, effectiveness,
+                               lambda a: setattr(a, 'immune_infiltration_factor', a.immune_infiltration_factor + 1))

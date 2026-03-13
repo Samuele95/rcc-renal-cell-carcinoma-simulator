@@ -18,12 +18,13 @@ class MacrophageM1(PhagocyticMixin, Cell):
         self._init_phagocytosis(t_cell_types=[AgentType.CD4_NAIVE_T_CELL])
         self._ticks_since_phago = 0
         wp = model.weight_params
-        self._cached_effect = Effect()
-        self._cached_effect.t_kill_rate_effect = self.my_t_kill_rate_effect * wp.w_m1_t_kill_rate
-        self._cached_effect.th1_proliferation_effect = self.my_th1_proliferation_effect * wp.w_m1_th1_proliferation
+        self._cached_effect = Effect.create(
+            t_kill_rate_effect=self.my_t_kill_rate_effect * wp.w_m1_t_kill_rate,
+            th1_proliferation_effect=self.my_th1_proliferation_effect * wp.w_m1_th1_proliferation,
+        )
 
     def step(self):
-        if super().base_step():
+        if self.base_step():
             return
 
         rng = self.model.rng
@@ -63,9 +64,6 @@ class MacrophageM1(PhagocyticMixin, Cell):
     def _transform_to_macrophage_m2(self):
         from src.agents.macrophage_m2 import MacrophageM2
         self.transform_into(MacrophageM2)
-
-    def get_effect(self):
-        return self._cached_effect
 
     has_effect = True
     needs_effect = True

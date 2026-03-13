@@ -20,15 +20,16 @@ class PlasmacitoidDendriticCell(PhagocyticMixin, Cell):
         self.search_dimension += 10
         self._init_phagocytosis()
         wp = model.weight_params
-        self._cached_effect = Effect()
-        self._cached_effect.angiogenesis_effect = self.my_angiogenesis_effect * wp.w_pdc_angiogenesis
-        self._cached_effect.treg_differentiation_effect = self.my_treg_differentiation_effect * wp.w_pdc_treg_diff
-        self._cached_effect.t_proliferation_effect = self.my_t_proliferation_effect * wp.w_pdc_t_proliferation
-        self._cached_effect.t_kill_rate_effect = self.my_t_kill_rate_effect * wp.w_pdc_t_kill
-        self._cached_effect.nkl_kill_rate_effect = self.my_nkl_kill_rate_effect * wp.w_pdc_nkl_kill
+        self._cached_effect = Effect.create(
+            angiogenesis_effect=self.my_angiogenesis_effect * wp.w_pdc_angiogenesis,
+            treg_differentiation_effect=self.my_treg_differentiation_effect * wp.w_pdc_treg_diff,
+            t_proliferation_effect=self.my_t_proliferation_effect * wp.w_pdc_t_proliferation,
+            t_kill_rate_effect=self.my_t_kill_rate_effect * wp.w_pdc_t_kill,
+            nkl_kill_rate_effect=self.my_nkl_kill_rate_effect * wp.w_pdc_nkl_kill,
+        )
 
     def step(self):
-        if super().base_step():
+        if self.base_step():
             return
 
         if not self._has_phagocytosed:
@@ -37,9 +38,9 @@ class PlasmacitoidDendriticCell(PhagocyticMixin, Cell):
             self.consume_glucose()
             return
 
-        self.present_to_t_cell(radius=self.activation_range)
-        self._try_spawn_nkl()
-        self.reset_phagocytosis()
+        if self.present_to_t_cell(radius=self.activation_range):
+            self._try_spawn_nkl()
+            self.reset_phagocytosis()
 
     def _try_spawn_nkl(self):
         wp = self.model.weight_params
@@ -50,8 +51,5 @@ class PlasmacitoidDendriticCell(PhagocyticMixin, Cell):
                 from src.agents.natural_killer import NaturalKiller
                 nk = NaturalKiller(self.model.next_id(), self.model.rank, self.model, empty[0])
                 self.model.add_agent(nk)
-
-    def get_effect(self):
-        return self._cached_effect
 
     has_effect = True

@@ -88,11 +88,11 @@ class DNA:
         inv = DNA.codon_table_inv()
         return ''.join(inv[aa] for aa in protein)
 
-    antigen_presentation_chance: float
-    checkpoint_pathway_inhibition_chance: float
-    genomic_instability: float
-    tumor_suppression_chance: float
-    extra_proliferation_chance: float
+    antigen_presentation_chance: float = 0.0
+    checkpoint_pathway_inhibition_chance: float = 0.0
+    genomic_instability: float = 0.0
+    tumor_suppression_chance: float = 0.0
+    extra_proliferation_chance: float = 0.0
 
     def __init__(self, rng: Random, dna_sequence: str = None, injected_mutations: int = 0):
         self.random = rng
@@ -111,7 +111,7 @@ class DNA:
 
         self._build_effects()
 
-        self.neo_antigens = {protein[i: i + 10] for protein in self.proteins.values() for i in range(max(0, len(protein) - 9))}
+        self.neo_antigens = tuple({protein[i: i + 10] for protein in self.proteins.values() for i in range(max(0, len(protein) - 9))})
 
     # Pre-computed alternatives for each base (avoids per-mutation list allocation)
     _MUTATION_MAP = {'A': 'TCG', 'T': 'ACG', 'C': 'ATG', 'G': 'ATC'}
@@ -133,9 +133,11 @@ class DNA:
 
     def gene_to_protein(self, gene_name: str) -> str:
         parts = []
+        info = DNA.gene_metadata[gene_name]
         # Skip the 30-base promoter region to reach coding sequence
-        start = DNA.gene_metadata[gene_name]["start"] + 30
-        for i in range(start, len(self.dna) - 2, 3):
+        start = info["start"] + 30
+        end = info["start"] + info["length"]
+        for i in range(start, min(end, len(self.dna) - 2), 3):
             codon = self.dna[i:i + 3]
             aa = self.codon_table.get(codon, 'X')
             if aa == '_':
@@ -160,17 +162,17 @@ class DNA:
 
             expr = self._promoter_expression(promoter)
             protein = self.gene_to_protein(gene)
-            mutation_score = self._mutation_score(gene, protein)
+            mscore = self._compute_mutation_score(gene, protein)
 
             self.expression[gene] = expr
             self.proteins[gene] = protein
-            self.mutation_score[gene] = mutation_score
+            self.mutation_score[gene] = mscore
 
         self.antigen_presentation_chance = max(0.0, 6.0 - sum(
             self._gene_mutation_expression(gene_name)
             for gene_name in ["MHC", "JAK1", "JAK2", "B2M", "TAP1", "TAP2"]) / 6.0)
         self.checkpoint_pathway_inhibition_chance = self._gene_mutation_expression("CD274")
-        self.genomic_instability = (self._mutation_score("BRCA1") ** max(1, self.expression["BRCA1"])) * 0.05
+        self.genomic_instability = (self.mutation_score["BRCA1"] ** max(1, self.expression["BRCA1"])) * 0.05
         self.tumor_suppression_chance = sum(
             self.expression[gene_name] * (1 - self.mutation_score[gene_name])
             for gene_name in ["TP53", "RB1", "CDKN2A"]) / 3.0
@@ -199,7 +201,7 @@ class DNA:
     def _promoter_expression(self, promoter: str) -> int:
         return promoter.count("TATA")
 
-    def _mutation_score(self, gene_name: str, protein: str = None) -> float:
+    def _compute_mutation_score(self, gene_name: str, protein: str = None) -> float:
         ref = DNA.gene_metadata[gene_name]["wildtype"]
         if protein is None:
             protein = self.gene_to_protein(gene_name)

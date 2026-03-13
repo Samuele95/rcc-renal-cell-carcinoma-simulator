@@ -11,15 +11,13 @@ class Adipocyte(Cell):
     def __init__(self, local_id, rank, model, pos):
         super().__init__(local_id, AgentType.ADIPOCYTE, rank, model, pos)
         wp = model.weight_params
-        self._cached_effect = Effect()
-        self._cached_effect.tumour_growth_effect = self.my_tumour_growth_effect * wp.w_adipocyte_tumour_growth
-        self._cached_effect.macrophage_m2_mutation_effect = self.my_m2_mutation_effect * wp.w_adipocyte_m2_mutation
+        self._cached_effect = Effect.create(
+            tumour_growth_effect=self.my_tumour_growth_effect * wp.w_adipocyte_tumour_growth,
+            macrophage_m2_mutation_effect=self.my_m2_mutation_effect * wp.w_adipocyte_m2_mutation,
+        )
 
     def step(self):
         if self.base_step():
             return
-
-    def get_effect(self):
-        return self._cached_effect
 
     has_effect = True

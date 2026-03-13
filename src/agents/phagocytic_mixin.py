@@ -16,13 +16,13 @@ class PhagocyticMixin:
         - self.find_one(), self.move_towards(), self.record_kill()
     """
 
-    _has_phagocytosed: bool = False
-    _phagocytosed_cell = None
+    max_presentation_attempts = 10
 
     def _init_phagocytosis(self, t_cell_types=None):
         """Initialize phagocytosis state. Call from subclass __init__."""
         self._has_phagocytosed = False
         self._phagocytosed_cell = None
+        self._presentation_attempts = 0
         if t_cell_types is None:
             t_cell_types = [AgentType.CD4_NAIVE_T_CELL, AgentType.CD8_NAIVE_T_CELL]
         self._presentation_target = self.model.rng.choice(t_cell_types)
@@ -58,6 +58,9 @@ class PhagocyticMixin:
     def present_to_t_cell(self, radius=1):
         """Move towards and attempt to present antigen to a T cell.
 
+        Automatically resets phagocytosis state after max_presentation_attempts
+        failed attempts, preventing the cell from being stuck indefinitely.
+
         Args:
             radius: Search radius for finding nearby T cells.
 
@@ -68,10 +71,27 @@ class PhagocyticMixin:
         nearby_tcell = self.find_one(self._presentation_target, radius=radius)
         if nearby_tcell:
             nearby_tcell.activate(self._phagocytosed_cell)
+            self._presentation_attempts = 0
             return True
+        self._presentation_attempts += 1
+        if self._presentation_attempts >= self.max_presentation_attempts:
+            self.reset_phagocytosis()
         return False
+
+    def can_receive_neoantigen(self):
+        """Whether this cell can accept a neoantigen for presentation."""
+        return not self._has_phagocytosed
+
+    def receive_neoantigen(self, cell):
+        """Receive a neoantigen-bearing cell for presentation (e.g. from TKI-induced apoptosis).
+
+        Properly sets both phagocytosis state flags.
+        """
+        self._phagocytosed_cell = cell
+        self._has_phagocytosed = True
 
     def reset_phagocytosis(self):
         """Reset phagocytosis state."""
         self._has_phagocytosed = False
         self._phagocytosed_cell = None
+        self._presentation_attempts = 0

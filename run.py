@@ -59,6 +59,8 @@ def parse_args():
                         help="Print progress every N steps (0 to disable, default: 50)")
     parser.add_argument("--quiet", "-q", action="store_true",
                         help="Suppress all output except errors")
+    parser.add_argument("--snapshot", type=int, default=0, metavar="N",
+                        help="Save environment snapshots every N steps (0 to disable)")
 
     return parser.parse_args()
 
@@ -104,7 +106,7 @@ def print_header(model):
     print(f"  Treatment:   {pp.treatment} (starts step {pp.treatment_start})")
     print(f"  Seed:        {mp.random_seed}")
     print(f"  Max steps:   {mp.max_steps}")
-    print(f"  Agents:      {len(model._all_agents)}")
+    print(f"  Agents:      {model.total_agent_count}")
     print(f"    Tumor:     {model.count_agents(AgentType.TUMOR_CELL)}")
     print(f"    Immune:    {model.count_agents(AgentType.CD8_CYTOTOXIC_T_CELL) + model.count_agents(AgentType.NATURAL_KILLER) + model.count_agents(AgentType.MACROPHAGE_M1) + model.count_agents(AgentType.MACROPHAGE_M2) + model.count_agents(AgentType.DENDRITIC_CELL) + model.count_agents(AgentType.NEUTROPHIL)}")
     print("-" * 60)
@@ -113,7 +115,7 @@ def print_header(model):
 def print_progress(model):
     """Print a compact progress line."""
     n_tumor = model.count_agents(AgentType.TUMOR_CELL)
-    n_total = len(model._all_agents)
+    n_total = model.total_agent_count
     glucose = model.glucose_field.mean_concentration()
     print(f"  Step {model.steps:>4d}/{model.max_steps}  |  "
           f"tumor={n_tumor:<5d}  agents={n_total:<6d}  glucose={glucose:.2f}")
@@ -154,6 +156,12 @@ def main():
     if not quiet:
         print_header(model)
 
+    # Snapshot setup
+    snapshot_dir = None
+    if args.snapshot > 0:
+        config_parent = os.path.dirname(os.path.abspath(args.config))
+        snapshot_dir = os.path.join(config_parent, "snapshots") if "runs" in config_parent else os.path.join("logs", "snapshots")
+
     # Wrap model.step with progress reporting
     progress_interval = args.progress
     start_time = time.time()
@@ -164,6 +172,8 @@ def main():
         original_step()
         if not quiet and progress_interval > 0 and model.steps % progress_interval == 0:
             print_progress(model)
+        if snapshot_dir and model.steps % args.snapshot == 0:
+            model.save_snapshot(snapshot_dir)
 
     # Create schedule runner
     runner = schedule.init_schedule_runner(comm)
@@ -173,6 +183,10 @@ def main():
 
     # Execute
     runner.execute()
+
+    # Save final snapshot
+    if snapshot_dir:
+        model.save_snapshot(snapshot_dir)
 
     elapsed = time.time() - start_time
 

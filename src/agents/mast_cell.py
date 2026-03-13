@@ -16,19 +16,16 @@ class MastCell(Cell):
         wp = self.model.weight_params
         rng = self.model.rng
 
-        self.my_effects = Effect()
-        if rng.random() < 0.5:
-            self.my_effects.angiogenesis_effect = self.my_angiogenesis_effect * wp.w_mast_cell_angiogenesis
-        if rng.random() < 0.5:
-            self.my_effects.macrophage_m1_mutation_effect = self.my_macrophage_m1_mutation_effect * wp.w_mast_cell_m1_mutation
-        if rng.random() < 0.5:
-            self.my_effects.t_kill_rate_effect = self.my_t_kill_rate_effect * wp.w_mast_cell_t_kill_rate
-        if rng.random() < 0.5:
-            self.my_effects.tumour_apoptosis_effect = self.my_tumour_apoptosis_effect * wp.w_mast_cell_tumour_apoptosis
-        self.my_effects.tumour_growth_effect = rng.randint(-1, 1) * 0.01 * wp.w_mast_cell_tumour_growth
+        self._cached_effect = Effect.create(
+            angiogenesis_effect=self.my_angiogenesis_effect * wp.w_mast_cell_angiogenesis if rng.random() < 0.5 else 0,
+            macrophage_m1_mutation_effect=self.my_macrophage_m1_mutation_effect * wp.w_mast_cell_m1_mutation if rng.random() < 0.5 else 0,
+            t_kill_rate_effect=self.my_t_kill_rate_effect * wp.w_mast_cell_t_kill_rate if rng.random() < 0.5 else 0,
+            tumour_apoptosis_effect=self.my_tumour_apoptosis_effect * wp.w_mast_cell_tumour_apoptosis if rng.random() < 0.5 else 0,
+            tumour_growth_effect=rng.randint(-1, 1) * 0.01 * wp.w_mast_cell_tumour_growth,
+        )
 
     def step(self):
-        if super().base_step():
+        if self.base_step():
             return
 
         self.consume_glucose()
@@ -39,9 +36,5 @@ class MastCell(Cell):
             self.spawn_at_entry(DendriticCell)
 
         self.move_towards(AgentType.TUMOR_CELL, self.search_dimension)
-        self.immune_infiltration_factor = 1
-
-    def get_effect(self):
-        return self.my_effects
 
     has_effect = True

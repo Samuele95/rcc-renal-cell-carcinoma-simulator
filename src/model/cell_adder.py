@@ -12,7 +12,6 @@ class CellAdder:
 
     def __init__(self, model):
         self.model = model
-        self.rng = model.rng
         self.tumor_start_position = None
 
     def add(self, cell_class, position=None, n=1, entry_point=False):
@@ -41,10 +40,10 @@ class CellAdder:
 
     def calculate_tumor_start_position(self):
         w, h, d = self.model.grid_dims
-        x = self.rng.randrange(w // 2 - w // 4, w // 2 + w // 4) if w > 4 else w // 2
-        y = self.rng.randrange(4 + MIN_DISTANCE_FROM_VESSEL,
+        x = self.model.rng.randrange(w // 2 - w // 4, w // 2 + w // 4) if w > 4 else w // 2
+        y = self.model.rng.randrange(4 + MIN_DISTANCE_FROM_VESSEL,
                                4 + MAX_DISTANCE_FROM_VESSEL + 1) if h > 4 + MAX_DISTANCE_FROM_VESSEL else h // 2
-        z = self.rng.randrange(4 + MIN_DISTANCE_FROM_VESSEL,
+        z = self.model.rng.randrange(4 + MIN_DISTANCE_FROM_VESSEL,
                                4 + MAX_DISTANCE_FROM_VESSEL + 1) if d > 4 + MAX_DISTANCE_FROM_VESSEL else d // 2
         return (x, y, z)
 

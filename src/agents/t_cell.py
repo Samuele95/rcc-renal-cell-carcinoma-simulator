@@ -5,6 +5,7 @@ TCR receptor matching (Hamming distance, hash), and sex hormone modulation.
 """
 import hashlib
 from abc import ABC
+from functools import lru_cache
 
 from src.systems.dna import DNA
 from src.systems import grid_utils
@@ -25,7 +26,6 @@ class TCell(Cell, ABC):
             SexHormoneType.TESTOSTERONE: 0,
             SexHormoneType.ESTROGEN: 0,
             SexHormoneType.PROGESTERONE: 0,
-            SexHormoneType.ANDROGEN: 0
         }
 
     def activate(self, tumour_cell):
@@ -42,8 +42,9 @@ class TCell(Cell, ABC):
         return distance
 
     @staticmethod
+    @lru_cache(maxsize=1024)
     def amino_to_8bit_hash(seq):
-        """Convert amino acid sequence to 8-bit hash."""
+        """Convert amino acid sequence to 8-bit hash (cached)."""
         digest = hashlib.sha256(seq.encode()).digest()
         return digest[0]
 
@@ -61,42 +62,69 @@ class TCell(Cell, ABC):
                 self.hamming_distance(TCell.amino_to_8bit_hash(antigen), receptor) <=
                 (3 + self.model.weight_params.receptor_threshold_variation))
 
-    def perceive_sex_hormone(self, hormone_type, quantity=1, search_radius=1):
-        """Perceive sex hormones in the neighborhood and accumulate their effects.
-
-        Args:
-            hormone_type: SexHormoneType string value.
-            quantity: Max number of hormones to perceive.
-            search_radius: Radius to search for hormones.
-
-        Returns:
-            True if hormones were perceived, False otherwise.
-        """
-        neighbors = grid_utils.get_neighbors_3d(
-            self.model.spatial_index, self.model.grid_dims,
-            self.pos, radius=search_radius, moore=True
-        )
-        hormones_found = []
-        marker = min(quantity, 9)
-        hormone_value = hormone_type.value
-        for agent in neighbors:
-            if len(hormones_found) >= marker:
-                break
-            if (agent.uid[1] == AgentType.SEX_HORMONE
-                    and agent.hormone_type == hormone_value):
-                hormones_found.append(agent)
-
-        for hormone in hormones_found:
-            self.perceived_sex_hormone[hormone_type] += 1
-            self.model.remove_agent(hormone)
-
-        return bool(hormones_found)
-
     def sex_hormone_stimulation_level(self, hormone_type):
         """Return the perceived level of a sex hormone type."""
         return self.perceived_sex_hormone[hormone_type]
 
+    def perceive_all_hormones(self, e_qty=1, p_qty=1, t_qty=0, radius=2):
+        """Perceive all sex hormones and return stimulation levels.
+
+        Single neighbor query instead of one per hormone type.
+
+        Args:
+            e_qty: Max estrogen hormones to perceive.
+            p_qty: Max progesterone hormones to perceive.
+            t_qty: Max testosterone hormones to perceive.
+            radius: Search radius.
+
+        Returns:
+            (E, P, T) tuple of stimulation levels.
+        """
+        self.apply_hormonal_decay()
+
+        if self.pos is None:
+            return (
+                self.sex_hormone_stimulation_level(SexHormoneType.ESTROGEN),
+                self.sex_hormone_stimulation_level(SexHormoneType.PROGESTERONE),
+                self.sex_hormone_stimulation_level(SexHormoneType.TESTOSTERONE),
+            )
+
+        # Single neighbor query for all hormone types
+        neighbors = grid_utils.get_neighbors_3d(
+            self.model.spatial_index, self.model.grid_dims,
+            self.pos, radius=radius, moore=True
+        )
+
+        # Collect hormones by type with quantity limits
+        cap = self.model.weight_params.w_hormone_perception_cap
+        limits = {
+            SexHormoneType.ESTROGEN: min(e_qty, cap),
+            SexHormoneType.PROGESTERONE: min(p_qty, cap),
+            SexHormoneType.TESTOSTERONE: min(t_qty, cap),
+        }
+        found = {SexHormoneType.ESTROGEN: [], SexHormoneType.PROGESTERONE: [], SexHormoneType.TESTOSTERONE: []}
+
+        for agent in neighbors:
+            if agent.uid[1] != AgentType.SEX_HORMONE:
+                continue
+            ht = agent.hormone_type
+            if ht in found and len(found[ht]) < limits[ht]:
+                found[ht].append(agent)
+
+        # Consume found hormones
+        for ht, hormones in found.items():
+            for hormone in hormones:
+                self.perceived_sex_hormone[ht] += 1
+                self.model.remove_agent(hormone)
+
+        return (
+            self.sex_hormone_stimulation_level(SexHormoneType.ESTROGEN),
+            self.sex_hormone_stimulation_level(SexHormoneType.PROGESTERONE),
+            self.sex_hormone_stimulation_level(SexHormoneType.TESTOSTERONE),
+        )
+
     def apply_hormonal_decay(self):
-        """Apply 10% decay to perceived sex hormone levels."""
+        """Apply decay to perceived sex hormone levels."""
+        decay = self.model.weight_params.w_hormone_decay_rate
         for k in self.perceived_sex_hormone:
-            self.perceived_sex_hormone[k] *= 0.9
+            self.perceived_sex_hormone[k] *= decay

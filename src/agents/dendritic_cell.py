@@ -13,7 +13,7 @@ class DendriticCell(PhagocyticMixin, Cell):
         self._init_phagocytosis()
 
     def step(self):
-        if super().base_step():
+        if self.base_step():
             return
 
         if not self._has_phagocytosed:

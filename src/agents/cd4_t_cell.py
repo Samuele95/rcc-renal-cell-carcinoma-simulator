@@ -1,6 +1,5 @@
 """CD4+ Naive T Cell — differentiates into Treg, activates TH1/TH2."""
 from src.agents.t_cell import TCell
-from src.agents.sex_hormone import SexHormoneType
 from src.agents.agent_types import AgentType
 
 
@@ -13,17 +12,10 @@ class CD4NaiveTCell(TCell):
         self.experienced_effects.treg_differentiation_effect += self.initial_treg_differentiation
 
     def step(self):
-        self.apply_hormonal_decay()
-        if self.pos is None:
+        if self.base_step():
             return
 
-        self.perceive_sex_hormone(SexHormoneType.ESTROGEN, quantity=3, search_radius=2)
-        self.perceive_sex_hormone(SexHormoneType.PROGESTERONE, quantity=2, search_radius=2)
-        self.perceive_sex_hormone(SexHormoneType.TESTOSTERONE, quantity=2, search_radius=2)
-
-        E = self.sex_hormone_stimulation_level(SexHormoneType.ESTROGEN)
-        P = self.sex_hormone_stimulation_level(SexHormoneType.PROGESTERONE)
-        T = self.sex_hormone_stimulation_level(SexHormoneType.TESTOSTERONE)
+        E, P, T = self.perceive_all_hormones(e_qty=3, p_qty=2, t_qty=2)
 
         x = -6.0 + 1.2 * E + 1.0 * P + 0.4 * T
         p_treg_gene = self.sigmoid(x)
@@ -41,7 +33,7 @@ class CD4NaiveTCell(TCell):
     def activate(self, tumour_cell):
         antigen = tumour_cell.get_antigen()
         if self.pos is not None and antigen is not None and self.is_matching(antigen, self.receptor):
-            if self.model.rng.random() < 0.5:
+            if self.model.rng.random() < self.model.weight_params.w_cd4_th1_ratio:
                 from src.agents.cd4_t_cell_h1 import CD4Helper1TCell
                 self.transform_into(CD4Helper1TCell)
             else:

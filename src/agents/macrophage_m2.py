@@ -14,13 +14,14 @@ class MacrophageM2(Cell):
         super().__init__(local_id, AgentType.MACROPHAGE_M2, rank, model, pos)
         self.experienced_effects.macrophage_m2_mutation_effect += self.initial_mutation_chance
         wp = model.weight_params
-        self._cached_effect = Effect()
-        self._cached_effect.t_kill_rate_effect = self.my_t_kill_rate_effect * wp.w_m2_t_kill_rate
-        self._cached_effect.tumour_growth_effect = self.my_tumor_growth_effect * wp.w_m2_tumour_growth
-        self._cached_effect.angiogenesis_effect = self.my_angiogenesis_effect * wp.w_m2_angiogenesis
+        self._cached_effect = Effect.create(
+            t_kill_rate_effect=self.my_t_kill_rate_effect * wp.w_m2_t_kill_rate,
+            tumour_growth_effect=self.my_tumor_growth_effect * wp.w_m2_tumour_growth,
+            angiogenesis_effect=self.my_angiogenesis_effect * wp.w_m2_angiogenesis,
+        )
 
     def step(self):
-        if super().base_step():
+        if self.base_step():
             return
         rng = self.model.rng
         wp = self.model.weight_params
@@ -36,9 +37,6 @@ class MacrophageM2(Cell):
     def _transform_to_macrophage_m1(self):
         from src.agents.macrophage_m1 import MacrophageM1
         self.transform_into(MacrophageM1)
-
-    def get_effect(self):
-        return self._cached_effect
 
     has_effect = True
     needs_effect = True

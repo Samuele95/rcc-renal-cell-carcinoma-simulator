@@ -11,6 +11,7 @@ import logging
 import random
 from collections import defaultdict
 from pathlib import Path
+from typing import Dict, List, Set, Tuple, Optional, Any, Union
 
 logger = logging.getLogger(__name__)
 
@@ -20,6 +21,7 @@ from repast4py.space import SharedGrid, BorderType, OccupancyType
 from repast4py.geometry import BoundingBox
 
 from src.agents.agent_types import AgentType
+from src.systems import grid_utils
 from src.agents.tumor_cell import TumorCell
 from src.agents.sex_hormone import SexHormone, SexHormoneType
 from src.agents.cd8_t_cell import CD8NaiveTCell
@@ -39,7 +41,7 @@ from src.agents.cell import Cell
 from src.systems.glucose_field import GlucoseField
 from src.parameters.model_parameters import ModelParameters
 from src.parameters.weight_parameters import WeightParameters
-from src.parameters.patient_parameters import PatientParameters
+from src.parameters.patient_parameters import PatientParameters, Sex, TreatmentType
 from src.model.observer import Observer
 from src.model.cell_adder import CellAdder
 from src.model.measures_utils import get_dimension_from_volume, get_number_of_cells_from_concentration
@@ -49,12 +51,33 @@ from src.treatments.treatment import Treatment
 
 
 class RCCModel:
-    """Main RCC simulation model for Repast4Py."""
+    """Main RCC simulation model for Repast4Py.
+    
+    This class implements an Agent-Based Model (ABM) of the Renal Cell Carcinoma (RCC)
+    tumor microenvironment using Repast4Py. It manages:
+    
+    - 3D spatial grid with multiple occupancy
+    - Various cell types (tumor, immune, stromal)
+    - Glucose field with diffusion and consumption
+    - Treatment modeling (ICI, TKI)
+    - Sex hormone dynamics
+    - DNA mutation systems
+    
+    Attributes:
+        initial_number_of_tumor_cells: Starting tumor cell count
+        max_tumor_cells: Critical mass threshold for survival analysis
+    """
 
-    initial_number_of_tumor_cells = 10
-    max_tumor_cells = 2000
+    initial_number_of_tumor_cells: int = 10
+    max_tumor_cells: int = 2000
 
-    def __init__(self, comm=None, **kwargs):
+    def __init__(self, comm: Optional[MPI.Comm] = None, **kwargs: Any) -> None:
+        """Initialize the RCC simulation model.
+        
+        Args:
+            comm: MPI communicator for parallel execution
+            **kwargs: Parameter overrides for model, weight, and patient parameters
+        """
         self.comm = comm or MPI.COMM_WORLD
         self.rank = self.comm.Get_rank()
 
@@ -63,8 +86,6 @@ class RCCModel:
         self.weight_params = WeightParameters(**kwargs)
         self.patient_params = PatientParameters(**kwargs)
 
-        self.volume = self.model_params.volume
-        self.block_size = self.model_params.block_size
         self.max_steps = self.model_params.max_steps
 
         # RNG
@@ -72,7 +93,7 @@ class RCCModel:
         self.rng = random.Random(seed)
 
         # Grid dimensions
-        grid_dim = get_dimension_from_volume(self.volume, self.block_size)
+        grid_dim = get_dimension_from_volume(self.model_params.volume, self.model_params.block_size)
         self.grid_dims = (grid_dim, grid_dim, grid_dim)
         w, h, d = self.grid_dims
 
@@ -92,6 +113,7 @@ class RCCModel:
         # Agent tracking by type — dicts for O(1) add/remove
         self._agents_by_type = defaultdict(dict)  # type_id -> {id(agent): agent}
         self._all_agents = {}  # id(agent) -> agent
+        self._pending_moves = set()  # agents with _desired_pos != pos
         self._id_counter = 0
 
         # Model state
@@ -103,13 +125,17 @@ class RCCModel:
         # Class-level state moved to model
         self.tumor_blood_sources = set()
         self.cell_search_dimension = 5
+        self._cached_blood_list = None  # Cached blood vessel list for spawn_hormones
 
         # Glucose field
         self.glucose_field = GlucoseField(w, h, d, initial_concentration=1.0)
 
+        # Cached BMI baseline effect (identical for all agents, computed once)
+        from src.systems.effect import Effect
+        self._bmi_baseline_effect = Effect.with_bmi(self)
+
         # Sex hormone state
         self.starting_dna = None
-        self.sex = self.patient_params.sex
         self._setup_hormone_chances()
 
         # Sex drift
@@ -128,7 +154,7 @@ class RCCModel:
         self.data_log = []
 
     def _setup_hormone_chances(self):
-        if self.sex == "M":
+        if self.patient_params.sex == Sex.MALE:
             self.estrogen_hormone_chance = 0.2
             self.progesterone_hormone_chance = 0.1
             self.testosterone_hormone_chance = 1.0
@@ -139,17 +165,18 @@ class RCCModel:
 
     def _setup_treatment(self):
         drug_map = {
-            "None": [],
-            "ICI": [ICIDrug(self)],
-            "TKI": [TKIDrug(self)],
-            "ICI+TKI": [ICIDrug(self), TKIDrug(self)],
+            TreatmentType.NONE: [],
+            TreatmentType.ICI: [ICIDrug(self)],
+            TreatmentType.TKI: [TKIDrug(self)],
+            TreatmentType.ICI_TKI: [ICIDrug(self), TKIDrug(self)],
         }
-        self.treatment = Treatment(drug_map.get(self.patient_params.treatment, []))
+        treatment_key = TreatmentType(self.patient_params.treatment)
+        self.treatment = Treatment(drug_map[treatment_key])
         self.treatment_start = self.patient_params.treatment_start
 
     def _initialize_agents(self):
         def number(concentration):
-            return get_number_of_cells_from_concentration(concentration, self.volume)
+            return get_number_of_cells_from_concentration(concentration, self.model_params.volume)
 
         agents_to_create = {
             CytotoxicTCell: number(self.patient_params.ctc_concentration),
@@ -172,7 +199,7 @@ class RCCModel:
 
         self.cell_adder.add_blood_vessels()
 
-        TumorCell.injected_mutations = 3 if self.patient_params.sex == "M" else 1
+        self.injected_mutations = 3 if self.patient_params.sex == Sex.MALE else 1
         tumor_cell = self.cell_adder.add_single_cancer_cell()
         self.starting_dna = tumor_cell.dna.dna
         for _ in range(self.initial_number_of_tumor_cells):
@@ -209,20 +236,23 @@ class RCCModel:
 
     def remove_agent(self, agent):
         """Remove an agent from the model. O(1) for dict-based tracking."""
-        if not agent._alive:
+        if not agent.alive:
             return
-        agent._alive = False
+        agent.die()
 
-        # Remove from spatial index (O(1) set discard)
+        # Remove from spatial index (O(1) set discard, cleanup empty sets)
         pos = agent.pos
         if pos is not None and pos in self.spatial_index:
             self.spatial_index[pos].discard(agent)
+            if not self.spatial_index[pos]:
+                del self.spatial_index[pos]
 
         # O(1) removal from dict-based tracking
         agent_key = id(agent)
         type_id = agent.uid[1]
         self._agents_by_type[type_id].pop(agent_key, None)
         self._all_agents.pop(agent_key, None)
+        self._pending_moves.discard(agent)
 
         # Remove from Repast4Py context
         try:
@@ -237,6 +267,8 @@ class RCCModel:
         old_pos = agent.pos
         if old_pos is not None and old_pos in self.spatial_index:
             self.spatial_index[old_pos].discard(agent)
+            if not self.spatial_index[old_pos]:
+                del self.spatial_index[old_pos]
 
         agent.pos = new_pos
         self.spatial_index[new_pos].add(agent)
@@ -247,12 +279,21 @@ class RCCModel:
             logger.debug("Failed to move agent %s to %s on grid", agent.uid, new_pos)
 
     def get_agents_by_type_id(self, type_id):
-        """Get all living agents of a given AgentType ID."""
+        """Get all living agents of a given AgentType ID (list copy, safe for mutation)."""
         return list(self._agents_by_type.get(type_id, {}).values())
+
+    def iter_agents_by_type_id(self, type_id):
+        """Iterate agents of a given type without copying. Not safe for add/remove during iteration."""
+        return self._agents_by_type.get(type_id, {}).values()
 
     def count_agents(self, type_id):
         """Count living agents of a given type."""
         return len(self._agents_by_type.get(type_id, {}))
+
+    @property
+    def total_agent_count(self):
+        """Total number of living agents."""
+        return len(self._all_agents)
 
     # ------------------------------------------------------------------
     # Position utilities
@@ -278,7 +319,7 @@ class RCCModel:
     def init_sex_drift(self, max_drift=0.25, n_steps=10):
         self._remaining_drift_steps = n_steps
         self._drift_per_step = max_drift / n_steps
-        self._drift_sign = -1 if self.sex == "F" else +1
+        self._drift_sign = -1 if self.patient_params.sex == Sex.FEMALE else +1
 
     def apply_sex_drift(self):
         if self._remaining_drift_steps <= 0:
@@ -287,14 +328,12 @@ class RCCModel:
         step_factor = 1 + self._drift_sign * self._drift_per_step
         delta = abs(step_factor - 1)
 
-        population = self.get_agents_by_type_id(AgentType.CD8_NAIVE_T_CELL)
-
         if step_factor > 1:
-            to_duplicate = [a for a in population if self.rng.random() < delta]
+            to_duplicate = [a for a in self.iter_agents_by_type_id(AgentType.CD8_NAIVE_T_CELL) if self.rng.random() < delta]
             for agent in to_duplicate:
                 agent.duplicate()
         else:
-            to_remove = [a for a in population if self.rng.random() < delta]
+            to_remove = [a for a in self.iter_agents_by_type_id(AgentType.CD8_NAIVE_T_CELL) if self.rng.random() < delta]
             for agent in to_remove:
                 self.remove_agent(agent)
 
@@ -304,8 +343,15 @@ class RCCModel:
     # Hormone spawning
     # ------------------------------------------------------------------
 
+    def invalidate_blood_cache(self):
+        """Call when blood vessels are added or removed."""
+        self._cached_blood_list = None
+        self.glucose_field.mark_blood_dirty()
+
     def spawn_hormones(self):
-        vessels = self.get_agents_by_type_id(AgentType.BLOOD)
+        if self._cached_blood_list is None:
+            self._cached_blood_list = self.get_agents_by_type_id(AgentType.BLOOD)
+        vessels = self._cached_blood_list
         if not vessels:
             return
 
@@ -325,9 +371,89 @@ class RCCModel:
     # Manage blood / search dimension
     # ------------------------------------------------------------------
 
+    # Angiogenesis constants
+    _ANGIOGENESIS_MIN_DISTANCE = 30
+    _ANGIOGENESIS_EFFECT_COLLECTION_RADIUS = 3
+
     def manage_blood(self):
-        TumorCell.add_blood(self)
-        TumorCell.refresh_blood_access(self)
+        self._try_angiogenesis()
+        self._refresh_blood_access()
+
+    def _try_angiogenesis(self):
+        """Add a blood vessel via angiogenesis if conditions are met."""
+        from src.agents.blood import Blood
+
+        tumor_cells = self.get_agents_by_type_id(AgentType.TUMOR_CELL)
+        if not tumor_cells:
+            return
+        selected = min(tumor_cells, key=lambda a: sum(a.pos[1:]) if a.pos else float('inf'))
+        if selected.pos is None:
+            return
+
+        neighbors = grid_utils.get_neighbors_3d(
+            self.spatial_index, self.grid_dims, selected.pos,
+            radius=self._ANGIOGENESIS_EFFECT_COLLECTION_RADIUS, moore=True
+        )
+        total_effect = selected.angiogenesis_effect
+        for neighbor in neighbors:
+            if neighbor.uid[1] == AgentType.TUMOR_CELL:
+                total_effect += neighbor.experienced_effects.angiogenesis_effect
+
+        if self.rng.random() < self.weight_params.w_tumor_angiogenesis * total_effect:
+            blood_neighbors = grid_utils.get_neighbors_3d(
+                self.spatial_index, self.grid_dims, selected.pos,
+                radius=self._ANGIOGENESIS_MIN_DISTANCE, moore=True
+            )
+            candidates = [b for b in blood_neighbors
+                          if b.uid[1] == AgentType.BLOOD
+                          and not b.is_tumour_generated()]
+            if candidates:
+                target = max(candidates, key=lambda b: sum(b.pos[1:]) if b.pos else 0)
+                self._lay_vessel_path(selected.pos, target.pos)
+                selected.blood_access = True
+                self.tumor_blood_sources.add(selected)
+                self.invalidate_blood_cache()
+
+    def _lay_vessel_path(self, start, end):
+        """Lay blood vessel agents along an axis-aligned path from start to end."""
+        from src.agents.blood import Blood
+        deltas = [end[i] - start[i] for i in range(3)]
+        pos = list(start)
+        for axis in range(3):
+            d = deltas[axis]
+            step = 1 if d > 0 else -1
+            for _ in range(abs(d)):
+                pos[axis] += step
+                bpos = tuple(pos)
+                self.add_agent(Blood(self.next_id(), self.rank, self, bpos, tumour_generated=True))
+
+    def _refresh_blood_access(self):
+        """Update blood access for all tumor cells via BFS from blood sources."""
+        from collections import deque
+        source = deque(self.tumor_blood_sources)
+        to_visit = set(self.tumor_blood_sources)
+        visited = set()
+
+        for agent in self.get_agents_by_type_id(AgentType.TUMOR_CELL):
+            if agent not in to_visit:
+                agent.blood_access = False
+
+        while source:
+            t = source.popleft()
+            to_visit.discard(t)
+            if t.pos is not None:
+                neighbors = grid_utils.get_neighbors_3d(
+                    self.spatial_index, self.grid_dims, t.pos, radius=1, moore=True
+                )
+                for neighbor in neighbors:
+                    if neighbor.uid[1] == AgentType.TUMOR_CELL:
+                        neighbor.blood_access = True
+                        if neighbor not in visited and neighbor not in to_visit:
+                            source.append(neighbor)
+                            to_visit.add(neighbor)
+                visited.add(t)
+            else:
+                self.tumor_blood_sources.discard(t)
 
     def manage_search_dimension(self):
         n_tumor = self.count_agents(AgentType.TUMOR_CELL)
@@ -337,17 +463,24 @@ class RCCModel:
     # Effects
     # ------------------------------------------------------------------
 
-    # Agent types that have needs_effect = True
-    _EFFECT_RECEIVER_TYPES = frozenset({
-        AgentType.TUMOR_CELL, AgentType.NATURAL_KILLER, AgentType.CD8_CYTOTOXIC_T_CELL,
-        AgentType.MACROPHAGE_M1, AgentType.MACROPHAGE_M2, AgentType.DENDRITIC_CELL,
-        AgentType.CD4_HELPER1_T_CELL, AgentType.CD8_NAIVE_T_CELL, AgentType.CD4_NAIVE_T_CELL,
-    })
+    # Auto-derived: maps each AgentType to its class, keeps those with needs_effect=True
+    _AGENT_TYPE_CLASS_MAP = {
+        AgentType.TUMOR_CELL: TumorCell, AgentType.NATURAL_KILLER: NaturalKiller,
+        AgentType.CD8_CYTOTOXIC_T_CELL: CytotoxicTCell,
+        AgentType.MACROPHAGE_M1: MacrophageM1, AgentType.MACROPHAGE_M2: MacrophageM2,
+        AgentType.DENDRITIC_CELL: DendriticCell,
+        AgentType.CD4_HELPER1_T_CELL: CD4Helper1TCell,
+        AgentType.CD8_NAIVE_T_CELL: CD8NaiveTCell,
+        AgentType.CD4_NAIVE_T_CELL: CD4NaiveTCell,
+    }
+    _EFFECT_RECEIVER_TYPES = frozenset(
+        t for t, cls in _AGENT_TYPE_CLASS_MAP.items() if getattr(cls, 'needs_effect', False)
+    )
 
     def apply_effects(self):
         for type_id in self._EFFECT_RECEIVER_TYPES:
             for agent in list(self._agents_by_type.get(type_id, {}).values()):
-                if agent._alive:
+                if agent.alive:
                     agent.collect_and_apply_effects()
 
     # ------------------------------------------------------------------
@@ -355,9 +488,10 @@ class RCCModel:
     # ------------------------------------------------------------------
 
     def move_all_agents(self):
-        for agent in list(self._all_agents.values()):
-            if isinstance(agent, Cell) and agent._alive and agent._desired_pos != agent.pos:
-                self.move_agent(agent, agent._desired_pos)
+        for agent in list(self._pending_moves):
+            if agent.alive and agent.desired_pos != agent.pos:
+                self.move_agent(agent, agent.desired_pos)
+        self._pending_moves.clear()
 
     # ------------------------------------------------------------------
     # Terminal condition
@@ -374,8 +508,7 @@ class RCCModel:
         if n_tumor >= self.max_tumor_cells:
             return True, False
 
-        tumor_agents = self._agents_by_type.get(AgentType.TUMOR_CELL, {}).values()
-        tumor_growth = sum(a.tumour_growth_rate_value() for a in tumor_agents) / n_tumor
+        tumor_growth = sum(a.tumour_growth_rate_value() for a in self.iter_agents_by_type_id(AgentType.TUMOR_CELL)) / n_tumor
         if tumor_growth >= self.tumour_growth_threshold:
             return True, False
 
@@ -394,6 +527,13 @@ class RCCModel:
 
     def collect_data(self):
         """Collect current step data."""
+        glucose_mean, glucose_total, glucose_min, glucose_max = self.glucose_field.compute_stats()
+        
+        # Enhanced glucose analysis for professor's requirements
+        glucose_presence = self.glucose_field.verify_glucose_presence()
+        glucose_gradient_analysis = self.glucose_field.analyze_concentration_gradient()
+        glucose_hotspots = self.glucose_field.find_glucose_hotspots()
+        
         row = {
             'step': self.steps,
             'tumor_cells': self.count_agents(AgentType.TUMOR_CELL),
@@ -420,10 +560,19 @@ class RCCModel:
             'ctc_kills': self.observer.cytotoxic_T_cell_kills,
             'nkl_kills': self.observer.nkl_kill_count,
             'neutrophil_kills': self.observer.neutrophil_kills,
-            'mean_glucose': self.glucose_field.mean_concentration(),
-            'total_glucose': self.glucose_field.total_concentration(),
-            'min_glucose': self.glucose_field.min_concentration(),
-            'max_glucose': self.glucose_field.max_concentration(),
+            'mean_glucose': glucose_mean,
+            'total_glucose': glucose_total,
+            'min_glucose': glucose_min,
+            'max_glucose': glucose_max,
+            # Enhanced glucose analysis metrics
+            'glucose_presence_confirmed': glucose_presence['presence_confirmed'],
+            'glucose_coverage_percent': glucose_presence['coverage_percentage'],
+            'glucose_detection_confidence': glucose_presence['detection_stats']['detection_confidence'],
+            'glucose_gradient_mean_magnitude': glucose_gradient_analysis['global_analysis']['mean_gradient_magnitude'],
+            'glucose_gradient_max_magnitude': glucose_gradient_analysis['global_analysis']['max_gradient_magnitude'],
+            'glucose_gradient_uniformity': glucose_gradient_analysis['global_analysis']['gradient_uniformity'],
+            'glucose_hotspots_count': glucose_hotspots['hotspot_count'],
+            'glucose_hotspots_coverage': glucose_hotspots['coverage_percentage'] if glucose_hotspots['hotspots_found'] else 0.0,
         }
         self.data_log.append(row)
 
@@ -439,6 +588,24 @@ class RCCModel:
             writer = csv.DictWriter(f, fieldnames=self.data_log[0].keys())
             writer.writeheader()
             writer.writerows(self.data_log)
+
+    def save_snapshot(self, snapshot_dir: str):
+        """Save agent positions and glucose field to .npz for 3D visualization."""
+        import numpy as np
+        path = Path(snapshot_dir)
+        path.mkdir(parents=True, exist_ok=True)
+        agents_data = []
+        for agent in self._all_agents.values():
+            if agent.pos is not None:
+                agents_data.append((*agent.pos, agent.uid[1]))
+        agents_arr = np.array(agents_data, dtype=np.int16) if agents_data else np.empty((0, 4), dtype=np.int16)
+        w, h, d = self.grid_dims
+        np.savez_compressed(
+            path / f"step_{self.steps:05d}.npz",
+            agents=agents_arr,
+            glucose=self.glucose_field.field.astype(np.float32),
+            metadata=np.array([self.steps, w, h, d], dtype=np.int32),
+        )
 
     # ------------------------------------------------------------------
     # Mutation mask
@@ -473,6 +640,11 @@ class RCCModel:
             self.log_data()
             return
 
+        # Reset immune infiltration factor (boosted by ICI treatment each step)
+        for type_id in (AgentType.CD4_HELPER1_T_CELL, AgentType.CD4_HELPER2_T_CELL, AgentType.MAST_CELL):
+            for agent in self.iter_agents_by_type_id(type_id):
+                agent.immune_infiltration_factor = 1
+
         self.apply_effects()
 
         if self.steps >= self.treatment_start:
@@ -487,10 +659,11 @@ class RCCModel:
         self.manage_search_dimension()
 
         # Shuffle and step all agents (snapshot to avoid mutation during iteration)
-        agents_snapshot = list(self._all_agents.values())
+        # Skip agents with has_step=False (e.g. Blood) to avoid wasted iteration
+        agents_snapshot = [a for a in self._all_agents.values() if a.has_step]
         self.rng.shuffle(agents_snapshot)
         for agent in agents_snapshot:
-            if agent._alive:
+            if agent.alive:
                 agent.step()
 
         self.move_all_agents()

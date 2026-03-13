@@ -1,6 +1,5 @@
 """CD4+ Helper 1 T Cell — produces IFN-gamma, activates M1 macrophages and DCs."""
 from src.agents.t_cell import TCell
-from src.agents.sex_hormone import SexHormoneType
 from src.agents.agent_types import AgentType
 from src.systems.effect import Effect
 
@@ -15,23 +14,14 @@ class CD4Helper1TCell(TCell):
         super().__init__(local_id, AgentType.CD4_HELPER1_T_CELL, rank, model, pos)
         self.experienced_effects.th1_proliferation_effect += self.initial_proliferation_chance
         self.experienced_effects.t_activation_effect = self.initial_t_activation_effect
-        self._cached_effect = Effect()
-        self._cached_effect.tumour_apoptosis_effect = self.my_tumour_apoptosis_effect
+        self._cached_effect = Effect.create(tumour_apoptosis_effect=self.my_tumour_apoptosis_effect)
 
     def step(self):
-        if super().base_step():
+        if self.base_step():
             return
 
         wp = self.model.weight_params
-        self.apply_hormonal_decay()
-
-        self.perceive_sex_hormone(SexHormoneType.ESTROGEN, quantity=2, search_radius=2)
-        self.perceive_sex_hormone(SexHormoneType.PROGESTERONE, quantity=1, search_radius=2)
-        self.perceive_sex_hormone(SexHormoneType.TESTOSTERONE, quantity=1, search_radius=2)
-
-        E = self.sex_hormone_stimulation_level(SexHormoneType.ESTROGEN)
-        P = self.sex_hormone_stimulation_level(SexHormoneType.PROGESTERONE)
-        T = self.sex_hormone_stimulation_level(SexHormoneType.TESTOSTERONE)
+        E, P, T = self.perceive_all_hormones(e_qty=2, p_qty=1, t_qty=1)
 
         x = -8.0 + 2.0 * (1 - E) - 0.5 * P - 0.5 * T
         gene_factor = self.sigmoid(x)
@@ -56,10 +46,6 @@ class CD4Helper1TCell(TCell):
             self.duplicate()
 
         self.move_towards(AgentType.TUMOR_CELL, self.search_dimension)
-        self.immune_infiltration_factor = 1
-
-    def get_effect(self):
-        return self._cached_effect
 
     has_effect = True
     needs_effect = True

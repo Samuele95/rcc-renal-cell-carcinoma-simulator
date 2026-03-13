@@ -14,21 +14,19 @@ class TregCell(Cell):
     def __init__(self, local_id, rank, model, pos):
         super().__init__(local_id, AgentType.REGULATORY_T_CELL, rank, model, pos)
         wp = model.weight_params
-        self._cached_effect = Effect()
-        self._cached_effect.t_kill_rate_effect = self.my_t_kill_rate_effect * wp.w_treg_t_kill_rate
-        self._cached_effect.t_proliferation_effect = self.my_t_proliferation_effect * wp.w_treg_t_proliferation
-        self._cached_effect.t_apoptosis_effect = self.my_t_apoptosis_effect * wp.w_treg_t_apoptosis
-        self._cached_effect.t_activation_effect = self.my_t_activation_effect * wp.w_treg_activation
-        self._cached_effect.dc_phagocytosis_effect = self.my_dc_phagocytosis_effect * wp.w_treg_dc_phagocytosis
+        self._cached_effect = Effect.create(
+            t_kill_rate_effect=self.my_t_kill_rate_effect * wp.w_treg_t_kill_rate,
+            t_proliferation_effect=self.my_t_proliferation_effect * wp.w_treg_t_proliferation,
+            t_apoptosis_effect=self.my_t_apoptosis_effect * wp.w_treg_t_apoptosis,
+            t_activation_effect=self.my_t_activation_effect * wp.w_treg_activation,
+            dc_phagocytosis_effect=self.my_dc_phagocytosis_effect * wp.w_treg_dc_phagocytosis,
+        )
 
     def step(self):
-        if super().base_step():
+        if self.base_step():
             return
         wp = self.model.weight_params
         move_radius = int(self.search_dimension * wp.w_treg_move)
         self.move_towards(AgentType.TUMOR_CELL, look_up_size=move_radius)
-
-    def get_effect(self):
-        return self._cached_effect
 
     has_effect = True
