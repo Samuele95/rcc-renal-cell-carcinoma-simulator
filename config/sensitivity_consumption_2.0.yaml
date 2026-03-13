@@ -1,0 +1,42 @@
+model:
+  volume: 0.0001
+  block_size: 10
+  random_seed: 42
+  max_steps: 250
+patient:
+  sex: M
+  BMI: 22.0
+  treatment: None
+  treatment_start: 50
+  ctc_concentration: 40000
+  neutrophil_concentration: 20000
+  mast_cell_concentration: 20000
+  treg_concentration: 40000
+  pdc_concentration: 20000
+  th1_concentration: 20000
+  th2_concentration: 20000
+  dc_concentration: 40000
+  m1_concentration: 20000
+  m2_concentration: 40000
+  nkl_concentration: 80000
+  cd4_concentration: 40000
+  cd8_concentration: 40000
+glucose:
+  w_glucose_diffusion: 0.1
+  w_glucose_decay: 0.01
+  w_glucose_source_rate: 5.0
+  w_glucose_tumor_consumption: 2.0
+  w_glucose_immune_consumption: 0.5
+  w_glucose_growth_sensitivity: 1.0
+  w_glucose_immune_sensitivity: 1.0
+  w_glucose_chemotaxis_strength: 0.3
+weights:
+  w_tumor_growth_eff: 1.2
+  w_tumor_growth_dna: 1.5
+  b_tumor_growth: 0.05
+  w_cytotoxic_kill: 0.5
+  w_natural_killer_kill_rate: 0.5
+  w_m1_t_kill_rate: 0.5
+  w_gene_pd1_inhibition: 1.5
+  w_cytotoxic_pd1_inhibition: 1.5
+  w_tumor_apoptosis_dna: 0.8

@@ -210,20 +210,28 @@
 \contentsline {section}{\numberline {10.2}Treatment Scenarios}{76}{section.10.2}%
 \contentsline {subsection}{\numberline {10.2.1}ICI Monotherapy Results}{76}{subsection.10.2.1}%
 \contentsline {subsection}{\numberline {10.2.2}ICI+TKI Combination Therapy Results}{77}{subsection.10.2.2}%
-\contentsline {subsection}{\numberline {10.2.3}Treatment Comparison}{77}{subsection.10.2.3}%
-\contentsline {subsection}{\numberline {10.2.4}Simulation Visualizations}{78}{subsection.10.2.4}%
+\contentsline {subsection}{\numberline {10.2.3}TKI Monotherapy Results}{77}{subsection.10.2.3}%
+\contentsline {subsection}{\numberline {10.2.4}Treatment Comparison}{78}{subsection.10.2.4}%
+\contentsline {subsection}{\numberline {10.2.5}Simulation Visualizations}{78}{subsection.10.2.5}%
 \contentsline {section}{\numberline {10.3}Sex-Specific Analysis}{80}{section.10.3}%
 \contentsline {subsection}{\numberline {10.3.1}Baseline Sex Differences}{80}{subsection.10.3.1}%
 \contentsline {subsection}{\numberline {10.3.2}Treatment Response Patterns}{80}{subsection.10.3.2}%
-\contentsline {section}{\numberline {10.4}Glucose Field Dynamics}{80}{section.10.4}%
-\contentsline {subsection}{\numberline {10.4.1}Metabolic-Tumor Burden Correlation}{80}{subsection.10.4.1}%
+\contentsline {section}{\numberline {10.4}Glucose Field Dynamics}{81}{section.10.4}%
+\contentsline {subsection}{\numberline {10.4.1}Metabolic-Tumor Burden Correlation}{81}{subsection.10.4.1}%
 \contentsline {subsection}{\numberline {10.4.2}Spatial Glucose Distribution}{81}{subsection.10.4.2}%
 \contentsline {subsection}{\numberline {10.4.3}Metabolic Implications}{81}{subsection.10.4.3}%
 \contentsline {section}{\numberline {10.5}Clinical Implications}{81}{section.10.5}%
-\contentsline {subsection}{\numberline {10.5.1}Sex-Stratified Treatment Selection}{81}{subsection.10.5.1}%
-\contentsline {subsection}{\numberline {10.5.2}Biomarker Development}{81}{subsection.10.5.2}%
+\contentsline {subsection}{\numberline {10.5.1}Sex-Stratified Treatment Selection}{82}{subsection.10.5.1}%
+\contentsline {subsection}{\numberline {10.5.2}Biomarker Development}{82}{subsection.10.5.2}%
 \contentsline {subsection}{\numberline {10.5.3}Treatment Optimization}{82}{subsection.10.5.3}%
-\contentsline {chapter}{\numberline {11}Conclusion}{83}{chapter.11}%
-\contentsline {section}{\numberline {11.1}Summary of Contributions}{83}{section.11.1}%
-\contentsline {section}{\numberline {11.2}Model Limitations}{84}{section.11.2}%
-\contentsline {section}{\numberline {11.3}Future Work}{85}{section.11.3}%
+\contentsline {section}{\numberline {10.6}Parameter Sensitivity Analysis}{82}{section.10.6}%
+\contentsline {subsection}{\numberline {10.6.1}Glucose Consumption Rate Variation}{82}{subsection.10.6.1}%
+\contentsline {subsection}{\numberline {10.6.2}Metabolic Tipping Point}{83}{subsection.10.6.2}%
+\contentsline {subsection}{\numberline {10.6.3}Biological Validation}{83}{subsection.10.6.3}%
+\contentsline {section}{\numberline {10.7}Reproducibility}{84}{section.10.7}%
+\contentsline {subsection}{\numberline {10.7.1}Scenario Configuration}{84}{subsection.10.7.1}%
+\contentsline {subsection}{\numberline {10.7.2}Simulation Protocol}{85}{subsection.10.7.2}%
+\contentsline {chapter}{\numberline {11}Conclusion}{86}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Summary of Contributions}{86}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Model Limitations}{87}{section.11.2}%
+\contentsline {section}{\numberline {11.3}Future Work}{88}{section.11.3}%
