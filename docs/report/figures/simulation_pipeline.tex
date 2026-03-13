@@ -1,0 +1,115 @@
+\begin{tikzpicture}[
+  box/.style={rectangle, rounded corners, minimum width=2.8cm, minimum height=1cm, text centered, font=\footnotesize, draw=black, thick},
+  databox/.style={box, fill=blue!15},
+  processbox/.style={box, fill=green!15},
+  agentbox/.style={box, fill=orange!15},
+  controlbox/.style={box, fill=red!15},
+  arrow/.style={->, >=stealth, thick, shorten >=2pt, shorten <=2pt},
+  decision/.style={diamond, aspect=2, minimum width=2cm, minimum height=0.8cm, text centered, font=\tiny, draw=black, thick, fill=yellow!15}
+]
+
+% Main pipeline flow (vertical)
+\node[databox] (collect) at (0, 8) {\textbf{1. Collect Data}\\Population counts\\Glucose statistics};
+
+\node[decision] (terminate) at (0, 6.5) {\textbf{2. Check}\\Termination\\Conditions};
+
+\node[processbox] (effects) at (0, 5) {\textbf{3. Apply Effects}\\Collect \& sum\\neighbor effects};
+
+\node[controlbox] (treatment) at (0, 3.5) {\textbf{4. Treatment}\\ICI \& TKI\\drug effects};
+
+\node[controlbox] (sexdrift) at (0, 2) {\textbf{5. Sex Drift}\\CD8+ modulation\\by sex};
+
+\node[processbox] (glucose) at (0, 0.5) {\textbf{6. Glucose Step}\\Diffusion \& decay\\Blood injection};
+
+\node[processbox] (blood) at (0, -1) {\textbf{7. Manage Blood}\\Angiogenesis\\BFS refresh};
+
+\node[processbox] (search) at (0, -2.5) {\textbf{8. Search Dimension}\\Update cell\\search radius};
+
+\node[agentbox] (agents) at (0, -4) {\textbf{9. Agent Steps}\\Individual agent\\behaviors (shuffled)};
+
+\node[agentbox] (move) at (0, -5.5) {\textbf{10. Deferred Move}\\Batch movement\\Update positions};
+
+\node[controlbox] (hormones) at (0, -7) {\textbf{11. Spawn Hormones}\\Sex hormone\\generation};
+
+% Terminal paths
+\node[controlbox] (log) at (4, 6.5) {\textbf{Write Log}\\\textbf{Terminate}};
+\node[controlbox] (continue) at (-4, 5) {\textbf{Next Step}\\$t \leftarrow t+1$};
+
+% Main flow arrows
+\draw[arrow] (collect) -- (terminate);
+\draw[arrow] (terminate) -- (effects);
+\draw[arrow] (effects) -- (treatment);
+\draw[arrow] (treatment) -- (sexdrift);
+\draw[arrow] (sexdrift) -- (glucose);
+\draw[arrow] (glucose) -- (blood);
+\draw[arrow] (blood) -- (search);
+\draw[arrow] (search) -- (agents);
+\draw[arrow] (agents) -- (move);
+\draw[arrow] (move) -- (hormones);
+
+% Termination decision
+\draw[arrow] (terminate) -- (log) node[midway, above] {\scriptsize yes};
+\draw[arrow] (terminate) -- (effects) node[midway, right] {\scriptsize no};
+
+% Loop back
+\draw[arrow] (hormones) to [out=180, in=270] (continue);
+\draw[arrow] (continue) to [out=90, in=180] (collect);
+
+% Side annotations
+\begin{scope}[xshift=6cm]
+% Data collection details
+\node[text width=3cm, font=\tiny, fill=gray!5, rounded corners, draw] at (0, 8) {
+\textbf{Data collected:}\\
+• Agent counts by type\\
+• Glucose: mean, min, max\\
+• Kill statistics\\
+• Growth rates
+};
+
+% Termination conditions
+\node[text width=3cm, font=\tiny, fill=gray!5, rounded corners, draw] at (0, 6) {
+\textbf{Terminal conditions:}\\
+• Max steps reached\\
+• Tumor eliminated\\
+• Tumor $>$ threshold\\
+• Growth rate $>$ limit
+};
+
+% Agent behaviors
+\node[text width=3cm, font=\tiny, fill=gray!5, rounded corners, draw] at (0, -4) {
+\textbf{Agent behaviors:}\\
+• Move towards targets\\
+• Kill/proliferate\\
+• Differentiate\\
+• Apply hormones\\
+• Set desired position
+};
+\end{scope}
+
+% Parallel processes annotation
+\begin{scope}[xshift=-6cm]
+\node[text width=3cm, font=\tiny, fill=gray!5, rounded corners, draw] at (0, 0) {
+\textbf{Glucose field:}\\
+• 3D diffusion (PDE)\\
+• Blood injection\\
+• Cell consumption\\
+• Natural decay\\
+• Gradient computation
+};
+
+\node[text width=3cm, font=\tiny, fill=gray!5, rounded corners, draw] at (0, -2.5) {
+\textbf{Spatial management:}\\
+• Moore neighborhoods\\
+• 3D distance queries\\
+• BFS from blood vessels\\
+• Deferred movement\\
+• Collision handling
+};
+\end{scope}
+
+% Time annotation
+\node[text width=8cm, font=\footnotesize, text centered] at (0, -8.5) {
+\textbf{One Simulation Step} --- Process repeats until termination condition met
+};
+
+\end{tikzpicture}

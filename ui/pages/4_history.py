@@ -9,8 +9,8 @@ from ui.lib.charts import (
 )
 from ui.lib.formatting import format_column_name, format_sex, TREATMENT_LABELS, OUTCOME_FRIENDLY, style_outcome
 
-st.title("Simulation History")
-st.caption("Review and compare your past simulation runs.")
+st.title("📊 Simulation History")
+st.caption("Review and compare your past simulation runs. Identify which treatments work best for different patient profiles.")
 
 runs = list_runs()
 if not runs:

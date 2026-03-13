@@ -230,7 +230,9 @@ def _render_density_map(path, container, chart_key):
 # PAGE START
 # =========================================================================
 
-st.title("Run Simulation")
+st.title("▶️ Run Simulation")
+st.caption("Watch the epic battle between tumor cells and the immune system unfold in real time. "
+           "See population dynamics, glucose competition, and treatment effects as they happen.")
 
 if "params" not in st.session_state:
     st.session_state["params"] = load_all_defaults()

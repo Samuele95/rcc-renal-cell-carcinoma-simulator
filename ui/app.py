@@ -532,9 +532,10 @@ run_page = st.Page("pages/2_run.py", title="Run", icon=":material/play_arrow:")
 results_page = st.Page("pages/3_results.py", title="Results", icon=":material/show_chart:")
 history_page = st.Page("pages/4_history.py", title="Compare", icon=":material/compare:")
 environment_page = st.Page("pages/5_environment.py", title="3D View", icon=":material/view_in_ar:")
+glucose_page = st.Page("pages/7_glucose.py", title="Glucose Field", icon=":material/water_drop:")
 about_page = st.Page("pages/6_about.py", title="About", icon=":material/info:")
 
-pg = st.navigation([home_page, configure_page, run_page, results_page, history_page, environment_page, about_page])
+pg = st.navigation([home_page, configure_page, run_page, results_page, history_page, environment_page, glucose_page, about_page])
 
 # Sidebar branding & status
 with st.sidebar:

@@ -1,0 +1,73 @@
+\begin{tikzpicture}[
+  node/.style={circle, minimum size=1.5cm, text centered, font=\footnotesize, thick},
+  source/.style={node, fill=red!20, draw=red!80},
+  process/.style={rectangle, rounded corners, minimum width=2.5cm, minimum height=1cm, text centered, font=\footnotesize, fill=blue!15, draw=blue!80, thick},
+  field/.style={rectangle, rounded corners, minimum width=3cm, minimum height=2cm, text centered, font=\footnotesize, fill=green!15, draw=green!80, thick},
+  consumer/.style={node, fill=orange!20, draw=orange!80},
+  arrow/.style={->, >=stealth, thick, shorten >=2pt, shorten <=2pt}
+]
+
+% Central glucose field
+\node[field] (field) at (0, 0) {\textbf{Glucose Field}\\[0.2cm]3D continuous\\concentration\\$C(\mathbf{x}, t)$};
+
+% Sources
+\node[source] (blood) at (-4, 2) {\textbf{Blood}\\[0.1cm]Vessels};
+\node[source] (inject) at (-4, -2) {\textbf{Injection}\\[0.1cm]Rate};
+
+% Processes
+\node[process] (diffusion) at (0, 3) {\textbf{Diffusion}\\[0.1cm]Fick's Law\\$\nabla^2 C$};
+\node[process] (decay) at (0, -3) {\textbf{Natural Decay}\\[0.1cm]$-\lambda C$};
+\node[process] (gradient) at (4, 0) {\textbf{Gradient}\\[0.1cm]$\nabla C$\\Chemotaxis};
+
+% Consumers
+\node[consumer] (tumor) at (-2, -5) {\textbf{Tumor}\\[0.1cm]Warburg};
+\node[consumer] (immune) at (2, -5) {\textbf{Immune}\\[0.1cm]Cells};
+
+% Arrows showing the cycle
+% Sources to field
+\draw[arrow, red!70] (blood) -- (field) node[midway, above, sloped] {\scriptsize inject};
+\draw[arrow, red!70] (inject) -- (field) node[midway, below, sloped] {\scriptsize $+w_{glucose\_injection}$};
+
+% Field processes
+\draw[arrow, blue!70] (field) -- (diffusion) node[midway, right] {\scriptsize $\frac{\partial C}{\partial t}$};
+\draw[arrow, blue!70] (diffusion) -- (field);
+\draw[arrow, blue!70] (field) -- (decay);
+\draw[arrow, blue!70] (decay) -- (field) node[midway, left] {\scriptsize $-w_{glucose\_decay}$};
+
+% Gradient computation
+\draw[arrow, green!70] (field) -- (gradient) node[midway, above] {\scriptsize compute};
+\draw[arrow, green!70] (gradient) to [bend right=20] ($(field.east) + (0, -0.5)$) node[midway, below] {\scriptsize guide movement};
+
+% Consumption
+\draw[arrow, orange!70] (tumor) -- (field) node[midway, below, sloped] {\scriptsize $-w_{tumor\_consumption}$};
+\draw[arrow, orange!70] (immune) -- (field) node[midway, below, sloped] {\scriptsize $-w_{immune\_consumption}$};
+
+% Feedback to consumers
+\draw[arrow, dashed, purple] (field) to [bend left=30] (tumor) node[midway, left] {\scriptsize growth\\modulation};
+\draw[arrow, dashed, purple] (field) to [bend right=30] (immune) node[midway, right] {\scriptsize activity\\modulation};
+
+% Equations box
+\begin{scope}[xshift=7cm, yshift=1cm]
+\node[text width=4cm, font=\tiny, fill=gray!10, rounded corners, draw] {
+\textbf{Glucose PDE:}\\[0.1cm]
+$\frac{\partial C}{\partial t} = D \nabla^2 C + S - \lambda C - R$\\[0.2cm]
+where:\\
+$D$ = diffusion coefficient\\
+$S$ = blood injection\\
+$\lambda$ = decay rate\\
+$R$ = consumption rate
+};
+\end{scope}
+
+% Legend
+\begin{scope}[xshift=-6cm, yshift=-6cm]
+\node[text width=3cm, font=\tiny] {
+\textcolor{red!70}{\textbf{Sources}}\\
+\textcolor{blue!70}{\textbf{Physical processes}}\\
+\textcolor{green!70}{\textbf{Spatial computation}}\\
+\textcolor{orange!70}{\textbf{Consumption}}\\
+\textcolor{purple}{\textbf{Feedback loops}}
+};
+\end{scope}
+
+\end{tikzpicture}

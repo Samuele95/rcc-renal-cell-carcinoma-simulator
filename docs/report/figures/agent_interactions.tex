@@ -1,0 +1,103 @@
+\begin{tikzpicture}[
+  scale=0.8,
+  agent/.style={circle, minimum size=1.2cm, text centered, font=\tiny, thick},
+  tumor/.style={agent, fill=red!30, draw=red!80},
+  tcell/.style={agent, fill=blue!30, draw=blue!80},
+  innate/.style={agent, fill=green!30, draw=green!80},
+  support/.style={agent, fill=orange!20, draw=orange!80},
+  signal/.style={agent, fill=purple!20, draw=purple!80},
+  kill/.style={->, >=stealth, red, thick},
+  activate/.style={->, >=stealth, blue, thick},
+  suppress/.style={->, >=stealth, gray, thick, dashed},
+  recruit/.style={->, >=stealth, green, thick},
+  produce/.style={->, >=stealth, purple, thick, dotted}
+]
+
+% Central tumor
+\node[tumor] (tumor) at (0, 0) {\textbf{Tumor}\\Cell};
+
+% T cells
+\node[tcell] (ctc) at (-3, 2) {\textbf{CTC}};
+\node[tcell] (cd8) at (-4, 0) {\textbf{CD8+}\\Naive};
+\node[tcell] (cd4) at (-3, -2) {\textbf{CD4+}\\Naive};
+\node[tcell] (th1) at (-1, -3) {\textbf{Th1}};
+\node[tcell] (th2) at (1, -3) {\textbf{Th2}};
+\node[tcell] (treg) at (3, -2) {\textbf{Treg}};
+
+% Innate immune
+\node[innate] (dc) at (-2, 3) {\textbf{DC}};
+\node[innate] (pdc) at (2, 3) {\textbf{pDC}};
+\node[innate] (m1) at (4, 0) {\textbf{M1}};
+\node[innate] (m2) at (3, 2) {\textbf{M2}};
+\node[innate] (nk) at (0, 4) {\textbf{NK}};
+\node[innate] (mast) at (-4, 4) {\textbf{Mast}};
+
+% Support cells
+\node[support] (blood) at (-1, 1) {\textbf{Blood}};
+
+% Signaling molecules
+\node[signal] (hormone) at (5, -1) {\textbf{Sex}\\Hormone};
+\node[signal] (cytokine) at (-5, -1) {\textbf{Cytokine}};
+
+% Primary killing interactions
+\draw[kill] (ctc) -- (tumor) node[midway, above, sloped] {\scriptsize kill};
+\draw[kill] (nk) -- (tumor) node[midway, above right] {\scriptsize kill};
+\draw[kill] (m1) to [bend left=20] (tumor) node[midway, above] {\scriptsize phagocytosis};
+\draw[kill] (dc) to [bend right=20] (tumor) node[midway, above] {\scriptsize phagocytosis};
+
+% Activation chain
+\draw[activate] (dc) -- (cd8) node[midway, above, sloped] {\scriptsize activate};
+\draw[activate] (dc) -- (cd4) node[midway, left] {\scriptsize activate};
+\draw[activate] (cd8) -- (ctc) node[midway, left] {\scriptsize differentiate};
+\draw[activate] (cd4) -- (th1) node[midway, above] {\scriptsize diff.};
+\draw[activate] (cd4) -- (th2) node[midway, above] {\scriptsize diff.};
+\draw[activate] (m1) to [bend left=30] (cd4) node[midway, below] {\scriptsize activate};
+
+% Suppression
+\draw[suppress] (treg) -- (ctc) node[midway, above] {\scriptsize suppress};
+\draw[suppress] (m2) -- (ctc) node[midway, above] {\scriptsize suppress};
+\draw[suppress] (tumor) to [bend right=40] (ctc) node[midway, right] {\scriptsize PD-L1};
+
+% Recruitment
+\draw[recruit] (th1) -- (m1) node[midway, below] {\scriptsize recruit};
+\draw[recruit] (th1) to [bend right=20] (dc) node[midway, below] {\scriptsize recruit};
+\draw[recruit] (th2) -- (ctc) node[midway, right] {\scriptsize recruit};
+\draw[recruit] (mast) -- (dc) node[midway, above] {\scriptsize spawn};
+\draw[recruit] (pdc) -- (nk) node[midway, above] {\scriptsize spawn};
+
+% Polarization
+\draw[activate, dashed] (m1) to [bend left=60] (m2) node[midway, above] {\scriptsize $\to$ M2};
+\draw[activate, dashed] (m2) to [bend left=60] (m1) node[midway, below] {\scriptsize $\to$ M1};
+
+% Treg differentiation
+\draw[activate] (cd4) to [bend left=30] (treg) node[midway, right] {\scriptsize diff.};
+
+% Hormone effects
+\draw[produce] (hormone) to [bend left=20] (ctc) node[midway, above] {\scriptsize modulate};
+\draw[produce] (hormone) to [bend left=20] (treg) node[midway, right] {\scriptsize enhance};
+\draw[produce] (blood) -- (hormone) node[midway, below] {\scriptsize release};
+
+% Angiogenesis
+\draw[produce] (tumor) -- (blood) node[midway, above left] {\scriptsize angiogenesis};
+\draw[produce] (m2) to [bend right=30] (blood) node[midway, above] {\scriptsize promote};
+
+% Glucose effects (simplified)
+\draw[produce, dotted] (blood) to [bend right=30] (tumor) node[midway, left] {\scriptsize glucose};
+
+% Legend
+\begin{scope}[xshift=-7cm, yshift=-5cm]
+\node[text width=3.5cm, font=\tiny] {
+\textcolor{red}{\textbf{Cytotoxic killing}}\\
+\textcolor{blue}{\textbf{Activation/differentiation}}\\
+\textcolor{gray}{\textbf{Suppression}}\\
+\textcolor{green}{\textbf{Recruitment/spawning}}\\
+\textcolor{purple}{\textbf{Signaling/production}}\\[0.2cm]
+\textcolor{red!80}{\textbf{Tumor}} \quad
+\textcolor{blue!80}{\textbf{T cells}} \quad
+\textcolor{green!80}{\textbf{Innate}} \\
+\textcolor{orange!80}{\textbf{Support}} \quad
+\textcolor{purple!80}{\textbf{Signals}}
+};
+\end{scope}
+
+\end{tikzpicture}

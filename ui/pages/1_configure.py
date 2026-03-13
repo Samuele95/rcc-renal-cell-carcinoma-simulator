@@ -458,8 +458,8 @@ if _current_preset in scenarios and _current_preset == st.session_state.get("pre
 # SECTION 1: Patient Profile
 # =========================================================================
 
-st.header("Patient Profile")
-st.caption("Who is the virtual patient? These characteristics affect how the immune system responds to cancer.")
+st.header("👤 Patient Profile")
+st.caption("Who is the virtual patient? These biological characteristics significantly affect how the immune system responds to cancer.")
 
 pc1, pc2 = st.columns(2)
 with pc1:
@@ -514,8 +514,8 @@ st.markdown("")
 # SECTION 2: Treatment Strategy
 # =========================================================================
 
-st.header("Treatment Strategy")
-st.caption("Choose if and how to treat the tumor. Treatment starts after an initial observation period.")
+st.header("💊 Treatment Strategy")
+st.caption("Choose your therapeutic approach. Treatment begins after an initial tumor establishment phase, simulating real clinical timing.")
 
 # Visual treatment cards
 _TREATMENT_CARDS = [
@@ -599,8 +599,8 @@ if impact_text:
 # SECTION 3: Simulation Settings
 # =========================================================================
 
-st.header("Simulation Settings")
-st.caption("Control how long the simulation runs and the size of the simulated tissue.")
+st.header("⚙️ Simulation Settings")
+st.caption("Configure the computational parameters: duration, tissue size, and randomness seed.")
 
 col1, col2, col3 = st.columns(3)
 with col1:

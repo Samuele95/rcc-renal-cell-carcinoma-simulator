@@ -2,8 +2,8 @@
 
 import streamlit as st
 
-st.title("About This Simulator")
-st.caption("Model assumptions, methods, limitations, and references.")
+st.title("📋 About This Simulator")
+st.caption("Learn about the scientific model, computational methods, limitations, and research context.")
 
 # ---------------------------------------------------------------------------
 # Model overview

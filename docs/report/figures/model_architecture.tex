@@ -1,0 +1,56 @@
+\begin{tikzpicture}[
+  box/.style={rectangle, rounded corners, minimum width=2.5cm, minimum height=1.2cm, text centered, draw=black, font=\footnotesize, thick},
+  mainbox/.style={box, fill=blue!20, minimum width=3.5cm, minimum height=1.8cm},
+  component/.style={box, fill=green!15},
+  data/.style={box, fill=orange!15, minimum width=2cm, minimum height=0.8cm},
+  arrow/.style={->, >=stealth, thick}
+]
+
+% Main model
+\node[mainbox] (model) at (0, 0) {\textbf{RCCModel}\\[0.2cm]\footnotesize Main controller\\Repast4Py model};
+
+% Core components
+\node[component] (glucose) at (-4, 2.5) {\textbf{GlucoseField}\\[0.1cm]3D diffusion\\Warburg effect};
+\node[component] (adder) at (-4, 0) {\textbf{CellAdder}\\[0.1cm]Agent spawning\\Initialization};
+\node[component] (observer) at (-4, -2.5) {\textbf{Observer}\\[0.1cm]Data collection\\Logging};
+
+\node[component] (treatment) at (4, 2.5) {\textbf{Treatment}\\[0.1cm]ICI \& TKI\\Drug effects};
+\node[component] (spatial) at (4, 0) {\textbf{SpatialIndex}\\[0.1cm]3D queries\\Neighbors};
+\node[component] (grid) at (4, -2.5) {\textbf{SharedGrid}\\[0.1cm]Agent positions\\3D space};
+
+% Data structures
+\node[data] (params) at (0, 3.5) {Parameters\\(YAML)};
+\node[data] (effects) at (-7, 0) {Effects\\System};
+\node[data] (agents) at (0, -4) {Agent\\Context};
+\node[data] (logs) at (7, 0) {Logs \&\\Output};
+
+% Arrows - Data flow
+\draw[arrow] (params) -- (model);
+\draw[arrow] (model) -- (glucose);
+\draw[arrow] (model) -- (adder);
+\draw[arrow] (model) -- (observer);
+\draw[arrow] (model) -- (treatment);
+\draw[arrow] (model) -- (spatial);
+\draw[arrow] (model) -- (grid);
+
+% Cross-component interactions
+\draw[arrow, dashed] (glucose) -- (spatial);
+\draw[arrow, dashed] (adder) -- (grid);
+\draw[arrow, dashed] (observer) -- (logs);
+\draw[arrow, dashed] (treatment) -- (effects);
+\draw[arrow, dashed] (spatial) -- (grid);
+
+% External connections
+\draw[arrow] (effects) -- (adder);
+\draw[arrow] (agents) -- (grid);
+\draw[arrow] (observer) -- (logs);
+
+% Step sequence annotations
+\begin{scope}[xshift=0cm, yshift=-6.5cm]
+\node[text width=12cm, font=\footnotesize] {
+\textbf{Main Step Sequence:}
+1. collect\_data $\rightarrow$ 2. check\_termination $\rightarrow$ 3. apply\_effects $\rightarrow$ 4. treatment $\rightarrow$ 5. sex\_drift $\rightarrow$ 6. glucose\_step $\rightarrow$ 7. manage\_blood $\rightarrow$ 8. agent\_steps $\rightarrow$ 9. move $\rightarrow$ 10. spawn\_hormones
+};
+\end{scope}
+
+\end{tikzpicture}

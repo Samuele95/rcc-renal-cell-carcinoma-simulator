@@ -36,7 +36,7 @@ with cols[2]:
     st.markdown("""<div class="workflow-step" role="group" aria-label="Step 3: Understand the Results">
 <span class="step-number" aria-hidden="true">3</span>
 <h4>Understand the Results</h4>
-<p>Did the treatment work? Explore detailed charts, compare strategies, and view the 3D environment.</p>
+<p>Did the treatment work? Explore detailed charts, glucose energy fields, compare strategies, and view the 3D environment.</p>
 </div>""", unsafe_allow_html=True)
 
 st.markdown("")

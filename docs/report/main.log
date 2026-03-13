@@ -1,0 +1,1808 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.6)  13 MAR 2026 12:18
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**main
+(./main.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-22>
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2023/05/17 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count187
+\c@chapter=\count188
+\c@section=\count189
+\c@subsection=\count190
+\c@subsubsection=\count191
+\c@paragraph=\count192
+\c@subparagraph=\count193
+\c@figure=\count194
+\c@table=\count195
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2024/01/07 v24.1 The Babel package
+\babel@savecnt=\count196
+\U@D=\dimen141
+\l@unhyphenated=\language5
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count197
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: Hyphen rules for 'british' set to \l@english
+(babel)             (\language0). Reported on input line 82.
+Package babel Info: Hyphen rules for 'UKenglish' set to \l@english
+(babel)             (\language0). Reported on input line 83.
+Package babel Info: Hyphen rules for 'canadian' set to \l@english
+(babel)             (\language0). Reported on input line 102.
+Package babel Info: Hyphen rules for 'australian' set to \l@english
+(babel)             (\language0). Reported on input line 105.
+Package babel Info: Hyphen rules for 'newzealand' set to \l@english
+(babel)             (\language0). Reported on input line 108.
+))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/locale/en/babel-english.tex
+Package babel Info: Importing font and identification data for english
+(babel)             from babel-en.ini. Reported on input line 11.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2023/05/13 v2.17o AMS math features
+\@mathmargin=\skip50
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks19
+\ex@=\dimen142
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen143
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count198
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count199
+\leftroot@=\count266
+LaTeX Info: Redefining \overline on input line 399.
+LaTeX Info: Redefining \colon on input line 410.
+\classnum@=\count267
+\DOTSCASE@=\count268
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box51
+\strutbox@=\box52
+LaTeX Info: Redefining \big on input line 722.
+LaTeX Info: Redefining \Big on input line 723.
+LaTeX Info: Redefining \bigg on input line 724.
+LaTeX Info: Redefining \Bigg on input line 725.
+\big@size=\dimen144
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count269
+LaTeX Info: Redefining \bmod on input line 905.
+LaTeX Info: Redefining \pmod on input line 910.
+LaTeX Info: Redefining \smash on input line 940.
+LaTeX Info: Redefining \relbar on input line 970.
+LaTeX Info: Redefining \Relbar on input line 971.
+\c@MaxMatrixCols=\count270
+\dotsspace@=\muskip16
+\c@parentequation=\count271
+\dspbrk@lvl=\count272
+\tag@help=\toks20
+\row@=\count273
+\column@=\count274
+\maxfields@=\count275
+\andhelp@=\toks21
+\eqnshift@=\dimen145
+\alignsep@=\dimen146
+\tagshift@=\dimen147
+\tagwidth@=\dimen148
+\totwidth@=\dimen149
+\lineht@=\dimen150
+\@envbody=\toks22
+\multlinegap=\skip51
+\multlinetaggap=\skip52
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks24
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen151
+\Gin@req@width=\dimen152
+)
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen153
+\lightrulewidth=\dimen154
+\cmidrulewidth=\dimen155
+\belowrulesep=\dimen156
+\belowbottomsep=\dimen157
+\aboverulesep=\dimen158
+\abovetopsep=\dimen159
+\cmidrulesep=\dimen160
+\cmidrulekern=\dimen161
+\defaultaddspace=\dimen162
+\@cmidla=\count276
+\@cmidlb=\count277
+\@aboverulesep=\dimen163
+\@belowrulesep=\dimen164
+\@thisruleclass=\count278
+\@lastruleclass=\count279
+\@thisrulewidth=\dimen165
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2023-11-01 v4.19 Multi-page Table package (DPC)
+\LTleft=\skip53
+\LTright=\skip54
+\LTpre=\skip55
+\LTpost=\skip56
+\LTchunksize=\count280
+\LTcapwidth=\dimen166
+\LT@head=\box53
+\LT@firsthead=\box54
+\LT@foot=\box55
+\LT@lastfoot=\box56
+\LT@gbox=\box57
+\LT@cols=\count281
+\LT@rows=\count282
+\c@LT@tables=\count283
+\c@LT@chunks=\count284
+\LT@p@ftn=\toks25
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2024-01-20 v7.01h Hypertext links for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+)
+(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count285
+)
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count286
+)
+\@linkdim=\dimen167
+\Hy@linkcounter=\count287
+\Hy@pagecounter=\count288
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2024-01-20 v7.01h Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count289
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2024-01-20 v7.01h Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4179.
+Package hyperref Info: Link nesting OFF on input line 4184.
+Package hyperref Info: Hyper index ON on input line 4187.
+Package hyperref Info: Plain pages OFF on input line 4194.
+Package hyperref Info: Backreferencing OFF on input line 4199.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4446.
+\c@Hy@tempcnt=\count290
+
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4784.
+\XeTeXLinkMargin=\dimen168
+
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count291
+\Field@Width=\dimen169
+\Fld@charsize=\dimen170
+Package hyperref Info: Hyper figures OFF on input line 6063.
+Package hyperref Info: Link nesting OFF on input line 6068.
+Package hyperref Info: Hyper index ON on input line 6071.
+Package hyperref Info: backreferencing OFF on input line 6078.
+Package hyperref Info: Link coloring OFF on input line 6083.
+Package hyperref Info: Link coloring with OCG OFF on input line 6088.
+Package hyperref Info: PDF/A mode OFF on input line 6093.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count292
+\c@Item=\count293
+\c@Hfootnote=\count294
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2024-01-20 v7.01h Hyperref driver for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
+with kernel methods
+)
+\Fld@listcount=\count295
+\c@bookmark@seq@number=\count296
+
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+85.
+)
+\Hy@SectionHShift=\skip57
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count297
+\lst@gtempboxa=\box58
+\lst@token=\toks26
+\lst@length=\count298
+\lst@currlwidth=\dimen171
+\lst@column=\count299
+\lst@pos=\count300
+\lst@lostspace=\dimen172
+\lst@width=\dimen173
+\lst@newlines=\count301
+\lst@lineno=\count302
+\lst@maxwidth=\dimen174
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
+\c@lstnumber=\count303
+\lst@skipnumbers=\count304
+\lst@framebox=\box59
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2023/02/27 1.9 listings configuration
+))
+Package: listings 2023/02/27 1.9 (Carsten Heinz)
+
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
+Package xcolor Info: Model `RGB' extended on input line 1366.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen175
+\captionmargin=\dimen176
+\caption@leftmargin=\dimen177
+\caption@rightmargin=\dimen178
+\caption@width=\dimen179
+\caption@indent=\dimen180
+\caption@parindent=\dimen181
+\caption@hangindent=\dimen182
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count305
+\c@continuedfloat=\count306
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+))
+Package caption Info: New subtype `subfigure' on input line 238.
+\c@subfigure=\count307
+Package caption Info: New subtype `subtable' on input line 238.
+\c@subtable=\count308
+)
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip58
+\multirow@cntb=\count309
+\multirow@dima=\skip59
+\bigstrutjot=\dimen183
+)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count310
+\Gm@cntv=\count311
+\c@Gm@tempcnt=\count312
+\Gm@bindingoffset=\dimen184
+\Gm@wd@mp=\dimen185
+\Gm@odd@mp=\dimen186
+\Gm@even@mp=\dimen187
+\Gm@layoutwidth=\dimen188
+\Gm@layoutheight=\dimen189
+\Gm@layouthoffset=\dimen190
+\Gm@layoutvoffset=\dimen191
+\Gm@dimlist=\toks27
+)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count313
+\float@exts=\toks28
+\float@box=\box60
+\@float@everytoks=\toks29
+\@floatcapt=\box61
+)
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip60
+\enit@outerparindent=\dimen192
+\enit@toks=\toks30
+\enit@inbox=\box62
+\enit@count@id=\count314
+\enitdp@description=\count315
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks31
+\pgfutil@tempdima=\dimen193
+\pgfutil@tempdimb=\dimen194
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box63
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
+))
+Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks32
+\pgfkeys@temptoks=\toks33
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered
+.code.tex
+\pgfkeys@tmptoks=\toks34
+))
+\pgf@x=\dimen195
+\pgf@y=\dimen196
+\pgf@xa=\dimen197
+\pgf@ya=\dimen198
+\pgf@xb=\dimen199
+\pgf@yb=\dimen256
+\pgf@xc=\dimen257
+\pgf@yc=\dimen258
+\pgf@xd=\dimen259
+\pgf@yd=\dimen260
+\w@pgf@writea=\write3
+\r@pgf@reada=\read3
+\c@pgf@counta=\count316
+\c@pgf@countb=\count317
+\c@pgf@countc=\count318
+\c@pgf@countd=\count319
+\t@pgf@toka=\toks35
+\t@pgf@tokb=\toks36
+\t@pgf@tokc=\toks37
+\pgf@sys@id@count=\count320
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
+)
+Driver file for pgf: pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f
+File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex
+File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfsyssoftpath@smallbuffer@items=\count321
+\pgfsyssoftpath@bigbuffer@items=\count322
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex
+File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen261
+\pgfmath@count=\count323
+\pgfmath@box=\box64
+\pgfmath@toks=\toks38
+\pgfmath@stack@operand=\toks39
+\pgfmath@stack@operation=\toks40
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count324
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x
+File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@picminx=\dimen262
+\pgf@picmaxx=\dimen263
+\pgf@picminy=\dimen264
+\pgf@picmaxy=\dimen265
+\pgf@pathminx=\dimen266
+\pgf@pathmaxx=\dimen267
+\pgf@pathminy=\dimen268
+\pgf@pathmaxy=\dimen269
+\pgf@xx=\dimen270
+\pgf@xy=\dimen271
+\pgf@yx=\dimen272
+\pgf@yy=\dimen273
+\pgf@zx=\dimen274
+\pgf@zy=\dimen275
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex
+File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@path@lastx=\dimen276
+\pgf@path@lasty=\dimen277
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex
+File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@shorten@end@additional=\dimen278
+\pgf@shorten@start@additional=\dimen279
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x
+File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfpic=\box65
+\pgf@hbox=\box66
+\pgf@layerbox@main=\box67
+\pgf@picture@serial@count=\count325
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex
+File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgflinewidth=\dimen280
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex
+File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@pt@x=\dimen281
+\pgf@pt@y=\dimen282
+\pgf@pt@temp=\dimen283
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex
+File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex
+File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x
+File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowsep=\dimen284
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@max=\dimen285
+\pgf@sys@shading@range@num=\count326
+\pgf@shadingcount=\count327
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex
+File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfexternal@startupbox=\box68
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x
+File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex
+File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex
+File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodeparttextbox=\box69
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty
+Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
+\pgf@nodesepstart=\dimen286
+\pgf@nodesepend=\dimen287
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty
+Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
+)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
+\pgffor@iter=\dimen288
+\pgffor@skip=\dimen289
+\pgffor@stack=\toks41
+\pgffor@toks=\toks42
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex
+File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@plot@mark@count=\count328
+\pgfplotmarksize=\dimen290
+)
+\tikz@lastx=\dimen291
+\tikz@lasty=\dimen292
+\tikz@lastxsaved=\dimen293
+\tikz@lastysaved=\dimen294
+\tikz@lastmovetox=\dimen295
+\tikz@lastmovetoy=\dimen296
+\tikzleveldistance=\dimen297
+\tikzsiblingdistance=\dimen298
+\tikz@figbox=\box70
+\tikz@figbox@bg=\box71
+\tikz@tempbox=\box72
+\tikz@tempbox@bg=\box73
+\tikztreelevel=\count329
+\tikznumberofchildren=\count330
+\tikznumberofcurrentchild=\count331
+\tikz@fig@count=\count332
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfmatrixcurrentrow=\count333
+\pgfmatrixcurrentcolumn=\count334
+\pgf@matrix@numberofcolumns=\count335
+)
+\tikz@expandcount=\count336
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.
+code.tex
+File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowinset=\dimen299
+\pgfarrowlength=\dimen300
+\pgfarrowwidth=\dimen301
+\pgfarrowlinewidth=\dimen302
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshape
+s.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryfit.code.tex
+File: tikzlibraryfit.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 49.
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count337
+\l__pdf_internal_box=\box74
+)
+(./main.aux)
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+ (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count338
+\scratchdimen=\dimen303
+\scratchbox=\box75
+\nofMPsegments=\count339
+\nofMParguments=\count340
+\everyMPshowfont=\toks43
+\MPscratchCnt=\count341
+\MPscratchDim=\dimen304
+\MPnumerator=\count342
+\makeMPintoPDFobject=\count343
+\everyMPtoPDFconversion=\toks44
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package hyperref Info: Link coloring ON on input line 62.
+
+(./main.out) (./main.out)
+\@outlinefile=\write4
+\openout4 = `main.out'.
+
+\c@lstlisting=\count344
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: End \AtBeginDocument code.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=702.78308pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-38.1381pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 65.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 65.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.68 \end{abstract}
+                    [1] (./main.toc
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.39 ...2.1}Base Cell Class}{21}{subsection.3.2.1}
+                                                  % [1
+
+]
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
+9.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+) [2] [3] [4])
+\tf@toc=\write5
+\openout5 = `main.toc'.
+
+
+(./chapters/01_introduction.tex [5]
+Chapter 1.
+[6
+
+]
+Overfull \hbox (12.89967pt too wide) in paragraph at lines 21--22
+[]\T1/cmr/bx/n/12 Stromal cells \T1/cmr/m/n/12 such as adipocytes and fi-brob-l
+asts that pro-vide struc-tural and metabolic
+ []
+
+[7] [8]
+Overfull \hbox (10.19986pt too wide) in paragraph at lines 81--82
+[]\T1/cmr/bx/n/12 Optimize pa-ram-e-ters via Bayesian op-ti-miza-tion. \T1/cmr/
+m/n/12 An Optuna-based [[]] Bayesian
+ []
+
+) (./chapters/02_theoretical_background.tex [9]
+Chapter 2.
+[10
+
+]
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 54.
+ [11]
+Overfull \hbox (71.48485pt too wide) in paragraph at lines 61--62
+[]\T1/cmr/bx/n/12 Schedule run-ner. \T1/cmr/m/n/12 The schedul-ing mech-a-nism,
+ ini-tial-ized via \T1/cmtt/m/n/12 schedule.init_schedule_runner\T1/cmr/m/n/12 
+,
+ []
+
+[12]
+Overfull \hbox (47.64008pt too wide) in paragraph at lines 118--119
+\T1/cmr/m/n/12 tu-mor im-mune eva-sion. Tregs in-hibit cy-to-toxic T cell killi
+ng (re-duc-ing \T1/cmtt/m/n/12 t_kill_rate_effect\T1/cmr/m/n/12 ),
+ []
+
+
+Overfull \hbox (42.19539pt too wide) in paragraph at lines 125--126
+\T1/cmr/m/n/12 mor cells, phago-cy-tose them (with prob-a-bil-ity mod-u-lated b
+y the \T1/cmtt/m/n/12 dc_phagocitosis_effect\T1/cmr/m/n/12 ),
+ []
+
+[13]
+Overfull \hbox (49.83813pt too wide) in paragraph at lines 136--137
+\T1/cmr/m/n/12 macrophages can po-lar-ize to M2 un-der the in-flu-ence of the \
+T1/cmtt/m/n/12 macrophage_m1_mutation_effect\T1/cmr/m/n/12 ,
+ []
+
+[14]
+Overfull \hbox (0.4375pt too wide) in paragraph at lines 174--175
+[]\T1/cmr/bx/n/12 Treg re-cruit-ment. \T1/cmr/m/n/12 The tu-mor mi-croen-vi-ron
+-ment pro-motes dif-fer-en-ti-a-tion of CD4$[]$
+ []
+
+[15]
+Overfull \hbox (0.4057pt too wide) in paragraph at lines 187--188
+\T1/cmr/m/n/12 In 1956, Otto War-burg ob-served that can-cer cells pref-er-en-t
+ially me-tab-o-lize glu-cose through
+ []
+
+
+Overfull \hbox (4.0687pt too wide) in paragraph at lines 187--188
+\T1/cmr/m/n/12 gly-col-y-sis rather than ox-ida-tive phos-pho-ry-la-tion, even 
+in the pres-ence of ad-e-quate oxygen---
+ []
+
+
+Overfull \hbox (116.10805pt too wide) in paragraph at lines 195--196
+\T1/cmr/m/n/12 for tu-mor cells (\T1/cmtt/m/n/12 w_glucose_tumor_consumption\T1
+/cmr/m/n/12 ) com-pared to im-mune cells (\T1/cmtt/m/n/12 w_glucose_immune_cons
+umption\T1/cmr/m/n/12 ).
+ []
+
+[16]
+Overfull \hbox (10.74625pt too wide) in paragraph at lines 237--238
+\T1/cmr/m/n/12 with prob-a-bil-ity pro-por-tional to the drug's ef-fec-tive-nes
+s pa-ram-e-ter (\T1/cmtt/m/n/12 w_ici_effectiveness\T1/cmr/m/n/12 ): 
+ []
+
+[17]
+Overfull \hbox (105.67732pt too wide) in paragraph at lines 258--259
+[]\T1/cmr/m/n/12 Additionally, TKI treat-ment re-duces Treg dif-fer-en-ti-a-tio
+n by de-creas-ing the \T1/cmtt/m/n/12 treg_differentiation_effect
+ []
+
+) (./chapters/03_model_description.tex [18]
+Chapter 3.
+[19
+
+]
+Overfull \hbox (17.60434pt too wide) in paragraph at lines 63--64
+\T1/cmr/m/n/12 Each sim-u-la-tion step fol-lows a fixed se-quence of op-er-a-ti
+ons, ex-e-cuted by the \T1/cmtt/m/n/12 RCCModel.step()
+ []
+
+
+Overfull \hbox (63.68057pt too wide) in paragraph at lines 68--69
+\T1/cmr/m/n/12 neigh-bor-ing agents within the ef-fect ra-dius and sum them int
+o the agent's \T1/cmtt/m/n/12 experienced_effects\T1/cmr/m/n/12 . 
+ []
+
+[20]
+Overfull \hbox (102.40297pt too wide) in paragraph at lines 100--101
+[]\T1/cmtt/m/n/12 base_step()\T1/cmr/m/n/12 : Com-mon pre-step logic that ap-pl
+ies a base death prob-a-bil-ity (\T1/cmtt/m/n/12 w_cell_base_death_prob\T1/cmr/
+m/n/12 ),
+ []
+
+
+Overfull \hbox (1.57346pt too wide) in paragraph at lines 102--103
+[]\T1/cmtt/m/n/12 move_towards(target_type, look_up_size, distance)\T1/cmr/m/n/
+12 : Finds the near-est agent
+ []
+
+[21]
+Overfull \hbox (38.56264pt too wide) in paragraph at lines 115--116
+\T1/cmr/m/n/12 lev-els of es-tro-gen, testos-terone, pro-ges-terone, and an-dro
+-gen. The \T1/cmtt/m/n/12 perceive_sex_hormone()
+ []
+
+
+Overfull \hbox (70.19795pt too wide) in paragraph at lines 117--118
+\T1/cmr/m/n/12 gen-er-ated ran-domly at cre-ation. Anti-gen recog-ni-tion is de
+-ter-mined by the \T1/cmtt/m/n/12 is_matching(antigen,
+ []
+
+
+Overfull \hbox (21.23158pt too wide) in paragraph at lines 121--123
+\T1/cmr/m/n/12 where $\OML/cmm/m/it/12 d[]$ \T1/cmr/m/n/12 is the Ham-ming dis-
+tance and $\OT1/cmr/m/n/12 ^^A[]$ \T1/cmr/m/n/12 is the \T1/cmtt/m/n/12 recepto
+r_threshold_variation
+ []
+
+
+Overfull \hbox (50.13513pt too wide) in paragraph at lines 133--134
+[]\T1/cmr/bx/n/12 Inheriting from \T1/cmtt/m/n/12 TCell \T1/cmr/m/n/12 (and thu
+s \T1/cmtt/m/n/12 Cell\T1/cmr/m/n/12 ): \T1/cmtt/m/n/12 CytotoxicTCell\T1/cmr/m
+/n/12 , \T1/cmtt/m/n/12 CD8NaiveTCell\T1/cmr/m/n/12 , \T1/cmtt/m/n/12 CD4NaiveT
+Cell\T1/cmr/m/n/12 ,
+ []
+
+
+Overfull \hbox (101.62389pt too wide) in paragraph at lines 134--135
+[]\T1/cmr/bx/n/12 Inheriting from \T1/cmtt/m/n/12 Cell \T1/cmr/m/n/12 di-rectly
+: \T1/cmtt/m/n/12 TumorCell\T1/cmr/m/n/12 , \T1/cmtt/m/n/12 TregCell\T1/cmr/m/n
+/12 , \T1/cmtt/m/n/12 DendriticCell\T1/cmr/m/n/12 , \T1/cmtt/m/n/12 Plasmacitoi
+dDendriticCell\T1/cmr/m/n/12 ,
+ []
+
+
+Overfull \hbox (3.17024pt too wide) in paragraph at lines 134--135
+\T1/cmtt/m/n/12 MacrophageM1\T1/cmr/m/n/12 , \T1/cmtt/m/n/12 MacrophageM2\T1/cm
+r/m/n/12 , \T1/cmtt/m/n/12 NaturalKiller\T1/cmr/m/n/12 , \T1/cmtt/m/n/12 MastCe
+ll\T1/cmr/m/n/12 , \T1/cmtt/m/n/12 Neutrophil\T1/cmr/m/n/12 , \T1/cmtt/m/n/12 A
+dipocyte\T1/cmr/m/n/12 ,
+ []
+
+[22]
+Overfull \hbox (3.2529pt too wide) in paragraph at lines 155--156
+[]\T1/cmtt/m/n/12 treg_differentiation_effect \T1/cmr/m/n/12 --- gov-erns CD4$[
+]$ naive $\OMS/cmsy/m/n/12 !$ \T1/cmr/m/n/12 Treg dif-fer-en-ti-a-tion prob-
+ []
+
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 226--227
+[]|\T1/cmr/m/n/12 Inhibits CTL ac-ti-va-tion via
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 226--227
+\T1/cmtt/m/n/12 get_PD1_inhibition() \T1/cmr/m/n/12 based on
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--229
+[]|\T1/cmr/m/n/12 Divides into empty neigh-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--229
+\T1/cmr/m/n/12 bor; prob-a-bil-ity mod-u-lated by
+ []
+
+
+Underfull \hbox (badness 5878) in paragraph at lines 228--229
+\T1/cmtt/m/n/12 tumour_growth_effect\T1/cmr/m/n/12 , DNA pro-
+ []
+
+
+Underfull \hbox (badness 1248) in paragraph at lines 228--229
+\T1/cmr/m/n/12 lif-er-a-tion genes, an-gio-gen-e-sis, blood
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--231
+[]|\T1/cmr/m/n/12 Dies based on
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--231
+\T1/cmtt/m/n/12 tumour_apoptosis_effect \T1/cmr/m/n/12 and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 232--233
+[]|\T1/cmr/m/n/12 Consumes glu-cose at rate
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 232--233
+\T1/cmtt/m/n/12 w_glucose_tumor_consumption
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 232--233
+\T1/cmr/m/n/12 (War-burg ef-fect). Growth
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 232--233
+\T1/cmr/m/n/12 scaled by lo-cal glu-cose via
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 239--240
+[]|\T1/cmr/m/n/12 Loses \T1/cmtt/m/n/12 t_activation_effect
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 239--240
+\T1/cmr/m/n/12 pro-gres-sively with each kill
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 239--240
+\T1/cmr/m/n/12 (\T1/cmtt/m/n/12 w_progressive_exhaustion\T1/cmr/m/n/12 ) or
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--242
+[]|\T1/cmr/m/n/12 Duplicates based on pro-lif-er-a-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 243--244
+[]|\T1/cmr/m/n/12 Perceives es-tro-gen, pro-ges-terone,
+ []
+
+
+Underfull \hbox (badness 1953) in paragraph at lines 243--244
+\T1/cmr/m/n/12 testos-terone; es-tro-gen en-hances kill
+ []
+
+
+Underfull \hbox (badness 3364) in paragraph at lines 243--244
+\T1/cmr/m/n/12 rate and pro-lif-er-a-tion, testos-terone
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 248--249
+[]|\T1/cmr/m/n/12 Positive \T1/cmtt/m/n/12 t_kill_rate_effect \T1/cmr/m/n/12 an
+d
+ []
+
+
+Underfull \hbox (badness 1558) in paragraph at lines 250--251
+[]|\T1/cmr/m/n/12 Engulfs ad-ja-cent tu-mor cells; af-ter
+ []
+
+
+Underfull \hbox (badness 7047) in paragraph at lines 252--253
+[]|\T1/cmr/m/n/12 Can trans-form to M2 based on
+ []
+
+
+Underfull \hbox (badness 1127) in paragraph at lines 259--260
+[]|\T1/cmr/m/n/12 Negative \T1/cmtt/m/n/12 t_kill_rate_effect\T1/cmr/m/n/12 ; p
+os-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 259--260
+\T1/cmr/m/n/12 i-tive \T1/cmtt/m/n/12 tumour_growth_effect \T1/cmr/m/n/12 and
+ []
+
+
+Underfull \hbox (badness 7047) in paragraph at lines 261--262
+[]|\T1/cmr/m/n/12 Can trans-form to M1 based on
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--267
+\T1/cmr/m/n/12 ($\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cm
+r/m/n/12 3$\T1/cmr/m/n/12 ); neg-a-tive
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--267
+\T1/cmtt/m/n/12 t_proliferation_effect\T1/cmr/m/n/12 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--267
+\T1/cmtt/m/n/12 t_activation_effect\T1/cmr/m/n/12 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--267
+\T1/cmtt/m/n/12 dc_phagocitosis_effect\T1/cmr/m/n/12 ; pos-i-tive
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 280--281
+[]|\T1/cmr/m/n/12 Positive \T1/cmtt/m/n/12 angiogenesis_effect\T1/cmr/m/n/12 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 280--281
+\T1/cmtt/m/n/12 treg_differentiation_effect\T1/cmr/m/n/12 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 280--281
+\T1/cmtt/m/n/12 t_kill_rate_effect\T1/cmr/m/n/12 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 280--281
+\T1/cmtt/m/n/12 nkl_kill_rate_effect\T1/cmr/m/n/12 ; neg-a-tive
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 298--299
+[]|\T1/cmr/m/n/12 Stochastic com-bi-na-tion of ef-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 298--299
+\T1/cmr/m/n/12 fects (de-ter-mined at cre-ation):
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 298--299
+\T1/cmtt/m/n/12 angiogenesis_effect \T1/cmr/m/n/12 ($\OMS/cmsy/m/n/12 ^^F$\T1/c
+mr/m/n/12 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 298--299
+\T1/cmtt/m/n/12 macrophage_m1_mutation_effect
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 298--299
+\T1/cmr/m/n/12 ($\OMS/cmsy/m/n/12 ^^F$\T1/cmr/m/n/12 ), \T1/cmtt/m/n/12 t_kill_
+rate_effect \T1/cmr/m/n/12 ($\OMS/cmsy/m/n/12 ^^F$\T1/cmr/m/n/12 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 298--299
+\T1/cmtt/m/n/12 tumour_apoptosis_effect \T1/cmr/m/n/12 ($\OMS/cmsy/m/n/12 ^^F$\
+T1/cmr/m/n/12 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 300--301
+[]|\T1/cmr/m/n/12 Spawns den-dritic cells at bor-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 300--301
+\T1/cmr/m/n/12 der po-si-tions with prob-a-bil-ity
+ []
+
+
+Underfull \hbox (badness 6094) in paragraph at lines 305--306
+[]|\T1/cmr/m/n/12 Differentiates into Treg based on
+ []
+
+
+Underfull \hbox (badness 5388) in paragraph at lines 305--306
+\T1/cmtt/m/n/12 treg_differentiation_effect\T1/cmr/m/n/12 , sex
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 305--306
+\T1/cmr/m/n/12 hor-mones (es-tro-gen, pro-ges-terone,
+ []
+
+
+Underfull \hbox (badness 1043) in paragraph at lines 305--306
+\T1/cmr/m/n/12 testos-terone), and a sig-moidal gene
+ []
+
+
+Overfull \hbox (1.55367pt too wide) in paragraph at lines 315--316
+[]|\T1/cmtt/m/n/12 CD4Helper1TCell| 
+ []
+
+
+Underfull \hbox (badness 1642) in paragraph at lines 319--320
+\T1/cmr/m/n/12 grid bor-der po-si-tions. Pro-lif-er-ates
+ []
+
+
+Overfull \hbox (1.55367pt too wide) in paragraph at lines 322--323
+[]|\T1/cmtt/m/n/12 CD4Helper2TCell| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 324--325
+[]|\T1/cmr/m/n/12 Positive \T1/cmtt/m/n/12 t_kill_rate_effect \T1/cmr/m/n/12 an
+d
+ []
+
+
+Underfull \hbox (badness 1642) in paragraph at lines 326--327
+\T1/cmr/m/n/12 tox-i-cT-Cells. Pro-lif-er-ates based on
+ []
+
+
+Underfull \hbox (badness 1259) in paragraph at lines 336--337
+\T1/cmr/m/n/12 neigh-bor-hood, mod-u-lat-ing their im-
+ []
+
+[24] [25] [26]
+Overfull \hbox (65.0232pt too wide) in paragraph at lines 351--352
+[]\T1/cmr/m/n/12 During their \T1/cmtt/m/n/12 step() \T1/cmr/m/n/12 ex-e-cu-tio
+n, agents call \T1/cmtt/m/n/12 self.move(new_pos)\T1/cmr/m/n/12 , which sets \T
+1/cmtt/m/n/12 self._desired_pos
+ []
+
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 357.
+
+Overfull \hbox (24.44713pt too wide) in paragraph at lines 360--361
+\T1/cmr/m/n/12 The pri-mary move-ment mech-a-nism for most agents is \T1/cmtt/m
+/n/12 move_towards(target_agent_type_id,
+ []
+
+[27]
+Overfull \hbox (33.48373pt too wide) in paragraph at lines 374--375
+[]\T1/cmr/m/n/12 The \T1/cmtt/m/n/12 look_up_size \T1/cmr/m/n/12 pa-ram-e-ter i
+s typ-i-cally de-rived from the model's \T1/cmtt/m/n/12 cell_search_dimension\T
+1/cmr/m/n/12 ,
+ []
+
+
+Overfull \hbox (49.18086pt too wide) in paragraph at lines 403--404
+\T1/cmr/m/n/12 The sim-u-la-tion ter-mi-nates when any of the fol-low-ing con-d
+i-tions is met. The \T1/cmtt/m/n/12 terminal_condition()
+ []
+
+[28]
+Overfull \hbox (10.33264pt too wide) in paragraph at lines 408--409
+[]\T1/cmr/bx/n/12 Tumor elim-i-na-tion. \T1/cmr/m/n/12 If the tu-mor cell count
+ drops to zero be-fore reach-ing \T1/cmtt/m/n/12 max_steps\T1/cmr/m/n/12 ,
+ []
+
+
+Overfull \hbox (57.02802pt too wide) in paragraph at lines 416--418
+\T1/cmr/m/n/12 where $\OML/cmm/m/it/12 N[]$ \T1/cmr/m/n/12 is the tu-mor cell c
+ount, $\OML/cmm/m/it/12 g[]$ \T1/cmr/m/n/12 is the growth po-ten-tial (com-bin-
+ing \T1/cmtt/m/n/12 tumour_growth_effect\T1/cmr/m/n/12 ,
+ []
+
+
+Overfull \hbox (7.32921pt too wide) in paragraph at lines 416--418
+\T1/cmr/m/n/12 DNA-derived pro-lif-er-a-tion chance, blood ac-cess, and an-gio-
+gen-e-sis), $\OML/cmm/m/it/12 a[]$ \T1/cmr/m/n/12 is the apoptosis-
+ []
+
+) (./chapters/04_glucose_system.tex
+Overfull \hbox (17.25566pt too wide) in paragraph at lines 420--1
+[]\T1/cmr/m/n/12 These ter-mi-nal con-di-tions col-lec-tively en-sure that sim-
+u-la-tions reach a defini-tive outcome---
+ []
+
+[29]
+Chapter 4.
+[30
+
+]
+Overfull \hbox (26.94853pt too wide) in paragraph at lines 56--57
+[]\T1/cmr/m/n/12 This dis-crete Lapla-cian is im-ple-mented as a 3D con-vo-lu-t
+ion us-ing \T1/cmtt/m/n/12 scipy.ndimage.convolve
+ []
+
+[31] [32] [33]
+Overfull \hbox (29.97266pt too wide) in paragraph at lines 204--205
+\T1/cmr/m/n/12 Immune cells that im-ple-ment glu-cose chemotaxis---specifically
+ \T1/cmtt/m/n/12 CytotoxicTCell\T1/cmr/m/n/12 , \T1/cmtt/m/n/12 MacrophageM1\T1
+/cmr/m/n/12 ,
+ []
+
+
+Overfull \hbox (89.35478pt too wide) in paragraph at lines 219--220
+\T1/cmr/m/n/12 The glu-cose sys-tem is en-cap-su-lated in the \T1/cmtt/m/n/12 G
+lucoseField \T1/cmr/m/n/12 class, lo-cated in \T1/cmtt/m/n/12 src/systems/gluco
+se_field.py\T1/cmr/m/n/12 . 
+ []
+
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 229.
+[34]) (./chapters/05_dna_mutation_system.tex [35]
+Chapter 5.
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+[]|\T1/cmr/m/n/12 Major his-to-com-pat-i-bil-ity com-plex;
+ []
+
+
+Underfull \hbox (badness 1917) in paragraph at lines 32--33
+\T1/cmr/m/n/12 presents pep-tide anti-gens on the cell
+ []
+
+
+Underfull \hbox (badness 2529) in paragraph at lines 33--34
+[]|\T1/cmr/m/n/12 Beta-2-microglobulin; es-sen-tial com-po-
+ []
+
+
+Underfull \hbox (badness 1527) in paragraph at lines 40--41
+[]|\T1/cmr/m/n/12 Tumor pro-tein p53; ``guardian of the
+ []
+
+
+Underfull \hbox (badness 4647) in paragraph at lines 42--43
+[]|\T1/cmr/m/n/12 Cyclin-dependent ki-nase in-hibitor 2A
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
+[]|\T1/cmr/m/n/12 Transcription fac-tor pro-mot-ing cell
+ []
+
+[36
+
+] [37]
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 79.
+
+Overfull \hbox (4.84634pt too wide) in paragraph at lines 95--96
+\T1/cmr/m/n/12 For con-struct-ing the ini-tial wild-type DNA se-quence, the \T1
+/cmtt/m/n/12 protein_to_gene() \T1/cmr/m/n/12 static method
+ []
+
+[38]
+Overfull \hbox (7.33632pt too wide) in paragraph at lines 163--164
+\T1/cmr/m/n/12 where $\OML/cmm/m/it/12 p[]$ \T1/cmr/m/n/12 is the wild-type pro
+-tein se-quence, $\OML/cmm/m/it/12 p[]$ \T1/cmr/m/n/12 is the mu-tant pro-tein,
+ and $[]$
+ []
+
+[39] [40] [41]) (./chapters/06_treatment_system.tex [42]
+Chapter 6.
+[43
+
+] [44] [45] [46]) (./chapters/07_sex_hormone_system.tex [47]
+Chapter 7.
+[48
+
+] [49]
+Overfull \hbox (9.87433pt too wide) in paragraph at lines 109--110
+\T1/cmr/m/n/12 The \T1/cmtt/m/n/12 CellHormonalInfluenceEffect \T1/cmr/m/n/12 e
+nu-mer-a-tion (in \T1/cmtt/m/n/12 src/systems/hormonal_effect.py\T1/cmr/m/n/12 
+)
+ []
+
+[50]
+Overfull \hbox (8.10529pt too wide) in paragraph at lines 167--168
+\T1/cmr/m/n/12 and sub-se-quently trans-ferred to the cell's \T1/cmtt/m/n/12 ex
+perienced_effects \T1/cmr/m/n/12 via the \T1/cmtt/m/n/12 update_effects()
+ []
+
+[51] [52]) (./chapters/08_implementation.tex [53]
+Chapter 8.
+
+Overfull \hbox (0.94156pt too wide) in paragraph at lines 23--24
+\T1/cmtt/m/n/12 mpi4py \T1/cmr/m/n/12 as its pri-mary com-piled de-pen-dency), 
+and in-te-grates seam-lessly with NumPy,
+ []
+
+[54
+
+] [55]
+Overfull \hbox (0.8819pt too wide) in paragraph at lines 126--127
+\T1/cmr/m/n/12 sched-uler ab-strac-tion, the Repast4Py im-ple-men-ta-tion uses 
+a plain Python class, \T1/cmtt/m/n/12 RCCModel\T1/cmr/m/n/12 .
+ []
+
+[56]
+Overfull \hbox (79.6247pt too wide) in paragraph at lines 137--138
+[]\T1/cmr/m/n/12 There is no framework-imposed sched-uler. In-stead, Repast4Py'
+s \T1/cmtt/m/n/12 schedule.init_schedule_runner()
+ []
+
+
+Overfull \hbox (5.40718pt too wide) in paragraph at lines 173--174
+[]\T1/cmtt/m/n/12 get_neighbors_3d(spatial_index, grid_dims, pos, radius, moore
+)\T1/cmr/m/n/12 : Re-turns
+ []
+
+[57]
+Overfull \hbox (19.54124pt too wide) in paragraph at lines 177--178
+[]\T1/cmtt/m/n/12 get_empty_neighbors_3d(spatial_index, grid_dims, pos, radius,
+ moore)\T1/cmr/m/n/12 : Re-
+ []
+
+
+Overfull \hbox (0.89255pt too wide) in paragraph at lines 197--198
+[]\T1/cmr/m/n/12 The bound-ary check (\T1/cmtt/m/n/12 0 <= nx < width\T1/cmr/m/
+n/12 , etc.) en-sures that the neigh-bor-hood is clipped
+ []
+
+[58] [59]
+Underfull \hbox (badness 10000) in paragraph at lines 272--273
+[]\T1/cmtt/m/n/12 repast4py.core.Agent(id, type,
+ []
+
+
+Overfull \hbox (20.66174pt too wide) in paragraph at lines 274--274
+[]\T1/cmtt/m/n/12 self.model.grid.get_neighbors()| 
+ []
+
+
+Overfull \hbox (45.89102pt too wide) in paragraph at lines 274--275
+[]\T1/cmtt/m/n/12 grid_utils.get_neighbors_3d(spatial_index,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 275--275
+[]\T1/cmtt/m/n/12 isinstance(agent,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 275--276
+[]\T1/cmtt/m/n/12 agent.uid[1] ==
+ []
+
+
+Overfull \hbox (8.85007pt too wide) in paragraph at lines 277--278
+[]\T1/cmtt/m/n/12 model.get_agents_by_type_id(type_id)| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 279--279
+[]\T1/cmtt/m/n/12 Cell.search_dimension \T1/cmr/m/n/12 (class
+ []
+
+
+Overfull \hbox (19.73012pt too wide) in paragraph at lines 297--298
+\T1/cmr/m/n/12 In the Mesa ver-sion, cer-tain state was stored as class vari-ab
+les (e.g., \T1/cmtt/m/n/12 TumorCell.blood_source
+ []
+
+[60]
+Overfull \hbox (17.18567pt too wide) in paragraph at lines 339--341
+\T1/cmr/m/n/12 Diffusion is com-puted via the 3D dis-crete Lapla-cian, ap-plied
+ us-ing \T1/cmtt/m/n/12 scipy.ndimage.convolve\T1/cmr/m/n/12 .
+ []
+
+[61] [62] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+))
+(./chapters/09_parameters.tex [63] [64]
+Chapter 9.
+
+Underfull \hbox (badness 10000) in paragraph at lines 45--46
+[]\T1/cmr/m/n/12 Body mass in-dex (kg/m$[]$).
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 45--46
+\T1/cmr/m/n/12 Mod-u-lates Treg dif-fer-en-ti-a-tion,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
+[]\T1/cmr/m/n/12 Treatment modal-ity: \T1/cmtt/m/n/12 'None'\T1/cmr/m/n/12 ,
+ []
+
+[65
+
+] [66] [67]
+Underfull \hbox (badness 3724) in paragraph at lines 155--156
+[]\T1/cmr/m/n/12 DNA-driven ex-tra pro-lif-er-a-
+ []
+
+
+Underfull \hbox (badness 2150) in paragraph at lines 159--160
+[]\T1/cmr/m/n/12 Antigen pre-sen-ta-tion chance
+ []
+
+
+Underfull \hbox (badness 1436) in paragraph at lines 161--162
+[]\T1/cmr/m/n/12 Angiogenesis con-tri-bu-tion to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 183--184
+[]\T1/cmr/m/n/12 Th1 spawn-ing of M1
+ []
+
+
+Underfull \hbox (badness 4779) in paragraph at lines 184--185
+[]\T1/cmr/m/n/12 Th1 spawn-ing of den-dritic
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 185--186
+[]\T1/cmr/m/n/12 Th2 spawn-ing of M1
+ []
+
+[68]
+Underfull \hbox (badness 4832) in paragraph at lines 207--208
+[]\T1/cmr/m/n/12 Tumor cell kill prob-a-bil-ity
+ []
+
+[69] [70]
+Underfull \hbox (badness 3364) in paragraph at lines 302--303
+\T1/cmr/m/n/12 dius for agent in-ter-ac-tions:
+ []
+
+
+Underfull \hbox (badness 1515) in paragraph at lines 302--303
+[] \OT1/cmr/m/n/12 = [](5\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 b\OML/cmm/m/it/12 
+n[]=\OT1/cmr/m/n/12 (10 \OMS/cmsy/m/n/12 ^^A
+ []
+
+
+Underfull \hbox (badness 1331) in paragraph at lines 305--306
+[]\T1/cmr/m/n/12 Rate of pro-gres-sive im-mune
+ []
+
+
+Underfull \hbox (badness 7685) in paragraph at lines 308--309
+[]\T1/cmr/m/n/12 Sex hor-mone in-flu-ence on
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--313
+[]\T1/cmr/m/n/12 Integer vari-a-tion in TCR
+ []
+
+[71]
+Underfull \hbox (badness 2213) in paragraph at lines 333--333
+[]|\T1/cmr/m/n/12 Diffusion co-ef-fi-cient $\OML/cmm/m/it/12 D$ \T1/cmr/m/n/12 
+for the 3D
+ []
+
+
+Underfull \hbox (badness 1057) in paragraph at lines 337--337
+\T1/cmr/m/n/12 glucose-rich zones that sub-se-quently
+ []
+
+
+Underfull \hbox (badness 1571) in paragraph at lines 345--345
+\T1/cmr/m/n/12 tion to lo-cal glu-cose con-cen-tra-tion.
+ []
+
+[72]
+Overfull \hbox (2.58632pt too wide) in paragraph at lines 358--359
+\T1/cmr/m/n/12 can be scaled by an anal-o-gous glu-cose fac-tor us-ing \T1/cmtt
+/m/n/12 w_glucose_immune_sensitivity\T1/cmr/m/n/12 ,
+ []
+
+
+Overfull \hbox (1.03053pt too wide) in paragraph at lines 360--361
+[]\T1/cmr/bx/n/12 Spatial com-pe-ti-tion\T1/cmr/m/n/12 : The bal-ance be-tween 
+\T1/cmtt/m/n/12 w_glucose_source_rate \T1/cmr/m/n/12 (sup-ply from
+ []
+
+[73]
+Overfull \hbox (22.61412pt too wide) in paragraph at lines 397--398
+[]\T1/cmr/bx/n/12 Effectiveness weights\T1/cmr/m/n/12 : \T1/cmtt/m/n/12 w_ici_e
+ffectiveness \T1/cmr/m/n/12 and \T1/cmtt/m/n/12 w_tki_effectiveness \T1/cmr/m/n
+/12 in $\OT1/cmr/m/n/12 [0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ;
+ \OT1/cmr/m/n/12 1\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 0]$\T1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (53.10014pt too wide) in paragraph at lines 398--399
+[]\T1/cmr/bx/n/12 Threshold weights\T1/cmr/m/n/12 : \T1/cmtt/m/n/12 w_tumour_gr
+owth_threshold \T1/cmr/m/n/12 in $\OT1/cmr/m/n/12 [0\OML/cmm/m/it/12 :\OT1/cmr/
+m/n/12 75\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 
+99]$\T1/cmr/m/n/12 ; \T1/cmtt/m/n/12 w_cell_base_death_prob
+ []
+
+[74]
+Overfull \hbox (50.94183pt too wide) in paragraph at lines 436--437
+[]\T1/cmr/bx/n/12 Immune cell con-cen-tra-tions\T1/cmr/m/n/12 : 13 cell type co
+n-cen-tra-tions match-ing the \T1/cmtt/m/n/12 PatientParameters
+ []
+
+) (./chapters/10_simulation_results.tex [75]
+Chapter 10.
+
+Overfull \hbox (26.9589pt too wide) in paragraph at lines 27--28
+\T1/cmr/m/n/12 hausted through PD-1/PD-L1 check-point in-hi-bi-tion and the \T1
+/cmtt/m/n/12 w_progressive_exhaustion
+ []
+
+[76
+
+]
+Overfull \hbox (41.04012pt too wide) in paragraph at lines 36--37
+\T1/cmr/m/n/12 sim-u-la-tion pro-gresses, blood ves-sels in-ject glu-cose at th
+eir lo-ca-tions (rate \T1/cmtt/m/n/12 w_glucose_source_rate
+ []
+
+
+Overfull \hbox (13.85387pt too wide) in paragraph at lines 42--43
+\T1/cmr/m/n/12 The model sup-ports four treat-ment con-fig-u-ra-tions, ap-plied
+ start-ing at step \T1/cmtt/m/n/12 treatment_start
+ []
+
+
+Overfull \hbox (79.1649pt too wide) in paragraph at lines 46--47
+\T1/cmr/m/n/12 Immune check-point in-hibitor ther-apy blocks the PD-1/PD-L1 pat
+h-way by set-ting \T1/cmtt/m/n/12 TumorCell.ICI_effect
+ []
+
+
+Overfull \hbox (58.71994pt too wide) in paragraph at lines 58--59
+\T1/cmr/m/n/12 Tyrosine ki-nase in-hibitor ther-apy tar-gets the an-gio-gen-e-s
+is path-way by set-ting \T1/cmtt/m/n/12 TumorCell.TKI_effect
+ []
+
+[77] [78] [79]
+Overfull \hbox (21.35194pt too wide) in paragraph at lines 126--127
+[]\T1/cmr/bx/n/12 Diffusion\T1/cmr/m/n/12 : The 3D Lapla-cian dif-fu-sion op-er
+-a-tor spreads glu-cose from high-concentration
+ []
+
+
+Overfull \hbox (118.97935pt too wide) in paragraph at lines 128--129
+[]\T1/cmr/bx/n/12 Consumption\T1/cmr/m/n/12 : Dur-ing their in-di-vid-ual \T1/c
+mtt/m/n/12 step() \T1/cmr/m/n/12 calls, tu-mor cells con-sume \T1/cmtt/m/n/12 w
+_glucose_tumor_consumption
+ []
+
+[80]
+Overfull \hbox (125.30989pt too wide) in paragraph at lines 177--178
+[]\T1/cmr/bx/n/12 Glucose pa-ram-e-ters\T1/cmr/m/n/12 : The bal-ance be-tween \
+T1/cmtt/m/n/12 w_glucose_source_rate \T1/cmr/m/n/12 and \T1/cmtt/m/n/12 w_gluco
+se_tumor_consumption
+ []
+
+
+Overfull \hbox (1.43724pt too wide) in paragraph at lines 178--179
+[]\T1/cmr/bx/n/12 Treatment ef-fec-tive-ness \T1/cmr/m/n/12 (\T1/cmtt/m/n/12 w_
+ici_effectiveness\T1/cmr/m/n/12 , \T1/cmtt/m/n/12 w_tki_effectiveness\T1/cmr/m/
+n/12 ): These
+ []
+
+) (./chapters/11_conclusion.tex [81] [82]
+Chapter 11.
+[83
+
+]
+Overfull \hbox (57.04124pt too wide) in paragraph at lines 21--22
+\T1/cmr/m/n/12 ARON-1 clin-i-cal dataset and the ex-ist-ing eval-u-a-tion metho
+d-ol-ogy. The \T1/cmtt/m/n/12 suggest_parameters()
+ []
+
+[84] [85]) (./main.bbl [86]) [87
+
+] (./main.aux)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-22>
+ ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 88BD150B170EC862ACCDB39691C8F081;36624.
+ ) 
+Here is how much of TeX's memory you used:
+ 28151 strings out of 476182
+ 508532 string characters out of 5795596
+ 2327975 words of memory out of 5000000
+ 48911 multiletter control sequences out of 15000+600000
+ 580243 words of font info for 91 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 84i,13n,87p,1224b,2156s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </
+root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecit1095.600pk> </root/
+.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> </root/.texl
+ive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk> </root/.texlive20
+23/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1440.600pk> </root/.texlive2023/te
+xmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> </root/.texlive2023/texmf-v
+ar/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </root/.texlive2023/texmf-var/fo
+nts/pk/ljfour/jknappen/ec/tcrm1200.600pk> </root/.texlive2023/texmf-var/fonts/p
+k/ljfour/jknappen/ec/ecti1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljf
+our/jknappen/ec/ecbx1728.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/j
+knappen/ec/ectt1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknapp
+en/ec/ecbx2488.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec
+/ecrm1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx
+1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.
+600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy8.pfb>
+Output written on main.pdf (89 pages, 616409 bytes).
+PDF statistics:
+ 3062 PDF objects out of 3580 (max. 8388607)
+ 2161 compressed objects within 22 object streams
+ 771 named destinations out of 1000 (max. 500000)
+ 1693 words of extra memory for PDF output out of 10000 (max. 10000000)
+

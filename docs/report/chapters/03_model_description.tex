@@ -135,6 +135,15 @@ Each of the 18 agent types is implemented as a concrete class that inherits from
     \item \textbf{Inheriting from \texttt{repast4py.core.Agent}} directly: \texttt{SexHormone}, \texttt{Cytokine}. These non-cellular agents do not participate in the effect system and have simplified state (position, type-specific attributes, alive flag).
 \end{itemize}
 
+Figure~\ref{fig:agent_hierarchy} illustrates the complete agent class hierarchy, showing the inheritance relationships and categorization of the 18 agent types.
+
+\begin{figure}[H]
+\centering
+\input{figures/agent_hierarchy.tex}
+\caption{Agent class hierarchy in the RCC model. Abstract base classes are shown with dashed borders, while concrete implementations are categorized by functional type: T cells (green), other cellular agents (blue), and non-cellular signaling agents (orange).}
+\label{fig:agent_hierarchy}
+\end{figure}
+
 % ============================================================================
 \section{Effect System}
 \label{sec:md_effects}
@@ -336,6 +345,15 @@ Table~\ref{tab:interactions} summarizes the key interactions between agent types
   Diffuses through the grid via biased random walk (away from blood vessels). Consumed by T cells in the neighborhood, modulating their immune behavior. Removed upon consumption or when leaving the grid. \\
 
 \end{longtable}
+
+Figure~\ref{fig:agent_interactions} provides a visual overview of the key interactions between agent types, showing the complex network of cytotoxic killing, activation pathways, suppression mechanisms, and recruitment cascades that govern tumor microenvironment dynamics.
+
+\begin{figure}[H]
+\centering
+\input{figures/agent_interactions.tex}
+\caption{Agent interaction network in the RCC model. Arrows indicate the direction and type of interaction: red for cytotoxic killing, blue for activation/differentiation, gray dashed for suppression, green for recruitment/spawning, and purple dotted for signaling/production. Agent types are color-coded by functional category.}
+\label{fig:agent_interactions}
+\end{figure}
 
 % ============================================================================
 \section{Movement}

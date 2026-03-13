@@ -327,6 +327,11 @@ with tab_glucose:
             hotspots = latest.get('glucose_hotspots_count', 0)
             st.metric("Hotspots", f"{int(hotspots)}", 
                      help="Number of high-concentration regions")
+    
+    # Link to advanced glucose visualization
+    if st.button("🔬 Explore Glucose Field in 3D", type="primary", use_container_width=True):
+        st.info("Switch to the Glucose Field page to see detailed 3D visualizations of energy distribution in the tissue.")
+        st.switch_page("pages/7_glucose.py")
 
 # --- Immune Effectiveness ---
 with tab_immune:
@@ -412,12 +417,26 @@ for i, (title, desc) in enumerate(_suggestions):
                 st.session_state["preset_selector"] = "Custom"
             st.switch_page("pages/1_configure.py")
 
-# --- CSV download ---
-st.markdown("")
-csv_data = df.to_csv(index=False)
-st.download_button(
-    ":material/download: Download Raw Data (CSV)",
-    data=csv_data,
-    file_name=f"simulation_data.csv",
-    mime="text/csv",
-)
+# --- Navigation and Export ---
+st.divider()
+st.subheader("Explore Further")
+
+nav_cols = st.columns(4)
+with nav_cols[0]:
+    if st.button(":material/water_drop: Glucose Field 3D", use_container_width=True, type="primary"):
+        st.switch_page("pages/7_glucose.py")
+with nav_cols[1]:
+    if st.button(":material/view_in_ar: 3D Environment", use_container_width=True):
+        st.switch_page("pages/5_environment.py")
+with nav_cols[2]:
+    if st.button(":material/compare: Compare Runs", use_container_width=True):
+        st.switch_page("pages/4_history.py")
+with nav_cols[3]:
+    csv_data = df.to_csv(index=False)
+    st.download_button(
+        ":material/download: Export Data",
+        data=csv_data,
+        file_name=f"simulation_data_{selected_idx}.csv",
+        mime="text/csv",
+        use_container_width=True
+    )

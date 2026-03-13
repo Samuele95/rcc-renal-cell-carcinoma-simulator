@@ -1,0 +1,102 @@
+\begin{tikzpicture}[
+  level 1/.style={sibling distance=8cm, level distance=1.5cm},
+  level 2/.style={sibling distance=2.5cm, level distance=2cm},
+  level 3/.style={sibling distance=2cm, level distance=1.8cm},
+  node/.style={rectangle, rounded corners, minimum width=2.2cm, minimum height=0.8cm, text centered, draw=black, font=\footnotesize},
+  abstract/.style={node, fill=gray!20, dashed},
+  concrete/.style={node, fill=blue!10},
+  tcell/.style={node, fill=green!15},
+  other/.style={node, fill=orange!10}
+]
+
+% Root
+\node[abstract] (agent) {\texttt{repast4py.Agent}}
+  child {
+    node[abstract] (cell) {\texttt{Cell}}
+    child {
+      node[abstract] (tcell) {\texttt{TCell}}
+      child {
+        node[tcell] (ctc) {\texttt{CytotoxicTCell}}
+      }
+      child {
+        node[tcell] (cd8naive) {\texttt{CD8NaiveTCell}}
+      }
+      child {
+        node[tcell] (cd4naive) {\texttt{CD4NaiveTCell}}
+      }
+      child {
+        node[tcell] (th1) {\texttt{CD4Helper1TCell}}
+      }
+      child {
+        node[tcell] (th2) {\texttt{CD4Helper2TCell}}
+      }
+    }
+    child {
+      node[concrete] (tumor) {\texttt{TumorCell}}
+    }
+    child {
+      node[concrete] (treg) {\texttt{TregCell}}
+    }
+    child {
+      node[concrete] (dc) {\texttt{DendriticCell}}
+    }
+    child {
+      node[concrete] (pdc) {\texttt{PlasmacitoidDC}}
+    }
+    child {
+      node[concrete] (m1) {\texttt{MacrophageM1}}
+    }
+    child {
+      node[concrete] (m2) {\texttt{MacrophageM2}}
+    }
+    child {
+      node[concrete] (nk) {\texttt{NaturalKiller}}
+    }
+    child {
+      node[concrete] (mast) {\texttt{MastCell}}
+    }
+    child {
+      node[concrete] (neutro) {\texttt{Neutrophil}}
+    }
+    child {
+      node[concrete] (adipo) {\texttt{Adipocyte}}
+    }
+    child {
+      node[concrete] (blood) {\texttt{Blood}}
+    }
+  }
+  child {
+    node[other] (sexhormone) {\texttt{SexHormone}}
+  }
+  child {
+    node[other] (cytokine) {\texttt{Cytokine}}
+  };
+
+% Position adjustments for better layout
+\node[tcell] at ([yshift=-1cm]tcell.south) (tcells) {};
+
+% Separate positioning for T-cells to avoid overlap
+\begin{scope}[xshift=0cm, yshift=-4cm]
+\node[tcell] (ctc2) at (-6, 0) {\texttt{CytotoxicTCell}};
+\node[tcell] (cd8naive2) at (-3, 0) {\texttt{CD8NaiveTCell}};
+\node[tcell] (cd4naive2) at (0, 0) {\texttt{CD4NaiveTCell}};
+\node[tcell] (th12) at (3, 0) {\texttt{CD4Helper1TCell}};
+\node[tcell] (th22) at (6, 0) {\texttt{CD4Helper2TCell}};
+
+% Connect TCell to its subclasses
+\draw[->] ([yshift=-0.1cm]tcell.south) -- (ctc2.north);
+\draw[->] ([yshift=-0.1cm]tcell.south) -- (cd8naive2.north);
+\draw[->] ([yshift=-0.1cm]tcell.south) -- (cd4naive2.north);
+\draw[->] ([yshift=-0.1cm]tcell.south) -- (th12.north);
+\draw[->] ([yshift=-0.1cm]tcell.south) -- (th22.north);
+\end{scope}
+
+% Legend
+\begin{scope}[xshift=8cm, yshift=-1cm]
+\node[abstract] at (0, 0.5) {\footnotesize Abstract};
+\node[tcell] at (0, 0) {\footnotesize T Cell};
+\node[concrete] at (0, -0.5) {\footnotesize Cellular};
+\node[other] at (0, -1) {\footnotesize Non-cellular};
+\end{scope}
+
+\end{tikzpicture}

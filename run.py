@@ -61,6 +61,8 @@ def parse_args():
                         help="Suppress all output except errors")
     parser.add_argument("--snapshot", type=int, default=0, metavar="N",
                         help="Save environment snapshots every N steps (0 to disable)")
+    parser.add_argument("--ui", action="store_true",
+                        help="Launch the Streamlit web interface instead of running simulation")
 
     return parser.parse_args()
 
@@ -145,6 +147,25 @@ def print_summary(model, elapsed):
 
 def main():
     args = parse_args()
+    
+    # Launch Streamlit UI if --ui flag is provided
+    if args.ui:
+        import subprocess
+        import os
+        ui_path = os.path.join(os.path.dirname(__file__), "ui", "app.py")
+        if os.path.exists(ui_path):
+            try:
+                subprocess.run(["streamlit", "run", ui_path], check=True)
+            except subprocess.CalledProcessError:
+                print("Error: Failed to launch Streamlit. Make sure streamlit is installed:")
+                print("  pip install streamlit")
+            except FileNotFoundError:
+                print("Error: Streamlit not found. Install it with:")
+                print("  pip install streamlit")
+        else:
+            print(f"Error: UI file not found at {ui_path}")
+        return
+    
     comm = MPI.COMM_WORLD
     rank = comm.Get_rank()
 

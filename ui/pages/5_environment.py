@@ -9,9 +9,9 @@ from ui.lib.charts import AgentType, AGENT_TYPE_VIS, _DEFAULT_VIS, environment_3
 from ui.lib.state import load_snapshot, find_snapshot_runs, list_snapshot_steps, read_meta
 from ui.lib.formatting import TREATMENT_LABELS
 
-st.title("3D Environment Explorer")
-st.caption("Explore the tumor and immune cells inside the simulated tissue. "
-           "Each dot is a cell. The red mass is the tumor.")
+st.title("🔬 3D Environment Explorer")
+st.caption("Explore the tumor microenvironment in 3D space. Watch how tumor cells (red) and immune cells (blue/green) "
+           "interact in the simulated tissue. Each dot represents a single cell in the battle.")
 
 # ---------------------------------------------------------------------------
 # Helpers

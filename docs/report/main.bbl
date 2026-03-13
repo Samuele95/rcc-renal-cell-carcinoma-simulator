@@ -1,0 +1,84 @@
+\begin{thebibliography}{10}
+
+\bibitem{optuna}
+T.~Akiba, S.~Sano, T.~Yanase, T.~Ohta, and M.~Koyama.
+\newblock Optuna: A next-generation hyperparameter optimization framework.
+\newblock {\em Proceedings of the 25th ACM SIGKDD International Conference on
+  Knowledge Discovery \& Data Mining}, pages 2623--2631, 2019.
+
+\bibitem{repast4py}
+N.~Collier, J.~Ozik, and J.T. Murphy.
+\newblock Repast4py: A python framework for large-scale agent-based modeling.
+\newblock {\em Journal of Open Source Software}, 2023.
+
+\bibitem{conforti2018}
+F.~Conforti et~al.
+\newblock Cancer immunotherapy efficacy and patients' sex: A systematic review
+  and meta-analysis.
+\newblock {\em The Lancet Oncology}, 19(6):737--746, 2018.
+
+\bibitem{mpi4py}
+L.~Dalcin and Y.L. Fang.
+\newblock Mpi for python: Performance improvements and mpi modern features.
+\newblock {\em Journal of Parallel and Distributed Computing}, 171:34--90,
+  2023.
+
+\bibitem{fick1855}
+A.~Fick.
+\newblock {\em On Liquid Diffusion}.
+\newblock Philosophical Magazine, 1855.
+
+\bibitem{masl_paper_a}
+MASL~Research Group.
+\newblock Agent-based learning model for renal cell carcinoma treatment
+  optimization.
+\newblock 2024.
+\newblock Primary reference for the RCC-agent-learning-model implementation.
+
+\bibitem{hanahan2011}
+D.~Hanahan and R.A. Weinberg.
+\newblock Hallmarks of cancer: The next generation.
+\newblock {\em Cell}, 144(5):646--674, 2011.
+
+\bibitem{mesa}
+J.~Kazil, D.~Masad, and A.~Crooks.
+\newblock Mesa: An agent-based modeling framework.
+\newblock {\em Journal of Open Source Software}, 5(55):2574, 2020.
+
+\bibitem{merelli2021}
+E.~Merelli et~al.
+\newblock Multi-level agent-based simulation for rcc immunotherapy modeling.
+\newblock 2021.
+\newblock Foundation paper for the multi-agent immune model.
+
+\bibitem{motzer2019}
+R.J. Motzer et~al.
+\newblock Avelumab plus axitinib versus sunitinib for advanced renal-cell
+  carcinoma.
+\newblock {\em New England Journal of Medicine}, 380(12):1103--1115, 2019.
+
+\bibitem{pardoll2012}
+D.M. Pardoll.
+\newblock The blockade of immune checkpoints in cancer immunotherapy.
+\newblock {\em Nature Reviews Cancer}, 12(4):252--264, 2012.
+
+\bibitem{rini2019}
+B.I. Rini et~al.
+\newblock Pembrolizumab plus axitinib versus sunitinib for advanced renal-cell
+  carcinoma.
+\newblock {\em New England Journal of Medicine}, 380(12):1116--1127, 2019.
+
+\bibitem{santoni2024}
+M.~Santoni et~al.
+\newblock Agent-based modeling of renal cell carcinoma tumor microenvironment:
+  A computational approach to immune-tumor interactions.
+\newblock {\em Frontiers in Immunology}, 2024.
+\newblock MASL paper on RCC agent-based model with sex-specific immune
+  responses.
+
+\bibitem{warburg1956}
+O.~Warburg.
+\newblock On the origin of cancer cells.
+\newblock {\em Science}, 123(3191):309--314, 1956.
+
+\end{thebibliography}
