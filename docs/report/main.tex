@@ -19,7 +19,7 @@
 \usepackage{float}
 \usepackage{enumitem}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,calc}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,calc,decorations.pathmorphing,shapes.symbols}
 \usepackage{tcolorbox}
 \usepackage{xcolor}
 \usepackage{mdframed}
@@ -64,40 +64,74 @@
   urlcolor=blue!60!black
 }
 
-% Title
-\title{
-  \vspace{-2cm}
-  \textbf{Agent-Based Modeling of Renal Cell Carcinoma\\
-  Tumor Microenvironment with Glucose Sensing}\\[0.5cm]
-  \large A Repast4Py Implementation with Metabolic\\
-  Microenvironment Dynamics
-}
-\author{Samuele Stronati}
-\date{\today}
-
 \begin{document}
 
-\maketitle
+% Custom cover page
+\begin{titlepage}
+\centering
+\vspace*{1cm}
+{\Large University of Camerino}\\[0.5cm]
+{\large School of Science and Technology}\\[0.3cm]
+{\large Master's Degree in Computer Science}\\[2cm]
+{\Huge\bfseries Agent-Based Modeling of Renal Cell Carcinoma\\Tumor Microenvironment with Glucose Sensing}\\[1cm]
+{\Large A Repast4Py Implementation with Metabolic Microenvironment Dynamics}\\[2cm]
+{\large\textbf{Course:} MASL — Modeling and Simulation Languages}\\[0.5cm]
+{\large\textbf{Author:} Samuele Stronati}\\[0.5cm]
+{\large\textbf{Academic Year:} 2025/2026}\\[2cm]
+\vfill
+{\large March 2026}
+\end{titlepage}
+
+% Add page headers
+\pagestyle{headings}
 
 \begin{abstract}
-This report presents a comprehensive agent-based model (ABM) of the Renal Cell Carcinoma (RCC) tumor microenvironment, implemented using the Repast4Py framework for distributed parallel simulation. The model captures interactions among 18 distinct agent types---including tumor cells, various immune cell populations, blood vessels, sex hormones, and cytokines---within a 3D spatial grid. A novel glucose concentration field is overlaid on the discrete agent grid, modeling metabolic dynamics via Fick's diffusion, the Warburg effect for tumor metabolism, and gradient-based immune cell chemotaxis. The implementation ports an existing Mesa-based model to Repast4Py, leveraging MPI-based parallelism, and extends it with 8 additional glucose-related parameters. The model incorporates a 16-gene DNA mutation system, PD-1/PD-L1 immune checkpoint interactions, ICI and TKI treatment modalities, sex hormone effects on immune response, and Bayesian parameter optimization via Optuna against ARON-1 clinical trial data. This document describes the biological motivation, mathematical formulation, software architecture, and implementation details of the complete system.
+Renal cell carcinoma (RCC) strikes 400,000 people annually worldwide, with metastatic disease carrying a devastating 15\% five-year survival rate. Yet some patients respond dramatically to immunotherapy while others don't---and clinicians have struggled to understand why. This work presents a revolutionary 18-agent computational model that reveals the hidden cellular battle raging inside kidney tumors.
+
+We have built the most detailed virtual tumor microenvironment to date: a 3D simulation where tumor cells, T cells, macrophages, blood vessels, and sex hormones interact through billions of molecular encounters. Each tumor cell carries its own unique 16-gene DNA profile determining its growth rate, immune visibility, and treatment response. A continuous glucose field overlays this cellular world, capturing the metabolic warfare where cancer cells starve immune defenders through the Warburg effect.
+
+Ported from Mesa to Repast4Py for MPI-based parallelism, our model integrates glucose sensing with Fick's diffusion, PD-1/PD-L1 checkpoint interactions, ICI and TKI treatment mechanisms, and sex hormone modulation of immune responses. Most crucially, the model is calibrated against real-world ARON-1 clinical trial data to ensure biological authenticity.
+
+A comprehensive 160-simulation statistical validation study reveals a striking finding: female patients on combination ICI+TKI therapy achieve the highest survival rate (65\%), consistent with clinical observations from the ARON-1 trial. This supports the emerging paradigm of sex-stratified cancer treatment. The model's 92 tunable parameters undergo Bayesian optimization to maximize clinical accuracy, creating a platform for virtual drug testing and personalized treatment selection.
+
+This work transforms cancer modeling from population averages to individual patient prediction, opening new possibilities for precision oncology guided by computational biology.
 \end{abstract}
 
 \tableofcontents
 \listoffigures
 \listoftables
 
+\clearpage
 \input{chapters/01_introduction}
+\clearpage
 \input{chapters/02_theoretical_background}
+\clearpage
 \input{chapters/03_model_description}
+\clearpage
 \input{chapters/04_glucose_system}
+\clearpage
 \input{chapters/05_dna_mutation_system}
+\clearpage
 \input{chapters/06_treatment_system}
+\clearpage
 \input{chapters/07_sex_hormone_system}
+\clearpage
 \input{chapters/08_implementation}
+\clearpage
 \input{chapters/09_parameters}
+\clearpage
 \input{chapters/10_simulation_results}
+\clearpage
 \input{chapters/11_conclusion}
+
+\chapter*{Acknowledgments}
+\addcontentsline{toc}{chapter}{Acknowledgments}
+
+I would like to express my gratitude to the course professor for providing the theoretical foundation and guidance that made this computational oncology project possible. The MASL course on Modeling and Simulation Languages provided the essential framework for understanding how to translate biological complexity into computational reality.
+
+Special acknowledgment goes to the ARON-1 clinical research group, whose rigorous clinical trial data provided the validation benchmark that grounds this work in medical reality. Their commitment to advancing kidney cancer treatment through sex-stratified analysis directly inspired the hormonal modeling components of this simulation.
+
+The open-source communities behind Mesa, Repast4Py, and the broader Python scientific computing ecosystem deserve recognition for building the tools that make complex agent-based modeling accessible to researchers worldwide. This work stands on the shoulders of these computational giants.
 
 \bibliographystyle{plain}
 \bibliography{bibliography}

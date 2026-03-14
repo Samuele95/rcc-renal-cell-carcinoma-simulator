@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.6)  14 MAR 2026 12:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.6)  14 MAR 2026 15:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main
+**main.tex
 (./main.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -752,6 +752,33 @@ File: tikzlibraryfit.code.tex 2023-01-15 v3.1.10 (3.1.10)
 zlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarydecorations.pathmorphing.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarydecorations.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.cod
+e.tex
+\pgfdecoratedcompleteddistance=\dimen303
+\pgfdecoratedremainingdistance=\dimen304
+\pgfdecoratedinputsegmentcompleteddistance=\dimen305
+\pgfdecoratedinputsegmentremainingdistance=\dimen306
+\pgf@decorate@distancetomove=\dimen307
+\pgf@decorate@repeatstate=\count337
+\pgfdecorationsegmentamplitude=\dimen308
+\pgfdecorationsegmentlength=\dimen309
+)
+\tikz@lib@dec@box=\box74
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
+decorations.pathmorphing.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryshapes.symbols.code.tex
+File: tikzlibraryshapes.symbols.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshape
+s.symbols.code.tex
+File: pgflibraryshapes.symbols.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
 (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
 Package: tcolorbox 2024/01/10 version 6.2.0 text color boxes
 
@@ -767,19 +794,19 @@ Package: environ 2014/05/04 v0.3 A new way to define environments
 (/usr/share/texlive/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
-\tcb@titlebox=\box74
-\tcb@upperbox=\box75
-\tcb@lowerbox=\box76
-\tcb@phantombox=\box77
-\c@tcbbreakpart=\count337
-\c@tcblayer=\count338
-\c@tcolorbox@number=\count339
-\l__tcobox_tmpa_box=\box78
-\l__tcobox_tmpa_dim=\dimen303
-\tcb@temp=\box79
+\tcb@titlebox=\box75
+\tcb@upperbox=\box76
+\tcb@lowerbox=\box77
+\tcb@phantombox=\box78
+\c@tcbbreakpart=\count338
+\c@tcblayer=\count339
+\c@tcolorbox@number=\count340
+\l__tcobox_tmpa_box=\box79
+\l__tcobox_tmpa_dim=\dimen310
 \tcb@temp=\box80
 \tcb@temp=\box81
 \tcb@temp=\box82
+\tcb@temp=\box83
 )
 (/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
 Package: mdframed 2013/07/01 1.9b: mdframed
@@ -790,8 +817,8 @@ Package: expl3 2024-01-22 L3 programming layer (loader)
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count340
-\l__pdf_internal_box=\box83
+\l__color_backend_stack_int=\count341
+\l__pdf_internal_box=\box84
 ))
 Package: xparse 2023-10-10 L3 Experimental document command parser
 )
@@ -808,14 +835,14 @@ Package zref Info: New property list: main on input line 767.
 Package zref Info: New property: default on input line 768.
 Package zref Info: New property: page on input line 769.
 )
-\c@abspage=\count341
+\c@abspage=\count342
 Package zref Info: New property: abspage on input line 67.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty
 Package: needspace 2010/09/12 v1.3d reserve vertical space
 )
 \mdf@templength=\skip61
-\c@mdf@globalstyle@cnt=\count342
+\c@mdf@globalstyle@cnt=\count343
 \mdf@skipabove@length=\skip62
 \mdf@skipbelow@length=\skip63
 \mdf@leftmargin@length=\skip64
@@ -859,11 +886,11 @@ Package: needspace 2010/09/12 v1.3d reserve vertical space
 (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-0.mdf
 File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
 )
-\mdf@frametitlebox=\box84
-\mdf@footnotebox=\box85
-\mdf@splitbox@one=\box86
-\mdf@splitbox@two=\box87
-\mdf@splitbox@save=\box88
+\mdf@frametitlebox=\box85
+\mdf@footnotebox=\box86
+\mdf@splitbox@one=\box87
+\mdf@splitbox@two=\box88
+\mdf@splitbox@save=\box89
 \mdfsplitboxwidth=\skip101
 \mdfsplitboxtotalwidth=\skip102
 \mdfsplitboxheight=\skip103
@@ -891,16 +918,16 @@ File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
 \mdf@horizontalspaceofbox=\skip125
 \mdfsubtitleheight=\skip126
 \mdfsubsubtitleheight=\skip127
-\c@mdfcountframes=\count343
+\c@mdfcountframes=\count344
 
 ****** mdframed patching \endmdf@trivlist
 
 ****** -- success******
 
-\mdf@envdepth=\count344
-\c@mdf@env@i=\count345
-\c@mdf@env@ii=\count346
-\c@mdf@zref@counter=\count347
+\mdf@envdepth=\count345
+\c@mdf@env@i=\count346
+\c@mdf@env@ii=\count347
+\c@mdf@zref@counter=\count348
 Package zref Info: New property: mdf@pagevalue on input line 895.
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
@@ -914,26 +941,11 @@ File: pgflibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarybackgrounds.code.tex
 File: tikzlibrarybackgrounds.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@layerbox@background=\box89
-\pgf@layerboxsaved@background=\box90
+\pgf@layerbox@background=\box90
+\pgf@layerboxsaved@background=\box91
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarydecorations.pathreplacing.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibrarydecorations.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.cod
-e.tex
-\pgfdecoratedcompleteddistance=\dimen304
-\pgfdecoratedremainingdistance=\dimen305
-\pgfdecoratedinputsegmentcompleteddistance=\dimen306
-\pgfdecoratedinputsegmentremainingdistance=\dimen307
-\pgf@decorate@distancetomove=\dimen308
-\pgf@decorate@repeatstate=\count348
-\pgfdecorationsegmentamplitude=\dimen309
-\pgfdecorationsegmentlength=\dimen310
-)
-\tikz@lib@dec@box=\box91
-)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
 decorations.pathreplacing.code.tex))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
@@ -968,28 +980,28 @@ File: tikzlibraryscopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 65.
-
-No file main.aux.
+ (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count349
@@ -1012,7 +1024,9 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring ON on input line 78.
+Package hyperref Info: Link coloring ON on input line 67.
+
+(./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
@@ -1055,65 +1069,61 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 81.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 81.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+[1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.84 \end{abstract}
-                    [1]
-No file main.toc.
-\tf@toc=\write5
-\openout5 = `main.toc'.
+l.98 \end{abstract}
+                    [1] (./main.toc
+LaTeX Font Info:    Trying to load font information for U+msa on input line 3.
 
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 3.
 
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.87 \listoffigures
-                    [1
+l.40 ...line {8.3.1}Problem}{28}{subsection.8.3.1}
+                                                  % [1
 
 ]
-No file main.lof.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
+6.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+) [2] [3])
+\tf@toc=\write5
+\openout5 = `main.toc'.
+
+ [4]
+(./main.lof [5
+
+])
 \tf@lof=\write6
 \openout6 = `main.lof'.
 
-[2
-
-]
-No file main.lot.
+ [6] [7] (./main.lot)
 \tf@lot=\write7
 \openout7 = `main.lot'.
 
-(./chapters/01_introduction.tex [3
+ [8
 
-]
+] (./chapters/01_introduction.tex
 Chapter 1.
-
-LaTeX Warning: Citation `santoni2024' on page 4 undefined on input line 15.
-
-
-LaTeX Warning: Citation `rini2019' on page 4 undefined on input line 21.
+[9
 
 
-LaTeX Warning: Citation `pardoll2012' on page 4 undefined on input line 23.
-
-[4
-
-] [5]
+] [10]
 Overfull \hbox (0.81845pt too wide) in paragraph at lines 50--50
 []\T1/cmr/bx/n/17.28 The Male-Female Di-vide: Why Sex Mat-ters in Can-
  []
@@ -1124,46 +1134,25 @@ Overfull \hbox (3.57709pt too wide) in paragraph at lines 63--64
 duc-tor, but its sym-phony changes
  []
 
-
-LaTeX Warning: Citation `conforti2018' on page 6 undefined on input line 65.
-
-[6]
-
-LaTeX Warning: Citation `santoni2024' on page 7 undefined on input line 73.
-
-
-Overfull \hbox (2.01492pt too wide) in paragraph at lines 73--74
+[11]
+Overfull \hbox (7.38861pt too wide) in paragraph at lines 73--74
 []\T1/cmr/m/n/12 Enter the ARON-1 clin-i-cal study [[]]---a ground-break-ing in
 -ves-ti-ga-tion that asks whether
  []
 
-[7] (./figures/conceptual_overview.tex)
-
-LaTeX Warning: Citation `merelli2021' on page 8 undefined on input line 117.
-
-
-LaTeX Warning: Citation `masl_paper_a' on page 8 undefined on input line 117.
-
-[8] [9]
-<figures/agent_population_pie.pdf, id=80, 790.13191pt x 715.54706pt>
+[12] (./figures/conceptual_overview.tex) [13] [14]
+<figures/agent_population_pie.pdf, id=901, 790.13191pt x 715.54706pt>
 File: figures/agent_population_pie.pdf Graphic file (type pdf)
 <use figures/agent_population_pie.pdf>
 Package pdftex.def Info: figures/agent_population_pie.pdf  used on input line 1
 44.
 (pdftex.def)             Requested size: 364.19667pt x 329.81073pt.
-
-
-LaTeX Warning: Citation `mesa' on page 10 undefined on input line 151.
-
-
-LaTeX Warning: Citation `repast4py' on page 10 undefined on input line 151.
-
-<figures/rcc_epidemiology.pdf, id=81, 811.46933pt x 353.43166pt>
+<figures/rcc_epidemiology.pdf, id=904, 811.46933pt x 353.43166pt>
 File: figures/rcc_epidemiology.pdf Graphic file (type pdf)
 <use figures/rcc_epidemiology.pdf>
 Package pdftex.def Info: figures/rcc_epidemiology.pdf  used on input line 157.
 (pdftex.def)             Requested size: 409.71692pt x 178.4519pt.
-[10 <./figures/agent_population_pie.pdf>]
+ [15 <./figures/agent_population_pie.pdf>]
 Overfull \hbox (4.7867pt too wide) in paragraph at lines 165--166
 \T1/cmr/m/n/12 This project rep-re-sents more than an in-cre-men-tal im-prove-m
 ent^^Vit's a fun-da-men-tal reimag-
@@ -1175,19 +1164,16 @@ Overfull \hbox (6.94017pt too wide) in paragraph at lines 177--178
 for nu-tri-ents, cre-at-ing metabolic
  []
 
-[11 <./figures/rcc_epidemiology.pdf>]
-
-LaTeX Warning: Citation `optuna' on page 12 undefined on input line 197.
-
-[12]
+[16 <./figures/rcc_epidemiology.pdf>] [17]
 Overfull \hbox (20.54382pt too wide) in paragraph at lines 226--227
 []\T1/cmr/bx/n/12 Chapter 11: Look-ing For-ward \T1/cmr/m/n/12 con-cludes with 
 lessons learned and the path ahead^^Vhow
  []
 
-) (./chapters/02_theoretical_background.tex [13]
+) [18] (./chapters/02_theoretical_background.tex
 Chapter 2.
-[14
+[19
+
 
 ] (./figures/abm_vs_ode.tex
 Overfull \hbox (37.86926pt too wide) in paragraph at lines 184--185
@@ -1305,7 +1291,7 @@ Overfull \hbox (54.49408pt too wide) in paragraph at lines 186--59
 [] []
  []
 
-[15]
+[20]
 ! Too many }'s.
 \@endfloatbox ...pagefalse \outer@nobreak \egroup 
                                                   \color@endbox 
@@ -1349,18 +1335,7 @@ l.59 \end{figure}
                  
 Things are pretty mixed up, but I think the worst is over.
 
-[16]
-
-LaTeX Warning: Citation `repast4py' on page 17 undefined on input line 85.
-
-
-LaTeX Warning: Citation `mpi4py' on page 17 undefined on input line 85.
-
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 8
-8.
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-)
+[21]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 88.
 
@@ -1370,14 +1345,7 @@ Overfull \hbox (71.48485pt too wide) in paragraph at lines 95--96
 ,
  []
 
-
-LaTeX Warning: Citation `mesa' on page 17 undefined on input line 101.
-
-
-LaTeX Warning: Reference `tab:mesa_vs_repast' on page 17 undefined on input lin
-e 101.
-
-[17] (./figures/immune_response_cascade.tex)
+[22] (./figures/immune_response_cascade.tex)
 Runaway argument?
 {figure> 
 ! Paragraph ended before \end  was complete.
@@ -1390,17 +1358,8 @@ control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
 
-LaTeX Warning: Citation `hanahan2011' on page 18 undefined on input line 196.
-
-
-LaTeX Warning: Citation `pardoll2012' on page 18 undefined on input line 217.
-
-
-LaTeX Warning: Reference `sec:bg_metabolism' on page 18 undefined on input line
+LaTeX Warning: Reference `sec:bg_metabolism' on page 23 undefined on input line
  231.
-
-
-LaTeX Warning: Citation `warburg1956' on page 18 undefined on input line 242.
 
 (./figures/warburg_effect.tex
 Overfull \hbox (12.95586pt too wide) in paragraph at lines 44--44
@@ -1412,91 +1371,9 @@ Overfull \hbox (6.85179pt too wide) in paragraph at lines 45--46
  []\T1/cmr/m/n/12 (Mitochondria) 
  []
 
-
-! Package pgfkeys Error: I do not know the key '/tikz/cloud' and I am going to 
-ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.111 \node[draw, cloud, fill=blue!20]
-                                       (o2) at (1,4) {O$_2$};
-This error message was generated by an \errmessage
-command, so I can't give any explicit help.
-Pretend that you're Hercule Poirot: Examine all clues,
-and deduce the truth by order and method.
-
-)
-
-LaTeX Warning: Citation `hanahan2011' on page 18 undefined on input line 270.
-
-
-LaTeX Warning: Citation `pardoll2012' on page 18 undefined on input line 305.
-
-
-LaTeX Warning: Citation `rini2019' on page 18 undefined on input line 314.
-
-
-LaTeX Warning: Citation `rini2019' on page 18 undefined on input line 321.
-
-
-LaTeX Warning: Citation `motzer2019' on page 18 undefined on input line 321.
-
-(./figures/treatment_mechanisms.tex)
-
-LaTeX Warning: Citation `santoni2024' on page 18 undefined on input line 361.
-
-) (./chapters/03_model_description.tex
+) (./figures/treatment_mechanisms.tex)) (./chapters/03_model_description.tex
 Chapter 3.
-(./figures/agent_interaction_network.tex
-
-! Package tikz Error: You need to say \usetikzlibrary{snakes}.
-
-See the tikz package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.77 \draw[thick, ->, violet, snake]
-                                     (hormone) -- (ctl) node[midway, above] ...
-(That was another \errmessage.)
-
-
-! Package tikz Error: You need to say \usetikzlibrary{snakes}.
-
-See the tikz package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.78 \draw[thick, ->, violet, snake]
-                                     (hormone) to[bend right=20] (th1) node[...
-(That was another \errmessage.)
-
-
-! Package tikz Error: You need to say \usetikzlibrary{snakes}.
-
-See the tikz package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.79 \draw[thick, ->, violet, snake]
-                                     (hormone) to[bend left=40] (th2) node[m...
-(That was another \errmessage.)
-
-
-! LaTeX Error: Unicode character ↔ (U+2194)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.98     \textcolor{brown}{↔}
-                                Polarization\\
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-)
+(./figures/agent_interaction_network.tex)
 File: figures/agent_population_pie.pdf Graphic file (type pdf)
 <use figures/agent_population_pie.pdf>
 Package pdftex.def Info: figures/agent_population_pie.pdf  used on input line 9
@@ -1685,7 +1562,7 @@ phageM1\T1/cmr/m/n/12 , \T1/cmtt/m/n/12 MacrophageM2\T1/cmr/m/n/12 , \T1/cmtt/m
  []
 
 
-LaTeX Warning: Reference `fig:agent_hierarchy' on page 18 undefined on input li
+LaTeX Warning: Reference `fig:agent_hierarchy' on page 23 undefined on input li
 ne 198.
 
 (./figures/agent_hierarchy.tex)
@@ -1694,7 +1571,7 @@ Overfull \hbox (577.39046pt too wide) in paragraph at lines 102--203
  []
 
 
-LaTeX Warning: Reference `tab:interactions' on page 18 undefined on input line 
+LaTeX Warning: Reference `tab:interactions' on page 23 undefined on input line 
 271.
 
 
@@ -1960,7 +1837,7 @@ Underfull \hbox (badness 1259) in paragraph at lines 405--406
  []
 
 
-LaTeX Warning: Reference `fig:agent_interactions' on page 18 undefined on input
+LaTeX Warning: Reference `fig:agent_interactions' on page 23 undefined on input
  line 409.
 
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
@@ -1974,12 +1851,6 @@ ing
 
 ) (./chapters/04_glucose_system.tex
 Chapter 4.
-
-LaTeX Warning: Citation `warburg1956' on page 18 undefined on input line 21.
-
-
-LaTeX Warning: Citation `hanahan2011' on page 18 undefined on input line 35.
-
 (./figures/glucose_system_detailed.tex
 ! Missing = inserted for \ifnum.
 <to be read again> 
@@ -2568,7 +2439,7 @@ if-fu-sion spreads glu-cose from high-concentration re-gions to low-
  []
 
 
-LaTeX Warning: Reference `fig:glucose_system' on page 18 undefined on input lin
+LaTeX Warning: Reference `fig:glucose_system' on page 23 undefined on input lin
 e 218.
 
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
@@ -2616,14 +2487,14 @@ Overfull \hbox (202.64758pt too wide) in paragraph at lines 158--15
  [][]\T1/cmr/m/n/12 ndtikzpicture 
  []
 
-<figures/dna_mutation_heatmap.pdf, id=273, 1076.16495pt x 569.48697pt>
+<figures/dna_mutation_heatmap.pdf, id=1108, 1076.16495pt x 569.48697pt>
 File: figures/dna_mutation_heatmap.pdf Graphic file (type pdf)
 <use figures/dna_mutation_heatmap.pdf>
 Package pdftex.def Info: figures/dna_mutation_heatmap.pdf  used on input line 2
 7.
 (pdftex.def)             Requested size: 455.24411pt x 240.90344pt.
 
-LaTeX Warning: Reference `tab:genes' on page 18 undefined on input line 36.
+LaTeX Warning: Reference `tab:genes' on page 23 undefined on input line 36.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 54--55
@@ -2655,18 +2526,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 65--66
 []|\T1/cmr/m/n/12 Transcription fac-tor pro-mot-ing cell
  []
 
-
-Package longtable Warning: Column widths have changed
-(longtable)                in table 5.1 on input line 70.
-
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 101.
 
-LaTeX Warning: Reference `sec:mutation-score' on page 18 undefined on input lin
+LaTeX Warning: Reference `sec:mutation-score' on page 23 undefined on input lin
 e 134.
 
 
-LaTeX Warning: Reference `sec:mutation-mechanics' on page 18 undefined on input
+LaTeX Warning: Reference `sec:mutation-mechanics' on page 23 undefined on input
  line 221.
 
 ) (./chapters/06_treatment_system.tex
@@ -2684,51 +2551,14 @@ control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
 
-LaTeX Warning: Citation `pardoll2012' on page 18 undefined on input line 82.
-
-
-LaTeX Warning: Citation `rini2019' on page 18 undefined on input line 84.
-
-
-LaTeX Warning: Citation `motzer2019' on page 18 undefined on input line 84.
-
-
-LaTeX Warning: Citation `rini2019' on page 18 undefined on input line 128.
-
-
-LaTeX Warning: Citation `rini2019' on page 18 undefined on input line 195.
-
-
-LaTeX Warning: Citation `motzer2019' on page 18 undefined on input line 195.
-
-
-LaTeX Warning: Citation `santoni2024' on page 18 undefined on input line 195.
-
-
-LaTeX Warning: Reference `ch:sex-hormones' on page 18 undefined on input line 1
+LaTeX Warning: Reference `ch:sex-hormones' on page 23 undefined on input line 1
 97.
 
 ) (./chapters/07_sex_hormone_system.tex
 Chapter 7.
 
-LaTeX Warning: Citation `conforti2018' on page 18 undefined on input line 12.
+LaTeX Warning: Reference `sec:sex-drift' on page 23 undefined on input line 22.
 
-
-LaTeX Warning: Citation `santoni2024' on page 18 undefined on input line 12.
-
-
-LaTeX Warning: Reference `sec:sex-drift' on page 18 undefined on input line 22.
-
-
-
-Package longtable Warning: Column widths have changed
-(longtable)                in table 7.2 on input line 141.
-
-
-LaTeX Warning: Citation `conforti2018' on page 18 undefined on input line 223.
-
-
-LaTeX Warning: Citation `santoni2024' on page 18 undefined on input line 223.
 
 ) (./chapters/08_implementation.tex
 Chapter 8.
@@ -2873,25 +2703,11 @@ l.17 \end{figure}
                  
 Things are pretty mixed up, but I think the worst is over.
 
-
-LaTeX Warning: Citation `mesa' on page 18 undefined on input line 23.
-
-
-LaTeX Warning: Citation `repast4py' on page 18 undefined on input line 23.
-
-[18]
-
-LaTeX Warning: Citation `mpi4py' on page 19 undefined on input line 32.
-
-
+[23]
 Overfull \hbox (0.94156pt too wide) in paragraph at lines 36--37
 \T1/cmtt/m/n/12 mpi4py \T1/cmr/m/n/12 as its pri-mary com-piled de-pen-dency), 
 and in-te-grates seam-lessly with NumPy,
  []
-
-
-LaTeX Warning: Reference `tab:detailed-mesa-vs-repast4py' on page 19 undefined 
-on input line 41.
 
 (./figures/comparison_table.tex
 Underfull \hbox (badness 10000) in paragraph at lines 9--9
@@ -3109,11 +2925,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 51--51
 1/cmr/m/n/12 neigh-bor queries;
  []
 
-) [19]
+) [24]
 Overfull \vbox (345.76108pt too high) has occurred while \output is active []
 
 
-[20] [21]
+[25] [26]
 Overfull \hbox (0.8819pt too wide) in paragraph at lines 123--124
 \T1/cmr/m/n/12 sched-uler ab-strac-tion, the Repast4Py im-ple-men-ta-tion uses 
 a plain Python class, \T1/cmtt/m/n/12 RCCModel\T1/cmr/m/n/12 .
@@ -3125,11 +2941,7 @@ Overfull \hbox (79.6247pt too wide) in paragraph at lines 134--135
 s \T1/cmtt/m/n/12 schedule.init_schedule_runner()
  []
 
-
-LaTeX Warning: Reference `fig:model_architecture' on page 22 undefined on input
- line 136.
-
-[22]
+[27]
 Overfull \hbox (5.40718pt too wide) in paragraph at lines 179--180
 []\T1/cmtt/m/n/12 get_neighbors_3d(spatial_index, grid_dims, pos, radius, moore
 )\T1/cmr/m/n/12 : Re-turns
@@ -3141,24 +2953,13 @@ Overfull \hbox (19.54124pt too wide) in paragraph at lines 183--184
  moore)\T1/cmr/m/n/12 : Re-
  []
 
-[23]
+[28]
 Overfull \hbox (0.89255pt too wide) in paragraph at lines 203--204
 []\T1/cmr/m/n/12 The bound-ary check (\T1/cmtt/m/n/12 0 <= nx < width\T1/cmr/m/
 n/12 , etc.) en-sures that the neigh-bor-hood is clipped
  []
 
-[24]
-
-LaTeX Warning: Citation `mesa' on page 25 undefined on input line 268.
-
-
-LaTeX Warning: Citation `masl_paper_a' on page 25 undefined on input line 268.
-
-
-LaTeX Warning: Reference `tab:porting-mapping' on page 25 undefined on input li
-ne 268.
-
-
+[29]
 Underfull \hbox (badness 10000) in paragraph at lines 278--279
 []\T1/cmtt/m/n/12 repast4py.core.Agent(id, type,
  []
@@ -3193,29 +2994,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 285--285
 []\T1/cmtt/m/n/12 Cell.search_dimension \T1/cmr/m/n/12 (class
  []
 
-[25]
+[30]
 Overfull \hbox (19.73012pt too wide) in paragraph at lines 303--304
 \T1/cmr/m/n/12 In the Mesa ver-sion, cer-tain state was stored as class vari-ab
 les (e.g., \T1/cmtt/m/n/12 TumorCell.blood_source
  []
 
-[26]
+[31]
 Overfull \hbox (17.18567pt too wide) in paragraph at lines 345--347
 \T1/cmr/m/n/12 Diffusion is com-puted via the 3D dis-crete Lapla-cian, ap-plied
  us-ing \T1/cmtt/m/n/12 scipy.ndimage.convolve\T1/cmr/m/n/12 .
  []
 
-[27] [28] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+[32] [33] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
-)
-
-LaTeX Warning: Reference `fig:simulation_pipeline' on page 29 undefined on inpu
-t line 435.
-
-) (./chapters/09_parameters.tex [29] [30]
+) [34]
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 456.
+ [35]
+[36] [37] [38]) [39] (./chapters/09_parameters.tex
 Chapter 9.
 
 Underfull \hbox (badness 10000) in paragraph at lines 45--46
@@ -3232,18 +3032,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 46--47
 []\T1/cmr/m/n/12 Treatment modal-ity: \T1/cmtt/m/n/12 'None'\T1/cmr/m/n/12 ,
  []
 
-[31
-
-]
-
-LaTeX Warning: Reference `sec:weight-params' on page 32 undefined on input line
- 70.
+[40
 
 
-LaTeX Warning: Reference `sec:glucose-params' on page 32 undefined on input lin
-e 70.
-
-[32] [33]
+] [41] [42]
 Underfull \hbox (badness 3724) in paragraph at lines 155--156
 []\T1/cmr/m/n/12 DNA-driven ex-tra pro-lif-er-a-
  []
@@ -3273,12 +3065,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 185--186
 []\T1/cmr/m/n/12 Th2 spawn-ing of M1
  []
 
-[34]
+[43]
 Underfull \hbox (badness 4832) in paragraph at lines 207--208
 []\T1/cmr/m/n/12 Tumor cell kill prob-a-bil-ity
  []
 
-[35] [36]
+[44] [45]
 Underfull \hbox (badness 3364) in paragraph at lines 302--303
 \T1/cmr/m/n/12 dius for agent in-ter-ac-tions:
  []
@@ -3304,7 +3096,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 312--313
 []\T1/cmr/m/n/12 Integer vari-a-tion in TCR
  []
 
-[37]
+[46]
 Underfull \hbox (badness 2213) in paragraph at lines 333--333
 []|\T1/cmr/m/n/12 Diffusion co-ef-fi-cient $\OML/cmm/m/it/12 D$ \T1/cmr/m/n/12 
 for the 3D
@@ -3316,18 +3108,11 @@ Underfull \hbox (badness 1057) in paragraph at lines 337--337
  []
 
 
-LaTeX Warning: Citation `warburg1956' on page 38 undefined on input line 339.
-
-
 Underfull \hbox (badness 1571) in paragraph at lines 345--345
 \T1/cmr/m/n/12 tion to lo-cal glu-cose con-cen-tra-tion.
  []
 
-
-Package longtable Warning: Column widths have changed
-(longtable)                in table 9.14 on input line 349.
-
-[38]
+[47]
 Overfull \hbox (2.58632pt too wide) in paragraph at lines 358--359
 \T1/cmr/m/n/12 can be scaled by an anal-o-gous glu-cose fac-tor us-ing \T1/cmtt
 /m/n/12 w_glucose_immune_sensitivity\T1/cmr/m/n/12 ,
@@ -3339,10 +3124,7 @@ Overfull \hbox (1.03053pt too wide) in paragraph at lines 360--361
 \T1/cmtt/m/n/12 w_glucose_source_rate \T1/cmr/m/n/12 (sup-ply from
  []
 
-
-LaTeX Warning: Citation `optuna' on page 39 undefined on input line 369.
-
-[39]
+[48]
 Overfull \hbox (22.61412pt too wide) in paragraph at lines 397--398
 []\T1/cmr/bx/n/12 Effectiveness weights\T1/cmr/m/n/12 : \T1/cmtt/m/n/12 w_ici_e
 ffectiveness \T1/cmr/m/n/12 and \T1/cmtt/m/n/12 w_tki_effectiveness \T1/cmr/m/n
@@ -3358,43 +3140,34 @@ m/n/12 75\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12
 99]$\T1/cmr/m/n/12 ; \T1/cmtt/m/n/12 w_cell_base_death_prob
  []
 
-
-LaTeX Warning: Citation `rini2019' on page 40 undefined on input line 428.
-
-
-LaTeX Warning: Citation `motzer2019' on page 40 undefined on input line 428.
-
-[40]
+[49]
 Overfull \hbox (50.94183pt too wide) in paragraph at lines 436--437
 []\T1/cmr/bx/n/12 Immune cell con-cen-tra-tions\T1/cmr/m/n/12 : 13 cell type co
 n-cen-tra-tions match-ing the \T1/cmtt/m/n/12 PatientParameters
  []
 
-) (./chapters/10_simulation_results.tex [41]
+) [50] (./chapters/10_simulation_results.tex
 Chapter 10.
-<figures/sex_stratified_results.pdf, id=659, 1075.94281pt x 858.56697pt>
+<figures/sex_stratified_results.pdf, id=1669, 1075.94281pt x 858.56697pt>
 File: figures/sex_stratified_results.pdf Graphic file (type pdf)
 <use figures/sex_stratified_results.pdf>
 Package pdftex.def Info: figures/sex_stratified_results.pdf  used on input line
  20.
 (pdftex.def)             Requested size: 455.24411pt x 363.2682pt.
-[42
+[51
 
-] [43 <./figures/sex_stratified_results.pdf>] [44]
+
+] [52 <./figures/sex_stratified_results.pdf>] [53]
 Overfull \hbox (0.34317pt too wide) in paragraph at lines 126--127
 []\T1/cmr/m/n/12 This coun-ter-in-tu-itive re-sult sug-gests com-plex in-ter-ac
 -tions be-tween TKI anti-angiogenic
  []
 
-[45]
+[54]
 Overfull \hbox (9.60628pt too wide) in paragraph at lines 130--131
 \T1/cmr/m/n/12 Tyrosine ki-nase in-hibitor (TKI) monother-apy demon-strated ef-
 fi-cacy through anti-angiogenic
  []
-
-
-LaTeX Warning: Reference `tab:treatment-outcomes' on page 46 undefined on input
- line 152.
 
 
 Overfull \hbox (10.75256pt too wide) in paragraph at lines 158--172
@@ -3404,60 +3177,48 @@ Overfull \hbox (10.75256pt too wide) in paragraph at lines 158--172
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: Reference `fig:scenario-comparison-tumor' on page 46 undefined o
-n input line 178.
-
-<figures/scenario_comparison_tumor.pdf, id=738, 722.7pt x 433.62pt>
+<figures/scenario_comparison_tumor.pdf, id=1742, 722.7pt x 433.62pt>
 File: figures/scenario_comparison_tumor.pdf Graphic file (type pdf)
 <use figures/scenario_comparison_tumor.pdf>
 Package pdftex.def Info: figures/scenario_comparison_tumor.pdf  used on input l
 ine 182.
 (pdftex.def)             Requested size: 409.71692pt x 245.82944pt.
-[46]
-
-LaTeX Warning: Reference `fig:scenario-comparison-glucose' on page 47 undefined
- on input line 187.
-
-<figures/scenario_comparison_glucose.pdf, id=746, 722.7pt x 433.62pt>
+[55]
+<figures/scenario_comparison_glucose.pdf, id=1748, 722.7pt x 433.62pt>
 File: figures/scenario_comparison_glucose.pdf Graphic file (type pdf)
 <use figures/scenario_comparison_glucose.pdf>
 Package pdftex.def Info: figures/scenario_comparison_glucose.pdf  used on input
  line 191.
 (pdftex.def)             Requested size: 409.71692pt x 245.82944pt.
-[47 <./figures/scenario_comparison_tumor.pdf>]
-
-LaTeX Warning: Reference `fig:scenario-comparison-immune' on page 48 undefined 
-on input line 196.
-
-<figures/scenario_comparison_immune.pdf, id=794, 722.7pt x 433.62pt>
+ [56 <./figures/scenario_comparison_tumor.pdf>]
+<figures/scenario_comparison_immune.pdf, id=1793, 722.7pt x 433.62pt>
 File: figures/scenario_comparison_immune.pdf Graphic file (type pdf)
 <use figures/scenario_comparison_immune.pdf>
 Package pdftex.def Info: figures/scenario_comparison_immune.pdf  used on input 
 line 200.
 (pdftex.def)             Requested size: 409.71692pt x 245.82944pt.
-[48 <./figures/scenario_comparison_glucose.pdf> <./figures/scenario_comparison_
-immune.pdf>]
+ [57 <./figures/scenario_comparison_glucose.pdf> <./figures/scenario_comparison
+_immune.pdf>]
 Overfull \hbox (11.98145pt too wide) in paragraph at lines 218--219
 []\T1/cmr/bx/n/12 Hormone ef-fects\T1/cmr/m/n/12 : Testosterone-mediated im-mun
 e sup-pres-sion vs. estrogen-enhanced
  []
 
 
-LaTeX Warning: Reference `fig:scenario-sex-comparison' on page 49 undefined on 
+LaTeX Warning: Reference `fig:scenario-sex-comparison' on page 58 undefined on 
 input line 224.
 
 
-LaTeX Warning: Reference `fig:glucose-heatmap' on page 49 undefined on input li
+LaTeX Warning: Reference `fig:glucose-heatmap' on page 58 undefined on input li
 ne 256.
 
-[49]
+[58]
 Overfull \hbox (4.63374pt too wide) in paragraph at lines 274--275
 []\T1/cmr/bx/n/12 Immune-metabolic in-ter-ac-tions\T1/cmr/m/n/12 : The glu-cose
  gra-di-ent guides im-mune cell chemo-
  []
 
-[50]
+[59]
 Overfull \hbox (106.49176pt too wide) in paragraph at lines 319--320
 \T1/cmr/m/n/12 anal-y-sis on key metabolic com-po-nents. The glu-cose tu-mor co
 n-sump-tion rate (\T1/cmtt/m/n/12 w_glucose_tumor_consumption\T1/cmr/m/n/12 )
@@ -3469,17 +3230,13 @@ Overfull \hbox (3.02449pt too wide) in paragraph at lines 334--335
 lic con-straints on tu-mor growth.
  []
 
-
-LaTeX Warning: Reference `fig:sensitivity-glucose' on page 51 undefined on inpu
-t line 336.
-
-<figures/sensitivity_glucose_consumption.pdf, id=904, 1011.78pt x 397.485pt>
+<figures/sensitivity_glucose_consumption.pdf, id=1894, 1011.78pt x 397.485pt>
 File: figures/sensitivity_glucose_consumption.pdf Graphic file (type pdf)
 <use figures/sensitivity_glucose_consumption.pdf>
 Package pdftex.def Info: figures/sensitivity_glucose_consumption.pdf  used on i
 nput line 340.
 (pdftex.def)             Requested size: 455.24411pt x 178.84839pt.
-[51] [52 <./figures/sensitivity_glucose_consumption.pdf>] [53]
+[60] [61 <./figures/sensitivity_glucose_consumption.pdf>] [62]
 Overfull \hbox (3.7448pt too wide) in paragraph at lines 437--437
 []\T1/cmr/bx/n/17.28 Statistical Val-i-da-tion: Multi-Seed Em-pir-i-cal Study 
  []
@@ -3491,37 +3248,29 @@ at-ment, TKI monother-apy, ICI monother-
  []
 
 
-LaTeX Warning: Reference `sec:reproducibility' on page 54 undefined on input li
-ne 453.
+LaTeX Warning: Citation `grimm2017' on page 63 undefined on input line 455.
 
 
-LaTeX Warning: Citation `grimm2017' on page 54 undefined on input line 455.
+LaTeX Warning: Citation `railsback2019' on page 63 undefined on input line 455.
 
-
-LaTeX Warning: Citation `railsback2019' on page 54 undefined on input line 455.
-
-
-
-LaTeX Warning: Reference `tab:empirical-results' on page 54 undefined on input 
-line 459.
 
 
 Overfull \hbox (168.76257pt too wide) in paragraph at lines 465--479
  [][] 
  []
 
-[54]
+[63]
 
-LaTeX Warning: Citation `benzekry2014' on page 55 undefined on input line 483.
-
-
-LaTeX Warning: Citation `dagogo2018' on page 55 undefined on input line 487.
+LaTeX Warning: Citation `benzekry2014' on page 64 undefined on input line 483.
 
 
-LaTeX Warning: Citation `litchfield2021' on page 55 undefined on input line 487
+LaTeX Warning: Citation `dagogo2018' on page 64 undefined on input line 487.
+
+
+LaTeX Warning: Citation `litchfield2021' on page 64 undefined on input line 487
 .
 
-[55]
+[64]
 
 ! LaTeX Error: Unicode character α (U+03B1)
                not set up for use with LaTeX.
@@ -3536,75 +3285,38 @@ l.532 ...s achieved statistical significance at α
 You may provide a definition with
 \DeclareUnicodeCharacter 
 
-
-LaTeX Warning: Reference `sec:treatment-scenarios' on page 56 undefined on inpu
-t line 539.
-
-
-Overfull \hbox (2.63559pt too wide) in paragraph at lines 538--540
-[]\T1/cmr/bx/n/12 Misleading Single-Seed Out-comes: \T1/cmr/m/n/12 The single-s
-eed sim-u-la-tion (Sec-tion []) showed
- []
-
-[56]
-
-LaTeX Warning: Reference `fig:empirical-tumor-boxplot' on page 57 undefined on 
-input line 570.
-
-<figures/empirical_tumor_boxplot.pdf, id=1076, 867.24pt x 433.62pt>
+[65]
+<figures/empirical_tumor_boxplot.pdf, id=2052, 867.24pt x 433.62pt>
 File: figures/empirical_tumor_boxplot.pdf Graphic file (type pdf)
 <use figures/empirical_tumor_boxplot.pdf>
 Package pdftex.def Info: figures/empirical_tumor_boxplot.pdf  used on input lin
 e 574.
 (pdftex.def)             Requested size: 409.71692pt x 204.86006pt.
-[57]
-
-LaTeX Warning: Reference `fig:empirical-survival-rate' on page 58 undefined on 
-input line 579.
-
-<figures/empirical_survival_rate.pdf, id=1086, 722.7pt x 361.35pt>
+ [66]
+<figures/empirical_survival_rate.pdf, id=2061, 722.7pt x 361.35pt>
 File: figures/empirical_survival_rate.pdf Graphic file (type pdf)
 <use figures/empirical_survival_rate.pdf>
 Package pdftex.def Info: figures/empirical_survival_rate.pdf  used on input lin
 e 583.
 (pdftex.def)             Requested size: 364.19667pt x 182.0971pt.
-
-LaTeX Warning: Reference `fig:empirical-growth-curves' on page 58 undefined on 
-input line 588.
-
-<figures/empirical_growth_curves.pdf, id=1087, 1011.78pt x 722.7pt>
+<figures/empirical_growth_curves.pdf, id=2063, 1011.78pt x 722.7pt>
 File: figures/empirical_growth_curves.pdf Graphic file (type pdf)
 <use figures/empirical_growth_curves.pdf>
 Package pdftex.def Info: figures/empirical_growth_curves.pdf  used on input lin
 e 592.
 (pdftex.def)             Requested size: 455.24411pt x 325.17891pt.
-[58 <./figures/empirical_tumor_boxplot.pdf> <./figures/empirical_survival_rate.
-pdf>]
-
-LaTeX Warning: Reference `fig:empirical-kills' on page 59 undefined on input li
-ne 597.
-
-<figures/empirical_kills.pdf, id=1193, 722.7pt x 361.35pt>
+ [67 <./figures/empirical_tumor_boxplot.pdf> <./figures/empirical_survival_rate
+.pdf>]
+<figures/empirical_kills.pdf, id=2168, 722.7pt x 361.35pt>
 File: figures/empirical_kills.pdf Graphic file (type pdf)
 <use figures/empirical_kills.pdf>
 Package pdftex.def Info: figures/empirical_kills.pdf  used on input line 601.
 (pdftex.def)             Requested size: 364.19667pt x 182.0971pt.
-[59 <./figures/empirical_growth_curves.pdf>]) (./chapters/11_conclusion.tex
-[60 <./figures/empirical_kills.pdf>]
+ [68 <./figures/empirical_growth_curves.pdf>]) [69 <./figures/empirical_kills.p
+df>] (./chapters/11_conclusion.tex
 Chapter 11.
+[70
 
-LaTeX Warning: Citation `masl_paper_a' on page 61 undefined on input line 13.
-
-
-LaTeX Warning: Citation `repast4py' on page 61 undefined on input line 13.
-
-
-LaTeX Warning: Citation `fick1855' on page 61 undefined on input line 15.
-
-
-LaTeX Warning: Citation `warburg1956' on page 61 undefined on input line 15.
-
-[61
 
 ]
 Overfull \hbox (57.04124pt too wide) in paragraph at lines 21--22
@@ -3612,26 +3324,11 @@ Overfull \hbox (57.04124pt too wide) in paragraph at lines 21--22
 d-ol-ogy. The \T1/cmtt/m/n/12 suggest_parameters()
  []
 
-[62] [63]
+[71] [72]) [73] (./main.bbl [74
 
-LaTeX Warning: Citation `motzer2019' on page 64 undefined on input line 65.
+] [75
 
-
-LaTeX Warning: Citation `rini2019' on page 64 undefined on input line 65.
-
-
-LaTeX Warning: Citation `hanahan2011' on page 64 undefined on input line 72.
-
-
-LaTeX Warning: Citation `warburg1956' on page 64 undefined on input line 72.
-
-)
-No file main.bbl.
-[64]
-
-Package longtable Warning: Table widths have changed. Rerun LaTeX.
-
-(./main.aux)
+]) [76] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -3643,23 +3340,17 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  55843A2C202275D141BDE8AEE6E651DB;27394.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: EE83F6893C627B7EC3CC694C2CCCF1BC;28256.
  ) 
 Here is how much of TeX's memory you used:
- 33517 strings out of 476182
- 652572 string characters out of 5795596
- 2381975 words of memory out of 5000000
- 54388 multiletter control sequences out of 15000+600000
- 584346 words of font info for 106 fonts, out of 8000000 for 9000
+ 34846 strings out of 476182
+ 681407 string characters out of 5795596
+ 2396975 words of memory out of 5000000
+ 55453 multiletter control sequences out of 15000+600000
+ 581018 words of font info for 94 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 84i,18n,93p,1192b,2045s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,18n,93p,975b,2323s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcbx1200.600pk> </
 root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecit1000.600pk> </root/
 .texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecit1095.600pk> </root/.texl
@@ -3668,25 +3359,26 @@ ive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1440.600pk> </root/.texlive20
 xmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk> </root/.texlive2023/texmf-v
 ar/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </root/.texlive2023/texmf-var/fo
 nts/pk/ljfour/jknappen/ec/tctt1200.600pk> </root/.texlive2023/texmf-var/fonts/p
-k/ljfour/jknappen/ec/ectt1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljf
-our/jknappen/ec/tcrm1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/j
-knappen/ec/ecbx1440.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknapp
-en/ec/ecbx1728.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec
-/ecti1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx
-2488.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.
-600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk
-> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> </r
-oot/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (66 pages, 681518 bytes).
+k/ljfour/jknappen/ec/ecbx1728.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljf
+our/jknappen/ec/ecti1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/j
+knappen/ec/tcrm1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknapp
+en/ec/ectt1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec
+/ecsl1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm
+1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.
+600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk
+> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </r
+oot/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> </root/.
+texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmsy10.pfb>
+Output written on main.pdf (78 pages, 778263 bytes).
 PDF statistics:
- 2272 PDF objects out of 2487 (max. 8388607)
- 951 compressed objects within 10 object streams
- 530 named destinations out of 1000 (max. 500000)
- 73 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3410 PDF objects out of 3580 (max. 8388607)
+ 1954 compressed objects within 20 object streams
+ 768 named destinations out of 1000 (max. 500000)
+ 1137 words of extra memory for PDF output out of 10000 (max. 10000000)
 

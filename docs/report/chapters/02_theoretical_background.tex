@@ -361,3 +361,46 @@ For TKI treatment:
 Our model goes beyond standard combination therapy to investigate a crucial clinical question: does the optimal treatment strategy depend on patient sex? The ARON-1 study \cite{santoni2024} provides real-world data showing that male and female patients respond differently to the same treatments—differences our model attributes to sex hormone effects on immune function.
 
 By implementing four treatment configurations (none, ICI alone, TKI alone, and ICI+TKI combination) and coupling them with our comprehensive sex hormone system, we can explore whether personalized treatment selection based on biological sex could improve outcomes for kidney cancer patients.
+
+% ============================================================================
+\section{Related Work in Computational Oncology}
+\label{sec:bg_related_work}
+% ============================================================================
+
+The computational modeling of cancer has evolved dramatically over the past two decades, from simple population-based models to sophisticated multi-scale simulations that capture cellular heterogeneity and spatial dynamics. Understanding how our work fits within this broader landscape is essential for appreciating its contributions and limitations.
+
+\subsection{Agent-Based Approaches to Tumor Modeling}
+
+Our work builds on a rich tradition of agent-based tumor modeling that began in earnest in the early 2000s. Macklin and colleagues pioneered multi-cellular tumor spheroid modeling \cite{macklin2012}, demonstrating how individual cell behaviors could generate complex tissue-scale phenomena. Their PhysiCell framework \cite{ghaffarizadeh2018} has become a cornerstone of the field, providing a flexible platform for modeling various cancer types.
+
+The HAL framework developed by Bravo et al. \cite{bravo2013} represents another major contribution, focusing specifically on hybrid cellular automaton approaches that combine discrete cellular dynamics with continuous fields for nutrients and signaling molecules. This hybrid approach directly inspired our glucose field implementation.
+
+More recently, Norton et al. \cite{norton2019} developed sophisticated agent-based models of breast cancer that incorporate detailed immune cell dynamics, while Wang and colleagues \cite{wang2015} focused on the role of cancer stem cells in driving tumor heterogeneity and treatment resistance.
+
+\subsection{Comparison to PDE-Based Approaches}
+
+While agent-based models excel at capturing cellular heterogeneity, traditional partial differential equation (PDE) approaches remain powerful for modeling aspects of cancer that can be well-approximated by population dynamics. The work of Anderson and Quaranta \cite{anderson2008} elegantly demonstrates how reaction-diffusion models can capture tumor invasion patterns and predict treatment outcomes in certain contexts.
+
+However, PDE approaches face fundamental limitations when confronting the discrete, stochastic nature of immune-tumor interactions. Our agent-based approach directly addresses these limitations by representing individual cells and their probabilistic behaviors, allowing phenomena like immune escape and clonal evolution to emerge naturally rather than being prescribed by population-level equations.
+
+\subsection{Previous Mesa-Based RCC Models}
+
+Our work directly extends the pioneering Mesa-based RCC model developed by Merelli et al. \cite{merelli2021} and refined by the MASL research group \cite{masl_paper_a}. These earlier models established the feasibility of agent-based approaches for kidney cancer, demonstrating that complex immune-tumor dynamics could be captured through relatively simple local interaction rules.
+
+However, these previous efforts faced significant computational constraints. Limited to single-processor execution and smaller grid sizes, they could only model tumor fragments rather than clinically relevant tumor volumes. Moreover, they lacked explicit metabolic modeling, instead using simplified resource availability proxies that didn't capture the spatial complexity of glucose competition.
+
+\subsection{What Distinguishes This Work}
+
+Our model advances the state of the art in several crucial dimensions:
+
+\textbf{Scale and Performance:} The migration to Repast4Py with MPI parallelism represents a quantum leap in computational capability. What previous models could simulate on desktop machines, our framework can scale to cluster-based execution, opening the door to million-cell simulations that approach clinically relevant scales.
+
+\textbf{Metabolic Realism:} The explicit 3D glucose field with Fick's diffusion modeling represents a significant advance in biological realism. Rather than using abstract "nutrient" resources, we model the actual metabolic competition between tumor cells (following the Warburg effect) and immune cells, capturing how spatial metabolic gradients shape cellular behavior.
+
+\textbf{Sex-Specific Analysis:} While previous computational cancer models have largely ignored patient sex as a biological variable, our comprehensive sex hormone system makes it a central focus. This reflects growing clinical recognition that male and female patients may require different treatment approaches.
+
+\textbf{Clinical Validation:} Perhaps most importantly, our model is directly calibrated against real clinical trial data from the ARON-1 study \cite{santoni2024}. This clinical grounding distinguishes our work from purely theoretical models and provides confidence that our predictions may translate to patient care.
+
+\textbf{Integration Complexity:} The simultaneous modeling of 18 agent types, continuous glucose fields, 16-gene mutation systems, dual treatment modalities, and sex hormone dynamics represents a level of integrative complexity that approaches the true biological complexity of cancer.
+
+This combination of computational innovation, biological realism, and clinical grounding positions our model as a significant step toward the ultimate goal of computational oncology: virtual patients that can guide personalized treatment decisions and accelerate therapeutic discovery.

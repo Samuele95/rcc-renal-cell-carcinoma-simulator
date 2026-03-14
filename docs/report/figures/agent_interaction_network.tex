@@ -74,9 +74,9 @@
 \draw[thick, <->, brown] (m1) to[bend left=60] (m2) node[midway, above] {\tiny Polarize};
 
 % Hormone effects (wavy lines)
-\draw[thick, ->, violet, snake] (hormone) -- (ctl) node[midway, above] {\tiny Modulate};
-\draw[thick, ->, violet, snake] (hormone) to[bend right=20] (th1) node[midway, left] {\tiny Enhance};
-\draw[thick, ->, violet, snake] (hormone) to[bend left=40] (th2) node[midway, below] {\tiny Enhance};
+\draw[thick, ->, violet, decorate, decoration={zigzag, amplitude=1pt, segment length=3pt}] (hormone) -- (ctl) node[midway, above] {\tiny Modulate};
+\draw[thick, ->, violet, decorate, decoration={zigzag, amplitude=1pt, segment length=3pt}] (hormone) to[bend right=20] (th1) node[midway, left] {\tiny Enhance};
+\draw[thick, ->, violet, decorate, decoration={zigzag, amplitude=1pt, segment length=3pt}] (hormone) to[bend left=40] (th2) node[midway, below] {\tiny Enhance};
 
 % PD-1/PD-L1 checkpoint
 \draw[thick, <->, red, dashed] (tumor) to[bend left=30] (ctl) node[midway, above right] {\tiny PD-L1};
@@ -95,7 +95,7 @@
     \textcolor{green}{—} Support\\
     \textcolor{purple}{···} Recruitment\\
     \textcolor{orange}{—} Angiogenesis\\
-    \textcolor{brown}{↔} Polarization\\
+    \textcolor{brown}{$\leftrightarrow$} Polarization\\
     \textcolor{violet}{\textasciitilde} Hormone Effect
 };
 
