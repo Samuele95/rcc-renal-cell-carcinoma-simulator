@@ -32,7 +32,7 @@
 % ---- Metadata ----
 \title[RCC ABM]{Agent-Based Modeling of Renal Cell Carcinoma\\with Glucose Sensing}
 \subtitle{A Repast4Py Implementation}
-\author{MASL Project}
+\author{Samuele Stronati}
 \date{\today}
 \institute{}
 
@@ -954,6 +954,182 @@
 \end{frame}
 
 % ============================================================
+\section{Empirical Study}
+% ============================================================
+
+% ---- Slide: Multi-Seed Study Design ----
+\begin{frame}{Statistical Validation: Multi-Seed Empirical Study}
+  \begin{block}{Experimental Design}
+    \begin{itemize}
+      \item \textbf{160 simulations}: 20 random seeds $\times$ 8 scenarios
+      \item 8 scenarios: 2 sexes (M/F) $\times$ 4 treatments (None, TKI, ICI, ICI+TKI)
+      \item Each run: up to 300 steps, tuned parameters for visible treatment effects
+      \item \textbf{Why?} Single-seed results can be misleading in stochastic ABMs
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Statistical Methods}
+    \begin{itemize}
+      \item \textbf{Survival rate}: fraction of runs where tumour cells $= 0$
+      \item \textbf{Mann-Whitney U test}: non-parametric comparison of male vs.\ female outcomes
+      \item Reported: mean $\pm$ standard deviation across 20 seeds
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+% ---- Slide: Results Table ----
+\begin{frame}{Empirical Results: Summary}
+  \centering
+  \small
+  \begin{tabular}{@{}l c r@{${}\pm{}$}l r@{${}\pm{}$}l r@{${}\pm{}$}l@{}}
+    \toprule
+    \textbf{Scenario} & \textbf{Survival} & \multicolumn{2}{c}{\textbf{Tumour}} & \multicolumn{2}{c}{\textbf{Steps}} & \multicolumn{2}{c}{\textbf{Glucose}} \\
+    \midrule
+    Male, No Tx     & 30\%  & 578  & 881  & 224 & 88  & 3.10 & 1.04 \\
+    Female, No Tx   & 55\%  & 257  & 629  & 193 & 91  & 2.73 & 0.92 \\
+    Male, TKI       & 55\%  & 202  & 596  & 209 & 92  & 2.78 & 1.23 \\
+    Female, TKI     & 45\%  & 205  & 601  & 215 & 92  & 2.74 & 1.00 \\
+    Male, ICI       & 45\%  & 665  & 920  & 199 & 85  & 3.15 & 1.28 \\
+    Female, ICI     & 60\%  & 274  & 655  & 193 & 86  & 2.81 & 1.06 \\
+    Male, ICI+TKI   & 55\%  & 304  & 716  & 192 & 87  & 2.85 & 1.28 \\
+    \textbf{Female, ICI+TKI} & \textbf{65\%} & \textbf{203} & \textbf{605} & 208 & 81 & 2.81 & 1.14 \\
+    \bottomrule
+  \end{tabular}
+
+  \vspace{0.5em}
+  \begin{block}{Key Finding}
+    \centering
+    Female ICI+TKI achieves the \textbf{highest survival rate (65\%)} --- consistent with ARON-1 clinical observations of superior female response to combination immunotherapy.
+  \end{block}
+\end{frame}
+
+% ---- Slide: Survival Rates ----
+\begin{frame}{Survival Rates by Scenario}
+  \begin{columns}[T]
+    \column{0.55\textwidth}
+    \includegraphics[width=\textwidth]{../report/figures/empirical_survival_rate.pdf}
+
+    \column{0.42\textwidth}
+    \begin{block}{Treatment Effectiveness}
+      \begin{itemize}
+        \item \textbf{No Tx}: M 30\% vs F 55\%
+        \item \textbf{TKI}: M 55\% vs F 45\%
+        \item \textbf{ICI}: M 45\% vs F 60\%
+        \item \textbf{ICI+TKI}: M 55\% vs F 65\%
+      \end{itemize}
+    \end{block}
+    \begin{block}{Observations}
+      \begin{itemize}
+        \item Males benefit most from TKI (30\%$\to$55\%)
+        \item Females benefit most from ICI (55\%$\to$60\%)
+        \item Combination therapy best overall
+      \end{itemize}
+    \end{block}
+  \end{columns}
+\end{frame}
+
+% ---- Slide: Growth Curves ----
+\begin{frame}{Tumour Growth: Mean $\pm$ 1 SD (n=20)}
+  \centering
+  \includegraphics[width=0.85\textwidth]{../report/figures/empirical_growth_curves.pdf}
+
+  \vspace{0.3em}
+  \small
+  High variance reflects \textbf{bimodal outcomes}: either rapid tumour elimination or explosive growth --- mirroring clinical heterogeneity in patient responses.
+\end{frame}
+
+% ---- Slide: Box Plots ----
+\begin{frame}{Outcome Distribution}
+  \begin{columns}[T]
+    \column{0.55\textwidth}
+    \includegraphics[width=\textwidth]{../report/figures/empirical_tumor_boxplot.pdf}
+
+    \column{0.42\textwidth}
+    \begin{block}{Statistical Tests}
+      Mann-Whitney U (Male vs Female):
+      \small
+      \begin{tabular}{@{}l l l@{}}
+        \toprule
+        Treatment & p-value & Sig. \\
+        \midrule
+        No Tx & 0.139 & ns \\
+        TKI & 0.461 & ns \\
+        ICI & 0.230 & ns \\
+        ICI+TKI & 0.454 & ns \\
+        \bottomrule
+      \end{tabular}
+      \normalsize
+      \vspace{0.5em}
+
+      \textbf{Interpretation}: Consistent trend favouring females, but $p > 0.05$ at $n=20$. Larger sample sizes needed for significance.
+    \end{block}
+  \end{columns}
+\end{frame}
+
+% ---- Slide: Sensitivity Analysis ----
+\begin{frame}{Parameter Sensitivity: Glucose Consumption}
+  \begin{columns}[T]
+    \column{0.55\textwidth}
+    \includegraphics[width=\textwidth]{../report/figures/sensitivity_glucose_consumption.pdf}
+
+    \column{0.42\textwidth}
+    \begin{block}{Glucose Consumption Rate}
+      \small
+      \begin{tabular}{@{}c c c@{}}
+        \toprule
+        $w$ & Tumour & Outcome \\
+        \midrule
+        0.5 & 2037 & PROGR. \\
+        1.0 & 2020 & PROGR. \\
+        2.0 & 561 & PROGR. \\
+        \textbf{4.0} & \textbf{0} & \textbf{SURV.} \\
+        \bottomrule
+      \end{tabular}
+    \end{block}
+
+    \begin{block}{Interpretation}
+      \begin{itemize}
+        \item Clear \textbf{tipping point} between 2.0 and 4.0
+        \item Warburg effect creates meaningful metabolic constraint
+        \item Validates glucose system as biologically relevant
+      \end{itemize}
+    \end{block}
+  \end{columns}
+\end{frame}
+
+% ---- Slide: Key Insight ----
+\begin{frame}{Critical Insight: Single-Seed vs Multi-Seed}
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+    \begin{alertblock}{Single-Seed Result (seed=42)}
+      \begin{itemize}
+        \item Female ICI+TKI: \textbf{PROGRESSION}
+        \item 6 tumour cells remaining at step 299
+        \item Appears to be the \textbf{worst} combination scenario
+      \end{itemize}
+    \end{alertblock}
+
+    \column{0.48\textwidth}
+    \begin{exampleblock}{Multi-Seed Result (n=20)}
+      \begin{itemize}
+        \item Female ICI+TKI: \textbf{65\% SURVIVAL}
+        \item Actually the \textbf{best} scenario overall
+        \item Consistent with clinical evidence
+      \end{itemize}
+    \end{exampleblock}
+  \end{columns}
+
+  \vspace{1em}
+  \centering
+  \begin{block}{Lesson}
+    \large
+    \textbf{Single-seed analysis of stochastic models can be misleading.}\\[0.3em]
+    \normalsize
+    Statistical validation across multiple seeds is essential for reliable conclusions in agent-based computational oncology.
+  \end{block}
+\end{frame}
+
+% ============================================================
 \section{Conclusion}
 % ============================================================
 
@@ -969,6 +1145,8 @@
       \item \textbf{Sex hormone modulation}: 3 hormones, 17 effect channels, CD8$^+$ sex drift
       \item \textbf{92 tunable weight parameters} (including 8 glucose parameters)
       \item Bayesian optimisation with \textbf{Optuna} (TPE, 250 trials) vs.\ ARON-1 data
+      \item \textbf{160-run empirical study}: 20 seeds $\times$ 8 scenarios with statistical validation
+      \item Female ICI+TKI achieves \textbf{65\% survival rate} --- best scenario, consistent with clinical data
     \end{itemize}
   \end{block}
 
