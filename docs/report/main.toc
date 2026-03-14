@@ -231,7 +231,17 @@
 \contentsline {section}{\numberline {10.7}Reproducibility}{84}{section.10.7}%
 \contentsline {subsection}{\numberline {10.7.1}Scenario Configuration}{84}{subsection.10.7.1}%
 \contentsline {subsection}{\numberline {10.7.2}Simulation Protocol}{85}{subsection.10.7.2}%
-\contentsline {chapter}{\numberline {11}Conclusion}{86}{chapter.11}%
-\contentsline {section}{\numberline {11.1}Summary of Contributions}{86}{section.11.1}%
-\contentsline {section}{\numberline {11.2}Model Limitations}{87}{section.11.2}%
-\contentsline {section}{\numberline {11.3}Future Work}{88}{section.11.3}%
+\contentsline {section}{\numberline {10.8}Statistical Validation: Multi-Seed Empirical Study}{85}{section.10.8}%
+\contentsline {subsection}{\numberline {10.8.1}Experimental Design}{85}{subsection.10.8.1}%
+\contentsline {subsection}{\numberline {10.8.2}Empirical Results Summary}{86}{subsection.10.8.2}%
+\contentsline {subsection}{\numberline {10.8.3}Stochastic Variance Analysis}{86}{subsection.10.8.3}%
+\contentsline {subsection}{\numberline {10.8.4}Treatment Effectiveness Analysis}{87}{subsection.10.8.4}%
+\contentsline {subsection}{\numberline {10.8.5}Sex-Specific Statistical Analysis}{87}{subsection.10.8.5}%
+\contentsline {subsection}{\numberline {10.8.6}Single-Seed versus Multi-Seed Insights}{88}{subsection.10.8.6}%
+\contentsline {subsection}{\numberline {10.8.7}Metabolic Correlations}{88}{subsection.10.8.7}%
+\contentsline {subsection}{\numberline {10.8.8}Empirical Study Visualizations}{89}{subsection.10.8.8}%
+\contentsline {subsection}{\numberline {10.8.9}Clinical and Methodological Implications}{92}{subsection.10.8.9}%
+\contentsline {chapter}{\numberline {11}Conclusion}{93}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Summary of Contributions}{93}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Model Limitations}{94}{section.11.2}%
+\contentsline {section}{\numberline {11.3}Future Work}{95}{section.11.3}%

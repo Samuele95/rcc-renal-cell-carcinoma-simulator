@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.6)  13 MAR 2026 17:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.6)  14 MAR 2026 10:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2334,14 +2334,124 @@ File: figures/sensitivity_glucose_consumption.pdf Graphic file (type pdf)
 Package pdftex.def Info: figures/sensitivity_glucose_consumption.pdf  used on i
 nput line 325.
 (pdftex.def)             Requested size: 455.24411pt x 178.84839pt.
-[83 <./figures/sensitivity_glucose_consumption.pdf>] [84])
-(./chapters/11_conclusion.tex [85]
+[83 <./figures/sensitivity_glucose_consumption.pdf>] [84]
+
+LaTeX Warning: Reference `sec:reproducibility' on page 85 undefined on input li
+ne 438.
+
+[85]
+
+LaTeX Warning: Citation `grimm2017' on page 86 undefined on input line 440.
+
+
+LaTeX Warning: Citation `railsback2019' on page 86 undefined on input line 440.
+
+
+
+LaTeX Warning: Reference `tab:empirical-results' on page 86 undefined on input 
+line 444.
+
+
+Overfull \hbox (168.76257pt too wide) in paragraph at lines 450--464
+ [][] 
+ []
+
+
+LaTeX Warning: Citation `benzekry2014' on page 86 undefined on input line 468.
+
+
+LaTeX Warning: Citation `dagogo2018' on page 86 undefined on input line 472.
+
+
+LaTeX Warning: Citation `litchfield2021' on page 86 undefined on input line 472
+.
+
+[86]
+Overfull \hbox (1.7974pt too wide) in paragraph at lines 489--490
+[]\T1/cmr/m/n/12 The para-dox-i-cal fe-male re-sponse war-rants in-ves-ti-ga-ti
+on of estrogen-angiogenesis
+ []
+
+
+! LaTeX Error: Unicode character α (U+03B1)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.517 ...s achieved statistical significance at α
+                                                  =0.05 with n=20 per group,...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+[87]
+
+LaTeX Warning: Reference `sec:treatment-scenarios' on page 88 undefined on inpu
+t line 524.
+
+[88]
+
+LaTeX Warning: Reference `fig:empirical-tumor-boxplot' on page 89 undefined on 
+input line 555.
+
+<figures/empirical_tumor_boxplot.pdf, id=1339, 867.24pt x 433.62pt>
+File: figures/empirical_tumor_boxplot.pdf Graphic file (type pdf)
+<use figures/empirical_tumor_boxplot.pdf>
+Package pdftex.def Info: figures/empirical_tumor_boxplot.pdf  used on input lin
+e 559.
+(pdftex.def)             Requested size: 409.71692pt x 204.86006pt.
+
+LaTeX Warning: Reference `fig:empirical-survival-rate' on page 89 undefined on 
+input line 564.
+
+<figures/empirical_survival_rate.pdf, id=1340, 722.7pt x 361.35pt>
+File: figures/empirical_survival_rate.pdf Graphic file (type pdf)
+<use figures/empirical_survival_rate.pdf>
+Package pdftex.def Info: figures/empirical_survival_rate.pdf  used on input lin
+e 568.
+(pdftex.def)             Requested size: 364.19667pt x 182.0971pt.
+[89 <./figures/empirical_tumor_boxplot.pdf>]
+
+LaTeX Warning: Reference `fig:empirical-growth-curves' on page 90 undefined on 
+input line 573.
+
+<figures/empirical_growth_curves.pdf, id=1393, 1011.78pt x 722.7pt>
+File: figures/empirical_growth_curves.pdf Graphic file (type pdf)
+<use figures/empirical_growth_curves.pdf>
+Package pdftex.def Info: figures/empirical_growth_curves.pdf  used on input lin
+e 577.
+(pdftex.def)             Requested size: 455.24411pt x 325.17891pt.
+[90 <./figures/empirical_survival_rate.pdf>]
+
+LaTeX Warning: Reference `fig:empirical-kills' on page 91 undefined on input li
+ne 582.
+
+<figures/empirical_kills.pdf, id=1453, 722.7pt x 361.35pt>
+File: figures/empirical_kills.pdf Graphic file (type pdf)
+<use figures/empirical_kills.pdf>
+Package pdftex.def Info: figures/empirical_kills.pdf  used on input line 586.
+(pdftex.def)             Requested size: 364.19667pt x 182.0971pt.
+[91 <./figures/empirical_growth_curves.pdf>]
+Overfull \hbox (1.89594pt too wide) in paragraph at lines 598--599
+[]\T1/cmr/bx/n/12 Combination ther-apy op-ti-miza-tion\T1/cmr/m/n/12 : The su-p
+e-rior per-for-mance of ICI+TKI
+ []
+
+
+Overfull \hbox (22.44911pt too wide) in paragraph at lines 599--600
+[]\T1/cmr/bx/n/12 Biomarker de-vel-op-ment\T1/cmr/m/n/12 : The glucose-progress
+ion cor-re-la-tions sug-gest metabolic
+ []
+
+) (./chapters/11_conclusion.tex [92 <./figures/empirical_kills.pdf>]
 Chapter 11.
 
-LaTeX Warning: Citation `masl_paper_a' on page 86 undefined on input line 13.
+LaTeX Warning: Citation `masl_paper_a' on page 93 undefined on input line 13.
 
 
-LaTeX Warning: Citation `repast4py' on page 86 undefined on input line 13.
+LaTeX Warning: Citation `repast4py' on page 93 undefined on input line 13.
 
 
 Overfull \hbox (7.83339pt too wide) in paragraph at lines 13--14
@@ -2350,46 +2460,58 @@ chedul-ing sys-tem to Repast4Py's
  []
 
 
-LaTeX Warning: Citation `fick1855' on page 86 undefined on input line 15.
+LaTeX Warning: Citation `fick1855' on page 93 undefined on input line 15.
 
 
-LaTeX Warning: Citation `warburg1956' on page 86 undefined on input line 15.
+LaTeX Warning: Citation `warburg1956' on page 93 undefined on input line 15.
 
-[86
+[93
 
 ]
-Overfull \hbox (32.5038pt too wide) in paragraph at lines 31--32
-\T1/cmr/m/n/12 tion) to dis-tribute the NumPy ar-ray across ranks, since the \T
-1/cmtt/m/n/12 scipy.ndimage.convolve
+Runaway argument?
+{enumerate> 
+! Paragraph ended before \end  was complete.
+<to be read again> 
+                   \par 
+l.25 
+     
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+[94]
+Overfull \hbox (21.77681pt too wide) in paragraph at lines 41--42
+\T1/cmr/m/n/12 TCR--antigen in-ter-ac-tions in-volve con-tin-u-ous bind-ing aff
+ini-ties, cross-reactivity,
  []
 
 
-Overfull \hbox (1.27899pt too wide) in paragraph at lines 33--34
-[]\T1/cmr/bx/n/12 Simplified glu-cose dy-nam-ics. \T1/cmr/m/n/12 The glu-cose f
-ield mod-els only a sin-gle metabo-
+Overfull \hbox (1.71097pt too wide) in paragraph at lines 55--56
+\T1/cmr/m/n/12 reaction--diffusion sys-tem would cap-ture oxygen--glucose cou-p
+ling (hypoxia-
  []
 
-[87] [88]
+[95]
 
-LaTeX Warning: Citation `motzer2019' on page 89 undefined on input line 63.
-
-
-LaTeX Warning: Citation `rini2019' on page 89 undefined on input line 63.
+LaTeX Warning: Citation `motzer2019' on page 96 undefined on input line 65.
 
 
-LaTeX Warning: Citation `hanahan2011' on page 89 undefined on input line 70.
+LaTeX Warning: Citation `rini2019' on page 96 undefined on input line 65.
 
 
-LaTeX Warning: Citation `warburg1956' on page 89 undefined on input line 70.
+LaTeX Warning: Citation `hanahan2011' on page 96 undefined on input line 72.
+
+
+LaTeX Warning: Citation `warburg1956' on page 96 undefined on input line 72.
 
 )
 No file main.bbl.
-[89]
+[96]
 
 Package longtable Warning: Table widths have changed. Rerun LaTeX.
 
 
-! LaTeX Error: \begin{enumerate} on input line 254 ended by \end{document}.
+! LaTeX Error: \begin{enumerate} on input line 12 ended by \end{document}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
@@ -2420,52 +2542,54 @@ Package rerunfilecheck Warning: File `main.out' has changed.
 
 Package rerunfilecheck Info: Checksums for `main.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  71C01638C09E166237BED8DC2788927E;38352.
+(rerunfilecheck)             After:  053426F3B4C093126B592DE0E7086769;40646.
  )
-(\end occurred inside a group at level 1)
+(\end occurred inside a group at level 2)
 
+### semi simple group (level 2) entered at line 12 (\begingroup)
 ### semi simple group (level 1) entered at line 254 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 28455 strings out of 476182
- 516764 string characters out of 5795596
+ 28525 strings out of 476182
+ 518543 string characters out of 5795596
  2309975 words of memory out of 5000000
- 49150 multiletter control sequences out of 15000+600000
- 580855 words of font info for 93 fonts, out of 8000000 for 9000
+ 49187 multiletter control sequences out of 15000+600000
+ 581196 words of font info for 94 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  84i,14n,87p,1224b,2225s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecit
-1000.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tctt1200.
-600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecit1095.600pk
-> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> </r
-oot/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk> </root/.
-texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1440.600pk> </root/.texli
-ve2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </root/.texlive202
-3/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </root/.texlive2023/tex
-mf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> </root/.texlive2023/texmf-va
-r/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </root/.texlive2023/texmf-var/fon
-ts/pk/ljfour/jknappen/ec/ectt1200.600pk> </root/.texlive2023/texmf-var/fonts/pk
-/ljfour/jknappen/ec/tcrm1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfo
-ur/jknappen/ec/ecti1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jk
-nappen/ec/ecbx1728.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappe
-n/ec/ecbx2488.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/
-ecrm1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1
-200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.6
-00pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy8.pfb>
-Output written on main.pdf (91 pages, 676487 bytes).
+ </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcbx
+1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecit1000.
+600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tctt1200.600pk
+> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecit1095.600pk> </r
+oot/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> </root/.
+texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk> </root/.texli
+ve2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1440.600pk> </root/.texlive202
+3/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </root/.texlive2023/tex
+mf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </root/.texlive2023/texmf-va
+r/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> </root/.texlive2023/texmf-var/fon
+ts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </root/.texlive2023/texmf-var/fonts/pk
+/ljfour/jknappen/ec/ectt1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfo
+ur/jknappen/ec/tcrm1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jk
+nappen/ec/ecti1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappe
+n/ec/ecbx1728.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/
+ecbx2488.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1
+200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.6
+00pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk>
+ </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+8.pfb>
+Output written on main.pdf (98 pages, 791924 bytes).
 PDF statistics:
- 2439 PDF objects out of 2487 (max. 8388607)
- 1338 compressed objects within 14 object streams
- 832 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2703 PDF objects out of 2984 (max. 8388607)
+ 1418 compressed objects within 15 object streams
+ 864 named destinations out of 1000 (max. 500000)
+ 53 words of extra memory for PDF output out of 10000 (max. 10000000)
 
