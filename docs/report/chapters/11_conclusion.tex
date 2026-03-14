@@ -21,7 +21,7 @@ This project has produced the following contributions:
     \item \textbf{Maintained compatibility with the Optuna optimization pipeline.} The training infrastructure has been adapted to include the 8 new glucose parameters in the Bayesian optimization search space, while preserving compatibility with the ARON-1 clinical dataset and the existing evaluation methodology. The \texttt{suggest\_parameters()} function, objective function, and trial logging have all been updated to accommodate the extended parameter space.
 
     \item \textbf{Comprehensive statistical validation through multi-seed empirical study.} A systematic 160-simulation study (20 random seeds × 8 scenarios) has been conducted to validate model predictions and characterize the stochastic nature of treatment outcomes. This empirical analysis revealed critical insights including sex-specific treatment responses, the inadequacy of single-seed predictions for stochastic agent-based models, and the bimodal distribution of outcomes that mirrors clinical heterogeneity. The study demonstrates that Female ICI+TKI combination achieves the highest survival rate (65\%), contradicting single-seed results that suggested treatment failure, thus highlighting the essential role of statistical validation in computational oncology.
-\end{enumerate>
+\end{enumerate}
 
 % ======================================================================
 \section{Model Limitations}

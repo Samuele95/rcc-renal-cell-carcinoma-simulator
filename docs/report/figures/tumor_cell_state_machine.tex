@@ -1,0 +1,155 @@
+% Tumor Cell State Machine Diagram
+\begin{tikzpicture}[scale=0.9, every node/.style={scale=0.9}]
+
+% Define states
+\tikzstyle{state}=[draw, circle, minimum size=2cm, text width=1.8cm, text centered]
+\tikzstyle{decision}=[draw, diamond, minimum size=1.5cm, text width=1.3cm, text centered, aspect=2]
+\tikzstyle{action}=[draw, rectangle, rounded corners, minimum width=2cm, minimum height=1cm, text centered]
+
+% States
+\node[state, fill=tumorcell!20] (quiescent) at (0,0) {
+    \textbf{Quiescent}\\
+    Low metabolism\\
+    Dormant
+};
+
+\node[state, fill=tumorcell!40] (active) at (6,0) {
+    \textbf{Active}\\
+    High glucose\\
+    consumption
+};
+
+\node[state, fill=tumorcell!60] (dividing) at (12,0) {
+    \textbf{Dividing}\\
+    DNA replication\\
+    Mitosis
+};
+
+\node[state, fill=tumorcell!80] (aggressive) at (6,-4) {
+    \textbf{Aggressive}\\
+    Angiogenesis\\
+    Invasion
+};
+
+\node[state, fill=red!80] (apoptotic) at (0,-8) {
+    \textbf{Apoptotic}\\
+    Cell death\\
+    pathway
+};
+
+% Decision points
+\node[decision, fill=yellow!50] (growth_check) at (3,2) {
+    Growth\\
+    signals?
+};
+
+\node[decision, fill=yellow!50] (division_check) at (9,2) {
+    Ready to\\
+    divide?
+};
+
+\node[decision, fill=yellow!50] (stress_check) at (9,-2) {
+    Stress\\
+    signals?
+};
+
+\node[decision, fill=yellow!50] (immune_check) at (3,-6) {
+    Immune\\
+    attack?
+};
+
+% Actions
+\node[action, fill=green!30] (consume_glucose) at (6,3) {
+    Consume\\
+    Glucose
+};
+
+\node[action, fill=green!30] (duplicate) at (12,3) {
+    Create\\
+    Daughter Cell
+};
+
+\node[action, fill=orange!30] (angiogenesis) at (9,-5) {
+    Promote\\
+    Angiogenesis
+};
+
+\node[action, fill=purple!30] (pd_l1) at (3,-3) {
+    Express\\
+    PD-L1
+};
+
+% Transitions with conditions
+\draw[thick, ->] (quiescent) to[bend left=20] node[above] {\tiny Nutrients available} (growth_check);
+\draw[thick, ->] (growth_check) -- node[right] {\tiny Yes} (active);
+\draw[thick, ->] (growth_check) to[bend left=30] node[left] {\tiny No} (quiescent);
+
+\draw[thick, ->] (active) -- (consume_glucose);
+\draw[thick, ->] (consume_glucose) -- (active);
+
+\draw[thick, ->] (active) -- node[above] {\tiny DNA replication complete} (division_check);
+\draw[thick, ->] (division_check) -- node[right] {\tiny Yes} (duplicate);
+\draw[thick, ->] (duplicate) -- (dividing);
+
+\draw[thick, ->] (dividing) to[bend left=40] node[above] {\tiny Division complete} (active);
+
+\draw[thick, ->] (division_check) to[bend left=20] node[left] {\tiny No} (active);
+
+\draw[thick, ->] (active) to[bend right=20] node[right] {\tiny Hypoxia/stress} (stress_check);
+\draw[thick, ->] (stress_check) -- node[right] {\tiny Yes} (aggressive);
+\draw[thick, ->] (stress_check) to[bend right=20] node[below] {\tiny No} (active);
+
+\draw[thick, ->] (aggressive) -- (angiogenesis);
+\draw[thick, ->] (angiogenesis) -- (aggressive);
+
+\draw[thick, ->] (aggressive) to[bend left=20] node[below] {\tiny Oxygen restored} (active);
+
+% Immune evasion
+\draw[thick, ->] (active) to[bend right=30] (pd_l1);
+\draw[thick, ->] (aggressive) to[bend left=30] (pd_l1);
+\draw[thick, ->] (pd_l1) to[bend right=20] (immune_check);
+
+\draw[thick, ->] (immune_check) to[bend left=20] node[left] {\tiny Evaded} (active);
+\draw[thick, ->] (immune_check) -- node[below] {\tiny Killed} (apoptotic);
+
+% Death pathways
+\draw[thick, ->, red] (quiescent) to[bend right=60] node[left] {\tiny DNA damage} (apoptotic);
+\draw[thick, ->, red] (active) to[bend right=30] node[left] {\tiny Immune killing} (apoptotic);
+\draw[thick, ->, red] (dividing) to[bend left=60] node[right] {\tiny Mitotic arrest} (apoptotic);
+\draw[thick, ->, red] (aggressive) to[bend left=30] node[right] {\tiny Treatment} (apoptotic);
+
+% Self loops for waiting states
+\draw[thick, ->] (quiescent) to[loop above] node[above] {\tiny Wait} (quiescent);
+\draw[thick, ->] (dividing) to[loop above] node[above] {\tiny Complete mitosis} (dividing);
+
+% Title
+\node[text width=14cm, text centered] at (6,6) {
+    \Large\textbf{Tumor Cell State Machine and Decision Tree}
+};
+
+% Legend
+\node[draw, rounded corners, fill=white, text width=3.5cm] at (-3,3) {
+    \textbf{Legend}\\
+    \textcolor{tumorcell}{\textbullet} Cellular States\\
+    \textcolor{yellow!50}{\textbullet} Decision Points\\
+    \textcolor{green!30}{\textbullet} Actions\\
+    \textcolor{red}{—} Death Pathways
+};
+
+% Parameter influences
+\node[draw, rounded corners, fill=blue!10, text width=4cm] at (15,1) {
+    \textbf{Key Parameters}\\
+    • \texttt{tumour\_growth\_effect}\\
+    • \texttt{tumour\_apoptosis\_effect}\\
+    • \texttt{angiogenesis\_effect}\\
+    • DNA mutation profile\\
+    • Glucose availability\\
+    • Blood access
+};
+
+% DNA influence indicator
+\node[draw, star, fill=dna, text=white] (dna) at (12,-2) {DNA};
+\draw[thick, ->, dashed] (dna) -- (division_check) node[midway, right] {\tiny Mutation effects};
+\draw[thick, ->, dashed] (dna) -- (pd_l1) node[midway, below] {\tiny CD274 expression};
+
+\end{tikzpicture}

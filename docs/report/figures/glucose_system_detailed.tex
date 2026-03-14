@@ -1,0 +1,146 @@
+% Detailed Glucose System Diagram for Chapter 4
+\begin{tikzpicture}[scale=0.85, every node/.style={scale=0.85}]
+
+% Define colors
+\definecolor{glucose}{RGB}{255,215,0}
+\definecolor{bloodvessel}{RGB}{255,69,0}
+\definecolor{tumor}{RGB}{220,20,60}
+\definecolor{immune}{RGB}{30,144,255}
+\definecolor{diffusion}{RGB}{135,206,235}
+
+% Title
+\node[text width=16cm, text centered] at (8,12) {
+    \Large\textbf{Glucose Microenvironment System: Sources, Diffusion, and Consumption}
+};
+
+% Blood vessel source
+\draw[line width=8pt, bloodvessel] (1,10) -- (3,10);
+\node[above] at (2,10.5) {\textbf{Blood Vessel}};
+\node[draw, rounded corners, fill=glucose, text width=2cm, text centered] (source) at (2,9) {
+    Glucose\\
+    Injection\\
+    Rate: $S(x,y,z)$
+};
+
+% Diffusion equation
+\node[draw, rounded corners, fill=diffusion!20, text width=6cm, text centered] (pde) at (8,10) {
+    \textbf{Reaction-Diffusion PDE}\\
+    $\frac{\partial C}{\partial t} = D\nabla^2 C - \lambda C + S(x) - Q(x)$\\[0.2cm]
+    $D$ = diffusion coefficient\\
+    $\lambda$ = decay rate\\
+    $S$ = source term\\
+    $Q$ = consumption term
+};
+
+% 3D grid representation
+\draw[thick] (13,8.5) -- (15,8.5) -- (15,10.5) -- (13,10.5) -- cycle;
+\draw[thick] (13.5,9) -- (15.5,9) -- (15.5,11) -- (13.5,11) -- cycle;
+\draw[thick] (13,8.5) -- (13.5,9);
+\draw[thick] (15,8.5) -- (15.5,9);
+\draw[thick] (15,10.5) -- (15.5,11);
+\draw[thick] (13,10.5) -- (13.5,11);
+\node[above] at (14.25,11.2) {\textbf{3D Grid}};
+
+% Laplacian stencil
+\node[draw, circle, fill=blue!50] (center) at (14.25,9.75) {$C_{i,j,k}$};
+\node[draw, circle, fill=blue!20] (up) at (14.25,10.25) {$+$};
+\node[draw, circle, fill=blue!20] (down) at (14.25,9.25) {$+$};
+\node[draw, circle, fill=blue!20] (left) at (13.75,9.75) {$+$};
+\node[draw, circle, fill=blue!20] (right) at (14.75,9.75) {$+$};
+\node[draw, circle, fill=blue!20] (front) at (14.5,10) {$+$};
+\node[draw, circle, fill=blue!20] (back) at (14,9.5) {$+$};
+
+% Glucose consumption by different cell types
+% Tumor cell consumption
+\node[draw, circle, fill=tumor, text=white, minimum size=1.2cm] (tumor_cell) at (2,6.5) {TC};
+\node[draw, rounded corners, fill=tumor!20, text width=3cm, text centered] at (2,5) {
+    \textbf{Tumor Consumption}\\
+    Rate: 200x normal\\
+    (Warburg Effect)\\
+    $Q_T = w_{glucose\_tumor} \times C$
+};
+
+% Immune cell consumption
+\node[draw, circle, fill=immune, text=white, minimum size=1cm] (immune_cell) at (8,6.5) {CTL};
+\node[draw, rounded corners, fill=immune!20, text width=3cm, text centered] at (8,5) {
+    \textbf{Immune Consumption}\\
+    Rate: Normal\\
+    $Q_I = w_{glucose\_immune} \times C$
+};
+
+% Diffusion visualization
+% Create a gradient field
+\foreach \x in {4,5,6,7,9,10,11,12} {
+    \foreach \y in {6.5,7,7.5,8} {
+        \pgfmathsetmacro{\intensity}{100-10*sqrt((\x-2)^2 + (\y-8)^2)}
+        \ifnum\intensity>0
+            \fill[glucose!\intensity] (\x,\y) circle (0.1);
+        \fi
+    }
+}
+
+% Diffusion arrows
+\foreach \angle in {0,45,90,135,180,225,270,315} {
+    \draw[thick, ->, glucose!70] (2,8) + (\angle:0.5) -- + (\angle:1);
+}
+\node[above] at (2,9) {\textbf{Diffusion}};
+
+% Gradient calculation
+\node[draw, rounded corners, fill=yellow!20, text width=4cm] (gradient) at (14,6.5) {
+    \textbf{Gradient Calculation}\\
+    Central Differences:\\
+    $\frac{\partial C}{\partial x} = \frac{C_{i+1,j,k} - C_{i-1,j,k}}{2\Delta x}$\\[0.1cm]
+    Neumann BC:\\
+    Zero flux at boundaries
+};
+
+% Chemotaxis behavior
+\node[draw, rounded corners, fill=immune!30, text width=3.5cm, text centered] at (14,4) {
+    \textbf{Chemotaxis}\\
+    Immune cells follow\\
+    glucose gradient:\\
+    $\Delta \mathbf{x} = \text{sign}(\nabla C)$\\
+    when no direct target
+};
+
+% Glucose depletion zone
+\draw[thick, dashed, red] (1.2,5.5) ellipse (1.5 and 1);
+\node[red] at (0,4.5) {\textbf{Depletion Zone}};
+
+% Normal glucose zone
+\draw[thick, dashed, green] (9,6.5) ellipse (1 and 0.8);
+\node[green] at (10.5,5.5) {\textbf{Normal Zone}};
+
+% Parameter effects box
+\node[draw, rounded corners, fill=gray!10, text width=5cm] at (4,2.5) {
+    \textbf{Glucose-Dependent Effects}\\
+    • Kill rate scaling: $p_{kill} \times \min(1, C \times w_{sensitivity})$\\
+    • Growth modulation: tumor growth $\propto$ local glucose\\
+    • Immune function: impaired when $C < threshold$\\
+    • Navigation: chemotaxis toward high glucose
+};
+
+% Time evolution arrow
+\draw[very thick, ->] (1,1.5) -- (15,1.5);
+\node[below] at (8,1) {\textbf{Time Evolution: Euler Integration}};
+\node[below] at (8,0.5) {$C^{n+1} = C^n + \Delta t \times (\text{Diffusion} - \text{Decay} + \text{Sources} - \text{Consumption})$};
+
+% Boundary conditions
+\node[draw, rounded corners, fill=orange!20, text width=3cm] at (1,3) {
+    \textbf{Boundary Conditions}\\
+    Neumann (no-flux):\\
+    $\frac{\partial C}{\partial n} = 0$\\
+    at all grid edges
+};
+
+% Arrows showing process flow
+\draw[thick, ->, bloodvessel] (source) to[bend left=20] (pde);
+\draw[thick, ->, tumor] (tumor_cell) to[bend right=30] (pde);
+\draw[thick, ->, immune] (immune_cell) to[bend left=30] (pde);
+\draw[thick, ->, yellow] (pde) -- (gradient);
+
+% Consumption arrows
+\draw[thick, ->, tumor] (6,7.5) -- (tumor_cell) node[midway, above] {\tiny High consumption};
+\draw[thick, ->, immune] (6,7) -- (immune_cell) node[midway, above] {\tiny Normal consumption};
+
+\end{tikzpicture}

@@ -1,0 +1,125 @@
+% Comprehensive Agent Interaction Network
+\begin{tikzpicture}[scale=0.85, every node/.style={scale=0.85}]
+
+% Define node styles
+\tikzstyle{tumor}=[draw, circle, fill=tumorcell, text=white, minimum size=1cm]
+\tikzstyle{tcell}=[draw, circle, fill=immunecell, text=white, minimum size=0.8cm]
+\tikzstyle{innate}=[draw, circle, fill=immunecell!70, text=white, minimum size=0.8cm]
+\tikzstyle{stromal}=[draw, rectangle, fill=gray!50, minimum size=0.8cm]
+\tikzstyle{signaling}=[draw, diamond, fill=yellow!70, minimum size=0.6cm]
+
+% Central tumor cell
+\node[tumor] (tumor) at (0,0) {TC};
+
+% T cells around tumor
+\node[tcell] (ctl) at (-3,2) {CTL};
+\node[tcell] (cd8n) at (-2,3) {CD8$^+$};
+\node[tcell] (cd4n) at (2,3) {CD4$^+$};
+\node[tcell] (th1) at (3,2) {Th1};
+\node[tcell] (th2) at (3,-2) {Th2};
+\node[tcell] (treg) at (-3,-2) {Treg};
+
+% Innate immune cells
+\node[innate] (nk) at (-1,4) {NK};
+\node[innate] (m1) at (-4,0) {M1};
+\node[innate] (m2) at (4,0) {M2};
+\node[innate] (dc) at (1,4) {DC};
+\node[innate] (pdc) at (-1,-4) {pDC};
+\node[innate] (mast) at (1,-4) {Mast};
+\node[innate] (neut) at (-4,-3) {Neut};
+
+% Stromal cells
+\node[stromal] (blood) at (0,5) {Blood};
+\node[stromal] (adipo) at (4,-3) {Adipo};
+
+% Signaling molecules
+\node[signaling] (hormone) at (-5,2) {Hormone};
+\node[signaling] (cytokine) at (5,2) {Cytokine};
+
+% Killing interactions (red arrows)
+\draw[thick, ->, red] (ctl) -- (tumor) node[midway, above left] {\tiny Kill};
+\draw[thick, ->, red] (nk) to[bend right=20] (tumor) node[midway, above] {\tiny Kill};
+\draw[thick, ->, red] (m1) -- (tumor) node[midway, above] {\tiny Phago};
+
+% Activation/Differentiation (blue arrows)
+\draw[thick, ->, blue] (dc) -- (cd8n) node[midway, right] {\tiny Activate};
+\draw[thick, ->, blue] (dc) to[bend left=15] (cd4n) node[midway, above right] {\tiny Present};
+\draw[thick, ->, blue] (cd8n) -- (ctl) node[midway, above] {\tiny Diff};
+\draw[thick, ->, blue] (cd4n) -- (th1) node[midway, above right] {\tiny Diff};
+\draw[thick, ->, blue] (cd4n) to[bend right=30] (th2) node[midway, right] {\tiny Diff};
+\draw[thick, ->, blue] (cd4n) to[bend left=45] (treg) node[midway, above] {\tiny Diff};
+\draw[thick, ->, blue] (m1) to[bend left=30] (cd4n) node[midway, left] {\tiny Present};
+
+% Suppression (gray dashed arrows)
+\draw[thick, ->, dashed, gray] (treg) -- (ctl) node[midway, below left] {\tiny Suppress};
+\draw[thick, ->, dashed, gray] (m2) -- (tumor) node[midway, below] {\tiny Protect};
+\draw[thick, ->, dashed, gray] (treg) to[bend left=20] (th1) node[midway, above] {\tiny Inhibit};
+
+% Support/Enhancement (green arrows)
+\draw[thick, ->, green] (th1) -- (tumor) node[midway, below right] {\tiny Attack};
+\draw[thick, ->, green] (th1) to[bend right=20] (m1) node[midway, below] {\tiny Recruit};
+\draw[thick, ->, green] (th2) to[bend left=20] (ctl) node[midway, below] {\tiny Support};
+
+% Recruitment/Spawning (purple dotted arrows)
+\draw[thick, ->, dotted, purple] (mast) -- (dc) node[midway, left] {\tiny Spawn};
+\draw[thick, ->, dotted, purple] (pdc) -- (nk) node[midway, left] {\tiny Spawn};
+\draw[thick, ->, dotted, purple] (blood) -- (hormone) node[midway, left] {\tiny Release};
+\draw[thick, ->, dotted, purple] (th1) to[bend left=40] (cytokine) node[midway, above] {\tiny Produce};
+
+% Angiogenesis
+\draw[thick, ->, orange] (tumor) -- (blood) node[midway, right] {\tiny Angio};
+\draw[thick, ->, orange] (m2) to[bend right=30] (blood) node[midway, above] {\tiny Angio};
+
+% Polarization switches
+\draw[thick, <->, brown] (m1) to[bend left=60] (m2) node[midway, above] {\tiny Polarize};
+
+% Hormone effects (wavy lines)
+\draw[thick, ->, violet, snake] (hormone) -- (ctl) node[midway, above] {\tiny Modulate};
+\draw[thick, ->, violet, snake] (hormone) to[bend right=20] (th1) node[midway, left] {\tiny Enhance};
+\draw[thick, ->, violet, snake] (hormone) to[bend left=40] (th2) node[midway, below] {\tiny Enhance};
+
+% PD-1/PD-L1 checkpoint
+\draw[thick, <->, red, dashed] (tumor) to[bend left=30] (ctl) node[midway, above right] {\tiny PD-L1};
+
+% Title
+\node[text width=14cm, text centered] at (0,7) {
+    \Large\textbf{Complete Agent Interaction Network in RCC Model}
+};
+
+% Legend
+\node[draw, rounded corners, fill=white, text width=4cm] at (-7,1) {
+    \textbf{Interaction Types}\\
+    \textcolor{red}{—} Cytotoxic Kill\\
+    \textcolor{blue}{—} Activation/Diff\\
+    \textcolor{gray}{- -} Suppression\\
+    \textcolor{green}{—} Support\\
+    \textcolor{purple}{···} Recruitment\\
+    \textcolor{orange}{—} Angiogenesis\\
+    \textcolor{brown}{↔} Polarization\\
+    \textcolor{violet}{\textasciitilde} Hormone Effect
+};
+
+% Cell type legend
+\node[draw, rounded corners, fill=white, text width=3cm] at (7,1) {
+    \textbf{Cell Types}\\
+    \textcolor{tumorcell}{\textbullet} Tumor\\
+    \textcolor{immunecell}{\textbullet} T Cells\\
+    \textcolor{immunecell!70}{\textbullet} Innate\\
+    \textcolor{gray!50}{\textbullet} Stromal\\
+    \textcolor{yellow!70}{\textbullet} Signaling
+};
+
+% Effect indicators around tumor
+\node[fill=red!20, rounded corners, text width=1.5cm, text centered] at (-1.5,-1.5) {
+    \tiny Growth\\
+    \tiny Apoptosis\\
+    \tiny Effects
+};
+
+\node[fill=blue!20, rounded corners, text width=1.5cm, text centered] at (1.5,1.5) {
+    \tiny Glucose\\
+    \tiny Consumption\\
+    \tiny Gradients
+};
+
+\end{tikzpicture}

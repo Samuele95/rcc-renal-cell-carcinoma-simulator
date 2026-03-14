@@ -1,0 +1,158 @@
+% Gene-to-Phenotype Mapping Diagram
+\begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}]
+
+% Title
+\node[text width=18cm, text centered] at (9,14) {
+    \Large\textbf{DNA System: 16-Gene to 5-Phenotype Mapping in RCC}
+};
+
+% Gene categories
+\node[draw, rounded corners, fill=dna!20, text width=16cm, minimum height=8cm] at (9,8) {};
+\node[text width=16cm, text centered] at (9,12.5) {\textbf{16-Gene Mutation Profile}};
+
+% Growth genes
+\node[draw, rounded corners, fill=green!20, text width=3cm] at (2,11) {
+    \textbf{Growth Genes}\\
+    VHL\\
+    PBRM1\\
+    SETD2\\
+    KDM5C\\
+    PTEN
+};
+
+% Tumor suppressor
+\node[draw, rounded corners, fill=red!20, text width=2.5cm] at (6,11) {
+    \textbf{Suppressor}\\
+    TP53
+};
+
+% Signaling
+\node[draw, rounded corners, fill=blue!20, text width=2.5cm] at (10,11) {
+    \textbf{Signaling}\\
+    PIK3CA\\
+    MET\\
+    EGFR
+};
+
+% Immune evasion
+\node[draw, rounded corners, fill=purple!20, text width=2.5cm] at (14,11) {
+    \textbf{Evasion}\\
+    CD274\\
+    (PD-L1)
+};
+
+% Antigen presentation
+\node[draw, rounded corners, fill=orange!20, text width=6cm] at (8,8.5) {
+    \textbf{Antigen Presentation Complex}\\
+    B2M • JAK1 • JAK2 • TAP1 • TAP2 • HLA-A\\
+    (MHC Class I pathway)
+};
+
+% Mutation types legend
+\node[draw, rounded corners, fill=yellow!10, text width=4cm] at (16,8.5) {
+    \textbf{Mutation Types}\\
+    0 = Wild Type\\
+    1 = Loss of Function\\
+    2 = Gain of Function\\
+    3 = Amplification
+};
+
+% Mathematical transformation
+\draw[very thick, ->] (9,6.5) -- (9,5.5);
+\node[right] at (9.5,6) {\textbf{Mathematical Mapping}};
+
+% Phenotype categories
+\node[draw, rounded corners, fill=yellow!20, text width=16cm, minimum height=3cm] at (9,3) {};
+\node[text width=16cm, text centered] at (9,4.5) {\textbf{5 Phenotypic Traits}};
+
+% Proliferation chance
+\node[draw, rounded corners, fill=green!30, text width=3cm, text centered] at (2,3) {
+    \textbf{Proliferation}\\
+    $P_{prolif} = f($VHL,$PBRM1,$SETD2,$KDM5C,$PTEN$)$
+};
+
+% Apoptosis resistance
+\node[draw, rounded corners, fill=red!30, text width=2.5cm, text centered] at (5.5,3) {
+    \textbf{Apoptosis}\\
+    $P_{apopt} = f($TP53$)$
+};
+
+% Angiogenesis
+\node[draw, rounded corners, fill=blue!30, text width=2.5cm, text centered] at (8.5,3) {
+    \textbf{Angiogenesis}\\
+    $A_{factor} = f($PIK3CA,$MET,$EGFR$)$
+};
+
+% Immune evasion
+\node[draw, rounded corners, fill=purple!30, text width=2.5cm, text centered] at (11.5,3) {
+    \textbf{PD-L1 Expr}\\
+    $E_{PDL1} = f($CD274$)$
+};
+
+% Antigen presentation
+\node[draw, rounded corners, fill=orange!30, text width=3cm, text centered] at (15,3) {
+    \textbf{Ag Present}\\
+    $P_{antigen} = f($MHC genes$)$
+};
+
+% Mapping arrows
+\draw[thick, ->] (2,10) to[bend right=30] (2,3.8);
+\draw[thick, ->] (6,10) to[bend right=20] (5.5,3.8);
+\draw[thick, ->] (10,10) to[bend left=20] (8.5,3.8);
+\draw[thick, ->] (14,10) to[bend left=30] (11.5,3.8);
+\draw[thick, ->] (8,7.5) -- (15,3.8);
+
+% Detailed mathematical formulations
+\node[draw, rounded corners, fill=gray!10, text width=7cm] at (4,1) {
+    \textbf{Example: Proliferation Calculation}\\
+    For each growth gene $g$:\\
+    $contrib_g = \begin{cases} 
+    0.9 & \text{if } g = 1 \text{ (LoF)} \\
+    1.1 & \text{if } g = 2 \text{ (GoF)} \\
+    1.0 & \text{otherwise}
+    \end{cases}$\\[0.2cm]
+    $P_{proliferation} = \prod_{g \in \{VHL, PBRM1, ...\}} contrib_g$
+};
+
+\node[draw, rounded corners, fill=gray!10, text width=7cm] at (14,1) {
+    \textbf{Example: Antigen Presentation}\\
+    $damaged = \sum_{g \in MHC\_genes} \mathbb{1}[g \neq 0]$\\[0.1cm]
+    $P_{antigen} = \max(0.1, 1.0 - 0.15 \times damaged)$\\[0.2cm]
+    If all 6 MHC genes mutated:\\
+    $P_{antigen} = 0.1$ (minimal presentation)
+};
+
+% Mutation dynamics
+\node[draw, rounded corners, fill=blue!10, text width=8cm] at (9,0) {
+    \textbf{Dynamic Mutation Process}\\
+    • Initial: 3 random mutations injected\\
+    • Duplication: daughter inherits parent mutations\\
+    • Additional: new mutations during simulation (rare)\\
+    • Clonal evolution: mutation accumulation over time
+};
+
+% Agent behavior influence arrows
+\draw[very thick, ->, dashed] (2,2.2) to[bend right=40] (-1,0) node[left] {\textbf{Influences}};
+\draw[very thick, ->, dashed] (15,2.2) to[bend left=40] (19,0) node[right] {\textbf{Agent Behavior}};
+
+% Specific examples
+\node[draw, star, fill=yellow!70] at (1,6) {Example 1};
+\node[below] at (1,5.5) {\tiny VHL=1, CD274=2};
+\node[below] at (1,5.2) {\tiny → Fast growth};
+\node[below] at (1,4.9) {\tiny → High PD-L1};
+
+\node[draw, star, fill=yellow!70] at (17,6) {Example 2};
+\node[below] at (17,5.5) {\tiny TP53=1, B2M=1};
+\node[below] at (17,5.2) {\tiny → Apoptosis resist};
+\node[below] at (17,4.9) {\tiny → Immune invisible};
+
+% Hamming distance for TCR matching
+\node[draw, rounded corners, fill=orange!40, text width=4cm] at (1,9) {
+    \textbf{TCR Matching}\\
+    Hamming distance\\
+    between TCR and\\
+    tumor neoantigen\\
+    $d_H \leq 3$ = match
+};
+
+\end{tikzpicture}nd{tikzpicture}

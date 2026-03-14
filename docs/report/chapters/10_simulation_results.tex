@@ -1,13 +1,28 @@
 \chapter{Simulation Results}
 \label{ch:simulation-results}
 
-This chapter presents the results from systematic simulation of the RCC agent-based model across six scenarios: sex-specific baseline (no treatment) conditions and three treatment modalities (ICI, TKI, and combination therapy) stratified by biological sex. The results demonstrate significant differences in tumor progression patterns, treatment responses, and sex-specific effects that inform our understanding of renal cell carcinoma immunotherapy.
+\begin{tcolorbox}[colback=glucose!10, colframe=glucose!50, title=\textbf{When Virtual Meets Reality}]
+\textit{This is where our computational vision meets the ultimate test: can our virtual tumors predict real patient outcomes? This chapter presents the validation against ARON-1 clinical trial data and reveals where our model succeeds, where it struggles, and what these results mean for the future of precision cancer medicine.}
+\end{tcolorbox}
+
+The moment of truth for any computational biology model comes when its predictions are compared against real clinical data. After thousands of hours of coding, biological research, and parameter optimization, we finally ask the crucial question: does our virtual tumor behave like real tumors?
+
+This chapter presents systematic simulation results across six critical scenarios: male and female baseline conditions (no treatment) and three treatment modalities (ICI, TKI, and combination therapy) stratified by biological sex. These results reveal significant differences in tumor progression patterns, treatment responses, and sex-specific effects that illuminate why personalized medicine matters in kidney cancer care.
 
 % ======================================================================
-\section{Baseline Simulation}
+\section{Baseline Simulations: The Natural History of Virtual Cancer}
 \label{sec:baseline-sim}
 
-The baseline scenarios run the simulation with default parameters and no treatment (\texttt{treatment='None'}) for both male and female virtual patients. These configurations serve as controls against which treatment effects are measured.
+Before testing treatments, we must understand the natural progression of untreated kidney cancer in our virtual patients. The baseline scenarios reveal fundamental differences between male and female tumor dynamics that set the stage for understanding why treatment responses differ between sexes.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/sex_stratified_results.pdf}
+\caption{Sex-stratified analysis of treatment outcomes across all intervention strategies. \textbf{Top left:} Survival rates show consistent female advantage across all treatments, with combination therapy achieving the highest success rates in both sexes. \textbf{Top right:} Median survival times mirror the survival rate patterns, with females consistently living longer than males regardless of treatment. \textbf{Bottom left:} Treatment benefit over control reveals that while both sexes benefit from therapy, males show larger absolute improvements with combination treatment. \textbf{Bottom right:} Distribution analysis shows that while average outcomes favor females, there's substantial individual variation—some male patients achieve excellent outcomes while some female patients don't respond to treatment.}
+\label{fig:sex_stratified_results}
+\end{figure}
+
+The baseline scenarios run our virtual patients without any therapeutic intervention (\texttt{treatment='None'}), allowing us to observe the natural evolution of tumor-immune interactions under the influence of sex hormones alone.
 
 \subsection{Observed Tumor Dynamics - No Treatment}
 
@@ -257,7 +272,7 @@ The glucose dynamics revealed three key metabolic insights:
     \item \textbf{Metabolic feedback}: Glucose depletion provides negative feedback on tumor growth, but this mechanism is overwhelmed in aggressive progression scenarios.
 
     \item \textbf{Immune-metabolic interactions}: The glucose gradient guides immune cell chemotaxis, but depletion zones around large tumors can impair immune cell function through metabolic starvation.
-\end{enumerate>
+\end{enumerate}
 
 % ======================================================================
 \section{Clinical Implications}

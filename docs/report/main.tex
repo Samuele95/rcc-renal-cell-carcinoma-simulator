@@ -20,6 +20,22 @@
 \usepackage{enumitem}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,calc}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{mdframed}
+
+% TikZ libraries for advanced diagrams
+\usetikzlibrary{patterns,backgrounds,decorations.pathreplacing}
+\usetikzlibrary{mindmap,trees,decorations.text}
+\usetikzlibrary{matrix,chains,scopes}
+
+% Color definitions for consistent theming
+\definecolor{tumorcell}{RGB}{220,20,60}
+\definecolor{immunecell}{RGB}{30,144,255}
+\definecolor{bloodvessel}{RGB}{255,69,0}
+\definecolor{glucose}{RGB}{255,215,0}
+\definecolor{dna}{RGB}{138,43,226}
+\definecolor{treatment}{RGB}{34,139,34}
 
 % Listing style
 \lstset{
@@ -68,6 +84,8 @@ This report presents a comprehensive agent-based model (ABM) of the Renal Cell C
 \end{abstract}
 
 \tableofcontents
+\listoffigures
+\listoftables
 
 \input{chapters/01_introduction}
 \input{chapters/02_theoretical_background}

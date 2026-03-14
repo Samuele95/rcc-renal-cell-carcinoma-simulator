@@ -1,0 +1,118 @@
+% Warburg Effect Metabolic Pathway Diagram
+\begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}]
+
+% Define colors
+\definecolor{glucose}{RGB}{255,215,0}
+\definecolor{normal}{RGB}{34,139,34}
+\definecolor{cancer}{RGB}{220,20,60}
+\definecolor{atp}{RGB}{255,140,0}
+\definecolor{lactate}{RGB}{255,20,147}
+
+% Title
+\node[text width=16cm, text centered] at (8,11) {
+    \Large\textbf{The Warburg Effect: Normal vs Cancer Cell Metabolism}
+};
+
+% Normal cell (left side)
+\node[text width=8cm, text centered] at (4,10) {
+    \textbf{\textcolor{normal}{Normal Cell}}
+};
+
+% Cancer cell (right side)
+\node[text width=8cm, text centered] at (12,10) {
+    \textbf{\textcolor{cancer}{Cancer Cell (Warburg Effect)}}
+};
+
+% Dividing line
+\draw[thick, dashed] (8,0) -- (8,9.5);
+
+% Glucose input (both sides)
+\node[draw, rounded corners, fill=glucose, minimum width=1.5cm] (glucose_n) at (2,8.5) {Glucose};
+\node[draw, rounded corners, fill=glucose, minimum width=1.5cm] (glucose_c) at (10,8.5) {Glucose};
+
+% Glycolysis pathway (both sides)
+\node[draw, rounded corners, fill=blue!20] (glyc_n) at (2,7) {Glycolysis};
+\node[draw, rounded corners, fill=blue!20] (glyc_c) at (10,7) {Glycolysis};
+
+% Pyruvate
+\node[draw, rounded corners, fill=orange!50] (pyr_n) at (2,5.5) {Pyruvate};
+\node[draw, rounded corners, fill=orange!50] (pyr_c) at (10,5.5) {Pyruvate};
+
+% Normal cell: Oxidative phosphorylation
+\node[draw, rounded corners, fill=normal!30, text width=2.5cm, text centered] (oxphos) at (4,4) {
+    Oxidative\\
+    Phosphorylation\\
+    (Mitochondria)
+};
+
+% Cancer cell: Continued glycolysis + some oxphos
+\node[draw, rounded corners, fill=cancer!30, text width=2cm, text centered] (aerobic_glyc) at (12,4) {
+    Aerobic\\
+    Glycolysis
+};
+
+\node[draw, rounded corners, fill=normal!20, text width=1.8cm, text centered] (reduced_oxphos) at (14,4) {
+    Reduced\\
+    OxPhos
+};
+
+% ATP production
+\node[draw, star, fill=atp, text=white] (atp_n) at (4,2.5) {36 ATP};
+\node[draw, star, fill=atp, text=white] (atp_c1) at (10,2.5) {2 ATP};
+\node[draw, star, fill=atp, text=white] (atp_c2) at (14,2.5) {+ATP};
+
+% Lactate production (cancer only)
+\node[draw, rounded corners, fill=lactate] (lactate) at (12,1) {Lactate};
+
+% CO2 production
+\node[draw, rounded corners, fill=gray!50] (co2_n) at (6,3) {CO$_2$ + H$_2$O};
+\node[draw, rounded corners, fill=gray!50] (co2_c) at (14,3) {CO$_2$ + H$_2$O};
+
+% Arrows for normal cell
+\draw[thick, ->] (glucose_n) -- (glyc_n);
+\draw[thick, ->] (glyc_n) -- (pyr_n);
+\draw[thick, ->, normal] (pyr_n) -- (oxphos) node[midway, left] {O$_2$};
+\draw[thick, ->, normal] (oxphos) -- (atp_n);
+\draw[thick, ->] (oxphos) -- (co2_n);
+
+% Arrows for cancer cell
+\draw[thick, ->, line width=2pt] (glucose_c) -- (glyc_c) node[midway, right] {200x faster};
+\draw[thick, ->] (glyc_c) -- (pyr_c);
+\draw[thick, ->, cancer, line width=2pt] (pyr_c) -- (aerobic_glyc);
+\draw[thick, ->, dashed] (pyr_c) to[bend left] (reduced_oxphos);
+\draw[thick, ->, cancer] (aerobic_glyc) -- (atp_c1);
+\draw[thick, ->, cancer] (aerobic_glyc) -- (lactate) node[midway, right] {Acidifies};
+\draw[thick, ->] (reduced_oxphos) -- (atp_c2);
+\draw[thick, ->] (reduced_oxphos) -- (co2_c);
+
+% Advantages text box
+\node[draw, rounded corners, fill=cancer!10, text width=6cm] at (12,6.5) {
+    \textbf{Cancer Advantages:}\\
+    • Faster ATP production\\
+    • Biosynthetic precursors\\
+    • Acidic microenvironment\\
+    • Less O$_2$ dependent
+};
+
+% Efficiency comparison
+\node[draw, rounded corners, fill=normal!10, text width=2.5cm, text centered] at (4,1) {
+    \textbf{Efficient}\\
+    36 ATP/glucose\\
+    Needs O$_2$
+};
+
+\node[draw, rounded corners, fill=cancer!10, text width=2.5cm, text centered] at (10,0.3) {
+    \textbf{Fast but Wasteful}\\
+    2-4 ATP/glucose\\
+    No O$_2$ needed
+};
+
+% Oxygen availability indicator
+\node[draw, cloud, fill=blue!20] (o2) at (1,4) {O$_2$};
+\draw[thick, ->, blue] (o2) to[bend right] (oxphos);
+
+% X mark for limited oxygen effect on cancer
+\node[red, text width=1cm, text centered] at (9,4) {\Huge X};
+\node[below] at (9,3.5) {\small Even with O$_2$};
+
+\end{tikzpicture}

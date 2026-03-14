@@ -1,0 +1,139 @@
+% Treatment Mechanisms: ICI, TKI, and Synergy
+\begin{tikzpicture}[scale=0.85, every node/.style={scale=0.85}]
+
+% Title
+\node[text width=16cm, text centered] at (8,13) {
+    \Large\textbf{Treatment Mechanisms: ICI, TKI, and Combination Synergy}
+};
+
+% Divide into three sections
+\draw[thick, dashed] (5.3,0) -- (5.3,12);
+\draw[thick, dashed] (10.7,0) -- (10.7,12);
+
+\node[text width=5cm, text centered] at (2.5,11.5) {\textbf{ICI Mechanism}};
+\node[text width=5cm, text centered] at (8,11.5) {\textbf{TKI Mechanism}};
+\node[text width=5cm, text centered] at (13.5,11.5) {\textbf{Combination Synergy}};
+
+% ICI Section (Left)
+% PD-1/PD-L1 checkpoint
+\node[draw, circle, fill=immunecell, text=white, minimum size=1cm] (tcell) at (1,9) {T};
+\node[draw, circle, fill=tumorcell, text=white, minimum size=1cm] (tumor1) at (4,9) {TC};
+
+% PD-1 and PD-L1 receptors
+\node[draw, rectangle, fill=blue!50, minimum size=0.3cm] (pd1) at (2,9) {PD-1};
+\node[draw, rectangle, fill=red!50, minimum size=0.3cm] (pdl1) at (3,9) {PD-L1};
+
+% Normal inhibition
+\draw[thick, <->, red] (pd1) -- (pdl1) node[midway, above] {\tiny Inhibits};
+\node[red] at (2.5,8.3) {\textbf{BLOCKED!}};
+
+% ICI drug
+\node[draw, star, fill=treatment, text=white] (ici_drug) at (2.5,7) {ICI};
+\draw[thick, ->, treatment] (ici_drug) to[bend left=30] (pd1) node[midway, left] {\tiny Blocks};
+\draw[thick, ->, treatment] (ici_drug) to[bend right=30] (pdl1) node[midway, right] {\tiny Blocks};
+
+% Restored T cell function
+\node[draw, circle, fill=immunecell, text=white, minimum size=1cm] (activated_tcell) at (1,5) {T*};
+\draw[thick, ->] (tcell) -- (activated_tcell) node[midway, right] {\tiny Reactivate};
+\draw[thick, ->, red] (activated_tcell) to[bend left=30] (tumor1) node[midway, above] {\tiny Kill};
+
+% Effects box
+\node[draw, rounded corners, fill=treatment!20, text width=4cm] at (2.5,3) {
+    \textbf{ICI Effects}\\
+    • Restore T cell killing\\
+    • Increase immune infiltration\\
+    • Block checkpoint inhibition\\
+    • Enhance antigen presentation
+};
+
+% TKI Section (Middle)
+% VEGF pathway
+\node[draw, circle, fill=tumorcell, text=white, minimum size=1cm] (tumor2) at (8,10) {TC};
+\node[draw, rectangle, fill=orange!70] (vegf) at (8,8.5) {VEGF};
+\node[draw, circle, fill=bloodvessel, text=white, minimum size=0.8cm] (vessel1) at (6.5,7.5) {BV};
+\node[draw, circle, fill=bloodvessel, text=white, minimum size=0.8cm] (vessel2) at (9.5,7.5) {BV};
+
+% VEGF signaling
+\draw[thick, ->] (tumor2) -- (vegf) node[midway, right] {\tiny Secrete};
+\draw[thick, ->] (vegf) to[bend left=30] (vessel1) node[midway, above] {\tiny Angiogenesis};
+\draw[thick, ->] (vegf) to[bend right=30] (vessel2);
+
+% TKI drug blocking
+\node[draw, star, fill=treatment, text=white] (tki_drug) at (8,6.5) {TKI};
+\draw[thick, ->, treatment] (tki_drug) -- (vegf) node[midway, right] {\tiny Blocks};
+
+% Blocked angiogenesis
+\draw[thick, red, line width=3pt] (6.8,7) -- (7.2,7.8);
+\draw[thick, red, line width=3pt] (6.8,7.8) -- (7.2,7);
+\draw[thick, red, line width=3pt] (8.8,7) -- (9.2,7.8);
+\draw[thick, red, line width=3pt] (8.8,7.8) -- (9.2,7);
+
+% Tumor growth inhibition
+\node[draw, circle, fill=tumorcell!50, text=white, minimum size=1cm] (tumor_shrink) at (8,5) {TC};
+\draw[thick, ->] (tumor2) -- (tumor_shrink) node[midway, right] {\tiny Starve};
+
+% Effects box
+\node[draw, rounded corners, fill=treatment!20, text width=4cm] at (8,2.5) {
+    \textbf{TKI Effects}\\
+    • Block angiogenesis\\
+    • Reduce tumor growth\\
+    • Normalize vasculature\\
+    • Release neoantigens
+};
+
+% Combination Section (Right)
+% Synergistic effects
+\node[draw, ellipse, fill=treatment!30, text width=2.5cm, text centered] (synergy) at (13.5,9) {
+    \textbf{Synergy}\\
+    ICI + TKI
+};
+
+% Multiple pathways
+\node[draw, circle, fill=immunecell, text=white, minimum size=0.8cm] (enhanced_tcell) at (12,7) {T**};
+\node[draw, circle, fill=tumorcell!30, text=white, minimum size=1cm] (dying_tumor) at (15,7) {TC};
+
+% Enhanced effects
+\draw[thick, ->, green, line width=2pt] (enhanced_tcell) -- (dying_tumor) node[midway, above] {\tiny Enhanced Kill};
+
+% Neoantigen release
+\node[draw, diamond, fill=purple!50] (neoantigen) at (15,5.5) {Ag};
+\draw[thick, ->] (dying_tumor) -- (neoantigen) node[midway, right] {\tiny Release};
+
+% DC activation
+\node[draw, circle, fill=immunecell!70, text=white, minimum size=0.8cm] (dc) at (12,5.5) {DC};
+\draw[thick, ->] (neoantigen) -- (dc) node[midway, below] {\tiny Capture};
+\draw[thick, ->] (dc) -- (enhanced_tcell) node[midway, left] {\tiny Prime};
+
+% Positive feedback loop
+\draw[thick, ->, dashed, green] (dc) to[bend right=60] (enhanced_tcell);
+
+% Combination effects
+\node[draw, rounded corners, fill=treatment!20, text width=4cm] at (13.5,3) {
+    \textbf{Combination Benefits}\\
+    • TKI releases antigens\\
+    • ICI removes brakes\\
+    • Enhanced T cell priming\\
+    • Improved tumor access\\
+    • Sustained immune memory
+};
+
+% Timeline at bottom
+\draw[thick, ->] (0,1) -- (16,1);
+\node[below] at (8,0.5) {\textbf{Treatment Timeline}};
+
+\node[above] at (2,1) {\tiny ICI Start};
+\node[above] at (6,1) {\tiny TKI Start};
+\node[above] at (10,1) {\tiny Synergy};
+\node[above] at (14,1) {\tiny Response};
+
+% Timeline markers
+\foreach \x in {2,6,10,14} {
+    \draw[thick] (\x,0.9) -- (\x,1.1);
+}
+
+% Resistance mechanisms (bottom)
+\node[draw, rounded corners, fill=red!20, text width=15cm, text centered] at (8,0) {
+    \textbf{Resistance Mechanisms:} Acquired mutations • Alternative checkpoints • Immunosuppressive TME • Angiogenesis bypass • Tumor heterogeneity
+};
+
+\end{tikzpicture}

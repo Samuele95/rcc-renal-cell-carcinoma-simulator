@@ -1,0 +1,186 @@
+% ABM vs ODE/PDE Comparison Diagram
+\begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}]
+
+% Title
+\node[text width=18cm, text centered] at (9,14) {
+    \Large\textbf{Modeling Paradigms: Agent-Based vs Equation-Based Approaches}
+};
+
+% Divide into two sides
+\draw[thick, dashed] (9,0) -- (9,13);
+
+% ABM Side (Left)
+\node[text width=8cm, text centered] at (4.5,12.5) {\textbf{\textcolor{immunecell}{Agent-Based Model (ABM)}}};
+
+% Individual agents
+\node[draw, circle, fill=tumorcell, text=white, minimum size=0.8cm] at (2,11) {TC};
+\node[draw, circle, fill=immunecell, text=white, minimum size=0.6cm] at (3,10.5) {T};
+\node[draw, circle, fill=immunecell, text=white, minimum size=0.6cm] at (1.5,10.5) {M};
+\node[draw, circle, fill=immunecell, text=white, minimum size=0.6cm] at (2.5,10) {NK};
+\node[draw, circle, fill=bloodvessel, text=white, minimum size=0.6cm] at (1,11.5) {BV};
+
+% Grid representation
+\draw[step=0.3cm, gray!30] (4,9.5) grid (7,11.5);
+\node[above] at (5.5,11.5) {\textbf{3D Spatial Grid}};
+
+% Individual cell properties
+\node[draw, rounded corners, fill=tumorcell!20, text width=3.5cm] at (2,9) {
+    \textbf{Individual Properties}\\
+    • Unique DNA profile\\
+    • Spatial position (x,y,z)\\
+    • Activation state\\
+    • Age/lifecycle\\
+    • Local interactions
+};
+
+% Stochastic rules
+\node[draw, rounded corners, fill=blue!20, text width=3.5cm] at (6,9) {
+    \textbf{Stochastic Rules}\\
+    • Probabilistic decisions\\
+    • Random movement\\
+    • Bernoulli events\\
+    • Monte Carlo sampling
+};
+
+% Emergent behaviors
+\node[draw, rounded corners, fill=green!20, text width=7cm] at (4.5,7.5) {
+    \textbf{Emergent System Behaviors}\\
+    • Tumor growth patterns from cell division rules\\
+    • Immune response waves from local interactions\\
+    • Spatial clustering without global coordination\\
+    • Treatment resistance from mutation accumulation
+};
+
+% Advantages
+\node[draw, rounded corners, fill=green!10, text width=7cm] at (4.5,6) {
+    \textbf{ABM Advantages}\\
+    $\checkmark$ Natural heterogeneity representation\\
+    $\checkmark$ Spatial dynamics and local interactions\\
+    $\checkmark$ Stochasticity at individual level\\
+    $\checkmark$ Easy addition of new cell types\\
+    $\checkmark$ Direct biological interpretation\\
+    $\checkmark$ Modular/extensible architecture
+};
+
+% Disadvantages
+\node[draw, rounded corners, fill=red!10, text width=7cm] at (4.5,4.5) {
+    \textbf{ABM Disadvantages}\\
+    $\times$ Computationally expensive\\
+    $\times$ Many parameters to calibrate\\
+    $\times$ Stochastic results require ensembles\\
+    $\times$ Difficult mathematical analysis\\
+    $\times$ Scale limitations (memory/time)
+};
+
+% Example equation
+\node[draw, rounded corners, fill=gray!20, text width=7cm] at (4.5,3) {
+    \textbf{Typical ABM Rules}\\
+    $P_{kill} = f(\text{activation}, \text{glucose}, \text{effects})$\\
+    $P_{divide} = g(\text{DNA}, \text{growth factors})$\\
+    $\mathbf{x}_{t+1} = \mathbf{x}_t + \text{movement}(\text{targets})$\\
+    IF random() $< P_{kill}$ THEN remove target
+};
+
+% ODE/PDE Side (Right)
+\node[text width=8cm, text centered] at (13.5,12.5) {\textbf{\textcolor{purple}{Equation-Based Models (ODE/PDE)}}};
+
+% Population-level variables
+\node[draw, rounded corners, fill=purple!20, text width=3.5cm] at (11,11) {
+    \textbf{Population Variables}\\
+    $T(t)$ = Tumor density\\
+    $I(t)$ = Immune density\\
+    $V(t)$ = Vessel density\\
+    $C(x,t)$ = Drug conc.
+};
+
+% Continuous functions
+\node[draw, rounded corners, fill=orange!20, text width=3.5cm] at (15.5,11) {
+    \textbf{Continuous Fields}\\
+    Smooth functions\\
+    Spatial averages\\
+    Rate equations\\
+    Analytical solutions
+};
+
+% Differential equations
+\node[draw, rounded corners, fill=purple!30, text width=7cm] at (13.5,9.5) {
+    \textbf{System of Differential Equations}\\
+    $\frac{dT}{dt} = r_T T(1-T/K) - k_{TI} TI$\\[0.1cm]
+    $\frac{dI}{dt} = s_I + \alpha TI - d_I I$\\[0.1cm]
+    $\frac{\partial C}{\partial t} = D\nabla^2 C - \lambda C + S$
+};
+
+% Deterministic dynamics
+\node[draw, rounded corners, fill=blue!30, text width=3.5cm] at (11,8) {
+    \textbf{Deterministic}\\
+    • Fixed trajectories\\
+    • Reproducible results\\
+    • Average behaviors\\
+    • Smooth dynamics
+};
+
+% Mean-field approximation
+\node[draw, rounded corners, fill=orange!30, text width=3.5cm] at (16,8) {
+    \textbf{Mean-Field}\\
+    • Population averages\\
+    • Well-mixed assumption\\
+    • Rate constants\\
+    • Effective parameters
+};
+
+% Advantages
+\node[draw, rounded corners, fill=green!10, text width=7cm] at (13.5,6) {
+    \textbf{ODE/PDE Advantages}\\
+    $\checkmark$ Mathematically tractable\\
+    $\checkmark$ Fast computation\\
+    $\checkmark$ Analytical solutions possible\\
+    $\checkmark$ Parameter sensitivity analysis\\
+    $\checkmark$ Stability/bifurcation analysis\\
+    $\checkmark$ Well-established theory
+};
+
+% Disadvantages
+\node[draw, rounded corners, fill=red!10, text width=7cm] at (13.5,4.5) {
+    \textbf{ODE/PDE Disadvantages}\\
+    $\times$ No individual heterogeneity\\
+    $\times$ Limited spatial resolution\\
+    $\times$ Difficult to add discrete events\\
+    $\times$ Mean-field assumptions\\
+    $\times$ Less intuitive for cell biology
+};
+
+% When to use each
+\node[draw, rounded corners, fill=yellow!20, text width=7cm] at (4.5,1.5) {
+    \textbf{Use ABM When:}\\
+    • Individual cell behavior matters\\
+    • Spatial patterns important\\
+    • Discrete events (division, death)\\
+    • Heterogeneity drives outcomes\\
+    • Exploring mechanisms
+};
+
+\node[draw, rounded corners, fill=yellow!20, text width=7cm] at (13.5,1.5) {
+    \textbf{Use ODE/PDE When:}\\
+    • Population dynamics sufficient\\
+    • Large-scale patterns\\
+    • Parameter estimation needed\\
+    • Mathematical analysis required\\
+    • Fast screening/optimization
+};
+
+% Hybrid approaches
+\node[draw, rounded corners, fill=cyan!20, text width=16cm, text centered] at (9,0.3) {
+    \textbf{Hybrid Approaches:} ABM for cellular decisions + PDE for chemical fields (glucose) • Multi-scale modeling • ABM → ODE parameter estimation
+};
+
+% Arrows showing relationship
+\draw[thick, <->, blue] (7.5,9) to[bend left=30] (10.5,9) node[midway, above] {\textbf{Parameter Mapping}};
+
+% Complexity indicators
+\node[draw, star, fill=red!50] at (1,0.8) {High Complexity};
+\node[draw, star, fill=yellow!50] at (8,0.8) {Medium};
+\node[draw, star, fill=green!50] at (16,0.8) {Low Complexity};
+
+\end{tikzpicture}
+
+\end{tikzpicture}

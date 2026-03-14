@@ -1,45 +1,89 @@
 \chapter{Glucose Microenvironment System}
 \label{ch:glucose}
 
-This chapter describes the glucose concentration field that overlays the discrete agent grid, modeling metabolic dynamics within the tumor microenvironment.  The system captures diffusion, source injection from blood vessels, consumption by tumor and immune cells, and gradient-based chemotaxis for immune cell navigation.
+\begin{tcolorbox}[colback=glucose!10, colframe=glucose!50, title=\textbf{The Invisible Battlefield}]
+\textit{Cancer isn't just about rogue cells—it's about the metabolic war they wage for the most basic fuel of life: glucose. In this chapter, we reveal how a continuous chemical field shapes the discrete world of cellular combat, creating invisible barriers and hidden pathways that determine who lives and who dies.}
+\end{tcolorbox}
+
+Most cancer models focus on what you can see: cells dividing, immune cells attacking, tumors growing. But some of the most important action happens in the spaces between cells—in the invisible chemical landscape that guides cellular behavior and determines the outcome of immune-tumor interactions.
+
+Our glucose microenvironment system represents one of the most innovative aspects of this model: a continuous 3D chemical field overlaid on our discrete agent grid, capturing the metabolic competition that shapes the tumor ecosystem. This isn't just computational sophistication for its own sake—it's biological necessity. Miss the glucose dynamics, and you miss a crucial mechanism of tumor survival and immune failure.
 
 %% ====================================================================
-\section{Biological Motivation}
+\section{Why Glucose Matters: The Metabolic Foundation of Cancer}
 \label{sec:glucose-bio}
 
-The metabolic landscape of the tumor microenvironment plays a decisive role in determining the outcome of immune--tumor interactions.  Several biological phenomena motivate the inclusion of an explicit glucose field in the model.
+To understand why we need an explicit glucose field in our model, we need to appreciate the central role metabolism plays in cancer progression. This isn't just about cellular fuel—it's about evolutionary competition, spatial organization, and the fundamental constraints that shape which cells live and which die.
 
-\paragraph{The Warburg Effect.}
-In the 1920s, Otto Warburg observed that tumor cells preferentially metabolize glucose through aerobic glycolysis---even in the presence of sufficient oxygen for oxidative phosphorylation~\cite{warburg1956}.  This metabolic reprogramming, now recognized as a hallmark of cancer~\cite{hanahan2011}, results in dramatically elevated glucose uptake by tumor cells (up to 200-fold compared to normal tissue) and the production of large quantities of lactate.  The Warburg effect is not merely a metabolic curiosity; it confers a selective advantage by generating biosynthetic precursors for rapid proliferation and by acidifying the local microenvironment, which impairs immune cell function.
+\subsection{The Warburg Effect: Cancer's Metabolic Rebellion}
+\label{subsec:glucose-warburg}
 
-\paragraph{Metabolic Competition.}
-Because tumor cells consume glucose at a greatly accelerated rate, the regions immediately surrounding the tumor mass become nutrient-deprived.  This metabolic competition between tumor cells and infiltrating immune cells creates nutrient gradients that shape the spatial organization of the microenvironment.  Immune cells arriving at the tumor periphery may encounter glucose concentrations insufficient to sustain their effector functions.
+In the 1920s, Otto Warburg made a discovery that seemed to defy logic \cite{warburg1956}. Cancer cells, even when surrounded by oxygen, preferred to metabolize glucose through the inefficient process of glycolysis rather than the much more efficient oxidative phosphorylation used by normal cells. Why would evolution favor such apparent waste?
 
-\paragraph{Impact on Immune Function.}
-T cells and Natural Killer (NK) cells are critically dependent on glucose availability for their cytotoxic activity.  Upon activation, T cells undergo a metabolic switch to aerobic glycolysis to support clonal expansion and effector function.  When glucose is scarce, T cell proliferation is impaired, interferon-gamma (IFN-$\gamma$) production decreases, and cytotoxic granule release is diminished.  Similarly, NK cell cytotoxicity is reduced under glucose-deprived conditions.  In the model, this dependency is captured by a glucose-dependent scaling factor applied to immune cell kill rates.
+The answer reveals cancer's strategic brilliance. The Warburg effect isn't a bug—it's a feature that provides multiple competitive advantages:
 
-\paragraph{Glucose Gradients as Chemotactic Signals.}
-In the absence of direct cell--cell contact with a target, immune cells can follow glucose concentration gradients as a proxy for proximity to blood vessels and viable tissue.  Regions of high glucose concentration tend to be near functional vasculature, while depleted regions indicate areas of heavy tumor metabolism.  The model exploits this gradient information to provide a chemotactic fallback behavior for immune cells that have not yet located a tumor target.
+\begin{tcolorbox}[colback=tumorcell!10, colframe=tumorcell!50, title=\textbf{Cancer's Metabolic Strategy}]
+\textbf{Speed over efficiency:} Glycolysis produces ATP faster than oxidative phosphorylation, even though it yields less energy per glucose molecule. For rapidly dividing cells, rate trumps efficiency.
+
+\textbf{Building blocks for growth:} Glycolysis generates the biosynthetic precursors—nucleotides, amino acids, lipids—needed to construct new cancer cells.
+
+\textbf{Environmental warfare:} Lactate production acidifies the local environment, creating conditions that favor tumor cells while impairing immune function.
+
+\textbf{Independence from infrastructure:} Glycolysis doesn't require oxygen, allowing tumor cells to thrive even in poorly vascularized tissue regions.
+\end{tcolorbox}
+
+But this metabolic reprogramming comes with a cost: glucose addiction. Cancer cells consume glucose at rates up to 200 times higher than normal cells \cite{hanahan2011}, creating an intense competition for this limited resource.
+
+\subsection{The Competition: Tumor Cells vs. Immune Cells}
+\label{subsec:glucose-competition}
+
+This is where the glucose field becomes crucial to our model. Tumor cells aren't competing for glucose in isolation—they're competing with the very immune cells trying to kill them. And in this metabolic arms race, proximity to glucose sources can mean the difference between life and death.
+
+Activated immune cells, particularly T cells and NK cells, also depend heavily on glucose. When they encounter tumor antigens, they undergo their own metabolic switch to glycolysis, requiring substantial glucose for proliferation, cytokine production, and cytotoxic activity. But if tumor cells have already depleted the local glucose supply, these immune effectors arrive at the scene of battle already metabolically crippled.
+
+\subsection{Spatial Consequences: Geography of Starvation}
+\label{subsec:glucose-spatial}
+
+This metabolic competition creates a spatial landscape of opportunity and limitation. Regions near blood vessels become glucose-rich zones where both tumor growth and immune function can thrive. Areas distant from vasculature, or surrounded by metabolically active tumor masses, become glucose deserts where immune cells lose their killing capacity not because they can't recognize their targets, but because they lack the metabolic fuel to eliminate them.
+
+Our model captures this spatial heterogeneity explicitly, allowing regions of immune exclusion to emerge naturally from metabolic competition rather than being artificially programmed.
 
 %% ====================================================================
-\section{Mathematical Formulation}
+\section{The Mathematics of Metabolic Competition}
 \label{sec:glucose-math}
 
-The glucose concentration field $C(\mathbf{x}, t)$ evolves according to a reaction--diffusion equation derived from Fick's second law~\cite{fick1855}:
+Behind the biological drama lies mathematical precision. Our glucose field evolves according to the fundamental laws of diffusion and consumption—physics meets biology in a partial differential equation that captures how glucose spreads, concentrates, and disappears throughout the tumor microenvironment.
+
+\begin{figure}[H]
+\centering
+\input{figures/glucose_system_detailed}
+\caption{The glucose microenvironment system in action. Blood vessels inject glucose at discrete locations, which then diffuses throughout the 3D tissue according to Fick's laws while being consumed at dramatically different rates by tumor cells (Warburg effect) and immune cells (normal metabolism). The resulting glucose gradients create spatial patterns of metabolic competition—depletion zones around tumor masses where immune function is impaired, and glucose-rich regions near blood vessels where cellular competition is intense. Immune cells use these gradients for chemotaxis when no direct targets are available.}
+\label{fig:glucose_system_detailed}
+\end{figure}
+
+\subsection{The Master Equation: Sources, Sinks, and Diffusion}
+\label{subsec:glucose-pde}
+
+The glucose concentration field $C(\mathbf{x}, t)$ evolves according to a reaction-diffusion equation that balances four fundamental processes:
 
 \begin{equation}
 \label{eq:glucose-pde}
-\frac{\partial C}{\partial t} = D\,\nabla^2 C \;-\; \lambda\,C \;+\; S(\mathbf{x}) \;-\; Q(\mathbf{x}),
+\frac{\partial C}{\partial t} = D\,\nabla^2 C \;-\; \lambda\,C \;+\; S(\mathbf{x}) \;-\; Q(\mathbf{x})
 \end{equation}
 
-\noindent where:
-\begin{itemize}[nosep]
-  \item $C(\mathbf{x}, t)$ is the glucose concentration at position $\mathbf{x} = (x, y, z)$ and time $t$,
-  \item $D$ is the diffusion coefficient (\texttt{w\_glucose\_diffusion}, default $0.1$),
-  \item $\lambda$ is the natural decay rate (\texttt{w\_glucose\_decay}, default $0.01$),
-  \item $S(\mathbf{x})$ is the source term (glucose injection from blood vessels),
-  \item $Q(\mathbf{x})$ is the consumption term (uptake by tumor and immune cells).
-\end{itemize}
+This deceptively simple equation encodes a complex biological reality:
+
+\begin{tcolorbox}[colback=bloodvessel!10, colframe=bloodvessel!50, title=\textbf{The Four Forces Shaping Glucose}]
+\textbf{$D\,\nabla^2 C$}: Diffusion spreads glucose from high-concentration regions to low-concentration areas, following Fick's second law. Higher diffusion coefficients create more uniform glucose distributions.
+
+\textbf{$-\lambda\,C$}: Natural decay represents the baseline metabolic consumption and glucose clearance that occurs even without active cellular uptake.
+
+\textbf{$S(\mathbf{x})$}: Source terms inject fresh glucose at blood vessel locations, maintaining the supply lines that feed the tumor ecosystem.
+
+\textbf{$-Q(\mathbf{x})$}: Consumption terms capture the dramatic differences in glucose uptake between tumor cells (Warburg effect) and immune cells (normal metabolism).
+\end{tcolorbox}
+
+The beauty of this formulation is that it lets spatial patterns emerge naturally. We don't have to program "glucose depletion zones"—they arise automatically when high-consumption tumor cells cluster together. We don't have to specify "metabolic gradients"—they form spontaneously as glucose diffuses away from blood vessel sources.
 
 \subsection{Discrete 3D Laplacian}
 

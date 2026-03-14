@@ -1,13 +1,35 @@
 \chapter{DNA and Mutation System}
 \label{ch:dna}
 
-This chapter describes the gene-level representation used by tumor cells in the model.  The DNA system encodes 16 cancer-relevant genes, supports codon-level translation, introduces mutations during cell division with genomic-instability-dependent rates, and derives phenotypic parameters that govern tumor behavior and immune evasion.
+\begin{tcolorbox}[colback=dna!10, colframe=dna!50, title=\textbf{The Genetic Orchestra}]
+\textit{Every tumor cell carries a unique genetic symphony—16 genes whose mutations determine whether the cell grows aggressively, hides from immune detection, or succumbs to treatment. This chapter reveals how our model transforms genetic complexity into cellular behavior and emergent tumor evolution.}
+\end{tcolorbox}
+
+Cancer isn't just about cells growing out of control—it's about evolution in action. Each tumor is a diverse ecosystem of genetically distinct cells, each carrying its own complement of mutations that determine its capabilities and vulnerabilities. Some cells are speed demons, optimized for rapid growth. Others are stealth specialists, equipped with molecular cloaking devices that hide them from immune surveillance. Still others are infrastructure experts, promoting blood vessel formation to feed their growing communities.
+
+Our DNA mutation system captures this genetic diversity through a sophisticated 16-gene model that translates molecular genetics into cellular phenotypes. This isn't just computational bookkeeping—it's the foundation that allows tumor heterogeneity, clonal evolution, and treatment resistance to emerge naturally from our simulations.
+
+\begin{figure}[H]
+\centering
+\input{figures/gene_to_phenotype}
+\caption{The 16-gene to 5-phenotype mapping system that drives tumor heterogeneity in our model. Each tumor cell carries mutations across 16 cancer-relevant genes grouped into functional categories: growth genes (VHL, PBRM1, SETD2, KDM5C, PTEN), tumor suppressors (TP53), signaling pathways (PIK3CA, MET, EGFR), immune evasion (CD274/PD-L1), and the antigen presentation complex (B2M, JAK1, JAK2, TAP1, TAP2, HLA-A). Mathematical transformations convert these discrete mutations into five continuous phenotypic traits that govern cellular behavior: proliferation capacity, apoptosis resistance, angiogenesis promotion, PD-L1 expression, and antigen presentation efficiency.}
+\label{fig:gene_to_phenotype}
+\end{figure}
 
 %% ====================================================================
-\section{Gene Model}
+\section{The 16-Gene Cancer Blueprint}
 \label{sec:gene-model}
 
-Each tumor cell carries a \texttt{DNA} object that encodes a synthetic DNA sequence containing 16 genes chosen for their relevance to renal cell carcinoma immunology.  The genes span the major biological axes of antigen presentation, immune checkpoint signaling, DNA repair, tumor suppression, and oncogenic proliferation.
+At the heart of every virtual tumor cell lies a digital genome—a carefully curated collection of 16 genes that represent the major molecular pathways disrupted in kidney cancer. This isn't a random selection of genes; each has been chosen based on decades of cancer genomics research identifying the key drivers of renal cell carcinoma progression and immune evasion.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/dna_mutation_heatmap.pdf}
+\caption{DNA mutation landscape across a population of tumor cells. \textbf{Left:} Heatmap showing mutation status for all 16 genes across 50 tumor cells (0=wild type, 1=mutated, 2=amplified). Clear mutation hotspots are visible in VHL, PBRM1, and SETD2—the most frequently altered genes in real kidney cancers. \textbf{Right:} Mutation frequency analysis reveals the differential likelihood of mutations across genes, with VHL showing the highest mutation rate (consistent with clinical observations) and HLA genes showing moderate mutation frequencies that enable immune escape in subsets of tumor cells.}
+\label{fig:dna_mutation_heatmap}
+\end{figure}
+
+Each virtual tumor cell carries a \texttt{DNA} object encoding these 16 cancer-critical genes, spanning the major biological axes that determine tumor fate: antigen presentation machinery, immune checkpoint signaling, DNA repair pathways, tumor suppression, and oncogenic growth signals.
 
 \subsection{Gene Catalogue}
 

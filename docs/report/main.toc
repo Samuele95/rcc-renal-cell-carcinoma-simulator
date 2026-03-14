@@ -1,247 +1,129 @@
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Renal Cell Carcinoma: Epidemiology and Clinical Significance}{2}{section.1.1}%
-\contentsline {section}{\numberline {1.2}The Tumor Microenvironment}{2}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Sex Differences in RCC}{3}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Motivation for Computational Modeling}{3}{section.1.4}%
-\contentsline {section}{\numberline {1.5}Agent-Based Modeling Approach}{4}{section.1.5}%
-\contentsline {section}{\numberline {1.6}Project Objectives}{5}{section.1.6}%
-\contentsline {section}{\numberline {1.7}Report Structure}{5}{section.1.7}%
-\contentsline {chapter}{\numberline {2}Theoretical Background}{6}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Agent-Based Modeling}{6}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Formalism and Core Concepts}{6}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Advantages for Biological Systems}{7}{subsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.1.3}The Repast4Py Framework}{7}{subsection.2.1.3}%
-\contentsline {subsection}{\numberline {2.1.4}Comparison with Mesa}{8}{subsection.2.1.4}%
-\contentsline {section}{\numberline {2.2}Immunology of Renal Cell Carcinoma}{8}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Innate and Adaptive Immunity}{8}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}T Cell Subtypes}{9}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Antigen-Presenting Cells}{10}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Macrophages}{10}{subsection.2.2.4}%
-\contentsline {subsection}{\numberline {2.2.5}Natural Killer Cells}{10}{subsection.2.2.5}%
-\contentsline {subsection}{\numberline {2.2.6}Mast Cells and Neutrophils}{11}{subsection.2.2.6}%
-\contentsline {subsection}{\numberline {2.2.7}Immune Checkpoints: The PD-1/PD-L1 Pathway}{11}{subsection.2.2.7}%
-\contentsline {subsection}{\numberline {2.2.8}Tumor Immune Evasion Mechanisms}{11}{subsection.2.2.8}%
-\contentsline {section}{\numberline {2.3}Tumor Metabolism}{12}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}The Warburg Effect}{12}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Metabolic Competition in the TME}{12}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Glucose as a Limiting Factor for Immune Function}{12}{subsection.2.3.3}%
-\contentsline {section}{\numberline {2.4}Treatment Modalities}{13}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Immune Checkpoint Inhibitors (ICI)}{13}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Tyrosine Kinase Inhibitors (TKI)}{13}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}Combination ICI+TKI Therapy}{14}{subsection.2.4.3}%
-\contentsline {chapter}{\numberline {3}Model Description}{15}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Overview}{15}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Spatial Environment}{15}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Agent Types}{15}{subsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.1.3}Time Step Structure}{16}{subsection.3.1.3}%
-\contentsline {section}{\numberline {3.2}Agent Hierarchy}{17}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Base Cell Class}{17}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}TCell Base Class}{18}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Concrete Agent Classes}{18}{subsection.3.2.3}%
-\contentsline {section}{\numberline {3.3}Effect System}{19}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Effect Fields}{19}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}BMI Normalization}{20}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Effect Collection and Aggregation}{20}{subsection.3.3.3}%
-\contentsline {section}{\numberline {3.4}Agent Interactions}{20}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Movement}{24}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Deferred Movement Pattern}{24}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Directed Movement: \texttt {move\_towards()}}{24}{subsection.3.5.2}%
-\contentsline {subsection}{\numberline {3.5.3}Glucose Chemotaxis}{24}{subsection.3.5.3}%
-\contentsline {subsection}{\numberline {3.5.4}Sex Hormone Diffusion}{25}{subsection.3.5.4}%
-\contentsline {section}{\numberline {3.6}Terminal Conditions}{25}{section.3.6}%
-\contentsline {chapter}{\numberline {4}Glucose Microenvironment System}{27}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Biological Motivation}{27}{section.4.1}%
-\contentsline {paragraph}{The Warburg Effect.}{27}{section*.6}%
-\contentsline {paragraph}{Metabolic Competition.}{27}{section*.7}%
-\contentsline {paragraph}{Impact on Immune Function.}{27}{section*.8}%
-\contentsline {paragraph}{Glucose Gradients as Chemotactic Signals.}{28}{section*.9}%
-\contentsline {section}{\numberline {4.2}Mathematical Formulation}{28}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Discrete 3D Laplacian}{28}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Time Integration}{28}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Stability Analysis}{29}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Boundary Conditions}{29}{subsection.4.2.4}%
-\contentsline {section}{\numberline {4.3}Source Model}{29}{section.4.3}%
-\contentsline {paragraph}{Injection Mechanism.}{29}{section*.10}%
-\contentsline {paragraph}{Blood Vessel Geometry.}{29}{section*.11}%
-\contentsline {section}{\numberline {4.4}Consumption Model}{29}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Tumor Cell Consumption}{29}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Immune Cell Consumption}{30}{subsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.4.3}Glucose-Dependent Growth Factor}{30}{subsection.4.4.3}%
-\contentsline {subsection}{\numberline {4.4.4}Glucose-Dependent Immune Function}{30}{subsection.4.4.4}%
-\contentsline {section}{\numberline {4.5}Gradient and Chemotaxis}{31}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Gradient Computation}{31}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Discretized Gradient Step}{31}{subsection.4.5.2}%
-\contentsline {subsection}{\numberline {4.5.3}Chemotaxis Behavior}{31}{subsection.4.5.3}%
-\contentsline {section}{\numberline {4.6}Implementation}{31}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}Data Structure}{32}{subsection.4.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}Convolution Kernel}{32}{subsection.4.6.2}%
-\contentsline {subsection}{\numberline {4.6.3}Step Function}{32}{subsection.4.6.3}%
-\contentsline {subsection}{\numberline {4.6.4}Statistics Methods}{32}{subsection.4.6.4}%
-\contentsline {chapter}{\numberline {5}DNA and Mutation System}{33}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Gene Model}{33}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Gene Catalogue}{33}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}DNA Sequence Structure}{34}{subsection.5.1.2}%
-\contentsline {section}{\numberline {5.2}Codon Translation}{34}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Codon Table}{35}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Translation: \texttt {gene\_to\_protein()}}{35}{subsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}Reverse Translation: \texttt {protein\_to\_gene()}}{35}{subsection.5.2.3}%
-\contentsline {section}{\numberline {5.3}Mutation Mechanics}{35}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Genomic Instability}{35}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}DNA Duplication with Point Mutations}{36}{subsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.3.3}Injected Mutations}{36}{subsection.5.3.3}%
-\contentsline {section}{\numberline {5.4}Gene Expression and Phenotypic Effects}{36}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Promoter Expression}{36}{subsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}Mutation Score}{36}{subsection.5.4.2}%
-\contentsline {subsection}{\numberline {5.4.3}Gene Mutation--Expression Product}{37}{subsection.5.4.3}%
-\contentsline {subsection}{\numberline {5.4.4}Five Derived Phenotypic Parameters}{37}{subsection.5.4.4}%
-\contentsline {paragraph}{1.\ Antigen Presentation Chance.}{37}{section*.13}%
-\contentsline {paragraph}{2.\ Checkpoint Pathway Inhibition Chance.}{37}{section*.14}%
-\contentsline {paragraph}{3.\ Genomic Instability.}{37}{section*.15}%
-\contentsline {paragraph}{4.\ Tumor Suppression Chance.}{37}{section*.16}%
-\contentsline {paragraph}{5.\ Extra Proliferation Chance.}{38}{section*.17}%
-\contentsline {section}{\numberline {5.5}Neoantigen Generation}{38}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Neoantigen Definition}{38}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Self-Antigens}{38}{subsection.5.5.2}%
-\contentsline {subsection}{\numberline {5.5.3}TCR Matching}{38}{subsection.5.5.3}%
-\contentsline {chapter}{\numberline {6}Treatment System}{40}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Drug Architecture}{40}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Abstract Drug Base Class}{40}{subsection.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}Treatment Composition}{40}{subsection.6.1.2}%
-\contentsline {subsection}{\numberline {6.1.3}Treatment Activation}{41}{subsection.6.1.3}%
-\contentsline {section}{\numberline {6.2}Immune Checkpoint Inhibitors (ICI)}{41}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Biological Basis}{41}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}Implementation}{41}{subsection.6.2.2}%
-\contentsline {paragraph}{1.\ PD-L1 Blockade on Tumor Cells.}{41}{section*.18}%
-\contentsline {paragraph}{2.\ T Cell Activation Restoration.}{42}{section*.19}%
-\contentsline {paragraph}{3.\ Immune Infiltration Enhancement.}{42}{section*.20}%
-\contentsline {section}{\numberline {6.3}Tyrosine Kinase Inhibitors (TKI)}{42}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Biological Basis}{42}{subsection.6.3.1}%
-\contentsline {subsection}{\numberline {6.3.2}Implementation}{42}{subsection.6.3.2}%
-\contentsline {paragraph}{1.\ Tumor Growth Suppression.}{42}{section*.21}%
-\contentsline {paragraph}{2.\ Angiogenesis Inhibition.}{43}{section*.22}%
-\contentsline {paragraph}{3.\ Neoantigen Release.}{43}{section*.23}%
-\contentsline {paragraph}{4.\ Treg Differentiation Suppression.}{43}{section*.24}%
-\contentsline {section}{\numberline {6.4}Combination Therapy}{43}{section.6.4}%
-\contentsline {subsection}{\numberline {6.4.1}ICI + TKI}{43}{subsection.6.4.1}%
-\contentsline {subsection}{\numberline {6.4.2}Synergistic Mechanisms}{43}{subsection.6.4.2}%
-\contentsline {subsection}{\numberline {6.4.3}Clinical Evidence}{44}{subsection.6.4.3}%
-\contentsline {chapter}{\numberline {7}Sex Hormone System}{45}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Biological Basis}{45}{section.7.1}%
-\contentsline {subsection}{\numberline {7.1.1}Sex Differences in Renal Cell Carcinoma}{45}{subsection.7.1.1}%
-\contentsline {subsection}{\numberline {7.1.2}Estrogen}{45}{subsection.7.1.2}%
-\contentsline {subsection}{\numberline {7.1.3}Testosterone}{45}{subsection.7.1.3}%
-\contentsline {subsection}{\numberline {7.1.4}Progesterone}{46}{subsection.7.1.4}%
-\contentsline {section}{\numberline {7.2}Hormone Agent Model}{46}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Agent Type and Inheritance}{46}{subsection.7.2.1}%
-\contentsline {subsection}{\numberline {7.2.2}Hormone Types}{46}{subsection.7.2.2}%
-\contentsline {subsection}{\numberline {7.2.3}Spawning Mechanism}{46}{subsection.7.2.3}%
-\contentsline {subsection}{\numberline {7.2.4}Hormone Diffusion}{47}{subsection.7.2.4}%
-\contentsline {section}{\numberline {7.3}Hormone Effects on T Cells}{47}{section.7.3}%
-\contentsline {subsection}{\numberline {7.3.1}Hormone Perception}{47}{subsection.7.3.1}%
-\contentsline {subsection}{\numberline {7.3.2}Stimulation Level}{47}{subsection.7.3.2}%
-\contentsline {subsection}{\numberline {7.3.3}Hormonal Influence Effects}{47}{subsection.7.3.3}%
-\contentsline {subsection}{\numberline {7.3.4}Concentration-Dependent Effect Mapping}{48}{subsection.7.3.4}%
-\contentsline {paragraph}{Example: Estrogen at High Concentration.}{48}{section*.26}%
-\contentsline {section}{\numberline {7.4}Sex Drift}{49}{section.7.4}%
-\contentsline {subsection}{\numberline {7.4.1}Biological Basis}{49}{subsection.7.4.1}%
-\contentsline {subsection}{\numberline {7.4.2}Implementation}{49}{subsection.7.4.2}%
-\contentsline {subsection}{\numberline {7.4.3}Interaction with Hormonal Effects}{50}{subsection.7.4.3}%
-\contentsline {chapter}{\numberline {8}Implementation}{51}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Framework Selection}{51}{section.8.1}%
-\contentsline {subsection}{\numberline {8.1.1}Rationale for Repast4Py}{51}{subsection.8.1.1}%
-\contentsline {subsection}{\numberline {8.1.2}Comparison with Mesa}{52}{subsection.8.1.2}%
-\contentsline {section}{\numberline {8.2}Architecture}{54}{section.8.2}%
-\contentsline {subsection}{\numberline {8.2.1}Project Structure}{54}{subsection.8.2.1}%
-\contentsline {subsection}{\numberline {8.2.2}Plain Python Model Class}{55}{subsection.8.2.2}%
-\contentsline {section}{\numberline {8.3}Spatial Index Design}{56}{section.8.3}%
-\contentsline {subsection}{\numberline {8.3.1}Problem}{56}{subsection.8.3.1}%
-\contentsline {subsection}{\numberline {8.3.2}Solution}{56}{subsection.8.3.2}%
-\contentsline {subsection}{\numberline {8.3.3}Grid Utilities Module}{56}{subsection.8.3.3}%
-\contentsline {section}{\numberline {8.4}Agent Serialization}{57}{section.8.4}%
-\contentsline {subsection}{\numberline {8.4.1}Agent Identity in Repast4Py}{57}{subsection.8.4.1}%
-\contentsline {subsection}{\numberline {8.4.2}Agent Type Registry}{57}{subsection.8.4.2}%
-\contentsline {subsection}{\numberline {8.4.3}The \texttt {save()} Method}{58}{subsection.8.4.3}%
-\contentsline {subsection}{\numberline {8.4.4}Type Identification}{58}{subsection.8.4.4}%
-\contentsline {section}{\numberline {8.5}Mesa to Repast4Py Porting}{58}{section.8.5}%
-\contentsline {subsection}{\numberline {8.5.1}Random Number Generation}{59}{subsection.8.5.1}%
-\contentsline {subsection}{\numberline {8.5.2}Class-Level State to Model-Level State}{59}{subsection.8.5.2}%
-\contentsline {subsection}{\numberline {8.5.3}Deferred Movement}{59}{subsection.8.5.3}%
-\contentsline {section}{\numberline {8.6}Glucose Field Implementation}{60}{section.8.6}%
-\contentsline {subsection}{\numberline {8.6.1}Data Structure}{60}{subsection.8.6.1}%
-\contentsline {subsection}{\numberline {8.6.2}Diffusion Kernel}{60}{subsection.8.6.2}%
-\contentsline {subsection}{\numberline {8.6.3}Boundary Conditions}{61}{subsection.8.6.3}%
-\contentsline {subsection}{\numberline {8.6.4}Separation from Repast4Py Value Layers}{61}{subsection.8.6.4}%
-\contentsline {section}{\numberline {8.7}Entry Point and Execution}{61}{section.8.7}%
-\contentsline {subsection}{\numberline {8.7.1}Execution Command}{62}{subsection.8.7.1}%
-\contentsline {subsection}{\numberline {8.7.2}Simulation Loop}{62}{subsection.8.7.2}%
-\contentsline {chapter}{\numberline {9}Parameters and Optimization}{64}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Parameter Categories}{64}{section.9.1}%
-\contentsline {subsection}{\numberline {9.1.1}ModelParameters}{64}{subsection.9.1.1}%
-\contentsline {subsection}{\numberline {9.1.2}PatientParameters}{64}{subsection.9.1.2}%
-\contentsline {subsection}{\numberline {9.1.3}WeightParameters}{65}{subsection.9.1.3}%
-\contentsline {section}{\numberline {9.2}Weight Parameters}{65}{section.9.2}%
-\contentsline {subsection}{\numberline {9.2.1}BMI Weights (4 parameters)}{66}{subsection.9.2.1}%
-\contentsline {subsection}{\numberline {9.2.2}Macrophage M1 Weights (6 weights + 2 biases)}{66}{subsection.9.2.2}%
-\contentsline {subsection}{\numberline {9.2.3}Macrophage M2 Weights (5 weights + 1 bias)}{67}{subsection.9.2.3}%
-\contentsline {subsection}{\numberline {9.2.4}Tumor Cell Weights (8 weights + 3 biases)}{67}{subsection.9.2.4}%
-\contentsline {subsection}{\numberline {9.2.5}CD4+ T Cell Weights (9 weights + 3 biases)}{68}{subsection.9.2.5}%
-\contentsline {subsection}{\numberline {9.2.6}Cytotoxic T Cell Weights (5 weights + 2 biases)}{68}{subsection.9.2.6}%
-\contentsline {subsection}{\numberline {9.2.7}Mast Cell Weights (6 parameters)}{69}{subsection.9.2.7}%
-\contentsline {subsection}{\numberline {9.2.8}NK Cell Weights (3 weights + 1 bias)}{69}{subsection.9.2.8}%
-\contentsline {subsection}{\numberline {9.2.9}Plasmacytoid DC Weights (6 weights + 1 bias)}{69}{subsection.9.2.9}%
-\contentsline {subsection}{\numberline {9.2.10}Treg Weights (5 parameters)}{70}{subsection.9.2.10}%
-\contentsline {subsection}{\numberline {9.2.11}Global Weights (4+ parameters)}{70}{subsection.9.2.11}%
-\contentsline {section}{\numberline {9.3}Glucose Parameters}{70}{section.9.3}%
-\contentsline {subsection}{\numberline {9.3.1}Parameter Interactions}{72}{subsection.9.3.1}%
-\contentsline {section}{\numberline {9.4}Bayesian Optimization}{72}{section.9.4}%
-\contentsline {subsection}{\numberline {9.4.1}Framework}{72}{subsection.9.4.1}%
-\contentsline {subsection}{\numberline {9.4.2}Objective Function}{72}{subsection.9.4.2}%
-\contentsline {subsection}{\numberline {9.4.3}Search Space}{73}{subsection.9.4.3}%
-\contentsline {subsection}{\numberline {9.4.4}Optimization Configuration}{73}{subsection.9.4.4}%
-\contentsline {section}{\numberline {9.5}Clinical Dataset}{73}{section.9.5}%
-\contentsline {subsection}{\numberline {9.5.1}ARON-1 Study}{73}{subsection.9.5.1}%
-\contentsline {subsection}{\numberline {9.5.2}Dataset Structure}{74}{subsection.9.5.2}%
-\contentsline {chapter}{\numberline {10}Simulation Results}{75}{chapter.10}%
-\contentsline {section}{\numberline {10.1}Baseline Simulation}{75}{section.10.1}%
-\contentsline {subsection}{\numberline {10.1.1}Observed Tumor Dynamics - No Treatment}{75}{subsection.10.1.1}%
-\contentsline {subsection}{\numberline {10.1.2}Observed Immune Response}{76}{subsection.10.1.2}%
-\contentsline {subsection}{\numberline {10.1.3}Glucose Field Behavior}{76}{subsection.10.1.3}%
-\contentsline {section}{\numberline {10.2}Treatment Scenarios}{76}{section.10.2}%
-\contentsline {subsection}{\numberline {10.2.1}ICI Monotherapy Results}{76}{subsection.10.2.1}%
-\contentsline {subsection}{\numberline {10.2.2}ICI+TKI Combination Therapy Results}{77}{subsection.10.2.2}%
-\contentsline {subsection}{\numberline {10.2.3}TKI Monotherapy Results}{77}{subsection.10.2.3}%
-\contentsline {subsection}{\numberline {10.2.4}Treatment Comparison}{78}{subsection.10.2.4}%
-\contentsline {subsection}{\numberline {10.2.5}Simulation Visualizations}{78}{subsection.10.2.5}%
-\contentsline {section}{\numberline {10.3}Sex-Specific Analysis}{80}{section.10.3}%
-\contentsline {subsection}{\numberline {10.3.1}Baseline Sex Differences}{80}{subsection.10.3.1}%
-\contentsline {subsection}{\numberline {10.3.2}Treatment Response Patterns}{80}{subsection.10.3.2}%
-\contentsline {section}{\numberline {10.4}Glucose Field Dynamics}{81}{section.10.4}%
-\contentsline {subsection}{\numberline {10.4.1}Metabolic-Tumor Burden Correlation}{81}{subsection.10.4.1}%
-\contentsline {subsection}{\numberline {10.4.2}Spatial Glucose Distribution}{81}{subsection.10.4.2}%
-\contentsline {subsection}{\numberline {10.4.3}Metabolic Implications}{81}{subsection.10.4.3}%
-\contentsline {section}{\numberline {10.5}Clinical Implications}{81}{section.10.5}%
-\contentsline {subsection}{\numberline {10.5.1}Sex-Stratified Treatment Selection}{82}{subsection.10.5.1}%
-\contentsline {subsection}{\numberline {10.5.2}Biomarker Development}{82}{subsection.10.5.2}%
-\contentsline {subsection}{\numberline {10.5.3}Treatment Optimization}{82}{subsection.10.5.3}%
-\contentsline {section}{\numberline {10.6}Parameter Sensitivity Analysis}{82}{section.10.6}%
-\contentsline {subsection}{\numberline {10.6.1}Glucose Consumption Rate Variation}{82}{subsection.10.6.1}%
-\contentsline {subsection}{\numberline {10.6.2}Metabolic Tipping Point}{83}{subsection.10.6.2}%
-\contentsline {subsection}{\numberline {10.6.3}Biological Validation}{83}{subsection.10.6.3}%
-\contentsline {section}{\numberline {10.7}Reproducibility}{84}{section.10.7}%
-\contentsline {subsection}{\numberline {10.7.1}Scenario Configuration}{84}{subsection.10.7.1}%
-\contentsline {subsection}{\numberline {10.7.2}Simulation Protocol}{85}{subsection.10.7.2}%
-\contentsline {section}{\numberline {10.8}Statistical Validation: Multi-Seed Empirical Study}{85}{section.10.8}%
-\contentsline {subsection}{\numberline {10.8.1}Experimental Design}{85}{subsection.10.8.1}%
-\contentsline {subsection}{\numberline {10.8.2}Empirical Results Summary}{86}{subsection.10.8.2}%
-\contentsline {subsection}{\numberline {10.8.3}Stochastic Variance Analysis}{86}{subsection.10.8.3}%
-\contentsline {subsection}{\numberline {10.8.4}Treatment Effectiveness Analysis}{87}{subsection.10.8.4}%
-\contentsline {subsection}{\numberline {10.8.5}Sex-Specific Statistical Analysis}{87}{subsection.10.8.5}%
-\contentsline {subsection}{\numberline {10.8.6}Single-Seed versus Multi-Seed Insights}{88}{subsection.10.8.6}%
-\contentsline {subsection}{\numberline {10.8.7}Metabolic Correlations}{88}{subsection.10.8.7}%
-\contentsline {subsection}{\numberline {10.8.8}Empirical Study Visualizations}{89}{subsection.10.8.8}%
-\contentsline {subsection}{\numberline {10.8.9}Clinical and Methodological Implications}{92}{subsection.10.8.9}%
-\contentsline {chapter}{\numberline {11}Conclusion}{93}{chapter.11}%
-\contentsline {section}{\numberline {11.1}Summary of Contributions}{93}{section.11.1}%
-\contentsline {section}{\numberline {11.2}Model Limitations}{94}{section.11.2}%
-\contentsline {section}{\numberline {11.3}Future Work}{95}{section.11.3}%
+\contentsline {chapter}{\numberline {1}Introduction}{4}{chapter.1}%
+\contentsline {section}{\numberline {1.1}When Cells Go Rogue: The Hidden Battlefield of Renal Cell Carcinoma}{4}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}The Deadly Mathematics of Late Discovery}{4}{subsection.1.1.1}%
+\contentsline {section}{\numberline {1.2}Inside the Cellular Battlefield: Decoding the Tumor Microenvironment}{5}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}The Cast of Cellular Characters}{5}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}The Invisible War}{5}{subsection.1.2.2}%
+\contentsline {section}{\numberline {1.3}The Male-Female Divide: Why Sex Matters in Cancer's War}{6}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}When Biology Becomes Destiny}{6}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Estrogen: The Immune System's Double-Edged Sword}{6}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3}The ARON-1 Quest: Personalized Medicine Meets Sexual Biology}{7}{subsection.1.3.3}%
+\contentsline {section}{\numberline {1.4}Why Virtual Tumors Matter: The Case for Computational Modeling}{7}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}The Limits of Traditional Research}{7}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}The Promise of Virtual Patients}{8}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.4.3}Standing on the Shoulders of Giants}{9}{subsection.1.4.3}%
+\contentsline {section}{\numberline {1.5}Why Agents? The Power of Bottom-Up Biology}{9}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Why ABM Is Perfect for Cancer Biology}{9}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}The Repast4Py Advantage: Scaling Up Without Giving Up}{10}{subsection.1.5.2}%
+\contentsline {section}{\numberline {1.6}Mission: Four Breakthroughs to Transform RCC Modeling}{11}{section.1.6}%
+\contentsline {subsection}{\numberline {1.6.1}Objective 1: Breaking the Single-Processor Ceiling}{11}{subsection.1.6.1}%
+\contentsline {subsection}{\numberline {1.6.2}Objective 2: Adding the Missing Metabolic Layer}{11}{subsection.1.6.2}%
+\contentsline {subsection}{\numberline {1.6.3}Objective 3: Validation Against Real-World Clinical Data}{12}{subsection.1.6.3}%
+\contentsline {subsection}{\numberline {1.6.4}Objective 4: Intelligent Parameter Optimization}{12}{subsection.1.6.4}%
+\contentsline {section}{\numberline {1.7}Journey Through the Cellular Universe: Report Roadmap}{13}{section.1.7}%
+\contentsline {chapter}{\numberline {2}Theoretical Background}{14}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Agent-Based Modeling: A Different Way to Think About Biology}{14}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}The Philosophy of Computational Emergence}{14}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Why ABM Is Uniquely Suited to Cancer Biology}{16}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}The Repast4Py Framework}{17}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Comparison with Mesa}{17}{subsection.2.1.4}%
+\contentsline {section}{\numberline {2.2}The Immune System's War Against Cancer: RCC Immunology Decoded}{18}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Two Armies, One Mission}{18}{subsection.2.2.1}%
+\contentsline {section}{\numberline {8.1}Framework Selection}{19}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1}Rationale for Repast4Py}{19}{subsection.8.1.1}%
+\contentsline {subsection}{\numberline {8.1.2}Comparison with Mesa}{19}{subsection.8.1.2}%
+\contentsline {section}{\numberline {8.2}Architecture}{21}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Project Structure}{21}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}Plain Python Model Class}{22}{subsection.8.2.2}%
+\contentsline {section}{\numberline {8.3}Spatial Index Design}{23}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}Problem}{23}{subsection.8.3.1}%
+\contentsline {subsection}{\numberline {8.3.2}Solution}{23}{subsection.8.3.2}%
+\contentsline {subsection}{\numberline {8.3.3}Grid Utilities Module}{23}{subsection.8.3.3}%
+\contentsline {section}{\numberline {8.4}Agent Serialization}{24}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}Agent Identity in Repast4Py}{24}{subsection.8.4.1}%
+\contentsline {subsection}{\numberline {8.4.2}Agent Type Registry}{24}{subsection.8.4.2}%
+\contentsline {subsection}{\numberline {8.4.3}The \texttt {save()} Method}{25}{subsection.8.4.3}%
+\contentsline {subsection}{\numberline {8.4.4}Type Identification}{25}{subsection.8.4.4}%
+\contentsline {section}{\numberline {8.5}Mesa to Repast4Py Porting}{25}{section.8.5}%
+\contentsline {subsection}{\numberline {8.5.1}Random Number Generation}{26}{subsection.8.5.1}%
+\contentsline {subsection}{\numberline {8.5.2}Class-Level State to Model-Level State}{26}{subsection.8.5.2}%
+\contentsline {subsection}{\numberline {8.5.3}Deferred Movement}{26}{subsection.8.5.3}%
+\contentsline {section}{\numberline {8.6}Glucose Field Implementation}{27}{section.8.6}%
+\contentsline {subsection}{\numberline {8.6.1}Data Structure}{27}{subsection.8.6.1}%
+\contentsline {subsection}{\numberline {8.6.2}Diffusion Kernel}{27}{subsection.8.6.2}%
+\contentsline {subsection}{\numberline {8.6.3}Boundary Conditions}{28}{subsection.8.6.3}%
+\contentsline {subsection}{\numberline {8.6.4}Separation from Repast4Py Value Layers}{28}{subsection.8.6.4}%
+\contentsline {section}{\numberline {8.7}Entry Point and Execution}{28}{section.8.7}%
+\contentsline {subsection}{\numberline {8.7.1}Execution Command}{29}{subsection.8.7.1}%
+\contentsline {subsection}{\numberline {8.7.2}Simulation Loop}{29}{subsection.8.7.2}%
+\contentsline {chapter}{\numberline {9}Parameters and Optimization}{31}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Parameter Categories}{31}{section.9.1}%
+\contentsline {subsection}{\numberline {9.1.1}ModelParameters}{31}{subsection.9.1.1}%
+\contentsline {subsection}{\numberline {9.1.2}PatientParameters}{31}{subsection.9.1.2}%
+\contentsline {subsection}{\numberline {9.1.3}WeightParameters}{32}{subsection.9.1.3}%
+\contentsline {section}{\numberline {9.2}Weight Parameters}{32}{section.9.2}%
+\contentsline {subsection}{\numberline {9.2.1}BMI Weights (4 parameters)}{33}{subsection.9.2.1}%
+\contentsline {subsection}{\numberline {9.2.2}Macrophage M1 Weights (6 weights + 2 biases)}{33}{subsection.9.2.2}%
+\contentsline {subsection}{\numberline {9.2.3}Macrophage M2 Weights (5 weights + 1 bias)}{34}{subsection.9.2.3}%
+\contentsline {subsection}{\numberline {9.2.4}Tumor Cell Weights (8 weights + 3 biases)}{34}{subsection.9.2.4}%
+\contentsline {subsection}{\numberline {9.2.5}CD4+ T Cell Weights (9 weights + 3 biases)}{35}{subsection.9.2.5}%
+\contentsline {subsection}{\numberline {9.2.6}Cytotoxic T Cell Weights (5 weights + 2 biases)}{35}{subsection.9.2.6}%
+\contentsline {subsection}{\numberline {9.2.7}Mast Cell Weights (6 parameters)}{36}{subsection.9.2.7}%
+\contentsline {subsection}{\numberline {9.2.8}NK Cell Weights (3 weights + 1 bias)}{36}{subsection.9.2.8}%
+\contentsline {subsection}{\numberline {9.2.9}Plasmacytoid DC Weights (6 weights + 1 bias)}{36}{subsection.9.2.9}%
+\contentsline {subsection}{\numberline {9.2.10}Treg Weights (5 parameters)}{37}{subsection.9.2.10}%
+\contentsline {subsection}{\numberline {9.2.11}Global Weights (4+ parameters)}{37}{subsection.9.2.11}%
+\contentsline {section}{\numberline {9.3}Glucose Parameters}{37}{section.9.3}%
+\contentsline {subsection}{\numberline {9.3.1}Parameter Interactions}{39}{subsection.9.3.1}%
+\contentsline {section}{\numberline {9.4}Bayesian Optimization}{39}{section.9.4}%
+\contentsline {subsection}{\numberline {9.4.1}Framework}{39}{subsection.9.4.1}%
+\contentsline {subsection}{\numberline {9.4.2}Objective Function}{39}{subsection.9.4.2}%
+\contentsline {subsection}{\numberline {9.4.3}Search Space}{40}{subsection.9.4.3}%
+\contentsline {subsection}{\numberline {9.4.4}Optimization Configuration}{40}{subsection.9.4.4}%
+\contentsline {section}{\numberline {9.5}Clinical Dataset}{40}{section.9.5}%
+\contentsline {subsection}{\numberline {9.5.1}ARON-1 Study}{40}{subsection.9.5.1}%
+\contentsline {subsection}{\numberline {9.5.2}Dataset Structure}{41}{subsection.9.5.2}%
+\contentsline {chapter}{\numberline {10}Simulation Results}{42}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Baseline Simulations: The Natural History of Virtual Cancer}{42}{section.10.1}%
+\contentsline {subsection}{\numberline {10.1.1}Observed Tumor Dynamics - No Treatment}{43}{subsection.10.1.1}%
+\contentsline {subsection}{\numberline {10.1.2}Observed Immune Response}{44}{subsection.10.1.2}%
+\contentsline {subsection}{\numberline {10.1.3}Glucose Field Behavior}{44}{subsection.10.1.3}%
+\contentsline {section}{\numberline {10.2}Treatment Scenarios}{45}{section.10.2}%
+\contentsline {subsection}{\numberline {10.2.1}ICI Monotherapy Results}{45}{subsection.10.2.1}%
+\contentsline {subsection}{\numberline {10.2.2}ICI+TKI Combination Therapy Results}{45}{subsection.10.2.2}%
+\contentsline {subsection}{\numberline {10.2.3}TKI Monotherapy Results}{46}{subsection.10.2.3}%
+\contentsline {subsection}{\numberline {10.2.4}Treatment Comparison}{46}{subsection.10.2.4}%
+\contentsline {subsection}{\numberline {10.2.5}Simulation Visualizations}{46}{subsection.10.2.5}%
+\contentsline {section}{\numberline {10.3}Sex-Specific Analysis}{49}{section.10.3}%
+\contentsline {subsection}{\numberline {10.3.1}Baseline Sex Differences}{49}{subsection.10.3.1}%
+\contentsline {subsection}{\numberline {10.3.2}Treatment Response Patterns}{49}{subsection.10.3.2}%
+\contentsline {section}{\numberline {10.4}Glucose Field Dynamics}{49}{section.10.4}%
+\contentsline {subsection}{\numberline {10.4.1}Metabolic-Tumor Burden Correlation}{49}{subsection.10.4.1}%
+\contentsline {subsection}{\numberline {10.4.2}Spatial Glucose Distribution}{50}{subsection.10.4.2}%
+\contentsline {subsection}{\numberline {10.4.3}Metabolic Implications}{50}{subsection.10.4.3}%
+\contentsline {section}{\numberline {10.5}Clinical Implications}{50}{section.10.5}%
+\contentsline {subsection}{\numberline {10.5.1}Sex-Stratified Treatment Selection}{50}{subsection.10.5.1}%
+\contentsline {subsection}{\numberline {10.5.2}Biomarker Development}{50}{subsection.10.5.2}%
+\contentsline {subsection}{\numberline {10.5.3}Treatment Optimization}{51}{subsection.10.5.3}%
+\contentsline {section}{\numberline {10.6}Parameter Sensitivity Analysis}{51}{section.10.6}%
+\contentsline {subsection}{\numberline {10.6.1}Glucose Consumption Rate Variation}{51}{subsection.10.6.1}%
+\contentsline {subsection}{\numberline {10.6.2}Metabolic Tipping Point}{51}{subsection.10.6.2}%
+\contentsline {subsection}{\numberline {10.6.3}Biological Validation}{52}{subsection.10.6.3}%
+\contentsline {section}{\numberline {10.7}Reproducibility}{52}{section.10.7}%
+\contentsline {subsection}{\numberline {10.7.1}Scenario Configuration}{52}{subsection.10.7.1}%
+\contentsline {subsection}{\numberline {10.7.2}Simulation Protocol}{53}{subsection.10.7.2}%
+\contentsline {section}{\numberline {10.8}Statistical Validation: Multi-Seed Empirical Study}{54}{section.10.8}%
+\contentsline {subsection}{\numberline {10.8.1}Experimental Design}{54}{subsection.10.8.1}%
+\contentsline {subsection}{\numberline {10.8.2}Empirical Results Summary}{54}{subsection.10.8.2}%
+\contentsline {subsection}{\numberline {10.8.3}Stochastic Variance Analysis}{55}{subsection.10.8.3}%
+\contentsline {subsection}{\numberline {10.8.4}Treatment Effectiveness Analysis}{55}{subsection.10.8.4}%
+\contentsline {subsection}{\numberline {10.8.5}Sex-Specific Statistical Analysis}{56}{subsection.10.8.5}%
+\contentsline {subsection}{\numberline {10.8.6}Single-Seed versus Multi-Seed Insights}{56}{subsection.10.8.6}%
+\contentsline {subsection}{\numberline {10.8.7}Metabolic Correlations}{57}{subsection.10.8.7}%
+\contentsline {subsection}{\numberline {10.8.8}Empirical Study Visualizations}{57}{subsection.10.8.8}%
+\contentsline {subsection}{\numberline {10.8.9}Clinical and Methodological Implications}{60}{subsection.10.8.9}%
+\contentsline {chapter}{\numberline {11}Conclusion}{61}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Summary of Contributions}{61}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Model Limitations}{62}{section.11.2}%
+\contentsline {section}{\numberline {11.3}Future Work}{63}{section.11.3}%
