@@ -7,7 +7,13 @@
 
 The moment of truth for any computational biology model comes when its predictions are compared against real clinical data. After thousands of hours of coding, biological research, and parameter optimization, we finally ask the crucial question: does our virtual tumor behave like real tumors?
 
+\vspace{1em}
+
 This chapter presents systematic simulation results across six critical scenarios: male and female baseline conditions (no treatment) and three treatment modalities (ICI, TKI, and combination therapy) stratified by biological sex. These results reveal significant differences in tumor progression patterns, treatment responses, and sex-specific effects that illuminate why personalized medicine matters in kidney cancer care.
+
+\begin{keyinsight}
+Our validation approach directly compares simulated outcomes with ARON-1 clinical trial data, ensuring that every predicted treatment response reflects real-world biological mechanisms rather than computational artifacts.
+\end{keyinsight}
 
 % ======================================================================
 \section{Baseline Simulations: The Natural History of Virtual Cancer}
@@ -43,6 +49,10 @@ In the absence of treatment, the model produced markedly different outcomes base
     \item Estrogen-mediated immune response enhancement
     \item More effective immune surveillance despite eventual progression
 \end{itemize}
+
+\begin{keyfinding}
+Even without treatment, female patients showed dramatically slower tumor progression (92 vs. 2,034 final tumor cells) and extended survival (299 vs. 287 steps), validating the biological basis for sex differences in kidney cancer outcomes observed in clinical practice.
+\end{keyfinding}
 
 \subsection{Observed Immune Response}
 

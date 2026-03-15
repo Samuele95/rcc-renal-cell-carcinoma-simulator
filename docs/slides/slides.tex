@@ -4,18 +4,36 @@
 \documentclass[aspectratio=169,10pt]{beamer}
 
 % ---- Theme & colours ----
-\usetheme{Madrid}
+\usetheme{metropolis}
 \definecolor{tealblue}{RGB}{0,128,148}
 \definecolor{darkteal}{RGB}{0,90,110}
 \definecolor{lightteal}{RGB}{200,235,240}
+\setbeamercolor{progress bar}{fg=tealblue,bg=white}
+\setbeamercolor{frametitle}{bg=tealblue}
 \setbeamercolor{palette primary}{bg=tealblue,fg=white}
 \setbeamercolor{palette secondary}{bg=darkteal,fg=white}
-\setbeamercolor{palette tertiary}{bg=darkteal,fg=white}
 \setbeamercolor{structure}{fg=tealblue}
-\setbeamercolor{title}{fg=white,bg=tealblue}
-\setbeamercolor{frametitle}{fg=white,bg=tealblue}
+\setbeamercolor{title separator}{fg=tealblue}
+\setbeamercolor{progress bar in head/foot}{fg=tealblue,bg=white}
+\setbeamercolor{standout}{bg=tealblue}
+\setbeamercolor{alerted text}{fg=tealblue}
 \setbeamercolor{block title}{bg=tealblue,fg=white}
 \setbeamercolor{block body}{bg=lightteal,fg=black}
+\setbeamercolor{block title alerted}{bg=red!80!black,fg=white}
+\setbeamercolor{block body alerted}{bg=red!20!white,fg=black}
+\setbeamercolor{block title example}{bg=green!70!black,fg=white}
+\setbeamercolor{block body example}{bg=green!20!white,fg=black}
+
+% Clean layout options
+\setbeameroption{show notes on second screen}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
+
+% Progress bar
+\makeatletter
+\setlength{\metropolis@progressinheadfoot}{2pt}
+\makeatother
 
 % ---- Packages ----
 \usepackage[utf8]{inputenc}
@@ -36,10 +54,13 @@
 \date{\today}
 \institute{}
 
-% ---- Outline at section start ----
+% ---- Dramatic section title slides ----
 \AtBeginSection[]{%
-  \begin{frame}{Outline}
-    \tableofcontents[currentsection]
+  \begin{frame}[plain]
+    \begin{tikzpicture}[remember picture,overlay]
+      \fill[tealblue] (current page.south west) rectangle (current page.north east);
+      \node[white, font=\Huge\bfseries] at (current page.center) {\insertsectionhead};
+    \end{tikzpicture}
   \end{frame}
 }
 
@@ -56,40 +77,71 @@
   \tableofcontents
 \end{frame}
 
+% ---- Slide 2b: THE NUMBERS (High Impact) ----
+\begin{frame}[standout]
+  \begin{center}
+    {\Huge\textbf{THE NUMBERS}}
+    
+    \vspace{1em}
+    
+    {\Large\color{white}\textbf{400,000}} \\
+    \textit{new RCC cases per year}
+    
+    \vspace{0.8em}
+    
+    {\Large\color{white}\textbf{<15\%}} \\
+    \textit{metastatic survival rate}
+    
+    \vspace{0.8em}
+    
+    {\Large\color{white}\textbf{18}} \\
+    \textit{agent types modeled}
+    
+    \vspace{0.8em}
+    
+    {\Large\color{white}\textbf{160}} \\
+    \textit{simulations run}
+    
+    \vspace{0.8em}
+    
+    {\Large\color{white}\textbf{65\%}} \\
+    \textit{best survival rate achieved}
+  \end{center}
+\end{frame}
+
 % ============================================================
 \section{Introduction \& Motivation}
 % ============================================================
 
 % ---- Slide 3: RCC Problem ----
-\begin{frame}{Renal Cell Carcinoma --- The Clinical Challenge}
+\begin{frame}{Renal Cell Carcinoma — The Clinical Challenge}
   \begin{columns}[T]
-    \column{0.55\textwidth}
+    \column{0.58\textwidth}
     \begin{itemize}
-      \item 3\textsuperscript{rd} most common urological cancer
-      \item $\sim$400\,000 new cases per year worldwide
-      \item Metastatic 5-year survival $<15\%$
-      \item Clear-cell RCC (ccRCC) accounts for $\sim$75\% of cases
-      \item Strong sex differences:
-        \begin{itemize}
-          \item Incidence ratio $\approx 2{:}1$ (male : female)
-          \item Females show better immunotherapy response
-        \end{itemize}
+      \item {\Large\color{tealblue}\textbf{3rd}} most common urological cancer
+      \item {\Large\color{tealblue}\textbf{400,000}} new cases per year
+      \item Metastatic survival: {\Large\color{red!80!black}\textbf{<15\%}}
+      \item Clear-cell RCC: {\Large\color{tealblue}\textbf{75\%}} of cases
+      \item Sex ratio: {\Large\color{tealblue}\textbf{2:1}} (M:F)
+      \item Females show \textbf{better immunotherapy response}
     \end{itemize}
 
-    \column{0.42\textwidth}
-    \begin{block}{Key Facts}
-      \small
-      \begin{tabular}{@{}ll@{}}
-        \toprule
-        Metric & Value \\
-        \midrule
-        Incidence & 400k/yr \\
-        M:F ratio & 2:1 \\
-        5-yr survival & $<$15\% \\
-        Main subtype & ccRCC \\
-        \bottomrule
-      \end{tabular}
-    \end{block}
+    \column{0.38\textwidth}
+    \begin{alertblock}{Crisis}
+      \centering
+      {\Large\color{white}\textbf{1 in 6}}\\
+      \textit{patients survive 5 years}\\
+      \textit{after metastasis}
+    \end{alertblock}
+    
+    \vspace{0.5em}
+    
+    \begin{exampleblock}{Hope}
+      \centering
+      {\Large\color{white}\textbf{ICI + TKI}}\\
+      \textit{combination therapy}\\
+      \textit{shows promise}
+    \end{exampleblock}
   \end{columns}
 \end{frame}
 
@@ -97,38 +149,55 @@
 \begin{frame}{Why Agent-Based Modeling?}
   \begin{columns}[T]
     \column{0.48\textwidth}
-    \begin{block}{Strengths of ABMs}
+    \begin{exampleblock}{✓ ABM Advantages}
       \begin{itemize}
-        \item Natural representation of \textbf{heterogeneous} cell populations
-        \item Capture \textbf{spatial dynamics} and local interactions
-        \item \textbf{Emergent behaviour} arises from simple rules
-        \item \textbf{In silico} experimentation --- fast, ethical, cheap
-        \item Stochasticity matches biological variability
+        \item \textbf{Heterogeneous} cell populations
+        \item \textbf{Spatial dynamics} \& local interactions
+        \item \textbf{Emergent} behavior from simple rules
+        \item \textbf{Fast, ethical, cheap} experiments
+        \item Natural stochasticity
       \end{itemize}
-    \end{block}
+    \end{exampleblock}
 
     \column{0.48\textwidth}
-    \begin{block}{Limitations of ODE/PDE Models}
+    \begin{alertblock}{✗ ODE/PDE Limitations}
       \begin{itemize}
-        \item Assume well-mixed populations
-        \item Difficult to capture cell-level heterogeneity
+        \item Well-mixed assumptions
+        \item No cell-level heterogeneity
         \item No spatial resolution
-        \item Hard to model discrete events (mutation, death)
+        \item Discrete events difficult
       \end{itemize}
-    \end{block}
+    \end{alertblock}
   \end{columns}
-\end{frame}
+  
+  \vspace{1em}
+  \centering
+  \textit{"The whole is greater than the sum of its parts"} — ABMs capture tumor ecosystem complexity
+\end{frame>
 
 % ---- Slide 5: Project Objectives ----
 \begin{frame}{Project Objectives}
   \begin{enumerate}
-    \item \textbf{Port Mesa $\rightarrow$ Repast4Py}: migrate the existing RCC ABM to a scalable MPI-based framework
-    \item \textbf{Add glucose microenvironment}: 3D reaction--diffusion field modelling the Warburg effect
-    \item \textbf{Validate against clinical data}: fit model to ARON-1 clinical survival outcomes
-    \item \textbf{Bayesian optimisation}: tune 114 parameters with Optuna (TPE sampler, 250 trials)
-    \item \textbf{Sex-specific analysis}: compare male vs.\ female immune dynamics under treatment
+    \item \textbf{Mesa → Repast4Py Migration}\\
+          \textit{Scalable MPI-based framework}
+          
+    \item \textbf{Glucose Microenvironment}\\
+          \textit{3D Warburg effect modeling}
+          
+    \item \textbf{Clinical Validation}\\
+          \textit{ARON-1 survival data fitting}
+          
+    \item \textbf{Bayesian Optimization}\\
+          \textit{{\color{tealblue}\textbf{114}} parameters, {\color{tealblue}\textbf{250}} trials}
+          
+    \item \textbf{Sex-Specific Analysis}\\
+          \textit{Male vs Female immune dynamics}
   \end{enumerate}
-\end{frame}
+  
+  \vspace{0.8em}
+  \centering
+  \textbf{Goal:} Professional-grade cancer simulation platform
+\end{frame>
 
 % ============================================================
 \section{Theoretical Core}
@@ -141,86 +210,106 @@
     \begin{block}{ABM Components}
       \begin{description}
         \item[Agents] autonomous entities with state \& rules
-        \item[Environment] 3D grid with glucose overlay
-        \item[Rules] step functions executed each tick
-        \item[Emergence] macro-level tumour dynamics from micro-level interactions
+        \item[Environment] 3D grid + glucose field
+        \item[Rules] step functions each tick
+        \item[Emergence] macro from micro interactions
       \end{description}
     \end{block}
 
     \column{0.48\textwidth}
-    \begin{block}{Repast4Py Primitives}
+    \begin{block}{Repast4Py Architecture}
+      \small
       \begin{itemize}
-        \item \texttt{repast4py.core.Agent} --- base agent
-        \item \texttt{SharedContext} --- distributed agent container
-        \item \texttt{SharedGrid} --- MPI-partitioned grid
-        \item \texttt{BorderType.Sticky} --- clamped boundaries
-        \item \texttt{OccupancyType.Multiple} --- co-location
-        \item \texttt{mpi4py.MPI} --- inter-rank communication
+        \item \texttt{Agent} — base class
+        \item \texttt{SharedContext} — distributed agents
+        \item \texttt{SharedGrid} — MPI 3D grid
+        \item \texttt{BorderType.Sticky} — boundaries
+        \item \texttt{OccupancyType.Multiple} — co-location
+        \item \texttt{mpi4py.MPI} — communication
       \end{itemize}
     \end{block}
   \end{columns}
-\end{frame}
+  
+  \vspace{1em}
+  \centering
+  {\large From microscopic cell behavior → macroscopic tumor dynamics}
+\end{frame>
 
 % ---- Slide 7: Immune System Overview ----
-\begin{frame}{Immune System Overview}
+\begin{frame}{Immune System — {\Large\color{tealblue}\textbf{18}} Agent Types}
   \begin{columns}[T]
     \column{0.48\textwidth}
     \begin{block}{Innate Immunity}
       \begin{itemize}
-        \item \textbf{M1 Macrophages} --- phagocytosis, pro-inflammatory
-        \item \textbf{M2 Macrophages} --- tissue repair, pro-tumour
-        \item \textbf{NK Cells} --- MHC-independent killing
-        \item \textbf{Dendritic Cells (DC)} --- antigen presentation
-        \item \textbf{Plasmacytoid DC} --- type I IFN production
-        \item \textbf{Mast Cells} --- angiogenesis modulation
-        \item \textbf{Neutrophils} --- early response
+        \item \textbf{M1} — phagocytosis, inflammation
+        \item \textbf{M2} — repair, pro-tumor
+        \item \textbf{NK} — direct killing
+        \item \textbf{DC} — antigen presentation
+        \item \textbf{pDC} — interferon production
+        \item \textbf{Mast} — angiogenesis
+        \item \textbf{Neutrophils} — early response
       \end{itemize}
     \end{block}
 
     \column{0.48\textwidth}
     \begin{block}{Adaptive Immunity}
       \begin{itemize}
-        \item \textbf{CD8$^+$ Cytotoxic T Cells} --- direct tumour killing
-        \item \textbf{CD8$^+$ Na\"ive T Cells} --- precursors
-        \item \textbf{CD4$^+$ Na\"ive T Cells} --- helper precursors
-        \item \textbf{Th1 Cells} --- promote CTL \& M1
-        \item \textbf{Th2 Cells} --- promote humoral response
-        \item \textbf{Treg Cells} --- immune suppression
+        \item \textbf{CD8+ CTL} — tumor killing
+        \item \textbf{CD8+ Naïve} — CTL precursors
+        \item \textbf{CD4+ Naïve} — helper precursors
+        \item \textbf{Th1} — anti-tumor response
+        \item \textbf{Th2} — humoral immunity
+        \item \textbf{Treg} — immune suppression
       \end{itemize}
     \end{block}
   \end{columns}
-  \vspace{0.3em}
-  \centering\small Also modelled: \textbf{Adipocytes}, \textbf{Blood vessels}, \textbf{Sex hormones}, \textbf{Cytokines}
-\end{frame}
+  
+  \vspace{1em}
+  \centering
+  \begin{alertblock}{}
+    \centering
+    \textbf{Plus:} Tumor cells • Adipocytes • Blood vessels • Sex hormones • Cytokines
+  \end{alertblock}
+\end{frame>
 
 % ---- Slide 8: Warburg Effect ----
-\begin{frame}{The Warburg Effect}
+\begin{frame}{The Warburg Effect — Metabolic Warfare}
   \begin{columns}[T]
     \column{0.55\textwidth}
     \begin{itemize}
-      \item Tumour cells preferentially use \textbf{aerobic glycolysis} even in normoxia
-      \item Glucose consumption rate $\sim$10--200$\times$ higher than normal cells
-      \item Creates \textbf{metabolic competition} with immune cells
-      \item Glucose-depleted microenvironment impairs:
+      \item Tumor cells use \textbf{aerobic glycolysis}
+      \item Consumption: {\Large\color{red!80!black}\textbf{10–200×}} higher
+      \item Creates \textbf{metabolic competition}
+      \item Starves immune cells of glucose:
         \begin{itemize}
-          \item T cell activation and proliferation
-          \item NK cell cytotoxicity
-          \item DC antigen presentation
+          \item X T cell activation
+          \item X NK cytotoxicity  
+          \item X DC presentation
         \end{itemize}
-      \item Glucose availability becomes a \textbf{limiting factor} for immune function
+      \item Glucose = \textbf{limiting factor}
     \end{itemize}
 
     \column{0.42\textwidth}
+    \begin{alertblock}{Metabolic War}
+      \centering
+      {\large \textbf{GLUCOSE}}\\
+      \vspace{0.5em}
+      \textbf{Tumor}: high consumption\\
+      \textbf{Immune}: starved
+    \end{alertblock}
+    
+    \vspace{0.5em}
+    
     \begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}]
-      \node[draw, rounded corners, fill=red!15, minimum width=2.8cm, minimum height=1cm] (tumor) at (0,2.5) {Tumour Cell};
+      \node[draw, rounded corners, fill=red!15, minimum width=2.8cm, minimum height=1cm] (tumor) at (0,2.5) {Tumor Cell};
       \node[draw, rounded corners, fill=blue!15, minimum width=2.8cm, minimum height=1cm] (immune) at (0,0) {Immune Cell};
       \node[draw, rounded corners, fill=yellow!25, minimum width=2.8cm, minimum height=1cm] (glucose) at (4,1.25) {Glucose Pool};
-      \draw[-{Stealth[length=3mm]}, thick, red!70!black] (glucose.west) -- node[above,sloped,font=\scriptsize]{high uptake} (tumor.east);
-      \draw[-{Stealth[length=3mm]}, thick, blue!70!black] (glucose.west) -- node[below,sloped,font=\scriptsize]{low uptake} (immune.east);
+      \draw[-{Stealth[length=3mm]}, thick, red!70!black] (glucose.west) -- node[above,sloped,font=\scriptsize]{HIGH} (tumor.east);
+      \draw[-{Stealth[length=3mm]}, thick, blue!70!black] (glucose.west) -- node[below,sloped,font=\scriptsize]{low} (immune.east);
       \draw[-{Stealth[length=3mm]}, thick, red!60, dashed] (tumor.south) -- node[left, font=\scriptsize]{suppresses} (immune.north);
     \end{tikzpicture}
   \end{columns}
-\end{frame}
+\end{frame>
 
 % ============================================================
 \section{Model Architecture}
@@ -1129,6 +1218,33 @@
   \end{block}
 \end{frame}
 
+% ---- WHY IT MATTERS (High Impact) ----
+\begin{frame}[standout]
+  \begin{center}
+    {\Huge\textbf{WHY IT MATTERS}}
+    
+    \vspace{1.5em}
+    
+    {\Large\color{white} Behind every simulation...}
+    
+    \vspace{0.8em}
+    
+    {\Large\color{white}\textbf{400,000}} \textit{real patients per year}
+    
+    \vspace{0.8em}
+    
+    {\Large\color{white}\textbf{Families}} \textit{waiting for answers}
+    
+    \vspace{0.8em}
+    
+    {\Large\color{white}\textbf{Digital twins}} \textit{can guide therapy}
+    
+    \vspace{1em}
+    
+    \textit{Computational oncology saves lives}
+  \end{center}
+\end{frame>
+
 % ============================================================
 \section{Conclusion}
 % ============================================================
@@ -1157,7 +1273,34 @@
     \texttt{scipy.ndimage.convolve} diffusion \quad$|$\quad
     \texttt{AgentType} IntEnum dispatch
   \end{block}
-\end{frame}
+\end{frame>
+
+% ---- DEMO SLIDE (High Impact) ----
+\begin{frame}[standout]
+  \begin{center}
+    {\Huge\textbf{LIVE DEMO}}
+    
+    \vspace{1.5em}
+    
+    {\Large\color{white} Streamlit Web Interface}
+    
+    \vspace{0.8em}
+    
+    {\Large\color{white} Real-time Visualization}
+    
+    \vspace{0.8em}
+    
+    {\Large\color{white} Parameter Tuning}
+    
+    \vspace{0.8em}
+    
+    {\Large\color{white} Interactive Results}
+    
+    \vspace{1em}
+    
+    \textit{Ready to explore the tumor ecosystem?}
+  \end{center>
+\end{frame>
 
 % ---- Slide 28: Future Work ----
 \begin{frame}{Future Work}

@@ -7,7 +7,13 @@
 
 Imagine shrinking down to the cellular scale and stepping into a kidney cancer. You'd find yourself in a bustling three-dimensional metropolis where every citizen has a specific job: tumor cells focused on growth and survival, immune cells hunting invaders, blood vessels delivering supplies, hormones carrying messages. This is the world our model creates—a virtual tumor microenvironment where individual cellular decisions aggregate into the complex dynamics that determine patient survival.
 
+\vspace{1em}
+
 But building a convincing virtual tumor requires more than just digital cells bumping into each other. It requires capturing the intricate communication networks, the spatial constraints that shape interactions, the chemical gradients that guide cellular behavior, and the emergent phenomena that arise when hundreds of autonomous agents pursue their individual goals simultaneously.
+
+\begin{keyinsight}
+Our model operates on two scales simultaneously: discrete individual cells making decisions based on local information, and continuous chemical fields (like glucose) that create gradients guiding cellular behavior—exactly mirroring how real biology works.
+\end{keyinsight}
 
 This chapter takes you inside our computational creation, revealing the architecture that transforms biological knowledge into digital reality.
 
@@ -45,6 +51,10 @@ This hybrid approach reflects a fundamental insight: biology operates simultaneo
 \label{subsec:md_agent_types}
 
 Our virtual tumor microenvironment hosts 18 distinct agent types—each representing a different cellular population or signaling molecule found in real kidney cancers. This isn't an arbitrary collection of digital entities; it's a carefully curated cast of biological characters, each with its own role in the unfolding drama of cancer progression and treatment response.
+
+\begin{keyfinding}
+The 18 agent types span every major cellular component of the tumor microenvironment: neoplastic cells, innate and adaptive immune cells, stromal support cells, and signaling molecules. Each follows biologically-inspired behavioral rules, yet their interactions generate emergent dynamics that no single agent controls.
+\end{keyfinding}
 
 \begin{figure}[H]
 \centering

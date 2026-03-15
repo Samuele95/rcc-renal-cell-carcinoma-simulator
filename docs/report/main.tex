@@ -24,10 +24,44 @@
 \usepackage{xcolor}
 \usepackage{mdframed}
 
+% New packages for beautiful formatting
+\usepackage{fancyhdr}      % Professional headers/footers
+\usepackage{titlesec}       % Custom chapter/section titles
+\usepackage{pgfplots}       % Better plots integration
+\usepackage{pdfpages}       % Include PDF pages if needed
+\usepackage[protrusion=true,expansion=false]{microtype} % Better typography (font spacing)
+\usepackage[many]{tcolorbox} % Advanced tcolorbox features
+\usepackage{colortbl}       % For table coloring
+
+% PGF plots compatibility
+\pgfplotsset{compat=1.18}
+
 % TikZ libraries for advanced diagrams
 \usetikzlibrary{patterns,backgrounds,decorations.pathreplacing}
 \usetikzlibrary{mindmap,trees,decorations.text}
 \usetikzlibrary{matrix,chains,scopes}
+
+% Custom chapter style - make chapter titles beautiful
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\color{blue!70!black}}
+  {\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-20pt}{40pt}
+
+% Fancy headers and footers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\leftmark}
+\fancyhead[LO]{\rightmark}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Beautiful section headers
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{blue!60!black}}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{blue!50!black}}
+  {\thesubsection}{1em}{}
 
 % Color definitions for consistent theming
 \definecolor{tumorcell}{RGB}{220,20,60}
@@ -36,6 +70,62 @@
 \definecolor{glucose}{RGB}{255,215,0}
 \definecolor{dna}{RGB}{138,43,226}
 \definecolor{treatment}{RGB}{34,139,34}
+
+% Professional color palette for diagrams
+\definecolor{primary}{RGB}{67, 56, 202}      % Indigo
+\definecolor{secondary}{RGB}{16, 185, 129}   % Emerald
+\definecolor{accent}{RGB}{245, 158, 11}      % Amber
+\definecolor{neutral}{RGB}{107, 114, 128}    % Cool gray
+\definecolor{background}{RGB}{249, 250, 251} % Light gray
+
+% Define beautiful tcolorbox styles
+\newtcolorbox{keyinsight}{
+  colback=blue!5!white, 
+  colframe=blue!75!black, 
+  title=Key Insight, 
+  fonttitle=\bfseries,
+  rounded corners=3pt,
+  drop shadow
+}
+
+\newtcolorbox{keyfinding}{
+  colback=green!5!white, 
+  colframe=green!50!black, 
+  title=Key Finding, 
+  fonttitle=\bfseries,
+  rounded corners=3pt,
+  drop shadow
+}
+
+\newtcolorbox{definition}{
+  colback=gray!5!white, 
+  colframe=gray!75!black, 
+  fonttitle=\bfseries,
+  rounded corners=3pt,
+  drop shadow
+}
+
+\newtcolorbox{chaptersum}{
+  colback=orange!5!white, 
+  colframe=orange!60!black, 
+  title=Chapter Summary, 
+  fonttitle=\bfseries,
+  rounded corners=3pt,
+  drop shadow
+}
+
+\newtcolorbox{clinical}{
+  colback=purple!5!white, 
+  colframe=purple!60!black, 
+  title=Clinical Insight, 
+  fonttitle=\bfseries,
+  rounded corners=3pt,
+  drop shadow
+}
+
+% Table styling improvements
+\rowcolors{2}{gray!10}{white}
+\renewcommand{\arraystretch}{1.2}
 
 % Listing style
 \lstset{
@@ -82,8 +172,7 @@
 {\large March 2026}
 \end{titlepage}
 
-% Add page headers
-\pagestyle{headings}
+% Professional page headers are set above with fancyhdr
 
 \begin{abstract}
 Renal cell carcinoma (RCC) strikes 400,000 people annually worldwide, with metastatic disease carrying a devastating 15\% five-year survival rate. Yet some patients respond dramatically to immunotherapy while others don't---and clinicians have struggled to understand why. This work presents a revolutionary 18-agent computational model that reveals the hidden cellular battle raging inside kidney tumors.
