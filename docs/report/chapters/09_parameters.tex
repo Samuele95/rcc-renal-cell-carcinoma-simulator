@@ -1,13 +1,23 @@
 \chapter{Parameters and Optimization}
 \label{ch:parameters}
 
-This chapter documents the complete parameter space of the RCC model, organized into three categories (model, patient, and weight parameters), with detailed attention to the 8 newly introduced glucose parameters. It then describes the Bayesian optimization pipeline used to calibrate the model against clinical data.
+This chapter explores the parameter architecture that transforms a theoretical biological model into a calibratable computational system. Parameter design in agent-based biological models faces a fundamental challenge: balancing biological interpretability with optimization tractability while maintaining model identifiability. Our approach embodies a hierarchical parameter philosophy that separates concerns across biological, computational, and optimization scales, enabling systematic model calibration without sacrificing biological insight.
+
+% ======================================================================
+\section{Parameter Design Philosophy}
+\label{sec:param-philosophy}
+
+The 92-parameter space represents a carefully designed hierarchy that separates biological interpretability from computational optimization concerns. This separation reflects a core principle in biological modeling: parameters should have clear biological meaning when possible, but optimization requires mathematical flexibility that may obscure biological interpretation. Our design resolves this tension through a three-tier architecture that isolates patient-specific clinical variables, system-level model configuration, and process-level behavioral weights.
+
+The parameter hierarchy embodies several design principles that emerged from the constraints of biological modeling and Bayesian optimization. \textbf{Separability}: patient parameters remain fixed for individual simulations while weight parameters vary during optimization, preventing biological confounding of optimization landscapes. \textbf{Dimensionality}: parameters are grouped by their biological role rather than their mathematical properties, enabling domain experts to reason about parameter interactions within familiar biological contexts. \textbf{Identifiability}: each parameter governs a distinct biological process or computational behavior, reducing the risk of parameter redundancy that can destabilize optimization procedures.
+
+This design philosophy ultimately serves the broader goal of model validation: parameters must be interpretable enough for biologists to assess their reasonableness while being mathematically structured enough for optimization algorithms to explore efficiently.
 
 % ======================================================================
 \section{Parameter Categories}
 \label{sec:param-categories}
 
-The model's parameter space is partitioned into three \texttt{dataclass}-based parameter objects, each inheriting from a common \texttt{Parameters} base class that provides serialization, XML loading, and keyword-argument initialization.
+The model's parameter space is partitioned into three \texttt{dataclass}-based parameter objects, each inheriting from a common \texttt{Parameters} base class that provides serialization, XML loading, and keyword-argument initialization. This organizational structure reflects the distinct roles these parameter categories play in model configuration and optimization.
 
 \subsection{ModelParameters}
 

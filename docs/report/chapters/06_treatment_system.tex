@@ -181,4 +181,11 @@ The combination of ICI and TKI exploits complementary mechanisms that produce sy
 
 The clinical rationale for ICI + TKI combination therapy in RCC is well established.  The KEYNOTE-426 trial demonstrated that pembrolizumab (anti-PD-1) combined with axitinib (TKI) significantly improved overall survival and progression-free survival compared to sunitinib monotherapy in advanced RCC~\cite{rini2019}.  Similarly, the JAVELIN Renal 101 trial showed that avelumab (anti-PD-L1) plus axitinib improved progression-free survival over sunitinib~\cite{motzer2019}.  The ARON-1 study further examined sex-specific response patterns in this combination setting~\cite{santoni2024}.
 
-The model's treatment system is designed to reproduce the qualitative dynamics observed in these trials: combination therapy produces stronger tumor regression than either monotherapy, and the relative benefit depends on the patient's immune profile and sex-specific parameters (see Chapter~\ref{ch:sex-hormones}).
+The model's treatment system is designed to reproduce the qualitative dynamics observed in these trials: combination therapy produces stronger tumor regression than either monotherapy, and the relative benefit depends on the patient's immune profile and sex-specific parameters (see Chapter~\ref{ch:sex-hormones}). The treatment architecture embodies a modular design philosophy where individual drug mechanisms can be combined arbitrarily, enabling exploration of novel combination strategies and personalized treatment protocols based on patient-specific immune landscapes and tumor characteristics.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/treatment_timeline.pdf}
+\caption{Treatment timeline showing the sequential application of ICI and TKI therapies across simulation steps. The figure illustrates drug administration schedules, onset of action, and temporal coordination in combination therapy protocols. Treatment typically begins after an initial observation period to establish baseline tumor dynamics.}
+\label{fig:treatment_timeline}
+\end{figure}

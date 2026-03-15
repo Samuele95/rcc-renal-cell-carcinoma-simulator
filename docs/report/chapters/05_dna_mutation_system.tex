@@ -47,6 +47,13 @@ HER2   & Oncogene               & Human epidermal growth factor receptor 2; ampl
 APC    & Tumor Suppression      & Adenomatous polyposis coli; Wnt pathway regulator, loss promotes proliferation. \\
 \end{longtable}
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/dna_mutation_heatmap.pdf}
+\caption{DNA mutation heatmap across the 16 modeled genes showing the distribution of mutations in the tumor cell population. Each row represents a gene and each column represents a tumor cell lineage. Color intensity indicates the severity of mutation (darker colors represent higher mutation scores). The heterogeneous mutation patterns drive clonal diversity and immune evasion.}
+\label{fig:dna_mutation_heatmap}
+\end{figure}
+
 \subsection{DNA Sequence Structure}
 
 Each gene occupies a defined region within a synthetic DNA sequence.  The gene metadata specifies, for each gene: a start position (offset in the full DNA string), a coding region length of 90 base pairs, and a wildtype protein sequence of 20 amino acids.  The full DNA sequence is assembled during initialization by concatenating, for each gene:

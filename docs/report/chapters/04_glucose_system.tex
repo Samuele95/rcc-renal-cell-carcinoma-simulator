@@ -15,6 +15,13 @@ In the 1920s, Otto Warburg observed that tumor cells preferentially metabolize g
 \paragraph{Metabolic Competition.}
 Because tumor cells consume glucose at a greatly accelerated rate, the regions immediately surrounding the tumor mass become nutrient-deprived.  This metabolic competition between tumor cells and infiltrating immune cells creates nutrient gradients that shape the spatial organization of the microenvironment.  Immune cells arriving at the tumor periphery may encounter glucose concentrations insufficient to sustain their effector functions.
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/glucose_dynamics.pdf}
+\caption{Glucose field dynamics over time showing the evolution of glucose concentration patterns in response to tumor growth and treatment. The spatial distribution reveals zones of depletion around tumor masses and gradients extending from blood vessel sources.}
+\label{fig:glucose_dynamics}
+\end{figure}
+
 \paragraph{Impact on Immune Function.}
 T cells and Natural Killer (NK) cells are critically dependent on glucose availability for their cytotoxic activity.  Upon activation, T cells undergo a metabolic switch to aerobic glycolysis to support clonal expansion and effector function.  When glucose is scarce, T cell proliferation is impaired, interferon-gamma (IFN-$\gamma$) production decreases, and cytotoxic granule release is diminished.  Similarly, NK cell cytotoxicity is reduced under glucose-deprived conditions.  In the model, this dependency is captured by a glucose-dependent scaling factor applied to immune cell kill rates.
 
@@ -175,7 +182,10 @@ Figure~\ref{fig:glucose_system} illustrates the complete glucose system, showing
 
 \begin{figure}[H]
 \centering
-\input{figures/glucose_system.tex}
+% TikZ figure temporarily disabled - glucose system would show field dynamics
+\textit{[Glucose system diagram showing the cycle of injection, diffusion, consumption, and gradient computation with feedback loops between tumor cells, immune cells, and blood vessels]}
+
+The glucose field system is implemented through a carefully orchestrated sequence of operations executed each simulation step. The core algorithm balances biological realism with computational efficiency, leveraging vectorized NumPy operations for field updates while maintaining individual agent-level consumption behavior.
 \caption{Overview of the glucose system in the RCC model. The continuous glucose field $C(\mathbf{x}, t)$ is maintained through a cycle of: (1) glucose injection from blood vessels, (2) 3D diffusion via Fick's Law, (3) natural decay, (4) consumption by tumor and immune cells, and (5) gradient computation for chemotaxis. Feedback loops modulate cell growth and activity based on local glucose availability.}
 \label{fig:glucose_system}
 \end{figure}
@@ -258,6 +268,32 @@ The \texttt{step(model)} method executes the three phases of the glucose dynamic
 
 \noindent Agent-level consumption (by tumor and immune cells) is handled within each agent's own \texttt{step()} method, not within the \texttt{GlucoseField.step()} call.  This design ensures that consumption occurs at the correct point in the agent execution order and avoids double-counting.
 
+\begin{lstlisting}[caption={Glucose field step implementation from \texttt{glucose\_field.py}.}, label={lst:glucose-step}]
+def step(self, model):
+    """Perform one simulation step of the glucose field.
+    1. Blood vessels inject glucose (sources) -- vectorized.
+    2. Diffusion spreads glucose.
+    3. Natural decay.
+    Note: Consumption by agents is handled in their own step() methods.
+    """
+    wp = model.weight_params
+    
+    # 1. Source injection from blood vessels (vectorized)
+    if self._blood_positions_dirty:
+        self.update_blood_positions(model)
+    if len(self._blood_xs) > 0:
+        np.add.at(self.field, (self._blood_xs, self._blood_ys, self._blood_zs), 
+                 wp.w_glucose_source_rate)
+    
+    # 2. Diffusion
+    self.diffuse(wp.w_glucose_diffusion)
+    
+    # 3. Decay
+    self.decay(wp.w_glucose_decay)
+\end{lstlisting}
+
+The implementation demonstrates key design patterns that reflect both the biological constraints and computational requirements of the system. The vectorized injection strategy using NumPy's \texttt{add.at} function enables efficient batch updates to multiple grid positions simultaneously, avoiding the performance penalty of iterating over individual blood vessel agents. This architectural choice embodies the principle that field-level operations should be vectorized while agent-level behaviors remain individualized.
+
 \subsection{Statistics Methods}
 
 The \texttt{GlucoseField} class exposes four aggregate statistics, used by the data collection system to track metabolic dynamics over time:
@@ -270,3 +306,41 @@ The \texttt{GlucoseField} class exposes four aggregate statistics, used by the d
 \end{itemize}
 
 \noindent These values are recorded at every simulation step and provide insight into the metabolic state of the microenvironment, including the formation and extent of glucose-deprived regions around the tumor mass.
+
+\begin{lstlisting}[caption={Tumor cell glucose consumption and growth modulation from \texttt{tumor\_cell.py}.}, label={lst:tumor-glucose}]
+def step(self):
+    # Glucose consumption (Warburg effect)
+    self.consume_glucose(self.model.weight_params.w_glucose_tumor_consumption)
+    
+    # Tumor Apoptosis (check first)
+    if self.model.rng.random() < self._apoptosis_probability():
+        # [apoptosis logic omitted for brevity]
+        return
+    
+    # Tumor Duplication with glucose modulation
+    p_duplication = self._growth_potential()
+    
+    if self.pos is not None:
+        glucose = self.model.glucose_field.get(self.pos)
+        glucose_factor = min(1.0, glucose * self.model.weight_params.w_glucose_growth_sensitivity)
+        p_duplication *= glucose_factor
+    
+    if self.model.rng.random() <= p_duplication:
+        self.duplicate()
+\end{lstlisting}
+
+This implementation illustrates a critical design principle: metabolic constraints operate as multiplicative modifiers of biological processes rather than absolute determinants. The glucose factor calculation \texttt{min(1.0, glucose * sensitivity)} ensures that glucose availability can only reduce growth rates, never enhance them beyond the baseline genetic potential. This reflects the biological reality that nutrient availability enables growth but cannot exceed the intrinsic proliferative capacity encoded in the cell's mutational profile.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/glucose_timeseries.pdf}
+\caption{Glucose concentration time series showing the temporal evolution of mean, minimum, and maximum glucose levels throughout the simulation. The dynamics reflect the balance between blood vessel injection, cellular consumption, and spatial diffusion.}
+\label{fig:glucose_timeseries}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/glucose_field_3d.pdf}
+\caption{Three-dimensional visualization of the glucose concentration field showing spatial heterogeneity within the tumor microenvironment. High-concentration regions (yellow) correspond to blood vessel locations, while low-concentration zones (blue) indicate areas of intensive cellular consumption.}
+\label{fig:glucose_field_3d}
+\end{figure}

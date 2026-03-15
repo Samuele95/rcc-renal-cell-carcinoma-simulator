@@ -27,6 +27,13 @@ A continuous 3D glucose concentration field (described in detail in Chapter~4) i
 
 The model comprises 18 distinct agent types, each identified by an integer ID in the \texttt{AgentType} enumeration. Table~\ref{tab:agent_types} lists all agent types with their IDs and functional categories.
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/agent_population_pie.pdf}
+\caption{Initial agent type distribution in the RCC model. The pie chart shows the relative proportions of the 18 agent types at simulation initialization, with tumor cells forming a small but critical fraction of the total population. Immune cells dominate the initial composition, reflecting the host's surveillance capacity before tumor progression.}
+\label{fig:agent_population_pie}
+\end{figure}
+
 \begin{table}[H]
 \centering
 \caption{Agent types in the RCC model.}
@@ -139,7 +146,8 @@ Figure~\ref{fig:agent_hierarchy} illustrates the complete agent class hierarchy,
 
 \begin{figure}[H]
 \centering
-\input{figures/agent_hierarchy.tex}
+% TikZ figure temporarily disabled - agent hierarchy would show inheritance tree
+\textit{[Agent hierarchy diagram showing Cell base class with tumor cells, immune cells, and stromal cells inheriting from it]}
 \caption{Agent class hierarchy in the RCC model. Abstract base classes are shown with dashed borders, while concrete implementations are categorized by functional type: T cells (green), other cellular agents (blue), and non-cellular signaling agents (orange).}
 \label{fig:agent_hierarchy}
 \end{figure}
@@ -350,7 +358,8 @@ Figure~\ref{fig:agent_interactions} provides a visual overview of the key intera
 
 \begin{figure}[H]
 \centering
-\input{figures/agent_interactions.tex}
+% TikZ figure temporarily disabled - agent interactions would show communication pathways
+\textit{[Agent interaction diagram showing tumor-immune interactions, effect propagation, and spatial relationships]}
 \caption{Agent interaction network in the RCC model. Arrows indicate the direction and type of interaction: red for cytotoxic killing, blue for activation/differentiation, gray dashed for suppression, green for recruitment/spawning, and purple dotted for signaling/production. Agent types are color-coded by functional category.}
 \label{fig:agent_interactions}
 \end{figure}

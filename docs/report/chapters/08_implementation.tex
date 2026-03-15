@@ -1,43 +1,107 @@
 \chapter{Implementation}
 \label{ch:implementation}
 
-This chapter describes the software implementation of the RCC agent-based model, covering the selection of the Repast4Py framework, the overall architecture, the custom spatial index design, agent serialization conventions, the porting process from Mesa, the glucose field implementation, and the simulation entry point.
+This chapter examines the architectural decisions, design patterns, and implementation strategies that transform biological theory into executable software. Rather than cataloging code structure, we focus on the engineering problems encountered and the design patterns employed to solve them, revealing how computational constraints shape biological model design and vice versa.
 
 % ======================================================================
-\section{Framework Selection}
-\label{sec:framework-selection}
+\section{Architectural Philosophy: Beyond Framework Features}
+\label{sec:architecture-philosophy}
 
-The choice of simulation framework is fundamental to the scalability and maintainability of any agent-based model. After evaluating the two most prominent Python-based ABM frameworks---Mesa~\cite{mesa} and Repast4Py~\cite{repast4py}---the latter was selected for the RCC tumor microenvironment model.
+The transition from Mesa to Repast4Py exemplifies a fundamental principle in scientific software engineering: framework selection reflects not just current requirements but anticipated scaling challenges that may only emerge after years of model development. This decision embodies the tension between immediate development velocity and long-term architectural flexibility---a trade-off that permeates every aspect of the implementation.
 
-\subsection{Rationale for Repast4Py}
+The choice of Repast4Py over Mesa was driven by three architectural imperatives that transcend simple feature comparison. First, the \textbf{dimensionality constraint}: tumor microenvironments are inherently three-dimensional systems where spatial relationships determine biological outcomes. Mesa's 2D-centric grid design would have forced either biological oversimplification or expensive architectural retrofitting. Second, the \textbf{parallelism imperative}: as model complexity increases, single-threaded execution becomes the bottleneck that prevents exploration of biologically relevant parameter spaces or tissue volumes. Repast4Py's MPI-native architecture provides a path to distributed computing without fundamental redesign. Third, the \textbf{data coupling challenge}: biological systems exhibit tight coupling between discrete agents and continuous fields (glucose, cytokines, mechanical forces), requiring seamless integration between agent frameworks and scientific computing libraries.
 
-Repast4Py offers several features that are critical for the present model:
-
-\begin{enumerate}[label=(\roman*)]
-    \item \textbf{Native 3D grids.} Repast4Py's \texttt{SharedGrid} class supports arbitrary dimensionality out of the box. In Mesa, only 2D grids are provided natively; extending them to three dimensions requires custom subclassing of \texttt{MultiGrid} with non-trivial modifications to the neighbor-query logic.
-
-    \item \textbf{MPI parallelism via mpi4py.} Repast4Py is designed around the Message Passing Interface (MPI) through the \texttt{mpi4py} library~\cite{mpi4py}. Agents are managed within a \texttt{SharedContext} that can distribute them across MPI ranks. This architecture enables future scaling to large grids without architectural changes to the model code.
-
-    \item \textbf{SharedContext for distributed agents.} The \texttt{SharedContext} abstraction provides a unified agent container that handles ghost-agent synchronization across rank boundaries, which is essential for multi-rank parallel execution.
-
-    \item \textbf{Python ecosystem compatibility.} Repast4Py is a pure Python library (with \texttt{mpi4py} as its primary compiled dependency), and integrates seamlessly with NumPy, SciPy, Optuna, Pandas, and Matplotlib---all of which are used in the RCC model.
-\end{enumerate}
+These design pressures led to an architecture that prioritizes \textbf{composability over convenience}, \textbf{explicitness over abstraction}, and \textbf{future scaling over current simplicity}. The resulting system reflects a philosophy where computational architecture mirrors biological organization: modular, hierarchical, and capable of emergent behavior through local interactions.
 
 \subsection{Comparison with Mesa}
 
 Table~\ref{tab:detailed-mesa-vs-repast4py} presents a comprehensive comparison between Mesa and Repast4Py implementations, highlighting the key architectural differences and enhancements made during the porting process.
 
-\input{figures/comparison_table}
+% ======================================================================
+\section{Design Patterns in Biological Computing}
+\label{sec:design-patterns}
+
+The RCC model implementation employs several classical design patterns, each addressing specific challenges that arise when mapping biological processes to computational structures. These patterns emerged organically from the constraints of the biological domain rather than being imposed by software engineering dogma.
+
+\subsection{Command Pattern: Deferred Movement}
+
+Biological systems exhibit temporal coherence---all agents observe the same spatial configuration during their decision-making phase, with position updates occurring simultaneously. This requirement conflicts with the sequential nature of agent execution in single-threaded environments. The solution employs the Command pattern through deferred movement: agents record movement intentions during their \texttt{step()} method rather than executing moves immediately.
+
+\begin{lstlisting}[caption={Command pattern for deferred movement ensures temporal coherence.}, label={lst:deferred-movement}]
+# In agent.step() method:
+def step(self):
+    # ... other behaviors ...
+    target_pos = self.find_target()
+    self._desired_pos = target_pos  # Command: record intention
+    
+# In model.step() method after all agents stepped:
+def move_all_agents(self):
+    for agent in self._all_agents:
+        if hasattr(agent, '_desired_pos') and agent._desired_pos != agent.pos:
+            self.move_agent(agent, agent._desired_pos)  # Execute all commands
+\end{lstlisting}
+
+This pattern prevents order-of-execution artifacts where early-stepping agents could influence the spatial decisions of later-stepping agents, maintaining the biological principle that cellular decisions occur based on simultaneous environmental sensing.
+
+\subsection{Observer Pattern: Data Collection}
+
+The Observer pattern governs data collection, separating the concerns of biological simulation from measurement and analysis. The \texttt{Observer} class registers for model state changes and maintains statistical summaries without coupling the simulation logic to specific metrics.
+
+\subsection{Strategy Pattern: Treatment Modalities}
+
+Treatment effects employ the Strategy pattern, where different drug types (\texttt{ICIDrug}, \texttt{TKIDrug}) implement a common \texttt{Drug} interface. This design enables runtime composition of treatment regimens and simplifies the addition of novel therapeutic mechanisms without modifying core simulation logic.
+
+% TikZ table temporarily disabled - comparison table would show Mesa vs Repast4Py differences
+\textit{[Comparison table showing differences between Mesa and Repast4Py frameworks in terms of parallelism, spatial grids, and agent management]}
 
 The most consequential difference for this project is the parallelism model. Mesa is inherently single-process: all agents live in a single Python interpreter, and there is no built-in mechanism for distributing computation across cores or nodes. Repast4Py, by contrast, is architected from the ground up around MPI, making it possible to scale the simulation to larger tissue volumes in the future without redesigning the agent management infrastructure.
 
 % ======================================================================
-\section{Architecture}
-\label{sec:architecture}
+\section{Simulation Orchestration: The Main Event Loop}
+\label{sec:simulation-orchestration}
 
-\subsection{Project Structure}
+The heart of the system lies in the main simulation loop, which orchestrates the complex interplay between field dynamics, agent behaviors, and system-level state updates. This loop embodies a carefully designed sequence that respects biological causality while optimizing computational efficiency.
 
-The project is organized into a modular directory tree, separating agent definitions, systems (spatial index, glucose field, DNA, effects), treatment logic, parameter management, the model driver, data collection, machine learning, visualization, and tests.
+\begin{lstlisting}[caption={Main simulation step sequence from \texttt{rcc\_model.py}.}, label={lst:main-loop}]
+def step(self):
+    """Execute one simulation step. Order: collect data -> check termination 
+    -> apply effects -> treatment -> sex drift -> glucose field step -> angiogenesis 
+    -> search dimension -> shuffle & step all agents -> deferred move -> spawn hormones"""
+    
+    self.collect_data()
+    if self.check_termination():
+        self.log_data()
+        return
+    
+    # Reset immune infiltration factor (boosted by ICI treatment each step)
+    for type_id in (AgentType.CD4_HELPER1_T_CELL, AgentType.CD4_HELPER2_T_CELL, AgentType.MAST_CELL):
+        for agent in self.iter_agents_by_type_id(type_id):
+            agent.immune_infiltration_factor = 1
+    
+    self.apply_effects()
+    if self.steps >= self.treatment_start:
+        self.treatment.step()
+    self.apply_sex_drift()
+    
+    # Glucose field step (source injection, diffusion, decay)
+    self.glucose_field.step(self)
+    self.manage_blood()
+    self.manage_search_dimension()
+    
+    # Shuffle and step all agents (snapshot to avoid mutation during iteration)
+    agents_snapshot = [a for a in self._all_agents.values() if a.has_step]
+    self.rng.shuffle(agents_snapshot)
+    for agent in agents_snapshot:
+        if agent.alive:
+            agent.step()
+    
+    self.move_all_agents()  # Execute deferred movements
+    self.spawn_hormones()   # Post-movement hormone generation
+\end{lstlisting}
+
+This sequence reflects deep biological insights encoded as computational constraints. Data collection occurs first to capture the system state before any modifications, ensuring measurement consistency. Effect propagation precedes agent stepping to simulate the instantaneous nature of cell-cell signaling, while glucose field updates occur before agent consumption to model the continuous nature of diffusion relative to cellular metabolism. The random shuffling of agents before stepping prevents systematic bias from execution order, maintaining the symmetry assumptions underlying the biological model.
+
+\subsection{Architectural Modularity}
 
 \begin{lstlisting}[language={}, caption={Project directory tree.}, label={lst:project-tree}, basicstyle=\ttfamily\footnotesize, numbers=none, frame=single]
 rcc_repast4py/
@@ -122,12 +186,13 @@ There is no framework-imposed scheduler. Instead, Repast4Py's \texttt{schedule.i
 
 Figure~\ref{fig:model_architecture} illustrates the overall architecture of the RCCModel, showing the main components and their data flow relationships.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 \centering
-%\input{figures/model_architecture.tex}
+% TikZ figure temporarily disabled - architectural diagram would show main components
+\textit{[Architecture diagram showing RCCModel, GlucoseField, CellAdder, Observer, Treatment, SpatialIndex, and SharedGrid components with their interconnections]}
 \caption{Architecture of the RCCModel system. The main model coordinates interactions between the glucose field (3D diffusion), agent management (cell adder, spatial index, shared grid), data collection (observer), and treatment systems. The step sequence annotation shows the ordered execution of simulation phases.}
 \label{fig:model_architecture}
-\end{figure}
+\end{figure>
 
 % ======================================================================
 \section{Spatial Index Design}
@@ -421,9 +486,10 @@ When the simulation terminates (either by the schedule runner reaching \texttt{m
 
 Figure~\ref{fig:simulation_pipeline} provides a detailed view of the simulation pipeline, showing the complete sequence of operations executed in each time step and the decision points that control simulation flow.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 \centering
-%\input{figures/simulation_pipeline.tex}
+% TikZ figure temporarily disabled - simulation pipeline would show step sequence
+\textit{[Simulation pipeline diagram showing the 11-step sequence: collect\_data $\rightarrow$ check\_termination $\rightarrow$ apply\_effects $\rightarrow$ treatment $\rightarrow$ sex\_drift $\rightarrow$ glucose\_step $\rightarrow$ manage\_blood $\rightarrow$ agent\_steps $\rightarrow$ move $\rightarrow$ spawn\_hormones]}
 \caption{Simulation pipeline for the RCC model. Each time step follows a fixed sequence of 11 operations, from data collection through hormone spawning. The termination condition check determines whether to continue the simulation or write final results. Side annotations detail the specific operations performed in each phase.}
 \label{fig:simulation_pipeline}
 \end{figure}
