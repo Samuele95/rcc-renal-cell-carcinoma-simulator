@@ -19,8 +19,7 @@
 \usepackage{float}
 \usepackage{enumitem}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,calc,decorations.pathmorphing,shapes.symbols}
-\usepackage{tcolorbox}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,calc,decorations.pathmorphing,shapes.symbols,shadows}
 \usepackage{xcolor}
 \usepackage{mdframed}
 
@@ -29,8 +28,8 @@
 \usepackage{titlesec}       % Custom chapter/section titles
 \usepackage{pgfplots}       % Better plots integration
 \usepackage{pdfpages}       % Include PDF pages if needed
-\usepackage[protrusion=true,expansion=false]{microtype} % Better typography (font spacing)
-\usepackage[many]{tcolorbox} % Advanced tcolorbox features
+\usepackage[protrusion=true,expansion=false]{microtype} % Better typography
+\usepackage[most]{tcolorbox} % Advanced tcolorbox features
 \usepackage{colortbl}       % For table coloring
 
 % PGF plots compatibility
@@ -84,8 +83,9 @@
   colframe=blue!75!black, 
   title=Key Insight, 
   fonttitle=\bfseries,
-  rounded corners=3pt,
-  drop shadow
+  arc=3pt,
+  enhanced,
+  shadow={1mm}{-1mm}{0mm}{black!30}
 }
 
 \newtcolorbox{keyfinding}{
@@ -93,16 +93,18 @@
   colframe=green!50!black, 
   title=Key Finding, 
   fonttitle=\bfseries,
-  rounded corners=3pt,
-  drop shadow
+  arc=3pt,
+  enhanced,
+  shadow={1mm}{-1mm}{0mm}{black!30}
 }
 
 \newtcolorbox{definition}{
   colback=gray!5!white, 
   colframe=gray!75!black, 
   fonttitle=\bfseries,
-  rounded corners=3pt,
-  drop shadow
+  arc=3pt,
+  enhanced,
+  shadow={1mm}{-1mm}{0mm}{black!30}
 }
 
 \newtcolorbox{chaptersum}{
@@ -110,8 +112,9 @@
   colframe=orange!60!black, 
   title=Chapter Summary, 
   fonttitle=\bfseries,
-  rounded corners=3pt,
-  drop shadow
+  arc=3pt,
+  enhanced,
+  shadow={1mm}{-1mm}{0mm}{black!30}
 }
 
 \newtcolorbox{clinical}{
@@ -119,12 +122,12 @@
   colframe=purple!60!black, 
   title=Clinical Insight, 
   fonttitle=\bfseries,
-  rounded corners=3pt,
-  drop shadow
+  arc=3pt,
+  enhanced,
+  shadow={1mm}{-1mm}{0mm}{black!30}
 }
 
 % Table styling improvements
-\rowcolors{2}{gray!10}{white}
 \renewcommand{\arraystretch}{1.2}
 
 % Listing style
@@ -187,8 +190,6 @@ This work transforms cancer modeling from population averages to individual pati
 \end{abstract}
 
 \tableofcontents
-\listoffigures
-\listoftables
 
 \clearpage
 \input{chapters/01_introduction}

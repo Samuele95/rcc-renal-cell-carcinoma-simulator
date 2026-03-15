@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.6)  15 MAR 2026 11:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.6)  15 MAR 2026 11:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main
+**main.tex
 (./main.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -779,36 +779,18 @@ File: tikzlibraryshapes.symbols.code.tex 2023-01-15 v3.1.10 (3.1.10)
 s.symbols.code.tex
 File: pgflibraryshapes.symbols.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
-Package: tcolorbox 2024/01/10 version 6.2.0 text color boxes
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryshadows.code.tex
+File: tikzlibraryshadows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 
-(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
-Package: verbatim 2023-11-06 v1.5v LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks43
-\verbatim@line=\toks44
-\verbatim@in@stream=\read4
-)
-(/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty
-Package: environ 2014/05/04 v0.3 A new way to define environments
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryfadings.code.tex
+File: tikzlibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 
-(/usr/share/texlive/texmf-dist/tex/latex/trimspaces/trimspaces.sty
-Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
-))
-\tcb@titlebox=\box75
-\tcb@upperbox=\box76
-\tcb@lowerbox=\box77
-\tcb@phantombox=\box78
-\c@tcbbreakpart=\count338
-\c@tcblayer=\count339
-\c@tcolorbox@number=\count340
-\l__tcobox_tmpa_box=\box79
-\l__tcobox_tmpa_dim=\dimen310
-\tcb@temp=\box80
-\tcb@temp=\box81
-\tcb@temp=\box82
-\tcb@temp=\box83
-)
-(/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code
+.tex
+File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
 Package: mdframed 2013/07/01 1.9b: mdframed
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
@@ -817,8 +799,8 @@ Package: expl3 2024-01-22 L3 programming layer (loader)
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count341
-\l__pdf_internal_box=\box84
+\l__color_backend_stack_int=\count338
+\l__pdf_internal_box=\box75
 ))
 Package: xparse 2023-10-10 L3 Experimental document command parser
 )
@@ -835,14 +817,14 @@ Package zref Info: New property list: main on input line 767.
 Package zref Info: New property: default on input line 768.
 Package zref Info: New property: page on input line 769.
 )
-\c@abspage=\count342
+\c@abspage=\count339
 Package zref Info: New property: abspage on input line 67.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty
 Package: needspace 2010/09/12 v1.3d reserve vertical space
 )
 \mdf@templength=\skip61
-\c@mdf@globalstyle@cnt=\count343
+\c@mdf@globalstyle@cnt=\count340
 \mdf@skipabove@length=\skip62
 \mdf@skipbelow@length=\skip63
 \mdf@leftmargin@length=\skip64
@@ -886,11 +868,11 @@ Package: needspace 2010/09/12 v1.3d reserve vertical space
 (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-0.mdf
 File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
 )
-\mdf@frametitlebox=\box85
-\mdf@footnotebox=\box86
-\mdf@splitbox@one=\box87
-\mdf@splitbox@two=\box88
-\mdf@splitbox@save=\box89
+\mdf@frametitlebox=\box76
+\mdf@footnotebox=\box77
+\mdf@splitbox@one=\box78
+\mdf@splitbox@two=\box79
+\mdf@splitbox@save=\box80
 \mdfsplitboxwidth=\skip101
 \mdfsplitboxtotalwidth=\skip102
 \mdfsplitboxheight=\skip103
@@ -918,16 +900,16 @@ File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
 \mdf@horizontalspaceofbox=\skip125
 \mdfsubtitleheight=\skip126
 \mdfsubsubtitleheight=\skip127
-\c@mdfcountframes=\count344
+\c@mdfcountframes=\count341
 
 ****** mdframed patching \endmdf@trivlist
 
 ****** -- success******
 
-\mdf@envdepth=\count345
-\c@mdf@env@i=\count346
-\c@mdf@env@ii=\count347
-\c@mdf@zref@counter=\count348
+\mdf@envdepth=\count342
+\c@mdf@env@i=\count343
+\c@mdf@env@ii=\count344
+\c@mdf@zref@counter=\count345
 Package zref Info: New property: mdf@pagevalue on input line 895.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
@@ -945,15 +927,15 @@ Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
 )
 (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2023/10/27 v2.16 Sectioning titles
-\ttl@box=\box90
+\ttl@box=\box81
 \beforetitleunit=\skip137
 \aftertitleunit=\skip138
-\ttl@plus=\dimen311
-\ttl@minus=\dimen312
-\ttl@toksa=\toks45
-\titlewidth=\dimen313
-\titlewidthlast=\dimen314
-\titlewidthfirst=\dimen315
+\ttl@plus=\dimen310
+\ttl@minus=\dimen311
+\ttl@toksa=\toks43
+\titlewidth=\dimen312
+\titlewidthlast=\dimen313
+\titlewidthfirst=\dimen314
 )
 (/usr/share/texlive/texmf-dist/tex/latex/pgfplots/pgfplots.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
@@ -961,12 +943,12 @@ Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
-\t@pgfplots@toka=\toks46
-\t@pgfplots@tokb=\toks47
-\t@pgfplots@tokc=\toks48
-\pgfplots@tmpa=\dimen316
-\c@pgfplots@coordindex=\count349
-\c@pgfplots@scanlineindex=\count350
+\t@pgfplots@toka=\toks44
+\t@pgfplots@tokb=\toks45
+\t@pgfplots@tokc=\toks46
+\pgfplots@tmpa=\dimen315
+\c@pgfplots@coordindex=\count346
+\c@pgfplots@scanlineindex=\count347
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code
 .tex))
@@ -977,9 +959,9 @@ gfsupp_loader.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex
 )
 Package pgfplots: loading complementary utilities for your pgf version...
-\t@pgf@toka=\toks49
-\t@pgf@tokb=\toks50
-\t@pgf@tokc=\toks51
+\t@pgf@toka=\toks47
+\t@pgf@tokb=\toks48
+\t@pgf@tokc=\toks49
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
 gfsupp_pgfutil-common-lists.tex))
@@ -990,14 +972,14 @@ tructure.code.tex)
 tructureext.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray
 .code.tex
-\c@pgfplotsarray@tmp=\count351
+\c@pgfplotsarray@tmp=\count348
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatri
 x.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshare
 d.code.tex
-\c@pgfplotstable@counta=\count352
-\t@pgfplotstable@a=\toks52
+\c@pgfplotstable@counta=\count349
+\t@pgfplotstable@a=\toks50
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque
 .code.tex)
@@ -1009,7 +991,7 @@ de.tex))
 .tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.sur
 fshading.code.tex
-\c@pgfplotslibrarysurf@no=\count353
+\c@pgfplotslibrarysurf@no=\count350
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surf
 shading.pgfsys-pdftex.def)))
@@ -1038,13 +1020,13 @@ zlibrarydecorations.pathreplacing.code.tex
 decorations.pathreplacing.code.tex))
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.co
 ntourlua.code.tex)
-\pgfplots@numplots=\count354
-\pgfplots@xmin@reg=\dimen317
-\pgfplots@xmax@reg=\dimen318
-\pgfplots@ymin@reg=\dimen319
-\pgfplots@ymax@reg=\dimen320
-\pgfplots@zmin@reg=\dimen321
-\pgfplots@zmax@reg=\dimen322
+\pgfplots@numplots=\count351
+\pgfplots@xmin@reg=\dimen316
+\pgfplots@xmax@reg=\dimen317
+\pgfplots@ymin@reg=\dimen318
+\pgfplots@ymax@reg=\dimen319
+\pgfplots@zmin@reg=\dimen320
+\pgfplots@zmax@reg=\dimen321
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryplotmarks.code.tex
@@ -1061,51 +1043,51 @@ Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count355
-\calc@Bcount=\count356
-\calc@Adimen=\dimen323
-\calc@Bdimen=\dimen324
+\calc@Acount=\count352
+\calc@Bcount=\count353
+\calc@Adimen=\dimen322
+\calc@Bdimen=\dimen323
 \calc@Askip=\skip139
 \calc@Bskip=\skip140
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count357
+\calc@Ccount=\count354
 \calc@Cskip=\skip141
 )
 (/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
-\ESO@tempdima=\dimen325
-\ESO@tempdimb=\dimen326
+\ESO@tempdima=\dimen324
+\ESO@tempdimb=\dimen325
 )
-\AM@pagewidth=\dimen327
-\AM@pageheight=\dimen328
-\AM@fboxrule=\dimen329
+\AM@pagewidth=\dimen326
+\AM@pageheight=\dimen327
+\AM@fboxrule=\dimen328
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pppdftex.def
 File: pppdftex.def 2024/01/21 v0.5y Pdfpages driver for pdfTeX (AM)
 )
-\pdfpages@includegraphics@status=\count358
-\AM@pagebox=\box91
-\AM@global@opts=\toks53
-\AM@pagecnt=\count359
-\AM@toc@title=\toks54
-\AM@lof@heading=\toks55
-\c@AM@survey=\count360
-\AM@templatesizebox=\box92
+\pdfpages@includegraphics@status=\count355
+\AM@pagebox=\box82
+\AM@global@opts=\toks51
+\AM@pagecnt=\count356
+\AM@toc@title=\toks52
+\AM@lof@heading=\toks53
+\c@AM@survey=\count357
+\AM@templatesizebox=\box83
 )
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 Package: microtype 2023/03/13 v3.1a Micro-typographical refinements (RS)
-\MT@toks=\toks56
-\MT@tempbox=\box93
-\MT@count=\count361
+\MT@toks=\toks54
+\MT@tempbox=\box84
+\MT@count=\count358
 LaTeX Info: Redefining \noprotrusionifhmode on input line 1059.
 LaTeX Info: Redefining \leftprotrusion on input line 1060.
-\MT@prot@toks=\toks57
+\MT@prot@toks=\toks55
 LaTeX Info: Redefining \rightprotrusion on input line 1078.
 LaTeX Info: Redefining \textls on input line 1368.
-\MT@outer@kern=\dimen330
+\MT@outer@kern=\dimen329
 LaTeX Info: Redefining \textmicrotypecontext on input line 1988.
-\MT@listname@count=\count362
+\MT@listname@count=\count359
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype-pdftex.def
 File: microtype-pdftex.def 2023/03/13 v3.1a Definitions specific to pdftex (RS)
@@ -1119,40 +1101,116 @@ Package microtype Info: Loading configuration file microtype.cfg.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.cfg
 File: microtype.cfg 2023/03/13 v3.1a microtype main configuration file (RS)
 ))
+(/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+Package: tcolorbox 2024/01/10 version 6.2.0 text color boxes
 
-! LaTeX Error: Option clash for package tcolorbox.
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2023-11-06 v1.5v LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks56
+\verbatim@line=\toks57
+\verbatim@in@stream=\read4
+)
+(/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.34 \usepackage
-                {colortbl}       % For table coloring
-The package tcolorbox has already been loaded with options:
-  []
-There has now been an attempt to load it with options
-  [many]
-Adding the global options:
-  ,many
-to your \documentclass declaration may fix this.
-Try typing  <return>  to proceed.
+(/usr/share/texlive/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+\tcb@titlebox=\box85
+\tcb@upperbox=\box86
+\tcb@lowerbox=\box87
+\tcb@phantombox=\box88
+\c@tcbbreakpart=\count360
+\c@tcblayer=\count361
+\c@tcolorbox@number=\count362
+\l__tcobox_tmpa_box=\box89
+\l__tcobox_tmpa_dim=\dimen330
+\tcb@temp=\box90
+\tcb@temp=\box91
+\tcb@temp=\box92
+\tcb@temp=\box93
 
-(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbraster.code.tex
+Library (tcolorbox): 'tcbraster.code.tex' version '6.2.0'
+\c@tcbrastercolumn=\count363
+\c@tcbrasterrow=\count364
+\c@tcbrasternum=\count365
+\c@tcbraster=\count366
+) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
+Library (tcolorbox): 'tcbskins.code.tex' version '6.2.0'
+(/usr/share/texlive/texmf-dist/tex/latex/tikzfill/tikzfill.image.sty
+Package: tikzfill.image 2023/08/08 v1.0.1 Image filling library for TikZ
+
+(/usr/share/texlive/texmf-dist/tex/latex/tikzfill/tikzfill-common.sty
+Package: tikzfill-common 2023/08/08 v1.0.1 Auxiliary code for tikzfill
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tikzfill/tikzlibraryfill.image.code.te
+x
+File: tikzlibraryfill.image.code.tex 2023/08/08 v1.0.1 Image filling library
+\l__tikzfill_img_box=\box94
+)) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.2.0'
+)) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
+Library (tcolorbox): 'tcbbreakable.code.tex' version '6.2.0'
+(/usr/share/texlive/texmf-dist/tex/latex/pdfcol/pdfcol.sty
+Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
+)
+Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
+\tcb@testbox=\box95
+\tcb@totalupperbox=\box96
+\tcb@totallowerbox=\box97
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbhooks.code.tex
+Library (tcolorbox): 'tcbhooks.code.tex' version '6.2.0'
+) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
+Library (tcolorbox): 'tcbtheorems.code.tex' version '6.2.0'
+) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbfitting.code.tex
+Library (tcolorbox): 'tcbfitting.code.tex' version '6.2.0'
+\tcbfitdim=\dimen331
+\tcb@lowerfitdim=\dimen332
+\tcb@upperfitdim=\dimen333
+\tcb@cur@hbadness=\count367
+) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcblistingsutf8.code.tex
+Library (tcolorbox): 'tcblistingsutf8.code.tex' version '6.2.0'
+(/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcblistings.code.tex
+Library (tcolorbox): 'tcblistings.code.tex' version '6.2.0'
+(/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcblistingscore.code.tex
+Library (tcolorbox): 'tcblistingscore.code.tex' version '6.2.0'
+(/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbprocessing.code.tex
+Library (tcolorbox): 'tcbprocessing.code.tex' version '6.2.0'
+)
+\c@tcblisting=\count368
+)) (/usr/share/texlive/texmf-dist/tex/latex/listingsutf8/listingsutf8.sty
+Package: listingsutf8 2019-12-10 v1.5 Allow UTF-8 in listings input (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)))
+(/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbexternal.code.tex
+Library (tcolorbox): 'tcbexternal.code.tex' version '6.2.0'
+) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbmagazine.code.tex
+Library (tcolorbox): 'tcbmagazine.code.tex' version '6.2.0'
+) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbvignette.code.tex
+Library (tcolorbox): 'tcbvignette.code.tex' version '6.2.0'
+) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbposter.code.tex
+Library (tcolorbox): 'tcbposter.code.tex' version '6.2.0'
+)) (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2022/06/20 v1.0f Color table columns (DPC)
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
 Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
-\col@sep=\dimen331
-\ar@mcellbox=\box94
-\extrarowheight=\dimen332
+\col@sep=\dimen334
+\ar@mcellbox=\box98
+\extrarowheight=\dimen335
 \NC@list=\toks58
 \extratabsurround=\skip143
 \backup@length=\skip144
-\ar@cellbox=\box95
+\ar@cellbox=\box99
 )
 \everycr=\toks59
 \minrowclearance=\skip145
-\rownum=\count363
+\rownum=\count369
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarypatterns.code.tex
@@ -1165,8 +1223,8 @@ File: pgflibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarybackgrounds.code.tex
 File: tikzlibrarybackgrounds.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@layerbox@background=\box96
-\pgf@layerboxsaved@background=\box97
+\pgf@layerbox@background=\box100
+\pgf@layerboxsaved@background=\box101
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarymindmap.code.tex
@@ -1180,9 +1238,9 @@ File: tikzlibrarytrees.code.tex 2023-01-15 v3.1.10 (3.1.10)
 zlibrarydecorations.text.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
 decorations.text.code.tex
-\pgf@lib@dec@text@box=\box98
+\pgf@lib@dec@text@box=\box102
 )
-\tikz@lib@dec@te@box=\box99
+\tikz@lib@dec@te@box=\box103
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarymatrix.code.tex
@@ -1200,52 +1258,52 @@ File: tikzlibraryscopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 Package fancyhdr Warning: \fancyhead's `E' option without twoside option is use
 less.
 (fancyhdr)                Please consider using the `twoside' option on input l
-ine 53.
+ine 52.
 
 
 Package fancyhdr Warning: \fancyhead's `E' option without twoside option is use
 less.
 (fancyhdr)                Please consider using the `twoside' option on input l
-ine 54.
+ine 53.
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 155.
-
-No file main.aux.
+Package hyperref Info: Option `colorlinks' set `true' on input line 158.
+ (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 157.
-LaTeX Font Info:    ... okay on input line 157.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 160.
+LaTeX Font Info:    ... okay on input line 160.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 160.
+LaTeX Font Info:    ... okay on input line 160.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 160.
+LaTeX Font Info:    ... okay on input line 160.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 160.
+LaTeX Font Info:    ... okay on input line 160.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 160.
+LaTeX Font Info:    ... okay on input line 160.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 160.
+LaTeX Font Info:    ... okay on input line 160.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 160.
+LaTeX Font Info:    ... okay on input line 160.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 160.
+LaTeX Font Info:    ... okay on input line 160.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 160.
+LaTeX Font Info:    ... okay on input line 160.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count364
-\scratchdimen=\dimen333
-\scratchbox=\box100
-\nofMPsegments=\count365
-\nofMParguments=\count366
+\scratchcounter=\count370
+\scratchdimen=\dimen336
+\scratchbox=\box104
+\nofMPsegments=\count371
+\nofMParguments=\count372
 \everyMPshowfont=\toks60
-\MPscratchCnt=\count367
-\MPscratchDim=\dimen334
-\MPnumerator=\count368
-\makeMPintoPDFobject=\count369
+\MPscratchCnt=\count373
+\MPscratchDim=\dimen337
+\MPnumerator=\count374
+\makeMPintoPDFobject=\count375
 \everyMPtoPDFconversion=\toks61
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1256,11 +1314,13 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring ON on input line 157.
+Package hyperref Info: Link coloring ON on input line 160.
+
+(./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
-\c@lstlisting=\count370
+\c@lstlisting=\count376
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -1314,12 +1374,12 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
-LaTeX Info: Redefining \microtypecontext on input line 157.
-Package microtype Info: Applying patch `item' on input line 157.
-Package microtype Info: Applying patch `toc' on input line 157.
-Package microtype Info: Applying patch `eqnum' on input line 157.
-Package microtype Info: Applying patch `footnote' on input line 157.
-Package microtype Info: Applying patch `verbatim' on input line 157.
+LaTeX Info: Redefining \microtypecontext on input line 160.
+Package microtype Info: Applying patch `item' on input line 160.
+Package microtype Info: Applying patch `toc' on input line 160.
+Package microtype Info: Applying patch `eqnum' on input line 160.
+Package microtype Info: Applying patch `footnote' on input line 160.
+Package microtype Info: Applying patch `verbatim' on input line 160.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1338,170 +1398,9 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.187 \end{abstract}
-                     [1]
-No file main.toc.
-\tf@toc=\write5
-\openout5 = `main.toc'.
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.190 \listoffigures
-                     [1
-
-]
-No file main.lof.
-\tf@lof=\write6
-\openout6 = `main.lof'.
-
-[2
-
-]
-No file main.lot.
-\tf@lot=\write7
-\openout7 = `main.lot'.
-
-[3
-
-] (./chapters/01_introduction.tex
-Chapter 1.
-
-LaTeX Warning: Citation `santoni2024' on page 4 undefined on input line 15.
-
-
-LaTeX Warning: Citation `rini2019' on page 4 undefined on input line 21.
-
-
-LaTeX Warning: Citation `pardoll2012' on page 4 undefined on input line 23.
-
-[4
-
-
-]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 27.11469pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.11469pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-15.11469pt}.
-
-[5]
-
-! Package pgfkeys Error: Choice '3pt' unknown in choice key '/tcb/rounded corne
-rs'. I am going to ignore this key.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 \begin{keyfinding}
-                       
-This error message was generated by an \errmessage
-command, so I can't give any explicit help.
-Pretend that you're Hercule Poirot: Examine all clues,
-and deduce the truth by order and method.
-
-
-! Package pgfkeys Error: I do not know the key '/tcb/drop shadow' and I am goin
-g to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 \begin{keyfinding}
-                       
-(That was another \errmessage.)
-
-
-Overfull \hbox (3.57709pt too wide) in paragraph at lines 67--68
-\T1/cmr/m/n/12 Estrogen op-er-ates like a so-phis-ti-cated im-mune sys-tem con-
-duc-tor, but its sym-phony changes
- []
-
-
-LaTeX Warning: Citation `conforti2018' on page 6 undefined on input line 69.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[6]
-
-LaTeX Warning: Citation `santoni2024' on page 7 undefined on input line 77.
-
-
-Overfull \hbox (1.79173pt too wide) in paragraph at lines 77--78
-[]\T1/cmr/m/n/12 Enter the ARON-1 clin-i-cal study [[]]---a ground-break-ing in
--ves-ti-ga-tion that asks whether
- []
-
-
-! Package pgfkeys Error: Choice '3pt' unknown in choice key '/tcb/rounded corne
-rs'. I am going to ignore this key.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.90 \begin{keyinsight}
-                       
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tcb/drop shadow' and I am goin
-g to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.90 \begin{keyinsight}
-                       
-(That was another \errmessage.)
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 27.11469pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.11469pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-15.11469pt}.
-
-[7] (./figures/conceptual_overview.tex
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.13 ...ext width=3cm, text centered, drop shadow]
-                                                   (patient) at (0,8) {
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.22 ...centered, minimum height=6cm, drop shadow]
-                                                   (simulation) at (6,5) {
-(That was another \errmessage.)
-
-LaTeX Font Info:    Trying to load font information for U+msa on input line 28.
+l.190 \end{abstract}
+                     [1] (./main.toc
+LaTeX Font Info:    Trying to load font information for U+msa on input line 3.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1509,8 +1408,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 28.
-
+LaTeX Font Info:    Trying to load font information for U+msb on input line 3.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1518,196 +1416,164 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.44 ...2}BMI Normalization}{24}{subsection.3.3.2}
+                                                  % [1
 
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
+]
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
+9.
 
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.32 ...rcle, fill=tumor, text=white, drop shadow]
-                                                   (tumor1) at (3,6) {TC};
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.33 ...rcle, fill=tumor, text=white, drop shadow]
-                                                   (tumor2) at (3.5,5.5) {TC};
-(That was another \errmessage.)
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `cmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
 
 
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.34 ...rcle, fill=tumor, text=white, drop shadow]
-                                                   (tumor3) at (2.5,5.5) {TC};
-(That was another \errmessage.)
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[2]
 
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.37 ...cle, fill=immune, text=white, drop shadow]
-                                                   (tcell1) at (5,6.5) {CTL};
-(That was another \errmessage.)
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[3]
 
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.38 ...cle, fill=immune, text=white, drop shadow]
-                                                   (tcell2) at (5.5,6) {NK};
-(That was another \errmessage.)
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[4])
+\tf@toc=\write5
+\openout5 = `main.toc'.
 
 
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
 
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.39 ...cle, fill=immune, text=white, drop shadow]
-                                                   (macro) at (4.5,5.5) {M1};
-(That was another \errmessage.)
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
+[5] (./chapters/01_introduction.tex
+Chapter 1.
 
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.40 ...cle, fill=immune, text=white, drop shadow]
-                                                   (dc) at (6,5.5) {DC};
-(That was another \errmessage.)
+LaTeX Warning: Citation `santoni2024' on page 6 undefined on input line 7.
 
 
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.53 ...ext width=3cm, text centered, drop shadow]
-                                                   (treatment_input) at (0,2) {
-(That was another \errmessage.)
+LaTeX Warning: Citation `hanahan2011' on page 6 undefined on input line 7.
 
 
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.62 ...ext width=4cm, text centered, drop shadow]
-                                                   (outcomes) at (12,8) {
-(That was another \errmessage.)
+LaTeX Warning: Citation `rini2019' on page 6 undefined on input line 9.
 
 
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
+LaTeX Warning: Citation `pardoll2012' on page 6 undefined on input line 11.
 
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.71 ...ext width=3cm, text centered, drop shadow]
-                                                   (aron1) at (12,2) {
-(That was another \errmessage.)
+
+Overfull \hbox (12.89967pt too wide) in paragraph at lines 21--22
+[]\T1/cmr/bx/n/12 Stromal cells \T1/cmr/m/n/12 such as adipocytes and fi-brob-l
+asts that pro-vide struc-tural and metabolic
+ []
+
+[6
+
+
+]
+
+LaTeX Warning: Citation `hanahan2011' on page 7 undefined on input line 26.
+
+
+LaTeX Warning: Citation `conforti2018' on page 7 undefined on input line 33.
+
+
+LaTeX Warning: Citation `santoni2024' on page 7 undefined on input line 35.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[7]
+
+LaTeX Warning: Citation `merelli2021' on page 8 undefined on input line 51.
+
+
+LaTeX Warning: Citation `masl_paper_a' on page 8 undefined on input line 51.
+
+
+LaTeX Warning: Citation `repast4py' on page 8 undefined on input line 67.
+
+
+LaTeX Warning: Citation `mesa' on page 8 undefined on input line 67.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[8]
+
+LaTeX Warning: Citation `optuna' on page 9 undefined on input line 81.
+
+
+Overfull \hbox (10.69974pt too wide) in paragraph at lines 81--82
+[]\T1/cmr/bx/n/12 Optimize pa-ram-e-ters via Bayesian op-ti-miza-tion. \T1/cmr/
+m/n/12 An Optuna-based [[]] Bayesian
+ []
 
 )
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 27.11469pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.11469pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-15.11469pt}.
-
-[8]
-
-LaTeX Warning: Citation `merelli2021' on page 9 undefined on input line 135.
-
-
-LaTeX Warning: Citation `masl_paper_a' on page 9 undefined on input line 135.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[9]
-<figures/agent_population_pie.pdf, id=80, 790.13191pt x 715.54706pt>
-File: figures/agent_population_pie.pdf Graphic file (type pdf)
-<use figures/agent_population_pie.pdf>
-Package pdftex.def Info: figures/agent_population_pie.pdf  used on input line 1
-62.
-(pdftex.def)             Requested size: 364.19667pt x 329.81073pt.
+[9] (./chapters/02_theoretical_background.tex
+Chapter 2.
+[10
 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+]
 
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[10]
-
-LaTeX Warning: Citation `mesa' on page 11 undefined on input line 169.
+LaTeX Warning: Citation `repast4py' on page 11 undefined on input line 51.
 
 
-LaTeX Warning: Citation `repast4py' on page 11 undefined on input line 169.
+LaTeX Warning: Citation `mpi4py' on page 11 undefined on input line 51.
 
-<figures/rcc_epidemiology.pdf, id=85, 811.46933pt x 353.43166pt>
-File: figures/rcc_epidemiology.pdf Graphic file (type pdf)
-<use figures/rcc_epidemiology.pdf>
-Package pdftex.def Info: figures/rcc_epidemiology.pdf  used on input line 175.
-(pdftex.def)             Requested size: 409.71692pt x 178.4519pt.
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 54.
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[11 <./figures/agent_population_pie.pdf>]
-Overfull \hbox (2.40202pt too wide) in paragraph at lines 183--184
-\T1/cmr/m/n/12 This project rep-re-sents more than an in-cre-men-tal im-prove-m
-ent^^Vit's a fun-da-men-tal reimag-
- []
-
-
-Overfull \hbox (6.94017pt too wide) in paragraph at lines 195--196
-\T1/cmr/m/n/12 Cancer cells don't ex-ist in a vac-uum^^Vthey com-pete fiercely 
-for nu-tri-ents, cre-at-ing metabolic
+Overfull \hbox (69.85199pt too wide) in paragraph at lines 61--62
+[]\T1/cmr/bx/n/12 Schedule run-ner. \T1/cmr/m/n/12 The schedul-ing mech-a-nism,
+ ini-tial-ized via \T1/cmtt/m/n/12 schedule.init_schedule_runner\T1/cmr/m/n/12 
+,
  []
 
 
@@ -1718,9 +1584,29 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[12 <./figures/rcc_epidemiology.pdf>]
+[11]
 
-LaTeX Warning: Citation `optuna' on page 13 undefined on input line 215.
+LaTeX Warning: Citation `mesa' on page 12 undefined on input line 67.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[12]
+Overfull \hbox (46.00722pt too wide) in paragraph at lines 118--119
+\T1/cmr/m/n/12 tu-mor im-mune eva-sion. Tregs in-hibit cy-to-toxic T cell killi
+ng (re-duc-ing \T1/cmtt/m/n/12 t_kill_rate_effect\T1/cmr/m/n/12 ),
+ []
+
+
+Overfull \hbox (40.56253pt too wide) in paragraph at lines 125--126
+\T1/cmr/m/n/12 mor cells, phago-cy-tose them (with prob-a-bil-ity mod-u-lated b
+y the \T1/cmtt/m/n/12 dc_phagocitosis_effect\T1/cmr/m/n/12 ),
+ []
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1731,36 +1617,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [13]
-Overfull \hbox (20.12093pt too wide) in paragraph at lines 244--245
-[]\T1/cmr/bx/n/12 Chapter 11: Look-ing For-ward \T1/cmr/m/n/12 con-cludes with 
-lessons learned and the path ahead^^Vhow
+Overfull \hbox (48.20528pt too wide) in paragraph at lines 136--137
+\T1/cmr/m/n/12 macrophages can po-lar-ize to M2 un-der the in-flu-ence of the \
+T1/cmtt/m/n/12 macrophage_m1_mutation_effect\T1/cmr/m/n/12 ,
  []
 
 
-! Package pgfkeys Error: Choice '3pt' unknown in choice key '/tcb/rounded corne
-rs'. I am going to ignore this key.
+LaTeX Warning: Citation `hanahan2011' on page 14 undefined on input line 141.
 
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.250 \begin{chaptersum}
-                        
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tcb/drop shadow' and I am goin
-g to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.250 \begin{chaptersum}
-                        
-(That was another \errmessage.)
-
-)
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1771,6 +1635,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [14]
 
+LaTeX Warning: Citation `pardoll2012' on page 15 undefined on input line 162.
+
+
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
@@ -1778,2756 +1645,897 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[15] (./chapters/02_theoretical_background.tex
-Chapter 2.
-[16
+[15]
+
+LaTeX Warning: Citation `warburg1956' on page 16 undefined on input line 187.
 
 
-] (./figures/abm_vs_ode.tex
-Overfull \hbox (37.86926pt too wide) in paragraph at lines 184--185
- [][] 
+Overfull \hbox (0.4057pt too wide) in paragraph at lines 187--188
+\T1/cmr/m/n/12 In 1956, Otto War-burg ob-served that can-cer cells pref-er-en-t
+ially me-tab-o-lize glu-cose through
  []
 
-! Undefined control sequence.
-\endtikzpicture ...r@layerlist@globally \endscope 
-                                                  \let \pgf@baseline =\pgf@s...
-l.186 \end{tikzpicture}
-                       
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.186 \end{tikzpicture}
-                       
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Extra \endgroup.
-\endpgfpicture ...p \pgfsys@discardpath \endgroup 
-                                                  \pgfsys@endscope \pgfsys@e...
-l.186 \end{tikzpicture}
-                       
-Things are pretty mixed up, but I think the worst is over.
-
-! Extra \endgroup.
-\endpgfpicture ...pe \pgfsys@endpicture \endgroup 
-                                                  \hss \egroup \pgfsys@types...
-l.186 \end{tikzpicture}
-                       
-Things are pretty mixed up, but I think the worst is over.
-
-! Too many }'s.
-\endpgfpicture ...dpicture \endgroup \hss \egroup 
-                                                  \pgfsys@typesetpicturebox ...
-l.186 \end{tikzpicture}
-                       
-You've closed more groups than you opened.
-Such booboos are generally harmless, so keep going.
-
-! Extra \endgroup.
-\endpgfpicture ...setpicturebox \pgfpic \endgroup 
-                                                  
-l.186 \end{tikzpicture}
-                       
-Things are pretty mixed up, but I think the worst is over.
-
-! Extra \endgroup.
-\endtikzpicture ...lobal \endpgfpicture \endgroup 
-                                                  
-l.186 \end{tikzpicture}
-                       
-Things are pretty mixed up, but I think the worst is over.
-
-
-! LaTeX Error: \begin{document} ended by \end{tikzpicture}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.186 \end{tikzpicture}
-                       
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-! Extra \endgroup.
-<recently read> \endgroup 
-                          
-l.186 \end{tikzpicture}
-                       
-Things are pretty mixed up, but I think the worst is over.
-
-)
-
-! Package caption Error: \caption outside float.
-
-See the caption package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.57 \caption
-             {Comparison of agent-based modeling (left) versus traditional e...
-
-If you do not understand this error, please take a closer look
-at the documentation of the `caption' package, especially the
-section about errors.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-! Infinite glue shrinkage found in a paragraph.
-<argument> ...hskip:D \c_zero_dim \fi: \tex_par:D 
-                                                  \hook_use:n {para/after}\@...
-l.59 \end{figure}
-                 
-The paragraph just ended includes some glue that has
-infinite shrinkability, e.g., `\hskip 0pt minus 1fil'.
-Such glue doesn't belong there---it allows a paragraph
-of any length to fit on one line. But it's safe to proceed,
-since the offensive shrinkability has been made finite.
-
-
-Overfull \hbox (54.49408pt too wide) in paragraph at lines 186--59
-[] []
+Overfull \hbox (1.71927pt too wide) in paragraph at lines 187--188
+\T1/cmr/m/n/12 gly-col-y-sis rather than ox-ida-tive phos-pho-ry-la-tion, even 
+in the pres-ence of ad-e-quate oxygen---
  []
+
+
+Overfull \hbox (113.8291pt too wide) in paragraph at lines 195--196
+\T1/cmr/m/n/12 for tu-mor cells (\T1/cmtt/m/n/12 w_glucose_tumor_consumption\T1
+/cmr/m/n/12 ) com-pared to im-mune cells (\T1/cmtt/m/n/12 w_glucose_immune_cons
+umption\T1/cmr/m/n/12 ).
+ []
+
+
+LaTeX Warning: Citation `hanahan2011' on page 16 undefined on input line 200.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 27.11469pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.11469pt}.
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 
-(fancyhdr)                \addtolength{\topmargin}{-15.11469pt}.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[16]
+
+LaTeX Warning: Citation `pardoll2012' on page 17 undefined on input line 233.
+
+
+Overfull \hbox (8.69049pt too wide) in paragraph at lines 237--238
+\T1/cmr/m/n/12 with prob-a-bil-ity pro-por-tional to the drug's ef-fec-tive-nes
+s pa-ram-e-ter (\T1/cmtt/m/n/12 w_ici_effectiveness\T1/cmr/m/n/12 ): 
+ []
+
+
+LaTeX Warning: Citation `rini2019' on page 17 undefined on input line 248.
+
+
+Overfull \hbox (105.67732pt too wide) in paragraph at lines 258--259
+[]\T1/cmr/m/n/12 Additionally, TKI treat-ment re-duces Treg dif-fer-en-ti-a-tio
+n by de-creas-ing the \T1/cmtt/m/n/12 treg_differentiation_effect
+ []
+
+
+LaTeX Warning: Citation `rini2019' on page 17 undefined on input line 263.
+
+
+LaTeX Warning: Citation `motzer2019' on page 17 undefined on input line 263.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [17]
-! Too many }'s.
-\@endfloatbox ...pagefalse \outer@nobreak \egroup 
-                                                  \color@endbox 
-l.59 \end{figure}
-                 
-You've closed more groups than you opened.
-Such booboos are generally harmless, so keep going.
 
-! Extra \endgroup.
-\color@endgroup ->\endgraf \endgroup 
-                                     
-l.59 \end{figure}
-                 
-Things are pretty mixed up, but I think the worst is over.
-
-! Too many }'s.
-\color@endbox ->\color@endgroup \egroup 
-                                        
-l.59 \end{figure}
-                 
-You've closed more groups than you opened.
-Such booboos are generally harmless, so keep going.
+LaTeX Warning: Citation `santoni2024' on page 18 undefined on input line 265.
 
 
-! LaTeX Error: \begin{document} ended by \end{figure}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.59 \end{figure}
-                 
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-! Extra \endgroup.
-<recently read> \endgroup 
-                          
-l.59 \end{figure}
-                 
-Things are pretty mixed up, but I think the worst is over.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 27.11469pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.11469pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-15.11469pt}.
-
-[18]
-
-LaTeX Warning: Citation `repast4py' on page 19 undefined on input line 85.
-
-
-LaTeX Warning: Citation `mpi4py' on page 19 undefined on input line 85.
-
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 8
-8.
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 88.
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `cmtt' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-
-Overfull \hbox (69.85199pt too wide) in paragraph at lines 95--96
-[]\T1/cmr/bx/n/12 Schedule run-ner. \T1/cmr/m/n/12 The schedul-ing mech-a-nism,
- ini-tial-ized via \T1/cmtt/m/n/12 schedule.init_schedule_runner\T1/cmr/m/n/12 
-,
- []
-
-
-LaTeX Warning: Citation `mesa' on page 19 undefined on input line 101.
-
-
-LaTeX Warning: Reference `tab:mesa_vs_repast' on page 19 undefined on input lin
-e 101.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 27.11469pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.11469pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-15.11469pt}.
-
-[19]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 27.11469pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.11469pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-15.11469pt}.
-
-[20] (./figures/immune_response_cascade.tex)
-Runaway argument?
-{figure> 
-! Paragraph ended before \end  was complete.
-<to be read again> 
-                   \par 
-l.150 
-      
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 157--157
-|[]\T1/cmr/bx/n/14.4 T Cell Sub-types|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 176--176
-|[]\T1/cmr/bx/n/14.4 Antigen-Presenting Cells|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 185--185
-|[]\T1/cmr/bx/n/14.4 Macrophages|
- []
-
-
-LaTeX Warning: Citation `hanahan2011' on page 21 undefined on input line 196.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 198--198
-|[]\T1/cmr/bx/n/14.4 Natural Killer Cells|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--205
-|[]\T1/cmr/bx/n/14.4 Mast Cells and Neu-trophils|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 214--214
-|[]\T1/cmr/bx/n/14.4 Immune Check-points: The PD-1/PD-L1 Path-way|
- []
-
-
-LaTeX Warning: Citation `pardoll2012' on page 21 undefined on input line 217.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 221--221
-|[]\T1/cmr/bx/n/14.4 Tumor Im-mune Eva-sion Mech-a-nisms|
- []
-
-
-LaTeX Warning: Reference `sec:bg_metabolism' on page 21 undefined on input line
- 231.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 235--235
-|[]\T1/cmr/bx/n/17.28 The Metabolic Bat-tle-field: Why
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 235--235
-\T1/cmr/bx/n/17.28 Glu-cose Mat-ters in Can-cer|
- []
-
-
-Underfull \hbox (badness 3503) in paragraph at lines 239--239
-|[]\T1/cmr/bx/n/14.4 The War-burg Ef-fect: Can-cer's Metabolic Re-bel-lion|
- []
-
-
-LaTeX Warning: Citation `warburg1956' on page 21 undefined on input line 242.
-
-(./figures/warburg_effect.tex
-Overfull \hbox (12.95586pt too wide) in paragraph at lines 44--44
- []\T1/cmr/m/n/12 Phosphorylation 
- []
-
-
-Overfull \hbox (4.10295pt too wide) in paragraph at lines 45--46
- []\T1/cmr/m/n/12 (Mitochondria) 
+Overfull \hbox (14.69086pt too wide) in paragraph at lines 265--266
+\T1/cmr/m/n/12 com-bi-na-tion ther-apy is im-ple-mented by ap-ply-ing both \T1/
+cmtt/m/n/12 ICIDrug.step() \T1/cmr/m/n/12 and \T1/cmtt/m/n/12 TKIDrug.step()
  []
 
 )
-Underfull \hbox (badness 10000) in paragraph at lines 267--267
-|[]\T1/cmr/bx/n/14.4 Metabolic Com-pe-ti-tion in the TME|
- []
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-LaTeX Warning: Citation `hanahan2011' on page 21 undefined on input line 270.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-
-Underfull \hbox (badness 2573) in paragraph at lines 274--274
-|[]\T1/cmr/bx/n/14.4 Glucose as a Lim-it-ing Fac-tor for Im-mune Func-tion|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 296--296
-|[]\T1/cmr/bx/n/17.28 Modern Can-cer Treat-ment: Un-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 296--296
-\T1/cmr/bx/n/17.28 leash-ing and Starv-ing the Tu-mor|
- []
-
-
-LaTeX Warning: Citation `pardoll2012' on page 21 undefined on input line 305.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 311--311
-|[]\T1/cmr/bx/n/14.4 Tyrosine Ki-nase In-hibitors: Starv-ing the Beast|
- []
-
-
-LaTeX Warning: Citation `rini2019' on page 21 undefined on input line 314.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 318--318
-|[]\T1/cmr/bx/n/14.4 The Power of Com-bi-na-tion: 1 + 1 = 3|
- []
-
-
-LaTeX Warning: Citation `rini2019' on page 21 undefined on input line 321.
-
-
-LaTeX Warning: Citation `motzer2019' on page 21 undefined on input line 321.
-
-(./figures/treatment_mechanisms.tex)
-
-LaTeX Warning: Citation `santoni2024' on page 21 undefined on input line 361.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 366--366
-|[]\T1/cmr/bx/n/17.28 Related Work in Com-pu-ta-tional On-col-ogy|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 372--372
-|[]\T1/cmr/bx/n/14.4 Agent-Based Ap-proaches to Tu-mor Mod-el-ing|
- []
-
-
-LaTeX Warning: Citation `macklin2012' on page 21 undefined on input line 374.
-
-
-LaTeX Warning: Citation `ghaffarizadeh2018' on page 21 undefined on input line 
-374.
-
-
-LaTeX Warning: Citation `bravo2013' on page 21 undefined on input line 376.
-
-
-LaTeX Warning: Citation `norton2019' on page 21 undefined on input line 378.
-
-
-LaTeX Warning: Citation `wang2015' on page 21 undefined on input line 378.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 380--380
-|[]\T1/cmr/bx/n/14.4 Comparison to PDE-Based Ap-proaches|
- []
-
-
-LaTeX Warning: Citation `anderson2008' on page 21 undefined on input line 382.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 386--386
-|[]\T1/cmr/bx/n/14.4 Previous Mesa-Based RCC Mod-els|
- []
-
-
-LaTeX Warning: Citation `merelli2021' on page 21 undefined on input line 388.
-
-
-LaTeX Warning: Citation `masl_paper_a' on page 21 undefined on input line 388.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 392--392
-|[]\T1/cmr/bx/n/14.4 What Dis-tin-guishes This Work|
- []
-
-
-LaTeX Warning: Citation `santoni2024' on page 21 undefined on input line 402.
-
-) (./chapters/03_model_description.tex
+[18] (./chapters/03_model_description.tex
 Chapter 3.
+[19
 
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/cmr/bx/n/24.88 Chapter 3|
+
+]
+Overfull \hbox (16.36964pt too wide) in paragraph at lines 63--64
+\T1/cmr/m/n/12 Each sim-u-la-tion step fol-lows a fixed se-quence of op-er-a-ti
+ons, ex-e-cuted by the \T1/cmtt/m/n/12 RCCModel.step()
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/cmr/bx/n/24.88 Model De-scrip-tion|
+Overfull \hbox (61.40163pt too wide) in paragraph at lines 68--69
+\T1/cmr/m/n/12 neigh-bor-ing agents within the ef-fect ra-dius and sum them int
+o the agent's \T1/cmtt/m/n/12 experienced_effects\T1/cmr/m/n/12 . 
  []
 
 
-! Package pgfkeys Error: Choice '3pt' unknown in choice key '/tcb/rounded corne
-rs'. I am going to ignore this key.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 \begin{keyinsight}
-                       
-(That was another \errmessage.)
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-
-! Package pgfkeys Error: I do not know the key '/tcb/drop shadow' and I am goin
-g to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 \begin{keyinsight}
-                       
-(That was another \errmessage.)
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 21--21
-|[]\T1/cmr/bx/n/17.28 The Ar-chi-tec-ture of Vir-tual Bi-ol-ogy|
+[20]
+Overfull \hbox (100.77011pt too wide) in paragraph at lines 100--101
+[]\T1/cmtt/m/n/12 base_step()\T1/cmr/m/n/12 : Com-mon pre-step logic that ap-pl
+ies a base death prob-a-bil-ity (\T1/cmtt/m/n/12 w_cell_base_death_prob\T1/cmr/
+m/n/12 ),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 25--25
-|[]\T1/cmr/bx/n/14.4 Building the Cel-lu-lar Stage|
- []
-
-
-! Package pgfkeys Error: Choice '3pt' unknown in choice key '/tcb/rounded corne
-rs'. I am going to ignore this key.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 \begin{keyfinding}
-                       
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tcb/drop shadow' and I am goin
-g to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.55 \begin{keyfinding}
-                       
-(That was another \errmessage.)
-
-(./figures/agent_interaction_network.tex)
-File: figures/agent_population_pie.pdf Graphic file (type pdf)
-<use figures/agent_population_pie.pdf>
-Package pdftex.def Info: figures/agent_population_pie.pdf  used on input line 1
-04.
-(pdftex.def)             Requested size: 409.71692pt x 371.03845pt.
-
-Underfull \hbox (badness 1577) in paragraph at lines 117--118
-[]\T1/cmr/bx/n/12 1. Col-lect In-tel-li-gence: \T1/cmr/m/n/12 Be-fore any-thing
- hap-pens, record the cur-rent
- []
-
-(./figures/tumor_cell_state_machine.tex
-Overfull \hbox (5.81482pt too wide) in paragraph at lines 10--11
- [][]\T1/cmr/bx/n/12 Quiescent 
- []
-
-
-Overfull \hbox (7.91214pt too wide) in paragraph at lines 12--12
- \T1/cmr/m/n/12 metabolism 
- []
-
-
-Overfull \hbox (14.11201pt too wide) in paragraph at lines 19--20
- []\T1/cmr/m/n/12 consumption 
- []
-
-
-Overfull \hbox (10.93451pt too wide) in paragraph at lines 28--29
- [][]\T1/cmr/bx/n/12 Aggressive 
- []
-
-
-Overfull \hbox (14.06479pt too wide) in paragraph at lines 30--30
- []\T1/cmr/m/n/12 Angiogenesis 
- []
-
-
-Overfull \hbox (7.57704pt too wide) in paragraph at lines 34--35
- [][]\T1/cmr/bx/n/12 Apoptotic 
- []
-
-
-Overfull \hbox (1.92267pt too wide) in paragraph at lines 41--42
- [][]\T1/cmr/m/n/12 Growth 
- []
-
-
-Overfull \hbox (1.52098pt too wide) in paragraph at lines 43--44
- []\T1/cmr/m/n/12 signals? 
- []
-
-
-Overfull \hbox (1.52098pt too wide) in paragraph at lines 53--54
- []\T1/cmr/m/n/12 signals? 
- []
-
-
-Overfull \hbox (4.77475pt too wide) in paragraph at lines 56--57
- [][]\T1/cmr/m/n/12 Immune 
- []
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.63     Consume\\
-                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.68     Create\\
-                 
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73     Promote\\
-                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.78     Express\\
-                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 142--142
-[]\TS1/cmr/m/n/12 ˆ 
- []
-
-
-Overfull \hbox (9.65883pt too wide) in paragraph at lines 142--142
-\T1/cmtt/m/n/12 tumour_growth_effect  
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 143--143
-[]\TS1/cmr/m/n/12 ˆ 
- []
-
-
-Overfull \hbox (28.1793pt too wide) in paragraph at lines 143--143
-\T1/cmtt/m/n/12 tumour_apoptosis_effect  
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 144--144
-[]\TS1/cmr/m/n/12 ˆ 
- []
-
-
-Overfull \hbox (3.48534pt too wide) in paragraph at lines 144--144
-\T1/cmtt/m/n/12 angiogenesis_effect  
- []
-
-)
-Overfull \hbox (109.16202pt too wide) in paragraph at lines 155--143
- [][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 150--150
-|[]\T1/cmr/bx/n/17.28 Agent Hi-er-ar-chy|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 156--156
-|[]\T1/cmr/bx/n/14.4 Base Cell Class|
- []
-
-
-Underfull \hbox (badness 3579) in paragraph at lines 172--173
+Overfull \hbox (1.25629pt too wide) in paragraph at lines 102--103
 []\T1/cmtt/m/n/12 move_towards(target_type, look_up_size, distance)\T1/cmr/m/n/
-12 : Finds the near-est
+12 : Finds the near-est agent
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 179--179
-|[]\T1/cmr/bx/n/14.4 TCell Base Class|
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[21]
+Overfull \hbox (37.32794pt too wide) in paragraph at lines 115--116
+\T1/cmr/m/n/12 lev-els of es-tro-gen, testos-terone, pro-ges-terone, and an-dro
+-gen. The \T1/cmtt/m/n/12 perceive_sex_hormone()
  []
 
 
-Underfull \hbox (badness 1112) in paragraph at lines 185--186
-\T1/cmr/m/n/12 mu-lated lev-els of es-tro-gen, testos-terone, pro-ges-terone, a
-nd an-dro-gen. The
+Overfull \hbox (49.4905pt too wide) in paragraph at lines 117--118
+\T1/cmr/m/n/12 er-ated ran-domly at cre-ation. Anti-gen recog-ni-tion is de-ter
+-mined by the \T1/cmtt/m/n/12 is_matching(antigen,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 191--193
+Overfull \hbox (20.80869pt too wide) in paragraph at lines 121--123
 \T1/cmr/m/n/12 where $\OML/cmm/m/it/12 d[]$ \T1/cmr/m/n/12 is the Ham-ming dis-
-tance and $\OT1/cmr/m/n/12 ^^A[]$ \T1/cmr/m/n/12 is the
+tance and $\OT1/cmr/m/n/12 ^^A[]$ \T1/cmr/m/n/12 is the \T1/cmtt/m/n/12 recepto
+r_threshold_variation
  []
 
 
-Underfull \hbox (badness 2119) in paragraph at lines 191--193
-\T1/cmtt/m/n/12 receptor_threshold_variation \T1/cmr/m/n/12 weight pa-ram-e-ter
-. Ad-di-tion-ally, the anti-
+Overfull \hbox (48.50227pt too wide) in paragraph at lines 133--134
+[]\T1/cmr/bx/n/12 Inheriting from \T1/cmtt/m/n/12 TCell \T1/cmr/m/n/12 (and thu
+s \T1/cmtt/m/n/12 Cell\T1/cmr/m/n/12 ): \T1/cmtt/m/n/12 CytotoxicTCell\T1/cmr/m
+/n/12 , \T1/cmtt/m/n/12 CD8NaiveTCell\T1/cmr/m/n/12 , \T1/cmtt/m/n/12 CD4NaiveT
+Cell\T1/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--197
-|[]\T1/cmr/bx/n/14.4 Concrete Agent Classes|
- []
-
-
-Underfull \hbox (badness 4279) in paragraph at lines 204--205
+Overfull \hbox (99.99103pt too wide) in paragraph at lines 134--135
 []\T1/cmr/bx/n/12 Inheriting from \T1/cmtt/m/n/12 Cell \T1/cmr/m/n/12 di-rectly
 : \T1/cmtt/m/n/12 TumorCell\T1/cmr/m/n/12 , \T1/cmtt/m/n/12 TregCell\T1/cmr/m/n
-/12 , \T1/cmtt/m/n/12 DendriticCell\T1/cmr/m/n/12 ,
+/12 , \T1/cmtt/m/n/12 DendriticCell\T1/cmr/m/n/12 , \T1/cmtt/m/n/12 Plasmacitoi
+dDendriticCell\T1/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 1997) in paragraph at lines 204--205
-\T1/cmtt/m/n/12 PlasmacitoidDendriticCell\T1/cmr/m/n/12 , \T1/cmtt/m/n/12 Macro
-phageM1\T1/cmr/m/n/12 , \T1/cmtt/m/n/12 MacrophageM2\T1/cmr/m/n/12 , \T1/cmtt/m
-/n/12 NaturalKiller\T1/cmr/m/n/12 ,
+Overfull \hbox (1.53738pt too wide) in paragraph at lines 134--135
+\T1/cmtt/m/n/12 MacrophageM1\T1/cmr/m/n/12 , \T1/cmtt/m/n/12 MacrophageM2\T1/cm
+r/m/n/12 , \T1/cmtt/m/n/12 NaturalKiller\T1/cmr/m/n/12 , \T1/cmtt/m/n/12 MastCe
+ll\T1/cmr/m/n/12 , \T1/cmtt/m/n/12 Neutrophil\T1/cmr/m/n/12 , \T1/cmtt/m/n/12 A
+dipocyte\T1/cmr/m/n/12 ,
  []
 
 
-LaTeX Warning: Reference `fig:agent_hierarchy' on page 21 undefined on input li
-ne 208.
-
-(./figures/agent_hierarchy.tex
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.13 \node[abstract]
-                     (agent) {\texttt{repast4py.Agent}}
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73   };
-         
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73   };
-         
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73   };
-         
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73   };
-         
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73   };
-         
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73   };
-         
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73   };
-         
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73   };
-         
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73   };
-         
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73   };
-         
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73   };
-         
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73   };
-         
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73   };
-         
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73   };
-         
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73   };
-         
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73   };
-         
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73   };
-         
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73   };
-         
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73   };
-         
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.73   };
-         
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.76 \node[tcell]
-                  at ([yshift=-1cm]tcell.south) (tcells) {};
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.80 \node[tcell]
-                  (ctc2) at (-6, 0) {\texttt{CytotoxicTCell}};
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.81 \node[tcell]
-                  (cd8naive2) at (-3, 0) {\texttt{CD8NaiveTCell}};
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.82 \node[tcell]
-                  (cd4naive2) at (0, 0) {\texttt{CD4NaiveTCell}};
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.83 \node[tcell]
-                  (th12) at (3, 0) {\texttt{CD4Helper1TCell}};
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.84 \node[tcell]
-                  (th22) at (6, 0) {\texttt{CD4Helper2TCell}};
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.96 \node[abstract]
-                     at (0, 0.5) {\footnotesize Abstract};
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.97 \node[tcell]
-                  at (0, 0) {\footnotesize T Cell};
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.98 \node[concrete]
-                     at (0, -0.5) {\footnotesize Cellular};
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tikz/drop shadow' and I am goi
-ng to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.99 \node[other]
-                  at (0, -1) {\footnotesize Non-cellular};
-(That was another \errmessage.)
-
-)
-Overfull \hbox (577.39046pt too wide) in paragraph at lines 102--213
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[22] (./figures/agent_hierarchy.tex)
+Overfull \hbox (577.39046pt too wide) in paragraph at lines 102--143
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--218
-|[]\T1/cmr/bx/n/17.28 Effect Sys-tem|
+Overfull \hbox (1.29112pt too wide) in paragraph at lines 164--165
+[]\T1/cmtt/m/n/12 treg_differentiation_effect \T1/cmr/m/n/12 --- gov-erns CD4$[
+]$ naive $\OMS/cmsy/m/n/12 !$ \T1/cmr/m/n/12 Treg dif-fer-en-ti-a-tion prob-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 222--222
-|[]\T1/cmr/bx/n/14.4 Effect Fields|
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Underfull \hbox (badness 10000) in paragraph at lines 244--244
-|[]\T1/cmr/bx/n/14.4 BMI Nor-mal-iza-tion|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 263--263
-|[]\T1/cmr/bx/n/14.4 Effect Col-lec-tion and Ag-gre-ga-tion|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 277--277
-|[]\T1/cmr/bx/n/17.28 Agent In-ter-ac-tions|
- []
-
-
-LaTeX Warning: Reference `tab:interactions' on page 21 undefined on input line 
-281.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 305--306
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 235--236
 []|\T1/cmr/m/n/12 Inhibits CTL ac-ti-va-tion via
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 305--306
+Underfull \hbox (badness 10000) in paragraph at lines 235--236
 \T1/cmtt/m/n/12 get_PD1_inhibition() \T1/cmr/m/n/12 based on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 307--308
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
 []|\T1/cmr/m/n/12 Divides into empty neigh-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 307--308
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
 \T1/cmr/m/n/12 bor; prob-a-bil-ity mod-u-lated by
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 309--310
+Underfull \hbox (badness 10000) in paragraph at lines 239--240
 []|\T1/cmr/m/n/12 Dies based on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 309--310
+Underfull \hbox (badness 10000) in paragraph at lines 239--240
 \T1/cmtt/m/n/12 tumour_apoptosis_effect \T1/cmr/m/n/12 and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 311--312
+Underfull \hbox (badness 10000) in paragraph at lines 241--242
 []|\T1/cmr/m/n/12 Consumes glu-cose at rate
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 311--312
+Underfull \hbox (badness 10000) in paragraph at lines 241--242
 \T1/cmtt/m/n/12 w_glucose_tumor_consumption
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 311--312
+Underfull \hbox (badness 10000) in paragraph at lines 241--242
 \T1/cmr/m/n/12 (War-burg ef-fect). Growth
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 311--312
+Underfull \hbox (badness 10000) in paragraph at lines 241--242
 \T1/cmr/m/n/12 scaled by lo-cal glu-cose via
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 318--319
+Underfull \hbox (badness 10000) in paragraph at lines 248--249
 []|\T1/cmr/m/n/12 Loses \T1/cmtt/m/n/12 t_activation_effect
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 318--319
+Underfull \hbox (badness 10000) in paragraph at lines 248--249
 \T1/cmr/m/n/12 pro-gres-sively with each kill
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 318--319
+Underfull \hbox (badness 10000) in paragraph at lines 248--249
 \T1/cmr/m/n/12 (\T1/cmtt/m/n/12 w_progressive_exhaustion\T1/cmr/m/n/12 ) or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 320--321
+Underfull \hbox (badness 10000) in paragraph at lines 250--251
 []|\T1/cmr/m/n/12 Duplicates based on pro-lif-er-a-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 322--323
+Underfull \hbox (badness 10000) in paragraph at lines 252--253
 []|\T1/cmr/m/n/12 Perceives es-tro-gen, pro-ges-terone,
  []
 
 
-Underfull \hbox (badness 1953) in paragraph at lines 322--323
+Underfull \hbox (badness 1953) in paragraph at lines 252--253
 \T1/cmr/m/n/12 testos-terone; es-tro-gen en-hances kill
  []
 
 
-Underfull \hbox (badness 3364) in paragraph at lines 322--323
+Underfull \hbox (badness 3364) in paragraph at lines 252--253
 \T1/cmr/m/n/12 rate and pro-lif-er-a-tion, testos-terone
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 327--328
+Underfull \hbox (badness 10000) in paragraph at lines 257--258
 []|\T1/cmr/m/n/12 Positive \T1/cmtt/m/n/12 t_kill_rate_effect \T1/cmr/m/n/12 an
 d
  []
 
 
-Underfull \hbox (badness 1603) in paragraph at lines 329--330
+Underfull \hbox (badness 1603) in paragraph at lines 259--260
 []|\T1/cmr/m/n/12 Engulfs ad-ja-cent tu-mor cells; af-ter
  []
 
 
-Underfull \hbox (badness 7047) in paragraph at lines 331--332
+Underfull \hbox (badness 7047) in paragraph at lines 261--262
 []|\T1/cmr/m/n/12 Can trans-form to M2 based on
  []
 
 
-Underfull \hbox (badness 1845) in paragraph at lines 338--339
+Underfull \hbox (badness 1845) in paragraph at lines 268--269
 []|\T1/cmr/m/n/12 Negative \T1/cmtt/m/n/12 t_kill_rate_effect\T1/cmr/m/n/12 ; p
 os-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 338--339
+Underfull \hbox (badness 10000) in paragraph at lines 268--269
 \T1/cmr/m/n/12 i-tive \T1/cmtt/m/n/12 tumour_growth_effect \T1/cmr/m/n/12 and
  []
 
 
-Underfull \hbox (badness 7047) in paragraph at lines 340--341
+Underfull \hbox (badness 7047) in paragraph at lines 270--271
 []|\T1/cmr/m/n/12 Can trans-form to M1 based on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 345--346
+Underfull \hbox (badness 10000) in paragraph at lines 275--276
 \T1/cmr/m/n/12 ($\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cm
 r/m/n/12 3$\T1/cmr/m/n/12 ); neg-a-tive
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 345--346
+Underfull \hbox (badness 10000) in paragraph at lines 275--276
 \T1/cmtt/m/n/12 t_proliferation_effect\T1/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 345--346
+Underfull \hbox (badness 10000) in paragraph at lines 275--276
 \T1/cmtt/m/n/12 t_activation_effect\T1/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 345--346
-\T1/cmtt/m/n/12 dc_phagocitosis_effect\T1/cmr/m/n/12 ; pos-i-
+Underfull \hbox (badness 10000) in paragraph at lines 275--276
+\T1/cmtt/m/n/12 dc_phagocitosis_effect\T1/cmr/m/n/12 ; pos-i-tive
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 359--360
+Underfull \hbox (badness 10000) in paragraph at lines 289--290
 []|\T1/cmr/m/n/12 Positive \T1/cmtt/m/n/12 angiogenesis_effect\T1/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 359--360
+Underfull \hbox (badness 10000) in paragraph at lines 289--290
 \T1/cmtt/m/n/12 treg_differentiation_effect\T1/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 359--360
+Underfull \hbox (badness 10000) in paragraph at lines 289--290
 \T1/cmtt/m/n/12 t_kill_rate_effect\T1/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 359--360
+Underfull \hbox (badness 10000) in paragraph at lines 289--290
 \T1/cmtt/m/n/12 nkl_kill_rate_effect\T1/cmr/m/n/12 ; neg-a-tive
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 377--378
+Underfull \hbox (badness 10000) in paragraph at lines 307--308
 []|\T1/cmr/m/n/12 Stochastic com-bi-na-tion of ef-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 377--378
+Underfull \hbox (badness 10000) in paragraph at lines 307--308
 \T1/cmr/m/n/12 fects (de-ter-mined at cre-ation):
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 377--378
+Underfull \hbox (badness 10000) in paragraph at lines 307--308
 \T1/cmtt/m/n/12 angiogenesis_effect \T1/cmr/m/n/12 ($\OMS/cmsy/m/n/12 ^^F$\T1/c
 mr/m/n/12 ),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 377--378
+Underfull \hbox (badness 10000) in paragraph at lines 307--308
 \T1/cmtt/m/n/12 macrophage_m1_mutation_effect
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 377--378
+Underfull \hbox (badness 10000) in paragraph at lines 307--308
 \T1/cmr/m/n/12 ($\OMS/cmsy/m/n/12 ^^F$\T1/cmr/m/n/12 ), \T1/cmtt/m/n/12 t_kill_
 rate_effect \T1/cmr/m/n/12 ($\OMS/cmsy/m/n/12 ^^F$\T1/cmr/m/n/12 ),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 377--378
+Underfull \hbox (badness 10000) in paragraph at lines 307--308
 \T1/cmtt/m/n/12 tumour_apoptosis_effect \T1/cmr/m/n/12 ($\OMS/cmsy/m/n/12 ^^F$\
 T1/cmr/m/n/12 ),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 379--380
+Underfull \hbox (badness 10000) in paragraph at lines 309--310
 []|\T1/cmr/m/n/12 Spawns den-dritic cells at bor-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 379--380
+Underfull \hbox (badness 10000) in paragraph at lines 309--310
 \T1/cmr/m/n/12 der po-si-tions with prob-a-bil-ity
  []
 
 
-Underfull \hbox (badness 6094) in paragraph at lines 384--385
+Underfull \hbox (badness 6094) in paragraph at lines 314--315
 []|\T1/cmr/m/n/12 Differentiates into Treg based on
  []
 
 
-Underfull \hbox (badness 5939) in paragraph at lines 384--385
+Underfull \hbox (badness 5939) in paragraph at lines 314--315
 \T1/cmtt/m/n/12 treg_differentiation_effect\T1/cmr/m/n/12 , sex
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 384--385
+Underfull \hbox (badness 10000) in paragraph at lines 314--315
 \T1/cmr/m/n/12 hor-mones (es-tro-gen, pro-ges-terone,
  []
 
 
-Underfull \hbox (badness 1043) in paragraph at lines 384--385
+Underfull \hbox (badness 1043) in paragraph at lines 314--315
 \T1/cmr/m/n/12 testos-terone), and a sig-moidal gene
  []
 
 
-Overfull \hbox (1.55367pt too wide) in paragraph at lines 394--395
+Overfull \hbox (1.55367pt too wide) in paragraph at lines 324--325
 []|\T1/cmtt/m/n/12 CD4Helper1TCell| 
  []
 
 
-Underfull \hbox (badness 1642) in paragraph at lines 398--399
+Underfull \hbox (badness 1642) in paragraph at lines 328--329
 \T1/cmr/m/n/12 grid bor-der po-si-tions. Pro-lif-er-ates
  []
 
 
-Overfull \hbox (1.55367pt too wide) in paragraph at lines 401--402
+Overfull \hbox (1.55367pt too wide) in paragraph at lines 331--332
 []|\T1/cmtt/m/n/12 CD4Helper2TCell| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 403--404
+Underfull \hbox (badness 10000) in paragraph at lines 333--334
 []|\T1/cmr/m/n/12 Positive \T1/cmtt/m/n/12 t_kill_rate_effect \T1/cmr/m/n/12 an
 d
  []
 
 
-Underfull \hbox (badness 1642) in paragraph at lines 405--406
+Underfull \hbox (badness 1642) in paragraph at lines 335--336
 \T1/cmr/m/n/12 tox-i-cT-Cells. Pro-lif-er-ates based on
  []
 
 
-LaTeX Warning: Reference `fig:agent_interactions' on page 21 undefined on input
- line 419.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Underfull \hbox (badness 10000) in paragraph at lines 429--429
-|[]\T1/cmr/bx/n/17.28 Movement|
- []
+[24]
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-Underfull \hbox (badness 10000) in paragraph at lines 433--433
-|[]\T1/cmr/bx/n/14.4 Deferred Move-ment Pat-tern|
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[25]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[26]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[27]
+Overfull \hbox (65.0232pt too wide) in paragraph at lines 369--370
+[]\T1/cmr/m/n/12 During their \T1/cmtt/m/n/12 step() \T1/cmr/m/n/12 ex-e-cu-tio
+n, agents call \T1/cmtt/m/n/12 self.move(new_pos)\T1/cmr/m/n/12 , which sets \T
+1/cmtt/m/n/12 self._desired_pos
  []
 
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 445.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 375.
 
-Underfull \hbox (badness 10000) in paragraph at lines 445--445
-|[]\T1/cmr/bx/n/14.4 Directed Move-ment: \T1/cmtt/m/n/14.4 move_towards()|
+Overfull \hbox (20.93748pt too wide) in paragraph at lines 378--379
+\T1/cmr/m/n/12 The pri-mary move-ment mech-a-nism for most agents is \T1/cmtt/m
+/n/12 move_towards(target_agent_type_id,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 464--464
-|[]\T1/cmr/bx/n/14.4 Glucose Chemo-taxis|
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[28]
+Overfull \hbox (31.85088pt too wide) in paragraph at lines 392--393
+[]\T1/cmr/m/n/12 The \T1/cmtt/m/n/12 look_up_size \T1/cmr/m/n/12 pa-ram-e-ter i
+s typ-i-cally de-rived from the model's \T1/cmtt/m/n/12 cell_search_dimension\T
+1/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 476--476
-|[]\T1/cmr/bx/n/14.4 Sex Hor-mone Dif-fu-sion|
+Overfull \hbox (47.52327pt too wide) in paragraph at lines 421--422
+\T1/cmr/m/n/12 The sim-u-la-tion ter-mi-nates when any of the fol-low-ing con-d
+i-tions is met. The \T1/cmtt/m/n/12 terminal_condition()
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 487--487
-|[]\T1/cmr/bx/n/17.28 Terminal Con-di-tions|
+Overfull \hbox (8.2274pt too wide) in paragraph at lines 426--427
+[]\T1/cmr/bx/n/12 Tumor elim-i-na-tion. \T1/cmr/m/n/12 If the tu-mor cell count
+ drops to zero be-fore reach-ing \T1/cmtt/m/n/12 max_steps\T1/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 1377) in paragraph at lines 504--506
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[29]
+Overfull \hbox (54.97226pt too wide) in paragraph at lines 434--436
 \T1/cmr/m/n/12 where $\OML/cmm/m/it/12 N[]$ \T1/cmr/m/n/12 is the tu-mor cell c
 ount, $\OML/cmm/m/it/12 g[]$ \T1/cmr/m/n/12 is the growth po-ten-tial (com-bin-
-ing
+ing \T1/cmtt/m/n/12 tumour_growth_effect\T1/cmr/m/n/12 ,
  []
 
-) (./chapters/04_glucose_system.tex
+
+Overfull \hbox (5.36743pt too wide) in paragraph at lines 434--436
+\T1/cmr/m/n/12 DNA-derived pro-lif-er-a-tion chance, blood ac-cess, and an-gio-
+gen-e-sis), $\OML/cmm/m/it/12 a[]$ \T1/cmr/m/n/12 is the apoptosis-
+ []
+
+)
+Overfull \hbox (14.90623pt too wide) in paragraph at lines 438--200
+[]\T1/cmr/m/n/12 These ter-mi-nal con-di-tions col-lec-tively en-sure that sim-
+u-la-tions reach a defini-tive outcome---
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[30] (./chapters/04_glucose_system.tex
 Chapter 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/cmr/bx/n/24.88 Chapter 4|
+LaTeX Warning: Citation `warburg1956' on page 31 undefined on input line 13.
+
+
+LaTeX Warning: Citation `hanahan2011' on page 31 undefined on input line 13.
+
+[31
+
+
+]
+
+LaTeX Warning: Citation `fick1855' on page 32 undefined on input line 28.
+
+
+Overfull \hbox (26.94853pt too wide) in paragraph at lines 56--57
+[]\T1/cmr/m/n/12 This dis-crete Lapla-cian is im-ple-mented as a 3D con-vo-lu-t
+ion us-ing \T1/cmtt/m/n/12 scipy.ndimage.convolve
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/cmr/bx/n/24.88 Glucose Mi-croen-vi-ron-ment Sys-tem|
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[32]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[33]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[34]
+Overfull \hbox (28.3398pt too wide) in paragraph at lines 213--214
+\T1/cmr/m/n/12 Immune cells that im-ple-ment glu-cose chemotaxis---specifically
+ \T1/cmtt/m/n/12 CytotoxicTCell\T1/cmr/m/n/12 , \T1/cmtt/m/n/12 MacrophageM1\T1
+/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 13--13
-|[]\T1/cmr/bx/n/17.28 Why Glu-cose Mat-ters: The
+Overfull \hbox (86.65294pt too wide) in paragraph at lines 228--229
+\T1/cmr/m/n/12 The glu-cose sys-tem is en-cap-su-lated in the \T1/cmtt/m/n/12 G
+lucoseField \T1/cmr/m/n/12 class, lo-cated in \T1/cmtt/m/n/12 src/systems/gluco
+se_field.py\T1/cmr/m/n/12 . 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 13--13
-\T1/cmr/bx/n/17.28 Metabolic Foun-da-tion of Can-cer|
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Underfull \hbox (badness 3503) in paragraph at lines 18--18
-|[]\T1/cmr/bx/n/14.4 The War-burg Ef-fect: Can-cer's Metabolic Re-bel-lion|
- []
-
-
-LaTeX Warning: Citation `warburg1956' on page 21 undefined on input line 21.
-
-
-LaTeX Warning: Citation `hanahan2011' on page 21 undefined on input line 35.
-
-
-Underfull \hbox (badness 1990) in paragraph at lines 37--37
-|[]\T1/cmr/bx/n/14.4 The Com-pe-ti-tion: Tu-mor Cells vs. Im-mune Cells|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 44--44
-|[]\T1/cmr/bx/n/14.4 Spatial Con-se-quences: Ge-og-ra-phy of Star-va-tion|
- []
-
-
-Underfull \hbox (badness 7064) in paragraph at lines 52--52
-|[]\T1/cmr/bx/n/17.28 The Math-e-mat-ics of Metabolic Com-pe-ti-tion|
- []
-
-(./figures/glucose_system_detailed.tex
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 4 in font nullfont!
-Missing character: There is no 9 in font nullfont!
-Missing character: There is no 8 in font nullfont!
-Missing character: There is no 6 in font nullfont!
-Missing character: There is no 6 in font nullfont!
-Missing character: There is no > in font nullfont!
-Missing character: There is no 0 in font nullfont!
-
-! Package color Error: Argument `1.00078' not in range [0,1].
-
-See the color package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.80 }
-      
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package color Error: Argument `1.00499' not in range [0,1].
-
-See the color package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.80 }
-      
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no 2 in font nullfont!
-Missing character: There is no 4 in font nullfont!
-Missing character: There is no 9 in font nullfont!
-Missing character: There is no 7 in font nullfont!
-Missing character: There is no > in font nullfont!
-Missing character: There is no 0 in font nullfont!
-
-! Package color Error: Argument `1.0002' not in range [0,1].
-
-See the color package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.80 }
-      
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package color Error: Argument `1.00125' not in range [0,1].
-
-See the color package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.80 }
-      
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-! Missing = inserted for \ifnum.
-<to be read again> 
-                   .
-l.80 }
-      
-I was expecting to see `<', `=', or `>'. Didn't.
-
-! Missing number, treated as zero.
-<to be read again> 
-                   .
-l.80 }
-      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no > in font nullfont!
-Missing character: There is no 0 in font nullfont!
-)
-Underfull \hbox (badness 1173) in paragraph at lines 64--64
-|[]\T1/cmr/bx/n/14.4 The Mas-ter Equa-tion: Sources, Sinks, and Dif-fu-sion|
- []
-
-
-Underfull \hbox (badness 1817) in paragraph at lines 77--78
-[]$\OML/cmm/m/it/12 D \OMS/cmsy/m/n/12 r[]\OML/cmm/m/it/12 C$\T1/cmr/m/n/12 : D
-if-fu-sion spreads glu-cose from high-concentration re-gions to low-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 88--88
-|[]\T1/cmr/bx/n/14.4 Discrete 3D Lapla-cian|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 111--111
-|[]\T1/cmr/bx/n/14.4 Time In-te-gra-tion|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 120--120
-|[]\T1/cmr/bx/n/14.4 Stability Anal-y-sis|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 131--131
-|[]\T1/cmr/bx/n/14.4 Boundary Con-di-tions|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 136--136
-|[]\T1/cmr/bx/n/17.28 Source Model|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 155--155
-|[]\T1/cmr/bx/n/17.28 Consumption Model|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 160--160
-|[]\T1/cmr/bx/n/14.4 Tumor Cell Con-sump-tion|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 171--171
-|[]\T1/cmr/bx/n/14.4 Immune Cell Con-sump-tion|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 182--182
-|[]\T1/cmr/bx/n/14.4 Glucose-Dependent Growth Fac-tor|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 200--200
-|[]\T1/cmr/bx/n/14.4 Glucose-Dependent Im-mune Func-tion|
- []
-
-
-LaTeX Warning: Reference `fig:glucose_system' on page 21 undefined on input lin
-e 218.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 228--228
-|[]\T1/cmr/bx/n/17.28 Gradient and Chemo-taxis|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 231--231
-|[]\T1/cmr/bx/n/14.4 Gradient Com-pu-ta-tion|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--244
-|[]\T1/cmr/bx/n/14.4 Discretized Gra-di-ent Step|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 255--255
-|[]\T1/cmr/bx/n/14.4 Chemotaxis Be-hav-ior|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 269--269
-|[]\T1/cmr/bx/n/17.28 Implementation|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 274--274
-|[]\T1/cmr/bx/n/14.4 Data Struc-ture|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 278--278
-|[]\T1/cmr/bx/n/14.4 Convolution Ker-nel|
- []
-
+[35]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 282.
+nput line 238.
+)
 
-Underfull \hbox (badness 10000) in paragraph at lines 293--293
-|[]\T1/cmr/bx/n/14.4 Step Func-tion|
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Underfull \hbox (badness 10000) in paragraph at lines 305--305
-|[]\T1/cmr/bx/n/14.4 Statistics Meth-ods|
- []
-
-) (./chapters/05_dna_mutation_system.tex
+[36] (./chapters/05_dna_mutation_system.tex
 Chapter 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/cmr/bx/n/24.88 Chapter 5|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/cmr/bx/n/24.88 DNA and Mu-ta-tion Sys-tem|
- []
-
-(./figures/gene_to_phenotype.tex
-Overfull \hbox (132.93456pt too wide) in paragraph at lines 71--72
- \OML/cmm/m/it/12 f\OT1/cmr/m/n/12 ($\T1/cmr/m/n/12 VHL,$\OML/cmm/m/it/12 PBRM\
-OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ;$\T1/cmr/m/n/12 SETD2,$\OML/cmm/m/it/12 KDM\O
-T1/cmr/m/n/12 5\OML/cmm/m/it/12 C;$\T1/cmr/m/n/12 PTEN$\OT1/cmr/m/n/12 )$ 
- []
-
-
-Overfull \hbox (4.25056pt too wide) in paragraph at lines 81--82
- [][]\T1/cmr/bx/n/12 Angiogenesis 
- []
-
-
-Overfull \hbox (58.16747pt too wide) in paragraph at lines 83--84
- \OML/cmm/m/it/12 f\OT1/cmr/m/n/12 ($\T1/cmr/m/n/12 PIK3CA,$\OML/cmm/m/it/12 ME
-T;$\T1/cmr/m/n/12 EGFR$\OT1/cmr/m/n/12 )$ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 114--115
-[]$\OML/cmm/m/it/12 P[] \OT1/cmr/m/n/12 = 
- []
-
-
-! LaTeX Error: Unicode character ^^[ (U+001B)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.158 \end{tikzpicture}^^[
-                          nd{tikzpicture}
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-)
-Overfull \hbox (202.64758pt too wide) in paragraph at lines 158--15
- [][]\T1/cmr/m/n/12 ndtikzpicture 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 20--20
-|[]\T1/cmr/bx/n/17.28 The 16-Gene Can-cer Blueprint|
- []
-
-<figures/dna_mutation_heatmap.pdf, id=288, 1076.16495pt x 569.48697pt>
-File: figures/dna_mutation_heatmap.pdf Graphic file (type pdf)
-<use figures/dna_mutation_heatmap.pdf>
-Package pdftex.def Info: figures/dna_mutation_heatmap.pdf  used on input line 2
-7.
-(pdftex.def)             Requested size: 455.24411pt x 240.90344pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 34--34
-|[]\T1/cmr/bx/n/14.4 Gene Cat-a-logue|
- []
-
-
-LaTeX Warning: Reference `tab:genes' on page 21 undefined on input line 36.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 54--55
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
 []|\T1/cmr/m/n/12 Major his-to-com-pat-i-bil-ity com-plex;
  []
 
 
-Underfull \hbox (badness 1917) in paragraph at lines 54--55
+Underfull \hbox (badness 1917) in paragraph at lines 32--33
 \T1/cmr/m/n/12 presents pep-tide anti-gens on the cell
  []
 
 
-Underfull \hbox (badness 3713) in paragraph at lines 55--56
+Underfull \hbox (badness 3713) in paragraph at lines 33--34
 []|\T1/cmr/m/n/12 Beta-2-microglobulin; es-sen-tial com-po-
  []
 
 
-Underfull \hbox (badness 1527) in paragraph at lines 62--63
+Underfull \hbox (badness 1527) in paragraph at lines 40--41
 []|\T1/cmr/m/n/12 Tumor pro-tein p53; ``guardian of the
  []
 
 
-Underfull \hbox (badness 4940) in paragraph at lines 64--65
+Underfull \hbox (badness 4940) in paragraph at lines 42--43
 []|\T1/cmr/m/n/12 Cyclin-dependent ki-nase in-hibitor 2A
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--66
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
 []|\T1/cmr/m/n/12 Transcription fac-tor pro-mot-ing cell
  []
 
-
-Package longtable Warning: Column widths have changed
-(longtable)                in table 5.1 on input line 70.
+[37
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 72--72
-|[]\T1/cmr/bx/n/14.4 DNA Se-quence Struc-ture|
- []
+]
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-Underfull \hbox (badness 10000) in paragraph at lines 87--87
-|[]\T1/cmr/bx/n/17.28 Codon Trans-la-tion|
- []
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 92--92
-|[]\T1/cmr/bx/n/14.4 Codon Ta-ble|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 96--96
-|[]\T1/cmr/bx/n/14.4 Translation: \T1/cmtt/m/n/14.4 gene_to_protein()|
- []
-
+[38]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 101.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 79.
 
-Underfull \hbox (badness 10000) in paragraph at lines 115--115
-|[]\T1/cmr/bx/n/14.4 Reverse Trans-la-tion: \T1/cmtt/m/n/14.4 protein_to_gene()
-|
+Overfull \hbox (4.84634pt too wide) in paragraph at lines 95--96
+\T1/cmr/m/n/12 For con-struct-ing the ini-tial wild-type DNA se-quence, the \T1
+/cmtt/m/n/12 protein_to_gene() \T1/cmr/m/n/12 static method
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--120
-|[]\T1/cmr/bx/n/17.28 Mutation Me-chan-ics|
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[39]
+Overfull \hbox (6.91342pt too wide) in paragraph at lines 163--164
+\T1/cmr/m/n/12 where $\OML/cmm/m/it/12 p[]$ \T1/cmr/m/n/12 is the wild-type pro
+-tein se-quence, $\OML/cmm/m/it/12 p[]$ \T1/cmr/m/n/12 is the mu-tant pro-tein,
+ and $[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--125
-|[]\T1/cmr/bx/n/14.4 Genomic In-sta-bil-ity|
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-LaTeX Warning: Reference `sec:mutation-score' on page 21 undefined on input lin
-e 134.
+[40]
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--136
-|[]\T1/cmr/bx/n/14.4 DNA Du-pli-ca-tion with Point Mu-ta-tions|
- []
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[41]
 
-Underfull \hbox (badness 10000) in paragraph at lines 147--147
-|[]\T1/cmr/bx/n/14.4 Injected Mu-ta-tions|
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Underfull \hbox (badness 10000) in paragraph at lines 159--159
-|[]\T1/cmr/bx/n/17.28 Gene Ex-pres-sion and Phe-no-typic Ef-fects|
- []
+[42])
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--164
-|[]\T1/cmr/bx/n/14.4 Promoter Ex-pres-sion|
- []
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 175--175
-|[]\T1/cmr/bx/n/14.4 Mutation Score|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 187--187
-|[]\T1/cmr/bx/n/14.4 Gene Mutation--Expression Prod-uct|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 198--198
-|[]\T1/cmr/bx/n/14.4 Five De-rived Phe-no-typic Pa-ram-e-ters|
- []
-
-
-LaTeX Warning: Reference `sec:mutation-mechanics' on page 21 undefined on input
- line 221.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 242--242
-|[]\T1/cmr/bx/n/17.28 Neoantigen Gen-er-a-tion|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 247--247
-|[]\T1/cmr/bx/n/14.4 Neoantigen Def-i-ni-tion|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 258--258
-|[]\T1/cmr/bx/n/14.4 Self-Antigens|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 269--269
-|[]\T1/cmr/bx/n/14.4 TCR Match-ing|
- []
-
-) (./chapters/06_treatment_system.tex
+[43] (./chapters/06_treatment_system.tex
 Chapter 6.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/cmr/bx/n/24.88 Chapter 6|
- []
+[44
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/cmr/bx/n/24.88 Treatment Sys-tem|
- []
+]
 
-(./figures/treatment_mechanisms.tex)
-Runaway argument?
-{figure> 
-! Paragraph ended before \end  was complete.
-<to be read again> 
-                   \par 
-l.18 
-     
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
+LaTeX Warning: Citation `pardoll2012' on page 45 undefined on input line 69.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--20
-|[]\T1/cmr/bx/n/17.28 Drug Ar-chi-tec-ture|
- []
+LaTeX Warning: Citation `rini2019' on page 45 undefined on input line 71.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 25--25
-|[]\T1/cmr/bx/n/14.4 Abstract Drug Base Class|
- []
+LaTeX Warning: Citation `motzer2019' on page 45 undefined on input line 71.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 40--40
-|[]\T1/cmr/bx/n/14.4 Treatment Com-po-si-tion|
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[45]
+
+LaTeX Warning: Citation `rini2019' on page 46 undefined on input line 115.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 58--58
-|[]\T1/cmr/bx/n/14.4 Treatment Ac-ti-va-tion|
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[46]
+
+LaTeX Warning: Citation `rini2019' on page 47 undefined on input line 182.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 77--77
-|[]\T1/cmr/bx/n/17.28 Immune Check-point In-hibitors (ICI)|
- []
+LaTeX Warning: Citation `motzer2019' on page 47 undefined on input line 182.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 80--80
-|[]\T1/cmr/bx/n/14.4 Biological Ba-sis|
- []
+LaTeX Warning: Citation `santoni2024' on page 47 undefined on input line 182.
 
 
-LaTeX Warning: Citation `pardoll2012' on page 21 undefined on input line 82.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-LaTeX Warning: Citation `rini2019' on page 21 undefined on input line 84.
+[47])
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-LaTeX Warning: Citation `motzer2019' on page 21 undefined on input line 84.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 86--86
-|[]\T1/cmr/bx/n/14.4 Implementation|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 121--121
-|[]\T1/cmr/bx/n/17.28 Tyrosine Ki-nase In-hibitors (TKI)|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 124--124
-|[]\T1/cmr/bx/n/14.4 Biological Ba-sis|
- []
-
-
-LaTeX Warning: Citation `rini2019' on page 21 undefined on input line 128.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 130--130
-|[]\T1/cmr/bx/n/14.4 Implementation|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 168--168
-|[]\T1/cmr/bx/n/17.28 Combination Ther-apy|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 171--171
-|[]\T1/cmr/bx/n/14.4 ICI + TKI|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 182--182
-|[]\T1/cmr/bx/n/14.4 Synergistic Mech-a-nisms|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 193--193
-|[]\T1/cmr/bx/n/14.4 Clinical Ev-i-dence|
- []
-
-
-LaTeX Warning: Citation `rini2019' on page 21 undefined on input line 195.
-
-
-LaTeX Warning: Citation `motzer2019' on page 21 undefined on input line 195.
-
-
-LaTeX Warning: Citation `santoni2024' on page 21 undefined on input line 195.
-
-
-LaTeX Warning: Reference `ch:sex-hormones' on page 21 undefined on input line 1
-97.
-
-) (./chapters/07_sex_hormone_system.tex
+[48] (./chapters/07_sex_hormone_system.tex
 Chapter 7.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/cmr/bx/n/24.88 Chapter 7|
+LaTeX Warning: Citation `conforti2018' on page 49 undefined on input line 12.
+
+
+LaTeX Warning: Citation `santoni2024' on page 49 undefined on input line 12.
+
+[49
+
+
+]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[50]
+Overfull \hbox (8.07701pt too wide) in paragraph at lines 109--110
+\T1/cmr/m/n/12 The \T1/cmtt/m/n/12 CellHormonalInfluenceEffect \T1/cmr/m/n/12 e
+nu-mer-a-tion (in \T1/cmtt/m/n/12 src/systems/hormonal_effect.py\T1/cmr/m/n/12 
+)
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/cmr/bx/n/24.88 Sex Hor-mone Sys-tem|
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[51]
+Overfull \hbox (6.87059pt too wide) in paragraph at lines 167--168
+\T1/cmr/m/n/12 and sub-se-quently trans-ferred to the cell's \T1/cmtt/m/n/12 ex
+perienced_effects \T1/cmr/m/n/12 via the \T1/cmtt/m/n/12 update_effects()
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 7--7
-|[]\T1/cmr/bx/n/17.28 Biological Ba-sis|
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Underfull \hbox (badness 10000) in paragraph at lines 10--10
-|[]\T1/cmr/bx/n/14.4 Sex Dif-fer-ences in Re-nal Cell Car-ci-noma|
- []
+[52]
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-LaTeX Warning: Citation `conforti2018' on page 21 undefined on input line 12.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[53]
 
-LaTeX Warning: Citation `santoni2024' on page 21 undefined on input line 12.
+LaTeX Warning: Citation `conforti2018' on page 54 undefined on input line 223.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 16--16
-|[]\T1/cmr/bx/n/14.4 Estrogen|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 20--20
-|[]\T1/cmr/bx/n/14.4 Testosterone|
- []
-
-
-LaTeX Warning: Reference `sec:sex-drift' on page 21 undefined on input line 22.
-
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 24--24
-|[]\T1/cmr/bx/n/14.4 Progesterone|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 29--29
-|[]\T1/cmr/bx/n/17.28 Hormone Agent Model|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 34--34
-|[]\T1/cmr/bx/n/14.4 Agent Type and In-her-i-tance|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 38--38
-|[]\T1/cmr/bx/n/14.4 Hormone Types|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 48--48
-|[]\T1/cmr/bx/n/14.4 Spawning Mech-a-nism|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 68--68
-|[]\T1/cmr/bx/n/14.4 Hormone Dif-fu-sion|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 86--86
-|[]\T1/cmr/bx/n/17.28 Hormone Ef-fects on T Cells|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 91--91
-|[]\T1/cmr/bx/n/14.4 Hormone Per-cep-tion|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 103--103
-|[]\T1/cmr/bx/n/14.4 Stimulation Level|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 107--107
-|[]\T1/cmr/bx/n/14.4 Hormonal In-flu-ence Ef-fects|
- []
-
-
-Package longtable Warning: Column widths have changed
-(longtable)                in table 7.2 on input line 141.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 143--143
-|[]\T1/cmr/bx/n/14.4 Concentration-Dependent Ef-fect Map-ping|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 173--173
-|[]\T1/cmr/bx/n/17.28 Sex Drift|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 178--178
-|[]\T1/cmr/bx/n/14.4 Biological Ba-sis|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 182--182
-|[]\T1/cmr/bx/n/14.4 Implementation|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 214--214
-|[]\T1/cmr/bx/n/14.4 Interaction with Hor-monal Ef-fects|
- []
-
-
-LaTeX Warning: Citation `conforti2018' on page 21 undefined on input line 223.
-
-
-LaTeX Warning: Citation `santoni2024' on page 21 undefined on input line 223.
-
-) (./chapters/08_implementation.tex
-Chapter 8.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/cmr/bx/n/24.88 Chapter 8|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/cmr/bx/n/24.88 Implementation|
- []
-
-(./figures/architecture_overview.tex
-! Undefined control sequence.
-\endtikzpicture ...r@layerlist@globally \endscope 
-                                                  \let \pgf@baseline =\pgf@s...
-l.189 \end{tikzpicture}
-                       
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.189 \end{tikzpicture}
-                       
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.189 \end{tikzpicture}
-                       
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.189 \end{tikzpicture}
-                       
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.189 \end{tikzpicture}
-                       
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-
-Overfull \hbox (1.25322pt too wide) in paragraph at lines 189--189
-[][][] 
- []
-
-
-! LaTeX Error: \begin{document} ended by \end{tikzpicture}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.189 \end{tikzpicture}
-                       
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-! Extra \endgroup.
-<recently read> \endgroup 
-                          
-l.189 \end{tikzpicture}
-                       
-Things are pretty mixed up, but I think the worst is over.
+LaTeX Warning: Citation `santoni2024' on page 54 undefined on input line 223.
 
 )
 
-! Package caption Error: \caption outside float.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-See the caption package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.15 \caption
-             {Complete system architecture from hardware to user interface. ...
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-If you do not understand this error, please take a closer look
-at the documentation of the `caption' package, especially the
-section about errors.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+[54] (./chapters/08_implementation.tex
+Chapter 8.
 
-! Too many }'s.
-\@endfloatbox ...pagefalse \outer@nobreak \egroup 
-                                                  \color@endbox 
-l.17 \end{figure}
-                 
-You've closed more groups than you opened.
-Such booboos are generally harmless, so keep going.
-
-! Extra \endgroup.
-\color@endgroup ->\endgraf \endgroup 
-                                     
-l.17 \end{figure}
-                 
-Things are pretty mixed up, but I think the worst is over.
-
-! Too many }'s.
-\color@endbox ->\color@endgroup \egroup 
-                                        
-l.17 \end{figure}
-                 
-You've closed more groups than you opened.
-Such booboos are generally harmless, so keep going.
+LaTeX Warning: Citation `mesa' on page 55 undefined on input line 10.
 
 
-! LaTeX Error: \begin{document} ended by \end{figure}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.17 \end{figure}
-                 
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-! Extra \endgroup.
-<recently read> \endgroup 
-                          
-l.17 \end{figure}
-                 
-Things are pretty mixed up, but I think the worst is over.
+LaTeX Warning: Citation `repast4py' on page 55 undefined on input line 10.
 
 
-LaTeX Warning: Citation `mesa' on page 21 undefined on input line 23.
-
-
-LaTeX Warning: Citation `repast4py' on page 21 undefined on input line 23.
-
-
-LaTeX Warning: Citation `mpi4py' on page 21 undefined on input line 32.
-
-
-LaTeX Warning: Reference `tab:detailed-mesa-vs-repast4py' on page 21 undefined 
-on input line 41.
+LaTeX Warning: Citation `mpi4py' on page 55 undefined on input line 19.
 
 (./figures/comparison_table.tex
 Underfull \hbox (badness 10000) in paragraph at lines 9--9
@@ -4760,7 +2768,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 51--51
 T1/cmr/m/n/12 neigh-bor queries;
  []
 
-) [21]
+) [55
+
+
+]
 Overfull \vbox (412.45953pt too high) has occurred while \output is active []
 
 
@@ -4772,7 +2783,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[22]
+[56]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -4781,17 +2792,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[23]
-Overfull \hbox (78.39pt too wide) in paragraph at lines 134--135
+[57]
+Overfull \hbox (78.39pt too wide) in paragraph at lines 121--122
 []\T1/cmr/m/n/12 There is no framework-imposed sched-uler. In-stead, Repast4Py'
 s \T1/cmtt/m/n/12 schedule.init_schedule_runner()
  []
 
 
-LaTeX Warning: Reference `fig:model_architecture' on page 24 undefined on input
- line 136.
-
-
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
@@ -4799,8 +2806,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[24]
-Overfull \hbox (5.40718pt too wide) in paragraph at lines 179--180
+[58]
+Overfull \hbox (5.40718pt too wide) in paragraph at lines 166--167
 []\T1/cmtt/m/n/12 get_neighbors_3d(spatial_index, grid_dims, pos, radius, moore
 )\T1/cmr/m/n/12 : Re-turns
  []
@@ -4813,14 +2820,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[25]
-Overfull \hbox (17.57947pt too wide) in paragraph at lines 183--184
+[59]
+Overfull \hbox (17.57947pt too wide) in paragraph at lines 170--171
 []\T1/cmtt/m/n/12 get_empty_neighbors_3d(spatial_index, grid_dims, pos, radius,
  moore)\T1/cmr/m/n/12 : Re-
  []
 
 
-Overfull \hbox (0.89255pt too wide) in paragraph at lines 203--204
+Overfull \hbox (0.89255pt too wide) in paragraph at lines 190--191
 []\T1/cmr/m/n/12 The bound-ary check (\T1/cmtt/m/n/12 0 <= nx < width\T1/cmr/m/
 n/12 , etc.) en-sures that the neigh-bor-hood is clipped
  []
@@ -4833,16 +2840,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[26]
+[60]
 
-LaTeX Warning: Citation `mesa' on page 27 undefined on input line 268.
-
-
-LaTeX Warning: Citation `masl_paper_a' on page 27 undefined on input line 268.
+LaTeX Warning: Citation `mesa' on page 61 undefined on input line 255.
 
 
-LaTeX Warning: Reference `tab:porting-mapping' on page 27 undefined on input li
-ne 268.
+LaTeX Warning: Citation `masl_paper_a' on page 61 undefined on input line 255.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -4852,43 +2855,43 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[27]
-Underfull \hbox (badness 10000) in paragraph at lines 278--279
+[61]
+Underfull \hbox (badness 10000) in paragraph at lines 265--266
 []|\T1/cmtt/m/n/12 repast4py.core.Agent(id, type,
  []
 
 
-Overfull \hbox (20.66174pt too wide) in paragraph at lines 280--280
+Overfull \hbox (20.66174pt too wide) in paragraph at lines 267--267
 []|\T1/cmtt/m/n/12 self.model.grid.get_neighbors()| 
  []
 
 
-Overfull \hbox (42.80428pt too wide) in paragraph at lines 280--281
+Overfull \hbox (42.80428pt too wide) in paragraph at lines 267--268
 []|\T1/cmtt/m/n/12 grid_utils.get_neighbors_3d(spatial_index,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 281--281
+Underfull \hbox (badness 10000) in paragraph at lines 268--268
 []|\T1/cmtt/m/n/12 isinstance(agent,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 281--282
+Underfull \hbox (badness 10000) in paragraph at lines 268--269
 []|\T1/cmtt/m/n/12 agent.uid[1] ==
  []
 
 
-Overfull \hbox (8.85007pt too wide) in paragraph at lines 283--284
+Overfull \hbox (8.85007pt too wide) in paragraph at lines 270--271
 []|\T1/cmtt/m/n/12 model.get_agents_by_type_id(type_id)| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 285--285
+Underfull \hbox (badness 10000) in paragraph at lines 272--272
 []|\T1/cmtt/m/n/12 Cell.search_dimension \T1/cmr/m/n/12 (class
  []
 
 
-Overfull \hbox (19.73012pt too wide) in paragraph at lines 303--304
+Overfull \hbox (19.73012pt too wide) in paragraph at lines 290--291
 \T1/cmr/m/n/12 In the Mesa ver-sion, cer-tain state was stored as class vari-ab
 les (e.g., \T1/cmtt/m/n/12 TumorCell.blood_source
  []
@@ -4901,8 +2904,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[28]
-Overfull \hbox (14.90672pt too wide) in paragraph at lines 345--347
+[62]
+Overfull \hbox (14.90672pt too wide) in paragraph at lines 332--334
 \T1/cmr/m/n/12 Diffusion is com-puted via the 3D dis-crete Lapla-cian, ap-plied
  us-ing \T1/cmtt/m/n/12 scipy.ndimage.convolve\T1/cmr/m/n/12 .
  []
@@ -4915,7 +2918,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[29]
+[63]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -4924,7 +2927,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[30] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+[64] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -4938,17 +2941,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[31]
-
-LaTeX Warning: Reference `fig:simulation_pipeline' on page 32 undefined on inpu
-t line 435.
-
-
-LaTeX Warning: Reference `lst:glucose-step' on page 32 undefined on input line 
-453.
-
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 456.
+[65])
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -4957,64 +2950,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[32]
-
-LaTeX Warning: Reference `lst:tumor-step' on page 33 undefined on input line 51
-8.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[33]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[34]
-
-LaTeX Warning: Reference `lst:main-loop' on page 35 undefined on input line 600
-.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[35]
-
-LaTeX Warning: Reference `lst:glucose-step' on page 36 undefined on input line 
-664.
-
-
-LaTeX Warning: Reference `lst:tumor-step' on page 36 undefined on input line 66
-4.
-
-
-LaTeX Warning: Reference `lst:main-loop' on page 36 undefined on input line 664
-.
-
-)
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[36] (./chapters/09_parameters.tex
+[66] (./chapters/09_parameters.tex
 Chapter 9.
 
 Underfull \hbox (badness 10000) in paragraph at lines 45--46
@@ -5031,18 +2967,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 46--47
 []|\T1/cmr/m/n/12 Treatment modal-ity: \T1/cmtt/m/n/12 'None'\T1/cmr/m/n/12 ,
  []
 
-[37
+[67
 
 
 ]
-
-LaTeX Warning: Reference `sec:weight-params' on page 38 undefined on input line
- 70.
-
-
-LaTeX Warning: Reference `sec:glucose-params' on page 38 undefined on input lin
-e 70.
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -5051,7 +2979,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[38]
+[68]
 Underfull \hbox (badness 1377) in paragraph at lines 110--111
 []|\T1/cmr/m/n/12 M1 macrophage look-up move-
  []
@@ -5069,7 +2997,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[39]
+[69]
 Underfull \hbox (badness 5667) in paragraph at lines 155--156
 []|\T1/cmr/m/n/12 DNA-driven ex-tra pro-lif-er-a-
  []
@@ -5092,7 +3020,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[40]
+[70]
 Underfull \hbox (badness 10000) in paragraph at lines 183--184
 []|\T1/cmr/m/n/12 Th1 spawn-ing of M1
  []
@@ -5115,7 +3043,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[41]
+[71]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -5124,7 +3052,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[42]
+[72]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -5133,7 +3061,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[43]
+[73]
 Underfull \hbox (badness 1194) in paragraph at lines 302--303
 []|\T1/cmr/m/n/12 Controls adap-tive search ra-
  []
@@ -5177,22 +3105,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[44]
+[74]
 Underfull \hbox (badness 1168) in paragraph at lines 337--337
 \T1/cmr/m/n/12 glucose-rich zones that sub-se-quently
  []
 
 
-LaTeX Warning: Citation `warburg1956' on page 45 undefined on input line 339.
+LaTeX Warning: Citation `warburg1956' on page 75 undefined on input line 339.
 
 
 Underfull \hbox (badness 2189) in paragraph at lines 345--345
 \T1/cmr/m/n/12 tion to lo-cal glu-cose con-cen-tra-tion.
  []
-
-
-Package longtable Warning: Column widths have changed
-(longtable)                in table 9.14 on input line 349.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -5202,7 +3126,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[45]
+[75]
 Overfull \hbox (0.95346pt too wide) in paragraph at lines 358--359
 \T1/cmr/m/n/12 can be scaled by an anal-o-gous glu-cose fac-tor us-ing \T1/cmtt
 /m/n/12 w_glucose_immune_sensitivity\T1/cmr/m/n/12 ,
@@ -5215,7 +3139,7 @@ Overfull \hbox (1.03053pt too wide) in paragraph at lines 360--361
  []
 
 
-LaTeX Warning: Citation `optuna' on page 46 undefined on input line 369.
+LaTeX Warning: Citation `optuna' on page 76 undefined on input line 369.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -5225,7 +3149,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[46]
+[76]
 Overfull \hbox (20.33517pt too wide) in paragraph at lines 397--398
 []\T1/cmr/bx/n/12 Effectiveness weights\T1/cmr/m/n/12 : \T1/cmtt/m/n/12 w_ici_e
 ffectiveness \T1/cmr/m/n/12 and \T1/cmtt/m/n/12 w_tki_effectiveness \T1/cmr/m/n
@@ -5249,12 +3173,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[47]
+[77]
 
-LaTeX Warning: Citation `rini2019' on page 48 undefined on input line 428.
+LaTeX Warning: Citation `rini2019' on page 78 undefined on input line 428.
 
 
-LaTeX Warning: Citation `motzer2019' on page 48 undefined on input line 428.
+LaTeX Warning: Citation `motzer2019' on page 78 undefined on input line 428.
 
 
 Overfull \hbox (50.94183pt too wide) in paragraph at lines 436--437
@@ -5271,84 +3195,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[48] (./chapters/10_simulation_results.tex
+[78] (./chapters/10_simulation_results.tex
 Chapter 10.
-
-! Package pgfkeys Error: Choice '3pt' unknown in choice key '/tcb/rounded corne
-rs'. I am going to ignore this key.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 \begin{keyinsight}
-                       
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tcb/drop shadow' and I am goin
-g to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 \begin{keyinsight}
-                       
-(That was another \errmessage.)
-
-<figures/sex_stratified_results.pdf, id=890, 1075.94281pt x 858.56697pt>
-File: figures/sex_stratified_results.pdf Graphic file (type pdf)
-<use figures/sex_stratified_results.pdf>
-Package pdftex.def Info: figures/sex_stratified_results.pdf  used on input line
- 26.
-(pdftex.def)             Requested size: 455.24411pt x 363.2682pt.
-[49
+[79
 
 
 ]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 27.11469pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.11469pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-15.11469pt}.
-
-[50 <./figures/sex_stratified_results.pdf>]
-
-! Package pgfkeys Error: Choice '3pt' unknown in choice key '/tcb/rounded corne
-rs'. I am going to ignore this key.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.53 \begin{keyfinding}
-                       
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tcb/drop shadow' and I am goin
-g to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.53 \begin{keyfinding}
-                       
-(That was another \errmessage.)
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 27.11469pt, for example:
-(fancyhdr)                \setlength{\headheight}{27.11469pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-15.11469pt}.
-
-[51]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -5357,14 +3209,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[52]
-Overfull \hbox (0.34317pt too wide) in paragraph at lines 136--137
+[80]
+Overfull \hbox (0.34317pt too wide) in paragraph at lines 111--112
 []\T1/cmr/m/n/12 This coun-ter-in-tu-itive re-sult sug-gests com-plex in-ter-ac
 -tions be-tween TKI anti-angiogenic
  []
 
 
-Overfull \hbox (9.18338pt too wide) in paragraph at lines 140--141
+Overfull \hbox (9.18338pt too wide) in paragraph at lines 115--116
 \T1/cmr/m/n/12 Tyrosine ki-nase in-hibitor (TKI) monother-apy demon-strated ef-
 fi-cacy through anti-angiogenic
  []
@@ -5377,55 +3229,39 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[53]
-
-LaTeX Warning: Reference `tab:treatment-outcomes' on page 54 undefined on input
- line 162.
-
-
-Overfull \hbox (10.75247pt too wide) in paragraph at lines 168--182
+[81]
+Overfull \hbox (10.75247pt too wide) in paragraph at lines 143--157
  [][] 
  []
 
-
-LaTeX Warning: Reference `fig:scenario-comparison-tumor' on page 54 undefined o
-n input line 188.
-
-<figures/scenario_comparison_tumor.pdf, id=977, 722.7pt x 433.62pt>
+<figures/scenario_comparison_tumor.pdf, id=1977, 722.7pt x 433.62pt>
 File: figures/scenario_comparison_tumor.pdf Graphic file (type pdf)
 <use figures/scenario_comparison_tumor.pdf>
 Package pdftex.def Info: figures/scenario_comparison_tumor.pdf  used on input l
-ine 192.
+ine 167.
 (pdftex.def)             Requested size: 409.71692pt x 245.82944pt.
 
-LaTeX Warning: Reference `fig:scenario-comparison-glucose' on page 54 undefined
- on input line 197.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-<figures/scenario_comparison_glucose.pdf, id=978, 722.7pt x 433.62pt>
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[82]
+<figures/scenario_comparison_glucose.pdf, id=1985, 722.7pt x 433.62pt>
 File: figures/scenario_comparison_glucose.pdf Graphic file (type pdf)
 <use figures/scenario_comparison_glucose.pdf>
 Package pdftex.def Info: figures/scenario_comparison_glucose.pdf  used on input
- line 201.
+ line 176.
 (pdftex.def)             Requested size: 409.71692pt x 245.82944pt.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[54 <./figures/scenario_comparison_tumor.pdf>]
-
-LaTeX Warning: Reference `fig:scenario-comparison-immune' on page 55 undefined 
-on input line 206.
-
-<figures/scenario_comparison_immune.pdf, id=1025, 722.7pt x 433.62pt>
+<figures/scenario_comparison_immune.pdf, id=1987, 722.7pt x 433.62pt>
 File: figures/scenario_comparison_immune.pdf Graphic file (type pdf)
 <use figures/scenario_comparison_immune.pdf>
 Package pdftex.def Info: figures/scenario_comparison_immune.pdf  used on input 
-line 210.
+line 185.
 (pdftex.def)             Requested size: 409.71692pt x 245.82944pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -5434,20 +3270,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[55 <./figures/scenario_comparison_glucose.pdf> <./figures/scenario_comparison_
-immune.pdf>]
-Overfull \hbox (11.98145pt too wide) in paragraph at lines 228--229
+[83 <./figures/scenario_comparison_tumor.pdf> <./figures/scenario_comparison_gl
+ucose.pdf>]
+Overfull \hbox (11.98145pt too wide) in paragraph at lines 203--204
 []\T1/cmr/bx/n/12 Hormone ef-fects\T1/cmr/m/n/12 : Testosterone-mediated im-mun
 e sup-pres-sion vs. estrogen-enhanced
  []
 
 
-LaTeX Warning: Reference `fig:scenario-sex-comparison' on page 56 undefined on 
-input line 234.
-
-
-LaTeX Warning: Reference `fig:glucose-heatmap' on page 56 undefined on input li
-ne 266.
+LaTeX Warning: Reference `fig:scenario-sex-comparison' on page 84 undefined on 
+input line 209.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -5457,8 +3289,24 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[56]
-Overfull \hbox (2.67197pt too wide) in paragraph at lines 284--285
+[84 <./figures/scenario_comparison_immune.pdf>]
+
+LaTeX Warning: Reference `fig:glucose-heatmap' on page 85 undefined on input li
+ne 241.
+
+Runaway argument?
+{enumerate> 
+! Paragraph ended before \end  was complete.
+<to be read again> 
+                   \par 
+l.261 
+      
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+
+Overfull \hbox (2.67197pt too wide) in paragraph at lines 259--261
 []\T1/cmr/bx/n/12 Immune-metabolic in-ter-ac-tions\T1/cmr/m/n/12 : The glu-cose
  gra-di-ent guides im-mune cell chemo-
  []
@@ -5471,31 +3319,23 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[57]
-Overfull \hbox (105.11734pt too wide) in paragraph at lines 329--330
-\T1/cmr/m/n/12 anal-y-sis on key metabolic com-po-nents. The glu-cose tu-mor co
-n-sump-tion rate (\T1/cmtt/m/n/12 w_glucose_tumor_consumption\T1/cmr/m/n/12 )
- []
+[85]
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-LaTeX Warning: Reference `fig:sensitivity-glucose' on page 58 undefined on inpu
-t line 346.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-<figures/sensitivity_glucose_consumption.pdf, id=1136, 1011.78pt x 397.485pt>
+[86]
+<figures/sensitivity_glucose_consumption.pdf, id=2133, 1011.78pt x 397.485pt>
 File: figures/sensitivity_glucose_consumption.pdf Graphic file (type pdf)
 <use figures/sensitivity_glucose_consumption.pdf>
 Package pdftex.def Info: figures/sensitivity_glucose_consumption.pdf  used on i
-nput line 350.
+nput line 325.
 (pdftex.def)             Requested size: 455.24411pt x 178.84839pt.
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[58]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -5504,7 +3344,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[59 <./figures/sensitivity_glucose_consumption.pdf>]
+[87 <./figures/sensitivity_glucose_consumption.pdf>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -5513,38 +3353,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[60]
-Overfull \hbox (3.7448pt too wide) in paragraph at lines 447--447
-|[]\T1/cmr/bx/n/17.28 Statistical Val-i-da-tion: Multi-Seed Em-pir-i-cal Study|
- 
- []
-
-
-Overfull \hbox (18.58046pt too wide) in paragraph at lines 459--460
-[]\T1/cmr/bx/n/12 Treatment con-di-tions\T1/cmr/m/n/12 : 4 modal-i-ties (No Tre
-at-ment, TKI monother-apy, ICI monother-
- []
-
-
-LaTeX Warning: Reference `sec:reproducibility' on page 61 undefined on input li
-ne 463.
-
-
-LaTeX Warning: Citation `grimm2017' on page 61 undefined on input line 465.
-
-
-LaTeX Warning: Citation `railsback2019' on page 61 undefined on input line 465.
-
-
-
-LaTeX Warning: Reference `tab:empirical-results' on page 61 undefined on input 
-line 469.
-
-
-Overfull \hbox (168.76248pt too wide) in paragraph at lines 475--489
- [][] 
- []
-
+[88])
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -5553,180 +3362,40 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[61]
-
-LaTeX Warning: Citation `benzekry2014' on page 62 undefined on input line 493.
-
-
-LaTeX Warning: Citation `dagogo2018' on page 62 undefined on input line 497.
-
-
-LaTeX Warning: Citation `litchfield2021' on page 62 undefined on input line 497
-.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[62]
-
-! LaTeX Error: Unicode character Î± (U+03B1)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.542 ...s achieved statistical significance at Î±
-                                                  =0.05 with n=20 per group,...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Reference `sec:treatment-scenarios' on page 63 undefined on inpu
-t line 549.
-
-
-Overfull \hbox (2.63559pt too wide) in paragraph at lines 548--550
-[]\T1/cmr/bx/n/12 Misleading Single-Seed Out-comes: \T1/cmr/m/n/12 The single-s
-eed sim-u-la-tion (Sec-tion []) showed
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[63]
-
-LaTeX Warning: Reference `fig:empirical-tumor-boxplot' on page 64 undefined on 
-input line 580.
-
-<figures/empirical_tumor_boxplot.pdf, id=1306, 867.24pt x 433.62pt>
-File: figures/empirical_tumor_boxplot.pdf Graphic file (type pdf)
-<use figures/empirical_tumor_boxplot.pdf>
-Package pdftex.def Info: figures/empirical_tumor_boxplot.pdf  used on input lin
-e 584.
-(pdftex.def)             Requested size: 409.71692pt x 204.86006pt.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[64]
-
-LaTeX Warning: Reference `fig:empirical-survival-rate' on page 65 undefined on 
-input line 589.
-
-<figures/empirical_survival_rate.pdf, id=1316, 722.7pt x 361.35pt>
-File: figures/empirical_survival_rate.pdf Graphic file (type pdf)
-<use figures/empirical_survival_rate.pdf>
-Package pdftex.def Info: figures/empirical_survival_rate.pdf  used on input lin
-e 593.
-(pdftex.def)             Requested size: 364.19667pt x 182.0971pt.
-
-LaTeX Warning: Reference `fig:empirical-growth-curves' on page 65 undefined on 
-input line 598.
-
-<figures/empirical_growth_curves.pdf, id=1317, 1011.78pt x 722.7pt>
-File: figures/empirical_growth_curves.pdf Graphic file (type pdf)
-<use figures/empirical_growth_curves.pdf>
-Package pdftex.def Info: figures/empirical_growth_curves.pdf  used on input lin
-e 602.
-(pdftex.def)             Requested size: 455.24411pt x 325.17891pt.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[65 <./figures/empirical_tumor_boxplot.pdf> <./figures/empirical_survival_rate.
-pdf>]
-
-LaTeX Warning: Reference `fig:empirical-kills' on page 66 undefined on input li
-ne 607.
-
-<figures/empirical_kills.pdf, id=1424, 722.7pt x 361.35pt>
-File: figures/empirical_kills.pdf Graphic file (type pdf)
-<use figures/empirical_kills.pdf>
-Package pdftex.def Info: figures/empirical_kills.pdf  used on input line 611.
-(pdftex.def)             Requested size: 364.19667pt x 182.0971pt.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[66 <./figures/empirical_growth_curves.pdf>])
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[67 <./figures/empirical_kills.pdf>] (./chapters/11_conclusion.tex
+[89] (./chapters/11_conclusion.tex
 Chapter 11.
 
-LaTeX Warning: Citation `masl_paper_a' on page 68 undefined on input line 17.
+LaTeX Warning: Citation `masl_paper_a' on page 90 undefined on input line 13.
 
 
-LaTeX Warning: Citation `repast4py' on page 68 undefined on input line 17.
+LaTeX Warning: Citation `repast4py' on page 90 undefined on input line 13.
 
 
-LaTeX Warning: Citation `fick1855' on page 68 undefined on input line 19.
+Overfull \hbox (7.83339pt too wide) in paragraph at lines 13--14
+\T1/cmtt/m/n/12 type, rank) \T1/cmr/m/n/12 iden-tity model, and adapt-ing the s
+chedul-ing sys-tem to Repast4Py's
+ []
 
 
-LaTeX Warning: Citation `warburg1956' on page 68 undefined on input line 19.
+LaTeX Warning: Citation `fick1855' on page 90 undefined on input line 15.
 
-[68
+
+LaTeX Warning: Citation `warburg1956' on page 90 undefined on input line 15.
+
+[90
 
 
 ]
-Overfull \hbox (55.3719pt too wide) in paragraph at lines 25--26
-\T1/cmr/m/n/12 ARON-1 clin-i-cal dataset and the ex-ist-ing eval-u-a-tion metho
-d-ol-ogy. The \T1/cmtt/m/n/12 suggest_parameters()
+Overfull \hbox (1.5511pt too wide) in paragraph at lines 21--22
+[]\T1/cmr/bx/n/12 Maintained com-pat-i-bil-ity with the Op-tuna op-ti-miza-tion
+ pipeline. \T1/cmr/m/n/12 The
  []
 
 
-! Package pgfkeys Error: Choice '3pt' unknown in choice key '/tcb/rounded corne
-rs'. I am going to ignore this key.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.30 \begin{keyinsight}
-                       
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tcb/drop shadow' and I am goin
-g to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.30 \begin{keyinsight}
-                       
-(That was another \errmessage.)
+Overfull \hbox (32.5038pt too wide) in paragraph at lines 31--32
+\T1/cmr/m/n/12 tion) to dis-tribute the NumPy ar-ray across ranks, since the \T
+1/cmtt/m/n/12 scipy.ndimage.convolve
+ []
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -5736,7 +3405,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[69]
+[91]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -5745,42 +3414,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[70]
+[92]
 
-LaTeX Warning: Citation `motzer2019' on page 71 undefined on input line 73.
-
-
-LaTeX Warning: Citation `rini2019' on page 71 undefined on input line 73.
+LaTeX Warning: Citation `motzer2019' on page 93 undefined on input line 63.
 
 
-LaTeX Warning: Citation `hanahan2011' on page 71 undefined on input line 80.
+LaTeX Warning: Citation `rini2019' on page 93 undefined on input line 63.
 
 
-LaTeX Warning: Citation `warburg1956' on page 71 undefined on input line 80.
+LaTeX Warning: Citation `hanahan2011' on page 93 undefined on input line 70.
 
 
-! Package pgfkeys Error: Choice '3pt' unknown in choice key '/tcb/rounded corne
-rs'. I am going to ignore this key.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.84 \begin{chaptersum}
-                       
-(That was another \errmessage.)
-
-
-! Package pgfkeys Error: I do not know the key '/tcb/drop shadow' and I am goin
-g to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.84 \begin{chaptersum}
-                       
-(That was another \errmessage.)
+LaTeX Warning: Citation `warburg1956' on page 93 undefined on input line 70.
 
 )
 
@@ -5791,22 +3436,23 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[71]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[72]
+[93]
 No file main.bbl.
-[73
+[94
 
 ]
 
-Package longtable Warning: Table widths have changed. Rerun LaTeX.
+! LaTeX Error: \begin{enumerate} on input line 254 ended by \end{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.229 \end{document}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
 (./main.aux)
  ***********
@@ -5817,53 +3463,53 @@ L3 programming layer <2024-01-22>
 
 LaTeX Warning: There were undefined references.
 
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: CB96FD1E4BAB8FFE4F06FCC3B35D2967;38474.
+ )
+(\end occurred inside a group at level 1)
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  CAE0E30BEA8DC821241817F072C30B02;28256.
- ) 
+### semi simple group (level 1) entered at line 254 (\begingroup)
+### bottom level 
 Here is how much of TeX's memory you used:
- 47512 strings out of 476182
- 1057524 string characters out of 5795596
- 2408975 words of memory out of 5000000
- 67988 multiletter control sequences out of 15000+600000
- 580197 words of font info for 93 fonts, out of 8000000 for 9000
+ 49264 strings out of 476182
+ 1119354 string characters out of 5795596
+ 2297975 words of memory out of 5000000
+ 69616 multiletter control sequences out of 15000+600000
+ 576706 words of font info for 80 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 84i,19n,93p,997b,2452s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcbx1200.600pk> </
-root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecit1000.600pk> </root/
-.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecit1095.600pk> </root/.texl
-ive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1440.600pk> </root/.texlive20
-23/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> </root/.texlive2023/te
-xmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk> </root/.texlive2023/texmf-v
-ar/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </root/.texlive2023/texmf-var/fo
-nts/pk/ljfour/jknappen/ec/tctt1200.600pk> </root/.texlive2023/texmf-var/fonts/p
-k/ljfour/jknappen/ec/ectt1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljf
-our/jknappen/ec/tcrm1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/j
-knappen/ec/ecbx1728.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknapp
-en/ec/ecti1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec
-/ecrm1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx
-1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.
-600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk
-> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> </r
-oot/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (75 pages, 747678 bytes).
+ 84i,14n,93p,1228b,2310s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecit
+1000.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tctt1200.
+600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecit1095.600pk
+> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> </r
+oot/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk> </root/.
+texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1440.600pk> </root/.texli
+ve2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </root/.texlive202
+3/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </root/.texlive2023/tex
+mf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> </root/.texlive2023/texmf-va
+r/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk> </root/.texlive2023/texmf-var/fon
+ts/pk/ljfour/jknappen/ec/ecti1200.600pk> </root/.texlive2023/texmf-var/fonts/pk
+/ljfour/jknappen/ec/ecbx1728.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfo
+ur/jknappen/ec/ectt1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jk
+nappen/ec/ecrm1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappe
+n/ec/ecbx1200.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/
+ecbx1440.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2
+488.600pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.6
+00pk> </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy8.pfb>
+Output written on main.pdf (96 pages, 724937 bytes).
 PDF statistics:
- 2605 PDF objects out of 2984 (max. 8388607)
- 1223 compressed objects within 13 object streams
- 739 named destinations out of 1000 (max. 500000)
- 17993 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 3406 PDF objects out of 3580 (max. 8388607)
+ 2261 compressed objects within 23 object streams
+ 819 named destinations out of 1000 (max. 500000)
+ 16769 words of extra memory for PDF output out of 17280 (max. 10000000)
 

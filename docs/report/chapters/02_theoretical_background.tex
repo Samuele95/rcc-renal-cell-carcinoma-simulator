@@ -1,83 +1,49 @@
 \chapter{Theoretical Background}
 \label{ch:theoretical_background}
 
-\begin{tcolorbox}[colback=immunecell!10, colframe=immunecell!50, title=\textbf{Chapter Preview}]
-\textit{Before we can build virtual tumors, we must understand the real biological systems they represent. This chapter constructs the theoretical foundation for everything that follows—from the mathematics of agent-based modeling to the intricate cellular choreography of cancer immunology.}
-\end{tcolorbox}
-
-Every computational model rests on theoretical foundations. Get these wrong, and even the most sophisticated simulation becomes an elaborate exercise in digital fiction. Get them right, and the model becomes a powerful lens for understanding complex biological reality.
-
-This chapter builds that foundation systematically. We'll explore why agent-based modeling is uniquely suited to cancer biology, dive deep into the immunological battlefield where tumor and immune cells clash, examine the metabolic competition that shapes this struggle, and understand how modern cancer treatments attempt to tip the balance toward healing.
+This chapter presents the theoretical foundations upon which the RCC agent-based model is constructed. We begin with a formal introduction to agent-based modeling and the Repast4Py framework (Section~\ref{sec:bg_abm}), then review the immunology of renal cell carcinoma with emphasis on the cell types represented in the model (Section~\ref{sec:bg_immunology}), discuss the metabolic characteristics of the tumor microenvironment (Section~\ref{sec:bg_metabolism}), and conclude with an overview of the treatment modalities implemented in the simulation (Section~\ref{sec:bg_treatments}).
 
 % ============================================================================
-\section{Agent-Based Modeling: A Different Way to Think About Biology}
+\section{Agent-Based Modeling}
 \label{sec:bg_abm}
 % ============================================================================
 
-\subsection{The Philosophy of Computational Emergence}
+\subsection{Formalism and Core Concepts}
 \label{subsec:bg_abm_formalism}
 
-Most mathematical models of cancer start with the big picture—equations that describe how tumor populations grow, how immune responses develop, how treatments affect outcomes. This top-down approach has yielded important insights, but it faces a fundamental limitation: real biology is built from the bottom up.
+An agent-based model (ABM) is a computational model consisting of three fundamental components:
 
-Agent-based modeling flips this paradigm. Instead of writing equations for populations, we write rules for individuals. Instead of prescribing system behavior, we let it emerge from countless local interactions. It's the difference between composing a symphony and unleashing a jazz ensemble—both can create beautiful music, but only one captures the improvisational creativity that drives innovation.
+\begin{enumerate}
+    \item \textbf{Agents.} Autonomous entities characterized by a set of internal state variables and behavioral rules. Each agent perceives its local environment, makes decisions based on its state and perception, and executes actions that may modify its own state, the state of other agents, or the environment.
+    \item \textbf{Environment.} A shared space---typically a discrete grid or continuous domain---in which agents are situated. The environment may carry its own state variables (e.g., chemical concentrations, nutrient fields) that evolve according to physical laws and are modified by agent actions.
+    \item \textbf{Rules.} The behavioral logic governing agent actions. Rules are typically local (each agent acts based on information in its neighborhood) and stochastic (outcomes are drawn from probability distributions parameterized by the agent's state and accumulated effects).
+\end{enumerate}
 
-An agent-based model consists of three essential elements, each reflecting a fundamental aspect of biological reality:
+The distinguishing feature of ABM is that system-level behavior is \emph{emergent}: it arises from the aggregate of individual agent actions and interactions rather than being prescribed by global equations. This makes ABM particularly powerful for systems characterized by heterogeneity, spatial structure, and nonlinear feedback---properties that are hallmarks of the tumor microenvironment.
 
-\textbf{Agents: The Individual Actors}
-
-Every cell in our simulation is an autonomous entity with its own internal state, memory, and decision-making capability. A tumor cell doesn't just multiply according to a growth equation—it evaluates its local glucose levels, assesses immune threats, checks its DNA for growth-promoting mutations, and makes a probabilistic decision about whether to divide. Each agent carries its complete biological history: which mutations it has accumulated, what immune attacks it has survived, how much glucose it has consumed.
-
-\textbf{Environment: The Shared Stage}
-
-Our 3D spatial grid isn't just a computational convenience—it's a representation of tissue architecture. Cells interact with their immediate neighbors, creating gradients of signaling molecules, competing for space and resources. The glucose field overlays this discrete space with continuous chemical dynamics, because biology operates simultaneously at discrete (cellular) and continuous (molecular) scales.
-
-\textbf{Rules: The Laws of Cellular Physics}
-
-Each agent follows behavioral rules that encode biological knowledge: how T cells recognize targets, how tumor cells respond to DNA damage, how blood vessels form in response to growth signals. These rules are local (each agent acts based only on information in its neighborhood) and stochastic (reflecting the inherent randomness of biological processes).
-
-The magic happens when these simple elements interact:
-
+Formally, at each discrete time step $t$, the state of agent $i$ is updated according to:
 \begin{equation}
     s_i(t+1) = f\bigl(s_i(t),\, \mathcal{N}_i(t),\, E(t),\, \xi_i(t)\bigr)
     \label{eq:agent_update}
 \end{equation}
-
-where agent $i$'s state at time $t+1$ depends on its current state $s_i(t)$, its neighbors $\mathcal{N}_i(t)$, the local environment $E(t)$, and stochastic factors $\xi_i(t)$. The environment itself evolves based on all agent actions:
-
+where $s_i(t)$ is the agent's internal state, $\mathcal{N}_i(t)$ is the set of neighboring agents within a defined radius, $E(t)$ is the local environmental state (e.g., glucose concentration), and $\xi_i(t)$ represents stochastic noise. The environment itself evolves as:
 \begin{equation}
     E(t+1) = g\bigl(E(t),\, \{a_i(t)\}_{i=1}^{N}\bigr)
     \label{eq:env_update}
 \end{equation}
+where $\{a_i(t)\}$ denotes the actions taken by all $N$ agents at time $t$.
 
-This bidirectional coupling—agents affecting the environment, environment affecting agents—creates the complex feedback loops that characterize living systems.
-
-\begin{figure}[H]
-\centering
-\input{figures/abm_vs_ode}
-\caption{Comparison of agent-based modeling (left) versus traditional equation-based approaches (right). ABM represents individual cells with unique properties interacting in space, naturally capturing heterogeneity and stochastic effects. Equation-based models use population averages and smooth dynamics, trading biological realism for mathematical tractability. The choice between approaches depends on whether individual behavior or population dynamics is the primary focus.}
-\label{fig:abm_vs_ode}
-\end{figure}
-
-\subsection{Why ABM Is Uniquely Suited to Cancer Biology}
+\subsection{Advantages for Biological Systems}
 \label{subsec:bg_abm_advantages}
 
-Traditional mathematical approaches to cancer have yielded important insights, but they face inherent limitations when confronting the complexity of the tumor microenvironment. Agent-based modeling addresses these limitations directly:
+ABM offers several advantages for modeling biological systems in general and the tumor microenvironment in particular:
 
-\begin{tcolorbox}[colback=tumorcell!10, colframe=tumorcell!50, title=\textbf{Heterogeneity: Every Cell Tells a Story}]
-In our model, each tumor cell carries a unique 16-gene DNA profile that determines its behavior. Some cells are aggressive growers thanks to VHL mutations, others are immune evasion specialists with high PD-L1 expression, still others are angiogenesis experts promoting blood vessel formation. This isn't computational overhead—it's biological reality. Tumor heterogeneity drives treatment resistance, and only by modeling it explicitly can we understand and potentially overcome it.
-\end{tcolorbox}
-
-\textbf{Spatial Dynamics: Location Is Everything}
-
-Cancer isn't a well-mixed soup of cells—it's a spatially structured ecosystem where neighborhood determines destiny. Tumor cells near blood vessels have access to glucose and grow rapidly. Immune cells at the tumor periphery face different challenges than those attempting to penetrate the tumor core. ABM captures these spatial phenomena naturally, allowing immune exclusion zones, angiogenic networks, and metabolic gradients to emerge from local cell-cell interactions.
-
-\textbf{Stochasticity: Embracing Biological Noise}
-
-Every biological process has an element of chance. Will this tumor cell divide successfully? Will this T cell recognize its target? Will this drug molecule reach its destination? Traditional deterministic models smooth over this randomness, missing the "what if" scenarios that can dramatically alter outcomes. ABM incorporates stochasticity at the individual agent level, generating the realistic variability observed in clinical practice.
-
-\textbf{Modularity: Evolution by Design}
-
-Biological systems are modular—new functionalities can be added without redesigning the entire system. ABM mirrors this modularity. Want to add a new immune cell type? Create a new agent class. Want to model drug resistance? Add resistance mechanisms to existing agents. Want to incorporate metabolic competition? Overlay a glucose field. This modularity has been crucial for the iterative development of our model, allowing us to add complexity gradually while maintaining a stable foundation.
+\begin{itemize}
+    \item \textbf{Heterogeneity.} Unlike equation-based models that track population-level averages, ABM represents each cell individually. In the present model, each tumor cell carries a unique 16-gene DNA sequence that determines its antigen presentation, proliferation potential, and susceptibility to immune attack. This cell-level heterogeneity is critical for capturing clonal evolution and immune escape.
+    \item \textbf{Spatial dynamics.} Agent positions in a 3D grid determine which cells can interact. Spatial phenomena such as immune exclusion zones around tumors, angiogenesis-driven vascular networks, and nutrient gradients emerge naturally from local interactions.
+    \item \textbf{Stochasticity.} Biological events---mitosis, apoptosis, antigen recognition, cytokine release---are inherently probabilistic. ABM incorporates stochasticity at the individual agent level, and ensemble statistics over multiple simulation runs capture the variability observed in clinical data.
+    \item \textbf{Modularity.} New agent types, interaction rules, or environmental layers (such as the glucose field introduced in this work) can be added without restructuring the entire model, facilitating iterative model development.
+\end{itemize}
 
 \subsection{The Repast4Py Framework}
 \label{subsec:bg_repast4py}
@@ -122,37 +88,16 @@ Serialization       & Not required            & \texttt{save()} / restore functi
 The port to Repast4Py required significant restructuring. In Mesa, neighbor queries are handled by the grid object directly (e.g., \texttt{grid.get\_neighbors()}). In the Repast4Py implementation, a custom \texttt{spatial\_index} dictionary maps grid positions to agent lists, and utility functions in \texttt{grid\_utils} provide 3D neighborhood queries, empty-cell detection, and Moore neighborhood enumeration. Additionally, Repast4Py requires explicit \texttt{save()} methods on agents for MPI serialization, and the model manages agent lifecycle (creation, movement, removal) through centralized methods on the \texttt{RCCModel} class rather than through Mesa's scheduler.
 
 % ============================================================================
-\section{The Immune System's War Against Cancer: RCC Immunology Decoded}
+\section{Immunology of Renal Cell Carcinoma}
 \label{sec:bg_immunology}
 % ============================================================================
 
-\subsection{Two Armies, One Mission}
+\subsection{Innate and Adaptive Immunity}
 \label{subsec:bg_innate_adaptive}
 
-The battle against cancer unfolds on two fronts, each with its own strengths and tactical approach. Understanding this dual response is crucial for modeling how immunotherapies work—and why they sometimes fail.
+The immune system's response to cancer involves both the innate and adaptive arms. Innate immunity provides a rapid, non-specific first line of defense through cells such as natural killer (NK) cells, macrophages, dendritic cells, mast cells, and neutrophils. Adaptive immunity, mediated primarily by T and B lymphocytes, provides antigen-specific responses that can be highly effective against tumors expressing recognizable neoantigens.
 
-\textbf{Innate Immunity: The Rapid Response Force}
-
-Think of innate immunity as the body's equivalent of first responders—police, firefighters, and emergency medical technicians who arrive first at any crisis. These cells don't need detailed briefings or specialized training; they recognize danger through ancient pattern-recognition systems and respond immediately.
-
-Natural killer (NK) cells patrol tissues looking for cells that have lost their "self" signals—the MHC class I molecules that mark healthy cells. When tumor cells downregulate these molecules to hide from T cells, they become visible to NK cells instead. It's a cellular game of whack-a-mole: hide from one immune arm, become vulnerable to another.
-
-Macrophages come in two flavors that reflect the immune system's conflicted relationship with cancer. M1 macrophages are the warriors—they engulf tumor cells, present their fragments to other immune cells, and secrete inflammatory signals that rally the immune response. M2 macrophages tell a different story: originally evolved to heal wounds and resolve inflammation, they can be co-opted by tumors to promote growth, build blood vessels, and suppress immune responses.
-
-Dendritic cells serve as the immune system's intelligence agency. They patrol tissues, sampling proteins from cells they encounter. When they find tumor-specific antigens, they race to nearby lymph nodes to brief T cells on what they've discovered. This antigen presentation is the crucial link between innate recognition and adaptive response.
-
-\begin{figure}[H]
-\centering
-\input{figures/immune_response_cascade}
-\caption{The immune response cascade in RCC. The battle begins with innate immune recognition (NK cells, macrophages, dendritic cells), progresses through antigen presentation and T cell activation, and culminates in coordinated effector responses. However, the tumor fights back with immunosuppressive mechanisms (Tregs, M2 macrophages), creating a dynamic battlefield where the balance of power determines patient outcomes. Cytokines coordinate responses across all phases.}
-\label{fig:immune_cascade}
-\end{figure>
-
-\textbf{Adaptive Immunity: The Elite Special Forces}
-
-While innate immunity provides rapid but non-specific responses, adaptive immunity brings precision and memory. T cells and B cells undergo extensive training in thymus and bone marrow, learning to distinguish friend from foe with exquisite specificity.
-
-In kidney cancer, the interplay between innate and adaptive immunity determines whether the immune system can mount an effective response. Dendritic cells bridge the two arms, capturing tumor antigens and presenting them to naive T cells. But this chain of communication has multiple failure points: tumors can hide their antigens, suppress dendritic cell function, or corrupt the T cell response itself.
+In the context of RCC, the interplay between innate and adaptive immunity is critical. Dendritic cells serve as the bridge between the two arms: they phagocytose tumor cells, process their antigens, and present them to naive T cells, thereby initiating adaptive responses. The effectiveness of this chain depends on the tumor's ability to present antigens (governed by MHC expression and the antigen-processing machinery) and the availability and activation state of T cells in the tumor neighborhood.
 
 \subsection{T Cell Subtypes}
 \label{subsec:bg_tcells}
@@ -232,37 +177,22 @@ RCC tumors employ multiple strategies to evade immune destruction, several of wh
 \end{enumerate}
 
 % ============================================================================
-\section{The Metabolic Battlefield: Why Glucose Matters in Cancer}
+\section{Tumor Metabolism}
 \label{sec:bg_metabolism}
 % ============================================================================
 
-\subsection{The Warburg Effect: Cancer's Metabolic Rebellion}
+\subsection{The Warburg Effect}
 \label{subsec:bg_warburg}
 
-In the 1920s, Otto Warburg made an observation that would fundamentally change how we understand cancer. He discovered that tumor cells, even when surrounded by oxygen, prefer to metabolize glucose through the inefficient process of glycolysis rather than the highly efficient oxidative phosphorylation used by normal cells \cite{warburg1956}.
+In 1956, Otto Warburg observed that cancer cells preferentially metabolize glucose through glycolysis rather than oxidative phosphorylation, even in the presence of adequate oxygen---a phenomenon now known as aerobic glycolysis or the Warburg effect \cite{warburg1956}. While glycolysis is far less efficient than oxidative phosphorylation in terms of ATP yield per glucose molecule (2 versus $\sim$36 ATP), it provides several advantages to rapidly proliferating tumor cells:
 
-This seemed crazy at first. Why would cancer cells choose a metabolic pathway that produces only 2 ATP molecules per glucose instead of the 36 ATP that normal cells generate? It was like choosing to walk everywhere when you have access to a Ferrari.
+\begin{itemize}[nosep]
+    \item Faster ATP production rate (glycolysis has a higher flux despite lower yield).
+    \item Generation of biosynthetic precursors (nucleotides, amino acids, lipids) for cell division.
+    \item Acidification of the microenvironment through lactate secretion, which inhibits immune cell function.
+\end{itemize}
 
-But cancer cells, it turns out, aren't optimizing for efficiency—they're optimizing for speed and flexibility. The Warburg effect provides several crucial advantages to rapidly growing tumors:
-
-\begin{tcolorbox}[colback=glucose!10, colframe=glucose!50, title=\textbf{The Warburg Advantage: Fast and Flexible}]
-\textbf{Speed:} Glycolysis produces ATP faster than oxidative phosphorylation, even though it produces less per glucose molecule. For rapidly dividing cells, rate matters more than efficiency.
-
-\textbf{Building blocks:} Glycolysis generates the biosynthetic precursors needed to build new cells—nucleotides for DNA, amino acids for proteins, lipids for membranes.
-
-\textbf{Acidification:} Lactate production acidifies the tumor microenvironment, impairing immune cell function and creating a hostile environment for tumor competitors.
-
-\textbf{Oxygen independence:} Glycolysis doesn't require oxygen, allowing tumor cells to survive in the poorly oxygenated core of solid tumors.
-\end{tcolorbox}
-
-\begin{figure}[H]
-\centering
-\input{figures/warburg_effect}
-\caption{The Warburg effect in normal versus cancer cells. Normal cells efficiently process glucose through oxidative phosphorylation in mitochondria, generating 36 ATP molecules per glucose and requiring oxygen. Cancer cells opt for the "fast food" approach—glycolysis produces only 2 ATP per glucose but operates much faster and doesn't require oxygen. The lactate byproduct acidifies the microenvironment, creating conditions that favor tumor growth while impairing immune function.}
-\label{fig:warburg_effect}
-\end{figure}
-
-In our model, this metabolic reprogramming drives spatial dynamics throughout the tumor microenvironment. Tumor cells consume glucose at rates up to 200 times higher than normal cells (\texttt{w\_glucose\_tumor\_consumption}), creating zones of metabolic starvation around tumor masses. These glucose-depleted regions become immune deserts—areas where T cells and NK cells lose their killing capacity not because of immune evasion, but simply because they lack the metabolic fuel needed for their effector functions.
+In the model, the Warburg effect is represented by a higher glucose consumption rate for tumor cells (\texttt{w\_glucose\_tumor\_consumption}) compared to immune cells (\texttt{w\_glucose\_immune\_consumption}). This differential consumption creates local glucose depletion around tumor masses, particularly in poorly vascularized regions.
 
 \subsection{Metabolic Competition in the TME}
 \label{subsec:bg_metabolic_competition}
@@ -293,114 +223,53 @@ In the model, glucose availability modulates immune cell behavior through two me
 \end{enumerate}
 
 % ============================================================================
-\section{Modern Cancer Treatment: Unleashing and Starving the Tumor}
+\section{Treatment Modalities}
 \label{sec:bg_treatments}
 % ============================================================================
 
-\subsection{Immune Checkpoint Inhibitors: Removing the Brakes}
+\subsection{Immune Checkpoint Inhibitors (ICI)}
 \label{subsec:bg_ici}
 
-Imagine if your car's brake pedal was stuck, preventing you from driving even when you desperately needed to get somewhere. That's essentially what happens to T cells in the tumor microenvironment. Cancer has evolved sophisticated molecular "brake pedals"—immune checkpoints—that prevent T cells from attacking tumor cells, even when they recognize them as foreign.
+Immune checkpoint inhibitors (ICIs) are monoclonal antibodies that block inhibitory receptor-ligand interactions on T cells, thereby restoring anti-tumor immune activity. In the context of RCC, the most clinically relevant checkpoint is the PD-1/PD-L1 axis \cite{pardoll2012}.
 
-The most important of these brakes in kidney cancer is the PD-1/PD-L1 pathway \cite{pardoll2012}. Tumor cells express PD-L1 (programmed death-ligand 1) on their surface like a molecular "don't shoot" sign. When this binds to PD-1 receptors on T cells, it delivers an inhibitory signal that essentially tells the T cell to stand down.
+Anti-PD-1 antibodies (e.g., nivolumab, pembrolizumab) bind to PD-1 on T cells, while anti-PD-L1 antibodies (e.g., avelumab, atezolizumab) bind to PD-L1 on tumor cells. In both cases, the inhibitory signal is blocked, allowing T cells to recognize and kill PD-L1-expressing tumor cells.
 
-\textbf{Breaking the Molecular Handshake}
+In the model, ICI treatment is implemented through three mechanisms, each applied with probability proportional to the drug's effectiveness parameter (\texttt{w\_ici\_effectiveness}):
 
-Immune checkpoint inhibitors (ICIs) work by blocking this inhibitory handshake. Anti-PD-1 antibodies (like nivolumab and pembrolizumab) bind to the PD-1 receptor on T cells, while anti-PD-L1 antibodies (like avelumab) bind to PD-L1 on tumor cells. Either way, the result is the same: the brake is released, and T cells can resume their tumor-killing mission.
+\begin{enumerate}[nosep]
+    \item \textbf{PD-1/PD-L1 blockade.} The \texttt{ICI\_effect} flag on tumor cells is set to \texttt{True}, causing \texttt{get\_PD1\_inhibition()} to return \texttt{False}---the tumor cell can no longer inhibit T cells through the PD-1 pathway.
+    \item \textbf{T cell reactivation.} The \texttt{t\_activation\_effect} of affected T cells is restored to 1.0, counteracting prior exhaustion from checkpoint engagement.
+    \item \textbf{Immune infiltration enhancement.} The \texttt{immune\_infiltration\_factor} of Th1, Th2, and mast cells is incremented, increasing the number of immune cells recruited per spawning event.
+\end{enumerate}
 
-\subsection{Tyrosine Kinase Inhibitors: Starving the Beast}
+\subsection{Tyrosine Kinase Inhibitors (TKI)}
 \label{subsec:bg_tki}
 
-While ICIs unleash the immune system, tyrosine kinase inhibitors (TKIs) take a different approach—they starve the tumor by cutting off its blood supply. Most kidney cancers begin with mutations in the VHL gene, which leads to overproduction of VEGF (vascular endothelial growth factor). VEGF acts like a "build more roads" signal, promoting the formation of new blood vessels that feed the growing tumor \cite{rini2019}.
+Tyrosine kinase inhibitors (TKIs) target the VEGF receptor signaling pathway, inhibiting angiogenesis and depriving the tumor of its blood supply. In ccRCC, where VEGF overexpression is driven by VHL loss, TKIs have been a cornerstone of treatment \cite{rini2019}.
 
-TKIs work by blocking VEGF receptors, essentially putting up roadblocks that prevent new blood vessel formation. Without adequate blood supply, tumors struggle to grow and may even begin to shrink.
+In the model, TKI treatment exerts three effects:
 
-\subsection{The Power of Combination: 1 + 1 = 3}
+\begin{enumerate}[nosep]
+    \item \textbf{Growth inhibition.} The \texttt{tumour\_growth\_effect} of affected tumor cells is reduced proportionally to the drug's effectiveness.
+    \item \textbf{Anti-angiogenesis.} The \texttt{angiogenesis\_effect} of affected tumor cells is similarly reduced, decreasing the probability of new blood vessel formation.
+    \item \textbf{Neoantigen release.} Tumor cells with the \texttt{TKI\_effect} flag set release neoantigens to nearby dendritic cells upon apoptosis, potentially enhancing subsequent adaptive immune responses---a mechanism that provides the immunological rationale for combining TKI with ICI.
+\end{enumerate}
+
+Additionally, TKI treatment reduces Treg differentiation by decreasing the \texttt{treg\_differentiation\_effect} of CD4$^+$ naive T cells, counteracting one of the tumor's immune evasion strategies.
+
+\subsection{Combination ICI+TKI Therapy}
 \label{subsec:bg_combination}
 
-Here's where cancer treatment gets interesting: combining ICI and TKI doesn't just add their effects—it multiplies them. This synergy has revolutionized kidney cancer treatment and forms the basis for current standard-of-care protocols \cite{rini2019, motzer2019}.
+The combination of ICI and TKI has emerged as the standard first-line treatment for advanced RCC, based on results from landmark clinical trials including KEYNOTE-426 \cite{rini2019} and JAVELIN Renal 101 \cite{motzer2019}. The rationale for combination therapy is synergistic: TKI reduces tumor burden and normalizes vasculature (improving immune cell access), while simultaneously releasing neoantigens that prime adaptive immunity; ICI then removes the PD-1/PD-L1 brake, allowing the primed immune system to mount an effective anti-tumor response.
 
-\begin{tcolorbox}[colback=treatment!10, colframe=treatment!50, title=\textbf{The Synergy Cascade}]
-\textbf{TKI sets the stage:} By blocking blood vessel formation, TKI reduces tumor burden and normalizes the chaotic tumor vasculature. Paradoxically, this creates better access routes for immune cells to infiltrate the tumor.
+The ARON-1 study \cite{santoni2024} extends this paradigm by investigating whether the optimal treatment strategy depends on patient sex, motivated by the observation that sex hormones differentially modulate both the tumor and the immune response. In the model, combination therapy is implemented by applying both \texttt{ICIDrug.step()} and \texttt{TKIDrug.step()} at each treatment step, with treatment initiation occurring at the step specified by the \texttt{treatment\_start} parameter.
 
-\textbf{TKI releases evidence:} When tumor cells die from TKI-induced starvation, they release their internal contents—including tumor-specific antigens that dendritic cells can capture and present to T cells.
-
-\textbf{ICI removes the brakes:} Just as the immune system is being primed by TKI-released antigens, ICI removes the PD-1/PD-L1 brake, allowing newly activated T cells to launch a full assault on remaining tumor cells.
-
-\textbf{Amplified response:} The result is an immune response that's both stronger and more sustained than either treatment alone could achieve.
-\end{tcolorbox}
-
-\begin{figure}[H]
-\centering
-\input{figures/treatment_mechanisms}
-\caption{Mechanisms of action for ICI, TKI, and combination therapy. \textbf{Left:} ICI blocks the PD-1/PD-L1 checkpoint, restoring T cell killing capacity and enhancing immune infiltration. \textbf{Middle:} TKI inhibits VEGF-mediated angiogenesis, starving tumors and normalizing vasculature. \textbf{Right:} Combination therapy achieves synergy—TKI releases tumor antigens while normalizing blood vessels for immune access, while ICI removes the brakes on T cell responses, creating an amplified anti-tumor effect that neither therapy achieves alone.}
-\label{fig:treatment_mechanisms}
-\end{figure}
-
-\textbf{Implementation in Our Model}
-
-Our computational framework captures these treatment mechanisms through multiple pathways:
-
-For ICI treatment:
+The model supports four treatment configurations:
 \begin{itemize}[nosep]
-    \item Direct PD-1/PD-L1 blockade prevents tumor-mediated T cell inhibition
-    \item T cell reactivation restores the killing capacity of exhausted immune cells  
-    \item Enhanced immune infiltration increases the number of tumor-fighting cells recruited to the site
+    \item \textbf{None}: No drug treatment (control/untreated arm).
+    \item \textbf{ICI}: Immune checkpoint inhibitor monotherapy.
+    \item \textbf{TKI}: Tyrosine kinase inhibitor monotherapy.
+    \item \textbf{ICI+TKI}: Combination immunotherapy and targeted therapy.
 \end{itemize}
 
-For TKI treatment:
-\begin{itemize}[nosep]
-    \item Growth inhibition directly reduces tumor cell proliferation rates
-    \item Anti-angiogenesis blocks new blood vessel formation, limiting nutrient supply
-    \item Neoantigen release from dying tumor cells primes adaptive immune responses
-    \item Reduced Treg differentiation counteracts immunosuppressive mechanisms
-\end{itemize}
-
-\textbf{The ARON-1 Connection}
-
-Our model goes beyond standard combination therapy to investigate a crucial clinical question: does the optimal treatment strategy depend on patient sex? The ARON-1 study \cite{santoni2024} provides real-world data showing that male and female patients respond differently to the same treatments—differences our model attributes to sex hormone effects on immune function.
-
-By implementing four treatment configurations (none, ICI alone, TKI alone, and ICI+TKI combination) and coupling them with our comprehensive sex hormone system, we can explore whether personalized treatment selection based on biological sex could improve outcomes for kidney cancer patients.
-
-% ============================================================================
-\section{Related Work in Computational Oncology}
-\label{sec:bg_related_work}
-% ============================================================================
-
-The computational modeling of cancer has evolved dramatically over the past two decades, from simple population-based models to sophisticated multi-scale simulations that capture cellular heterogeneity and spatial dynamics. Understanding how our work fits within this broader landscape is essential for appreciating its contributions and limitations.
-
-\subsection{Agent-Based Approaches to Tumor Modeling}
-
-Our work builds on a rich tradition of agent-based tumor modeling that began in earnest in the early 2000s. Macklin and colleagues pioneered multi-cellular tumor spheroid modeling \cite{macklin2012}, demonstrating how individual cell behaviors could generate complex tissue-scale phenomena. Their PhysiCell framework \cite{ghaffarizadeh2018} has become a cornerstone of the field, providing a flexible platform for modeling various cancer types.
-
-The HAL framework developed by Bravo et al. \cite{bravo2013} represents another major contribution, focusing specifically on hybrid cellular automaton approaches that combine discrete cellular dynamics with continuous fields for nutrients and signaling molecules. This hybrid approach directly inspired our glucose field implementation.
-
-More recently, Norton et al. \cite{norton2019} developed sophisticated agent-based models of breast cancer that incorporate detailed immune cell dynamics, while Wang and colleagues \cite{wang2015} focused on the role of cancer stem cells in driving tumor heterogeneity and treatment resistance.
-
-\subsection{Comparison to PDE-Based Approaches}
-
-While agent-based models excel at capturing cellular heterogeneity, traditional partial differential equation (PDE) approaches remain powerful for modeling aspects of cancer that can be well-approximated by population dynamics. The work of Anderson and Quaranta \cite{anderson2008} elegantly demonstrates how reaction-diffusion models can capture tumor invasion patterns and predict treatment outcomes in certain contexts.
-
-However, PDE approaches face fundamental limitations when confronting the discrete, stochastic nature of immune-tumor interactions. Our agent-based approach directly addresses these limitations by representing individual cells and their probabilistic behaviors, allowing phenomena like immune escape and clonal evolution to emerge naturally rather than being prescribed by population-level equations.
-
-\subsection{Previous Mesa-Based RCC Models}
-
-Our work directly extends the pioneering Mesa-based RCC model developed by Merelli et al. \cite{merelli2021} and refined by the MASL research group \cite{masl_paper_a}. These earlier models established the feasibility of agent-based approaches for kidney cancer, demonstrating that complex immune-tumor dynamics could be captured through relatively simple local interaction rules.
-
-However, these previous efforts faced significant computational constraints. Limited to single-processor execution and smaller grid sizes, they could only model tumor fragments rather than clinically relevant tumor volumes. Moreover, they lacked explicit metabolic modeling, instead using simplified resource availability proxies that didn't capture the spatial complexity of glucose competition.
-
-\subsection{What Distinguishes This Work}
-
-Our model advances the state of the art in several crucial dimensions:
-
-\textbf{Scale and Performance:} The migration to Repast4Py with MPI parallelism represents a quantum leap in computational capability. What previous models could simulate on desktop machines, our framework can scale to cluster-based execution, opening the door to million-cell simulations that approach clinically relevant scales.
-
-\textbf{Metabolic Realism:} The explicit 3D glucose field with Fick's diffusion modeling represents a significant advance in biological realism. Rather than using abstract "nutrient" resources, we model the actual metabolic competition between tumor cells (following the Warburg effect) and immune cells, capturing how spatial metabolic gradients shape cellular behavior.
-
-\textbf{Sex-Specific Analysis:} While previous computational cancer models have largely ignored patient sex as a biological variable, our comprehensive sex hormone system makes it a central focus. This reflects growing clinical recognition that male and female patients may require different treatment approaches.
-
-\textbf{Clinical Validation:} Perhaps most importantly, our model is directly calibrated against real clinical trial data from the ARON-1 study \cite{santoni2024}. This clinical grounding distinguishes our work from purely theoretical models and provides confidence that our predictions may translate to patient care.
-
-\textbf{Integration Complexity:} The simultaneous modeling of 18 agent types, continuous glucose fields, 16-gene mutation systems, dual treatment modalities, and sex hormone dynamics represents a level of integrative complexity that approaches the true biological complexity of cancer.
-
-This combination of computational innovation, biological realism, and clinical grounding positions our model as a significant step toward the ultimate goal of computational oncology: virtual patients that can guide personalized treatment decisions and accelerate therapeutic discovery.
+This treatment framework, combined with the sex hormone system described in Chapter~7, enables the model to investigate sex-stratified treatment responses---the central question of the ARON-1 study.

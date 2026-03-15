@@ -2,11 +2,11 @@
   level 1/.style={sibling distance=8cm, level distance=1.5cm},
   level 2/.style={sibling distance=2.5cm, level distance=2cm},
   level 3/.style={sibling distance=2cm, level distance=1.8cm},
-  node/.style={rectangle, rounded corners=3pt, minimum width=2.2cm, minimum height=0.8cm, text centered, draw=primary!70!black, font=\footnotesize, drop shadow},
-  abstract/.style={node, fill=neutral!20, dashed},
-  concrete/.style={node, fill=primary!10},
-  tcell/.style={node, fill=secondary!15},
-  other/.style={node, fill=accent!15}
+  node/.style={rectangle, rounded corners, minimum width=2.2cm, minimum height=0.8cm, text centered, draw=black, font=\footnotesize},
+  abstract/.style={node, fill=gray!20, dashed},
+  concrete/.style={node, fill=blue!10},
+  tcell/.style={node, fill=green!15},
+  other/.style={node, fill=orange!10}
 ]
 
 % Root
@@ -84,11 +84,11 @@
 \node[tcell] (th22) at (6, 0) {\texttt{CD4Helper2TCell}};
 
 % Connect TCell to its subclasses
-\draw[-{Stealth[length=2mm]}, primary] ([yshift=-0.1cm]tcell.south) -- (ctc2.north);
-\draw[-{Stealth[length=2mm]}, primary] ([yshift=-0.1cm]tcell.south) -- (cd8naive2.north);
-\draw[-{Stealth[length=2mm]}, primary] ([yshift=-0.1cm]tcell.south) -- (cd4naive2.north);
-\draw[-{Stealth[length=2mm]}, primary] ([yshift=-0.1cm]tcell.south) -- (th12.north);
-\draw[-{Stealth[length=2mm]}, primary] ([yshift=-0.1cm]tcell.south) -- (th22.north);
+\draw[->] ([yshift=-0.1cm]tcell.south) -- (ctc2.north);
+\draw[->] ([yshift=-0.1cm]tcell.south) -- (cd8naive2.north);
+\draw[->] ([yshift=-0.1cm]tcell.south) -- (cd4naive2.north);
+\draw[->] ([yshift=-0.1cm]tcell.south) -- (th12.north);
+\draw[->] ([yshift=-0.1cm]tcell.south) -- (th22.north);
 \end{scope}
 
 % Legend

@@ -1,16 +1,15 @@
 % Conceptual Overview Diagram for Chapter 1
 \begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}]
 
-% Define professional color palette
-\definecolor{patient}{RGB}{67, 56, 202}       % Indigo
-\definecolor{tumor}{RGB}{220,20,60}          % Crimson
-\definecolor{immune}{RGB}{16, 185, 129}      % Emerald  
-\definecolor{treatment}{RGB}{245, 158, 11}   % Amber
-\definecolor{prediction}{RGB}{138,43,226}    % Purple
-\definecolor{validation}{RGB}{249, 115, 22}  % Orange
+% Define colors
+\definecolor{patient}{RGB}{255,218,185}
+\definecolor{tumor}{RGB}{220,20,60}
+\definecolor{immune}{RGB}{30,144,255}
+\definecolor{treatment}{RGB}{34,139,34}
+\definecolor{prediction}{RGB}{138,43,226}
 
 % Patient input
-\node[draw, rounded corners=3pt, fill=patient!20, text width=3cm, text centered, drop shadow] (patient) at (0,8) {
+\node[draw, rounded corners, fill=patient, text width=3cm, text centered] (patient) at (0,8) {
     \textbf{Patient Input}\\
     • Sex (M/F)\\
     • BMI\\
@@ -19,7 +18,7 @@
 };
 
 % Simulation layer
-\node[draw, rounded corners=3pt, fill=immune!10, text width=12cm, text centered, minimum height=6cm, drop shadow] (simulation) at (6,5) {
+\node[draw, rounded corners, fill=blue!10, text width=12cm, text centered, minimum height=6cm] (simulation) at (6,5) {
     \textbf{Agent-Based Simulation}\\
     \vspace{0.3cm}
     \begin{minipage}{11cm}
@@ -29,15 +28,15 @@
 };
 
 % Tumor cells
-\node[draw, circle, fill=tumor, text=white, drop shadow] (tumor1) at (3,6) {TC};
-\node[draw, circle, fill=tumor, text=white, drop shadow] (tumor2) at (3.5,5.5) {TC};
-\node[draw, circle, fill=tumor, text=white, drop shadow] (tumor3) at (2.5,5.5) {TC};
+\node[draw, circle, fill=tumor, text=white] (tumor1) at (3,6) {TC};
+\node[draw, circle, fill=tumor, text=white] (tumor2) at (3.5,5.5) {TC};
+\node[draw, circle, fill=tumor, text=white] (tumor3) at (2.5,5.5) {TC};
 
 % Immune cells
-\node[draw, circle, fill=immune, text=white, drop shadow] (tcell1) at (5,6.5) {CTL};
-\node[draw, circle, fill=immune, text=white, drop shadow] (tcell2) at (5.5,6) {NK};
-\node[draw, circle, fill=immune, text=white, drop shadow] (macro) at (4.5,5.5) {M1};
-\node[draw, circle, fill=immune, text=white, drop shadow] (dc) at (6,5.5) {DC};
+\node[draw, circle, fill=immune, text=white] (tcell1) at (5,6.5) {CTL};
+\node[draw, circle, fill=immune, text=white] (tcell2) at (5.5,6) {NK};
+\node[draw, circle, fill=immune, text=white] (macro) at (4.5,5.5) {M1};
+\node[draw, circle, fill=immune, text=white] (dc) at (6,5.5) {DC};
 
 % Blood vessels
 \draw[line width=3pt, bloodvessel] (1.5,4.5) -- (8.5,4.5);
@@ -50,7 +49,7 @@
 \node[glucose] at (8,3.5) {Glucose Field};
 
 % Treatment input
-\node[draw, rounded corners=3pt, fill=treatment!20, text width=3cm, text centered, drop shadow] (treatment_input) at (0,2) {
+\node[draw, rounded corners, fill=treatment!20, text width=3cm, text centered] (treatment_input) at (0,2) {
     \textbf{Treatment}\\
     • ICI\\
     • TKI\\
@@ -59,7 +58,7 @@
 };
 
 % Outcomes
-\node[draw, rounded corners=3pt, fill=prediction!20, text width=4cm, text centered, drop shadow] (outcomes) at (12,8) {
+\node[draw, rounded corners, fill=prediction!20, text width=4cm, text centered] (outcomes) at (12,8) {
     \textbf{Predicted Outcomes}\\
     • Survival Probability\\
     • Treatment Response\\
@@ -68,23 +67,23 @@
 };
 
 % ARON-1 validation
-\node[draw, rounded corners=3pt, fill=validation!20, text width=3cm, text centered, drop shadow] (aron1) at (12,2) {
+\node[draw, rounded corners, fill=yellow!20, text width=3cm, text centered] (aron1) at (12,2) {
     \textbf{ARON-1 Study}\\
     Clinical Data\\
     Validation\\
     Calibration
 };
 
-% Arrows with professional styling
-\draw[-{Stealth[length=3mm]}, thick, patient] (patient) -- (simulation);
-\draw[-{Stealth[length=3mm]}, thick, treatment] (treatment_input) -- (simulation);
-\draw[-{Stealth[length=3mm]}, thick, prediction] (simulation) -- (outcomes);
-\draw[-{Stealth[length=3mm]}, thick, dashed, validation] (aron1) -- (simulation);
+% Arrows
+\draw[->, thick] (patient) -- (simulation);
+\draw[->, thick] (treatment_input) -- (simulation);
+\draw[->, thick] (simulation) -- (outcomes);
+\draw[->, thick, dashed] (aron1) -- (simulation);
 
 % Add interaction arrows between agents
-\draw[-{Stealth[length=2mm]}, tumor, thick] (tcell1) -- (tumor1);
-\draw[-{Stealth[length=2mm]}, tumor, thick] (tcell2) -- (tumor2);
-\draw[-{Stealth[length=2mm]}, immune, dashed] (dc) -- (tcell1);
+\draw[->, red, thick] (tcell1) -- (tumor1);
+\draw[->, red, thick] (tcell2) -- (tumor2);
+\draw[->, blue, dashed] (dc) -- (tcell1);
 
 % Add title
 \node[text width=14cm, text centered] at (6,10) {

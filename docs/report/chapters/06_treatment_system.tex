@@ -1,20 +1,7 @@
 \chapter{Treatment System}
 \label{ch:treatment}
 
-\begin{tcolorbox}[colback=treatment!10, colframe=treatment!50, title=\textbf{Digital Therapeutics}]
-\textit{How do you model a drug that doesn't exist yet? How do you test combination therapies that would take decades to validate clinically? This chapter reveals how our treatment system transforms pharmaceutical mechanisms into computational interventions, enabling virtual clinical trials that can explore therapeutic landscapes impossible to navigate in the real world.}
-\end{tcolorbox}
-
-The modern treatment of kidney cancer represents one of medicine's great success stories—the transformation of a universally fatal disease into one where many patients achieve long-term survival. This revolution came through understanding two key principles: unleashing the immune system's natural cancer-fighting ability, and cutting off the tumor's blood supply.
-
-Our treatment system captures both strategies through detailed modeling of immune checkpoint inhibitors (ICIs) and tyrosine kinase inhibitors (TKIs), along with their synergistic combination. But this isn't just about implementing known drugs—it's about creating a platform for exploring future therapeutic possibilities.
-
-\begin{figure}[H]
-\centering
-\input{figures/treatment_mechanisms}
-\caption{Comprehensive treatment mechanisms across ICI, TKI, and combination therapy. \textbf{Left panel:} ICI therapy blocks the PD-1/PD-L1 checkpoint interaction, preventing tumor-mediated immune suppression and reactivating exhausted T cells. \textbf{Middle panel:} TKI therapy targets VEGF-mediated angiogenesis, disrupting tumor blood supply while releasing neoantigens for immune presentation. \textbf{Right panel:} Combination therapy achieves synergy—TKI creates optimal conditions for immune infiltration while releasing tumor antigens, then ICI removes the brakes on immune responses, resulting in enhanced anti-tumor activity that exceeds either monotherapy alone.}
-\label{fig:treatment_mechanisms}
-\end{figure>
+This chapter describes the pharmacological treatment layer of the model, which simulates Immune Checkpoint Inhibitors (ICI), Tyrosine Kinase Inhibitors (TKI), and their combination.  The treatment system is activated after a configurable number of simulation steps and modulates tumor and immune cell behaviors through drug-specific mechanisms.
 
 %% ====================================================================
 \section{Drug Architecture}
