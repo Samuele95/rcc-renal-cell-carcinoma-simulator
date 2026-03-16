@@ -9,31 +9,31 @@
 ]
 
 % Main pipeline flow (vertical)
-\node[databox] (collect) at (0, 8) {\textbf{1. Collect Data}\\Population counts\\Glucose statistics};
+\node[databox] (collect) at (0, 8) {\textbf{1. Collect Data}\par Population counts\par Glucose statistics};
 
-\node[decision] (terminate) at (0, 6.5) {\textbf{2. Check}\\Termination\\Conditions};
+\node[decision] (terminate) at (0, 6.5) {\textbf{2. Check}\par Termination\par Conditions};
 
-\node[processbox] (effects) at (0, 5) {\textbf{3. Apply Effects}\\Collect \& sum\\neighbor effects};
+\node[processbox] (effects) at (0, 5) {\textbf{3. Apply Effects}\par Collect \& sum\par neighbor effects};
 
-\node[controlbox] (treatment) at (0, 3.5) {\textbf{4. Treatment}\\ICI \& TKI\\drug effects};
+\node[controlbox] (treatment) at (0, 3.5) {\textbf{4. Treatment}\par ICI \& TKI\par drug effects};
 
-\node[controlbox] (sexdrift) at (0, 2) {\textbf{5. Sex Drift}\\CD8+ modulation\\by sex};
+\node[controlbox] (sexdrift) at (0, 2) {\textbf{5. Sex Drift}\par CD8+ modulation\par by sex};
 
-\node[processbox] (glucose) at (0, 0.5) {\textbf{6. Glucose Step}\\Diffusion \& decay\\Blood injection};
+\node[processbox] (glucose) at (0, 0.5) {\textbf{6. Glucose Step}\par Diffusion \& decay\par Blood injection};
 
-\node[processbox] (blood) at (0, -1) {\textbf{7. Manage Blood}\\Angiogenesis\\BFS refresh};
+\node[processbox] (blood) at (0, -1) {\textbf{7. Manage Blood}\par Angiogenesis\par BFS refresh};
 
-\node[processbox] (search) at (0, -2.5) {\textbf{8. Search Dimension}\\Update cell\\search radius};
+\node[processbox] (search) at (0, -2.5) {\textbf{8. Search Dimension}\par Update cell\par search radius};
 
-\node[agentbox] (agents) at (0, -4) {\textbf{9. Agent Steps}\\Individual agent\\behaviors (shuffled)};
+\node[agentbox] (agents) at (0, -4) {\textbf{9. Agent Steps}\par Individual agent\par behaviors (shuffled)};
 
-\node[agentbox] (move) at (0, -5.5) {\textbf{10. Deferred Move}\\Batch movement\\Update positions};
+\node[agentbox] (move) at (0, -5.5) {\textbf{10. Deferred Move}\par Batch movement\par Update positions};
 
-\node[controlbox] (hormones) at (0, -7) {\textbf{11. Spawn Hormones}\\Sex hormone\\generation};
+\node[controlbox] (hormones) at (0, -7) {\textbf{11. Spawn Hormones}\par Sex hormone\par generation};
 
 % Terminal paths
-\node[controlbox] (log) at (4, 6.5) {\textbf{Write Log}\\\textbf{Terminate}};
-\node[controlbox] (continue) at (-4, 5) {\textbf{Next Step}\\$t \leftarrow t+1$};
+\node[controlbox] (log) at (4, 6.5) {\textbf{Write Log}\par\textbf{Terminate}};
+\node[controlbox] (continue) at (-4, 5) {\textbf{Next Step}\par$t \leftarrow t+1$};
 
 % Main flow arrows
 \draw[arrow] (collect) -- (terminate);
@@ -59,29 +59,29 @@
 \begin{scope}[xshift=6cm]
 % Data collection details
 \node[text width=3cm, font=\tiny, fill=gray!5, rounded corners, draw] at (0, 8) {
-\textbf{Data collected:}\\
-• Agent counts by type\\
-• Glucose: mean, min, max\\
-• Kill statistics\\
+\textbf{Data collected:}\par
+• Agent counts by type\par
+• Glucose: mean, min, max\par
+• Kill statistics\par
 • Growth rates
 };
 
 % Termination conditions
 \node[text width=3cm, font=\tiny, fill=gray!5, rounded corners, draw] at (0, 6) {
-\textbf{Terminal conditions:}\\
-• Max steps reached\\
-• Tumor eliminated\\
-• Tumor $>$ threshold\\
+\textbf{Terminal conditions:}\par
+• Max steps reached\par
+• Tumor eliminated\par
+• Tumor $>$ threshold\par
 • Growth rate $>$ limit
 };
 
 % Agent behaviors
 \node[text width=3cm, font=\tiny, fill=gray!5, rounded corners, draw] at (0, -4) {
-\textbf{Agent behaviors:}\\
-• Move towards targets\\
-• Kill/proliferate\\
-• Differentiate\\
-• Apply hormones\\
+\textbf{Agent behaviors:}\par
+• Move towards targets\par
+• Kill/proliferate\par
+• Differentiate\par
+• Apply hormones\par
 • Set desired position
 };
 \end{scope}
@@ -89,20 +89,20 @@
 % Parallel processes annotation
 \begin{scope}[xshift=-6cm]
 \node[text width=3cm, font=\tiny, fill=gray!5, rounded corners, draw] at (0, 0) {
-\textbf{Glucose field:}\\
-• 3D diffusion (PDE)\\
-• Blood injection\\
-• Cell consumption\\
-• Natural decay\\
+\textbf{Glucose field:}\par
+• 3D diffusion (PDE)\par
+• Blood injection\par
+• Cell consumption\par
+• Natural decay\par
 • Gradient computation
 };
 
 \node[text width=3cm, font=\tiny, fill=gray!5, rounded corners, draw] at (0, -2.5) {
-\textbf{Spatial management:}\\
-• Moore neighborhoods\\
-• 3D distance queries\\
-• BFS from blood vessels\\
-• Deferred movement\\
+\textbf{Spatial management:}\par
+• Moore neighborhoods\par
+• 3D distance queries\par
+• BFS from blood vessels\par
+• Deferred movement\par
 • Collision handling
 };
 \end{scope}

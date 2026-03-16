@@ -7,22 +7,22 @@
 ]
 
 % Main model
-\node[mainbox] (model) at (0, 0) {\textbf{RCCModel}\\\footnotesize Main controller\\Repast4Py model};
+\node[mainbox] (model) at (0, 0) {\textbf{RCCModel}\par\footnotesize Main controller\par Repast4Py model};
 
 % Core components
-\node[component] (glucose) at (-4, 2.5) {\textbf{GlucoseField}\\3D diffusion\\Warburg effect};
-\node[component] (adder) at (-4, 0) {\textbf{CellAdder}\\Agent spawning\\Initialization};
-\node[component] (observer) at (-4, -2.5) {\textbf{Observer}\\Data collection\\Logging};
+\node[component] (glucose) at (-4, 2.5) {\textbf{GlucoseField}\par 3D diffusion\par Warburg effect};
+\node[component] (adder) at (-4, 0) {\textbf{CellAdder}\par Agent spawning\par Initialization};
+\node[component] (observer) at (-4, -2.5) {\textbf{Observer}\par Data collection\par Logging};
 
-\node[component] (treatment) at (4, 2.5) {\textbf{Treatment}\\ICI \& TKI\\Drug effects};
-\node[component] (spatial) at (4, 0) {\textbf{SpatialIndex}\\3D queries\\Neighbors};
-\node[component] (grid) at (4, -2.5) {\textbf{SharedGrid}\\Agent positions\\3D space};
+\node[component] (treatment) at (4, 2.5) {\textbf{Treatment}\par ICI \& TKI\par Drug effects};
+\node[component] (spatial) at (4, 0) {\textbf{SpatialIndex}\par 3D queries\par Neighbors};
+\node[component] (grid) at (4, -2.5) {\textbf{SharedGrid}\par Agent positions\par 3D space};
 
 % Data structures
-\node[data] (params) at (0, 3.5) {Parameters\\(YAML)};
-\node[data] (effects) at (-7, 0) {Effects\\System};
-\node[data] (agents) at (0, -4) {Agent\\Context};
-\node[data] (logs) at (7, 0) {Logs \&\\Output};
+\node[data] (params) at (0, 3.5) {Parameters\par(YAML)};
+\node[data] (effects) at (-7, 0) {Effects\par System};
+\node[data] (agents) at (0, -4) {Agent\par Context};
+\node[data] (logs) at (7, 0) {Logs \&\par Output};
 
 % Arrows - Data flow
 \draw[arrow] (params) -- (model);

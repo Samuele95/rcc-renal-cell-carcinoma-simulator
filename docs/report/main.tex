@@ -27,6 +27,7 @@
 \usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,calc,decorations.pathmorphing,shapes.symbols,shadows}
 \usepackage{xcolor}
 \usepackage{mdframed}
+\usepackage{adjustbox}
 
 % New packages for beautiful formatting
 \usepackage{fancyhdr}      % Professional headers/footers
@@ -138,7 +139,7 @@
 % Listing style
 \lstset{
   language=Python,
-  basicstyle=\footnotesize\ttfamily,
+  basicstyle=\ttfamily\small,
   keywordstyle=\color{blue}\bfseries,
   stringstyle=\color{red!70!black},
   commentstyle=\color{green!60!black}\itshape,
@@ -150,6 +151,8 @@
   frame=single,
   rulecolor=\color{gray!30},
   breaklines=true,
+  breakatwhitespace=true,
+  columns=flexible,
   captionpos=b,
   tabsize=4,
   showstringspaces=false
@@ -161,6 +164,15 @@
   citecolor=green!50!black,
   urlcolor=blue!60!black
 }
+
+% More generous float placement
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.10}
+\renewcommand{\floatpagefraction}{0.70}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{3}
+\setcounter{totalnumber}{6}
 
 \begin{document}
 

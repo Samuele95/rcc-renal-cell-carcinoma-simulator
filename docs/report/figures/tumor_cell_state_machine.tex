@@ -8,74 +8,74 @@
 
 % States
 \node[state, fill=tumorcell!20] (quiescent) at (0,0) {
-    \textbf{Quiescent}\\
-    Low metabolism\\
+    \textbf{Quiescent}\par
+    Low metabolism\par
     Dormant
 };
 
 \node[state, fill=tumorcell!40] (active) at (6,0) {
-    \textbf{Active}\\
-    High glucose\\
+    \textbf{Active}\par
+    High glucose\par
     consumption
 };
 
 \node[state, fill=tumorcell!60] (dividing) at (12,0) {
-    \textbf{Dividing}\\
-    DNA replication\\
+    \textbf{Dividing}\par
+    DNA replication\par
     Mitosis
 };
 
 \node[state, fill=tumorcell!80] (aggressive) at (6,-4) {
-    \textbf{Aggressive}\\
-    Angiogenesis\\
+    \textbf{Aggressive}\par
+    Angiogenesis\par
     Invasion
 };
 
 \node[state, fill=red!80] (apoptotic) at (0,-8) {
-    \textbf{Apoptotic}\\
-    Cell death\\
+    \textbf{Apoptotic}\par
+    Cell death\par
     pathway
 };
 
 % Decision points
 \node[decision, fill=yellow!50] (growth_check) at (3,2) {
-    Growth\\
+    Growth\par
     signals?
 };
 
 \node[decision, fill=yellow!50] (division_check) at (9,2) {
-    Ready to\\
+    Ready to\par
     divide?
 };
 
 \node[decision, fill=yellow!50] (stress_check) at (9,-2) {
-    Stress\\
+    Stress\par
     signals?
 };
 
 \node[decision, fill=yellow!50] (immune_check) at (3,-6) {
-    Immune\\
+    Immune\par
     attack?
 };
 
 % Actions
 \node[action, fill=green!30] (consume_glucose) at (6,3) {
-    Consume\\
+    Consume\par
     Glucose
 };
 
 \node[action, fill=green!30] (duplicate) at (12,3) {
-    Create\\
+    Create\par
     Daughter Cell
 };
 
 \node[action, fill=orange!30] (angiogenesis) at (9,-5) {
-    Promote\\
+    Promote\par
     Angiogenesis
 };
 
 \node[action, fill=purple!30] (pd_l1) at (3,-3) {
-    Express\\
+    Express\par
     PD-L1
 };
 
@@ -129,21 +129,21 @@
 
 % Legend
 \node[draw, rounded corners, fill=white, text width=3.5cm] at (-3,3) {
-    \textbf{Legend}\\
-    \textcolor{tumorcell}{\textbullet} Cellular States\\
-    \textcolor{yellow!50}{\textbullet} Decision Points\\
-    \textcolor{green!30}{\textbullet} Actions\\
+    \textbf{Legend}\par
+    \textcolor{tumorcell}{\textbullet} Cellular States\par
+    \textcolor{yellow!50}{\textbullet} Decision Points\par
+    \textcolor{green!30}{\textbullet} Actions\par
     \textcolor{red}{—} Death Pathways
 };
 
 % Parameter influences
 \node[draw, rounded corners, fill=blue!10, text width=4cm] at (15,1) {
-    \textbf{Key Parameters}\\
-    • \texttt{tumour\_growth\_effect}\\
-    • \texttt{tumour\_apoptosis\_effect}\\
-    • \texttt{angiogenesis\_effect}\\
-    • DNA mutation profile\\
-    • Glucose availability\\
+    \textbf{Key Parameters}\par
+    • \texttt{tumour\_growth\_effect}\par
+    • \texttt{tumour\_apoptosis\_effect}\par
+    • \texttt{angiogenesis\_effect}\par
+    • DNA mutation profile\par
+    • Glucose availability\par
     • Blood access
 };
 
