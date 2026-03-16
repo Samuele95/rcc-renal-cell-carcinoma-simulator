@@ -1,6 +1,8 @@
 \chapter{DNA and Mutation System}
 \label{ch:dna}
 
+\epigraph{Nothing in biology makes sense except in the light of evolution.}{--- Theodosius Dobzhansky}
+
 This chapter describes the gene-level representation used by tumor cells in the model.  The DNA system encodes 16 cancer-relevant genes, supports codon-level translation, introduces mutations during cell division with genomic-instability-dependent rates, and derives phenotypic parameters that govern tumor behavior and immune evasion.
 
 %% ====================================================================
@@ -143,6 +145,13 @@ n_{\text{injected}} = \begin{cases} 3 & \text{if sex = Male,} \\ 1 & \text{if se
 %% ====================================================================
 \section{Gene Expression and Phenotypic Effects}
 \label{sec:gene-expression}
+
+\begin{figure}[htbp]
+\centering
+\resizebox{0.85\textwidth}{!}{\input{figures/tumor_cell_state_machine.tex}}
+\caption{State machine diagram of tumor cell lifecycle}
+\label{fig:tumor_cell_state_machine}
+\end{figure}
 
 Each gene's contribution to tumor phenotype is determined by two quantities: promoter expression and mutation score.
 

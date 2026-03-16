@@ -9,6 +9,13 @@ This chapter examines the architectural decisions, design patterns, and implemen
 \section{Architectural Philosophy: Beyond Framework Features}
 \label{sec:architecture-philosophy}
 
+\begin{figure}[htbp]
+\centering
+\resizebox{0.85\textwidth}{!}{\input{figures/architecture_overview.tex}}
+\caption{Software architecture overview of the RCC simulation system}
+\label{fig:architecture_overview}
+\end{figure}
+
 The transition from Mesa to Repast4Py exemplifies a fundamental principle in scientific software engineering: framework selection reflects not just current requirements but anticipated scaling challenges that may only emerge after years of model development. This decision embodies the tension between immediate development velocity and long-term architectural flexibility---a trade-off that permeates every aspect of the implementation.
 
 The choice of Repast4Py over Mesa was driven by three architectural imperatives that transcend simple feature comparison. First, the \textbf{dimensionality constraint}: tumor microenvironments are inherently three-dimensional systems where spatial relationships determine biological outcomes. Mesa's 2D-centric grid design would have forced either biological oversimplification or expensive architectural retrofitting. Second, the \textbf{parallelism imperative}: as model complexity increases, single-threaded execution becomes the bottleneck that prevents exploration of biologically relevant parameter spaces or tissue volumes. Repast4Py's MPI-native architecture provides a path to distributed computing without fundamental redesign. Third, the \textbf{data coupling challenge}: biological systems exhibit tight coupling between discrete agents and continuous fields (glucose, cytokines, mechanical forces), requiring seamless integration between agent frameworks and scientific computing libraries.
@@ -62,6 +69,13 @@ The most consequential difference for this project is the parallelism model. Mes
 \section{Simulation Orchestration: The Main Event Loop}
 \label{sec:simulation-orchestration}
 
+\begin{figure}[htbp]
+\centering
+\resizebox{0.85\textwidth}{!}{\input{figures/simulation_pipeline.tex}}
+\caption{Simulation execution pipeline}
+\label{fig:simulation_pipeline}
+\end{figure}
+
 The heart of the system lies in the main simulation loop, which orchestrates the complex interplay between field dynamics, agent behaviors, and system-level state updates. This loop embodies a carefully designed sequence that respects biological causality while optimizing computational efficiency.
 
 \begin{lstlisting}[caption={Main simulation step sequence from \texttt{rcc\_model.py}.}, label={lst:main-loop}]
@@ -104,6 +118,13 @@ def step(self):
 This sequence reflects deep biological insights encoded as computational constraints. Data collection occurs first to capture the system state before any modifications, ensuring measurement consistency. Effect propagation precedes agent stepping to simulate the instantaneous nature of cell-cell signaling, while glucose field updates occur before agent consumption to model the continuous nature of diffusion relative to cellular metabolism. The random shuffling of agents before stepping prevents systematic bias from execution order, maintaining the symmetry assumptions underlying the biological model.
 
 \subsection{Architectural Modularity}
+
+\begin{figure}[htbp]
+\centering
+\resizebox{0.85\textwidth}{!}{\input{figures/model_architecture.tex}}
+\caption{Model architecture showing component relationships}
+\label{fig:model_architecture}
+\end{figure}
 
 \begin{lstlisting}[language={}, caption={Project directory tree.}, label={lst:project-tree}, basicstyle=\ttfamily\footnotesize, numbers=none, frame=single]
 rcc_repast4py/

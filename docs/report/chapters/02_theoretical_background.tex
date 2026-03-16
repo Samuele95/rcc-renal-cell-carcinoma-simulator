@@ -89,6 +89,13 @@ Serialization       & Not required            & \texttt{save()} / restore functi
 
 The port to Repast4Py required significant restructuring. In Mesa, neighbor queries are handled by the grid object directly (e.g., \texttt{grid.get\_neighbors()}). In the Repast4Py implementation, a custom \texttt{spatial\_index} dictionary maps grid positions to agent lists, and utility functions in \texttt{grid\_utils} provide 3D neighborhood queries, empty-cell detection, and Moore neighborhood enumeration. Additionally, Repast4Py requires explicit \texttt{save()} methods on agents for MPI serialization, and the model manages agent lifecycle (creation, movement, removal) through centralized methods on the \texttt{RCCModel} class rather than through Mesa's scheduler.
 
+\begin{figure}[htbp]
+\centering
+\resizebox{0.85\textwidth}{!}{\input{figures/abm_vs_ode.tex}}
+\caption{Comparison of agent-based and equation-based modeling paradigms}
+\label{fig:abm_vs_ode}
+\end{figure}
+
 % ============================================================================
 \section{Immunology of Renal Cell Carcinoma}
 \label{sec:bg_immunology}

@@ -73,6 +73,7 @@
 \foreach \x in {4,5,6,7,9,10,11,12} {
     \foreach \y in {6.5,7,7.5,8} {
         \pgfmathsetmacro{\intensity}{100-10*sqrt((\x-2)^2 + (\y-8)^2)}
+        \pgfmathsetmacro{\intensity}{max(0,min(100,\intensity))}
         \ifnum\intensity>0
             \fill[glucose!\intensity] (\x,\y) circle (0.1);
         \fi

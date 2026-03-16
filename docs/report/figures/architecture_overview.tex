@@ -11,30 +11,30 @@
 
 % Title
 \node[text width=20cm, text centered] at (10,16) {
-    \Huge\textbf{RCC Model Architecture: From Hardware to User Interface}
+    \Large\textbf{RCC Model Architecture: From Hardware to User Interface}
 };
 
 % Layer 1: Hardware (bottom)
 \node[draw, rounded corners, fill=hardware!20, text width=18cm, minimum height=2cm, text centered] at (10,1.5) {
     \textbf{\Large Hardware Layer}\\[0.3cm]
-    MPI Cluster • Multi-core CPUs • Distributed Memory • Network Interconnect\\
-    OpenMPI • Process Communication • Load Balancing
+    MPI Cluster , Multi-core CPUs , Distributed Memory , Network Interconnect\\
+    OpenMPI , Process Communication , Load Balancing
 };
 
 % Layer 2: Framework
 \node[draw, rounded corners, fill=framework!20, text width=16cm, minimum height=2.5cm, text centered] at (10,4.5) {
     \textbf{\Large Framework Layer (Repast4Py)}\\[0.3cm]
-    SharedContext • SharedGrid • MPI Communication • Agent Serialization\\
-    Schedule Runner • Distributed Spatial Queries • Ghost Agent Sync\\
-    Python Integration • NumPy/SciPy Bridge
+    SharedContext , SharedGrid , MPI Communication , Agent Serialization\\
+    Schedule Runner , Distributed Spatial Queries , Ghost Agent Sync\\
+    Python Integration , NumPy/SciPy Bridge
 };
 
 % Layer 3: Core Model
 \node[draw, rounded corners, fill=core!20, text width=14cm, minimum height=2.5cm, text centered] at (10,7.5) {
     \textbf{\Large Core Model Layer}\\[0.3cm]
-    RCCModel Class • Agent Factory • Spatial Index • Grid Utils\\
-    Model.step() • Terminal Conditions • Data Collection\\
-    Parameter Management • Random Seeding
+    RCCModel Class , Agent Factory , Spatial Index , Grid Utils\\
+    Model.step() , Terminal Conditions , Data Collection\\
+    Parameter Management , Random Seeding
 };
 
 % Layer 4: Systems
@@ -103,37 +103,37 @@
 % MPI Communication detail
 \node[draw, rounded corners, fill=hardware!30, text width=3.5cm] at (1,4) {
     \textbf{MPI Details}\\
-    • rank 0 coordination\\
-    • ghost cell sync\\
-    • collective operations\\
-    • distributed RNG
+    , rank 0 coordination\\
+    , ghost cell sync\\
+    , collective operations\\
+    , distributed RNG
 };
 
 % Agent serialization detail
 \node[draw, rounded corners, fill=framework!30, text width=3.5cm] at (19,4) {
     \textbf{Agent Serialization}\\
-    • save() methods\\
-    • state preservation\\
-    • cross-rank moves\\
-    • lifecycle mgmt
+    , save() methods\\
+    , state preservation\\
+    , cross-rank moves\\
+    , lifecycle mgmt
 };
 
 % Spatial index detail
 \node[draw, rounded corners, fill=core!30, text width=3.5cm] at (1,10.5) {
     \textbf{Spatial Index}\\
-    • dict\{pos: [agents]\}\\
-    • Moore neighborhood\\
-    • O(1) lookups\\
-    • 3D coordinates
+    , dict\{pos: [agents]\}\\
+    , Moore neighborhood\\
+    , O(1) lookups\\
+    , 3D coordinates
 };
 
 % Performance optimization
 \node[draw, rounded corners, fill=systems!30, text width=3.5cm] at (19,10.5) {
     \textbf{Performance}\\
-    • dict over list\\
-    • deferred moves\\
-    • vectorized ops\\
-    • memory pooling
+    , dict over list\\
+    , deferred moves\\
+    , vectorized ops\\
+    , memory pooling
 };
 
 % Memory usage indicator
@@ -144,21 +144,21 @@
 % Data structures
 \node[draw, rounded corners, fill=purple!10, text width=6cm] at (5,0.5) {
     \textbf{Key Data Structures}\\
-    • \texttt{SharedContext} (agent container)\\
-    • \texttt{SharedGrid} (spatial projection)\\
-    • \texttt{spatial\_index} (dict mapping)\\
-    • \texttt{glucose\_field} (3D numpy array)\\
-    • \texttt{Effect} (paracrine signals)
+    , \texttt{SharedContext} (agent container)\\
+    , \texttt{SharedGrid} (spatial projection)\\
+    , \texttt{spatial\_index} (dict mapping)\\
+    , \texttt{glucose\_field} (3D numpy array)\\
+    , \texttt{Effect} (paracrine signals)
 };
 
 % Threading model
 \node[draw, rounded corners, fill=green!10, text width=6cm] at (15,0.5) {
     \textbf{Execution Model}\\
-    • Single-threaded per rank\\
-    • MPI parallelism across ranks\\
-    • Synchronized time stepping\\
-    • Collective communication\\
-    • Deterministic with seeding
+    , Single-threaded per rank\\
+    , MPI parallelism across ranks\\
+    , Synchronized time stepping\\
+    , Collective communication\\
+    , Deterministic with seeding
 };
 
 % Arrows to detail boxes
@@ -183,7 +183,5 @@
     OpenMPI 4.0\\
     Optuna ML
 };
-
-\end{tikzpicture}
 
 \end{tikzpicture}

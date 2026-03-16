@@ -1,11 +1,20 @@
 \chapter{Treatment System}
 \label{ch:treatment}
 
+\epigraph{The art of medicine consists of amusing the patient while nature cures the disease.}{--- Voltaire}
+
 This chapter describes the pharmacological treatment layer of the model, which simulates Immune Checkpoint Inhibitors (ICI), Tyrosine Kinase Inhibitors (TKI), and their combination.  The treatment system is activated after a configurable number of simulation steps and modulates tumor and immune cell behaviors through drug-specific mechanisms.
 
 %% ====================================================================
 \section{Drug Architecture}
 \label{sec:drug-architecture}
+
+\begin{figure}[htbp]
+\centering
+\resizebox{0.85\textwidth}{!}{\input{figures/treatment_mechanisms.tex}}
+\caption{ICI and TKI treatment mechanisms and their targets}
+\label{fig:treatment_mechanisms}
+\end{figure}
 
 The treatment system follows a composition-based design in which individual drugs are combined into a treatment regimen.
 
