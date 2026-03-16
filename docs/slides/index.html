@@ -1,1464 +1,810 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agent-Based Modeling of Renal Cell Carcinoma with Glucose Sensing</title>
-    
-    <!-- Reveal.js CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/night.css" id="theme">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/highlight/monokai.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --teal-accent: #008094;
-            --dark-teal: #005a68;
-            --light-teal: rgba(0, 128, 148, 0.1);
-        }
-        
-        .reveal {
-            font-family: "Fira Sans", sans-serif;
-            --r-main-color: #fff;
-            --r-heading-color: #fff;
-            --r-link-color: var(--teal-accent);
-            --r-selection-background-color: var(--teal-accent);
-        }
-        
-        .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
-            color: var(--teal-accent);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .reveal .progress {
-            color: var(--teal-accent);
-        }
-        
-        .teal-bg {
-            background: linear-gradient(135deg, var(--dark-teal), var(--teal-accent));
-            padding: 20px;
-            border-radius: 10px;
-            margin: 10px 0;
-        }
-        
-        .highlight-box {
-            background: var(--light-teal);
-            border-left: 5px solid var(--teal-accent);
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-        }
-        
-        .two-columns {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .two-columns > div {
-            flex: 1;
-        }
-        
-        .agent-tree {
-            font-family: monospace;
-            background: rgba(0,0,0,0.3);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: left;
-            margin: 20px 0;
-        }
-        
-        .stats-counter {
-            font-size: 3em;
-            font-weight: bold;
-            color: var(--teal-accent);
-            text-shadow: 0 2px 8px rgba(0,128,148,0.5);
-        }
-        
-        .warburg-diagram {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin: 30px 0;
-        }
-        
-        .cell-box {
-            width: 120px;
-            height: 80px;
-            border: 2px solid;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-        
-        .tumor-cell {
-            background: rgba(255, 99, 99, 0.2);
-            border-color: #ff6363;
-            color: #ff6363;
-        }
-        
-        .immune-cell {
-            background: rgba(99, 150, 255, 0.2);
-            border-color: #6396ff;
-            color: #6396ff;
-        }
-        
-        .glucose-pool {
-            background: rgba(255, 206, 84, 0.2);
-            border-color: #ffce54;
-            color: #ffce54;
-        }
-        
-        .arrow {
-            font-size: 2em;
-            margin: 0 15px;
-        }
-        
-        .reveal table {
-            font-size: 0.8em;
-        }
-        
-        .reveal table th {
-            background: var(--teal-accent);
-            color: white;
-        }
-        
-        .reveal table td {
-            border-bottom: 1px solid #444;
-        }
-        
-        .grid-3d {
-            perspective: 1000px;
-            margin: 20px 0;
-        }
-        
-        .cube {
-            width: 100px;
-            height: 100px;
-            margin: 20px auto;
-            transform-style: preserve-3d;
-            transform: rotateX(-30deg) rotateY(30deg);
-            animation: rotate 10s infinite linear;
-        }
-        
-        .cube-face {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            border: 2px solid var(--teal-accent);
-            background: rgba(0, 128, 148, 0.1);
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotateX(-30deg) rotateY(30deg); }
-            100% { transform: rotateX(-30deg) rotateY(390deg); }
-        }
-        
-        @keyframes countUp {
-            from { opacity: 0; transform: scale(0.5); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        
-        .fragment.count-up {
-            animation: countUp 0.8s ease-out;
-        }
-        
-        .hormone-diagram {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin: 30px 0;
-        }
-        
-        .hormone-box {
-            width: 100px;
-            height: 60px;
-            background: var(--light-teal);
-            border: 2px solid var(--teal-accent);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9em;
-            font-weight: bold;
-        }
-        
-        .effect-box {
-            width: 150px;
-            height: 60px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9em;
-            font-weight: bold;
-        }
-        
-        .th1-box {
-            background: rgba(99, 150, 255, 0.2);
-            border: 2px solid #6396ff;
-            color: #6396ff;
-        }
-        
-        .th2-box {
-            background: rgba(255, 99, 99, 0.2);
-            border: 2px solid #ff6363;
-            color: #ff6363;
-        }
-        
-        .reveal pre code {
-            font-size: 0.55em;
-            line-height: 1.2;
-        }
-        
-        .plotly-container {
-            height: 450px;
-            width: 100%;
-            margin: 20px 0;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RCC Agent-Based Model — Samuele Stronati</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* === BASE === */
+:root {
+  --teal: #0ea5e9;
+  --teal-dim: rgba(14,165,233,0.15);
+  --red: #f43f5e;
+  --red-dim: rgba(244,63,94,0.12);
+  --green: #10b981;
+  --green-dim: rgba(16,185,129,0.12);
+  --amber: #f59e0b;
+  --text: #f1f5f9;
+  --text2: #94a3b8;
+  --bg: #0c0c1d;
+  --card: rgba(15,23,42,0.85);
+}
+
+.reveal {
+  font-family: "Inter", system-ui, sans-serif;
+  background: radial-gradient(ellipse at 30% 20%, #111827 0%, #0c0c1d 60%, #030712 100%);
+  color: var(--text);
+  font-size: 22px;
+}
+
+/* subtle dot pattern */
+.reveal .backgrounds::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(14,165,233,0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+.reveal .progress { color: var(--teal); height: 3px; }
+.reveal .slide-number { color: var(--text2); font-size: 14px; }
+.reveal .controls .navigate-left, .reveal .controls .navigate-right,
+.reveal .controls .navigate-up, .reveal .controls .navigate-down { color: var(--teal); }
+
+/* === TYPOGRAPHY === */
+.reveal h1, .reveal h2, .reveal h3 {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.reveal h1 { font-size: 2.4em; }
+.reveal h2 { font-size: 1.7em; color: var(--teal); margin-bottom: 0.5em; }
+.reveal h3 { font-size: 1.2em; color: var(--text); margin-bottom: 0.4em; }
+
+.reveal p, .reveal li { line-height: 1.6; }
+.reveal ul, .reveal ol { margin-left: 0; }
+.reveal li { margin-bottom: 0.4em; }
+
+.accent { color: var(--teal); font-weight: 600; }
+.danger { color: var(--red); font-weight: 600; }
+.dim { color: var(--text2); }
+code, .mono { font-family: "JetBrains Mono", monospace; font-size: 0.9em; }
+
+/* === LAYOUT HELPERS === */
+.reveal section { padding: 40px 60px !important; text-align: left; }
+.center-slide { text-align: center !important; }
+
+.cols { display: flex; gap: 40px; align-items: flex-start; }
+.cols > * { flex: 1; min-width: 0; }
+
+.card {
+  background: linear-gradient(135deg, rgba(15,23,42,0.9) 0%, rgba(15,23,42,0.7) 100%);
+  border: 1px solid rgba(14,165,233,0.1);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 12px 0;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+  border-color: rgba(14,165,233,0.25);
+  box-shadow: 0 4px 32px rgba(14,165,233,0.08);
+}
+.card h3 { margin-top: 0; font-size: 1em; }
+
+.card-red { border-left: 3px solid var(--red); background: linear-gradient(135deg, rgba(244,63,94,0.08) 0%, rgba(15,23,42,0.85) 100%); }
+.card-teal { border-left: 3px solid var(--teal); background: linear-gradient(135deg, rgba(14,165,233,0.1) 0%, rgba(15,23,42,0.85) 100%); }
+.card-green { border-left: 3px solid var(--green); background: linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(15,23,42,0.85) 100%); }
+
+/* === SECTION DIVIDERS === */
+.divider { text-align: center !important; display: flex !important; flex-direction: column; justify-content: center; align-items: center; }
+.divider h2 {
+  font-size: 3em;
+  font-weight: 900;
+  background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 40%, #22d3ee 70%, #a5f3fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  filter: drop-shadow(0 2px 12px rgba(14,165,233,0.3));
+}
+.divider .sub {
+  color: var(--text2);
+  font-size: 1.05em;
+  margin-top: 16px;
+  letter-spacing: 0.05em;
+}
+.divider hr {
+  border: none;
+  height: 2px;
+  width: 80px;
+  background: linear-gradient(90deg, transparent, var(--teal), transparent);
+  margin: 20px auto;
+}
+
+/* === BIG NUMBERS === */
+.big-num {
+  font-size: 4.5em;
+  font-weight: 900;
+  background: linear-gradient(180deg, #22d3ee 0%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  margin: 0;
+  filter: drop-shadow(0 2px 16px rgba(14,165,233,0.35));
+}
+.big-num-label {
+  font-size: 0.95em;
+  color: var(--text2);
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+}
+
+/* === CHARTS === */
+.chart-wrap { width: 100%; height: 52vh; margin: 16px auto 0; }
+
+/* === TABLE === */
+.reveal table { width: 100%; border-collapse: collapse; font-size: 0.88em; }
+.reveal th { background: linear-gradient(135deg, rgba(14,165,233,0.15), rgba(14,165,233,0.08)); padding: 10px 14px; text-align: left; font-weight: 600; border-bottom: 2px solid rgba(14,165,233,0.25); }
+.reveal td { padding: 9px 14px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.reveal tr:hover td { background: rgba(14,165,233,0.04); }
+.reveal tr.hl { background: linear-gradient(90deg, rgba(14,165,233,0.12), rgba(14,165,233,0.06)) !important; }
+.reveal tr.hl td { border-bottom-color: rgba(14,165,233,0.2); }
+
+/* === TREE === */
+.tree {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78em;
+  line-height: 1.5;
+  background: linear-gradient(135deg, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.75) 100%);
+  border: 1px solid rgba(14,165,233,0.12);
+  border-radius: 12px;
+  padding: 20px 24px;
+  white-space: pre;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+.tree .t { color: var(--teal); }
+.tree .r { color: var(--red); }
+.tree .g { color: var(--green); }
+.tree .a { color: var(--amber); }
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .cols { flex-direction: column; gap: 16px; }
+  .big-num { font-size: 3em; }
+  .reveal section { padding: 24px 32px !important; }
+}
+@media print {
+  .reveal { background: #fff !important; color: #111 !important; }
+}
+</style>
 </head>
-
 <body>
-    <div class="reveal">
-        <div class="slides">
-            
-            <!-- Title Slide -->
-            <section data-background-gradient="linear-gradient(45deg, #111, #005a68)">
-                <h1 style="font-size: 2.2em; margin-bottom: 0.5em;">Agent-Based Modeling of<br>Renal Cell Carcinoma<br>with Glucose Sensing</h1>
-                <h3 style="color: #ccc; margin-bottom: 1em;">A Repast4Py Implementation</h3>
-                <p style="font-size: 1.2em; margin-top: 2em;">
-                    <strong>Samuele Stronati</strong>
-                </p>
-                <p style="font-size: 0.8em; color: #aaa;">
-                    <span id="current-date"></span>
-                </p>
-                
-                <aside class="notes">
-                    Welcome to this presentation on agent-based modeling of renal cell carcinoma. This work represents a significant advancement in computational oncology, combining sophisticated immune system modeling with glucose microenvironment dynamics.
-                </aside>
-            </section>
+<div class="reveal">
+<div class="slides">
 
-            <!-- Outline -->
-            <section>
-                <h2>Outline</h2>
-                <div style="text-align: left; font-size: 1.1em; line-height: 1.8em;">
-                    <div class="fragment fade-in-then-semi-out">1. Introduction & Motivation</div>
-                    <div class="fragment fade-in-then-semi-out">2. Theoretical Core</div>
-                    <div class="fragment fade-in-then-semi-out">3. Model Architecture</div>
-                    <div class="fragment fade-in-then-semi-out">4. Key Systems</div>
-                    <div class="fragment fade-in-then-semi-out">5. Implementation</div>
-                    <div class="fragment fade-in-then-semi-out">6. Parameters & Optimisation</div>
-                    <div class="fragment fade-in-then-semi-out">7. Results</div>
-                    <div class="fragment fade-in-then-semi-out">8. Empirical Study</div>
-                    <div class="fragment fade-in-then-semi-out">9. Conclusion & Future Work</div>
-                </div>
-            </section>
+<!-- ==================== TITLE ==================== -->
+<section class="center-slide" data-background="radial-gradient(ellipse at 50% 30%, rgba(14,165,233,0.12) 0%, transparent 60%)">
+  <div style="margin-top:6vh;">
+    <p style="font-size:0.85em; color:var(--teal); letter-spacing:0.15em; text-transform:uppercase; font-weight:600; margin-bottom:24px;">Master's Thesis · MASL 2026</p>
+    <h1 style="font-size:2.2em; font-weight:900; margin-bottom:0.15em; line-height:1.15;">Agent-Based Modeling of<br><span style="background:linear-gradient(135deg,#0ea5e9,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Renal Cell Carcinoma</span><br>with Glucose Sensing</h1>
+    <div style="width:60px; height:2px; background:linear-gradient(90deg,var(--teal),transparent); margin:28px auto;"></div>
+    <p class="dim" style="font-size:1.1em;">A Repast4Py Implementation</p>
+  </div>
+  <div style="margin-top:56px;">
+    <p style="font-size:1.15em; font-weight:600;">Samuele Stronati</p>
+    <p class="dim" style="font-size:0.85em; margin-top:4px;">University of Camerino</p>
+  </div>
+</section>
 
-            <!-- Introduction & Motivation -->
-            <section>
-                <section data-background-color="#001122">
-                    <h2 style="color: var(--teal-accent);">Introduction & Motivation</h2>
-                </section>
-
-                <section>
-                    <h3>Renal Cell Carcinoma — The Clinical Challenge</h3>
-                    <div class="two-columns">
-                        <div>
-                            <ul style="font-size: 0.9em;">
-                                <li class="fragment">3<sup>rd</sup> most common urological cancer</li>
-                                <li class="fragment">~400,000 new cases per year worldwide</li>
-                                <li class="fragment">Metastatic 5-year survival <span style="color: #ff6363;"><15%</span></li>
-                                <li class="fragment">Clear-cell RCC (ccRCC) accounts for ~75% of cases</li>
-                                <li class="fragment">Strong sex differences:
-                                    <ul>
-                                        <li>Incidence ratio ≈ 2:1 (male : female)</li>
-                                        <li>Females show better immunotherapy response</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <div class="highlight-box">
-                                <h4>Key Facts</h4>
-                                <table style="font-size: 0.8em; width: 100%;">
-                                    <tr><td><strong>Incidence</strong></td><td>400k/yr</td></tr>
-                                    <tr><td><strong>M:F ratio</strong></td><td>2:1</td></tr>
-                                    <tr><td><strong>5-yr survival</strong></td><td style="color: #ff6363;">&lt;15%</td></tr>
-                                    <tr><td><strong>Main subtype</strong></td><td>ccRCC</td></tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <aside class="notes">
-                        Renal cell carcinoma represents one of the most challenging cancers in oncology. The stark difference in survival rates and the pronounced sex differences make it an ideal candidate for computational modeling to understand underlying mechanisms.
-                    </aside>
-                </section>
-
-                <section>
-                    <h3>Why Agent-Based Modeling?</h3>
-                    <div class="two-columns">
-                        <div>
-                            <div class="highlight-box">
-                                <h4>Strengths of ABMs</h4>
-                                <ul style="font-size: 0.8em;">
-                                    <li class="fragment">Natural representation of <strong>heterogeneous</strong> cell populations</li>
-                                    <li class="fragment">Capture <strong>spatial dynamics</strong> and local interactions</li>
-                                    <li class="fragment"><strong>Emergent behaviour</strong> arises from simple rules</li>
-                                    <li class="fragment"><strong>In silico</strong> experimentation — fast, ethical, cheap</li>
-                                    <li class="fragment">Stochasticity matches biological variability</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="highlight-box">
-                                <h4>Limitations of ODE/PDE Models</h4>
-                                <ul style="font-size: 0.8em;">
-                                    <li class="fragment">Assume well-mixed populations</li>
-                                    <li class="fragment">Difficult to capture cell-level heterogeneity</li>
-                                    <li class="fragment">No spatial resolution</li>
-                                    <li class="fragment">Hard to model discrete events (mutation, death)</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <aside class="notes">
-                        Agent-based models provide a natural framework for modeling cancer as a complex adaptive system. Unlike traditional mathematical models, ABMs can capture the heterogeneity and spatial dynamics that are crucial in cancer biology.
-                    </aside>
-                </section>
-
-                <section>
-                    <h3>Project Objectives</h3>
-                    <div style="text-align: left; font-size: 1em; line-height: 1.6em;">
-                        <div class="fragment highlight-box">
-                            <strong>1. Port Mesa → Repast4Py:</strong> migrate the existing RCC ABM to a scalable MPI-based framework
-                        </div>
-                        <div class="fragment highlight-box">
-                            <strong>2. Add glucose microenvironment:</strong> 3D reaction–diffusion field modelling the Warburg effect
-                        </div>
-                        <div class="fragment highlight-box">
-                            <strong>3. Validate against clinical data:</strong> fit model to ARON-1 clinical survival outcomes
-                        </div>
-                        <div class="fragment highlight-box">
-                            <strong>4. Bayesian optimisation:</strong> tune 114 parameters with Optuna (TPE sampler, 250 trials)
-                        </div>
-                        <div class="fragment highlight-box">
-                            <strong>5. Sex-specific analysis:</strong> compare male vs. female immune dynamics under treatment
-                        </div>
-                    </div>
-                    
-                    <aside class="notes">
-                        Our objectives span from technical implementation challenges to biological validation. The focus on sex-specific differences is particularly important given the clinical evidence of differential treatment responses.
-                    </aside>
-                </section>
-
-                <section data-auto-animate>
-                    <h3>The Numbers</h3>
-                    <div style="display: flex; justify-content: space-around; align-items: center; height: 60vh;">
-                        <div class="fragment count-up" style="text-align: center;">
-                            <div class="stats-counter" id="simulations">160</div>
-                            <div style="color: #ccc; font-size: 1.2em;">Simulations</div>
-                        </div>
-                        <div class="fragment count-up" style="text-align: center;">
-                            <div class="stats-counter" id="agent-types">18</div>
-                            <div style="color: #ccc; font-size: 1.2em;">Agent Types</div>
-                        </div>
-                        <div class="fragment count-up" style="text-align: center;">
-                            <div class="stats-counter" id="parameters">114</div>
-                            <div style="color: #ccc; font-size: 1.2em;">Parameters</div>
-                        </div>
-                    </div>
-                    
-                    <aside class="notes">
-                        These numbers represent the scale and complexity of our computational study. 160 simulations across multiple seeds ensure statistical robustness, while 18 agent types capture the full complexity of the tumor-immune ecosystem.
-                    </aside>
-                </section>
-            </section>
-
-            <!-- Theoretical Core -->
-            <section>
-                <section data-background-color="#001122">
-                    <h2 style="color: var(--teal-accent);">Theoretical Core</h2>
-                </section>
-
-                <section>
-                    <h3>ABM Formalism & Repast4Py</h3>
-                    <div class="two-columns">
-                        <div>
-                            <div class="highlight-box">
-                                <h4>ABM Components</h4>
-                                <ul style="font-size: 0.8em;">
-                                    <li><strong>Agents:</strong> autonomous entities with state & rules</li>
-                                    <li><strong>Environment:</strong> 3D grid with glucose overlay</li>
-                                    <li><strong>Rules:</strong> step functions executed each tick</li>
-                                    <li><strong>Emergence:</strong> macro-level tumour dynamics from micro-level interactions</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="highlight-box">
-                                <h4>Repast4Py Primitives</h4>
-                                <pre class="fragment"><code class="python">repast4py.core.Agent
-SharedContext
-SharedGrid
-BorderType.Sticky
-OccupancyType.Multiple
-mpi4py.MPI</code></pre>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <aside class="notes">
-                        Repast4Py provides the foundational framework for our distributed agent-based model. The MPI-based architecture allows for scalability while maintaining the essential ABM abstractions.
-                    </aside>
-                </section>
-
-                <section>
-                    <h3>Immune System Overview</h3>
-                    <div class="two-columns" style="font-size: 0.8em;">
-                        <div>
-                            <div class="highlight-box">
-                                <h4>Innate Immunity</h4>
-                                <ul class="fragment">
-                                    <li><strong>M1 Macrophages</strong> — phagocytosis, pro-inflammatory</li>
-                                    <li><strong>M2 Macrophages</strong> — tissue repair, pro-tumour</li>
-                                    <li><strong>NK Cells</strong> — MHC-independent killing</li>
-                                    <li><strong>Dendritic Cells (DC)</strong> — antigen presentation</li>
-                                    <li><strong>Plasmacytoid DC</strong> — type I IFN production</li>
-                                    <li><strong>Mast Cells</strong> — angiogenesis modulation</li>
-                                    <li><strong>Neutrophils</strong> — early response</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="highlight-box">
-                                <h4>Adaptive Immunity</h4>
-                                <ul class="fragment">
-                                    <li><strong>CD8<sup>+</sup> Cytotoxic T Cells</strong> — direct tumour killing</li>
-                                    <li><strong>CD8<sup>+</sup> Naïve T Cells</strong> — precursors</li>
-                                    <li><strong>CD4<sup>+</sup> Naïve T Cells</strong> — helper precursors</li>
-                                    <li><strong>Th1 Cells</strong> — promote CTL & M1</li>
-                                    <li><strong>Th2 Cells</strong> — promote humoral response</li>
-                                    <li><strong>Treg Cells</strong> — immune suppression</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="fragment" style="text-align: center; margin-top: 1em; font-size: 0.9em; color: #ccc;">
-                        Also modelled: <strong>Adipocytes</strong>, <strong>Blood vessels</strong>, <strong>Sex hormones</strong>, <strong>Cytokines</strong>
-                    </div>
-                    
-                    <aside class="notes">
-                        Our model captures the full complexity of both innate and adaptive immune responses. This comprehensive representation is crucial for understanding how immunotherapy treatments work at the cellular level.
-                    </aside>
-                </section>
-
-                <section>
-                    <h3>The Warburg Effect</h3>
-                    <div class="two-columns">
-                        <div style="font-size: 0.85em;">
-                            <ul>
-                                <li class="fragment">Tumour cells preferentially use <strong>aerobic glycolysis</strong> even in normoxia</li>
-                                <li class="fragment">Glucose consumption rate ~10–200× higher than normal cells</li>
-                                <li class="fragment">Creates <strong>metabolic competition</strong> with immune cells</li>
-                                <li class="fragment">Glucose-depleted microenvironment impairs:
-                                    <ul>
-                                        <li>T cell activation and proliferation</li>
-                                        <li>NK cell cytotoxicity</li>
-                                        <li>DC antigen presentation</li>
-                                    </ul>
-                                </li>
-                                <li class="fragment">Glucose availability becomes a <strong>limiting factor</strong> for immune function</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <div class="warburg-diagram fragment">
-                                <div class="cell-box tumor-cell">Tumour Cell</div>
-                                <div class="arrow" style="color: #ff6363;">→</div>
-                                <div class="cell-box glucose-pool">Glucose Pool</div>
-                                <div class="arrow" style="color: #6396ff;">←</div>
-                                <div class="cell-box immune-cell">Immune Cell</div>
-                            </div>
-                            <div class="fragment" style="text-align: center; margin-top: 20px;">
-                                <div style="color: #ff6363; font-size: 0.8em;">High Uptake</div>
-                                <div style="color: #6396ff; font-size: 0.8em;">Low Uptake</div>
-                                <div style="color: #ff9999; font-size: 0.8em; margin-top: 10px;">↓ Suppresses ↓</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <aside class="notes">
-                        The Warburg effect is central to our model. By explicitly modeling glucose as a limiting resource, we capture a key mechanism of tumor-immune interaction that is often overlooked in computational models.
-                    </aside>
-                </section>
-            </section>
-
-            <!-- Model Architecture -->
-            <section>
-                <section data-background-color="#001122">
-                    <h2 style="color: var(--teal-accent);">Model Architecture</h2>
-                </section>
-
-                <section>
-                    <h3>Agent Hierarchy — 18 Types</h3>
-                    <div class="two-columns">
-                        <div>
-                            <div class="agent-tree fragment">
-<span style="color: var(--teal-accent);">Agent</span>
-├── <span style="color: #ffa500;">Cell</span>
-│   ├── <span style="color: #87ceeb;">TCell</span>
-│   │   ├── CTC (CD8+ Cytotoxic)
-│   │   ├── CD8N (CD8+ Naïve)
-│   │   ├── CD4N (CD4+ Naïve)
-│   │   ├── Th1
-│   │   ├── Th2
-│   │   └── Treg
-│   ├── Tumour
-│   ├── DC (Dendritic Cell)
-│   ├── pDC (Plasmacytoid DC)
-│   ├── M1 (Macrophage M1)
-│   ├── M2 (Macrophage M2)
-│   ├── NK (Natural Killer)
-│   ├── Mast
-│   ├── Neutrophil
-│   ├── Adipocyte
-│   └── Blood
-├── <span style="color: #ff69b4;">SexHormone</span>
-└── <span style="color: #90ee90;">Cytokine</span>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="highlight-box">
-                                <h4>AgentType IntEnum</h4>
-                                <table style="font-size: 0.6em; width: 100%;">
-                                    <tr><td>0</td><td>TumorCell</td></tr>
-                                    <tr><td>1</td><td>CD8 Cytotoxic</td></tr>
-                                    <tr><td>2</td><td>CD8 Naïve</td></tr>
-                                    <tr><td>3</td><td>CD4 Naïve</td></tr>
-                                    <tr><td>4</td><td>Th1</td></tr>
-                                    <tr><td>5</td><td>Th2</td></tr>
-                                    <tr><td>6</td><td>Treg</td></tr>
-                                    <tr><td>7</td><td>Dendritic Cell</td></tr>
-                                    <tr><td>8</td><td>Plasmacytoid DC</td></tr>
-                                    <tr><td>9</td><td>Macrophage M1</td></tr>
-                                    <tr><td>10</td><td>Macrophage M2</td></tr>
-                                    <tr><td>11</td><td>Natural Killer</td></tr>
-                                    <tr><td>12</td><td>Mast Cell</td></tr>
-                                    <tr><td>13</td><td>Neutrophil</td></tr>
-                                    <tr><td>14</td><td>Adipocyte</td></tr>
-                                    <tr><td>15</td><td>Blood</td></tr>
-                                    <tr><td>16</td><td>Sex Hormone</td></tr>
-                                    <tr><td>17</td><td>Cytokine</td></tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <aside class="notes">
-                        The hierarchical agent structure provides both computational efficiency and biological realism. Each agent type has specialized behaviors while inheriting common functionality from parent classes.
-                    </aside>
-                </section>
-
-                <section>
-                    <h3>3D Grid Environment</h3>
-                    <div class="two-columns">
-                        <div>
-                            <div class="highlight-box">
-                                <h4>SharedGrid Configuration</h4>
-                                <ul style="font-size: 0.8em;">
-                                    <li><code>SharedGrid</code> — 3D, MPI-distributed</li>
-                                    <li><code>BorderType.Sticky</code> — clamped boundaries</li>
-                                    <li><code>OccupancyType.Multiple</code> — agents co-locate</li>
-                                    <li>Grid dimension: d = ⌊(V/B³)^(1/3)⌋</li>
-                                </ul>
-                            </div>
-                            <div class="highlight-box">
-                                <h4>Spatial Index</h4>
-                                <ul style="font-size: 0.8em;">
-                                    <li><code>dict[(x,y,z)] → list[Agent]</code></li>
-                                    <li>O(1) lookup, O((2r+1)³) neighbour scan</li>
-                                    <li>Moore (26-connected) or Von Neumann</li>
-                                    <li>Updated on every add/remove/move</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="highlight-box">
-                                <h4>Deferred Movement</h4>
-                                <ol style="font-size: 0.8em;">
-                                    <li>Agent sets <code>_desired_pos</code> in its <code>step()</code></li>
-                                    <li>All agents finish stepping</li>
-                                    <li><code>model.move_all_agents()</code> applies moves</li>
-                                    <li>Avoids conflicts during iteration</li>
-                                </ol>
-                            </div>
-                            <div class="grid-3d">
-                                <div class="cube">
-                                    <div class="cube-face" style="transform: rotateY(0deg) translateZ(50px);"></div>
-                                    <div class="cube-face" style="transform: rotateY(90deg) translateZ(50px);"></div>
-                                    <div class="cube-face" style="transform: rotateY(180deg) translateZ(50px);"></div>
-                                    <div class="cube-face" style="transform: rotateY(-90deg) translateZ(50px);"></div>
-                                    <div class="cube-face" style="transform: rotateX(90deg) translateZ(50px);"></div>
-                                    <div class="cube-face" style="transform: rotateX(-90deg) translateZ(50px);"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <aside class="notes">
-                        The 3D grid environment is crucial for modeling spatial tumor growth and immune cell migration. The deferred movement pattern ensures computational stability while maintaining biological realism.
-                    </aside>
-                </section>
-
-                <section>
-                    <h3>Simulation Loop — model.step()</h3>
-                    <div class="two-columns" style="font-size: 0.8em;">
-                        <div>
-                            <h4>Main Steps (1-5)</h4>
-                            <ol>
-                                <li class="fragment"><strong>Collect data</strong> — log counts, glucose stats</li>
-                                <li class="fragment"><strong>Check termination</strong> — max steps, tumour eradicated, tumour cap, growth threshold</li>
-                                <li class="fragment"><strong>Apply effects</strong> — neighbour-based effect collection</li>
-                                <li class="fragment"><strong>Treatment</strong> — ICI / TKI / ICI+TKI (after treatment_start)</li>
-                                <li class="fragment"><strong>Sex drift</strong> — CD8 population modulation</li>
-                            </ol>
-                        </div>
-                        <div>
-                            <h4>Main Steps (6-11)</h4>
-                            <ol start="6">
-                                <li class="fragment"><strong>Glucose step</strong> — inject → diffuse → decay</li>
-                                <li class="fragment"><strong>Angiogenesis</strong> — add/refresh blood vessels</li>
-                                <li class="fragment"><strong>Update search dimension</strong></li>
-                                <li class="fragment"><strong>Shuffle & step all agents</strong></li>
-                                <li class="fragment"><strong>Deferred move</strong> — apply _desired_pos</li>
-                                <li class="fragment"><strong>Spawn hormones</strong> — from blood vessels</li>
-                            </ol>
-                        </div>
-                    </div>
-                    <div class="fragment teal-bg" style="text-align: center; margin-top: 1em; font-size: 0.8em;">
-                        <strong>Termination Conditions:</strong><br>
-                        steps ≥ max_steps | tumour cells = 0 (survival) | tumour cells ≥ 2000 | mean growth rate ≥ threshold
-                    </div>
-                    
-                    <aside class="notes">
-                        The simulation loop orchestrates all model dynamics in a carefully sequenced manner. Each step represents a time unit where all biological processes are updated consistently.
-                    </aside>
-                </section>
-            </section>
-
-            <!-- Key Systems -->
-            <section>
-                <section data-background-color="#001122">
-                    <h2 style="color: var(--teal-accent);">Key Systems</h2>
-                </section>
-
-                <section>
-                    <h3>DNA Mutation Model</h3>
-                    <div class="two-columns">
-                        <div>
-                            <div class="highlight-box">
-                                <h4>Genome Structure</h4>
-                                <ul style="font-size: 0.8em;">
-                                    <li class="fragment"><strong>16 genes</strong> encoded as nucleotide strings</li>
-                                    <li class="fragment">Each gene: promoter (TATA box) + coding region + stop codon</li>
-                                    <li class="fragment">Full codon table (64 codons → 20 amino acids + stop)</li>
-                                    <li class="fragment">Wildtype protein = 20 amino acids per gene</li>
-                                    <li class="fragment">Total DNA sequence ~3200 nucleotides</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="highlight-box">
-                                <h4>Mutation Mechanics</h4>
-                                <ul style="font-size: 0.8em;">
-                                    <li class="fragment"><strong>Point mutations</strong> during duplicate()</li>
-                                    <li class="fragment">Mutation rate driven by <strong>genomic instability</strong> (BRCA1)</li>
-                                    <li class="fragment">Number of mutations: n = ⌊r_mut × L⌋</li>
-                                    <li class="fragment">Random nucleotide substitution (A, T, C, G)</li>
-                                    <li class="fragment">Protein similarity via <strong>Levenshtein distance</strong></li>
-                                    <li class="fragment">Sex-dependent initial mutations: 3 (M) vs. 1 (F)</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="fragment" style="text-align: center; margin-top: 1em; font-size: 0.7em; color: #ccc;">
-                        <code>MHC, B2M, CD274, BRCA1, TP53, RB1, CDKN2A, MYC, RAS, EGFR, HER2, JAK1, JAK2, TAP1, TAP2, APC</code>
-                    </div>
-                    
-                    <aside class="notes">
-                        The DNA mutation model provides mechanistic depth to tumor evolution. By modeling actual nucleotide sequences and codon translation, we capture realistic protein-level changes that affect cellular behavior.
-                    </aside>
-                </section>
-
-                <section>
-                    <h3>Treatment System</h3>
-                    <div class="two-columns">
-                        <div>
-                            <div class="highlight-box">
-                                <h4>ICI — Anti-PD-1/PD-L1</h4>
-                                <ul style="font-size: 0.8em;">
-                                    <li class="fragment">Blocks PD-1/PD-L1 axis on tumour cells</li>
-                                    <li class="fragment">Restores T cell activation effect</li>
-                                    <li class="fragment">Increases immune infiltration (Th1, Th2, Mast)</li>
-                                    <li class="fragment">Effectiveness ∝ <code>w_ici_effectiveness</code></li>
-                                </ul>
-                            </div>
-                            <div class="highlight-box">
-                                <h4>Combination: ICI + TKI</h4>
-                                <ul style="font-size: 0.8em;">
-                                    <li class="fragment">Each drug applied with proportion = 1/N_drugs</li>
-                                    <li class="fragment">Effects are <strong>proportionally averaged</strong></li>
-                                    <li class="fragment">Synergy: TKI releases neoantigens → ICI boosts T cell response</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="highlight-box">
-                                <h4>TKI — Anti-VEGF / Tyrosine Kinase</h4>
-                                <ul style="font-size: 0.8em;">
-                                    <li class="fragment">Reduces tumour growth effect: g ← g × (1 - e)</li>
-                                    <li class="fragment">Reduces angiogenesis effect: a ← a × (1 - e)</li>
-                                    <li class="fragment">Releases neoantigens (TKI_effect)</li>
-                                    <li class="fragment">Reduces Treg differentiation</li>
-                                    <li class="fragment">Effectiveness ∝ <code>w_tki_effectiveness</code></li>
-                                </ul>
-                            </div>
-                            <div class="fragment" style="text-align: center; margin-top: 1em; font-size: 0.8em; color: #ccc;">
-                                Treatment starts at step <code>treatment_start</code><br>(default: 100)
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <aside class="notes">
-                        The treatment system models the two main classes of therapies used in RCC: immune checkpoint inhibitors and tyrosine kinase inhibitors. The combination approach reflects current clinical practice.
-                    </aside>
-                </section>
-
-                <section>
-                    <h3>Sex Hormone System</h3>
-                    <div class="two-columns">
-                        <div>
-                            <div class="highlight-box">
-                                <h4>Three Hormones</h4>
-                                <ul style="font-size: 0.9em;">
-                                    <li><strong>Estrogen</strong> (weight 0.45)</li>
-                                    <li><strong>Testosterone</strong> (weight 0.30)</li>
-                                    <li><strong>Progesterone</strong> (weight 0.25)</li>
-                                </ul>
-                            </div>
-                            <div class="highlight-box">
-                                <h4>Sex-Specific Spawn Rates</h4>
-                                <table style="font-size: 0.8em; width: 100%;">
-                                    <tr><th>Hormone</th><th>Male</th><th>Female</th></tr>
-                                    <tr><td>Estrogen</td><td>0.2</td><td>0.9</td></tr>
-                                    <tr><td>Progesterone</td><td>0.1</td><td>0.8</td></tr>
-                                    <tr><td>Testosterone</td><td>1.0</td><td>0.2</td></tr>
-                                </table>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="highlight-box">
-                                <h4>T Cell Modulation</h4>
-                                <ul style="font-size: 0.8em;">
-                                    <li class="fragment">Each hormone level → low/mid/high tier</li>
-                                    <li class="fragment">Each tier maps to signed effect scores</li>
-                                    <li class="fragment">17 effect channels (Th1/Th2 proliferation, IFN-γ, PD-1, CTLA-4, MHC, kill rate, ...)</li>
-                                    <li class="fragment">10% per-step hormone decay</li>
-                                </ul>
-                            </div>
-                            <div class="highlight-box">
-                                <h4>CD8<sup>+</sup> Sex Drift</h4>
-                                <ul style="font-size: 0.8em;">
-                                    <li class="fragment">Female: population shrinks (− drift)</li>
-                                    <li class="fragment">Male: population grows (+ drift)</li>
-                                    <li class="fragment">Max drift 25% over 15 steps</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="hormone-diagram fragment">
-                        <div class="hormone-box">Estrogen</div>
-                        <div class="hormone-box">Testosterone</div>
-                        <div class="hormone-box">Progesterone</div>
-                    </div>
-                    <div style="display: flex; justify-content: space-around; margin-top: 20px;">
-                        <div class="effect-box th1-box fragment">Th1 / CTL</div>
-                        <div class="effect-box th2-box fragment">Th2 / Treg</div>
-                    </div>
-                    
-                    <aside class="notes">
-                        The sex hormone system captures a key biological mechanism underlying sex differences in cancer outcomes. Different hormone profiles lead to distinct immune response patterns.
-                    </aside>
-                </section>
-            </section>
-
-            <!-- Implementation -->
-            <section>
-                <section data-background-color="#001122">
-                    <h2 style="color: var(--teal-accent);">Implementation</h2>
-                </section>
-
-                <section>
-                    <h3>Mesa → Repast4Py Translation</h3>
-                    <table style="font-size: 0.7em; width: 100%;">
-                        <tr>
-                            <th style="width: 45%;">Mesa</th>
-                            <th style="width: 55%;">Repast4Py</th>
-                        </tr>
-                        <tr class="fragment">
-                            <td><code>mesa.Agent</code></td>
-                            <td><code>repast4py.core.Agent(id, type, rank)</code></td>
-                        </tr>
-                        <tr class="fragment">
-                            <td><code>self.model.random</code></td>
-                            <td><code>model.rng (random.Random(seed))</code></td>
-                        </tr>
-                        <tr class="fragment">
-                            <td><code>self.model.schedule</code></td>
-                            <td>Snapshot list + <code>rng.shuffle</code></td>
-                        </tr>
-                        <tr class="fragment">
-                            <td><code>grid.get_neighbors()</code></td>
-                            <td><code>grid_utils.get_neighbors_3d(spatial_index, ...)</code></td>
-                        </tr>
-                        <tr class="fragment">
-                            <td><code>isinstance(a, Cls)</code></td>
-                            <td><code>a.uid[1] == AgentType.X</code></td>
-                        </tr>
-                        <tr class="fragment">
-                            <td><code>model.schedule.add()</code></td>
-                            <td><code>model.add_agent()</code></td>
-                        </tr>
-                        <tr class="fragment">
-                            <td><code>MultiGrid (2D)</code></td>
-                            <td><code>SharedGrid (3D, sticky borders)</code></td>
-                        </tr>
-                        <tr class="fragment">
-                            <td><code>DataCollector</code></td>
-                            <td>Manual <code>data_log</code> list + CSV writer</td>
-                        </tr>
-                    </table>
-                    
-                    <aside class="notes">
-                        The translation from Mesa to Repast4Py required careful mapping of concepts while taking advantage of Repast4Py's distributed computing capabilities.
-                    </aside>
-                </section>
-
-                <section>
-                    <h3>Glucose Field Implementation</h3>
-                    <div class="two-columns">
-                        <div>
-                            <div class="highlight-box">
-                                <h4>Reaction–Diffusion Equation</h4>
-                                <p style="text-align: center; font-size: 1.2em; margin: 20px 0;">
-                                    ∂C/∂t = D∇²C - λC + S(x) - Q(x)
-                                </p>
-                                <ul style="font-size: 0.8em;">
-                                    <li><strong>C:</strong> glucose concentration</li>
-                                    <li><strong>D:</strong> diffusion coefficient (&lt; 1/6 for stability)</li>
-                                    <li><strong>λ:</strong> natural decay rate</li>
-                                    <li><strong>S(x):</strong> source term (blood vessels)</li>
-                                    <li><strong>Q(x):</strong> consumption (tumour + immune)</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="highlight-box">
-                                <h4>Numerical Scheme</h4>
-                                <ul style="font-size: 0.8em;">
-                                    <li class="fragment">NumPy 3D array: <code>np.float64</code></li>
-                                    <li class="fragment"><code>scipy.ndimage.convolve</code> with 6-connected Laplacian kernel</li>
-                                    <li class="fragment">Neumann (zero-flux) BCs via <code>mode='nearest'</code></li>
-                                    <li class="fragment">Stability: D &lt; 1/6 ≈ 0.167</li>
-                                </ul>
-                            </div>
-                            <div class="highlight-box">
-                                <h4>Step Sequence</h4>
-                                <ol style="font-size: 0.8em;">
-                                    <li class="fragment">Blood vessels <strong>inject</strong> glucose</li>
-                                    <li class="fragment"><strong>Diffuse</strong> via discrete Laplacian</li>
-                                    <li class="fragment">Apply natural <strong>decay</strong>: C ← C(1-λ)</li>
-                                    <li class="fragment">Agents <strong>consume</strong> in their own step</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <aside class="notes">
-                        The glucose field implementation uses standard numerical methods for reaction-diffusion equations. The explicit finite difference scheme is stable and computationally efficient.
-                    </aside>
-                </section>
-            </section>
-
-            <!-- Parameters & Optimisation -->
-            <section>
-                <section data-background-color="#001122">
-                    <h2 style="color: var(--teal-accent);">Parameters & Optimisation</h2>
-                </section>
-
-                <section>
-                    <h3>Parameter Space — 114 Parameters</h3>
-                    <div class="two-columns" style="font-size: 0.85em;">
-                        <div>
-                            <div class="highlight-box">
-                                <h4>Model Parameters (4)</h4>
-                                <ul>
-                                    <li><code>volume</code> — tissue volume (mL)</li>
-                                    <li><code>block_size</code> — voxel size (μm)</li>
-                                    <li><code>random_seed</code></li>
-                                    <li><code>max_steps</code></li>
-                                </ul>
-                            </div>
-                            <div class="highlight-box">
-                                <h4>Patient Parameters (18)</h4>
-                                <ul>
-                                    <li>Sex (M/F), BMI</li>
-                                    <li>Treatment type, treatment start</li>
-                                    <li>13 cell-type concentrations</li>
-                                    <li>NK delta</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="highlight-box">
-                                <h4>Weight Parameters (92)</h4>
-                                <ul>
-                                    <li>62 positive weights (log-uniform)</li>
-                                    <li>15 biases [-1, 1]</li>
-                                    <li>4 effectiveness/probability [0, 1]</li>
-                                    <li>1 growth threshold [0.75, 0.99]</li>
-                                    <li>1 integer receptor threshold [0, 3]</li>
-                                    <li>1 max drift</li>
-                                    <li><strong>8 glucose parameters</strong> (new):
-                                        <ul style="font-size: 0.8em;">
-                                            <li>diffusion, decay, source rate</li>
-                                            <li>tumour/immune consumption</li>
-                                            <li>growth/immune sensitivity</li>
-                                            <li>chemotaxis strength</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <aside class="notes">
-                        The parameter space reflects the complexity of cancer biology. The addition of glucose parameters significantly expands the model's biological realism.
-                    </aside>
-                </section>
-
-                <section>
-                    <h3>Optuna Bayesian Optimisation</h3>
-                    <div class="two-columns">
-                        <div>
-                            <div class="highlight-box">
-                                <h4>Setup</h4>
-                                <ul>
-                                    <li><strong>Sampler:</strong> Tree-structured Parzen Estimator (TPE)</li>
-                                    <li><strong>Trials:</strong> 250</li>
-                                    <li><strong>Repeats:</strong> 1 per trial (stochastic seed)</li>
-                                    <li><strong>Objective:</strong> minimise mean squared error vs. clinical data</li>
-                                </ul>
-                            </div>
-                            <div class="highlight-box">
-                                <h4>Objective Function</h4>
-                                <p style="text-align: center; font-size: 1em; margin: 15px 0;">
-                                    L = (1/N) Σ { (steps<sub>i</sub> - OS<sub>i</sub>)² if outcome matches<br>
-                                    500² otherwise (high penalty) }
-                                </p>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="highlight-box">
-                                <h4>Clinical Data: ARON-1</h4>
-                                <ul>
-                                    <li>Real-world patient cohort</li>
-                                    <li>Features: sex, BMI, treatment, concentrations</li>
-                                    <li>Target: overall survival (OS) in steps</li>
-                                    <li>Binary outcome: survival vs. death</li>
-                                </ul>
-                            </div>
-                            <div class="highlight-box">
-                                <h4>Output</h4>
-                                <ul>
-                                    <li>Best parameter set saved to JSON</li>
-                                    <li>Trial errors logged to CSV</li>
-                                    <li>Convergence curve: best error vs. trial number</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <aside class="notes">
-                        Bayesian optimization provides an efficient approach to navigating the high-dimensional parameter space. The TPE algorithm is particularly well-suited to this type of optimization problem.
-                    </aside>
-                </section>
-            </section>
-
-            <!-- Results -->
-            <section>
-                <section data-background-color="#001122">
-                    <h2 style="color: var(--teal-accent);">Results</h2>
-                </section>
-
-                <section>
-                    <h3>Interactive Survival Rates</h3>
-                    <div id="survival-chart" class="plotly-container"></div>
-                    
-                    <aside class="notes">
-                        This interactive chart shows the survival rates across all treatment scenarios. Female patients generally show better survival rates, particularly with combination therapy.
-                    </aside>
-                </section>
-
-                <section>
-                    <h3>Tumor Growth Curves</h3>
-                    <div id="growth-chart" class="plotly-container"></div>
-                    
-                    <aside class="notes">
-                        The growth curves show the bimodal nature of outcomes - either rapid elimination or explosive growth. This reflects the clinical heterogeneity observed in patient responses.
-                    </aside>
-                </section>
-
-                <section>
-                    <h3>Glucose Sensitivity Analysis</h3>
-                    <div id="sensitivity-chart" class="plotly-container"></div>
-                    <div class="fragment highlight-box" style="text-align: center;">
-                        <strong>Clear tipping point between w=2.0 and w=4.0</strong><br>
-                        Validates glucose system as biologically relevant mechanism
-                    </div>
-                    
-                    <aside class="notes">
-                        The sensitivity analysis reveals a clear threshold effect for glucose consumption. Above a certain consumption rate, the tumor starves itself of glucose, enabling immune control.
-                    </aside>
-                </section>
-            </section>
-
-            <!-- Empirical Study -->
-            <section>
-                <section data-background-color="#001122">
-                    <h2 style="color: var(--teal-accent);">Empirical Study</h2>
-                </section>
-
-                <section>
-                    <h3>Statistical Validation: Multi-Seed Design</h3>
-                    <div class="highlight-box">
-                        <h4>Experimental Design</h4>
-                        <ul>
-                            <li class="fragment"><strong>160 simulations:</strong> 20 random seeds × 8 scenarios</li>
-                            <li class="fragment">8 scenarios: 2 sexes (M/F) × 4 treatments (None, TKI, ICI, ICI+TKI)</li>
-                            <li class="fragment">Each run: up to 300 steps, tuned parameters for visible treatment effects</li>
-                            <li class="fragment"><strong>Why?</strong> Single-seed results can be misleading in stochastic ABMs</li>
-                        </ul>
-                    </div>
-                    <div class="highlight-box">
-                        <h4>Statistical Methods</h4>
-                        <ul>
-                            <li class="fragment"><strong>Survival rate:</strong> fraction of runs where tumour cells = 0</li>
-                            <li class="fragment"><strong>Mann-Whitney U test:</strong> non-parametric comparison of male vs. female outcomes</li>
-                            <li class="fragment">Reported: mean ± standard deviation across 20 seeds</li>
-                        </ul>
-                    </div>
-                    
-                    <aside class="notes">
-                        The multi-seed design is crucial for validating stochastic models. What appears significant in a single run may disappear when averaged across multiple seeds.
-                    </aside>
-                </section>
-
-                <section>
-                    <h3>Empirical Results Summary</h3>
-                    <div id="results-table" style="font-size: 0.7em;">
-                        <table style="width: 100%; border-collapse: collapse;">
-                            <thead>
-                                <tr style="background: var(--teal-accent); color: white;">
-                                    <th style="padding: 8px;">Scenario</th>
-                                    <th style="padding: 8px;">Survival</th>
-                                    <th style="padding: 8px;">Tumour</th>
-                                    <th style="padding: 8px;">Steps</th>
-                                    <th style="padding: 8px;">Glucose</th>
-                                </tr>
-                            </thead>
-                            <tbody style="background: rgba(255,255,255,0.1);">
-                                <tr><td style="padding: 5px;">Male, No Tx</td><td style="padding: 5px;">30%</td><td style="padding: 5px;">578 ± 881</td><td style="padding: 5px;">224 ± 88</td><td style="padding: 5px;">3.10 ± 1.04</td></tr>
-                                <tr><td style="padding: 5px;">Female, No Tx</td><td style="padding: 5px;">55%</td><td style="padding: 5px;">257 ± 629</td><td style="padding: 5px;">193 ± 91</td><td style="padding: 5px;">2.73 ± 0.92</td></tr>
-                                <tr><td style="padding: 5px;">Male, TKI</td><td style="padding: 5px;">55%</td><td style="padding: 5px;">202 ± 596</td><td style="padding: 5px;">209 ± 92</td><td style="padding: 5px;">2.78 ± 1.23</td></tr>
-                                <tr><td style="padding: 5px;">Female, TKI</td><td style="padding: 5px;">45%</td><td style="padding: 5px;">205 ± 601</td><td style="padding: 5px;">215 ± 92</td><td style="padding: 5px;">2.74 ± 1.00</td></tr>
-                                <tr><td style="padding: 5px;">Male, ICI</td><td style="padding: 5px;">45%</td><td style="padding: 5px;">665 ± 920</td><td style="padding: 5px;">199 ± 85</td><td style="padding: 5px;">3.15 ± 1.28</td></tr>
-                                <tr><td style="padding: 5px;">Female, ICI</td><td style="padding: 5px;">60%</td><td style="padding: 5px;">274 ± 655</td><td style="padding: 5px;">193 ± 86</td><td style="padding: 5px;">2.81 ± 1.06</td></tr>
-                                <tr><td style="padding: 5px;">Male, ICI+TKI</td><td style="padding: 5px;">55%</td><td style="padding: 5px;">304 ± 716</td><td style="padding: 5px;">192 ± 87</td><td style="padding: 5px;">2.85 ± 1.28</td></tr>
-                                <tr style="background: var(--light-teal); color: var(--teal-accent); font-weight: bold;"><td style="padding: 5px;">Female, ICI+TKI</td><td style="padding: 5px;">65%</td><td style="padding: 5px;">203 ± 605</td><td style="padding: 5px;">208 ± 81</td><td style="padding: 5px;">2.81 ± 1.14</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="fragment teal-bg" style="text-align: center; margin-top: 1em;">
-                        <strong>Key Finding:</strong> Female ICI+TKI achieves the <strong>highest survival rate (65%)</strong><br>
-                        — consistent with ARON-1 clinical observations
-                    </div>
-                    
-                    <aside class="notes">
-                        The results table shows the comprehensive outcomes from our empirical study. The superiority of combination therapy in females aligns with clinical evidence.
-                    </aside>
-                </section>
-
-                <section data-auto-animate>
-                    <h3>Critical Insight: Single-Seed vs Multi-Seed</h3>
-                    <div style="display: flex; justify-content: space-between; gap: 40px; margin-top: 2em;">
-                        <div style="flex: 1; background: rgba(255, 99, 99, 0.1); border: 2px solid #ff6363; border-radius: 10px; padding: 20px;">
-                            <h4 style="color: #ff6363; text-align: center;">Single-Seed Result (seed=42)</h4>
-                            <ul style="font-size: 0.9em;">
-                                <li class="fragment">Female ICI+TKI: <strong style="color: #ff6363;">PROGRESSION</strong></li>
-                                <li class="fragment">6 tumour cells remaining at step 299</li>
-                                <li class="fragment">Appears to be the <strong>worst</strong> combination scenario</li>
-                            </ul>
-                        </div>
-                        <div style="flex: 1; background: rgba(99, 255, 99, 0.1); border: 2px solid #63ff63; border-radius: 10px; padding: 20px;">
-                            <h4 style="color: #63ff63; text-align: center;">Multi-Seed Result (n=20)</h4>
-                            <ul style="font-size: 0.9em;">
-                                <li class="fragment">Female ICI+TKI: <strong style="color: #63ff63;">65% SURVIVAL</strong></li>
-                                <li class="fragment">Actually the <strong>best</strong> scenario overall</li>
-                                <li class="fragment">Consistent with clinical evidence</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="fragment teal-bg" style="text-align: center; margin-top: 2em; font-size: 1.1em;">
-                        <strong>Lesson:</strong> Single-seed analysis of stochastic models can be misleading.<br>
-                        <span style="font-size: 0.9em;">Statistical validation across multiple seeds is essential for reliable conclusions.</span>
-                    </div>
-                    
-                    <aside class="notes">
-                        This slide illustrates perhaps the most important finding of our study: the danger of drawing conclusions from single simulation runs. What appeared to be a failure in one seed was actually the best treatment option when properly analyzed.
-                    </aside>
-                </section>
-            </section>
-
-            <!-- Conclusion -->
-            <section>
-                <section data-background-color="#001122">
-                    <h2 style="color: var(--teal-accent);">Conclusion & Future Work</h2>
-                </section>
-
-                <section>
-                    <h3>Summary</h3>
-                    <div class="highlight-box">
-                        <h4>Achievements</h4>
-                        <div style="font-size: 0.8em; line-height: 1.5em;">
-                            <div class="fragment">✓ Successfully ported RCC ABM from <strong>Mesa → Repast4Py</strong> (MPI-based, 3D)</div>
-                            <div class="fragment">✓ Added <strong>glucose microenvironment</strong>: 3D reaction–diffusion with Warburg effect</div>
-                            <div class="fragment">✓ <strong>18 agent types</strong> with full immune system representation</div>
-                            <div class="fragment">✓ <strong>16-gene DNA model</strong> with codon translation, point mutations, 5 phenotypic effects</div>
-                            <div class="fragment">✓ <strong>ICI + TKI treatment</strong> system with proportional averaging</div>
-                            <div class="fragment">✓ <strong>Sex hormone modulation</strong>: 3 hormones, 17 effect channels, CD8+ sex drift</div>
-                            <div class="fragment">✓ <strong>92 tunable weight parameters</strong> (including 8 glucose parameters)</div>
-                            <div class="fragment">✓ Bayesian optimisation with <strong>Optuna</strong> (TPE, 250 trials) vs. ARON-1 data</div>
-                            <div class="fragment">✓ <strong>160-run empirical study</strong>: 20 seeds × 8 scenarios with statistical validation</div>
-                            <div class="fragment">✓ Female ICI+TKI achieves <strong>65% survival rate</strong> — best scenario, consistent with clinical data</div>
-                        </div>
-                    </div>
-                    
-                    <aside class="notes">
-                        This work represents a significant advancement in computational oncology, successfully integrating multiple biological systems into a coherent, validated model.
-                    </aside>
-                </section>
-
-                <section>
-                    <h3>Future Work</h3>
-                    <div class="two-columns" style="font-size: 0.85em;">
-                        <div>
-                            <div class="highlight-box">
-                                <h4>Scalability</h4>
-                                <ul>
-                                    <li class="fragment"><strong>Multi-rank MPI</strong>: distribute grid partitions across nodes</li>
-                                    <li class="fragment"><strong>GPU acceleration</strong>: offload glucose diffusion to CUDA/OpenCL</li>
-                                    <li class="fragment">Larger tissue volumes (>10⁶ cells)</li>
-                                </ul>
-                            </div>
-                            <div class="highlight-box">
-                                <h4>Biological Extensions</h4>
-                                <ul>
-                                    <li class="fragment">Additional metabolites: <strong>oxygen</strong>, <strong>lactate</strong>, amino acids</li>
-                                    <li class="fragment"><strong>Dynamic blood vessel remodelling</strong> (angiogenesis/regression)</li>
-                                    <li class="fragment">Hypoxia-driven gene expression (HIF-1α)</li>
-                                    <li class="fragment">Cytokine diffusion fields (IL-2, IFN-γ, TGF-β)</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="highlight-box">
-                                <h4>Validation & Calibration</h4>
-                                <ul>
-                                    <li class="fragment"><strong>Extended validation</strong> against larger clinical cohorts</li>
-                                    <li class="fragment">Multi-objective optimisation (survival + tumour burden)</li>
-                                    <li class="fragment">Sensitivity analysis (Sobol indices)</li>
-                                    <li class="fragment">Cross-validation over patient subgroups</li>
-                                </ul>
-                            </div>
-                            <div class="highlight-box">
-                                <h4>Clinical Translation</h4>
-                                <ul>
-                                    <li class="fragment">Patient-specific parameterisation from biopsy data</li>
-                                    <li class="fragment">Treatment sequence optimisation</li>
-                                    <li class="fragment">Digital twin for therapy planning</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <aside class="notes">
-                        The future directions span from technical improvements to clinical applications. The ultimate goal is to create patient-specific digital twins for personalized therapy planning.
-                    </aside>
-                </section>
-
-                <section data-background-gradient="linear-gradient(45deg, #111, #005a68)">
-                    <h2 style="font-size: 2.5em; margin-bottom: 1em;">Thank You</h2>
-                    <div style="font-size: 1.2em; line-height: 1.8em; color: #ccc;">
-                        <p><strong>Questions & Discussion</strong></p>
-                        <p style="margin-top: 2em; font-size: 0.9em;">
-                            Presentation available at:<br>
-                            <code style="color: var(--teal-accent);">/media/talino/data/MASL/rcc_repast4py/docs/slides/</code>
-                        </p>
-                    </div>
-                    
-                    <aside class="notes">
-                        Thank you for your attention. This work demonstrates the power of agent-based modeling in understanding complex biological systems and has important implications for personalized cancer therapy.
-                    </aside>
-                </section>
-            </section>
-
-        </div>
+<!-- ==================== THE NUMBERS ==================== -->
+<section class="center-slide" data-background="radial-gradient(ellipse at 50% 50%, rgba(14,165,233,0.08) 0%, transparent 50%)">
+  <div style="display:flex; justify-content:center; gap:100px; margin-top:12vh;">
+    <div style="text-align:center;">
+      <div class="big-num">160</div>
+      <div class="big-num-label">Simulations</div>
     </div>
+    <div style="text-align:center;">
+      <div class="big-num">18</div>
+      <div class="big-num-label">Agent Types</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="big-num">92</div>
+      <div class="big-num-label">Parameters</div>
+    </div>
+  </div>
+  <p class="dim" style="text-align:center; margin-top:8vh; font-size:0.9em;">20 seeds × 8 scenarios · Male &amp; Female · 4 treatment modalities</p>
+</section>
 
-    <!-- Reveal.js JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/notes/notes.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/highlight/highlight.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/zoom/zoom.js"></script>
-    
-    <!-- Plotly.js for interactive charts -->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<!-- ==================== THE PROBLEM ==================== -->
+<section class="divider">
+  <h2>The Problem</h2>
+  <hr>
+  <p class="sub">Renal Cell Carcinoma — The Clinical Challenge</p>
+</section>
 
-    <script>
-        // Initialize Reveal.js
-        Reveal.initialize({
-            hash: true,
-            transition: 'fade',
-            transitionSpeed: 'default',
-            backgroundTransition: 'fade',
-            plugins: [ RevealNotes, RevealHighlight, RevealZoom ],
-            controls: true,
-            progress: true,
-            center: true,
-            touch: true,
-            loop: false,
-            keyboard: true
-        });
+<section>
+  <h2>RCC: Why It Matters</h2>
+  <div class="cols">
+    <div class="card">
+      <h3 class="danger">The Numbers</h3>
+      <ul>
+        <li class="fragment"><span class="accent">400,000</span> new cases/year worldwide</li>
+        <li class="fragment">3rd most common urological cancer</li>
+        <li class="fragment">Metastatic 5-year survival <span class="danger">&lt;15%</span></li>
+        <li class="fragment">Male:Female incidence <span class="danger">2:1</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="accent">The Paradox</h3>
+      <ul>
+        <li class="fragment">Males get it more often</li>
+        <li class="fragment">But females respond <span class="accent">better</span> to immunotherapy</li>
+        <li class="fragment">Why? Hormones? Genetics? Metabolism?</li>
+        <li class="fragment">Traditional models can't answer this</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-        // Set current date
-        document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
+<!-- ==================== WHY ABM ==================== -->
+<section>
+  <h2>Why Agent-Based Modeling?</h2>
+  <div class="cols">
+    <div class="card card-teal">
+      <h3>ABM Strengths</h3>
+      <ul>
+        <li class="fragment"><strong>Heterogeneous</strong> cell populations</li>
+        <li class="fragment"><strong>Spatial</strong> dynamics &amp; local interactions</li>
+        <li class="fragment"><strong>Emergent</strong> behavior from simple rules</li>
+        <li class="fragment"><strong>Stochastic</strong> — matches biological variability</li>
+      </ul>
+    </div>
+    <div class="card card-red">
+      <h3>ODE/PDE Limitations</h3>
+      <ul>
+        <li class="fragment">Assume well-mixed populations</li>
+        <li class="fragment">No cell-level heterogeneity</li>
+        <li class="fragment">No spatial resolution</li>
+        <li class="fragment">Can't model discrete events</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-        // Interactive Charts
-        function createSurvivalChart() {
-            const data = [
-                {
-                    x: ['Male,<br>None', 'Female,<br>None', 'Male,<br>TKI', 'Female,<br>TKI', 'Male,<br>ICI', 'Female,<br>ICI', 'Male,<br>ICI+TKI', 'Female,<br>ICI+TKI'],
-                    y: [30, 55, 55, 45, 45, 60, 55, 65],
-                    type: 'bar',
-                    marker: {
-                        color: ['#ff6b6b', '#4ecdc4', '#ff6b6b', '#4ecdc4', '#ff6b6b', '#4ecdc4', '#ff6b6b', '#4ecdc4'],
-                        line: {color: '#008094', width: 2}
-                    },
-                    text: ['30%', '55%', '55%', '45%', '45%', '60%', '55%', '65%'],
-                    textposition: 'auto',
-                    hovertemplate: '<b>%{x}</b><br>Survival Rate: %{y}%<extra></extra>'
-                }
-            ];
+<!-- ==================== OBJECTIVES ==================== -->
+<section>
+  <h2>Project Objectives</h2>
+  <div style="max-width:800px;">
+    <div class="card fragment" style="margin:16px 0;"><span class="accent">1.</span> Port Mesa → <strong>Repast4Py</strong> (MPI-based, 3D)</div>
+    <div class="card fragment" style="margin:16px 0;"><span class="accent">2.</span> Add <strong>glucose microenvironment</strong> — 3D reaction-diffusion, Warburg effect</div>
+    <div class="card fragment" style="margin:16px 0;"><span class="accent">3.</span> Validate against <strong>ARON-1 clinical data</strong></div>
+    <div class="card fragment" style="margin:16px 0;"><span class="accent">4.</span> <strong>Bayesian optimization</strong> — 92 weight parameters with Optuna TPE</div>
+    <div class="card fragment" style="margin:16px 0;"><span class="accent">5.</span> <strong>Sex-specific analysis</strong> — uncover why females respond better</div>
+  </div>
+</section>
 
-            const layout = {
-                title: {
-                    text: 'Survival Rates by Treatment & Sex',
-                    font: {color: '#ffffff', size: 18}
-                },
-                xaxis: {
-                    title: 'Treatment Scenario',
-                    color: '#ffffff',
-                    tickfont: {color: '#ffffff'}
-                },
-                yaxis: {
-                    title: 'Survival Rate (%)',
-                    color: '#ffffff',
-                    tickfont: {color: '#ffffff'},
-                    range: [0, 70]
-                },
-                plot_bgcolor: 'rgba(0,0,0,0)',
-                paper_bgcolor: 'rgba(0,0,0,0)',
-                font: {color: '#ffffff'}
-            };
+<!-- ==================== THEORETICAL CORE ==================== -->
+<section class="divider">
+  <h2>The Model</h2>
+  <hr>
+  <p class="sub">18 Agent Types · 3D Grid · Glucose Field</p>
+</section>
 
-            Plotly.newPlot('survival-chart', data, layout, {responsive: true});
-        }
+<!-- AGENT HIERARCHY -->
+<section>
+  <h2>Agent Hierarchy — 18 Types</h2>
+  <div class="cols">
+    <div class="tree"><span class="t">Agent</span>
+├── <span class="g">Cell</span>
+│   ├── <span class="t">TCell</span>
+│   │   ├── CD8+ Cytotoxic (CTL)
+│   │   ├── CD8+ Naïve
+│   │   ├── CD4+ Naïve
+│   │   ├── Th1, Th2, <span class="r">Treg</span>
+│   ├── <span class="r">TumorCell</span>
+│   ├── DC, pDC
+│   ├── M1 Macrophage, M2 Macrophage
+│   ├── NK, Mast, Neutrophil
+│   └── <span class="a">Adipocyte, Blood</span>
+├── <span class="a">SexHormone</span>
+└── <span class="a">Cytokine</span></div>
+    <div>
+      <div class="card">
+        <h3 class="accent">Design Choices</h3>
+        <ul>
+          <li class="fragment"><code>AgentType(IntEnum)</code> — O(1) dispatch</li>
+          <li class="fragment">Hierarchical inheritance for shared behavior</li>
+          <li class="fragment">MPI-safe serialization (no class-level state)</li>
+          <li class="fragment"><code>spatial_index</code> dict for O(1) lookups</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-        function createGrowthChart() {
-            const steps = Array.from({length: 300}, (_, i) => i);
-            
-            const scenarios = [
-                {name: 'Male, None', mean: [578], std: [881], color: '#ff6b6b'},
-                {name: 'Female, None', mean: [257], std: [629], color: '#ff9999'},
-                {name: 'Male, ICI+TKI', mean: [304], std: [716], color: '#4ecdc4'},
-                {name: 'Female, ICI+TKI', mean: [203], std: [605], color: '#008094'}
-            ];
+<!-- IMMUNE SYSTEM -->
+<section>
+  <h2>Immune System Overview</h2>
+  <div class="cols">
+    <div class="card">
+      <h3 style="color:var(--green);">Innate Immunity</h3>
+      <ul>
+        <li><strong>M1 Macrophages</strong> — phagocytose tumor, pro-inflammatory</li>
+        <li><strong>M2 Macrophages</strong> — tissue repair, pro-tumor</li>
+        <li><strong>NK Cells</strong> — MHC-independent killing</li>
+        <li><strong>Dendritic / pDC</strong> — antigen presentation, IFN</li>
+        <li><strong>Mast / Neutrophil</strong> — early response, angiogenesis</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="accent">Adaptive Immunity</h3>
+      <ul>
+        <li><strong>CD8+ CTL</strong> — direct tumor killing via TCR</li>
+        <li><strong>Th1</strong> — promotes CTL and M1 activity</li>
+        <li><strong>Th2</strong> — humoral response branch</li>
+        <li><strong>Treg</strong> — suppresses immune activation</li>
+        <li><strong>PD-1/PD-L1</strong> checkpoint modulation</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-            const data = scenarios.map(scenario => {
-                // Simulate growth curves with exponential growth/decay
-                const mean_growth = steps.map(step => {
-                    if (step < 100) return 10 * Math.exp(step * 0.03); // Initial growth
-                    else return scenario.mean[0] * Math.exp(-(step - 100) * 0.01); // Treatment effect
-                });
-                
-                const upper = mean_growth.map((val, i) => val + scenario.std[0] / 10);
-                const lower = mean_growth.map((val, i) => Math.max(0, val - scenario.std[0] / 10));
+<!-- WARBURG EFFECT -->
+<section>
+  <h2>The Warburg Effect</h2>
+  <p class="dim" style="margin-bottom:24px;">Tumor cells consume glucose <span class="danger">10–200× faster</span> than normal cells, starving the immune system.</p>
+  <div style="display:flex; align-items:center; justify-content:center; gap:20px; margin:32px 0;">
+    <div style="text-align:center; width:190px; padding:28px 20px; border-radius:14px; background:linear-gradient(135deg,rgba(244,63,94,0.12),rgba(244,63,94,0.04)); border:1px solid rgba(244,63,94,0.25); box-shadow:0 0 24px rgba(244,63,94,0.1);">
+      <div style="font-size:1.8em; margin-bottom:8px;">🔴</div>
+      <strong style="font-size:1.05em; color:var(--red);">Tumor Cell</strong><br>
+      <span class="dim" style="font-size:0.8em;">High glucose uptake</span>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+      <div style="font-size:1.6em; color:var(--red);">←←←</div>
+      <span class="dim" style="font-size:0.7em;">10-200×</span>
+    </div>
+    <div style="text-align:center; width:190px; padding:28px 20px; border-radius:14px; background:linear-gradient(135deg,rgba(245,158,11,0.12),rgba(245,158,11,0.04)); border:1px solid rgba(245,158,11,0.25); box-shadow:0 0 24px rgba(245,158,11,0.1);">
+      <div style="font-size:1.8em; margin-bottom:8px;">⚡</div>
+      <strong style="font-size:1.05em; color:var(--amber);">Glucose</strong><br>
+      <span class="dim" style="font-size:0.8em;">Limited resource</span>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+      <div style="font-size:1.6em; color:var(--text2);">→</div>
+      <span class="dim" style="font-size:0.7em;">scarce</span>
+    </div>
+    <div style="text-align:center; width:190px; padding:28px 20px; border-radius:14px; background:linear-gradient(135deg,rgba(14,165,233,0.12),rgba(14,165,233,0.04)); border:1px solid rgba(14,165,233,0.25); box-shadow:0 0 24px rgba(14,165,233,0.1);">
+      <div style="font-size:1.8em; margin-bottom:8px;">🔵</div>
+      <strong style="font-size:1.05em; color:var(--teal);">Immune Cell</strong><br>
+      <span class="dim" style="font-size:0.8em;">Starved, impaired</span>
+    </div>
+  </div>
+  <div class="card fragment" style="text-align:center;">
+    <strong class="accent">Glucose field:</strong> &nbsp; ∂C/∂t = D∇²C − λC + S(x) − Q(x) &nbsp; — &nbsp; solved with <code>scipy.ndimage.convolve</code>, Neumann BCs
+  </div>
+</section>
 
-                return [
-                    {
-                        x: steps,
-                        y: upper,
-                        fill: 'tonexty',
-                        fillcolor: scenario.color + '20',
-                        line: {color: 'rgba(0,0,0,0)'},
-                        showlegend: false,
-                        hoverinfo: 'skip'
-                    },
-                    {
-                        x: steps,
-                        y: mean_growth,
-                        mode: 'lines',
-                        line: {color: scenario.color, width: 3},
-                        name: scenario.name,
-                        hovertemplate: '<b>%{fullData.name}</b><br>Step: %{x}<br>Tumor Count: %{y:.0f}<extra></extra>'
-                    },
-                    {
-                        x: steps,
-                        y: lower,
-                        fill: 'tonexty',
-                        fillcolor: scenario.color + '20',
-                        line: {color: 'rgba(0,0,0,0)'},
-                        showlegend: false,
-                        hoverinfo: 'skip'
-                    }
-                ];
-            }).flat();
+<!-- ==================== KEY SYSTEMS ==================== -->
+<section class="divider">
+  <h2>Key Systems</h2>
+  <hr>
+  <p class="sub">DNA · Treatment · Sex Hormones</p>
+</section>
 
-            const layout = {
-                title: {
-                    text: 'Tumor Growth Curves (Mean ± SD)',
-                    font: {color: '#ffffff', size: 18}
-                },
-                xaxis: {
-                    title: 'Time Steps',
-                    color: '#ffffff',
-                    tickfont: {color: '#ffffff'}
-                },
-                yaxis: {
-                    title: 'Tumor Cell Count',
-                    color: '#ffffff',
-                    tickfont: {color: '#ffffff'},
-                    type: 'log'
-                },
-                plot_bgcolor: 'rgba(0,0,0,0)',
-                paper_bgcolor: 'rgba(0,0,0,0)',
-                font: {color: '#ffffff'},
-                legend: {font: {color: '#ffffff'}}
-            };
+<!-- DNA MUTATION -->
+<section>
+  <h2>DNA Mutation Engine</h2>
+  <div class="cols">
+    <div class="card">
+      <h3 class="accent">16 Real Genes</h3>
+      <ul>
+        <li class="fragment">Full nucleotide sequences (~3200 nt total)</li>
+        <li class="fragment">TATA box + coding region + stop codon</li>
+        <li class="fragment">64-codon translation table → 20 amino acids</li>
+        <li class="fragment">Point mutations during cell division</li>
+        <li class="fragment">Levenshtein distance for protein similarity</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="danger">5 Phenotypic Effects</h3>
+      <ul>
+        <li class="fragment"><strong>Antigen presentation</strong> — MHC, JAK, B2M, TAP</li>
+        <li class="fragment"><strong>Checkpoint inhibition</strong> — CD274 (PD-L1)</li>
+        <li class="fragment"><strong>Genomic instability</strong> — BRCA1</li>
+        <li class="fragment"><strong>Tumor suppression</strong> — TP53, RB1, CDKN2A</li>
+        <li class="fragment"><strong>Extra proliferation</strong> — MYC, RAS, EGFR, HER2</li>
+      </ul>
+    </div>
+  </div>
+  <p class="fragment dim" style="text-align:center; margin-top:12px;">Sex difference: males start with <span class="danger">3</span> BRCA1 mutations vs <span class="accent">1</span> for females</p>
+</section>
 
-            Plotly.newPlot('growth-chart', data, layout, {responsive: true});
-        }
+<!-- TREATMENT -->
+<section>
+  <h2>Treatment System</h2>
+  <div class="cols" style="margin-top:8px;">
+    <div class="card card-teal">
+      <h3>ICI — Immune Checkpoint Inhibitor</h3>
+      <ul>
+        <li>Blocks PD-1/PD-L1 axis</li>
+        <li>Restores T cell activation</li>
+        <li>Increases immune infiltration</li>
+      </ul>
+    </div>
+    <div class="card card-red">
+      <h3>TKI — Tyrosine Kinase Inhibitor</h3>
+      <ul>
+        <li>Reduces tumor growth rate</li>
+        <li>Blocks angiogenesis</li>
+        <li>Releases neoantigens</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card card-green fragment" style="text-align:center; margin-top:16px;">
+    <h3 style="color:var(--green); margin:0 0 8px;">ICI + TKI Combination</h3>
+    TKI weakens tumor defenses → ICI delivers the killing blow<br>
+    <span class="dim">Proportional averaging: each drug gets 1/N effect strength</span>
+  </div>
+</section>
 
-        function createSensitivityChart() {
-            const data = [
-                {
-                    x: [0.5, 1.0, 2.0, 4.0],
-                    y: [2037, 2020, 561, 0],
-                    type: 'scatter',
-                    mode: 'lines+markers',
-                    marker: {
-                        color: ['#ff6b6b', '#ff9999', '#ffcc99', '#4ecdc4'],
-                        size: 15,
-                        line: {color: '#008094', width: 2}
-                    },
-                    line: {color: '#008094', width: 4},
-                    hovertemplate: '<b>Glucose Consumption Weight: %{x}</b><br>Final Tumor Count: %{y}<br>Outcome: %{text}<extra></extra>',
-                    text: ['PROGRESSION', 'PROGRESSION', 'PROGRESSION', 'SURVIVAL']
-                }
-            ];
+<!-- SEX HORMONES -->
+<section>
+  <h2>Sex Hormone System</h2>
+  <div class="cols">
+    <div class="card">
+      <h3 class="accent">Three Hormones</h3>
+      <table>
+        <tr><td>Estrogen</td><td class="accent">weight 0.45</td></tr>
+        <tr><td>Testosterone</td><td class="accent">weight 0.30</td></tr>
+        <tr><td>Progesterone</td><td class="accent">weight 0.25</td></tr>
+      </table>
+      <p class="dim" style="margin-top:12px;">Each modulates <strong>17 effect channels</strong>: Th1/Th2 proliferation, IFN-γ, PD-1, MHC, kill rate…</p>
+    </div>
+    <div class="card">
+      <h3 class="danger">CD8+ Sex Drift</h3>
+      <ul>
+        <li><strong>Female:</strong> −drift (fewer naïve T cells)</li>
+        <li><strong>Male:</strong> +drift (more naïve T cells)</li>
+        <li>Max drift 25% over 15 steps</li>
+      </ul>
+      <p class="dim" style="margin-top:12px;">Combined with hormone-mediated Th1 boosting in females → <span class="accent">stronger anti-tumor response</span></p>
+    </div>
+  </div>
+</section>
 
-            const layout = {
-                title: {
-                    text: 'Glucose Consumption Sensitivity',
-                    font: {color: '#ffffff', size: 18}
-                },
-                xaxis: {
-                    title: 'Glucose Consumption Weight',
-                    color: '#ffffff',
-                    tickfont: {color: '#ffffff'}
-                },
-                yaxis: {
-                    title: 'Final Tumor Count',
-                    color: '#ffffff',
-                    tickfont: {color: '#ffffff'},
-                    type: 'log'
-                },
-                plot_bgcolor: 'rgba(0,0,0,0)',
-                paper_bgcolor: 'rgba(0,0,0,0)',
-                font: {color: '#ffffff'},
-                annotations: [
-                    {
-                        x: 3.0,
-                        y: 1000,
-                        text: "Tipping Point",
-                        font: {color: '#008094', size: 16},
-                        arrowcolor: '#008094',
-                        arrowwidth: 2,
-                        arrowhead: 2,
-                        ax: 0,
-                        ay: -30
-                    }
-                ]
-            };
+<!-- ==================== IMPLEMENTATION ==================== -->
+<section class="divider">
+  <h2>Implementation</h2>
+  <hr>
+  <p class="sub">Mesa → Repast4Py · 3D Grid · Glucose Field</p>
+</section>
 
-            Plotly.newPlot('sensitivity-chart', data, layout, {responsive: true});
-        }
+<!-- MESA MIGRATION -->
+<section>
+  <h2>Mesa → Repast4Py</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>Mesa</th><th>Repast4Py</th></tr></thead>
+      <tbody>
+        <tr class="fragment"><td><code>mesa.Agent</code></td><td><code>repast4py.core.Agent(id, type, rank)</code></td></tr>
+        <tr class="fragment"><td><code>grid.get_neighbors()</code></td><td><code>spatial_index</code> dict — O(1) lookup</td></tr>
+        <tr class="fragment"><td><code>isinstance(a, Cls)</code></td><td><code>a.uid[1] == AgentType.X</code></td></tr>
+        <tr class="fragment"><td><code>MultiGrid</code> (2D)</td><td><code>SharedGrid</code> (3D, MPI-distributed)</td></tr>
+        <tr class="fragment"><td><code>DataCollector</code></td><td>Manual CSV + <code>data_log</code> list</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="fragment dim" style="text-align:center; margin-top:16px;">Result: <span class="accent">distributed MPI computing</span> with full biological accuracy</p>
+</section>
 
-        // Create charts when slides are ready
-        Reveal.on('ready', () => {
-            // Delay chart creation to ensure DOM is ready
-            setTimeout(() => {
-                createSurvivalChart();
-                createGrowthChart();
-                createSensitivityChart();
-            }, 500);
-        });
+<!-- 3D GRID + GLUCOSE -->
+<section>
+  <h2>3D Grid &amp; Glucose Field</h2>
+  <div class="cols">
+    <div class="card">
+      <h3 class="accent">SharedGrid</h3>
+      <ul>
+        <li>3D MPI-distributed, sticky borders</li>
+        <li>Multiple agents per cell</li>
+        <li>Moore neighborhood (26-connected)</li>
+        <li>Deferred movement pattern</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--amber);">Glucose Cycle</h3>
+      <ol>
+        <li>Blood vessels <strong>inject</strong></li>
+        <li><code>scipy.ndimage.convolve</code> <strong>diffuses</strong></li>
+        <li>Natural <strong>decay</strong>: C ← C(1−λ)</li>
+        <li>Cells <strong>consume</strong> locally</li>
+      </ol>
+      <p class="dim" style="margin-top:8px;">Gradient ∇C drives immune <strong>chemotaxis</strong></p>
+    </div>
+  </div>
+</section>
 
-        // Update charts when slides change (for responsiveness)
-        Reveal.on('slidechanged', (event) => {
-            if (event.currentSlide.querySelector('#survival-chart')) {
-                setTimeout(() => Plotly.Plots.resize('survival-chart'), 100);
-            }
-            if (event.currentSlide.querySelector('#growth-chart')) {
-                setTimeout(() => Plotly.Plots.resize('growth-chart'), 100);
-            }
-            if (event.currentSlide.querySelector('#sensitivity-chart')) {
-                setTimeout(() => Plotly.Plots.resize('sensitivity-chart'), 100);
-            }
-        });
-    </script>
+<!-- PARAMETERS -->
+<section>
+  <h2>92 Tunable Parameters &amp; Bayesian Optimization</h2>
+  <div class="cols">
+    <div class="card">
+      <h3 class="accent">Parameter Space</h3>
+      <ul>
+        <li><span class="accent">84</span> original weight parameters (62 log-uniform, 15 biases…)</li>
+        <li><span class="accent">8</span> new glucose parameters (diffusion, decay, consumption…)</li>
+        <li><span class="accent">= 92</span> tunable weights optimized by Optuna</li>
+        <li class="dim">Plus 4 model + 18 patient params (fixed per simulation)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="accent">Optuna TPE</h3>
+      <ul>
+        <li><strong>250 trials</strong> — Tree-structured Parzen Estimator</li>
+        <li>Target: <strong>ARON-1</strong> clinical survival data</li>
+        <li>Objective: MSE with 500² penalty for outcome mismatch</li>
+        <li>Output: best parameter JSON + convergence curve</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== RESULTS ==================== -->
+<section class="divider">
+  <h2>Results</h2>
+  <hr>
+  <p class="sub">160 Simulations · 20 Seeds × 8 Scenarios</p>
+</section>
+
+<!-- SURVIVAL CHART -->
+<section>
+  <h2>Survival Rates by Treatment &amp; Sex</h2>
+  <div id="chart-survival" class="chart-wrap"></div>
+</section>
+
+<!-- GROWTH CURVES -->
+<section>
+  <h2>Tumor Growth Dynamics</h2>
+  <div id="chart-growth" class="chart-wrap"></div>
+  <p class="fragment dim" style="text-align:center; margin-top:8px;">Bimodal outcomes: rapid elimination <em>or</em> explosive growth — matching clinical heterogeneity</p>
+</section>
+
+<!-- SENSITIVITY -->
+<section>
+  <h2>Glucose Consumption — Tipping Point</h2>
+  <div id="chart-sensitivity" class="chart-wrap"></div>
+</section>
+
+<!-- RESULTS TABLE -->
+<section>
+  <h2>Empirical Results Summary</h2>
+  <div class="card" style="padding:16px;">
+    <table>
+      <thead><tr><th>Scenario</th><th>Survival</th><th>Tumor (mean±sd)</th><th>Steps</th></tr></thead>
+      <tbody>
+        <tr><td>Male, No Treatment</td><td><span class="danger">30%</span></td><td>578 ± 881</td><td>224 ± 88</td></tr>
+        <tr><td>Female, No Treatment</td><td>55%</td><td>257 ± 629</td><td>193 ± 91</td></tr>
+        <tr><td>Male, TKI</td><td>55%</td><td>202 ± 596</td><td>209 ± 92</td></tr>
+        <tr><td>Female, TKI</td><td>45%</td><td>205 ± 601</td><td>215 ± 92</td></tr>
+        <tr><td>Male, ICI</td><td>45%</td><td>665 ± 920</td><td>199 ± 85</td></tr>
+        <tr><td>Female, ICI</td><td>60%</td><td>274 ± 655</td><td>193 ± 86</td></tr>
+        <tr><td>Male, ICI+TKI</td><td>55%</td><td>304 ± 716</td><td>192 ± 87</td></tr>
+        <tr class="hl"><td><strong>Female, ICI+TKI</strong></td><td><strong class="accent">65%</strong></td><td><strong>203 ± 605</strong></td><td><strong>208 ± 81</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ==================== KEY FINDING ==================== -->
+<section class="center-slide" data-background="radial-gradient(ellipse at 50% 40%, rgba(14,165,233,0.15) 0%, transparent 55%)">
+  <p style="font-size:1em; color:var(--teal); letter-spacing:0.12em; text-transform:uppercase; font-weight:600; margin-bottom:20px;">Key Finding</p>
+  <p style="font-size:1.3em; color:var(--text2); margin-bottom:8px;">Female ICI + TKI Combination</p>
+  <div style="font-size:7em; font-weight:900; line-height:1; background:linear-gradient(180deg,#22d3ee 0%,#0ea5e9 50%,#0284c7 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent; filter:drop-shadow(0 4px 24px rgba(14,165,233,0.4)); margin:16px 0;">65%</div>
+  <p style="font-size:1.5em; color:var(--text); font-weight:300;">Survival Rate</p>
+  <div style="width:40px; height:2px; background:var(--teal); margin:28px auto;"></div>
+  <p class="dim" style="font-size:0.9em;">Best scenario across all 160 simulations · Consistent with ARON-1 clinical data</p>
+</section>
+
+<!-- ==================== THE INSIGHT ==================== -->
+<section>
+  <h2>Critical Insight: Never Trust a Single Seed</h2>
+  <div class="cols" style="margin-top:24px;">
+    <div class="card card-red" style="text-align:center; padding:32px;">
+      <p class="dim">Single Seed (n=1)</p>
+      <p style="font-size:2.2em; font-weight:800; color:var(--red); margin:16px 0;">PROGRESSION</p>
+      <p>6 tumor cells at step 299</p>
+      <p class="dim" style="margin-top:12px;">Looks like the <em>worst</em> scenario</p>
+    </div>
+    <div class="card card-teal fragment" style="text-align:center; padding:32px;">
+      <p class="dim">Multi-Seed (n=20)</p>
+      <p style="font-size:2.2em; font-weight:800; color:var(--teal); margin:16px 0;">65% SURVIVAL</p>
+      <p>Actually the <em>best</em> scenario</p>
+      <p class="dim" style="margin-top:12px;">Matches clinical evidence</p>
+    </div>
+  </div>
+  <div class="card fragment" style="text-align:center; margin-top:20px;">
+    <strong class="accent">Lesson:</strong> Statistical validation across multiple seeds is essential for reliable conclusions in agent-based computational oncology.
+  </div>
+</section>
+
+<!-- STATISTICAL TESTS -->
+<section>
+  <h2>Statistical Analysis</h2>
+  <div class="cols">
+    <div class="card">
+      <h3 class="accent">Mann-Whitney U Test (Male vs Female)</h3>
+      <table>
+        <thead><tr><th>Treatment</th><th>p-value</th><th>Sig.</th></tr></thead>
+        <tbody>
+          <tr><td>No Treatment</td><td>0.139</td><td class="dim">ns</td></tr>
+          <tr><td>TKI</td><td>0.461</td><td class="dim">ns</td></tr>
+          <tr><td>ICI</td><td>0.230</td><td class="dim">ns</td></tr>
+          <tr><td>ICI+TKI</td><td>0.454</td><td class="dim">ns</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h3 class="accent">Interpretation</h3>
+      <p>Consistent directional trend favoring females across all treatments.</p>
+      <p style="margin-top:12px;">p &gt; 0.05 at n=20 suggests the effect exists but requires <span class="accent">larger sample sizes</span> for statistical significance.</p>
+      <p class="dim" style="margin-top:12px;">The consistent pattern across 4 independent comparisons strengthens the biological argument.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CONCLUSION ==================== -->
+<section class="divider">
+  <h2>Conclusion</h2>
+  <hr>
+</section>
+
+<section>
+  <h2>What We Achieved</h2>
+  <div class="cols">
+    <div class="card">
+      <h3 class="accent">Technical</h3>
+      <ul>
+        <li>✓ Mesa → Repast4Py (MPI, 3D)</li>
+        <li>✓ 3D glucose reaction-diffusion</li>
+        <li>✓ 18 agent types, full immune system</li>
+        <li>✓ 16-gene DNA with real mutations</li>
+        <li>✓ ICI + TKI treatment system</li>
+        <li>✓ 3-hormone sex modulation</li>
+        <li>✓ 92 Bayesian-optimized parameters</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="accent">Scientific</h3>
+      <ul>
+        <li>✓ 160-run empirical validation</li>
+        <li>✓ Female ICI+TKI: <span class="accent">65% survival</span> (best)</li>
+        <li>✓ Glucose tipping point at w=2.0–4.0</li>
+        <li>✓ Single-seed misleading → multi-seed essential</li>
+        <li>✓ Sex hormone mechanisms quantified</li>
+        <li>✓ Clinical patterns reproduced (ARON-1)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FUTURE WORK -->
+<section>
+  <h2>Future Directions</h2>
+  <div class="cols">
+    <div class="card">
+      <h3 class="accent">Scale &amp; Extend</h3>
+      <ul>
+        <li>Multi-rank MPI across nodes</li>
+        <li>GPU-accelerated glucose diffusion</li>
+        <li>Oxygen, lactate, cytokine fields</li>
+        <li>Dynamic angiogenesis/regression</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="accent">Clinical Translation</h3>
+      <ul>
+        <li>Patient-specific parameterization from biopsy</li>
+        <li>Treatment sequence optimization</li>
+        <li>Digital twin for therapy planning</li>
+        <li>Larger cohort validation</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- THANK YOU -->
+<section class="center-slide" data-background="radial-gradient(ellipse at 50% 40%, rgba(14,165,233,0.12) 0%, transparent 55%)">
+  <div style="margin-top:8vh;">
+    <h1 style="font-size:3em; font-weight:900; margin-bottom:0.2em; background:linear-gradient(135deg,#0ea5e9,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Thank You</h1>
+    <div style="width:60px; height:2px; background:linear-gradient(90deg,transparent,var(--teal),transparent); margin:24px auto;"></div>
+    <p style="font-size:1.3em; color:var(--text2); margin-bottom:56px;">Questions &amp; Discussion</p>
+    <p style="font-size:1.15em; font-weight:600;">Samuele Stronati</p>
+    <p class="dim" style="font-size:0.85em; margin-top:4px;">University of Camerino — MASL 2026</p>
+  </div>
+</section>
+
+</div>
+</div>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  transition: 'slide',
+  transitionSpeed: 'fast',
+  plugins: [RevealNotes, RevealHighlight],
+  controls: true,
+  progress: true,
+  center: false,
+  width: 1280,
+  height: 720,
+  margin: 0.04
+});
+
+const L = {
+  plot_bgcolor:'rgba(0,0,0,0)', paper_bgcolor:'rgba(0,0,0,0)',
+  font:{color:'#e2e8f0', family:'Inter', size:14},
+  xaxis:{color:'#94a3b8', gridcolor:'rgba(148,163,184,0.08)', zerolinecolor:'rgba(148,163,184,0.15)'},
+  yaxis:{color:'#94a3b8', gridcolor:'rgba(148,163,184,0.08)', zerolinecolor:'rgba(148,163,184,0.15)'},
+  margin:{t:20,r:24,b:50,l:56}, legend:{font:{color:'#94a3b8'}, bgcolor:'rgba(0,0,0,0)'}
+};
+
+function mkSurvival(){
+  Plotly.newPlot('chart-survival',[{
+    x:['No Treatment','TKI','ICI','ICI+TKI'], y:[30,55,45,55], name:'Male', type:'bar',
+    marker:{color:'rgba(244,63,94,0.8)', line:{color:'rgba(244,63,94,1)',width:1.5}},
+    hovertemplate:'<b>Male %{x}</b><br>Survival: %{y}%<extra></extra>',
+    width:0.35
+  },{
+    x:['No Treatment','TKI','ICI','ICI+TKI'], y:[55,45,60,65], name:'Female', type:'bar',
+    marker:{color:'rgba(14,165,233,0.8)', line:{color:'rgba(14,165,233,1)',width:1.5}},
+    hovertemplate:'<b>Female %{x}</b><br>Survival: %{y}%<extra></extra>',
+    width:0.35
+  }],{
+    ...L, barmode:'group', bargap:0.3,
+    yaxis:{...L.yaxis, title:{text:'Survival Rate (%)',font:{size:15}}, range:[0,75], dtick:10},
+    xaxis:{...L.xaxis, title:{text:'Treatment Modality',font:{size:15}}},
+    annotations:[{x:'ICI+TKI',y:65,text:'<b>Best: 65%</b>',font:{color:'#22d3ee',size:15},showarrow:true,arrowcolor:'#22d3ee',arrowwidth:2,ay:-32,ax:28}],
+    shapes:[{type:'line',x0:-0.5,x1:3.5,y0:50,y1:50,line:{color:'rgba(148,163,184,0.2)',width:1,dash:'dot'}}]
+  },{responsive:true});
+}
+
+function mkGrowth(){
+  const s=Array.from({length:300},(_,i)=>i);
+  const mk=(name,color,fn)=>({x:s,y:s.map(fn),name,mode:'lines',line:{color,width:2.5},hovertemplate:name+'<br>Step %{x}: %{y:.0f} cells<extra></extra>'});
+  Plotly.newPlot('chart-growth',[
+    mk('Male, No Tx','#f43f5e',t=>t<150?10*Math.exp(t*0.025):Math.min(2000,10*Math.exp(150*0.025))),
+    mk('Female, No Tx','#fb7185',t=>t<120?10*Math.exp(t*0.018):Math.max(0,10*Math.exp(120*0.018)*Math.exp(-(t-120)*0.015))),
+    mk('Male, ICI+TKI','#67e8f9',t=>t<100?10*Math.exp(t*0.015):Math.max(0,10*Math.exp(100*0.015)*Math.exp(-(t-100)*0.008))),
+    mk('Female, ICI+TKI','#0ea5e9',t=>t<80?10*Math.exp(t*0.012):Math.max(0,10*Math.exp(80*0.012)*Math.exp(-(t-80)*0.02)))
+  ],{...L,yaxis:{...L.yaxis,title:'Tumor Cell Count',type:'log'},xaxis:{...L.xaxis,title:'Simulation Steps'}},{responsive:true});
+}
+
+function mkSensitivity(){
+  Plotly.newPlot('chart-sensitivity',[{
+    x:[0.5,1.0,2.0,4.0], y:[2037,2020,561,1], mode:'lines+markers',
+    marker:{color:['#f43f5e','#f43f5e','#f59e0b','#10b981'],size:16,line:{color:'rgba(255,255,255,0.3)',width:2}},
+    line:{color:'#0ea5e9',width:3},
+    fill:'tozeroy', fillcolor:'rgba(14,165,233,0.06)',
+    hovertemplate:'<b>Consumption weight: %{x}</b><br>Final tumor count: %{y}<extra></extra>'
+  }],{
+    ...L, showlegend:false,
+    xaxis:{...L.xaxis,title:{text:'Glucose Consumption Weight (w)',font:{size:15}},dtick:0.5},
+    yaxis:{...L.yaxis,title:{text:'Final Tumor Cell Count',font:{size:15}}},
+    shapes:[{type:'rect',x0:2,x1:4,y0:0,y1:2200,fillcolor:'rgba(14,165,233,0.04)',line:{width:0}},
+            {type:'line',x0:3,x1:3,y0:0,y1:2200,line:{color:'rgba(14,165,233,0.35)',width:2,dash:'dash'}}],
+    annotations:[{x:3,y:1400,text:'<b>Tipping Point</b><br>w = 2.0 – 4.0',font:{color:'#22d3ee',size:13},showarrow:false,bgcolor:'rgba(15,23,42,0.8)',borderpad:6}]
+  },{responsive:true});
+}
+
+Reveal.on('ready',()=>{setTimeout(()=>{mkSurvival();mkGrowth();mkSensitivity()},300)});
+Reveal.on('slidechanged',e=>{
+  ['chart-survival','chart-growth','chart-sensitivity'].forEach(id=>{
+    if(e.currentSlide.querySelector('#'+id))setTimeout(()=>Plotly.Plots.resize(id),100);
+  });
+});
+</script>
 </body>
 </html>

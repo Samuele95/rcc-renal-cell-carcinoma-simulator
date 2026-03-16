@@ -1,6 +1,8 @@
 \chapter{Model Description}
 \label{ch:model_description}
 
+\epigraph{Emergence is the arising of novel and coherent structures during the process of self-organization.}{--- Jeffrey Goldstein}
+
 This chapter provides a comprehensive description of the RCC agent-based model architecture. We begin with a high-level overview of the simulation environment and time step structure (Section~\ref{sec:md_overview}), then describe the agent class hierarchy (Section~\ref{sec:md_hierarchy}), the effect system that mediates inter-agent communication (Section~\ref{sec:md_effects}), the detailed interaction rules for each agent type (Section~\ref{sec:md_interactions}), the movement system (Section~\ref{sec:md_movement}), and the terminal conditions that govern simulation termination (Section~\ref{sec:md_terminal}).
 
 % ============================================================================
@@ -146,8 +148,7 @@ Figure~\ref{fig:agent_hierarchy} illustrates the complete agent class hierarchy,
 
 \begin{figure}[htbp]
 \centering
-% TikZ figure temporarily disabled - agent hierarchy would show inheritance tree
-\textit{[Agent hierarchy diagram showing Cell base class with tumor cells, immune cells, and stromal cells inheriting from it]}
+\resizebox{0.85\textwidth}{!}{\input{figures/agent_hierarchy.tex}}
 \caption{Agent class hierarchy in the RCC model. Abstract base classes are shown with dashed borders, while concrete implementations are categorized by functional type: T cells (green), other cellular agents (blue), and non-cellular signaling agents (orange).}
 \label{fig:agent_hierarchy}
 \end{figure}

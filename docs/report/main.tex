@@ -3,6 +3,7 @@
 % Packages
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{palatino}  % Palatino for body text — more readable than Computer Modern
 \usepackage[english]{babel}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{graphicx}
@@ -16,9 +17,12 @@
 \usepackage{subcaption}
 \usepackage{multirow}
 \usepackage[margin=2.5cm]{geometry}
+\setlength{\parskip}{0.4em plus 0.1em minus 0.1em}
+\setlength{\parindent}{1.5em}
 \usepackage{float}
 \usepackage{enumitem}
 \usepackage[section]{placeins}
+\usepackage{epigraph}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,calc,decorations.pathmorphing,shapes.symbols,shadows}
 \usepackage{xcolor}
@@ -134,7 +138,7 @@
 % Listing style
 \lstset{
   language=Python,
-  basicstyle=\ttfamily\small,
+  basicstyle=\footnotesize\ttfamily,
   keywordstyle=\color{blue}\bfseries,
   stringstyle=\color{red!70!black},
   commentstyle=\color{green!60!black}\itshape,
