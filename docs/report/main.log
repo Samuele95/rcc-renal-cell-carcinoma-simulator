@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.6)  16 MAR 2026 23:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.6)  17 MAR 2026 00:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1521,11 +1521,11 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.36 ... {3.1.2}Agent Types}{25}{subsection.3.1.2}
+l.41 ...rline {3.3}Effect System}{25}{section.3.3}
                                                   % [1
 
 ]
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 49
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 48
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
@@ -1595,37 +1595,27 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [7] (./chapters/01_introduction.tex
 Chapter 1.
-
-Overfull \hbox (5.62805pt too wide) in paragraph at lines 6--6
-|[]\T1/ppl/b/n/17.28 Renal Cell Car-ci-noma: Epi-demi-ol-ogy and Clin-i-cal Sig
--
- []
-
-<figures/rcc_epidemiology.pdf, id=1329, 811.46933pt x 353.43166pt>
+<figures/rcc_epidemiology.pdf, id=1322, 811.46933pt x 353.43166pt>
 File: figures/rcc_epidemiology.pdf Graphic file (type pdf)
 <use figures/rcc_epidemiology.pdf>
-Package pdftex.def Info: figures/rcc_epidemiology.pdf  used on input line 17.
+Package pdftex.def Info: figures/rcc_epidemiology.pdf  used on input line 13.
 (pdftex.def)             Requested size: 386.96027pt x 168.5397pt.
 [8
 
 
-]
-LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 2
-8.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ppl.fd
+ <./figures/rcc_epidemiology.pdf>]
+Overfull \hbox (1.90273pt too wide) in paragraph at lines 33--34
+\T1/ppl/m/n/12 monal modulation---presents a chal-lenge for tra-di-tional ex-pe
+r-i-men-tal ap-proaches. Clin-
+ []
+
+(./figures/conceptual_overview.tex
+LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 1
+4.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
-)
-Overfull \hbox (21.85791pt too wide) in paragraph at lines 30--31
-[]\T1/ppl/b/n/12 Stromal cells \T1/ppl/m/n/12 such as adipocytes and fi-brob-la
-sts that pro-vide struc-tural and metabolic
- []
-
-
-Overfull \hbox (14.29889pt too wide) in paragraph at lines 40--41
-\T1/ppl/m/n/12 fun-da-men-tal mod-u-la-tors of both tu-mor bi-ol-ogy and im-mun
-e re-sponse, op-er-at-ing through
- []
-
+))
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1634,49 +1624,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[9 <./figures/rcc_epidemiology.pdf>]
-Overfull \hbox (0.46289pt too wide) in paragraph at lines 42--43
-\T1/ppl/m/n/12 and interferon-gamma pro-duc-tion while pro-mot-ing checkpoint-m
-ediated im-mune eva-
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[10]
-Overfull \hbox (0.11372pt too wide) in paragraph at lines 55--56
-\T1/ppl/m/n/12 across high-dimensional pa-ram-e-ter spaces, iden-ti-fy-ing whic
-h bi-o-log-i-cal vari-ables
- []
-
-
-Overfull \hbox (16.69762pt too wide) in paragraph at lines 57--58
-\T1/ppl/m/n/12 un-ex-pected im-mune cell pop-u-la-tion dy-nam-ics or treat-ment
- re-sis-tance mechanisms---
- []
-
-(./figures/conceptual_overview.tex)
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[11]
-Overfull \hbox (0.36613pt too wide) in paragraph at lines 79--80
+[9]
+Overfull \hbox (0.36613pt too wide) in paragraph at lines 56--57
 []\T1/ppl/b/n/12 Stochasticity. \T1/ppl/m/n/12 Bi-o-log-i-cal pro-cesses such a
 s cell di-vi-sion, apop-to-sis, im-mune recog-
  []
 
 
-Overfull \hbox (21.84921pt too wide) in paragraph at lines 83--84
+Overfull \hbox (21.84921pt too wide) in paragraph at lines 60--61
 \T1/ppl/m/n/12 such as Mesa [[]]. Repast4Py pro-vides core abstractions---\T1/p
 cr/m/n/12 SharedContext\T1/ppl/m/n/12 , \T1/pcr/m/n/12 SharedGrid\T1/ppl/m/n/12
  ,
@@ -1690,8 +1645,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[12]
-Overfull \hbox (1.14552pt too wide) in paragraph at lines 97--98
+[10]
+Overfull \hbox (1.14552pt too wide) in paragraph at lines 74--75
 \T1/ppl/m/n/12 ates over the model's weight pa-ram-e-ters, in-clud-ing the newl
 y in-tro-duced glucose-
  []
@@ -1705,52 +1660,24 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[13] (./chapters/02_theoretical_background.tex
+[11] (./chapters/02_theoretical_background.tex
 Chapter 2.
-[14
+[12
 
 
 ]
-Overfull \hbox (26.86206pt too wide) in paragraph at lines 47--48
+Overfull \hbox (26.86206pt too wide) in paragraph at lines 37--38
 \T1/ppl/m/n/12 act. Spa-tial phe-nom-ena such as im-mune ex-clu-sion zones arou
 nd tu-mors, angiogenesis-
  []
 
 
-Overfull \hbox (3.68958pt too wide) in paragraph at lines 48--49
+Overfull \hbox (3.68958pt too wide) in paragraph at lines 38--39
 []\T1/ppl/b/n/12 Stochasticity. \T1/ppl/m/n/12 Bi-o-log-i-cal events---mitosis,
  apop-to-sis, anti-gen recog-ni-tion, cy-tokine
  []
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[15]
-Overfull \hbox (104.02351pt too wide) in paragraph at lines 65--66
-[]\T1/ppl/b/n/12 Schedule run-ner. \T1/ppl/m/n/12 The schedul-ing mech-a-nism, 
-ini-tial-ized via \T1/pcr/m/n/12 schedule.init_schedule_runner\T1/ppl/m/n/12 ,
- []
-
-
-Overfull \hbox (14.50446pt too wide) in paragraph at lines 92--93
-\T1/ppl/m/n/12 are han-dled by the grid ob-ject di-rectly (e.g., \T1/pcr/m/n/12
- grid.get_neighbors()\T1/ppl/m/n/12 ). In the Repast4Py
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[16] (./figures/abm_vs_ode.tex
+(./figures/abm_vs_ode.tex
 LaTeX Info: Symbol \textrightarrow not provided by
             font family ppl in TS1 encoding.
             Default family used instead on input line 173.
@@ -1763,48 +1690,42 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[17]
-Overfull \hbox (76.81693pt too wide) in paragraph at lines 133--134
-\T1/ppl/m/n/12 tu-mor im-mune eva-sion. Tregs in-hibit cy-to-toxic T cell killi
-ng (re-duc-ing \T1/pcr/m/n/12 t_kill_rate_effect\T1/ppl/m/n/12 ),
+[13]
+Overfull \hbox (0.58334pt too wide) in paragraph at lines 73--74
+\T1/ppl/m/n/12 inflammatory, anti-tumor), Th2 helpers (anti-inflammatory, mild 
+pro-tumor), and Tregs
  []
 
 
-Overfull \hbox (86.99422pt too wide) in paragraph at lines 140--141
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[14]
+Overfull \hbox (86.99422pt too wide) in paragraph at lines 79--80
 \T1/ppl/m/n/12 tu-mor cells, phago-cy-tose them (with prob-a-bil-ity mod-u-late
 d by the \T1/pcr/m/n/12 dc_phagocitosis_effect\T1/ppl/m/n/12 ),
  []
 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[18]
-Overfull \hbox (91.98749pt too wide) in paragraph at lines 151--152
+Overfull \hbox (91.98749pt too wide) in paragraph at lines 90--91
 \T1/ppl/m/n/12 macrophages can po-lar-ize to M2 un-der the in-flu-ence of the \
 T1/pcr/m/n/12 macrophage_m1_mutation_effect\T1/ppl/m/n/12 ,
  []
 
 
-Overfull \hbox (2.34647pt too wide) in paragraph at lines 153--154
+Overfull \hbox (2.34647pt too wide) in paragraph at lines 92--93
 []\T1/ppl/b/n/12 M2 Macrophages (anti-inflammatory / pro-tumorigenic). \T1/ppl/
 m/n/12 Al-ter-na-tively ac-ti-vated
  []
 
 
-Overfull \hbox (51.29892pt too wide) in paragraph at lines 156--157
+Overfull \hbox (51.29892pt too wide) in paragraph at lines 95--96
 \T1/ppl/m/n/12 through the \T1/pcr/m/n/12 macrophage_m1_mutation_effect \T1/ppl
 /m/n/12 and \T1/pcr/m/n/12 macrophage_m2_mutation_effect
- []
-
-
-Overfull \hbox (10.16402pt too wide) in paragraph at lines 163--164
-[]\T1/ppl/m/n/12 In the model, NK cell kill prob-a-bil-ity is de-ter-mined by t
-he \T1/pcr/m/n/12 nkl_kill_rate_effect\T1/ppl/m/n/12 ,
  []
 
 
@@ -1815,14 +1736,28 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[19]
-Overfull \hbox (1.54185pt too wide) in paragraph at lines 169--170
+[15]
+Overfull \hbox (10.16402pt too wide) in paragraph at lines 102--103
+[]\T1/ppl/m/n/12 In the model, NK cell kill prob-a-bil-ity is de-ter-mined by t
+he \T1/pcr/m/n/12 nkl_kill_rate_effect\T1/ppl/m/n/12 ,
+ []
+
+
+Overfull \hbox (1.54185pt too wide) in paragraph at lines 108--109
 \T1/ppl/m/n/12 captured in the model by ran-domly as-sign-ing ef-fect po-lar-i-
 ties at creation---reflects
  []
 
 
-Overfull \hbox (2.02438pt too wide) in paragraph at lines 189--190
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[16]
+Overfull \hbox (2.02438pt too wide) in paragraph at lines 128--129
 []\T1/ppl/b/n/12 Treg re-cruit-ment. \T1/ppl/m/n/12 The tu-mor mi-croen-vi-ron-
 ment pro-motes dif-fer-en-ti-a-tion of CD4$[]$
  []
@@ -1835,17 +1770,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[20]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[21]
-Overfull \hbox (72.27077pt too wide) in paragraph at lines 252--253
+[17]
+Overfull \hbox (72.27077pt too wide) in paragraph at lines 191--192
 \T1/ppl/m/n/12 plied with prob-a-bil-ity pro-por-tional to the drug's ef-fec-ti
 ve-ness pa-ram-e-ter (\T1/pcr/m/n/12 w_ici_effectiveness\T1/ppl/m/n/12 ): 
  []
@@ -1858,8 +1784,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[22]
-Overfull \hbox (145.6794pt too wide) in paragraph at lines 273--274
+[18]
+Overfull \hbox (145.6794pt too wide) in paragraph at lines 212--213
 []\T1/ppl/m/n/12 Additionally, TKI treat-ment re-duces Treg dif-fer-en-ti-a-tio
 n by de-creas-ing the \T1/pcr/m/n/12 treg_differentiation_effect
  []
@@ -1873,13 +1799,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[23] (./chapters/03_model_description.tex
+[19] (./chapters/03_model_description.tex
 Chapter 3.
-[24
+[20
 
 
 ]
-<figures/agent_population_pie.pdf, id=1568, 790.13191pt x 715.54706pt>
+<figures/agent_population_pie.pdf, id=1522, 790.13191pt x 715.54706pt>
 File: figures/agent_population_pie.pdf Graphic file (type pdf)
 <use figures/agent_population_pie.pdf>
 Package pdftex.def Info: figures/agent_population_pie.pdf  used on input line 3
@@ -1894,7 +1820,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[25 <./figures/agent_population_pie.pdf>]
+[21 <./figures/agent_population_pie.pdf>]
 Overfull \hbox (50.59941pt too wide) in paragraph at lines 78--79
 \T1/ppl/m/n/12 Each sim-u-la-tion step fol-lows a fixed se-quence of op-er-a-ti
 ons, ex-e-cuted by the \T1/pcr/m/n/12 RCCModel.step()
@@ -1914,7 +1840,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[26]
+[22]
 Overfull \hbox (7.32657pt too wide) in paragraph at lines 87--88
 []\T1/ppl/b/n/12 Manage blood. \T1/ppl/m/n/12 Eval-u-ate an-gio-gen-e-sis con-d
 i-tions and cre-ate new tumor-generated
@@ -1934,7 +1860,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[27]
+[23]
 Overfull \hbox (9.32169pt too wide) in paragraph at lines 117--118
 []\T1/pcr/m/n/12 move_towards(target_type, look_up_size, distance)\T1/ppl/m/n/1
 2 : Finds the near-
@@ -1979,7 +1905,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[28]
+[24]
 Overfull \hbox (153.06898pt too wide) in paragraph at lines 149--150
 []\T1/ppl/b/n/12 Inheriting from \T1/pcr/b/n/12 Cell \T1/ppl/m/n/12 di-rectly: 
 \T1/pcr/m/n/12 TumorCell\T1/ppl/m/n/12 , \T1/pcr/m/n/12 TregCell\T1/ppl/m/n/12 
@@ -1996,7 +1922,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[29]
+[25]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2005,378 +1931,34 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[30] (./figures/agent_interactions.tex)
-Underfull \hbox (badness 10000) in paragraph at lines 255--256
-[]|\T1/ppl/m/n/12 Emits pos-i-tive
+[26] (./figures/agent_interactions.tex)
+Underfull \hbox (badness 2318) in paragraph at lines 253--254
+[]|\T1/ppl/m/n/12 Proliferate, evade via PD-L1, con-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 257--258
-[]|\T1/ppl/m/n/12 Inhibits CTL ac-ti-va-tion via
+Underfull \hbox (badness 2529) in paragraph at lines 254--255
+[]|\T1/ppl/m/n/12 Kill tu-mors, ex-haus-tion, hormone-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 257--258
-\T1/pcr/m/n/12 get_PD1_inhibition() \T1/ppl/m/n/12 based
+Underfull \hbox (badness 3407) in paragraph at lines 255--256
+[]|\T1/ppl/m/n/12 Phagocytosis, anti-gen pre-sen-ta-tion,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 259--260
-[]|\T1/ppl/m/n/12 Divides into empty neigh-
+Underfull \hbox (badness 10000) in paragraph at lines 256--257
+[]|\T1/ppl/m/n/12 Growth pro-mo-tion, an-gio-gen-e-sis,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 259--260
-\T1/ppl/m/n/12 bor; prob-a-bil-ity mod-u-lated by
+Overfull \hbox (4.26611pt too wide) in paragraph at lines 264--264
+[]|\T1/ppl/m/n/12 CD4Helper1TCell| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 259--260
-\T1/pcr/m/n/12 tumour_growth_effect\T1/ppl/m/n/12 , DNA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 259--260
-\T1/ppl/m/n/12 pro-lif-er-a-tion genes, an-gio-gen-e-sis,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 261--262
-[]|\T1/ppl/m/n/12 Dies based on
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 261--262
-\T1/pcr/m/n/12 tumour_apoptosis_effect \T1/ppl/m/n/12 and
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 263--264
-[]|\T1/ppl/m/n/12 Consumes glu-cose at rate
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 263--264
-\T1/pcr/m/n/12 w_glucose_tumor_consumption
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 263--264
-\T1/ppl/m/n/12 (War-burg ef-fect). Growth
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 263--264
-\T1/ppl/m/n/12 scaled by lo-cal glu-cose via
- []
-
-
-Overfull \hbox (5.07063pt too wide) in paragraph at lines 263--264
-\T1/pcr/m/n/12 w_glucose_growth_sensitivity\T1/ppl/m/n/12 .| 
- []
-
-
-Overfull \hbox (9.75124pt too wide) in paragraph at lines 266--267
-[]|\T1/pcr/m/n/12 CytotoxicTCell| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 268--269
-[]|\T1/ppl/m/n/12 Kills ad-ja-cent tu-mor cells
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 268--269
-\T1/ppl/m/n/12 with prob-a-bil-ity based on
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 268--269
-\T1/pcr/m/n/12 t_kill_rate_effect $\OMS/cmsy/m/n/12 ^^B$
- []
-
-
-Underfull \hbox (badness 4441) in paragraph at lines 268--269
-\T1/pcr/m/n/12 t_activation_effect\T1/ppl/m/n/12 , im-paired
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 270--271
-[]|\T1/ppl/m/n/12 Loses \T1/pcr/m/n/12 t_activation_effect
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 270--271
-\T1/ppl/m/n/12 pro-gres-sively with each kill
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 270--271
-\T1/ppl/m/n/12 (\T1/pcr/m/n/12 w_progressive_exhaustion\T1/ppl/m/n/12 )
- []
-
-
-Underfull \hbox (badness 7064) in paragraph at lines 272--273
-[]|\T1/ppl/m/n/12 Duplicates based on pro-lif-er-a-tion
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 274--275
-[]|\T1/ppl/m/n/12 Perceives es-tro-gen, pro-ges-terone,
- []
-
-
-Underfull \hbox (badness 2035) in paragraph at lines 274--275
-\T1/ppl/m/n/12 rate and pro-lif-er-a-tion, testos-terone
- []
-
-
-Underfull \hbox (badness 1270) in paragraph at lines 281--282
-[]|\T1/ppl/m/n/12 Engulfs ad-ja-cent tu-mor cells; af-ter
- []
-
-
-Underfull \hbox (badness 1137) in paragraph at lines 281--282
-\T1/ppl/m/n/12 phago-cy-to-sis, mi-grates to and ac-ti-
- []
-
-
-Underfull \hbox (badness 7468) in paragraph at lines 283--284
-[]|\T1/ppl/m/n/12 Can trans-form to M2 based on
- []
-
-
-Overfull \hbox (12.63063pt too wide) in paragraph at lines 283--284
-\T1/pcr/m/n/12 macrophage_m1_mutation_effect\T1/ppl/m/n/12 .| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 290--291
-[]|\T1/ppl/m/n/12 Negative \T1/pcr/m/n/12 t_kill_rate_effect\T1/ppl/m/n/12 ;
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 290--291
-\T1/ppl/m/n/12 pos-i-tive \T1/pcr/m/n/12 tumour_growth_effect
- []
-
-
-Underfull \hbox (badness 7468) in paragraph at lines 292--293
-[]|\T1/ppl/m/n/12 Can trans-form to M1 based on
- []
-
-
-Overfull \hbox (12.63063pt too wide) in paragraph at lines 292--293
-\T1/pcr/m/n/12 macrophage_m2_mutation_effect\T1/ppl/m/n/12 .| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 297--298
-[]|\T1/ppl/m/n/12 Strong neg-a-tive
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 297--298
-\T1/ppl/m/n/12 a-tive \T1/pcr/m/n/12 t_proliferation_effect\T1/ppl/m/n/12 ,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 297--298
-\T1/pcr/m/n/12 t_activation_effect\T1/ppl/m/n/12 ,
- []
-
-
-Underfull \hbox (badness 5741) in paragraph at lines 297--298
-\T1/pcr/m/n/12 dc_phagocitosis_effect\T1/ppl/m/n/12 ; pos-i-
- []
-
-
-Overfull \hbox (2.55124pt too wide) in paragraph at lines 300--301
-[]|\T1/pcr/m/n/12 DendriticCell| 
- []
-
-
-Underfull \hbox (badness 1210) in paragraph at lines 304--305
-\T1/ppl/m/n/12 cap-tured anti-gen, trig-ger-ing ac-ti-va-
- []
-
-
-Overfull \hbox (9.75124pt too wide) in paragraph at lines 309--310
-[]|\T1/pcr/m/n/12 PlasmacitoidDC| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 311--312
-[]|\T1/ppl/m/n/12 Positive \T1/pcr/m/n/12 angiogenesis_effect\T1/ppl/m/n/12 ,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 311--312
-\T1/pcr/m/n/12 treg_differentiation_effect\T1/ppl/m/n/12 ,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 311--312
-\T1/pcr/m/n/12 t_kill_rate_effect\T1/ppl/m/n/12 ,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 311--312
-\T1/pcr/m/n/12 nkl_kill_rate_effect\T1/ppl/m/n/12 ; neg-a-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 315--316
-[]|\T1/ppl/m/n/12 Spawns NK cells in empty
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 315--316
-\T1/ppl/m/n/12 neigh-bors with prob-a-bil-ity
- []
-
-
-Overfull \hbox (2.55124pt too wide) in paragraph at lines 318--319
-[]|\T1/pcr/m/n/12 NaturalKiller| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 329--330
-[]|\T1/ppl/m/n/12 Stochastic com-bi-na-tion of ef-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 329--330
-\T1/ppl/m/n/12 fects (de-ter-mined at cre-ation):
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 329--330
-\T1/pcr/m/n/12 angiogenesis_effect \T1/ppl/m/n/12 ($\OMS/cmsy/m/n/12 ^^F$\T1/pp
-l/m/n/12 ),
- []
-
-
-Overfull \hbox (9.63063pt too wide) in paragraph at lines 329--330
-\T1/pcr/m/n/12 macrophage_m1_mutation_effect
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 329--330
-\T1/ppl/m/n/12 ($\OMS/cmsy/m/n/12 ^^F$\T1/ppl/m/n/12 ), \T1/pcr/m/n/12 t_kill_r
-ate_effect \T1/ppl/m/n/12 ($\OMS/cmsy/m/n/12 ^^F$\T1/ppl/m/n/12 ),
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 329--330
-\T1/pcr/m/n/12 tumour_apoptosis_effect \T1/ppl/m/n/12 ($\OMS/cmsy/m/n/12 ^^F$\T
-1/ppl/m/n/12 ),
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 331--332
-[]|\T1/ppl/m/n/12 Spawns den-dritic cells at bor-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 331--332
-\T1/ppl/m/n/12 der po-si-tions with prob-a-bil-ity
- []
-
-
-Overfull \hbox (2.55124pt too wide) in paragraph at lines 334--335
-[]|\T1/pcr/m/n/12 CD4NaiveTCell| 
- []
-
-
-Underfull \hbox (badness 5245) in paragraph at lines 336--337
-[]|\T1/ppl/m/n/12 Differentiates into Treg based on
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 336--337
-\T1/pcr/m/n/12 treg_differentiation_effect\T1/ppl/m/n/12 ,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 336--337
-\T1/ppl/m/n/12 sex hor-mones (es-tro-gen, pro-ges-
- []
-
-
-Overfull \hbox (2.55124pt too wide) in paragraph at lines 341--342
-[]|\T1/pcr/m/n/12 CD8NaiveTCell| 
- []
-
-
-Underfull \hbox (badness 2556) in paragraph at lines 343--344
-\T1/ppl/m/n/12 gen, dif-fer-en-ti-ates into Cy-to-tox-i-cT-
- []
-
-
-Overfull \hbox (16.95123pt too wide) in paragraph at lines 346--347
-[]|\T1/pcr/m/n/12 CD4Helper1TCell| 
- []
-
-
-Overfull \hbox (14.02193pt too wide) in paragraph at lines 348--349
-[]|\T1/ppl/m/n/12 Positive \T1/pcr/m/n/12 tumour_apoptosis_effect\T1/ppl/m/n/12
- .| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 350--351
-[]|\T1/ppl/m/n/12 Spawns M1 macrophages
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 350--351
-\T1/ppl/m/n/12 and DCs at grid bor-der po-si-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 350--351
-\T1/ppl/m/n/12 tions. Pro-lif-er-ates based on
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 350--351
-\T1/pcr/m/n/12 th1_proliferation_effect
- []
-
-
-Underfull \hbox (badness 3954) in paragraph at lines 350--351
-\OMS/cmsy/m/n/12 ^^B$ \T1/ppl/m/n/12 ac-ti-va-tion level, mod-u-lated by
- []
-
-
-Overfull \hbox (16.95123pt too wide) in paragraph at lines 353--354
-[]|\T1/pcr/m/n/12 CD4Helper2TCell| 
- []
-
-
-Underfull \hbox (badness 2142) in paragraph at lines 357--358
-[]|\T1/ppl/m/n/12 Spawns M1 macrophages and Cy-
- []
-
-
-Underfull \hbox (badness 6173) in paragraph at lines 357--358
-\T1/ppl/m/n/12 to-tox-i-cT-Cells. Pro-lif-er-ates based
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 357--358
-\T1/ppl/m/n/12 on \T1/pcr/m/n/12 th2_proliferation_effect
- []
-
-
-Underfull \hbox (badness 8151) in paragraph at lines 357--358
-\OMS/cmsy/m/n/12 ^^B$ \T1/ppl/m/n/12 ac-ti-va-tion level, en-hanced by
- []
-
-
-Underfull \hbox (badness 1184) in paragraph at lines 362--363
-\T1/ppl/m/n/12 are dis-tin-guished from pre-existing
+Overfull \hbox (4.26611pt too wide) in paragraph at lines 265--265
+[]|\T1/ppl/m/n/12 CD4Helper2TCell| 
  []
 
 
@@ -2387,7 +1969,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[31]
+[27] (./figures/agent_interaction_network.tex)
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2396,43 +1978,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[32]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[33]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[34] (./figures/agent_interaction_network.tex)
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[35
+[28
 
 ]
-Overfull \hbox (69.51302pt too wide) in paragraph at lines 409--410
+Overfull \hbox (69.51302pt too wide) in paragraph at lines 312--313
 \T1/ppl/m/n/12 The pri-mary move-ment mech-a-nism for most agents is \T1/pcr/m/
 n/12 move_towards(target_agent_type_id,
  []
 
 
-Overfull \hbox (77.25737pt too wide) in paragraph at lines 423--424
+Overfull \hbox (77.25737pt too wide) in paragraph at lines 326--327
 []\T1/ppl/m/n/12 The \T1/pcr/m/n/12 look_up_size \T1/ppl/m/n/12 pa-ram-e-ter is
  typ-i-cally de-rived from the model's \T1/pcr/m/n/12 cell_search_dimension\T1/
 ppl/m/n/12 ,
@@ -2446,14 +2001,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[36]
-Overfull \hbox (84.10326pt too wide) in paragraph at lines 452--453
+[29]
+Overfull \hbox (84.10326pt too wide) in paragraph at lines 355--356
 \T1/ppl/m/n/12 The sim-u-la-tion ter-mi-nates when any of the fol-low-ing con-d
 i-tions is met. The \T1/pcr/m/n/12 terminal_condition()
  []
 
 
-Overfull \hbox (20.09496pt too wide) in paragraph at lines 457--458
+Overfull \hbox (20.09496pt too wide) in paragraph at lines 360--361
 []\T1/ppl/b/n/12 Tumor elim-i-na-tion. \T1/ppl/m/n/12 If the tu-mor cell count 
 drops to zero be-fore reach-ing \T1/pcr/m/n/12 max_steps\T1/ppl/m/n/12 ,
  []
@@ -2466,31 +2021,31 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[37]
-Overfull \hbox (88.2209pt too wide) in paragraph at lines 465--467
+[30]
+Overfull \hbox (88.2209pt too wide) in paragraph at lines 368--370
 \T1/ppl/m/n/12 where $\OML/cmm/m/it/12 N[]$ \T1/ppl/m/n/12 is the tu-mor cell c
 ount, $\OML/cmm/m/it/12 g[]$ \T1/ppl/m/n/12 is the growth po-ten-tial (com-bin-
 ing \T1/pcr/m/n/12 tumour_growth_effect\T1/ppl/m/n/12 ,
  []
 
 
-Overfull \hbox (27.06392pt too wide) in paragraph at lines 465--467
+Overfull \hbox (27.06392pt too wide) in paragraph at lines 368--370
 \T1/ppl/m/n/12 DNA-derived pro-lif-er-a-tion chance, blood ac-cess, and an-gio-
 gen-e-sis), $\OML/cmm/m/it/12 a[]$ \T1/ppl/m/n/12 is the apoptosis-
  []
 
 (./figures/immune_response_cascade.tex)
-Overfull \hbox (0.90227pt too wide) in paragraph at lines 501--501
+Overfull \hbox (0.90227pt too wide) in paragraph at lines 404--404
  []\T1/ppl/m/n/10.95 Phagocytosis 
  []
 
 
-Overfull \hbox (2.8041pt too wide) in paragraph at lines 511--511
+Overfull \hbox (2.8041pt too wide) in paragraph at lines 414--414
  []\T1/ppl/m/n/10.95 Suppression 
  []
 
 
-Overfull \hbox (167.59547pt too wide) in paragraph at lines 532--533
+Overfull \hbox (167.59547pt too wide) in paragraph at lines 435--436
  [][] 
  []
 
@@ -2502,7 +2057,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[38
+[31
 
 ])
 
@@ -2513,7 +2068,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[39] (./chapters/04_glucose_system.tex
+[32] (./chapters/04_glucose_system.tex
 Chapter 4.
 (./figures/warburg_effect.tex
 Overfull \hbox (17.33098pt too wide) in paragraph at lines 44--44
@@ -2531,12 +2086,12 @@ Overfull \hbox (17.05847pt too wide) in paragraph at lines 27--28
 mass be-come nutrient-deprived.
  []
 
-<figures/glucose_dynamics.pdf, id=1767, 715.42784pt x 426.48834pt>
+<figures/glucose_dynamics.pdf, id=1710, 715.42784pt x 426.48834pt>
 File: figures/glucose_dynamics.pdf Graphic file (type pdf)
 <use figures/glucose_dynamics.pdf>
 Package pdftex.def Info: figures/glucose_dynamics.pdf  used on input line 31.
 (pdftex.def)             Requested size: 386.96027pt x 230.68422pt.
-(./figures/glucose_system.tex) [40
+(./figures/glucose_system.tex) [33
 
 
 ]
@@ -2548,7 +2103,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[41 <./figures/glucose_dynamics.pdf>]
+[34 <./figures/glucose_dynamics.pdf>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2557,7 +2112,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[42]
+[35]
 Overfull \hbox (64.65613pt too wide) in paragraph at lines 81--82
 []\T1/ppl/m/n/12 This dis-crete Lapla-cian is im-ple-mented as a 3D con-vo-lu-t
 ion us-ing \T1/pcr/m/n/12 scipy.ndimage.convolve
@@ -2571,7 +2126,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[43]
+[36]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2580,7 +2135,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[44]
+[37]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2589,7 +2144,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[45]
+[38]
 Overfull \hbox (70.6158pt too wide) in paragraph at lines 245--246
 \T1/ppl/m/n/12 Immune cells that im-ple-ment glu-cose chemotaxis---specifically
  \T1/pcr/m/n/12 CytotoxicTCell\T1/ppl/m/n/12 , \T1/pcr/m/n/12 MacrophageM1\T1/p
@@ -2604,7 +2159,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[46]
+[39]
 Overfull \hbox (12.82283pt too wide) in paragraph at lines 254--255
 \T1/ppl/m/n/12 egy: in the ab-sence of di-rect tar-get de-tec-tion, cells move 
 to-wards ar-eas of higher metabolic
@@ -2625,7 +2180,7 @@ _field.py\T1/ppl/m/n/12 .
 
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 270.
-LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <10.95> not available
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <10> not available
 (Font)              Font shape `T1/pcr/m/sl' tried instead on input line 272.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2635,10 +2190,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[47]
+[40]
 Overfull \hbox (8.97052pt too wide) in paragraph at lines 330--331
 \T1/ppl/m/n/12 These val-ues are recorded at ev-ery sim-u-la-tion step and pro-
 vide in-sight into the metabolic
+ []
+
+
+Overfull \hbox (5.55577pt too wide) in paragraph at lines 335--337
+[][][][][][][][][][][][][][][][][][]  
  []
 
 
@@ -2649,18 +2209,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[48]
-Overfull \hbox (49.33115pt too wide) in paragraph at lines 335--337
-[][][][][][][][][][][][][][][][][][]  
- []
-
-<figures/glucose_timeseries.pdf, id=1927, 809.42403pt x 578.16pt>
+[41]
+<figures/glucose_timeseries.pdf, id=1879, 809.42403pt x 578.16pt>
 File: figures/glucose_timeseries.pdf Graphic file (type pdf)
 <use figures/glucose_timeseries.pdf>
 Package pdftex.def Info: figures/glucose_timeseries.pdf  used on input line 358
 .
 (pdftex.def)             Requested size: 386.96027pt x 276.40207pt.
-<figures/glucose_field_3d.pdf, id=1928, 1064.40912pt x 352.67697pt>
+<figures/glucose_field_3d.pdf, id=1880, 1064.40912pt x 352.67697pt>
 File: figures/glucose_field_3d.pdf Graphic file (type pdf)
 <use figures/glucose_field_3d.pdf>
 Package pdftex.def Info: figures/glucose_field_3d.pdf  used on input line 365.
@@ -2689,7 +2245,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[49]
+[42 <./figures/glucose_timeseries.pdf>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2698,16 +2254,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[50 <./figures/glucose_timeseries.pdf> <./figures/glucose_field_3d.pdf>]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[51] (./chapters/05_dna_mutation_system.tex
+[43 <./figures/glucose_field_3d.pdf>] (./chapters/05_dna_mutation_system.tex
 Chapter 5.
 
 Underfull \hbox (badness 10000) in paragraph at lines 36--37
@@ -2729,11 +2276,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 47--48
 []|\T1/ppl/m/n/12 Transcription fac-tor pro-mot-ing cell
  []
 
-[52
+[44
 
 
 ]
-<figures/dna_mutation_heatmap.pdf, id=2014, 1076.16495pt x 569.48697pt>
+<figures/dna_mutation_heatmap.pdf, id=1953, 1076.16495pt x 569.48697pt>
 File: figures/dna_mutation_heatmap.pdf Graphic file (type pdf)
 <use figures/dna_mutation_heatmap.pdf>
 Package pdftex.def Info: figures/dna_mutation_heatmap.pdf  used on input line 5
@@ -2748,7 +2295,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[53]
+[45]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2757,7 +2304,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[54 <./figures/dna_mutation_heatmap.pdf>]
+[46 <./figures/dna_mutation_heatmap.pdf>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2766,7 +2313,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[55] (./figures/tumor_cell_state_machine.tex
+[47] (./figures/tumor_cell_state_machine.tex
 Overfull \hbox (4.09265pt too wide) in paragraph at lines 10--11
  [][]\T1/ppl/b/n/12 Quiescent 
  []
@@ -2852,6 +2399,15 @@ Overfull \hbox (22.98892pt too wide) in paragraph at lines 144--144
  []
 
 )
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[48]
 Overfull \hbox (24.97273pt too wide) in paragraph at lines 181--182
 \T1/ppl/m/n/12 where $\OML/cmm/m/it/12 p[]$ \T1/ppl/m/n/12 is the wild-type pro
 -tein se-quence, $\OML/cmm/m/it/12 p[]$ \T1/ppl/m/n/12 is the mu-tant pro-tein,
@@ -2866,7 +2422,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[56]
+[49]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2875,7 +2431,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[57]
+[50])
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2884,34 +2440,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[58])
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[59]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[60] (./chapters/06_treatment_system.tex
+[51] (./chapters/06_treatment_system.tex
 Chapter 6.
 (./figures/treatment_mechanisms.tex)
-Overfull \hbox (29.93663pt too wide) in paragraph at lines 25--26
-\T1/ppl/m/n/12 All drugs in-herit from the ab-stract \T1/pcr/m/n/12 Drug \T1/pp
-l/m/n/12 base class (lo-cated in \T1/pcr/m/n/12 src/treatments/drug.py\T1/ppl/m
-/n/12 ),
+Overfull \hbox (27.39258pt too wide) in paragraph at lines 25--26
+\T1/ppl/m/n/12 All drugs in-herit from an ab-stract \T1/pcr/m/n/12 Drug \T1/ppl
+/m/n/12 base class with a \T1/pcr/m/n/12 step() \T1/ppl/m/n/12 method. The \T1/
+pcr/m/n/12 proportion
  []
 
-[61
+[52
 
 
 ]
@@ -2923,12 +2461,138 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[62]
-Overfull \hbox (6.41408pt too wide) in paragraph at lines 82--83
-\T1/ppl/m/n/12 nivolumab, pem-brolizumab) has shown sig-nif-i-cant sur-vival be
-n-e-fits in RCC pa-tients [[],
+[53]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[54]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[55]
+<figures/treatment_timeline.pdf, id=2118, 853.8818pt x 714.02698pt>
+File: figures/treatment_timeline.pdf Graphic file (type pdf)
+<use figures/treatment_timeline.pdf>
+Package pdftex.def Info: figures/treatment_timeline.pdf  used on input line 161
+.
+(pdftex.def)             Requested size: 386.96027pt x 323.57536pt.
+
+Overfull \hbox (3.32222pt too wide) in paragraph at lines 184--184
+ []\T1/ppl/m/n/10.95 Monotherapy 
  []
 
+
+Overfull \hbox (3.32222pt too wide) in paragraph at lines 188--188
+ []\T1/ppl/m/n/10.95 Monotherapy 
+ []
+
+
+Overfull \hbox (1.01175pt too wide) in paragraph at lines 192--192
+ []\T1/ppl/m/n/10.95 Combination 
+ []
+
+
+Overfull \hbox (4.46834pt too wide) in paragraph at lines 193--193
+ [][]\T1/ppl/m/n/10.95 Proportional 
+ []
+
+
+Overfull \hbox (55.09834pt too wide) in paragraph at lines 216--217
+ [][] 
+ []
+
+)
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[56 <./figures/treatment_timeline.pdf>]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[57] (./chapters/07_sex_hormone_system.tex
+Chapter 7.
+[58
+
+
+]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[59]
+Overfull \hbox (27.31926pt too wide) in paragraph at lines 97--98
+\T1/ppl/m/n/12 T cells de-tect sex hor-mones in their lo-cal neigh-bor-hood via
+ the \T1/pcr/m/n/12 perceive_sex_hormone()
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[60]
+Overfull \hbox (69.25038pt too wide) in paragraph at lines 113--114
+\T1/ppl/m/n/12 The \T1/pcr/m/n/12 CellHormonalInfluenceEffect \T1/ppl/m/n/12 en
+u-mer-a-tion (in \T1/pcr/m/n/12 src/systems/hormonal_effect.py\T1/ppl/m/n/12 )
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[61]
+Overfull \hbox (40.7057pt too wide) in paragraph at lines 174--175
+\T1/ppl/m/n/12 sion), TH2_PROLIFERATION $\OT1/cmr/m/n/12 = +3$ \T1/ppl/m/n/12 (
+strong pro-mo-tion), IL_4 $\OT1/cmr/m/n/12 = +3$\T1/ppl/m/n/12 , IL_13 $\OT1/cm
+r/m/n/12 = +3$\T1/ppl/m/n/12 , IFN_GAMMA
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[62]
+<figures/hormone_dynamics.pdf, id=2220, 1076.02441pt x 714.02698pt>
+File: figures/hormone_dynamics.pdf Graphic file (type pdf)
+<use figures/hormone_dynamics.pdf>
+Package pdftex.def Info: figures/hormone_dynamics.pdf  used on input line 235.
+(pdftex.def)             Requested size: 386.96027pt x 256.77713pt.
+)
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2946,48 +2610,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[64]
+[64 <./figures/hormone_dynamics.pdf>] (./chapters/08_implementation.tex
+Chapter 8.
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[65]
-<figures/treatment_timeline.pdf, id=2208, 853.8818pt x 714.02698pt>
-File: figures/treatment_timeline.pdf Graphic file (type pdf)
-<use figures/treatment_timeline.pdf>
-Package pdftex.def Info: figures/treatment_timeline.pdf  used on input line 203
-.
-(pdftex.def)             Requested size: 386.96027pt x 323.57536pt.
-
-Overfull \hbox (3.32222pt too wide) in paragraph at lines 226--226
- []\T1/ppl/m/n/10.95 Monotherapy 
+Overfull \hbox (13.50699pt too wide) in paragraph at lines 11--11
+|[]\T1/ppl/b/n/17.28 Architectural Phi-los-o-phy: Be-yond Frame-work Fea-tures|
+ 
  []
 
-
-Overfull \hbox (3.32222pt too wide) in paragraph at lines 230--230
- []\T1/ppl/m/n/10.95 Monotherapy 
- []
+(./figures/architecture_overview.tex) [65
 
 
-Overfull \hbox (1.01175pt too wide) in paragraph at lines 234--234
- []\T1/ppl/m/n/10.95 Combination 
- []
+]
 
+LaTeX Warning: Reference `tab:detailed-mesa-vs-repast4py' on page 66 undefined 
+on input line 29.
 
-Overfull \hbox (4.46834pt too wide) in paragraph at lines 235--235
- [][]\T1/ppl/m/n/10.95 Proportional 
- []
-
-
-Overfull \hbox (55.09834pt too wide) in paragraph at lines 258--259
- [][] 
- []
-
-)
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2997,6 +2635,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [66]
+Overfull \hbox (3.23912pt too wide) in paragraph at lines 55--56
+[]\T1/ppl/m/n/12 This pat-tern pre-vents order-of-execution ar-ti-facts where e
+arly-stepping agents could
+ []
+
+(./figures/simulation_pipeline.tex)
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3005,7 +2649,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[67 <./figures/treatment_timeline.pdf>]
+[67]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3014,12 +2658,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[68] (./chapters/07_sex_hormone_system.tex
-Chapter 7.
-[69
-
+[68
 
 ]
+Overfull \hbox (3.87537pt too wide) in paragraph at lines 125--126
+[]\T1/ppl/m/n/12 This se-quence re-flects deep bi-o-log-i-cal in-sights en-code
+d as com-pu-ta-tional con-straints.
+ []
+
+(./figures/model_architecture.tex)
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3028,10 +2675,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[70]
-Overfull \hbox (27.31926pt too wide) in paragraph at lines 97--98
-\T1/ppl/m/n/12 T cells de-tect sex hor-mones in their lo-cal neigh-bor-hood via
- the \T1/pcr/m/n/12 perceive_sex_hormone()
+[69]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[70
+
+]
+Overfull \hbox (123.21715pt too wide) in paragraph at lines 216--217
+[]\T1/ppl/m/n/12 There is no framework-imposed sched-uler. In-stead, Repast4Py'
+s \T1/pcr/m/n/12 schedule.init_schedule_runner()
  []
 
 
@@ -3043,162 +2701,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [71]
-Overfull \hbox (69.25038pt too wide) in paragraph at lines 113--114
-\T1/ppl/m/n/12 The \T1/pcr/m/n/12 CellHormonalInfluenceEffect \T1/ppl/m/n/12 en
-u-mer-a-tion (in \T1/pcr/m/n/12 src/systems/hormonal_effect.py\T1/ppl/m/n/12 )
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[72]
-Overfull \hbox (40.7057pt too wide) in paragraph at lines 174--175
-\T1/ppl/m/n/12 sion), TH2_PROLIFERATION $\OT1/cmr/m/n/12 = +3$ \T1/ppl/m/n/12 (
-strong pro-mo-tion), IL_4 $\OT1/cmr/m/n/12 = +3$\T1/ppl/m/n/12 , IL_13 $\OT1/cm
-r/m/n/12 = +3$\T1/ppl/m/n/12 , IFN_GAMMA
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[73]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[74]
-<figures/hormone_dynamics.pdf, id=2320, 1076.02441pt x 714.02698pt>
-File: figures/hormone_dynamics.pdf Graphic file (type pdf)
-<use figures/hormone_dynamics.pdf>
-Package pdftex.def Info: figures/hormone_dynamics.pdf  used on input line 235.
-(pdftex.def)             Requested size: 386.96027pt x 256.77713pt.
-)
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[75 <./figures/hormone_dynamics.pdf>] (./chapters/08_implementation.tex
-Chapter 8.
-
-Overfull \hbox (13.50699pt too wide) in paragraph at lines 11--11
-|[]\T1/ppl/b/n/17.28 Architectural Phi-los-o-phy: Be-yond Frame-work Fea-tures|
- 
- []
-
-(./figures/architecture_overview.tex) [76
-
-
-]
-
-LaTeX Warning: Reference `tab:detailed-mesa-vs-repast4py' on page 77 undefined 
-on input line 29.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[77]
-Overfull \hbox (3.23912pt too wide) in paragraph at lines 55--56
-[]\T1/ppl/m/n/12 This pat-tern pre-vents order-of-execution ar-ti-facts where e
-arly-stepping agents could
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[78] (./figures/simulation_pipeline.tex)
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[79
-
-]
-Overfull \hbox (3.87537pt too wide) in paragraph at lines 125--126
-[]\T1/ppl/m/n/12 This se-quence re-flects deep bi-o-log-i-cal in-sights en-code
-d as com-pu-ta-tional con-straints.
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[80] (./figures/model_architecture.tex)
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[81
-
-]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[82]
-Overfull \hbox (123.21715pt too wide) in paragraph at lines 216--217
-[]\T1/ppl/m/n/12 There is no framework-imposed sched-uler. In-stead, Repast4Py'
-s \T1/pcr/m/n/12 schedule.init_schedule_runner()
- []
-
-
 Overfull \hbox (16.7733pt too wide) in paragraph at lines 249--250
 []\T1/pcr/m/n/12 remove_agent(agent)\T1/ppl/m/n/12 : re-moves the agent from \T
 1/pcr/m/n/12 spatial_index[agent.pos]\T1/ppl/m/n/12 . 
  []
 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[83]
 Overfull \hbox (14.8304pt too wide) in paragraph at lines 258--259
 []\T1/pcr/m/n/12 get_neighborhood_3d(width, height, depth, pos, radius, moore)\
 T1/ppl/m/n/12 :
@@ -3211,6 +2719,14 @@ Overfull \hbox (22.0304pt too wide) in paragraph at lines 262--263
  []
 
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[72]
 Overfull \hbox (9.7304pt too wide) in paragraph at lines 266--267
 []\T1/pcr/m/n/12 get_empty_neighbors_3d(spatial_index, grid_dims, pos, radius,
  []
@@ -3223,7 +2739,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[84]
+[73]
 Overfull \hbox (9.33276pt too wide) in paragraph at lines 326--327
 \T1/ppl/m/n/12 Each agent im-ple-ments a \T1/pcr/m/n/12 save() \T1/ppl/m/n/12 m
 ethod that re-turns a tu-ple of \T1/pcr/m/n/12 (uid, state_tuple)
@@ -3236,14 +2752,6 @@ fields (e.g., the \T1/pcr/m/n/12 TumorCell
  []
 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[85]
 Underfull \hbox (badness 10000) in paragraph at lines 361--362
 []|\T1/pcr/m/n/12 repast4py.core.Agent(id, type,
  []
@@ -3301,7 +2809,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[86]
+[74]
 Overfull \hbox (53.63666pt too wide) in paragraph at lines 386--387
 \T1/ppl/m/n/12 In the Mesa ver-sion, cer-tain state was stored as class vari-ab
 les (e.g., \T1/pcr/m/n/12 TumorCell.blood_source
@@ -3315,7 +2823,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[87]
+[75]
 Overfull \hbox (53.57538pt too wide) in paragraph at lines 428--430
 \T1/ppl/m/n/12 Diffusion is com-puted via the 3D dis-crete Lapla-cian, ap-plied
  us-ing \T1/pcr/m/n/12 scipy.ndimage.convolve\T1/ppl/m/n/12 .
@@ -3335,12 +2843,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[88] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2023/02/27 1.9 listings language file
-)
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2023/02/27 1.9 listings language file
-)
+[76]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3349,7 +2852,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[89]
+[77] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
 Overfull \hbox (4.9921pt too wide) in paragraph at lines 516--517
 []\T1/ppl/m/n/12 When the sim-u-la-tion ter-mi-nates (ei-ther by the sched-ule 
 run-ner reach-ing \T1/pcr/m/n/12 max_steps
@@ -3386,7 +2894,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[90]
+[78]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3395,9 +2903,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[91] (./chapters/09_parameters.tex
+[79] (./chapters/09_parameters.tex
 Chapter 9.
-[92
+[80
 
 
 ]
@@ -3443,7 +2951,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[93]
+[81]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3452,7 +2960,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[94]
+[82]
 Underfull \hbox (badness 10000) in paragraph at lines 105--106
 []|\T1/ppl/m/n/12 BMI in-flu-ence on M1
  []
@@ -3478,6 +2986,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 122--123
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 145--146
+[]|\T1/ppl/m/n/12 M2 macrophage mu-ta-tion
+ []
+
+
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
@@ -3485,12 +2998,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[95]
-Underfull \hbox (badness 10000) in paragraph at lines 145--146
-[]|\T1/ppl/m/n/12 M2 macrophage mu-ta-tion
- []
-
-
+[83]
 Underfull \hbox (badness 3803) in paragraph at lines 166--167
 []|\T1/ppl/m/n/12 DNA-driven ex-tra sup-pres-
  []
@@ -3518,7 +3026,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[96]
+[84]
 Underfull \hbox (badness 4940) in paragraph at lines 194--195
 []|\T1/ppl/m/n/12 Effect-driven Th1 pro-lif-er-a-
  []
@@ -3554,14 +3062,6 @@ Underfull \hbox (badness 1383) in paragraph at lines 202--203
  []
 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[97]
 Underfull \hbox (badness 8000) in paragraph at lines 219--220
 []|\T1/ppl/m/n/12 Apoptosis prob-a-bil-ity scal-
  []
@@ -3579,7 +3079,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[98]
+[85]
 Underfull \hbox (badness 10000) in paragraph at lines 244--245
 []|\T1/ppl/m/n/12 Mast cell prob-a-bil-ity of
  []
@@ -3592,7 +3092,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[99]
+[86]
 Underfull \hbox (badness 1931) in paragraph at lines 278--279
 []|\T1/ppl/m/n/12 pDC con-tri-bu-tion to an-gio-
  []
@@ -3610,7 +3110,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[100]
+[87]
 Underfull \hbox (badness 2600) in paragraph at lines 316--317
 \T1/ppl/m/n/12 dius for agent in-ter-ac-tions:
  []
@@ -3649,7 +3149,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[101]
+[88]
 Overfull \hbox (18.71281pt too wide) in alignment at lines 337--342
  [] [] [] 
  []
@@ -3704,7 +3204,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[102]
+[89]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3713,7 +3213,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[103]
+[90]
 Overfull \hbox (62.93561pt too wide) in paragraph at lines 372--373
 \T1/ppl/m/n/12 ties can be scaled by an anal-o-gous glu-cose fac-tor us-ing \T1
 /pcr/m/n/12 w_glucose_immune_sensitivity\T1/ppl/m/n/12 ,
@@ -3727,7 +3227,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[104]
+[91]
 Overfull \hbox (94.88248pt too wide) in paragraph at lines 412--413
 []\T1/ppl/b/n/12 Threshold weights\T1/ppl/m/n/12 : \T1/pcr/m/n/12 w_tumour_grow
 th_threshold \T1/ppl/m/n/12 in $\OT1/cmr/m/n/12 [0\OML/cmm/m/it/12 :\OT1/cmr/m/
@@ -3743,7 +3243,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[105]
+[92]
 Overfull \hbox (64.91476pt too wide) in paragraph at lines 454--455
 []\T1/ppl/b/n/12 Immune cell con-cen-tra-tions\T1/ppl/m/n/12 : 13 cell type con
 -cen-tra-tions match-ing the \T1/pcr/m/n/12 PatientParameters
@@ -3757,8 +3257,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[106]
-<figures/parameter_sensitivity.pdf, id=2781, 1076.46355pt x 851.45734pt>
+[93]
+<figures/parameter_sensitivity.pdf, id=2681, 1076.46355pt x 851.45734pt>
 File: figures/parameter_sensitivity.pdf Graphic file (type pdf)
 <use figures/parameter_sensitivity.pdf>
 Package pdftex.def Info: figures/parameter_sensitivity.pdf  used on input line 
@@ -3773,7 +3273,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[107 <./figures/parameter_sensitivity.pdf>]
+[94 <./figures/parameter_sensitivity.pdf>]
 (./chapters/10_simulation_results.tex
 Chapter 10.
 
@@ -3782,7 +3282,7 @@ Overfull \hbox (4.77133pt too wide) in paragraph at lines 6--7
 cally mis-lead-ing --- and shows
  []
 
-[108
+[95
 
 
 ]
@@ -3799,16 +3299,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[109]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[110]
+[96]
 Overfull \hbox (19.1374pt too wide) in paragraph at lines 115--116
 []\T1/ppl/m/n/12 This coun-ter-in-tu-itive re-sult sug-gests com-plex in-ter-ac
 -tions be-tween TKI anti-angiogenic
@@ -3821,9 +3312,14 @@ fi-cacy through anti-angiogenic
  []
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[97]
 Overfull \hbox (0.34296pt too wide) in paragraph at lines 165--166
 \T1/ppl/m/n/12 high-light key pat-terns in tu-mor dy-nam-ics, glu-cose metaboli
 sm, and im-mune re-sponses. 
@@ -3837,25 +3333,25 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[111]
+[98]
 Overfull \hbox (8.74829pt too wide) in paragraph at lines 167--168
 []\T1/ppl/m/n/12 Figure [][]10.1[][] shows the tu-mor pop-u-la-tion dy-nam-ics 
 across all sce-nar-ios, clearly demon-
  []
 
-<figures/scenario_comparison_tumor.pdf, id=2874, 722.7pt x 433.62pt>
+<figures/scenario_comparison_tumor.pdf, id=2774, 722.7pt x 433.62pt>
 File: figures/scenario_comparison_tumor.pdf Graphic file (type pdf)
 <use figures/scenario_comparison_tumor.pdf>
 Package pdftex.def Info: figures/scenario_comparison_tumor.pdf  used on input l
 ine 171.
 (pdftex.def)             Requested size: 386.96027pt x 232.1796pt.
-<figures/scenario_comparison_glucose.pdf, id=2876, 722.7pt x 433.62pt>
+<figures/scenario_comparison_glucose.pdf, id=2776, 722.7pt x 433.62pt>
 File: figures/scenario_comparison_glucose.pdf Graphic file (type pdf)
 <use figures/scenario_comparison_glucose.pdf>
 Package pdftex.def Info: figures/scenario_comparison_glucose.pdf  used on input
  line 180.
 (pdftex.def)             Requested size: 386.96027pt x 232.1796pt.
-<figures/scenario_comparison_immune.pdf, id=2878, 722.7pt x 433.62pt>
+<figures/scenario_comparison_immune.pdf, id=2778, 722.7pt x 433.62pt>
 File: figures/scenario_comparison_immune.pdf Graphic file (type pdf)
 <use figures/scenario_comparison_immune.pdf>
 Package pdftex.def Info: figures/scenario_comparison_immune.pdf  used on input 
@@ -3869,7 +3365,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[112 <./figures/scenario_comparison_tumor.pdf>]
+[99 <./figures/scenario_comparison_tumor.pdf>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3878,7 +3374,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[113 <./figures/scenario_comparison_glucose.pdf> <./figures/scenario_comparison
+[100 <./figures/scenario_comparison_glucose.pdf> <./figures/scenario_comparison
 _immune.pdf>]
 Overfull \hbox (25.20613pt too wide) in paragraph at lines 207--208
 []\T1/ppl/b/n/12 Hormone ef-fects\T1/ppl/m/n/12 : Testosterone-mediated im-mune
@@ -3886,7 +3382,7 @@ Overfull \hbox (25.20613pt too wide) in paragraph at lines 207--208
  []
 
 
-LaTeX Warning: Reference `fig:scenario-sex-comparison' on page 114 undefined on
+LaTeX Warning: Reference `fig:scenario-sex-comparison' on page 101 undefined on
  input line 213.
 
 
@@ -3897,9 +3393,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[114]
+[101]
 
-LaTeX Warning: Reference `fig:glucose-heatmap' on page 115 undefined on input l
+LaTeX Warning: Reference `fig:glucose-heatmap' on page 102 undefined on input l
 ine 245.
 
 
@@ -3922,17 +3418,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[115]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[116]
-<figures/sensitivity_glucose_consumption.pdf, id=3029, 1011.78pt x 397.485pt>
+[102]
+<figures/sensitivity_glucose_consumption.pdf, id=2925, 1011.78pt x 397.485pt>
 File: figures/sensitivity_glucose_consumption.pdf Graphic file (type pdf)
 <use figures/sensitivity_glucose_consumption.pdf>
 Package pdftex.def Info: figures/sensitivity_glucose_consumption.pdf  used on i
@@ -3947,10 +3434,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[117 <./figures/sensitivity_glucose_consumption.pdf>]
-LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <10> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 355.
-
+[103]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3959,21 +3443,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[118]
+[104 <./figures/sensitivity_glucose_consumption.pdf>]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[105]
 Overfull \hbox (15.0412pt too wide) in paragraph at lines 435--436
 []\T1/ppl/b/n/12 Treatment con-di-tions\T1/ppl/m/n/12 : 4 modal-i-ties (No Trea
 t-ment, TKI monother-apy, ICI monother-
  []
 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[119]
 Overfull \hbox (116.52866pt too wide) in paragraph at lines 451--465
  [][] 
  []
@@ -3986,7 +3471,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[120]
+[106]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[107]
 Overfull \hbox (0.2467pt too wide) in paragraph at lines 499--500
 []\T1/ppl/m/n/12 Male im-prove-ment: 30% $\OMS/cmsy/m/n/12 !$ \T1/ppl/m/n/12 45
 % sur-vival (1.5-fold increase)---moderate but mean-
@@ -4000,27 +3494,19 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[121]
+[108]
 Overfull \hbox (13.99294pt too wide) in paragraph at lines 528--530
 []\T1/ppl/b/n/12 Misleading Single-Seed Out-comes: \T1/ppl/m/n/12 The single-se
 ed sim-u-la-tion (Sec-tion [][]10.2[][]) showed
  []
 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[122]
 Overfull \hbox (4.04372pt too wide) in paragraph at lines 560--561
 []\T1/ppl/m/n/12 Figure [][]10.5[][] presents the dis-tri-bu-tion of fi-nal tu-
 mor counts across all sce-nar-ios, clearly
  []
 
-<figures/empirical_tumor_boxplot.pdf, id=3201, 867.24pt x 433.62pt>
+<figures/empirical_tumor_boxplot.pdf, id=3094, 867.24pt x 433.62pt>
 File: figures/empirical_tumor_boxplot.pdf Graphic file (type pdf)
 <use figures/empirical_tumor_boxplot.pdf>
 Package pdftex.def Info: figures/empirical_tumor_boxplot.pdf  used on input lin
@@ -4032,18 +3518,12 @@ Overfull \hbox (2.49524pt too wide) in paragraph at lines 569--570
 ce-nar-ios, high-light-ing the sex-specific
  []
 
-<figures/empirical_survival_rate.pdf, id=3203, 722.7pt x 361.35pt>
+<figures/empirical_survival_rate.pdf, id=3096, 722.7pt x 361.35pt>
 File: figures/empirical_survival_rate.pdf Graphic file (type pdf)
 <use figures/empirical_survival_rate.pdf>
 Package pdftex.def Info: figures/empirical_survival_rate.pdf  used on input lin
 e 573.
 (pdftex.def)             Requested size: 364.19667pt x 182.0971pt.
-<figures/empirical_growth_curves.pdf, id=3205, 1011.78pt x 722.7pt>
-File: figures/empirical_growth_curves.pdf Graphic file (type pdf)
-<use figures/empirical_growth_curves.pdf>
-Package pdftex.def Info: figures/empirical_growth_curves.pdf  used on input lin
-e 582.
-(pdftex.def)             Requested size: 386.96027pt x 276.40428pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -4052,40 +3532,57 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[123 <./figures/empirical_tumor_boxplot.pdf>]
-<figures/empirical_kills.pdf, id=3258, 722.7pt x 361.35pt>
+[109]
+<figures/empirical_growth_curves.pdf, id=3105, 1011.78pt x 722.7pt>
+File: figures/empirical_growth_curves.pdf Graphic file (type pdf)
+<use figures/empirical_growth_curves.pdf>
+Package pdftex.def Info: figures/empirical_growth_curves.pdf  used on input lin
+e 582.
+(pdftex.def)             Requested size: 386.96027pt x 276.40428pt.
+<figures/empirical_kills.pdf, id=3107, 722.7pt x 361.35pt>
 File: figures/empirical_kills.pdf Graphic file (type pdf)
 <use figures/empirical_kills.pdf>
 Package pdftex.def Info: figures/empirical_kills.pdf  used on input line 591.
 (pdftex.def)             Requested size: 364.19667pt x 182.0971pt.
-<figures/population_dynamics.pdf, id=3259, 857.88051pt x 571.02838pt>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[110 <./figures/empirical_tumor_boxplot.pdf> <./figures/empirical_survival_rate
+.pdf>]
+<figures/population_dynamics.pdf, id=3214, 857.88051pt x 571.02838pt>
 File: figures/population_dynamics.pdf Graphic file (type pdf)
 <use figures/population_dynamics.pdf>
 Package pdftex.def Info: figures/population_dynamics.pdf  used on input line 60
 5.
 (pdftex.def)             Requested size: 386.96027pt x 257.57031pt.
-<figures/tumor_growth.pdf, id=3260, 715.36823pt x 426.48834pt>
+<figures/tumor_growth.pdf, id=3215, 715.36823pt x 426.48834pt>
 File: figures/tumor_growth.pdf Graphic file (type pdf)
 <use figures/tumor_growth.pdf>
 Package pdftex.def Info: figures/tumor_growth.pdf  used on input line 612.
 (pdftex.def)             Requested size: 386.96027pt x 230.70374pt.
-<figures/kill_distribution.pdf, id=3261, 714.5928pt x 424.94698pt>
+<figures/kill_distribution.pdf, id=3216, 714.5928pt x 424.94698pt>
 File: figures/kill_distribution.pdf Graphic file (type pdf)
 <use figures/kill_distribution.pdf>
 Package pdftex.def Info: figures/kill_distribution.pdf  used on input line 619.
 
 (pdftex.def)             Requested size: 386.96027pt x 230.12283pt.
-<figures/kill_counts.pdf, id=3262, 867.24pt x 520.34402pt>
+<figures/kill_counts.pdf, id=3217, 867.24pt x 520.34402pt>
 File: figures/kill_counts.pdf Graphic file (type pdf)
 <use figures/kill_counts.pdf>
 Package pdftex.def Info: figures/kill_counts.pdf  used on input line 626.
 (pdftex.def)             Requested size: 386.96027pt x 232.17563pt.
-<figures/kill_statistics.pdf, id=3263, 715.30861pt x 426.58704pt>
+<figures/kill_statistics.pdf, id=3218, 715.30861pt x 426.58704pt>
 File: figures/kill_statistics.pdf Graphic file (type pdf)
 <use figures/kill_statistics.pdf>
 Package pdftex.def Info: figures/kill_statistics.pdf  used on input line 633.
 (pdftex.def)             Requested size: 386.96027pt x 230.77666pt.
-<figures/sex_stratified_results.pdf, id=3264, 1075.94281pt x 858.56697pt>
+<figures/sex_stratified_results.pdf, id=3219, 1075.94281pt x 858.56697pt>
 File: figures/sex_stratified_results.pdf Graphic file (type pdf)
 <use figures/sex_stratified_results.pdf>
 Package pdftex.def Info: figures/sex_stratified_results.pdf  used on input line
@@ -4105,7 +3602,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[124 <./figures/empirical_survival_rate.pdf>]
+[111 <./figures/empirical_growth_curves.pdf>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -4114,7 +3611,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[125 <./figures/empirical_growth_curves.pdf> <./figures/empirical_kills.pdf>]
+[112 <./figures/empirical_kills.pdf> <./figures/population_dynamics.pdf>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -4123,7 +3620,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[126 <./figures/population_dynamics.pdf> <./figures/tumor_growth.pdf>]
+[113 <./figures/tumor_growth.pdf> <./figures/kill_distribution.pdf>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -4132,7 +3629,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[127 <./figures/kill_distribution.pdf> <./figures/kill_counts.pdf>]
+[114 <./figures/kill_counts.pdf> <./figures/kill_statistics.pdf>])
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -4141,16 +3638,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[128 <./figures/kill_statistics.pdf> <./figures/sex_stratified_results.pdf>])
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[129] (./chapters/11_conclusion.tex
+[115 <./figures/sex_stratified_results.pdf>] (./chapters/11_conclusion.tex
 Chapter 11.
 
 Overfull \hbox (11.60997pt too wide) in paragraph at lines 16--17
@@ -4158,7 +3646,7 @@ Overfull \hbox (11.60997pt too wide) in paragraph at lines 16--17
 ated why tra-di-tional equation-
  []
 
-[130
+[116
 
 
 ]
@@ -4187,10 +3675,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[131]
+[117]
 Overfull \hbox (30.4262pt too wide) in paragraph at lines 43--44
 []\T1/ppl/b/n/12 Metabolic-immune cou-pling mech-a-nisms. \T1/ppl/m/n/12 The im
 -ple-men-ta-tion of glucose-dependent
+ []
+
+
+Overfull \hbox (11.28638pt too wide) in paragraph at lines 56--57
+\T1/ppl/m/n/12 The three-year de-vel-op-ment pro-cess from ini-tial Mesa pro-to
+-type to the cur-rent Repast4Py
  []
 
 
@@ -4201,13 +3695,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[132]
-Overfull \hbox (11.28638pt too wide) in paragraph at lines 56--57
-\T1/ppl/m/n/12 The three-year de-vel-op-ment pro-cess from ini-tial Mesa pro-to
--type to the cur-rent Repast4Py
- []
-
-
+[118]
 Overfull \hbox (52.68602pt too wide) in paragraph at lines 60--61
 \T1/ppl/m/n/12 agent-based mod-el-ing. The main chal-lenges were not al-go-rith
 -mic but ar-chi-tec-tural^^VRepast4Py's
@@ -4230,7 +3718,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[133]
+[119]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -4239,7 +3727,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[134]
+[120]
 Overfull \hbox (6.31744pt too wide) in paragraph at lines 101--102
 []\T1/ppl/b/n/12 Single-rank ex-e-cu-tion. \T1/ppl/m/n/12 Al-though Repast4Py s
 up-ports multi-rank MPI par-al-lelism,
@@ -4259,7 +3747,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[135]
+[121]
 LaTeX Info: Symbol \textrightarrow not provided by
             font family ppl in TS1 encoding.
             Default family used instead on input line 124.
@@ -4272,16 +3760,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[136]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[137]
+[122]
 Overfull \hbox (2.05258pt too wide) in paragraph at lines 144--145
 []\T1/ppl/b/n/12 Biomarker dis-cov-ery through com-pu-ta-tional screen-ing. \T1
 /ppl/m/n/12 The model gen-er-ates high-
@@ -4301,7 +3780,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[138]
+[123]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[124]
 Overfull \hbox (0.99538pt too wide) in paragraph at lines 164--165
 []\T1/ppl/m/n/12 Perhaps most im-por-tantly, this com-pu-ta-tional ap-proach en
 -ables ex-plo-ration of treat-
@@ -4321,9 +3809,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[139] (./main.bbl [140
+[125] (./main.bbl [126
 
-] [141
+] [127
 
 ])
 
@@ -4334,7 +3822,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[142] (./main.aux)
+[128] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -4347,14 +3835,14 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 9DD7ECDC2EC2403FAE882FAFB9E32025;46031.
+(rerunfilecheck)             Checksum: 787E61E7D183CA4C7281B7166CE3DD26;45771.
  ) 
 Here is how much of TeX's memory you used:
- 53171 strings out of 476182
- 1195446 string characters out of 5795596
- 2124975 words of memory out of 5000000
- 73193 multiletter control sequences out of 15000+600000
- 602193 words of font info for 134 fonts, out of 8000000 for 9000
+ 53102 strings out of 476182
+ 1194554 string characters out of 5795596
+ 2109975 words of memory out of 5000000
+ 73173 multiletter control sequences out of 15000+600000
+ 600835 words of font info for 130 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  84i,16n,96p,1224b,2224s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></u
@@ -4379,10 +3867,10 @@ ts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type
 </usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (144 pages, 1751007 bytes).
+Output written on main.pdf (130 pages, 1725939 bytes).
 PDF statistics:
- 4096 PDF objects out of 4296 (max. 8388607)
- 2888 compressed objects within 29 object streams
- 1036 named destinations out of 1200 (max. 500000)
- 25800 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 3983 PDF objects out of 4296 (max. 8388607)
+ 2790 compressed objects within 28 object streams
+ 989 named destinations out of 1000 (max. 500000)
+ 24768 words of extra memory for PDF output out of 24883 (max. 10000000)
 

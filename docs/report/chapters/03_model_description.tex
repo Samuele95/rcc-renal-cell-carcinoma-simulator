@@ -250,121 +250,24 @@ Table~\ref{tab:interactions} summarizes the key interactions between agent types
 \bottomrule
 \endlastfoot
 
-\texttt{TumorCell}
-& Effect emission &
-  Emits positive \texttt{angiogenesis\_effect}. \\
-& PD-1/PD-L1 &
-  Inhibits CTL activation via \texttt{get\_PD1\_inhibition()} based on \emph{CD274} gene expression. Blocked by ICI treatment. \\
-& Duplication &
-  Divides into empty neighbor; probability modulated by \texttt{tumour\_growth\_effect}, DNA proliferation genes, angiogenesis, blood access, and local glucose. \\
-& Apoptosis &
-  Dies based on \texttt{tumour\_apoptosis\_effect} and DNA tumor suppressor genes. On death with TKI, releases neoantigens to nearby DCs. \\
-& Glucose &
-  Consumes glucose at rate \texttt{w\_glucose\_tumor\_consumption} (Warburg effect). Growth scaled by local glucose via \texttt{w\_glucose\_growth\_sensitivity}. \\
-\midrule
-
-\texttt{CytotoxicTCell}
-& Killing &
-  Kills adjacent tumor cells with probability based on \texttt{t\_kill\_rate\_effect} $\times$ \texttt{t\_activation\_effect}, impaired by low glucose. Blocked by PD-1/PD-L1 engagement. \\
-& Exhaustion &
-  Loses \texttt{t\_activation\_effect} progressively with each kill (\texttt{w\_progressive\_exhaustion}) or sharply upon PD-1 inhibition. \\
-& Proliferation &
-  Duplicates based on proliferation chance $\times$ activation level. \\
-& Hormone response &
-  Perceives estrogen, progesterone, testosterone; estrogen enhances kill rate and proliferation, testosterone suppresses. \\
-\midrule
-
-\texttt{MacrophageM1}
-& Effect emission &
-  Positive \texttt{t\_kill\_rate\_effect} and \texttt{th1\_proliferation\_effect}. \\
-& Phagocytosis &
-  Engulfs adjacent tumor cells; after phagocytosis, migrates to and activates CD4$^+$ naive T cells. \\
-& Polarization &
-  Can transform to M2 based on \texttt{macrophage\_m1\_mutation\_effect}. \\
-& Glucose chemotaxis &
-  Follows glucose gradient when no tumor target found. \\
-\midrule
-
-\texttt{MacrophageM2}
-& Effect emission &
-  Negative \texttt{t\_kill\_rate\_effect}; positive \texttt{tumour\_growth\_effect} and \texttt{angiogenesis\_effect}. \\
-& Polarization &
-  Can transform to M1 based on \texttt{macrophage\_m2\_mutation\_effect}. \\
-\midrule
-
-\texttt{TregCell}
-& Effect emission &
-  Strong negative \texttt{t\_kill\_rate\_effect} ($-0.3$); negative \texttt{t\_proliferation\_effect}, \texttt{t\_activation\_effect}, \texttt{dc\_phagocitosis\_effect}; positive \texttt{t\_apoptosis\_effect}. \\
-\midrule
-
-\texttt{DendriticCell}
-& Phagocytosis &
-  Engulfs adjacent tumor cells based on \texttt{dc\_phagocitosis\_effect}. \\
-& T cell activation &
-  After phagocytosis, migrates to CD4$^+$ or CD8$^+$ naive T cells and presents captured antigen, triggering activation via TCR matching. \\
-& Glucose chemotaxis &
-  Follows glucose gradient when no tumor target found. \\
-\midrule
-
-\texttt{PlasmacitoidDC}
-& Effect emission &
-  Positive \texttt{angiogenesis\_effect}, \texttt{treg\_differentiation\_effect}, \texttt{t\_kill\_rate\_effect}, \texttt{nkl\_kill\_rate\_effect}; negative \texttt{t\_proliferation\_effect}. \\
-& Phagocytosis &
-  Same as DC: engulfs tumors, activates naive T cells. \\
-& NK spawning &
-  Spawns NK cells in empty neighbors with probability \texttt{spawn\_nkl\_chance}. \\
-\midrule
-
-\texttt{NaturalKiller}
-& Killing &
-  Kills adjacent tumor cells based on \texttt{nkl\_kill\_rate\_effect}, impaired by low glucose. \\
-& Effect emission &
-  Positive \texttt{t\_kill\_rate\_effect}. \\
-& Glucose chemotaxis &
-  Follows glucose gradient when no tumor target found. \\
-\midrule
-
-\texttt{MastCell}
-& Effect emission &
-  Stochastic combination of effects (determined at creation): \texttt{angiogenesis\_effect} ($\pm$), \texttt{macrophage\_m1\_mutation\_effect} ($\pm$), \texttt{t\_kill\_rate\_effect} ($\pm$), \texttt{tumour\_apoptosis\_effect} ($\pm$), \texttt{tumour\_growth\_effect} ($\pm$). \\
-& DC spawning &
-  Spawns dendritic cells at border positions with probability \texttt{spawn\_dc\_chance}. \\
-\midrule
-
-\texttt{CD4NaiveTCell}
-& Treg differentiation &
-  Differentiates into Treg based on \texttt{treg\_differentiation\_effect}, sex hormones (estrogen, progesterone, testosterone), and a sigmoidal gene factor. \\
-& Activation &
-  When presented with a matching antigen by a DC or M1 macrophage, differentiates into Th1 or Th2 with equal probability. \\
-\midrule
-
-\texttt{CD8NaiveTCell}
-& Activation &
-  When presented with a matching antigen, differentiates into CytotoxicTCell. Targeted by sex drift mechanism (duplication in males, removal in females). \\
-\midrule
-
-\texttt{CD4Helper1TCell}
-& Effect emission &
-  Positive \texttt{tumour\_apoptosis\_effect}. \\
-& Recruitment &
-  Spawns M1 macrophages and DCs at grid border positions. Proliferates based on \texttt{th1\_proliferation\_effect} $\times$ activation level, modulated by estrogen. \\
-\midrule
-
-\texttt{CD4Helper2TCell}
-& Effect emission &
-  Positive \texttt{t\_kill\_rate\_effect} and \texttt{tumour\_growth\_effect}. \\
-& Recruitment &
-  Spawns M1 macrophages and CytotoxicTCells. Proliferates based on \texttt{th2\_proliferation\_effect} $\times$ activation level, enhanced by estrogen and progesterone. \\
-\midrule
-
-\texttt{Blood}
-& Glucose source &
-  Blood vessels inject glucose into the field at each step. Tumor-generated vessels (\texttt{tumour\_generated=True}) are distinguished from pre-existing ones for angiogenesis logic. \\
-\midrule
-
-\texttt{SexHormone}
-& Hormone delivery &
-  Diffuses through the grid via biased random walk (away from blood vessels). Consumed by T cells in the neighborhood, modulating their immune behavior. Removed upon consumption or when leaving the grid. \\
+TumorCell & Growth \& evasion & Proliferate, evade via PD-L1, consume glucose \\
+CytotoxicTCell & Killing & Kill tumors, exhaustion, hormone-modulated \\
+MacrophageM1 & Anti-tumor & Phagocytosis, antigen presentation, M1$\to$M2 \\
+MacrophageM2 & Pro-tumor & Growth promotion, angiogenesis, M2$\to$M1 \\
+TregCell & Suppression & Inhibit T cells, promote tumor \\
+DendriticCell & Antigen presentation & Phagocytosis, T cell activation \\
+PlasmacitoidDC & Specialized APC & Multiple effects, spawn NK cells \\
+NaturalKiller & Innate killing & Kill tumors, glucose-dependent \\
+MastCell & Context-dependent & Stochastic pro/anti-tumor effects \\
+CD4NaiveTCell & Precursor & Differentiate to Th1/Th2/Treg \\
+CD8NaiveTCell & Precursor & Differentiate to CTL \\
+CD4Helper1TCell & Pro-inflammatory & Recruit M1/DC, proliferate \\
+CD4Helper2TCell & Mixed effects & Recruit immune cells, mild pro-tumor \\
+Blood & Nutrient supply & Glucose injection, angiogenesis \\
+SexHormone & Hormone delivery & Modulate immune responses \\
+Neutrophil & Innate immunity & Population marker \\
+Adipocyte & Stromal support & Structural component \\
+Fibroblast & Stromal support & Structural component \\
 
 \end{longtable}
 

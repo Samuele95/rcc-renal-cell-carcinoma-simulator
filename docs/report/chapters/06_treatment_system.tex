@@ -22,36 +22,11 @@ The treatment system follows a composition-based design in which individual drug
 
 \subsection{Abstract Drug Base Class}
 
-All drugs inherit from the abstract \texttt{Drug} base class (located in \texttt{src/treatments/drug.py}), which defines a single interface method:
-
-\begin{lstlisting}[caption={Abstract Drug base class.},label={lst:drug-base}]
-class Drug(ABC):
-    def __init__(self, model):
-        self.model = model
-
-    def step(self, proportion=1.0):
-        raise NotImplementedError
-\end{lstlisting}
-
-\noindent The \texttt{proportion} parameter controls what fraction of the treatment's total capacity is allocated to this drug.  Each drug receives a reference to the model, granting access to all agent populations and parameters.
+All drugs inherit from an abstract \texttt{Drug} base class with a \texttt{step()} method. The \texttt{proportion} parameter controls the treatment allocation fraction.
 
 \subsection{Treatment Composition}
 
-The \texttt{Treatment} class (in \texttt{src/treatments/treatment.py}) holds a list of \texttt{Drug} instances and distributes the treatment capacity equally among them:
-
-\begin{lstlisting}[caption={Treatment composition with proportional averaging.},label={lst:treatment}]
-class Treatment:
-    def __init__(self, drugs):
-        self.drugs = drugs
-
-    def step(self):
-        if not self.drugs:
-            return
-        for drug in self.drugs:
-            drug.step(proportion=1.0 / len(self.drugs))
-\end{lstlisting}
-
-\noindent With a single drug, \texttt{proportion} $= 1.0$; with two drugs (e.g., ICI + TKI), each receives \texttt{proportion} $= 0.5$.  This proportional averaging models the clinical reality that combination therapy involves dose adjustments.
+The \texttt{Treatment} class distributes capacity equally among drugs. With single drug therapy, proportion = 1.0; with combination therapy, each drug receives 0.5, modeling clinical dose adjustments.
 
 \subsection{Treatment Activation}
 
@@ -77,26 +52,11 @@ Treatment does not begin at the start of the simulation.  Instead, it is activat
 
 \subsection{Biological Basis}
 
-The programmed death-1 (PD-1) receptor is expressed on activated T cells and serves as a negative regulator of T cell function.  Its ligand, PD-L1 (encoded by the CD274 gene), is frequently upregulated on tumor cells in renal cell carcinoma.  When PD-L1 on a tumor cell engages PD-1 on a T cell, the T cell's cytotoxic activity is suppressed---a process known as immune checkpoint inhibition~\cite{pardoll2012}.
-
-Anti-PD-1 and anti-PD-L1 monoclonal antibodies (collectively termed ICI) block this interaction, restoring T cell effector function.  In clinical practice, ICI therapy (e.g., nivolumab, pembrolizumab) has shown significant survival benefits in RCC patients~\cite{rini2019,motzer2019}.
+PD-1/PD-L1 checkpoint interaction suppresses T cell cytotoxicity. ICI antibodies block this pathway, restoring T cell function and demonstrating clinical benefits in RCC~\cite{pardoll2012,rini2019}.
 
 \subsection{Implementation}
 
-The \texttt{ICIDrug} class (in \texttt{src/treatments/ici.py}) implements three effects per treatment step:
-
-\paragraph{1.\ PD-L1 Blockade on Tumor Cells.}
-For each tumor cell, with probability equal to \texttt{proportion} $\times$ \texttt{w\_ici\_effectiveness}:
-
-\begin{equation}
-\label{eq:ici-tumor}
-P(\text{ICI\_effect} = \texttt{True}) = p \cdot w_{\text{ICI}},
-\end{equation}
-
-\noindent where $p$ is the drug proportion and $w_{\text{ICI}}$ is the ICI effectiveness weight (default $1.0$).  When \texttt{ICI\_effect} is \texttt{True}, the tumor cell's \texttt{get\_PD1\_inhibition()} method returns \texttt{False}, effectively disabling the checkpoint pathway for that cell.
-
-\paragraph{2.\ T Cell Activation Restoration.}
-For each T cell (across all six T cell subtypes: CD8 cytotoxic, CD8 naive, CD4 naive, CD4 Th1, CD4 Th2, and Treg), with the same probability:
+\texttt{ICIDrug} implements three mechanisms: (1) \emph{PD-L1 blockade} on tumor cells, disabling checkpoint inhibition; (2) \emph{T cell activation restoration} across all T cell subtypes; and (3) \emph{immune infiltration enhancement}. Each effect occurs with probability proportional to drug effectiveness.
 
 \begin{equation}
 \label{eq:ici-tcell}
@@ -188,9 +148,7 @@ The combination of ICI and TKI exploits complementary mechanisms that produce sy
   \item \textbf{Treg reduction:} TKI suppresses Treg differentiation, reducing the immunosuppressive component of the tumor microenvironment, while ICI restores the activity of effector T cells.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced, colback=blue!3, colframe=blue!50!black, arc=3pt, boxrule=0.5pt, title={\textbf{Key Takeaway}}]
-The ICI+TKI combination is more than the sum of its parts. TKI normalizes blood vessels to let immune cells infiltrate tumors, while ICI removes the brakes that prevent T cells from attacking. Together, they create a coordinated assault on cancer.
-\end{tcolorbox}
+
 
 \subsection{Clinical Evidence}
 

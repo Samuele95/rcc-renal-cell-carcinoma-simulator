@@ -3,14 +3,10 @@
 
 \epigraph{All models are wrong, but some are useful.}{--- George E.P. Box}
 
-\section{Renal Cell Carcinoma: Epidemiology and Clinical Significance}
+\section{Renal Cell Carcinoma: Clinical Significance}
 \label{sec:intro_epidemiology}
 
-Renal cell carcinoma (RCC) is the third most common urological malignancy and accounts for approximately 90\% of all kidney cancers \cite{santoni2024}. Globally, RCC is responsible for roughly 400,000 new diagnoses per year, with incidence rates that have been steadily rising over the past several decades---a trend attributed in part to the increased use of abdominal imaging and in part to the growing prevalence of established risk factors such as obesity, hypertension, and tobacco use \cite{hanahan2011}.
-
-The prognosis for RCC is strongly stage-dependent. When the disease is detected in a localized state---confined to the kidney---five-year survival rates range from 50\% to 75\%, and for early-stage tumors treated with partial or radical nephrectomy, outcomes can be even more favorable. However, RCC has a marked propensity for late diagnosis: approximately one-third of patients present with locally advanced or metastatic disease at the time of initial detection. For metastatic RCC (mRCC), the five-year survival rate drops to below 15\%, underscoring the aggressive nature of late-stage disease and the limitations of currently available systemic therapies \cite{rini2019}.
-
-Clear cell RCC (ccRCC) constitutes 70--80\% of all RCC cases and is characterized by mutations in the \emph{VHL} gene, which lead to constitutive activation of the hypoxia-inducible factor (HIF) pathway and consequent overexpression of vascular endothelial growth factor (VEGF). This molecular hallmark has made ccRCC a prototypical target for anti-angiogenic therapies, while its relatively high immunogenicity---evidenced by dense immune infiltrates and occasional spontaneous regressions---has positioned it as one of the tumors most responsive to immunotherapy \cite{pardoll2012}.
+Renal cell carcinoma (RCC) affects 400,000 people annually worldwide, with metastatic disease carrying a devastating 15\% five-year survival rate \cite{santoni2024}. Clear cell RCC (ccRCC) constitutes 70--80\% of cases and is characterized by \emph{VHL} mutations leading to VEGF overexpression---making it both a target for anti-angiogenic therapies and one of the tumors most responsive to immunotherapy due to its high immunogenicity \cite{pardoll2012}.
 
 \begin{figure}[htbp]
 \centering
@@ -22,42 +18,23 @@ Clear cell RCC (ccRCC) constitutes 70--80\% of all RCC cases and is characterize
 \section{The Tumor Microenvironment}
 \label{sec:intro_tme}
 
-The tumor microenvironment (TME) is a complex, spatially heterogeneous ecosystem that extends far beyond the neoplastic cells themselves. It encompasses:
-
-\begin{itemize}[nosep]
-    \item \textbf{Tumor cells} with diverse genetic and phenotypic profiles arising from genomic instability and clonal evolution.
-    \item \textbf{Immune cells} of both innate and adaptive lineages, including cytotoxic T lymphocytes (CTLs), helper T cells (Th1 and Th2), regulatory T cells (Tregs), dendritic cells (DCs), macrophages (M1 and M2 polarization states), natural killer (NK) cells, mast cells, and neutrophils.
-    \item \textbf{Stromal cells} such as adipocytes and fibroblasts that provide structural and metabolic support.
-    \item \textbf{Vasculature}, both pre-existing and tumor-induced (via angiogenesis), which supplies oxygen, glucose, and other nutrients while also serving as a route for immune cell trafficking and hormone delivery.
-    \item \textbf{Signaling molecules} including cytokines, chemokines, and sex hormones that mediate cell-cell communication over varying spatial scales.
-\end{itemize}
-
-The interactions among these components are bidirectional and highly nonlinear. Immune cells can recognize and kill tumor cells, but tumors can also co-opt immune cells---for instance, by promoting M2 macrophage polarization or Treg expansion---to create an immunosuppressive niche. Understanding these dynamics requires approaches that can capture spatial heterogeneity, stochasticity, and the emergent behaviors that arise from local cell-cell interactions \cite{hanahan2011}.
+The tumor microenvironment (TME) is a complex, spatially heterogeneous ecosystem encompassing tumor cells, immune cells (CTLs, Th1/Th2, Tregs, DCs, M1/M2 macrophages, NK cells), vasculature, and signaling molecules. The bidirectional interactions between these components create nonlinear dynamics where immune cells can kill tumors but tumors can also co-opt immune responses to establish immunosuppressive niches \cite{hanahan2011}.
 
 \section{Sex Differences in RCC}
 \label{sec:intro_sex_differences}
 
-A striking and incompletely understood feature of RCC is its pronounced sex bias: males exhibit approximately twice the incidence of females across virtually all populations studied, a disparity that cannot be fully explained by differential exposure to traditional risk factors such as smoking or occupational hazards. Accumulating evidence implicates sex hormones---particularly estrogen, testosterone, and progesterone---as fundamental modulators of both tumor biology and immune response, operating through complex dose-dependent mechanisms that create distinct immune landscapes in male and female patients. Estrogen demonstrates a particularly intriguing biphasic effect on anti-tumor immunity: at low concentrations, it enhances immune surveillance by promoting Th1 polarization, increasing interferon-gamma production, upregulating MHC class I and II expression, and enhancing cytotoxic T cell activity, while at higher concentrations it paradoxically shifts the balance toward immunosuppressive Th2 responses, increases regulatory T cell differentiation, and upregulates immune checkpoint molecules such as CTLA-4 and PD-1.
+RCC exhibits a pronounced sex bias with males showing twice the incidence of females. Sex hormones---estrogen, testosterone, and progesterone---fundamentally modulate tumor biology and immune response. Estrogen shows biphasic effects: enhancing immunity at low concentrations but promoting immunosuppression at higher levels. Testosterone generally suppresses immune responses and promotes immune evasion.
 
-Testosterone exerts complementary but distinct immunomodulatory effects, generally suppressing immune responses at elevated levels by reducing Th1 proliferation and interferon-gamma production while promoting checkpoint-mediated immune evasion mechanisms that allow tumors to escape immunosurveillance. These sex-specific hormonal influences create fundamentally different tumor microenvironmental contexts in male and female patients, potentially explaining not only the incidence differences but also the emerging clinical observations of sex-dependent treatment responses to immunotherapy and targeted therapy combinations \cite{conforti2018}.
-
-These observations have motivated the ARON-1 clinical study, which investigates whether sex-specific immune landscapes translate into differential responses to combination immunotherapy-targeted therapy regimens in RCC patients. The ARON-1 study provides the clinical context and validation data for the computational model presented in this work, and its findings regarding sex-dependent treatment outcomes serve as key calibration targets for the simulation \cite{santoni2024}.
+The ARON-1 clinical study investigates sex-dependent treatment responses and provides validation data for this computational model \cite{santoni2024}.
 
 \section{Motivation for Computational Modeling}
 \label{sec:intro_motivation}
 
-The complexity of the RCC tumor microenvironment---with its heterogeneous cell populations, spatial organization, stochastic interactions, metabolic competition, hormonal modulation, and treatment effects---presents a formidable challenge for traditional analytical and experimental approaches that struggle to capture the multiscale, nonlinear dynamics inherent in these biological systems. Clinical trials, while indispensable for validation and regulatory approval, are expensive, time-consuming, and inherently limited in the number of treatment combinations, dosing schedules, and patient stratifications they can explore, often requiring years to decades to generate definitive answers to specific therapeutic questions. Similarly, conventional experimental models including \emph{in vitro} cell cultures and \emph{in vivo} animal studies capture important aspects of tumor-immune dynamics but cannot easily reproduce the full complexity of the human tumor microenvironment, particularly the intricate interplay between hormonal influences, metabolic constraints, and immune system heterogeneity that characterizes human disease.
+The complexity of the RCC tumor microenvironment---with heterogeneous cell populations, spatial organization, stochastic interactions, metabolic competition, and hormonal modulation---presents a challenge for traditional experimental approaches. Clinical trials are expensive, time-consuming, and limited in the combinations they can explore.
 
-Computational modeling offers a complementary approach that addresses several of these fundamental limitations by enabling controlled experimentation in virtual environments that can systematically explore parameter spaces beyond the reach of traditional methods:
+Computational modeling enables: (1) \emph{in silico} experimentation with thousands of virtual patients, (2) systematic parameter exploration, (3) treatment optimization via algorithms, and (4) hypothesis generation for experimental validation.
 
-\begin{enumerate}[nosep]
-    \item \textbf{In silico experimentation.} Simulations allow researchers to conduct virtual experiments that would be impractical, unethical, or prohibitively expensive in clinical settings. Thousands of virtual patients with varying immune profiles, hormonal states, and treatment regimens can be simulated in hours rather than years.
-    \item \textbf{Parameter exploration.} The model's behavior can be systematically mapped across high-dimensional parameter spaces, identifying which biological variables most strongly influence treatment outcomes.
-    \item \textbf{Treatment optimization.} By coupling the simulation with optimization algorithms, it becomes possible to search for treatment schedules and drug combinations that maximize predicted patient survival for specific patient subgroups.
-    \item \textbf{Hypothesis generation.} Emergent behaviors observed in simulation---such as unexpected immune cell population dynamics or treatment resistance mechanisms---can generate testable hypotheses for subsequent experimental validation.
-\end{enumerate}
-
-Previous work by Merelli et al.\ \cite{merelli2021} and the MASL research group \cite{masl_paper_a} demonstrated the feasibility of agent-based approaches for modeling the RCC microenvironment, establishing a Mesa-based prototype that captured the core immune-tumor interactions. The present work extends this foundation substantially.
+Previous work by Merelli et al.\ \cite{merelli2021} demonstrated the feasibility of agent-based RCC modeling. This work extends that foundation substantially.
 
 \begin{figure}[htbp]
 \centering

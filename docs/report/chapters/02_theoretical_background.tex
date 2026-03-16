@@ -25,17 +25,7 @@ An agent-based model (ABM) is a computational model consisting of three fundamen
 
 The distinguishing feature of ABM is that system-level behavior is \emph{emergent}: it arises from the aggregate of individual agent actions and interactions rather than being prescribed by global equations. This makes ABM particularly powerful for systems characterized by heterogeneity, spatial structure, and nonlinear feedback---properties that are hallmarks of the tumor microenvironment.
 
-Formally, at each discrete time step $t$, the state of agent $i$ is updated according to:
-\begin{equation}
-    s_i(t+1) = f\bigl(s_i(t),\, \mathcal{N}_i(t),\, E(t),\, \xi_i(t)\bigr)
-    \label{eq:agent_update}
-\end{equation}
-where $s_i(t)$ is the agent's internal state, $\mathcal{N}_i(t)$ is the set of neighboring agents within a defined radius, $E(t)$ is the local environmental state (e.g., glucose concentration), and $\xi_i(t)$ represents stochastic noise. The environment itself evolves as:
-\begin{equation}
-    E(t+1) = g\bigl(E(t),\, \{a_i(t)\}_{i=1}^{N}\bigr)
-    \label{eq:env_update}
-\end{equation}
-where $\{a_i(t)\}$ denotes the actions taken by all $N$ agents at time $t$.
+At each time step, each agent updates its state based on its current state, nearby neighbors, local environment, and stochastic factors. The environment evolves based on all agent actions.
 
 \subsection{Advantages for Biological Systems}
 \label{subsec:bg_abm_advantages}
@@ -52,48 +42,11 @@ ABM offers several advantages for modeling biological systems in general and the
 \subsection{The Repast4Py Framework}
 \label{subsec:bg_repast4py}
 
-Repast4Py \cite{repast4py} is a Python-based agent-based modeling framework designed for large-scale distributed simulations. It extends the Repast HPC (High-Performance Computing) toolkit to the Python ecosystem, leveraging MPI (Message Passing Interface) \cite{mpi4py} for inter-process communication. The key abstractions provided by Repast4Py are:
+Repast4Py \cite{repast4py} is a Python-based agent-based modeling framework leveraging MPI for parallel simulations. Key abstractions include \texttt{Agent} (base class), \texttt{SharedContext} (distributed agent container), and \texttt{SharedGrid} (spatial projection) with sticky boundaries and multiple occupancy support.
 
-\begin{itemize}
-    \item \textbf{\texttt{repast4py.core.Agent}.} The base class for all agents. Each agent is identified by a tuple \texttt{(id, type, rank)} where \texttt{id} is a locally unique integer, \texttt{type} is an integer agent type identifier, and \texttt{rank} is the MPI rank of the process that owns the agent.
-    \item \textbf{\texttt{SharedContext}.} A distributed container for agents. The context manages agent ownership across MPI ranks and provides methods for adding, removing, and iterating over agents.
-    \item \textbf{\texttt{SharedGrid}.} A distributed spatial projection that maps agents to discrete grid coordinates. Repast4Py supports multiple grid configurations:
-    \begin{itemize}[nosep]
-        \item \texttt{BorderType.Sticky}: agents that attempt to move beyond grid boundaries are clamped to the boundary (used in the present model).
-        \item \texttt{OccupancyType.Multiple}: multiple agents can occupy the same grid cell (necessary for a dense microenvironment).
-    \end{itemize}
-    \item \textbf{Schedule runner.} The scheduling mechanism, initialized via \texttt{schedule.init\_schedule\_runner}, manages the execution order of model steps across MPI ranks, ensuring synchronization where required.
-\end{itemize}
 
-\subsection{Comparison with Mesa}
-\label{subsec:bg_mesa_comparison}
 
-The original RCC model was implemented in Mesa \cite{mesa}, a widely used Python ABM framework. Table~\ref{tab:mesa_vs_repast} summarizes the key differences between Mesa and Repast4Py that motivated the port.
 
-\begin{table}[H]
-\centering
-\caption{Comparison of Mesa and Repast4Py for the RCC model.}
-\label{tab:mesa_vs_repast}
-\begin{tabular}{@{}lll@{}}
-\toprule
-\textbf{Feature} & \textbf{Mesa} & \textbf{Repast4Py} \\
-\midrule
-Execution model     & Single-process          & MPI-distributed \\
-Grid type           & \texttt{MultiGrid} (2D/3D) & \texttt{SharedGrid} (distributed) \\
-Agent base class    & \texttt{mesa.Agent}     & \texttt{repast4py.core.Agent} \\
-Scheduling          & \texttt{RandomActivation} & \texttt{schedule.init\_schedule\_runner} \\
-Scalability         & Limited by single core  & Scales across MPI ranks \\
-Neighbor queries    & Built-in grid methods   & Custom spatial index \\
-Serialization       & Not required            & \texttt{save()} / restore functions \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-The port to Repast4Py required significant restructuring. In Mesa, neighbor queries are handled by the grid object directly (e.g., \texttt{grid.get\_neighbors()}). In the Repast4Py implementation, a custom \texttt{spatial\_index} dictionary maps grid positions to agent lists, and utility functions in \texttt{grid\_utils} provide 3D neighborhood queries, empty-cell detection, and Moore neighborhood enumeration. Additionally, Repast4Py requires explicit \texttt{save()} methods on agents for MPI serialization, and the model manages agent lifecycle (creation, movement, removal) through centralized methods on the \texttt{RCCModel} class rather than through Mesa's scheduler.
-
-\begin{tcolorbox}[enhanced, colback=blue!3, colframe=blue!50!black, arc=3pt, boxrule=0.5pt, title={\textbf{Key Takeaway}}]
-Agent-based modeling captures what differential equations cannot: spatial heterogeneity, individual cell differences, and emergent behaviors. While equations treat tumors as uniform masses, ABM reveals how every cancer cell's unique genetics and position determines the battle's outcome.
-\end{tcolorbox}
 
 \begin{figure}[htbp]
 \centering
@@ -117,21 +70,7 @@ In the context of RCC, the interplay between innate and adaptive immunity is cri
 \subsection{T Cell Subtypes}
 \label{subsec:bg_tcells}
 
-The model distinguishes six T cell populations, reflecting the major functional categories relevant to anti-tumor immunity:
-
-\begin{enumerate}
-    \item \textbf{CD8$^+$ Cytotoxic T Cells (CTLs).} The primary effectors of adaptive anti-tumor immunity. CTLs recognize tumor-specific antigens presented on MHC class I molecules and kill target cells through the release of perforin and granzymes. Their effectiveness is modulated by activation level, PD-1/PD-L1 checkpoint interactions, and local glucose availability.
-
-    \item \textbf{CD8$^+$ Naive T Cells.} Antigen-inexperienced CD8$^+$ cells residing in the microenvironment. Upon encountering a dendritic cell presenting a matching neoantigen (determined by TCR-antigen Hamming distance), they differentiate into cytotoxic T cells.
-
-    \item \textbf{CD4$^+$ Naive T Cells.} Precursors to helper and regulatory T cells. Depending on the local cytokine milieu and hormonal environment, they can differentiate into Th1, Th2, or Treg cells. Antigen presentation by dendritic cells or macrophages triggers differentiation into Th1 or Th2 with equal probability, conditional on TCR-antigen matching.
-
-    \item \textbf{CD4$^+$ Th1 Helper T Cells.} Pro-inflammatory cells that produce IFN-$\gamma$ and promote anti-tumor immunity. In the model, Th1 cells recruit M1 macrophages and dendritic cells, promote tumor apoptosis, and can proliferate under the influence of accumulated Th1-proliferation effects. Their proliferation is modulated by sex hormones, with low estrogen favoring Th1 expansion and high estrogen suppressing it.
-
-    \item \textbf{CD4$^+$ Th2 Helper T Cells.} Cells associated with a humoral immune response that produce IL-4, IL-5, and IL-13. In the tumor context, Th2 cells recruit M1 macrophages and cytotoxic T cells, but they also exert a mild pro-tumorigenic effect by increasing tumor growth. Th2 proliferation is enhanced by estrogen and progesterone, consistent with the shift toward Th2-dominant responses at high hormonal levels.
-
-    \item \textbf{Regulatory T Cells (Tregs).} Immunosuppressive cells that play a central role in tumor immune evasion. Tregs inhibit cytotoxic T cell killing (reducing \texttt{t\_kill\_rate\_effect}), suppress T cell proliferation and activation, increase T cell apoptosis, and reduce dendritic cell phagocytosis. They differentiate from CD4$^+$ naive cells under the influence of the \texttt{treg\_differentiation\_effect}, which is promoted by high BMI and specific hormonal conditions.
-\end{enumerate}
+The model includes six T cell types: CD8+ CTLs (primary tumor killers), CD8+ naive cells (CTL precursors), CD4+ naive cells (helper/Treg precursors), Th1 helpers (pro-inflammatory, anti-tumor), Th2 helpers (anti-inflammatory, mild pro-tumor), and Tregs (immunosuppressive, tumor-promoting). T cell function is modulated by activation levels, checkpoints, hormones, and glucose availability.
 
 \subsection{Antigen-Presenting Cells}
 \label{subsec:bg_apcs}
