@@ -167,479 +167,505 @@
 \@writefile{toc}{\contentsline {section}{\numberline {3.6}Terminal Conditions}{32}{section.3.6}\protected@file@percent }
 \newlabel{sec:md_terminal}{{3.6}{32}{Terminal Conditions}{section.3.6}{}}
 \newlabel{eq:growth_rate}{{3.6}{33}{Terminal Conditions}{equation.3.6.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.7}Immune Response Cascade Overview}{33}{section.3.7}\protected@file@percent }
+\newlabel{sec:md_immune_cascade}{{3.7}{33}{Immune Response Cascade Overview}{section.3.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces BPMN-style Immune Response Cascade in the RCC model. The process flow illustrates the sequential steps from tumor cell detection through antigen presentation to effector T cell activation and tumor elimination. Regulatory T cells provide negative feedback that can suppress both T cell activation and effector functions, creating the potential for immune evasion. Red dashed arrows indicate immunosuppressive pathways that counteract the primary immune response.}}{34}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:immune_response_cascade}{{3.4}{34}{BPMN-style Immune Response Cascade in the RCC model. The process flow illustrates the sequential steps from tumor cell detection through antigen presentation to effector T cell activation and tumor elimination. Regulatory T cells provide negative feedback that can suppress both T cell activation and effector functions, creating the potential for immune evasion. Red dashed arrows indicate immunosuppressive pathways that counteract the primary immune response}{figure.caption.8}{}}
 \citation{warburg1956}
 \citation{hanahan2011}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Glucose Microenvironment System}{34}{chapter.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Glucose Microenvironment System}{35}{chapter.4}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:glucose}{{4}{34}{Glucose Microenvironment System}{chapter.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Biological Motivation}{34}{section.4.1}\protected@file@percent }
-\newlabel{sec:glucose-bio}{{4.1}{34}{Biological Motivation}{section.4.1}{}}
-\@writefile{toc}{\contentsline {paragraph}{The Warburg Effect.}{34}{section.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Metabolic Competition.}{34}{section.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Impact on Immune Function.}{34}{figure.caption.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Glucose Gradients as Chemotactic Signals.}{34}{figure.caption.8}\protected@file@percent }
+\newlabel{ch:glucose}{{4}{35}{Glucose Microenvironment System}{chapter.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Biological Motivation}{35}{section.4.1}\protected@file@percent }
+\newlabel{sec:glucose-bio}{{4.1}{35}{Biological Motivation}{section.4.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{The Warburg Effect.}{35}{section.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Metabolic Competition.}{35}{section.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Impact on Immune Function.}{35}{figure.caption.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Glucose Gradients as Chemotactic Signals.}{35}{figure.caption.9}\protected@file@percent }
 \citation{fick1855}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Glucose field dynamics over time showing the evolution of glucose concentration patterns in response to tumor growth and treatment. The spatial distribution reveals zones of depletion around tumor masses and gradients extending from blood vessel sources.}}{35}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:glucose_dynamics}{{4.1}{35}{Glucose field dynamics over time showing the evolution of glucose concentration patterns in response to tumor growth and treatment. The spatial distribution reveals zones of depletion around tumor masses and gradients extending from blood vessel sources}{figure.caption.8}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Mathematical Formulation}{35}{section.4.2}\protected@file@percent }
-\newlabel{sec:glucose-math}{{4.2}{35}{Mathematical Formulation}{section.4.2}{}}
-\newlabel{eq:glucose-pde}{{4.1}{35}{Mathematical Formulation}{equation.4.2.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Discrete 3D Laplacian}{35}{subsection.4.2.1}\protected@file@percent }
-\newlabel{eq:laplacian-discrete}{{4.2}{36}{Discrete 3D Laplacian}{equation.4.2.2}{}}
-\newlabel{eq:kernel}{{4.3}{36}{Discrete 3D Laplacian}{equation.4.2.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Time Integration}{36}{subsection.4.2.2}\protected@file@percent }
-\newlabel{eq:euler}{{4.4}{36}{Time Integration}{equation.4.2.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Stability Analysis}{36}{subsection.4.2.3}\protected@file@percent }
-\newlabel{eq:stability}{{4.5}{36}{Stability Analysis}{equation.4.2.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.4}Boundary Conditions}{36}{subsection.4.2.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Source Model}{36}{section.4.3}\protected@file@percent }
-\newlabel{sec:glucose-source}{{4.3}{36}{Source Model}{section.4.3}{}}
-\@writefile{toc}{\contentsline {paragraph}{Injection Mechanism.}{37}{section.4.3}\protected@file@percent }
-\newlabel{eq:injection}{{4.6}{37}{Injection Mechanism}{equation.4.3.6}{}}
-\@writefile{toc}{\contentsline {paragraph}{Blood Vessel Geometry.}{37}{equation.4.3.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Consumption Model}{37}{section.4.4}\protected@file@percent }
-\newlabel{sec:glucose-consumption}{{4.4}{37}{Consumption Model}{section.4.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Tumor Cell Consumption}{37}{subsection.4.4.1}\protected@file@percent }
-\newlabel{eq:tumor-consumption}{{4.7}{37}{Tumor Cell Consumption}{equation.4.4.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Immune Cell Consumption}{37}{subsection.4.4.2}\protected@file@percent }
-\newlabel{eq:immune-consumption}{{4.8}{37}{Immune Cell Consumption}{equation.4.4.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Glucose-Dependent Growth Factor}{37}{subsection.4.4.3}\protected@file@percent }
-\newlabel{eq:glucose-growth}{{4.9}{37}{Glucose-Dependent Growth Factor}{equation.4.4.9}{}}
-\newlabel{eq:p-duplication-glucose}{{4.10}{37}{Glucose-Dependent Growth Factor}{equation.4.4.10}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Glucose-Dependent Immune Function}{38}{subsection.4.4.4}\protected@file@percent }
-\newlabel{eq:glucose-immune}{{4.11}{38}{Glucose-Dependent Immune Function}{equation.4.4.11}{}}
-\newlabel{eq:p-kill-glucose}{{4.12}{38}{Glucose-Dependent Immune Function}{equation.4.4.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Overview of the glucose system in the RCC model. The continuous glucose field $C(\mathbf  {x}, t)$ is maintained through a cycle of: (1) glucose injection from blood vessels, (2) 3D diffusion via Fick's Law, (3) natural decay, (4) consumption by tumor and immune cells, and (5) gradient computation for chemotaxis. Feedback loops modulate cell growth and activity based on local glucose availability.}}{38}{figure.caption.9}\protected@file@percent }
-\newlabel{fig:glucose_system}{{4.2}{38}{Overview of the glucose system in the RCC model. The continuous glucose field $C(\mathbf {x}, t)$ is maintained through a cycle of: (1) glucose injection from blood vessels, (2) 3D diffusion via Fick's Law, (3) natural decay, (4) consumption by tumor and immune cells, and (5) gradient computation for chemotaxis. Feedback loops modulate cell growth and activity based on local glucose availability}{figure.caption.9}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Gradient and Chemotaxis}{38}{section.4.5}\protected@file@percent }
-\newlabel{sec:glucose-chemotaxis}{{4.5}{38}{Gradient and Chemotaxis}{section.4.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Gradient Computation}{38}{subsection.4.5.1}\protected@file@percent }
-\newlabel{eq:gradient}{{4.13}{38}{Gradient Computation}{equation.4.5.13}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}Discretized Gradient Step}{39}{subsection.4.5.2}\protected@file@percent }
-\newlabel{eq:discrete-step}{{4.14}{39}{Discretized Gradient Step}{equation.4.5.14}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.3}Chemotaxis Behavior}{39}{subsection.4.5.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.6}Implementation}{39}{section.4.6}\protected@file@percent }
-\newlabel{sec:glucose-impl}{{4.6}{39}{Implementation}{section.4.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.1}Data Structure}{39}{subsection.4.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.2}Convolution Kernel}{39}{subsection.4.6.2}\protected@file@percent }
-\newlabel{lst:kernel}{{4.1}{39}{Laplacian kernel construction}{lstlisting.4.1}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.1}{\ignorespaces Laplacian kernel construction.}}{39}{lstlisting.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.3}Step Function}{40}{subsection.4.6.3}\protected@file@percent }
-\newlabel{lst:glucose-step}{{4.2}{40}{Glucose field step implementation from \texttt {glucose\_field.py}}{lstlisting.4.2}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.2}{\ignorespaces Glucose field step implementation from \texttt  {glucose\_field.py}.}}{40}{lstlisting.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.4}Statistics Methods}{41}{subsection.4.6.4}\protected@file@percent }
-\newlabel{lst:tumor-glucose}{{4.3}{41}{Tumor cell glucose consumption and growth modulation from \texttt {tumor\_cell.py}}{lstlisting.4.3}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.3}{\ignorespaces Tumor cell glucose consumption and growth modulation from \texttt  {tumor\_cell.py}.}}{41}{lstlisting.4.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Glucose concentration time series showing the temporal evolution of mean, minimum, and maximum glucose levels throughout the simulation. The dynamics reflect the balance between blood vessel injection, cellular consumption, and spatial diffusion.}}{42}{figure.caption.10}\protected@file@percent }
-\newlabel{fig:glucose_timeseries}{{4.3}{42}{Glucose concentration time series showing the temporal evolution of mean, minimum, and maximum glucose levels throughout the simulation. The dynamics reflect the balance between blood vessel injection, cellular consumption, and spatial diffusion}{figure.caption.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Three-dimensional visualization of the glucose concentration field showing spatial heterogeneity within the tumor microenvironment. High-concentration regions (yellow) correspond to blood vessel locations, while low-concentration zones (blue) indicate areas of intensive cellular consumption.}}{42}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:glucose_field_3d}{{4.4}{42}{Three-dimensional visualization of the glucose concentration field showing spatial heterogeneity within the tumor microenvironment. High-concentration regions (yellow) correspond to blood vessel locations, while low-concentration zones (blue) indicate areas of intensive cellular consumption}{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Glucose field dynamics over time showing the evolution of glucose concentration patterns in response to tumor growth and treatment. The spatial distribution reveals zones of depletion around tumor masses and gradients extending from blood vessel sources.}}{36}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:glucose_dynamics}{{4.1}{36}{Glucose field dynamics over time showing the evolution of glucose concentration patterns in response to tumor growth and treatment. The spatial distribution reveals zones of depletion around tumor masses and gradients extending from blood vessel sources}{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Mathematical Formulation}{36}{section.4.2}\protected@file@percent }
+\newlabel{sec:glucose-math}{{4.2}{36}{Mathematical Formulation}{section.4.2}{}}
+\newlabel{eq:glucose-pde}{{4.1}{36}{Mathematical Formulation}{equation.4.2.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Discrete 3D Laplacian}{36}{subsection.4.2.1}\protected@file@percent }
+\newlabel{eq:laplacian-discrete}{{4.2}{37}{Discrete 3D Laplacian}{equation.4.2.2}{}}
+\newlabel{eq:kernel}{{4.3}{37}{Discrete 3D Laplacian}{equation.4.2.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Time Integration}{37}{subsection.4.2.2}\protected@file@percent }
+\newlabel{eq:euler}{{4.4}{37}{Time Integration}{equation.4.2.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Stability Analysis}{37}{subsection.4.2.3}\protected@file@percent }
+\newlabel{eq:stability}{{4.5}{37}{Stability Analysis}{equation.4.2.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.4}Boundary Conditions}{37}{subsection.4.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Source Model}{37}{section.4.3}\protected@file@percent }
+\newlabel{sec:glucose-source}{{4.3}{37}{Source Model}{section.4.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{Injection Mechanism.}{38}{section.4.3}\protected@file@percent }
+\newlabel{eq:injection}{{4.6}{38}{Injection Mechanism}{equation.4.3.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{Blood Vessel Geometry.}{38}{equation.4.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Consumption Model}{38}{section.4.4}\protected@file@percent }
+\newlabel{sec:glucose-consumption}{{4.4}{38}{Consumption Model}{section.4.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Tumor Cell Consumption}{38}{subsection.4.4.1}\protected@file@percent }
+\newlabel{eq:tumor-consumption}{{4.7}{38}{Tumor Cell Consumption}{equation.4.4.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Immune Cell Consumption}{38}{subsection.4.4.2}\protected@file@percent }
+\newlabel{eq:immune-consumption}{{4.8}{38}{Immune Cell Consumption}{equation.4.4.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Glucose-Dependent Growth Factor}{38}{subsection.4.4.3}\protected@file@percent }
+\newlabel{eq:glucose-growth}{{4.9}{38}{Glucose-Dependent Growth Factor}{equation.4.4.9}{}}
+\newlabel{eq:p-duplication-glucose}{{4.10}{38}{Glucose-Dependent Growth Factor}{equation.4.4.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Glucose-Dependent Immune Function}{39}{subsection.4.4.4}\protected@file@percent }
+\newlabel{eq:glucose-immune}{{4.11}{39}{Glucose-Dependent Immune Function}{equation.4.4.11}{}}
+\newlabel{eq:p-kill-glucose}{{4.12}{39}{Glucose-Dependent Immune Function}{equation.4.4.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Overview of the glucose system in the RCC model. The continuous glucose field $C(\mathbf  {x}, t)$ is maintained through a cycle of: (1) glucose injection from blood vessels, (2) 3D diffusion via Fick's Law, (3) natural decay, (4) consumption by tumor and immune cells, and (5) gradient computation for chemotaxis. Feedback loops modulate cell growth and activity based on local glucose availability.}}{39}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:glucose_system}{{4.2}{39}{Overview of the glucose system in the RCC model. The continuous glucose field $C(\mathbf {x}, t)$ is maintained through a cycle of: (1) glucose injection from blood vessels, (2) 3D diffusion via Fick's Law, (3) natural decay, (4) consumption by tumor and immune cells, and (5) gradient computation for chemotaxis. Feedback loops modulate cell growth and activity based on local glucose availability}{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Gradient and Chemotaxis}{39}{section.4.5}\protected@file@percent }
+\newlabel{sec:glucose-chemotaxis}{{4.5}{39}{Gradient and Chemotaxis}{section.4.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Gradient Computation}{39}{subsection.4.5.1}\protected@file@percent }
+\newlabel{eq:gradient}{{4.13}{39}{Gradient Computation}{equation.4.5.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}Discretized Gradient Step}{40}{subsection.4.5.2}\protected@file@percent }
+\newlabel{eq:discrete-step}{{4.14}{40}{Discretized Gradient Step}{equation.4.5.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.3}Chemotaxis Behavior}{40}{subsection.4.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Implementation}{40}{section.4.6}\protected@file@percent }
+\newlabel{sec:glucose-impl}{{4.6}{40}{Implementation}{section.4.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.1}Data Structure}{40}{subsection.4.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.2}Convolution Kernel}{40}{subsection.4.6.2}\protected@file@percent }
+\newlabel{lst:kernel}{{4.1}{40}{Laplacian kernel construction}{lstlisting.4.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.1}{\ignorespaces Laplacian kernel construction.}}{40}{lstlisting.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.3}Step Function}{41}{subsection.4.6.3}\protected@file@percent }
+\newlabel{lst:glucose-step}{{4.2}{41}{Glucose field step implementation from \texttt {glucose\_field.py}}{lstlisting.4.2}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.2}{\ignorespaces Glucose field step implementation from \texttt  {glucose\_field.py}.}}{41}{lstlisting.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.4}Statistics Methods}{42}{subsection.4.6.4}\protected@file@percent }
+\newlabel{lst:tumor-glucose}{{4.3}{42}{Tumor cell glucose consumption and growth modulation from \texttt {tumor\_cell.py}}{lstlisting.4.3}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.3}{\ignorespaces Tumor cell glucose consumption and growth modulation from \texttt  {tumor\_cell.py}.}}{42}{lstlisting.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Glucose concentration time series showing the temporal evolution of mean, minimum, and maximum glucose levels throughout the simulation. The dynamics reflect the balance between blood vessel injection, cellular consumption, and spatial diffusion.}}{43}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:glucose_timeseries}{{4.3}{43}{Glucose concentration time series showing the temporal evolution of mean, minimum, and maximum glucose levels throughout the simulation. The dynamics reflect the balance between blood vessel injection, cellular consumption, and spatial diffusion}{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Three-dimensional visualization of the glucose concentration field showing spatial heterogeneity within the tumor microenvironment. High-concentration regions (yellow) correspond to blood vessel locations, while low-concentration zones (blue) indicate areas of intensive cellular consumption.}}{43}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:glucose_field_3d}{{4.4}{43}{Three-dimensional visualization of the glucose concentration field showing spatial heterogeneity within the tumor microenvironment. High-concentration regions (yellow) correspond to blood vessel locations, while low-concentration zones (blue) indicate areas of intensive cellular consumption}{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces BPMN-style Glucose System Cycle illustrating the circular flow of glucose dynamics in the tumor microenvironment. Blood vessels inject glucose which diffuses spatially and is consumed preferentially by tumor cells (Warburg effect), creating concentration gradients that guide immune cell chemotaxis back toward glucose-rich regions near blood vessels. This creates a continuous cycle where metabolic competition shapes spatial organization.}}{44}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:glucose_system_cycle}{{4.5}{44}{BPMN-style Glucose System Cycle illustrating the circular flow of glucose dynamics in the tumor microenvironment. Blood vessels inject glucose which diffuses spatially and is consumed preferentially by tumor cells (Warburg effect), creating concentration gradients that guide immune cell chemotaxis back toward glucose-rich regions near blood vessels. This creates a continuous cycle where metabolic competition shapes spatial organization}{figure.caption.13}{}}
 \gdef \LT@ii {\LT@entry 
     {5}{62.07387pt}\LT@entry 
     {5}{120.88313pt}\LT@entry 
     {1}{225.39566pt}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}DNA and Mutation System}{43}{chapter.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}DNA and Mutation System}{45}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:dna}{{5}{43}{DNA and Mutation System}{chapter.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Gene Model}{43}{section.5.1}\protected@file@percent }
-\newlabel{sec:gene-model}{{5.1}{43}{Gene Model}{section.5.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Gene Catalogue}{43}{subsection.5.1.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces The 16 genes modeled in the DNA system and their functional roles.}}{43}{table.5.1}\protected@file@percent }
-\newlabel{tab:genes}{{5.1}{43}{The 16 genes modeled in the DNA system and their functional roles}{table.5.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces DNA mutation heatmap across the 16 modeled genes showing the distribution of mutations in the tumor cell population. Each row represents a gene and each column represents a tumor cell lineage. Color intensity indicates the severity of mutation (darker colors represent higher mutation scores). The heterogeneous mutation patterns drive clonal diversity and immune evasion.}}{44}{figure.caption.12}\protected@file@percent }
-\newlabel{fig:dna_mutation_heatmap}{{5.1}{44}{DNA mutation heatmap across the 16 modeled genes showing the distribution of mutations in the tumor cell population. Each row represents a gene and each column represents a tumor cell lineage. Color intensity indicates the severity of mutation (darker colors represent higher mutation scores). The heterogeneous mutation patterns drive clonal diversity and immune evasion}{figure.caption.12}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}DNA Sequence Structure}{45}{subsection.5.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Codon Translation}{45}{section.5.2}\protected@file@percent }
-\newlabel{sec:codon-translation}{{5.2}{45}{Codon Translation}{section.5.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Codon Table}{45}{subsection.5.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}Translation: \texttt  {gene\_to\_protein()}}{45}{subsection.5.2.2}\protected@file@percent }
-\newlabel{lst:translation}{{5.1}{45}{Gene-to-protein translation}{lstlisting.5.1}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {5.1}{\ignorespaces Gene-to-protein translation.}}{45}{lstlisting.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.3}Reverse Translation: \texttt  {protein\_to\_gene()}}{46}{subsection.5.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}Mutation Mechanics}{46}{section.5.3}\protected@file@percent }
-\newlabel{sec:mutation-mechanics}{{5.3}{46}{Mutation Mechanics}{section.5.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Genomic Instability}{46}{subsection.5.3.1}\protected@file@percent }
-\newlabel{eq:genomic-instability}{{5.1}{46}{Genomic Instability}{equation.5.3.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}DNA Duplication with Point Mutations}{46}{subsection.5.3.2}\protected@file@percent }
-\newlabel{eq:num-mutations}{{5.2}{46}{DNA Duplication with Point Mutations}{equation.5.3.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}Injected Mutations}{46}{subsection.5.3.3}\protected@file@percent }
-\newlabel{eq:injected-mutations}{{5.3}{46}{Injected Mutations}{equation.5.3.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.4}Gene Expression and Phenotypic Effects}{47}{section.5.4}\protected@file@percent }
-\newlabel{sec:gene-expression}{{5.4}{47}{Gene Expression and Phenotypic Effects}{section.5.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Promoter Expression}{47}{subsection.5.4.1}\protected@file@percent }
-\newlabel{eq:expression}{{5.4}{47}{Promoter Expression}{equation.5.4.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Mutation Score}{47}{subsection.5.4.2}\protected@file@percent }
-\newlabel{sec:mutation-score}{{5.4.2}{47}{Mutation Score}{subsection.5.4.2}{}}
-\newlabel{eq:mutation-score}{{5.5}{47}{Mutation Score}{equation.5.4.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}Gene Mutation--Expression Product}{47}{subsection.5.4.3}\protected@file@percent }
-\newlabel{eq:gene-mut-expr}{{5.6}{47}{Gene Mutation--Expression Product}{equation.5.4.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.4}Five Derived Phenotypic Parameters}{47}{subsection.5.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{1.\ Antigen Presentation Chance.}{47}{subsection.5.4.4}\protected@file@percent }
-\newlabel{eq:antigen-presentation}{{5.7}{47}{1.\ Antigen Presentation Chance}{equation.5.4.7}{}}
-\@writefile{toc}{\contentsline {paragraph}{2.\ Checkpoint Pathway Inhibition Chance.}{48}{equation.5.4.7}\protected@file@percent }
-\newlabel{eq:checkpoint}{{5.8}{48}{2.\ Checkpoint Pathway Inhibition Chance}{equation.5.4.8}{}}
-\@writefile{toc}{\contentsline {paragraph}{3.\ Genomic Instability.}{48}{equation.5.4.8}\protected@file@percent }
-\newlabel{eq:genomic-instability-param}{{5.9}{48}{3.\ Genomic Instability}{equation.5.4.9}{}}
-\@writefile{toc}{\contentsline {paragraph}{4.\ Tumor Suppression Chance.}{48}{equation.5.4.9}\protected@file@percent }
-\newlabel{eq:tumor-suppression}{{5.10}{48}{4.\ Tumor Suppression Chance}{equation.5.4.10}{}}
-\@writefile{toc}{\contentsline {paragraph}{5.\ Extra Proliferation Chance.}{48}{equation.5.4.10}\protected@file@percent }
-\newlabel{eq:extra-proliferation}{{5.11}{48}{5.\ Extra Proliferation Chance}{equation.5.4.11}{}}
-\newlabel{eq:gene-expr-to-chance}{{5.12}{48}{5.\ Extra Proliferation Chance}{equation.5.4.12}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.5}Neoantigen Generation}{48}{section.5.5}\protected@file@percent }
-\newlabel{sec:neoantigens}{{5.5}{48}{Neoantigen Generation}{section.5.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}Neoantigen Definition}{48}{subsection.5.5.1}\protected@file@percent }
-\newlabel{eq:neoantigens}{{5.13}{48}{Neoantigen Definition}{equation.5.5.13}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}Self-Antigens}{49}{subsection.5.5.2}\protected@file@percent }
-\newlabel{eq:self-antigens}{{5.14}{49}{Self-Antigens}{equation.5.5.14}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.3}TCR Matching}{49}{subsection.5.5.3}\protected@file@percent }
-\newlabel{eq:tcr-matching}{{5.15}{49}{TCR Matching}{equation.5.5.15}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Treatment System}{50}{chapter.6}\protected@file@percent }
+\newlabel{ch:dna}{{5}{45}{DNA and Mutation System}{chapter.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Gene Model}{45}{section.5.1}\protected@file@percent }
+\newlabel{sec:gene-model}{{5.1}{45}{Gene Model}{section.5.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Gene Catalogue}{45}{subsection.5.1.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces The 16 genes modeled in the DNA system and their functional roles.}}{45}{table.5.1}\protected@file@percent }
+\newlabel{tab:genes}{{5.1}{45}{The 16 genes modeled in the DNA system and their functional roles}{table.5.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces DNA mutation heatmap across the 16 modeled genes showing the distribution of mutations in the tumor cell population. Each row represents a gene and each column represents a tumor cell lineage. Color intensity indicates the severity of mutation (darker colors represent higher mutation scores). The heterogeneous mutation patterns drive clonal diversity and immune evasion.}}{46}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:dna_mutation_heatmap}{{5.1}{46}{DNA mutation heatmap across the 16 modeled genes showing the distribution of mutations in the tumor cell population. Each row represents a gene and each column represents a tumor cell lineage. Color intensity indicates the severity of mutation (darker colors represent higher mutation scores). The heterogeneous mutation patterns drive clonal diversity and immune evasion}{figure.caption.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}DNA Sequence Structure}{47}{subsection.5.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Codon Translation}{47}{section.5.2}\protected@file@percent }
+\newlabel{sec:codon-translation}{{5.2}{47}{Codon Translation}{section.5.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Codon Table}{47}{subsection.5.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}Translation: \texttt  {gene\_to\_protein()}}{47}{subsection.5.2.2}\protected@file@percent }
+\newlabel{lst:translation}{{5.1}{47}{Gene-to-protein translation}{lstlisting.5.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5.1}{\ignorespaces Gene-to-protein translation.}}{47}{lstlisting.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.3}Reverse Translation: \texttt  {protein\_to\_gene()}}{48}{subsection.5.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Mutation Mechanics}{48}{section.5.3}\protected@file@percent }
+\newlabel{sec:mutation-mechanics}{{5.3}{48}{Mutation Mechanics}{section.5.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Genomic Instability}{48}{subsection.5.3.1}\protected@file@percent }
+\newlabel{eq:genomic-instability}{{5.1}{48}{Genomic Instability}{equation.5.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}DNA Duplication with Point Mutations}{48}{subsection.5.3.2}\protected@file@percent }
+\newlabel{eq:num-mutations}{{5.2}{48}{DNA Duplication with Point Mutations}{equation.5.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}Injected Mutations}{48}{subsection.5.3.3}\protected@file@percent }
+\newlabel{eq:injected-mutations}{{5.3}{48}{Injected Mutations}{equation.5.3.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Gene Expression and Phenotypic Effects}{49}{section.5.4}\protected@file@percent }
+\newlabel{sec:gene-expression}{{5.4}{49}{Gene Expression and Phenotypic Effects}{section.5.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Promoter Expression}{49}{subsection.5.4.1}\protected@file@percent }
+\newlabel{eq:expression}{{5.4}{49}{Promoter Expression}{equation.5.4.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Mutation Score}{49}{subsection.5.4.2}\protected@file@percent }
+\newlabel{sec:mutation-score}{{5.4.2}{49}{Mutation Score}{subsection.5.4.2}{}}
+\newlabel{eq:mutation-score}{{5.5}{49}{Mutation Score}{equation.5.4.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}Gene Mutation--Expression Product}{49}{subsection.5.4.3}\protected@file@percent }
+\newlabel{eq:gene-mut-expr}{{5.6}{49}{Gene Mutation--Expression Product}{equation.5.4.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.4}Five Derived Phenotypic Parameters}{49}{subsection.5.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{1.\ Antigen Presentation Chance.}{49}{subsection.5.4.4}\protected@file@percent }
+\newlabel{eq:antigen-presentation}{{5.7}{49}{1.\ Antigen Presentation Chance}{equation.5.4.7}{}}
+\@writefile{toc}{\contentsline {paragraph}{2.\ Checkpoint Pathway Inhibition Chance.}{50}{equation.5.4.7}\protected@file@percent }
+\newlabel{eq:checkpoint}{{5.8}{50}{2.\ Checkpoint Pathway Inhibition Chance}{equation.5.4.8}{}}
+\@writefile{toc}{\contentsline {paragraph}{3.\ Genomic Instability.}{50}{equation.5.4.8}\protected@file@percent }
+\newlabel{eq:genomic-instability-param}{{5.9}{50}{3.\ Genomic Instability}{equation.5.4.9}{}}
+\@writefile{toc}{\contentsline {paragraph}{4.\ Tumor Suppression Chance.}{50}{equation.5.4.9}\protected@file@percent }
+\newlabel{eq:tumor-suppression}{{5.10}{50}{4.\ Tumor Suppression Chance}{equation.5.4.10}{}}
+\@writefile{toc}{\contentsline {paragraph}{5.\ Extra Proliferation Chance.}{50}{equation.5.4.10}\protected@file@percent }
+\newlabel{eq:extra-proliferation}{{5.11}{50}{5.\ Extra Proliferation Chance}{equation.5.4.11}{}}
+\newlabel{eq:gene-expr-to-chance}{{5.12}{50}{5.\ Extra Proliferation Chance}{equation.5.4.12}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Neoantigen Generation}{50}{section.5.5}\protected@file@percent }
+\newlabel{sec:neoantigens}{{5.5}{50}{Neoantigen Generation}{section.5.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}Neoantigen Definition}{50}{subsection.5.5.1}\protected@file@percent }
+\newlabel{eq:neoantigens}{{5.13}{50}{Neoantigen Definition}{equation.5.5.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}Self-Antigens}{51}{subsection.5.5.2}\protected@file@percent }
+\newlabel{eq:self-antigens}{{5.14}{51}{Self-Antigens}{equation.5.5.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.3}TCR Matching}{51}{subsection.5.5.3}\protected@file@percent }
+\newlabel{eq:tcr-matching}{{5.15}{51}{TCR Matching}{equation.5.5.15}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Treatment System}{52}{chapter.6}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:treatment}{{6}{50}{Treatment System}{chapter.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Drug Architecture}{50}{section.6.1}\protected@file@percent }
-\newlabel{sec:drug-architecture}{{6.1}{50}{Drug Architecture}{section.6.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}Abstract Drug Base Class}{50}{subsection.6.1.1}\protected@file@percent }
-\newlabel{lst:drug-base}{{6.1}{50}{Abstract Drug base class}{lstlisting.6.1}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {6.1}{\ignorespaces Abstract Drug base class.}}{50}{lstlisting.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}Treatment Composition}{50}{subsection.6.1.2}\protected@file@percent }
-\newlabel{lst:treatment}{{6.2}{50}{Treatment composition with proportional averaging}{lstlisting.6.2}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {6.2}{\ignorespaces Treatment composition with proportional averaging.}}{50}{lstlisting.6.2}\protected@file@percent }
+\newlabel{ch:treatment}{{6}{52}{Treatment System}{chapter.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Drug Architecture}{52}{section.6.1}\protected@file@percent }
+\newlabel{sec:drug-architecture}{{6.1}{52}{Drug Architecture}{section.6.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}Abstract Drug Base Class}{52}{subsection.6.1.1}\protected@file@percent }
+\newlabel{lst:drug-base}{{6.1}{52}{Abstract Drug base class}{lstlisting.6.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {6.1}{\ignorespaces Abstract Drug base class.}}{52}{lstlisting.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}Treatment Composition}{52}{subsection.6.1.2}\protected@file@percent }
+\newlabel{lst:treatment}{{6.2}{52}{Treatment composition with proportional averaging}{lstlisting.6.2}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {6.2}{\ignorespaces Treatment composition with proportional averaging.}}{52}{lstlisting.6.2}\protected@file@percent }
 \citation{pardoll2012}
 \citation{rini2019}
 \citation{motzer2019}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.3}Treatment Activation}{51}{subsection.6.1.3}\protected@file@percent }
-\newlabel{eq:treatment-activation}{{6.1}{51}{Treatment Activation}{equation.6.1.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}Immune Checkpoint Inhibitors (ICI)}{51}{section.6.2}\protected@file@percent }
-\newlabel{sec:ici}{{6.2}{51}{Immune Checkpoint Inhibitors (ICI)}{section.6.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Biological Basis}{51}{subsection.6.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}Implementation}{51}{subsection.6.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{1.\ PD-L1 Blockade on Tumor Cells.}{51}{subsection.6.2.2}\protected@file@percent }
-\newlabel{eq:ici-tumor}{{6.2}{51}{1.\ PD-L1 Blockade on Tumor Cells}{equation.6.2.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.3}Treatment Activation}{53}{subsection.6.1.3}\protected@file@percent }
+\newlabel{eq:treatment-activation}{{6.1}{53}{Treatment Activation}{equation.6.1.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Immune Checkpoint Inhibitors (ICI)}{53}{section.6.2}\protected@file@percent }
+\newlabel{sec:ici}{{6.2}{53}{Immune Checkpoint Inhibitors (ICI)}{section.6.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Biological Basis}{53}{subsection.6.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}Implementation}{53}{subsection.6.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{1.\ PD-L1 Blockade on Tumor Cells.}{53}{subsection.6.2.2}\protected@file@percent }
+\newlabel{eq:ici-tumor}{{6.2}{53}{1.\ PD-L1 Blockade on Tumor Cells}{equation.6.2.2}{}}
 \citation{rini2019}
-\@writefile{toc}{\contentsline {paragraph}{2.\ T Cell Activation Restoration.}{52}{equation.6.2.2}\protected@file@percent }
-\newlabel{eq:ici-tcell}{{6.3}{52}{2.\ T Cell Activation Restoration}{equation.6.2.3}{}}
-\@writefile{toc}{\contentsline {paragraph}{3.\ Immune Infiltration Enhancement.}{52}{equation.6.2.3}\protected@file@percent }
-\newlabel{eq:ici-infiltration}{{6.4}{52}{3.\ Immune Infiltration Enhancement}{equation.6.2.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.3}Tyrosine Kinase Inhibitors (TKI)}{52}{section.6.3}\protected@file@percent }
-\newlabel{sec:tki}{{6.3}{52}{Tyrosine Kinase Inhibitors (TKI)}{section.6.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.1}Biological Basis}{52}{subsection.6.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.2}Implementation}{52}{subsection.6.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{1.\ Tumor Growth Suppression.}{52}{subsection.6.3.2}\protected@file@percent }
-\newlabel{eq:tki-growth}{{6.5}{52}{1.\ Tumor Growth Suppression}{equation.6.3.5}{}}
-\@writefile{toc}{\contentsline {paragraph}{2.\ Angiogenesis Inhibition.}{53}{equation.6.3.5}\protected@file@percent }
-\newlabel{eq:tki-angio}{{6.6}{53}{2.\ Angiogenesis Inhibition}{equation.6.3.6}{}}
-\@writefile{toc}{\contentsline {paragraph}{3.\ Neoantigen Release.}{53}{equation.6.3.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{4.\ Treg Differentiation Suppression.}{53}{equation.6.3.6}\protected@file@percent }
-\newlabel{eq:tki-treg}{{6.7}{53}{4.\ Treg Differentiation Suppression}{equation.6.3.7}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.4}Combination Therapy}{53}{section.6.4}\protected@file@percent }
-\newlabel{sec:combination}{{6.4}{53}{Combination Therapy}{section.6.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.1}ICI + TKI}{53}{subsection.6.4.1}\protected@file@percent }
-\newlabel{eq:combination}{{6.8}{53}{ICI + TKI}{equation.6.4.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}Synergistic Mechanisms}{53}{subsection.6.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{2.\ T Cell Activation Restoration.}{54}{equation.6.2.2}\protected@file@percent }
+\newlabel{eq:ici-tcell}{{6.3}{54}{2.\ T Cell Activation Restoration}{equation.6.2.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{3.\ Immune Infiltration Enhancement.}{54}{equation.6.2.3}\protected@file@percent }
+\newlabel{eq:ici-infiltration}{{6.4}{54}{3.\ Immune Infiltration Enhancement}{equation.6.2.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Tyrosine Kinase Inhibitors (TKI)}{54}{section.6.3}\protected@file@percent }
+\newlabel{sec:tki}{{6.3}{54}{Tyrosine Kinase Inhibitors (TKI)}{section.6.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.1}Biological Basis}{54}{subsection.6.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.2}Implementation}{54}{subsection.6.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{1.\ Tumor Growth Suppression.}{54}{subsection.6.3.2}\protected@file@percent }
+\newlabel{eq:tki-growth}{{6.5}{54}{1.\ Tumor Growth Suppression}{equation.6.3.5}{}}
+\@writefile{toc}{\contentsline {paragraph}{2.\ Angiogenesis Inhibition.}{55}{equation.6.3.5}\protected@file@percent }
+\newlabel{eq:tki-angio}{{6.6}{55}{2.\ Angiogenesis Inhibition}{equation.6.3.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{3.\ Neoantigen Release.}{55}{equation.6.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{4.\ Treg Differentiation Suppression.}{55}{equation.6.3.6}\protected@file@percent }
+\newlabel{eq:tki-treg}{{6.7}{55}{4.\ Treg Differentiation Suppression}{equation.6.3.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}Combination Therapy}{55}{section.6.4}\protected@file@percent }
+\newlabel{sec:combination}{{6.4}{55}{Combination Therapy}{section.6.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.1}ICI + TKI}{55}{subsection.6.4.1}\protected@file@percent }
+\newlabel{eq:combination}{{6.8}{55}{ICI + TKI}{equation.6.4.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}Synergistic Mechanisms}{55}{subsection.6.4.2}\protected@file@percent }
 \citation{rini2019}
 \citation{motzer2019}
 \citation{santoni2024}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.3}Clinical Evidence}{54}{subsection.6.4.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Treatment timeline showing the sequential application of ICI and TKI therapies across simulation steps. The figure illustrates drug administration schedules, onset of action, and temporal coordination in combination therapy protocols. Treatment typically begins after an initial observation period to establish baseline tumor dynamics.}}{54}{figure.caption.13}\protected@file@percent }
-\newlabel{fig:treatment_timeline}{{6.1}{54}{Treatment timeline showing the sequential application of ICI and TKI therapies across simulation steps. The figure illustrates drug administration schedules, onset of action, and temporal coordination in combination therapy protocols. Treatment typically begins after an initial observation period to establish baseline tumor dynamics}{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.3}Clinical Evidence}{56}{subsection.6.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Treatment timeline showing the sequential application of ICI and TKI therapies across simulation steps. The figure illustrates drug administration schedules, onset of action, and temporal coordination in combination therapy protocols. Treatment typically begins after an initial observation period to establish baseline tumor dynamics.}}{56}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:treatment_timeline}{{6.1}{56}{Treatment timeline showing the sequential application of ICI and TKI therapies across simulation steps. The figure illustrates drug administration schedules, onset of action, and temporal coordination in combination therapy protocols. Treatment typically begins after an initial observation period to establish baseline tumor dynamics}{figure.caption.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces BPMN-style Treatment Decision Flow showing the four treatment modalities available in the RCC model. Each treatment path leads to distinct molecular mechanisms: ICI blocks checkpoint inhibition to restore T cell function, TKI reduces tumor growth and releases neoantigens through anti-angiogenic effects, combination therapy applies both mechanisms at half strength, and no treatment maintains baseline tumor-immune dynamics for comparison.}}{57}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:treatment_decision_flow}{{6.2}{57}{BPMN-style Treatment Decision Flow showing the four treatment modalities available in the RCC model. Each treatment path leads to distinct molecular mechanisms: ICI blocks checkpoint inhibition to restore T cell function, TKI reduces tumor growth and releases neoantigens through anti-angiogenic effects, combination therapy applies both mechanisms at half strength, and no treatment maintains baseline tumor-immune dynamics for comparison}{figure.caption.16}{}}
 \citation{conforti2018}
 \citation{santoni2024}
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}Sex Hormone System}{55}{chapter.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Sex Hormone System}{58}{chapter.7}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:sex-hormones}{{7}{55}{Sex Hormone System}{chapter.7}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7.1}Biological Basis}{55}{section.7.1}\protected@file@percent }
-\newlabel{sec:hormone-bio}{{7.1}{55}{Biological Basis}{section.7.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.1}Sex Differences in Renal Cell Carcinoma}{55}{subsection.7.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.2}Estrogen}{55}{subsection.7.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.3}Testosterone}{55}{subsection.7.1.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.4}Progesterone}{56}{subsection.7.1.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.2}Hormone Agent Model}{56}{section.7.2}\protected@file@percent }
-\newlabel{sec:hormone-agent}{{7.2}{56}{Hormone Agent Model}{section.7.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.1}Agent Type and Inheritance}{56}{subsection.7.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.2}Hormone Types}{56}{subsection.7.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.3}Spawning Mechanism}{56}{subsection.7.2.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {7.1}{\ignorespaces Hormone spawn probabilities by patient sex.}}{56}{table.caption.14}\protected@file@percent }
-\newlabel{tab:hormone-spawn}{{7.1}{56}{Hormone spawn probabilities by patient sex}{table.caption.14}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.4}Hormone Diffusion}{56}{subsection.7.2.4}\protected@file@percent }
-\newlabel{eq:hormone-diffusion}{{7.1}{57}{Hormone Diffusion}{equation.7.2.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7.3}Hormone Effects on T Cells}{57}{section.7.3}\protected@file@percent }
-\newlabel{sec:hormone-effects}{{7.3}{57}{Hormone Effects on T Cells}{section.7.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.1}Hormone Perception}{57}{subsection.7.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.2}Stimulation Level}{57}{subsection.7.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.3}Hormonal Influence Effects}{57}{subsection.7.3.3}\protected@file@percent }
+\newlabel{ch:sex-hormones}{{7}{58}{Sex Hormone System}{chapter.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.1}Biological Basis}{58}{section.7.1}\protected@file@percent }
+\newlabel{sec:hormone-bio}{{7.1}{58}{Biological Basis}{section.7.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.1}Sex Differences in Renal Cell Carcinoma}{58}{subsection.7.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.2}Estrogen}{58}{subsection.7.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.3}Testosterone}{58}{subsection.7.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.4}Progesterone}{59}{subsection.7.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.2}Hormone Agent Model}{59}{section.7.2}\protected@file@percent }
+\newlabel{sec:hormone-agent}{{7.2}{59}{Hormone Agent Model}{section.7.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.1}Agent Type and Inheritance}{59}{subsection.7.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.2}Hormone Types}{59}{subsection.7.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.3}Spawning Mechanism}{59}{subsection.7.2.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7.1}{\ignorespaces Hormone spawn probabilities by patient sex.}}{59}{table.caption.17}\protected@file@percent }
+\newlabel{tab:hormone-spawn}{{7.1}{59}{Hormone spawn probabilities by patient sex}{table.caption.17}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.4}Hormone Diffusion}{59}{subsection.7.2.4}\protected@file@percent }
+\newlabel{eq:hormone-diffusion}{{7.1}{60}{Hormone Diffusion}{equation.7.2.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.3}Hormone Effects on T Cells}{60}{section.7.3}\protected@file@percent }
+\newlabel{sec:hormone-effects}{{7.3}{60}{Hormone Effects on T Cells}{section.7.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.1}Hormone Perception}{60}{subsection.7.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.2}Stimulation Level}{60}{subsection.7.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.3}Hormonal Influence Effects}{60}{subsection.7.3.3}\protected@file@percent }
 \gdef \LT@iii {\LT@entry 
     {4}{164.42099pt}\LT@entry 
     {1}{268.0748pt}}
-\@writefile{lot}{\contentsline {table}{\numberline {7.2}{\ignorespaces Hormonal influence effect channels.}}{58}{table.7.2}\protected@file@percent }
-\newlabel{tab:hormonal-effects}{{7.2}{58}{Hormonal influence effect channels}{table.7.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.4}Concentration-Dependent Effect Mapping}{58}{subsection.7.3.4}\protected@file@percent }
-\newlabel{eq:hormone-normalize}{{7.2}{58}{Concentration-Dependent Effect Mapping}{equation.7.3.2}{}}
-\newlabel{eq:hormone-weights}{{7.3}{58}{Concentration-Dependent Effect Mapping}{equation.7.3.3}{}}
-\@writefile{toc}{\contentsline {paragraph}{Example: Estrogen at High Concentration.}{59}{equation.7.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.4}Sex Drift}{59}{section.7.4}\protected@file@percent }
-\newlabel{sec:sex-drift}{{7.4}{59}{Sex Drift}{section.7.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.4.1}Biological Basis}{59}{subsection.7.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.4.2}Implementation}{59}{subsection.7.4.2}\protected@file@percent }
-\newlabel{eq:drift-per-step}{{7.4}{59}{Implementation}{equation.7.4.4}{}}
-\newlabel{eq:drift-direction}{{7.5}{59}{Implementation}{equation.7.4.5}{}}
-\newlabel{eq:step-factor}{{7.6}{59}{Implementation}{equation.7.4.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7.2}{\ignorespaces Hormonal influence effect channels.}}{61}{table.7.2}\protected@file@percent }
+\newlabel{tab:hormonal-effects}{{7.2}{61}{Hormonal influence effect channels}{table.7.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.4}Concentration-Dependent Effect Mapping}{61}{subsection.7.3.4}\protected@file@percent }
+\newlabel{eq:hormone-normalize}{{7.2}{61}{Concentration-Dependent Effect Mapping}{equation.7.3.2}{}}
+\newlabel{eq:hormone-weights}{{7.3}{61}{Concentration-Dependent Effect Mapping}{equation.7.3.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{Example: Estrogen at High Concentration.}{62}{equation.7.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.4}Sex Drift}{62}{section.7.4}\protected@file@percent }
+\newlabel{sec:sex-drift}{{7.4}{62}{Sex Drift}{section.7.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4.1}Biological Basis}{62}{subsection.7.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4.2}Implementation}{62}{subsection.7.4.2}\protected@file@percent }
+\newlabel{eq:drift-per-step}{{7.4}{62}{Implementation}{equation.7.4.4}{}}
+\newlabel{eq:drift-direction}{{7.5}{62}{Implementation}{equation.7.4.5}{}}
+\newlabel{eq:step-factor}{{7.6}{62}{Implementation}{equation.7.4.6}{}}
 \citation{conforti2018}
 \citation{santoni2024}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.4.3}Interaction with Hormonal Effects}{60}{subsection.7.4.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {7.1}{\ignorespaces Sex hormone dynamics over time showing the evolution of estrogen, testosterone, and progesterone levels in the tumor microenvironment. The hormone concentrations fluctuate based on sex-specific spawning rates, cellular consumption, and spatial diffusion patterns. These dynamics directly modulate immune cell behavior and treatment response.}}{60}{figure.caption.15}\protected@file@percent }
-\newlabel{fig:hormone_dynamics}{{7.1}{60}{Sex hormone dynamics over time showing the evolution of estrogen, testosterone, and progesterone levels in the tumor microenvironment. The hormone concentrations fluctuate based on sex-specific spawning rates, cellular consumption, and spatial diffusion patterns. These dynamics directly modulate immune cell behavior and treatment response}{figure.caption.15}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {8}Implementation}{61}{chapter.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4.3}Interaction with Hormonal Effects}{63}{subsection.7.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7.1}{\ignorespaces Sex hormone dynamics over time showing the evolution of estrogen, testosterone, and progesterone levels in the tumor microenvironment. The hormone concentrations fluctuate based on sex-specific spawning rates, cellular consumption, and spatial diffusion patterns. These dynamics directly modulate immune cell behavior and treatment response.}}{63}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:hormone_dynamics}{{7.1}{63}{Sex hormone dynamics over time showing the evolution of estrogen, testosterone, and progesterone levels in the tumor microenvironment. The hormone concentrations fluctuate based on sex-specific spawning rates, cellular consumption, and spatial diffusion patterns. These dynamics directly modulate immune cell behavior and treatment response}{figure.caption.18}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}Implementation}{64}{chapter.8}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:implementation}{{8}{61}{Implementation}{chapter.8}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.1}Architectural Philosophy: Beyond Framework Features}{61}{section.8.1}\protected@file@percent }
-\newlabel{sec:architecture-philosophy}{{8.1}{61}{Architectural Philosophy: Beyond Framework Features}{section.8.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.1.1}Comparison with Mesa}{61}{subsection.8.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8.2}Design Patterns in Biological Computing}{62}{section.8.2}\protected@file@percent }
-\newlabel{sec:design-patterns}{{8.2}{62}{Design Patterns in Biological Computing}{section.8.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.1}Command Pattern: Deferred Movement}{62}{subsection.8.2.1}\protected@file@percent }
-\newlabel{lst:deferred-movement}{{8.1}{62}{Command pattern for deferred movement ensures temporal coherence}{lstlisting.8.1}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.1}{\ignorespaces Command pattern for deferred movement ensures temporal coherence.}}{62}{lstlisting.8.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.2}Observer Pattern: Data Collection}{62}{subsection.8.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.3}Strategy Pattern: Treatment Modalities}{62}{subsection.8.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8.3}Simulation Orchestration: The Main Event Loop}{63}{section.8.3}\protected@file@percent }
-\newlabel{sec:simulation-orchestration}{{8.3}{63}{Simulation Orchestration: The Main Event Loop}{section.8.3}{}}
-\newlabel{lst:main-loop}{{8.2}{63}{Main simulation step sequence from \texttt {rcc\_model.py}}{lstlisting.8.2}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.2}{\ignorespaces Main simulation step sequence from \texttt  {rcc\_model.py}.}}{63}{lstlisting.8.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.1}Architectural Modularity}{64}{subsection.8.3.1}\protected@file@percent }
-\newlabel{lst:project-tree}{{8.3}{64}{Project directory tree}{lstlisting.8.3}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.3}{\ignorespaces Project directory tree.}}{64}{lstlisting.8.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.2}Plain Python Model Class}{65}{subsection.8.3.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {8.1}{\ignorespaces Architecture of the RCCModel system. The main model coordinates interactions between the glucose field (3D diffusion), agent management (cell adder, spatial index, shared grid), data collection (observer), and treatment systems. The step sequence annotation shows the ordered execution of simulation phases.}}{66}{figure.caption.16}\protected@file@percent }
-\newlabel{fig:model_architecture}{{8.1}{66}{Architecture of the RCCModel system. The main model coordinates interactions between the glucose field (3D diffusion), agent management (cell adder, spatial index, shared grid), data collection (observer), and treatment systems. The step sequence annotation shows the ordered execution of simulation phases}{figure.caption.16}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.4}Spatial Index Design}{66}{section.8.4}\protected@file@percent }
-\newlabel{sec:spatial-index}{{8.4}{66}{Spatial Index Design}{section.8.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.1}Problem}{66}{subsection.8.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.2}Solution}{66}{subsection.8.4.2}\protected@file@percent }
-\newlabel{lst:spatial-index}{{8.4}{66}{Spatial index declaration in \texttt {RCCModel.\_\_init\_\_()}}{lstlisting.8.4}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.4}{\ignorespaces Spatial index declaration in \texttt  {RCCModel.\_\_init\_\_()}.}}{66}{lstlisting.8.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.3}Grid Utilities Module}{66}{subsection.8.4.3}\protected@file@percent }
-\newlabel{lst:neighborhood-3d}{{8.5}{67}{Moore neighborhood computation in 3D}{lstlisting.8.5}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.5}{\ignorespaces Moore neighborhood computation in 3D.}}{67}{lstlisting.8.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8.5}Agent Serialization}{67}{section.8.5}\protected@file@percent }
-\newlabel{sec:agent-serialization}{{8.5}{67}{Agent Serialization}{section.8.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.1}Agent Identity in Repast4Py}{67}{subsection.8.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.2}Agent Type Registry}{67}{subsection.8.5.2}\protected@file@percent }
-\newlabel{lst:agent-types}{{8.6}{67}{Agent type registry (\texttt {src/agents/agent\_types.py})}{lstlisting.8.6}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.6}{\ignorespaces Agent type registry (\texttt  {src/agents/agent\_types.py}).}}{67}{lstlisting.8.6}\protected@file@percent }
+\newlabel{ch:implementation}{{8}{64}{Implementation}{chapter.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.1}Architectural Philosophy: Beyond Framework Features}{64}{section.8.1}\protected@file@percent }
+\newlabel{sec:architecture-philosophy}{{8.1}{64}{Architectural Philosophy: Beyond Framework Features}{section.8.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1.1}Comparison with Mesa}{64}{subsection.8.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.2}Design Patterns in Biological Computing}{65}{section.8.2}\protected@file@percent }
+\newlabel{sec:design-patterns}{{8.2}{65}{Design Patterns in Biological Computing}{section.8.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.1}Command Pattern: Deferred Movement}{65}{subsection.8.2.1}\protected@file@percent }
+\newlabel{lst:deferred-movement}{{8.1}{65}{Command pattern for deferred movement ensures temporal coherence}{lstlisting.8.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.1}{\ignorespaces Command pattern for deferred movement ensures temporal coherence.}}{65}{lstlisting.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.2}Observer Pattern: Data Collection}{65}{subsection.8.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.3}Strategy Pattern: Treatment Modalities}{65}{subsection.8.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.3}Simulation Orchestration: The Main Event Loop}{66}{section.8.3}\protected@file@percent }
+\newlabel{sec:simulation-orchestration}{{8.3}{66}{Simulation Orchestration: The Main Event Loop}{section.8.3}{}}
+\newlabel{lst:main-loop}{{8.2}{66}{Main simulation step sequence from \texttt {rcc\_model.py}}{lstlisting.8.2}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.2}{\ignorespaces Main simulation step sequence from \texttt  {rcc\_model.py}.}}{66}{lstlisting.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.1}Architectural Modularity}{67}{subsection.8.3.1}\protected@file@percent }
+\newlabel{lst:project-tree}{{8.3}{67}{Project directory tree}{lstlisting.8.3}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.3}{\ignorespaces Project directory tree.}}{67}{lstlisting.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.2}Plain Python Model Class}{68}{subsection.8.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8.1}{\ignorespaces Architecture of the RCCModel system. The main model coordinates interactions between the glucose field (3D diffusion), agent management (cell adder, spatial index, shared grid), data collection (observer), and treatment systems. The step sequence annotation shows the ordered execution of simulation phases.}}{69}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:model_architecture}{{8.1}{69}{Architecture of the RCCModel system. The main model coordinates interactions between the glucose field (3D diffusion), agent management (cell adder, spatial index, shared grid), data collection (observer), and treatment systems. The step sequence annotation shows the ordered execution of simulation phases}{figure.caption.19}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.4}Spatial Index Design}{69}{section.8.4}\protected@file@percent }
+\newlabel{sec:spatial-index}{{8.4}{69}{Spatial Index Design}{section.8.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.1}Problem}{69}{subsection.8.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.2}Solution}{69}{subsection.8.4.2}\protected@file@percent }
+\newlabel{lst:spatial-index}{{8.4}{69}{Spatial index declaration in \texttt {RCCModel.\_\_init\_\_()}}{lstlisting.8.4}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.4}{\ignorespaces Spatial index declaration in \texttt  {RCCModel.\_\_init\_\_()}.}}{69}{lstlisting.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.3}Grid Utilities Module}{69}{subsection.8.4.3}\protected@file@percent }
+\newlabel{lst:neighborhood-3d}{{8.5}{70}{Moore neighborhood computation in 3D}{lstlisting.8.5}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.5}{\ignorespaces Moore neighborhood computation in 3D.}}{70}{lstlisting.8.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.5}Agent Serialization}{70}{section.8.5}\protected@file@percent }
+\newlabel{sec:agent-serialization}{{8.5}{70}{Agent Serialization}{section.8.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.1}Agent Identity in Repast4Py}{70}{subsection.8.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.2}Agent Type Registry}{70}{subsection.8.5.2}\protected@file@percent }
+\newlabel{lst:agent-types}{{8.6}{70}{Agent type registry (\texttt {src/agents/agent\_types.py})}{lstlisting.8.6}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.6}{\ignorespaces Agent type registry (\texttt  {src/agents/agent\_types.py}).}}{70}{lstlisting.8.6}\protected@file@percent }
 \citation{mesa}
 \citation{masl_paper_a}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.3}The \texttt  {save()} Method}{68}{subsection.8.5.3}\protected@file@percent }
-\newlabel{lst:save-method}{{8.7}{68}{Agent serialization via \texttt {save()}}{lstlisting.8.7}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.7}{\ignorespaces Agent serialization via \texttt  {save()}.}}{68}{lstlisting.8.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.4}Type Identification}{68}{subsection.8.5.4}\protected@file@percent }
-\newlabel{lst:type-id}{{8.8}{68}{Type identification pattern}{lstlisting.8.8}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.8}{\ignorespaces Type identification pattern.}}{68}{lstlisting.8.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8.6}Mesa to Repast4Py Porting}{69}{section.8.6}\protected@file@percent }
-\newlabel{sec:porting}{{8.6}{69}{Mesa to Repast4Py Porting}{section.8.6}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {8.1}{\ignorespaces Key API mapping from Mesa to Repast4Py.}}{69}{table.caption.17}\protected@file@percent }
-\newlabel{tab:porting-mapping}{{8.1}{69}{Key API mapping from Mesa to Repast4Py}{table.caption.17}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.6.1}Random Number Generation}{69}{subsection.8.6.1}\protected@file@percent }
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.9}{\ignorespaces RNG initialization in RCCModel.}}{69}{lstlisting.8.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.6.2}Class-Level State to Model-Level State}{69}{subsection.8.6.2}\protected@file@percent }
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.10}{\ignorespaces Class-level state moved to model.}}{69}{lstlisting.8.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.6.3}Deferred Movement}{70}{subsection.8.6.3}\protected@file@percent }
-\newlabel{lst:deferred-move}{{8.11}{70}{Deferred movement resolution}{lstlisting.8.11}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.11}{\ignorespaces Deferred movement resolution.}}{70}{lstlisting.8.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8.7}Glucose Field Implementation}{70}{section.8.7}\protected@file@percent }
-\newlabel{sec:glucose-field-impl}{{8.7}{70}{Glucose Field Implementation}{section.8.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.7.1}Data Structure}{70}{subsection.8.7.1}\protected@file@percent }
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.12}{\ignorespaces Glucose field initialization.}}{70}{lstlisting.8.12}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.7.2}Diffusion Kernel}{70}{subsection.8.7.2}\protected@file@percent }
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.13}{\ignorespaces Laplacian kernel construction.}}{71}{lstlisting.8.13}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.7.3}Boundary Conditions}{71}{subsection.8.7.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.7.4}Separation from Repast4Py Value Layers}{71}{subsection.8.7.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8.8}Entry Point and Execution}{71}{section.8.8}\protected@file@percent }
-\newlabel{sec:entry-point}{{8.8}{71}{Entry Point and Execution}{section.8.8}{}}
-\newlabel{lst:run-py}{{8.14}{71}{Simulation entry point (\texttt {run.py})}{lstlisting.8.14}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.14}{\ignorespaces Simulation entry point (\texttt  {run.py}).}}{71}{lstlisting.8.14}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.8.1}Execution Command}{72}{subsection.8.8.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.8.2}Simulation Loop}{72}{subsection.8.8.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {8.2}{\ignorespaces Simulation pipeline for the RCC model. Each time step follows a fixed sequence of 11 operations, from data collection through hormone spawning. The termination condition check determines whether to continue the simulation or write final results. Side annotations detail the specific operations performed in each phase.}}{73}{figure.caption.18}\protected@file@percent }
-\newlabel{fig:simulation_pipeline}{{8.2}{73}{Simulation pipeline for the RCC model. Each time step follows a fixed sequence of 11 operations, from data collection through hormone spawning. The termination condition check determines whether to continue the simulation or write final results. Side annotations detail the specific operations performed in each phase}{figure.caption.18}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {9}Parameters and Optimization}{74}{chapter.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.3}The \texttt  {save()} Method}{71}{subsection.8.5.3}\protected@file@percent }
+\newlabel{lst:save-method}{{8.7}{71}{Agent serialization via \texttt {save()}}{lstlisting.8.7}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.7}{\ignorespaces Agent serialization via \texttt  {save()}.}}{71}{lstlisting.8.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.4}Type Identification}{71}{subsection.8.5.4}\protected@file@percent }
+\newlabel{lst:type-id}{{8.8}{71}{Type identification pattern}{lstlisting.8.8}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.8}{\ignorespaces Type identification pattern.}}{71}{lstlisting.8.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.6}Mesa to Repast4Py Porting}{72}{section.8.6}\protected@file@percent }
+\newlabel{sec:porting}{{8.6}{72}{Mesa to Repast4Py Porting}{section.8.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8.1}{\ignorespaces Key API mapping from Mesa to Repast4Py.}}{72}{table.caption.20}\protected@file@percent }
+\newlabel{tab:porting-mapping}{{8.1}{72}{Key API mapping from Mesa to Repast4Py}{table.caption.20}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.6.1}Random Number Generation}{72}{subsection.8.6.1}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.9}{\ignorespaces RNG initialization in RCCModel.}}{72}{lstlisting.8.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.6.2}Class-Level State to Model-Level State}{72}{subsection.8.6.2}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.10}{\ignorespaces Class-level state moved to model.}}{72}{lstlisting.8.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.6.3}Deferred Movement}{73}{subsection.8.6.3}\protected@file@percent }
+\newlabel{lst:deferred-move}{{8.11}{73}{Deferred movement resolution}{lstlisting.8.11}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.11}{\ignorespaces Deferred movement resolution.}}{73}{lstlisting.8.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.7}Glucose Field Implementation}{73}{section.8.7}\protected@file@percent }
+\newlabel{sec:glucose-field-impl}{{8.7}{73}{Glucose Field Implementation}{section.8.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.7.1}Data Structure}{73}{subsection.8.7.1}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.12}{\ignorespaces Glucose field initialization.}}{73}{lstlisting.8.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.7.2}Diffusion Kernel}{73}{subsection.8.7.2}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.13}{\ignorespaces Laplacian kernel construction.}}{74}{lstlisting.8.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.7.3}Boundary Conditions}{74}{subsection.8.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.7.4}Separation from Repast4Py Value Layers}{74}{subsection.8.7.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.8}Entry Point and Execution}{74}{section.8.8}\protected@file@percent }
+\newlabel{sec:entry-point}{{8.8}{74}{Entry Point and Execution}{section.8.8}{}}
+\newlabel{lst:run-py}{{8.14}{74}{Simulation entry point (\texttt {run.py})}{lstlisting.8.14}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.14}{\ignorespaces Simulation entry point (\texttt  {run.py}).}}{74}{lstlisting.8.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.8.1}Execution Command}{75}{subsection.8.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.8.2}Simulation Loop}{75}{subsection.8.8.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8.2}{\ignorespaces BPMN-style Simulation Lifecycle for the RCC model. The simulation follows a deterministic sequence: initialization and parameter loading, then iterative execution of the main loop. Each step collects data, checks termination conditions, applies agent effects, performs glucose diffusion, executes treatment protocols, steps agents, and resolves movement. The loop continues until a terminal condition is met, at which point results are output.}}{76}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:simulation_pipeline}{{8.2}{76}{BPMN-style Simulation Lifecycle for the RCC model. The simulation follows a deterministic sequence: initialization and parameter loading, then iterative execution of the main loop. Each step collects data, checks termination conditions, applies agent effects, performs glucose diffusion, executes treatment protocols, steps agents, and resolves movement. The loop continues until a terminal condition is met, at which point results are output}{figure.caption.21}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {9}Parameters and Optimization}{77}{chapter.9}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:parameters}{{9}{74}{Parameters and Optimization}{chapter.9}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {9.1}Parameter Design Philosophy}{74}{section.9.1}\protected@file@percent }
-\newlabel{sec:param-philosophy}{{9.1}{74}{Parameter Design Philosophy}{section.9.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {9.2}Parameter Categories}{74}{section.9.2}\protected@file@percent }
-\newlabel{sec:param-categories}{{9.2}{74}{Parameter Categories}{section.9.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.2.1}ModelParameters}{75}{subsection.9.2.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {9.1}{\ignorespaces Model parameters.}}{75}{table.caption.19}\protected@file@percent }
-\newlabel{tab:model-params}{{9.1}{75}{Model parameters}{table.caption.19}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.2.2}PatientParameters}{75}{subsection.9.2.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {9.2}{\ignorespaces Patient parameters.}}{76}{table.caption.20}\protected@file@percent }
-\newlabel{tab:patient-params}{{9.2}{76}{Patient parameters}{table.caption.20}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.2.3}WeightParameters}{76}{subsection.9.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {9.3}Weight Parameters}{77}{section.9.3}\protected@file@percent }
-\newlabel{sec:weight-params}{{9.3}{77}{Weight Parameters}{section.9.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.1}BMI Weights (4 parameters)}{77}{subsection.9.3.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {9.3}{\ignorespaces BMI weight parameters.}}{77}{table.caption.21}\protected@file@percent }
-\newlabel{tab:bmi-weights}{{9.3}{77}{BMI weight parameters}{table.caption.21}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.2}Macrophage M1 Weights (6 weights + 2 biases)}{77}{subsection.9.3.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {9.4}{\ignorespaces Macrophage M1 weight parameters.}}{77}{table.caption.22}\protected@file@percent }
-\newlabel{tab:m1-weights}{{9.4}{77}{Macrophage M1 weight parameters}{table.caption.22}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.3}Macrophage M2 Weights (5 weights + 1 bias)}{78}{subsection.9.3.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {9.5}{\ignorespaces Macrophage M2 weight parameters.}}{78}{table.caption.23}\protected@file@percent }
-\newlabel{tab:m2-weights}{{9.5}{78}{Macrophage M2 weight parameters}{table.caption.23}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.4}Tumor Cell Weights (8 weights + 3 biases)}{78}{subsection.9.3.4}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {9.6}{\ignorespaces Tumor cell weight parameters.}}{78}{table.caption.24}\protected@file@percent }
-\newlabel{tab:tumor-weights}{{9.6}{78}{Tumor cell weight parameters}{table.caption.24}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.5}CD4+ T Cell Weights (9 weights + 3 biases)}{79}{subsection.9.3.5}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {9.7}{\ignorespaces CD4+ T cell weight parameters.}}{79}{table.caption.25}\protected@file@percent }
-\newlabel{tab:cd4-weights}{{9.7}{79}{CD4+ T cell weight parameters}{table.caption.25}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.6}Cytotoxic T Cell Weights (5 weights + 2 biases)}{80}{subsection.9.3.6}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {9.8}{\ignorespaces Cytotoxic T cell (CD8+) weight parameters.}}{80}{table.caption.26}\protected@file@percent }
-\newlabel{tab:ctc-weights}{{9.8}{80}{Cytotoxic T cell (CD8+) weight parameters}{table.caption.26}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.7}Mast Cell Weights (6 parameters)}{80}{subsection.9.3.7}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {9.9}{\ignorespaces Mast cell weight parameters.}}{80}{table.caption.27}\protected@file@percent }
-\newlabel{tab:mast-weights}{{9.9}{80}{Mast cell weight parameters}{table.caption.27}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.8}NK Cell Weights (3 weights + 1 bias)}{81}{subsection.9.3.8}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {9.10}{\ignorespaces Natural killer cell weight parameters.}}{81}{table.caption.28}\protected@file@percent }
-\newlabel{tab:nk-weights}{{9.10}{81}{Natural killer cell weight parameters}{table.caption.28}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.9}Plasmacytoid DC Weights (6 weights + 1 bias)}{81}{subsection.9.3.9}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {9.11}{\ignorespaces Plasmacytoid dendritic cell weight parameters.}}{81}{table.caption.29}\protected@file@percent }
-\newlabel{tab:pdc-weights}{{9.11}{81}{Plasmacytoid dendritic cell weight parameters}{table.caption.29}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.10}Treg Weights (5 parameters)}{82}{subsection.9.3.10}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {9.12}{\ignorespaces Regulatory T cell weight parameters.}}{82}{table.caption.30}\protected@file@percent }
-\newlabel{tab:treg-weights}{{9.12}{82}{Regulatory T cell weight parameters}{table.caption.30}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.11}Global Weights (4+ parameters)}{82}{subsection.9.3.11}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {9.13}{\ignorespaces Global weight parameters.}}{82}{table.caption.31}\protected@file@percent }
-\newlabel{tab:global-weights}{{9.13}{82}{Global weight parameters}{table.caption.31}{}}
+\newlabel{ch:parameters}{{9}{77}{Parameters and Optimization}{chapter.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.1}Parameter Design Philosophy}{77}{section.9.1}\protected@file@percent }
+\newlabel{sec:param-philosophy}{{9.1}{77}{Parameter Design Philosophy}{section.9.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.2}Parameter Categories}{77}{section.9.2}\protected@file@percent }
+\newlabel{sec:param-categories}{{9.2}{77}{Parameter Categories}{section.9.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2.1}ModelParameters}{78}{subsection.9.2.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9.1}{\ignorespaces Model parameters.}}{78}{table.caption.22}\protected@file@percent }
+\newlabel{tab:model-params}{{9.1}{78}{Model parameters}{table.caption.22}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2.2}PatientParameters}{78}{subsection.9.2.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9.2}{\ignorespaces Patient parameters.}}{79}{table.caption.23}\protected@file@percent }
+\newlabel{tab:patient-params}{{9.2}{79}{Patient parameters}{table.caption.23}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2.3}WeightParameters}{79}{subsection.9.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9.3}Weight Parameters}{80}{section.9.3}\protected@file@percent }
+\newlabel{sec:weight-params}{{9.3}{80}{Weight Parameters}{section.9.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.1}BMI Weights (4 parameters)}{80}{subsection.9.3.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9.3}{\ignorespaces BMI weight parameters.}}{80}{table.caption.24}\protected@file@percent }
+\newlabel{tab:bmi-weights}{{9.3}{80}{BMI weight parameters}{table.caption.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.2}Macrophage M1 Weights (6 weights + 2 biases)}{80}{subsection.9.3.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9.4}{\ignorespaces Macrophage M1 weight parameters.}}{80}{table.caption.25}\protected@file@percent }
+\newlabel{tab:m1-weights}{{9.4}{80}{Macrophage M1 weight parameters}{table.caption.25}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.3}Macrophage M2 Weights (5 weights + 1 bias)}{81}{subsection.9.3.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9.5}{\ignorespaces Macrophage M2 weight parameters.}}{81}{table.caption.26}\protected@file@percent }
+\newlabel{tab:m2-weights}{{9.5}{81}{Macrophage M2 weight parameters}{table.caption.26}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.4}Tumor Cell Weights (8 weights + 3 biases)}{81}{subsection.9.3.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9.6}{\ignorespaces Tumor cell weight parameters.}}{81}{table.caption.27}\protected@file@percent }
+\newlabel{tab:tumor-weights}{{9.6}{81}{Tumor cell weight parameters}{table.caption.27}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.5}CD4+ T Cell Weights (9 weights + 3 biases)}{82}{subsection.9.3.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9.7}{\ignorespaces CD4+ T cell weight parameters.}}{82}{table.caption.28}\protected@file@percent }
+\newlabel{tab:cd4-weights}{{9.7}{82}{CD4+ T cell weight parameters}{table.caption.28}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.6}Cytotoxic T Cell Weights (5 weights + 2 biases)}{83}{subsection.9.3.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9.8}{\ignorespaces Cytotoxic T cell (CD8+) weight parameters.}}{83}{table.caption.29}\protected@file@percent }
+\newlabel{tab:ctc-weights}{{9.8}{83}{Cytotoxic T cell (CD8+) weight parameters}{table.caption.29}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.7}Mast Cell Weights (6 parameters)}{83}{subsection.9.3.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9.9}{\ignorespaces Mast cell weight parameters.}}{83}{table.caption.30}\protected@file@percent }
+\newlabel{tab:mast-weights}{{9.9}{83}{Mast cell weight parameters}{table.caption.30}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.8}NK Cell Weights (3 weights + 1 bias)}{84}{subsection.9.3.8}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9.10}{\ignorespaces Natural killer cell weight parameters.}}{84}{table.caption.31}\protected@file@percent }
+\newlabel{tab:nk-weights}{{9.10}{84}{Natural killer cell weight parameters}{table.caption.31}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.9}Plasmacytoid DC Weights (6 weights + 1 bias)}{84}{subsection.9.3.9}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9.11}{\ignorespaces Plasmacytoid dendritic cell weight parameters.}}{84}{table.caption.32}\protected@file@percent }
+\newlabel{tab:pdc-weights}{{9.11}{84}{Plasmacytoid dendritic cell weight parameters}{table.caption.32}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.10}Treg Weights (5 parameters)}{85}{subsection.9.3.10}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9.12}{\ignorespaces Regulatory T cell weight parameters.}}{85}{table.caption.33}\protected@file@percent }
+\newlabel{tab:treg-weights}{{9.12}{85}{Regulatory T cell weight parameters}{table.caption.33}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.11}Global Weights (4+ parameters)}{85}{subsection.9.3.11}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9.13}{\ignorespaces Global weight parameters.}}{85}{table.caption.34}\protected@file@percent }
+\newlabel{tab:global-weights}{{9.13}{85}{Global weight parameters}{table.caption.34}{}}
 \citation{warburg1956}
 \gdef \LT@iv {\LT@entry 
     {3}{185.03128pt}\LT@entry 
     {1}{55.68375pt}\LT@entry 
     {1}{205.16928pt}}
-\@writefile{toc}{\contentsline {section}{\numberline {9.4}Glucose Parameters}{83}{section.9.4}\protected@file@percent }
-\newlabel{sec:glucose-params}{{9.4}{83}{Glucose Parameters}{section.9.4}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {9.14}{\ignorespaces Glucose weight parameters.}}{83}{table.9.14}\protected@file@percent }
-\newlabel{tab:glucose-params}{{9.14}{83}{Glucose weight parameters}{table.9.14}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.4}Glucose Parameters}{86}{section.9.4}\protected@file@percent }
+\newlabel{sec:glucose-params}{{9.4}{86}{Glucose Parameters}{section.9.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {9.14}{\ignorespaces Glucose weight parameters.}}{86}{table.9.14}\protected@file@percent }
+\newlabel{tab:glucose-params}{{9.14}{86}{Glucose weight parameters}{table.9.14}{}}
 \citation{optuna}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.1}Parameter Interactions}{84}{subsection.9.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {9.5}Bayesian Optimization}{84}{section.9.5}\protected@file@percent }
-\newlabel{sec:bayesian-optimization}{{9.5}{84}{Bayesian Optimization}{section.9.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.5.1}Framework}{84}{subsection.9.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.5.2}Objective Function}{84}{subsection.9.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.5.3}Search Space}{85}{subsection.9.5.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.5.4}Optimization Configuration}{85}{subsection.9.5.4}\protected@file@percent }
-\newlabel{lst:optuna-study}{{9.1}{85}{Optuna study creation and execution}{lstlisting.9.1}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {9.1}{\ignorespaces Optuna study creation and execution.}}{85}{lstlisting.9.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.1}Parameter Interactions}{87}{subsection.9.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9.5}Bayesian Optimization}{87}{section.9.5}\protected@file@percent }
+\newlabel{sec:bayesian-optimization}{{9.5}{87}{Bayesian Optimization}{section.9.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.5.1}Framework}{87}{subsection.9.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.5.2}Objective Function}{87}{subsection.9.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.5.3}Search Space}{88}{subsection.9.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.5.4}Optimization Configuration}{88}{subsection.9.5.4}\protected@file@percent }
+\newlabel{lst:optuna-study}{{9.1}{88}{Optuna study creation and execution}{lstlisting.9.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {9.1}{\ignorespaces Optuna study creation and execution.}}{88}{lstlisting.9.1}\protected@file@percent }
 \citation{rini2019}
 \citation{motzer2019}
-\@writefile{toc}{\contentsline {section}{\numberline {9.6}Clinical Dataset}{86}{section.9.6}\protected@file@percent }
-\newlabel{sec:clinical-dataset}{{9.6}{86}{Clinical Dataset}{section.9.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.6.1}ARON-1 Study}{86}{subsection.9.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.6.2}Dataset Structure}{86}{subsection.9.6.2}\protected@file@percent }
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {9.2}{\ignorespaces Dataset loading.}}{86}{lstlisting.9.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {10}Simulation Results}{87}{chapter.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9.6}Clinical Dataset}{89}{section.9.6}\protected@file@percent }
+\newlabel{sec:clinical-dataset}{{9.6}{89}{Clinical Dataset}{section.9.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.6.1}ARON-1 Study}{89}{subsection.9.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.6.2}Dataset Structure}{89}{subsection.9.6.2}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {9.2}{\ignorespaces Dataset loading.}}{89}{lstlisting.9.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9.7}Parameter Sensitivity Analysis}{89}{section.9.7}\protected@file@percent }
+\newlabel{sec:parameter_sensitivity}{{9.7}{89}{Parameter Sensitivity Analysis}{section.9.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9.1}{\ignorespaces Parameter sensitivity analysis showing the impact of key model parameters on tumor cell population dynamics. The analysis varies parameters within their defined ranges while keeping others at baseline values. Most sensitive parameters include glucose consumption rates, treatment effectiveness weights, and immune cell interaction parameters. Error bars represent variance across multiple simulation runs.}}{90}{figure.caption.35}\protected@file@percent }
+\newlabel{fig:parameter_sensitivity}{{9.1}{90}{Parameter sensitivity analysis showing the impact of key model parameters on tumor cell population dynamics. The analysis varies parameters within their defined ranges while keeping others at baseline values. Most sensitive parameters include glucose consumption rates, treatment effectiveness weights, and immune cell interaction parameters. Error bars represent variance across multiple simulation runs}{figure.caption.35}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {10}Simulation Results}{91}{chapter.10}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:simulation-results}{{10}{87}{Simulation Results}{chapter.10}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {10.1}Baseline Simulation}{87}{section.10.1}\protected@file@percent }
-\newlabel{sec:baseline-sim}{{10.1}{87}{Baseline Simulation}{section.10.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.1.1}Observed Tumor Dynamics - No Treatment}{87}{subsection.10.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.1.2}Observed Immune Response}{88}{subsection.10.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.1.3}Glucose Field Behavior}{88}{subsection.10.1.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10.2}Treatment Scenarios}{88}{section.10.2}\protected@file@percent }
-\newlabel{sec:treatment-scenarios}{{10.2}{88}{Treatment Scenarios}{section.10.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.2.1}ICI Monotherapy Results}{88}{subsection.10.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.2.2}ICI+TKI Combination Therapy Results}{89}{subsection.10.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.2.3}TKI Monotherapy Results}{89}{subsection.10.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.2.4}Treatment Comparison}{90}{subsection.10.2.4}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {10.1}{\ignorespaces Simulation outcomes across all treatment scenarios and biological sex}}{90}{table.caption.32}\protected@file@percent }
-\newlabel{tab:treatment-outcomes}{{10.1}{90}{Simulation outcomes across all treatment scenarios and biological sex}{table.caption.32}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.2.5}Simulation Visualizations}{90}{subsection.10.2.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {10.1}{\ignorespaces Tumor cell population dynamics across all simulation scenarios. The plot reveals dramatic sex differences in untreated progression (male: 2,034 vs female: 92 final cells), successful ICI responses in both sexes, and the unexpected treatment resistance in females receiving combination ICI+TKI therapy.}}{91}{figure.caption.33}\protected@file@percent }
-\newlabel{fig:scenario-comparison-tumor}{{10.1}{91}{Tumor cell population dynamics across all simulation scenarios. The plot reveals dramatic sex differences in untreated progression (male: 2,034 vs female: 92 final cells), successful ICI responses in both sexes, and the unexpected treatment resistance in females receiving combination ICI+TKI therapy}{figure.caption.33}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.2}{\ignorespaces Glucose field dynamics demonstrating the relationship between tumor burden and glucose consumption. Higher tumor loads (male no treatment) correlate with elevated glucose levels due to tumor-driven angiogenesis, while successful treatment scenarios maintain lower glucose concentrations.}}{91}{figure.caption.34}\protected@file@percent }
-\newlabel{fig:scenario-comparison-glucose}{{10.2}{91}{Glucose field dynamics demonstrating the relationship between tumor burden and glucose consumption. Higher tumor loads (male no treatment) correlate with elevated glucose levels due to tumor-driven angiogenesis, while successful treatment scenarios maintain lower glucose concentrations}{figure.caption.34}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.3}{\ignorespaces Immune cell population dynamics showing treatment-induced restoration of immune function. ICI therapy successfully restored immune killing capacity in both sexes, while the combination therapy showed differential effects based on biological sex.}}{92}{figure.caption.35}\protected@file@percent }
-\newlabel{fig:scenario-comparison-immune}{{10.3}{92}{Immune cell population dynamics showing treatment-induced restoration of immune function. ICI therapy successfully restored immune killing capacity in both sexes, while the combination therapy showed differential effects based on biological sex}{figure.caption.35}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {10.3}Sex-Specific Analysis}{92}{section.10.3}\protected@file@percent }
-\newlabel{sec:sex-responses}{{10.3}{92}{Sex-Specific Analysis}{section.10.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.1}Baseline Sex Differences}{92}{subsection.10.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.2}Treatment Response Patterns}{92}{subsection.10.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10.4}Glucose Field Dynamics}{93}{section.10.4}\protected@file@percent }
-\newlabel{sec:glucose-dynamics}{{10.4}{93}{Glucose Field Dynamics}{section.10.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.1}Metabolic-Tumor Burden Correlation}{93}{subsection.10.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.2}Spatial Glucose Distribution}{93}{subsection.10.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.3}Metabolic Implications}{93}{subsection.10.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10.5}Clinical Implications}{93}{section.10.5}\protected@file@percent }
-\newlabel{sec:clinical-implications}{{10.5}{93}{Clinical Implications}{section.10.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.1}Sex-Stratified Treatment Selection}{94}{subsection.10.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.2}Biomarker Development}{94}{subsection.10.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.3}Treatment Optimization}{94}{subsection.10.5.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10.6}Parameter Sensitivity Analysis}{94}{section.10.6}\protected@file@percent }
-\newlabel{sec:sensitivity-analysis}{{10.6}{94}{Parameter Sensitivity Analysis}{section.10.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.1}Glucose Consumption Rate Variation}{94}{subsection.10.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.2}Metabolic Tipping Point}{95}{subsection.10.6.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {10.4}{\ignorespaces Parameter sensitivity analysis of glucose tumor consumption rate. The dramatic transition from progression to survival between rates 2.0 and 4.0 validates the Warburg effect parameter as a critical determinant of tumor fate and demonstrates the model's sensitivity to metabolic constraints.}}{95}{figure.caption.36}\protected@file@percent }
-\newlabel{fig:sensitivity-glucose}{{10.4}{95}{Parameter sensitivity analysis of glucose tumor consumption rate. The dramatic transition from progression to survival between rates 2.0 and 4.0 validates the Warburg effect parameter as a critical determinant of tumor fate and demonstrates the model's sensitivity to metabolic constraints}{figure.caption.36}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.3}Biological Validation}{95}{subsection.10.6.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10.7}Reproducibility}{95}{section.10.7}\protected@file@percent }
-\newlabel{sec:reproducibility}{{10.7}{95}{Reproducibility}{section.10.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.7.1}Scenario Configuration}{96}{subsection.10.7.1}\protected@file@percent }
-\newlabel{lst:scenario-config}{{10.1}{96}{Complete scenario configuration for reproducible simulation results}{lstlisting.10.1}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {10.1}{\ignorespaces Complete scenario configuration for reproducible simulation results}}{96}{lstlisting.10.1}\protected@file@percent }
+\newlabel{ch:simulation-results}{{10}{91}{Simulation Results}{chapter.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.1}Baseline Simulation}{91}{section.10.1}\protected@file@percent }
+\newlabel{sec:baseline-sim}{{10.1}{91}{Baseline Simulation}{section.10.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.1.1}Observed Tumor Dynamics - No Treatment}{91}{subsection.10.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.1.2}Observed Immune Response}{92}{subsection.10.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.1.3}Glucose Field Behavior}{92}{subsection.10.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.2}Treatment Scenarios}{92}{section.10.2}\protected@file@percent }
+\newlabel{sec:treatment-scenarios}{{10.2}{92}{Treatment Scenarios}{section.10.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.2.1}ICI Monotherapy Results}{92}{subsection.10.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.2.2}ICI+TKI Combination Therapy Results}{93}{subsection.10.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.2.3}TKI Monotherapy Results}{93}{subsection.10.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.2.4}Treatment Comparison}{94}{subsection.10.2.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {10.1}{\ignorespaces Simulation outcomes across all treatment scenarios and biological sex}}{94}{table.caption.36}\protected@file@percent }
+\newlabel{tab:treatment-outcomes}{{10.1}{94}{Simulation outcomes across all treatment scenarios and biological sex}{table.caption.36}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.2.5}Simulation Visualizations}{94}{subsection.10.2.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10.1}{\ignorespaces Tumor cell population dynamics across all simulation scenarios. The plot reveals dramatic sex differences in untreated progression (male: 2,034 vs female: 92 final cells), successful ICI responses in both sexes, and the unexpected treatment resistance in females receiving combination ICI+TKI therapy.}}{95}{figure.caption.37}\protected@file@percent }
+\newlabel{fig:scenario-comparison-tumor}{{10.1}{95}{Tumor cell population dynamics across all simulation scenarios. The plot reveals dramatic sex differences in untreated progression (male: 2,034 vs female: 92 final cells), successful ICI responses in both sexes, and the unexpected treatment resistance in females receiving combination ICI+TKI therapy}{figure.caption.37}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.2}{\ignorespaces Glucose field dynamics demonstrating the relationship between tumor burden and glucose consumption. Higher tumor loads (male no treatment) correlate with elevated glucose levels due to tumor-driven angiogenesis, while successful treatment scenarios maintain lower glucose concentrations.}}{95}{figure.caption.38}\protected@file@percent }
+\newlabel{fig:scenario-comparison-glucose}{{10.2}{95}{Glucose field dynamics demonstrating the relationship between tumor burden and glucose consumption. Higher tumor loads (male no treatment) correlate with elevated glucose levels due to tumor-driven angiogenesis, while successful treatment scenarios maintain lower glucose concentrations}{figure.caption.38}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.3}{\ignorespaces Immune cell population dynamics showing treatment-induced restoration of immune function. ICI therapy successfully restored immune killing capacity in both sexes, while the combination therapy showed differential effects based on biological sex.}}{96}{figure.caption.39}\protected@file@percent }
+\newlabel{fig:scenario-comparison-immune}{{10.3}{96}{Immune cell population dynamics showing treatment-induced restoration of immune function. ICI therapy successfully restored immune killing capacity in both sexes, while the combination therapy showed differential effects based on biological sex}{figure.caption.39}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.3}Sex-Specific Analysis}{96}{section.10.3}\protected@file@percent }
+\newlabel{sec:sex-responses}{{10.3}{96}{Sex-Specific Analysis}{section.10.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.1}Baseline Sex Differences}{96}{subsection.10.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.2}Treatment Response Patterns}{96}{subsection.10.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.4}Glucose Field Dynamics}{97}{section.10.4}\protected@file@percent }
+\newlabel{sec:glucose-dynamics}{{10.4}{97}{Glucose Field Dynamics}{section.10.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.1}Metabolic-Tumor Burden Correlation}{97}{subsection.10.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.2}Spatial Glucose Distribution}{97}{subsection.10.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.3}Metabolic Implications}{97}{subsection.10.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.5}Clinical Implications}{97}{section.10.5}\protected@file@percent }
+\newlabel{sec:clinical-implications}{{10.5}{97}{Clinical Implications}{section.10.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.1}Sex-Stratified Treatment Selection}{98}{subsection.10.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.2}Biomarker Development}{98}{subsection.10.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.3}Treatment Optimization}{98}{subsection.10.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.6}Parameter Sensitivity Analysis}{98}{section.10.6}\protected@file@percent }
+\newlabel{sec:sensitivity-analysis}{{10.6}{98}{Parameter Sensitivity Analysis}{section.10.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.1}Glucose Consumption Rate Variation}{98}{subsection.10.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.2}Metabolic Tipping Point}{99}{subsection.10.6.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10.4}{\ignorespaces Parameter sensitivity analysis of glucose tumor consumption rate. The dramatic transition from progression to survival between rates 2.0 and 4.0 validates the Warburg effect parameter as a critical determinant of tumor fate and demonstrates the model's sensitivity to metabolic constraints.}}{99}{figure.caption.40}\protected@file@percent }
+\newlabel{fig:sensitivity-glucose}{{10.4}{99}{Parameter sensitivity analysis of glucose tumor consumption rate. The dramatic transition from progression to survival between rates 2.0 and 4.0 validates the Warburg effect parameter as a critical determinant of tumor fate and demonstrates the model's sensitivity to metabolic constraints}{figure.caption.40}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.3}Biological Validation}{99}{subsection.10.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.7}Reproducibility}{99}{section.10.7}\protected@file@percent }
+\newlabel{sec:reproducibility}{{10.7}{99}{Reproducibility}{section.10.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.7.1}Scenario Configuration}{100}{subsection.10.7.1}\protected@file@percent }
+\newlabel{lst:scenario-config}{{10.1}{100}{Complete scenario configuration for reproducible simulation results}{lstlisting.10.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {10.1}{\ignorespaces Complete scenario configuration for reproducible simulation results}}{100}{lstlisting.10.1}\protected@file@percent }
 \citation{grimm2017}
 \citation{railsback2019}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.7.2}Simulation Protocol}{97}{subsection.10.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10.8}Statistical Validation: Multi-Seed Empirical Study}{97}{section.10.8}\protected@file@percent }
-\newlabel{sec:empirical-study}{{10.8}{97}{Statistical Validation: Multi-Seed Empirical Study}{section.10.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.1}Experimental Design}{97}{subsection.10.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.7.2}Simulation Protocol}{101}{subsection.10.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.8}Statistical Validation: Multi-Seed Empirical Study}{101}{section.10.8}\protected@file@percent }
+\newlabel{sec:empirical-study}{{10.8}{101}{Statistical Validation: Multi-Seed Empirical Study}{section.10.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.1}Experimental Design}{101}{subsection.10.8.1}\protected@file@percent }
 \citation{benzekry2014}
 \citation{dagogo2018}
 \citation{litchfield2021}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.2}Empirical Results Summary}{98}{subsection.10.8.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {10.2}{\ignorespaces Multi-seed empirical study results (n=20 per scenario, 160 total simulations)}}{98}{table.caption.37}\protected@file@percent }
-\newlabel{tab:empirical-results}{{10.2}{98}{Multi-seed empirical study results (n=20 per scenario, 160 total simulations)}{table.caption.37}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.3}Stochastic Variance Analysis}{98}{subsection.10.8.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.4}Treatment Effectiveness Analysis}{98}{subsection.10.8.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.5}Sex-Specific Statistical Analysis}{99}{subsection.10.8.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.6}Single-Seed versus Multi-Seed Insights}{100}{subsection.10.8.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.7}Metabolic Correlations}{100}{subsection.10.8.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.8}Empirical Study Visualizations}{100}{subsection.10.8.8}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {10.5}{\ignorespaces Box plot distributions of final tumor cell counts across all treatment scenarios (n=20 per group). The bimodal distributions reflect the stochastic nature of tumor-immune dynamics, where early random events determine whether tumors are eliminated or escape immune control. Note the dramatic variance within groups and the shift toward lower tumor burdens with effective treatments.}}{101}{figure.caption.38}\protected@file@percent }
-\newlabel{fig:empirical-tumor-boxplot}{{10.5}{101}{Box plot distributions of final tumor cell counts across all treatment scenarios (n=20 per group). The bimodal distributions reflect the stochastic nature of tumor-immune dynamics, where early random events determine whether tumors are eliminated or escape immune control. Note the dramatic variance within groups and the shift toward lower tumor burdens with effective treatments}{figure.caption.38}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.6}{\ignorespaces Survival rates across all treatment scenarios stratified by biological sex. Female patients demonstrate consistently higher survival rates across most treatment conditions, with the ICI+TKI combination achieving the highest survival rate (65\%) observed in the study. The data reveal complex sex-treatment interactions that would be missed by single-seed analysis.}}{101}{figure.caption.39}\protected@file@percent }
-\newlabel{fig:empirical-survival-rate}{{10.6}{101}{Survival rates across all treatment scenarios stratified by biological sex. Female patients demonstrate consistently higher survival rates across most treatment conditions, with the ICI+TKI combination achieving the highest survival rate (65\%) observed in the study. The data reveal complex sex-treatment interactions that would be missed by single-seed analysis}{figure.caption.39}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10.7}{\ignorespaces Mean tumor growth curves across treatment scenarios with ±1 standard deviation confidence bands (n=20 per scenario). The temporal analysis reveals distinct treatment response kinetics: rapid early control in ICI scenarios, sustained growth suppression with TKI treatment, and the complex dynamics of combination therapy. The wide confidence intervals reflect the high stochasticity of tumor-immune interactions.}}{102}{figure.caption.40}\protected@file@percent }
-\newlabel{fig:empirical-growth-curves}{{10.7}{102}{Mean tumor growth curves across treatment scenarios with ±1 standard deviation confidence bands (n=20 per scenario). The temporal analysis reveals distinct treatment response kinetics: rapid early control in ICI scenarios, sustained growth suppression with TKI treatment, and the complex dynamics of combination therapy. The wide confidence intervals reflect the high stochasticity of tumor-immune interactions}{figure.caption.40}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.9}Clinical and Methodological Implications}{102}{subsection.10.8.9}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {10.8}{\ignorespaces Immune cell killing activity comparison across treatment scenarios. ICI treatment enhances killing capacity through checkpoint blockade, while TKI treatment indirectly affects immune function through metabolic and angiogenic pathway modulation. The combination therapy shows complex interactions between these mechanisms that vary by biological sex.}}{103}{figure.caption.41}\protected@file@percent }
-\newlabel{fig:empirical-kills}{{10.8}{103}{Immune cell killing activity comparison across treatment scenarios. ICI treatment enhances killing capacity through checkpoint blockade, while TKI treatment indirectly affects immune function through metabolic and angiogenic pathway modulation. The combination therapy shows complex interactions between these mechanisms that vary by biological sex}{figure.caption.41}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.2}Empirical Results Summary}{102}{subsection.10.8.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {10.2}{\ignorespaces Multi-seed empirical study results (n=20 per scenario, 160 total simulations)}}{102}{table.caption.41}\protected@file@percent }
+\newlabel{tab:empirical-results}{{10.2}{102}{Multi-seed empirical study results (n=20 per scenario, 160 total simulations)}{table.caption.41}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.3}Stochastic Variance Analysis}{102}{subsection.10.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.4}Treatment Effectiveness Analysis}{102}{subsection.10.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.5}Sex-Specific Statistical Analysis}{103}{subsection.10.8.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.6}Single-Seed versus Multi-Seed Insights}{104}{subsection.10.8.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.7}Metabolic Correlations}{104}{subsection.10.8.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.8}Empirical Study Visualizations}{104}{subsection.10.8.8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10.5}{\ignorespaces Box plot distributions of final tumor cell counts across all treatment scenarios (n=20 per group). The bimodal distributions reflect the stochastic nature of tumor-immune dynamics, where early random events determine whether tumors are eliminated or escape immune control. Note the dramatic variance within groups and the shift toward lower tumor burdens with effective treatments.}}{105}{figure.caption.42}\protected@file@percent }
+\newlabel{fig:empirical-tumor-boxplot}{{10.5}{105}{Box plot distributions of final tumor cell counts across all treatment scenarios (n=20 per group). The bimodal distributions reflect the stochastic nature of tumor-immune dynamics, where early random events determine whether tumors are eliminated or escape immune control. Note the dramatic variance within groups and the shift toward lower tumor burdens with effective treatments}{figure.caption.42}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.6}{\ignorespaces Survival rates across all treatment scenarios stratified by biological sex. Female patients demonstrate consistently higher survival rates across most treatment conditions, with the ICI+TKI combination achieving the highest survival rate (65\%) observed in the study. The data reveal complex sex-treatment interactions that would be missed by single-seed analysis.}}{105}{figure.caption.43}\protected@file@percent }
+\newlabel{fig:empirical-survival-rate}{{10.6}{105}{Survival rates across all treatment scenarios stratified by biological sex. Female patients demonstrate consistently higher survival rates across most treatment conditions, with the ICI+TKI combination achieving the highest survival rate (65\%) observed in the study. The data reveal complex sex-treatment interactions that would be missed by single-seed analysis}{figure.caption.43}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.7}{\ignorespaces Mean tumor growth curves across treatment scenarios with ±1 standard deviation confidence bands (n=20 per scenario). The temporal analysis reveals distinct treatment response kinetics: rapid early control in ICI scenarios, sustained growth suppression with TKI treatment, and the complex dynamics of combination therapy. The wide confidence intervals reflect the high stochasticity of tumor-immune interactions.}}{106}{figure.caption.44}\protected@file@percent }
+\newlabel{fig:empirical-growth-curves}{{10.7}{106}{Mean tumor growth curves across treatment scenarios with ±1 standard deviation confidence bands (n=20 per scenario). The temporal analysis reveals distinct treatment response kinetics: rapid early control in ICI scenarios, sustained growth suppression with TKI treatment, and the complex dynamics of combination therapy. The wide confidence intervals reflect the high stochasticity of tumor-immune interactions}{figure.caption.44}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.9}Additional Quantitative Analysis}{106}{subsection.10.8.9}\protected@file@percent }
+\newlabel{sec:additional_analysis}{{10.8.9}{106}{Additional Quantitative Analysis}{subsection.10.8.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.10}Clinical and Methodological Implications}{106}{subsection.10.8.10}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10.8}{\ignorespaces Immune cell killing activity comparison across treatment scenarios. ICI treatment enhances killing capacity through checkpoint blockade, while TKI treatment indirectly affects immune function through metabolic and angiogenic pathway modulation. The combination therapy shows complex interactions between these mechanisms that vary by biological sex.}}{107}{figure.caption.45}\protected@file@percent }
+\newlabel{fig:empirical-kills}{{10.8}{107}{Immune cell killing activity comparison across treatment scenarios. ICI treatment enhances killing capacity through checkpoint blockade, while TKI treatment indirectly affects immune function through metabolic and angiogenic pathway modulation. The combination therapy shows complex interactions between these mechanisms that vary by biological sex}{figure.caption.45}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.9}{\ignorespaces Population dynamics across all cell types during simulation runs. The figure illustrates the temporal evolution of tumor cells, immune effectors, and regulatory populations under different treatment scenarios. Notable features include immune cell recruitment peaks following treatment initiation and the emergence of treatment-resistant cell populations in extended simulations.}}{107}{figure.caption.46}\protected@file@percent }
+\newlabel{fig:population_dynamics}{{10.9}{107}{Population dynamics across all cell types during simulation runs. The figure illustrates the temporal evolution of tumor cells, immune effectors, and regulatory populations under different treatment scenarios. Notable features include immune cell recruitment peaks following treatment initiation and the emergence of treatment-resistant cell populations in extended simulations}{figure.caption.46}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.10}{\ignorespaces Detailed tumor growth analysis showing progression patterns under different treatment modalities. The analysis reveals distinct growth kinetics: exponential growth in untreated controls, growth suppression plateaus under TKI therapy, and oscillatory patterns reflecting immune-mediated control under ICI treatment. Sex differences in growth trajectories become apparent particularly under hormonal influence.}}{108}{figure.caption.47}\protected@file@percent }
+\newlabel{fig:tumor_growth}{{10.10}{108}{Detailed tumor growth analysis showing progression patterns under different treatment modalities. The analysis reveals distinct growth kinetics: exponential growth in untreated controls, growth suppression plateaus under TKI therapy, and oscillatory patterns reflecting immune-mediated control under ICI treatment. Sex differences in growth trajectories become apparent particularly under hormonal influence}{figure.caption.47}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.11}{\ignorespaces Distribution of immune cell killing events across spatial regions and time points. The heatmap visualization reveals heterogeneous killing activity with preferential targeting of tumor periphery regions where immune-tumor contact is maximized. Treatment modalities shift both the intensity and spatial patterns of immune cytotoxic activity.}}{108}{figure.caption.48}\protected@file@percent }
+\newlabel{fig:kill_distribution}{{10.11}{108}{Distribution of immune cell killing events across spatial regions and time points. The heatmap visualization reveals heterogeneous killing activity with preferential targeting of tumor periphery regions where immune-tumor contact is maximized. Treatment modalities shift both the intensity and spatial patterns of immune cytotoxic activity}{figure.caption.48}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.12}{\ignorespaces Quantitative analysis of killing event frequencies across treatment scenarios. The bar chart comparison demonstrates that while total killing events may decrease under some treatments, the efficiency per killing event increases significantly. This suggests that treatments enhance the quality rather than just the quantity of immune responses.}}{109}{figure.caption.49}\protected@file@percent }
+\newlabel{fig:kill_counts}{{10.12}{109}{Quantitative analysis of killing event frequencies across treatment scenarios. The bar chart comparison demonstrates that while total killing events may decrease under some treatments, the efficiency per killing event increases significantly. This suggests that treatments enhance the quality rather than just the quantity of immune responses}{figure.caption.49}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.13}{\ignorespaces Statistical summary of immune cell killing performance including mean killing rates, variance measures, and confidence intervals across treatment groups. The analysis provides robust quantitative evidence for treatment efficacy differences while accounting for the inherent stochasticity of immune-tumor interactions.}}{109}{figure.caption.50}\protected@file@percent }
+\newlabel{fig:kill_statistics}{{10.13}{109}{Statistical summary of immune cell killing performance including mean killing rates, variance measures, and confidence intervals across treatment groups. The analysis provides robust quantitative evidence for treatment efficacy differences while accounting for the inherent stochasticity of immune-tumor interactions}{figure.caption.50}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10.14}{\ignorespaces Sex-stratified analysis revealing distinct treatment response patterns between male and female simulation scenarios. The results demonstrate significant sex-dependent differences in treatment efficacy, particularly for combination therapies, supporting the importance of personalized medicine approaches that consider biological sex as a key variable.}}{110}{figure.caption.51}\protected@file@percent }
+\newlabel{fig:sex_stratified_results}{{10.14}{110}{Sex-stratified analysis revealing distinct treatment response patterns between male and female simulation scenarios. The results demonstrate significant sex-dependent differences in treatment efficacy, particularly for combination therapies, supporting the importance of personalized medicine approaches that consider biological sex as a key variable}{figure.caption.51}{}}
 \citation{masl_paper_a}
 \citation{repast4py}
 \citation{fick1855}
 \citation{warburg1956}
-\@writefile{toc}{\contentsline {chapter}{\numberline {11}Conclusion}{104}{chapter.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {11}Conclusion}{112}{chapter.11}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:conclusion}{{11}{104}{Conclusion}{chapter.11}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {11.1}Summary of Contributions}{104}{section.11.1}\protected@file@percent }
-\newlabel{sec:contributions}{{11.1}{104}{Summary of Contributions}{section.11.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {11.2}Model Limitations}{105}{section.11.2}\protected@file@percent }
-\newlabel{sec:limitations}{{11.2}{105}{Model Limitations}{section.11.2}{}}
+\newlabel{ch:conclusion}{{11}{112}{Conclusion}{chapter.11}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11.1}Summary of Contributions}{112}{section.11.1}\protected@file@percent }
+\newlabel{sec:contributions}{{11.1}{112}{Summary of Contributions}{section.11.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11.2}Model Limitations}{113}{section.11.2}\protected@file@percent }
+\newlabel{sec:limitations}{{11.2}{113}{Model Limitations}{section.11.2}{}}
 \citation{motzer2019}
 \citation{rini2019}
-\@writefile{toc}{\contentsline {section}{\numberline {11.3}Future Work}{106}{section.11.3}\protected@file@percent }
-\newlabel{sec:future-work}{{11.3}{106}{Future Work}{section.11.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11.3}Future Work}{114}{section.11.3}\protected@file@percent }
+\newlabel{sec:future-work}{{11.3}{114}{Future Work}{section.11.3}{}}
 \citation{hanahan2011}
 \citation{warburg1956}
 \bibstyle{plain}
 \bibdata{bibliography}
-\@writefile{toc}{\contentsline {chapter}{Acknowledgments}{108}{chapter*.42}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{Acknowledgments}{116}{chapter*.52}\protected@file@percent }
 \bibcite{optuna}{1}
 \bibcite{benzekry2014}{2}
 \bibcite{repast4py}{3}
@@ -659,4 +685,4 @@
 \bibcite{rini2019}{17}
 \bibcite{santoni2024}{18}
 \bibcite{warburg1956}{19}
-\gdef \@abspage@last{112}
+\gdef \@abspage@last{120}

@@ -457,4 +457,18 @@ def load_dataset(file_path: str) -> pd.DataFrame:
                        converters={"treatment": treatment_to_list})
 \end{lstlisting}
 
+% ============================================================================
+\section{Parameter Sensitivity Analysis}
+\label{sec:parameter_sensitivity}
+% ============================================================================
+
+Figure~\ref{fig:parameter_sensitivity} demonstrates the sensitivity of simulation outcomes to key parameter variations within the defined ranges. This analysis identifies which parameters have the strongest influence on tumor dynamics and treatment efficacy, providing guidance for parameter selection and model robustness assessment.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/parameter_sensitivity.pdf}
+\caption{Parameter sensitivity analysis showing the impact of key model parameters on tumor cell population dynamics. The analysis varies parameters within their defined ranges while keeping others at baseline values. Most sensitive parameters include glucose consumption rates, treatment effectiveness weights, and immune cell interaction parameters. Error bars represent variance across multiple simulation runs.}
+\label{fig:parameter_sensitivity}
+\end{figure}
+
 Each row of the dataset is used to parameterize a simulation run during optimization, with the patient's clinical features passed as keyword arguments to \texttt{RCCModel}. The simulation's survival prediction is then compared against the clinical outcome to compute the trial error.

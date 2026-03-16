@@ -189,3 +189,58 @@ The model's treatment system is designed to reproduce the qualitative dynamics o
 \caption{Treatment timeline showing the sequential application of ICI and TKI therapies across simulation steps. The figure illustrates drug administration schedules, onset of action, and temporal coordination in combination therapy protocols. Treatment typically begins after an initial observation period to establish baseline tumor dynamics.}
 \label{fig:treatment_timeline}
 \end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    node distance=1.5cm and 3.0cm,
+    start/.style={ellipse, draw, fill=green!20, font=\small, minimum height=0.8cm, text width=1.8cm, text centered},
+    decision/.style={diamond, draw, fill=orange!20, font=\scriptsize, minimum height=1.2cm, text width=1.8cm, text centered, inner sep=1pt, aspect=1.5},
+    process/.style={rectangle, draw, fill=blue!15, font=\small, minimum height=1.0cm, text width=2.2cm, text centered, rounded corners=2pt},
+    outcome/.style={rectangle, draw, fill=purple!15, font=\small, minimum height=1.0cm, text width=2.0cm, text centered, rounded corners=2pt},
+    arrow/.style={->,>=stealth,thick}
+]
+
+% Start
+\node[start] (start) {Treatment\\Decision};
+
+% Main decision point
+\node[decision, below=of start] (treat_type) {Treatment\\Type?};
+
+% ICI Branch
+\node[process, below left=of treat_type] (ici) {ICI\\Monotherapy};
+\node[outcome, below=of ici] (ici_effect) {Block PD-1/PD-L1\\Restore T Activation};
+
+% TKI Branch  
+\node[process, below right=of treat_type] (tki) {TKI\\Monotherapy};
+\node[outcome, below=of tki] (tki_effect) {Reduce Growth\\Release Neoantigens};
+
+% Combination Branch
+\node[process, below=of treat_type] (combo) {ICI + TKI\\Combination};
+\node[outcome, below=of combo] (combo_effect) {Proportional\\Average (50/50)};
+
+% No treatment branch
+\node[process, left=of ici] (none) {No\\Treatment};
+\node[outcome, below=of none] (none_effect) {Baseline\\Dynamics};
+
+% Arrows
+\draw[arrow] (start) -- (treat_type);
+\draw[arrow] (treat_type) -- node[left, font=\scriptsize] {ICI} (ici);
+\draw[arrow] (treat_type) -- node[right, font=\scriptsize] {TKI} (tki);
+\draw[arrow] (treat_type) -- node[right, font=\scriptsize] {Combo} (combo);
+\draw[arrow] (treat_type) -- node[above, font=\scriptsize] {None} (none);
+
+\draw[arrow] (ici) -- (ici_effect);
+\draw[arrow] (tki) -- (tki_effect);
+\draw[arrow] (combo) -- (combo_effect);
+\draw[arrow] (none) -- (none_effect);
+
+% Additional annotations  
+\node[font=\scriptsize] at ([xshift=1.5cm]ici_effect) {Immune Restoration};
+\node[font=\scriptsize] at ([xshift=-1.5cm]tki_effect) {Anti-angiogenic + Immunogenic};  
+\node[font=\scriptsize] at ([xshift=1.5cm]combo_effect) {Synergistic Mechanisms};
+
+\end{tikzpicture}
+\caption{BPMN-style Treatment Decision Flow showing the four treatment modalities available in the RCC model. Each treatment path leads to distinct molecular mechanisms: ICI blocks checkpoint inhibition to restore T cell function, TKI reduces tumor growth and releases neoantigens through anti-angiogenic effects, combination therapy applies both mechanisms at half strength, and no treatment maintains baseline tumor-immune dynamics for comparison.}
+\label{fig:treatment_decision_flow}
+\end{figure}

@@ -488,8 +488,57 @@ Figure~\ref{fig:simulation_pipeline} provides a detailed view of the simulation 
 
 \begin{figure}[htbp]
 \centering
-% TikZ figure temporarily disabled - simulation pipeline would show step sequence
-\textit{[Simulation pipeline diagram showing the 11-step sequence: collect\_data $\rightarrow$ check\_termination $\rightarrow$ apply\_effects $\rightarrow$ treatment $\rightarrow$ sex\_drift $\rightarrow$ glucose\_step $\rightarrow$ manage\_blood $\rightarrow$ agent\_steps $\rightarrow$ move $\rightarrow$ spawn\_hormones]}
-\caption{Simulation pipeline for the RCC model. Each time step follows a fixed sequence of 11 operations, from data collection through hormone spawning. The termination condition check determines whether to continue the simulation or write final results. Side annotations detail the specific operations performed in each phase.}
+\begin{tikzpicture}[
+    node distance=1.5cm and 2.0cm,
+    start/.style={ellipse, draw, fill=green!20, font=\small, minimum height=0.8cm, text width=1.8cm, text centered},
+    process/.style={rectangle, draw, fill=blue!15, font=\small, minimum height=1.0cm, text width=2.2cm, text centered, rounded corners=2pt},
+    decision/.style={diamond, draw, fill=orange!20, font=\scriptsize, minimum height=1.0cm, text width=1.5cm, text centered, inner sep=1pt, aspect=2},
+    terminal/.style={ellipse, draw, fill=red!20, font=\small, minimum height=0.8cm, text width=1.8cm, text centered},
+    arrow/.style={->,>=stealth,thick},
+    loop/.style={->,>=stealth,thick,rounded corners=3pt}
+]
+
+% Start
+\node[start] (init) {Simulation\\Initialization};
+
+% Main simulation loop
+\node[process, below=of init] (param_load) {Parameter\\Loading};
+\node[process, below=of param_load] (spawn_agents) {Agent\\Spawning};
+\node[process, below=of spawn_agents] (data_collect) {Data\\Collection};
+\node[decision, below=of data_collect] (check_term) {Terminal\\Condition?};
+
+% Loop body - arranged in columns
+\node[process, right=3cm of check_term] (effects) {Collect\\Effects};
+\node[process, right=of effects] (glucose_diff) {Glucose\\Diffusion};
+\node[process, below=of effects] (treatment) {Treatment\\Application};
+\node[process, below=of glucose_diff] (check_agents) {Agent\\Stepping};
+
+% Back to decision
+\node[process, left=of treatment] (move_agents) {Deferred\\Movement};
+\node[process, left=of move_agents] (spawn_hormones) {Hormone\\Spawning};
+
+% End
+\node[terminal, below=of check_term] (output) {Output\\Results};
+
+% Arrows - main flow
+\draw[arrow] (init) -- (param_load);
+\draw[arrow] (param_load) -- (spawn_agents);
+\draw[arrow] (spawn_agents) -- (data_collect);
+\draw[arrow] (data_collect) -- (check_term);
+\draw[arrow] (check_term) -- node[right, font=\scriptsize] {Yes} (output);
+
+% Loop arrows
+\draw[arrow] (check_term) -- node[above, font=\scriptsize] {No} (effects);
+\draw[arrow] (effects) -- (glucose_diff);
+\draw[arrow] (glucose_diff) -- (check_agents);
+\draw[arrow] (check_agents) -- (treatment);
+\draw[arrow] (treatment) -- (move_agents);
+\draw[arrow] (move_agents) -- (spawn_hormones);
+
+% Loop back
+\draw[loop] (spawn_hormones) -- ++(-4,0) |- (data_collect);
+
+\end{tikzpicture}
+\caption{BPMN-style Simulation Lifecycle for the RCC model. The simulation follows a deterministic sequence: initialization and parameter loading, then iterative execution of the main loop. Each step collects data, checks termination conditions, applies agent effects, performs glucose diffusion, executes treatment protocols, steps agents, and resolves movement. The loop continues until a terminal condition is met, at which point results are output.}
 \label{fig:simulation_pipeline}
 \end{figure}

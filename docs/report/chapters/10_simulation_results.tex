@@ -585,6 +585,55 @@ Figure~\ref{fig:empirical-kills} compares immune cell killing efficiency across 
 \label{fig:empirical-kills}
 \end{figure}
 
+% ============================================================================
+\subsection{Additional Quantitative Analysis}
+\label{sec:additional_analysis}
+% ============================================================================
+
+The following figures provide complementary quantitative perspectives on the simulation results, offering deeper insights into population dynamics, killing statistics, and sex-stratified outcomes.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/population_dynamics.pdf}
+\caption{Population dynamics across all cell types during simulation runs. The figure illustrates the temporal evolution of tumor cells, immune effectors, and regulatory populations under different treatment scenarios. Notable features include immune cell recruitment peaks following treatment initiation and the emergence of treatment-resistant cell populations in extended simulations.}
+\label{fig:population_dynamics}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/tumor_growth.pdf}
+\caption{Detailed tumor growth analysis showing progression patterns under different treatment modalities. The analysis reveals distinct growth kinetics: exponential growth in untreated controls, growth suppression plateaus under TKI therapy, and oscillatory patterns reflecting immune-mediated control under ICI treatment. Sex differences in growth trajectories become apparent particularly under hormonal influence.}
+\label{fig:tumor_growth}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/kill_distribution.pdf}
+\caption{Distribution of immune cell killing events across spatial regions and time points. The heatmap visualization reveals heterogeneous killing activity with preferential targeting of tumor periphery regions where immune-tumor contact is maximized. Treatment modalities shift both the intensity and spatial patterns of immune cytotoxic activity.}
+\label{fig:kill_distribution}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/kill_counts.pdf}
+\caption{Quantitative analysis of killing event frequencies across treatment scenarios. The bar chart comparison demonstrates that while total killing events may decrease under some treatments, the efficiency per killing event increases significantly. This suggests that treatments enhance the quality rather than just the quantity of immune responses.}
+\label{fig:kill_counts}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/kill_statistics.pdf}
+\caption{Statistical summary of immune cell killing performance including mean killing rates, variance measures, and confidence intervals across treatment groups. The analysis provides robust quantitative evidence for treatment efficacy differences while accounting for the inherent stochasticity of immune-tumor interactions.}
+\label{fig:kill_statistics}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/sex_stratified_results.pdf}
+\caption{Sex-stratified analysis revealing distinct treatment response patterns between male and female simulation scenarios. The results demonstrate significant sex-dependent differences in treatment efficacy, particularly for combination therapies, supporting the importance of personalized medicine approaches that consider biological sex as a key variable.}
+\label{fig:sex_stratified_results}
+\end{figure}
+
 \subsection{Clinical and Methodological Implications}
 
 The multi-seed empirical study provides several important insights for both clinical application and computational methodology:

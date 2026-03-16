@@ -344,3 +344,47 @@ This implementation illustrates a critical design principle: metabolic constrain
 \caption{Three-dimensional visualization of the glucose concentration field showing spatial heterogeneity within the tumor microenvironment. High-concentration regions (yellow) correspond to blood vessel locations, while low-concentration zones (blue) indicate areas of intensive cellular consumption.}
 \label{fig:glucose_field_3d}
 \end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    node distance=2.5cm,
+    source/.style={ellipse, draw, fill=blue!20, font=\small, minimum height=1.0cm, text width=1.8cm, text centered},
+    process/.style={rectangle, draw, fill=green!15, font=\small, minimum height=1.0cm, text width=2.0cm, text centered, rounded corners=2pt},
+    consumer/.style={rectangle, draw, fill=red!15, font=\small, minimum height=1.0cm, text width=1.8cm, text centered, rounded corners=2pt},
+    effect/.style={rectangle, draw, fill=orange!15, font=\small, minimum height=1.0cm, text width=1.8cm, text centered, rounded corners=2pt},
+    arrow/.style={->,>=stealth,thick},
+    cycle_arrow/.style={->,>=stealth,thick,bend left=20}
+]
+
+% Central cycle nodes arranged in a circle
+\node[source] (vessels) at (0,3) {Blood\\Vessels};
+\node[process] (inject) at (2.5,2) {Glucose\\Injection};
+\node[process] (diffusion) at (3,0) {Spatial\\Diffusion};
+\node[consumer] (tumor) at (2,-2) {Tumor\\Consumption};
+\node[consumer] (immune) at (-1,-2) {Immune\\Starvation};
+\node[effect] (gradient) at (-3,0) {Concentration\\Gradient};
+\node[effect] (chemotaxis) at (-2.5,2) {Immune\\Chemotaxis};
+
+% Main cycle arrows
+\draw[arrow] (vessels) -- (inject);
+\draw[arrow] (inject) -- (diffusion);
+\draw[arrow] (diffusion) -- (tumor);
+\draw[arrow] (tumor) -- (immune);
+\draw[arrow] (immune) -- (gradient);
+\draw[arrow] (gradient) -- (chemotaxis);
+\draw[arrow] (chemotaxis) -- (vessels);
+
+% Additional effects
+\node[font=\scriptsize, above=0.3cm of vessels] {Source};
+\node[font=\scriptsize, right=0.3cm of diffusion] {Transport};
+\node[font=\scriptsize, below=0.3cm of tumor] {Warburg Effect};
+\node[font=\scriptsize, left=0.3cm of gradient] {Spatial Pattern};
+
+% Central process annotation
+\node[font=\small\bfseries] at (0.5,0) {Glucose Dynamics};
+
+\end{tikzpicture}
+\caption{BPMN-style Glucose System Cycle illustrating the circular flow of glucose dynamics in the tumor microenvironment. Blood vessels inject glucose which diffuses spatially and is consumed preferentially by tumor cells (Warburg effect), creating concentration gradients that guide immune cell chemotaxis back toward glucose-rich regions near blood vessels. This creates a continuous cycle where metabolic competition shapes spatial organization.}
+\label{fig:glucose_system_cycle}
+\end{figure}

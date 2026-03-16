@@ -445,3 +445,61 @@ The simulation terminates when any of the following conditions is met. The \text
 \end{enumerate}
 
 These terminal conditions collectively ensure that simulations reach a definitive outcome---either tumor elimination or tumor dominance---within a bounded number of steps, while capturing both the absolute size and the growth dynamics of the tumor population.
+
+% ============================================================================
+\section{Immune Response Cascade Overview}
+\label{sec:md_immune_cascade}
+% ============================================================================
+
+Figure~\ref{fig:immune_response_cascade} provides a conceptual overview of the immune response cascade as modeled in the RCC simulation. The sequence begins with tumor cell recognition and culminates in either successful tumor elimination or immune evasion, illustrating the complex interplay between innate immunity, adaptive immunity, and tumor-mediated immunosuppression.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    node distance=2.0cm and 3.0cm,
+    actor/.style={ellipse, draw, fill=blue!20, font=\small, minimum height=1.0cm, text width=1.8cm, text centered},
+    action/.style={rectangle, draw, fill=green!15, font=\small, minimum height=1.0cm, text width=2.2cm, text centered, rounded corners=2pt},
+    decision/.style={diamond, draw, fill=orange!20, font=\scriptsize, minimum height=1.0cm, text width=1.5cm, text centered, inner sep=1pt, aspect=2},
+    feedback/.style={rectangle, draw, fill=red!15, font=\small, minimum height=1.0cm, text width=2.0cm, text centered, rounded corners=2pt},
+    arrow/.style={->,>=stealth,thick},
+    feedback_arrow/.style={->,>=stealth,thick,red,dashed}
+]
+
+% Main cascade flow
+\node[action] (tumor_growth) {Tumor Cell\\Proliferation};
+\node[actor, below=of tumor_growth] (dc) {Dendritic\\Cell};
+\node[action, below=of dc] (phagocytosis) {Tumor\\Phagocytosis};
+\node[action, below=of phagocytosis] (antigen_present) {Antigen\\Presentation};
+\node[actor, below=of antigen_present] (t_activation) {T Cell\\Activation};
+
+% Branch to effector responses
+\node[actor, right=of t_activation] (ctl) {Cytotoxic\\T Cell};
+\node[action, right=of ctl] (tumor_killing) {Tumor Cell\\Killing};
+
+% Immunosuppressive feedback
+\node[feedback, left=of t_activation] (treg) {Regulatory\\T Cell};
+\node[feedback, above=of treg] (suppression) {Immune\\Suppression};
+
+% Arrows - main cascade
+\draw[arrow] (tumor_growth) -- (dc);
+\draw[arrow] (dc) -- (phagocytosis);
+\draw[arrow] (phagocytosis) -- (antigen_present);
+\draw[arrow] (antigen_present) -- (t_activation);
+\draw[arrow] (t_activation) -- (ctl);
+\draw[arrow] (ctl) -- (tumor_killing);
+
+% Feedback loops
+\draw[arrow] (t_activation) -- (treg);
+\draw[arrow] (treg) -- (suppression);
+\draw[feedback_arrow] (suppression) -- (t_activation);
+\draw[feedback_arrow] (suppression) -- ++(2,0) |- (tumor_killing);
+
+% Additional annotations  
+\node[font=\scriptsize] at ([xshift=1cm, yshift=0.5cm]tumor_growth) {Initial Event};
+\node[font=\scriptsize] at ([xshift=1cm, yshift=0.5cm]tumor_killing) {Effector Response};
+\node[font=\scriptsize] at ([xshift=-1cm]suppression) {Negative Feedback};
+
+\end{tikzpicture}
+\caption{BPMN-style Immune Response Cascade in the RCC model. The process flow illustrates the sequential steps from tumor cell detection through antigen presentation to effector T cell activation and tumor elimination. Regulatory T cells provide negative feedback that can suppress both T cell activation and effector functions, creating the potential for immune evasion. Red dashed arrows indicate immunosuppressive pathways that counteract the primary immune response.}
+\label{fig:immune_response_cascade}
+\end{figure}
