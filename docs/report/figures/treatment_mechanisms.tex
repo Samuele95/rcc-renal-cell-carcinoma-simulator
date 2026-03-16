@@ -28,7 +28,7 @@
 \node[red] at (2.5,8.3) {\textbf{BLOCKED!}};
 
 % ICI drug
-\node[draw, star, fill=treatment, text=white] (ici_drug) at (2.5,7) {ICI};
+\node[draw, rounded corners=3pt, fill=treatment, text=white] (ici_drug) at (2.5,7) {ICI};
 \draw[thick, ->, treatment] (ici_drug) to[bend left=30] (pd1) node[midway, left] {\tiny Blocks};
 \draw[thick, ->, treatment] (ici_drug) to[bend right=30] (pdl1) node[midway, right] {\tiny Blocks};
 
@@ -59,7 +59,7 @@
 \draw[thick, ->] (vegf) to[bend right=30] (vessel2);
 
 % TKI drug blocking
-\node[draw, star, fill=treatment, text=white] (tki_drug) at (8,6.5) {TKI};
+\node[draw, rounded corners=3pt, fill=treatment, text=white] (tki_drug) at (8,6.5) {TKI};
 \draw[thick, ->, treatment] (tki_drug) -- (vegf) node[midway, right] {\tiny Blocks};
 
 % Blocked angiogenesis

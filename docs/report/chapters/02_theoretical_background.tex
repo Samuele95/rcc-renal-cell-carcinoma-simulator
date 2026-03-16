@@ -3,6 +3,8 @@
 
 \epigraph{The cell is a machine driven by energy.}{--- Albert Szent-Györgyi}
 
+Understanding why traditional mathematical approaches fail to capture cancer's complexity is the first step toward building better models. This chapter reveals why agent-based modeling succeeds where differential equations struggle --- and lays the foundation for a virtual tumor that behaves like real biology.
+
 This chapter presents the theoretical foundations upon which the RCC agent-based model is constructed. We begin with a formal introduction to agent-based modeling and the Repast4Py framework (Section~\ref{sec:bg_abm}), then review the immunology of renal cell carcinoma with emphasis on the cell types represented in the model (Section~\ref{sec:bg_immunology}), discuss the metabolic characteristics of the tumor microenvironment (Section~\ref{sec:bg_metabolism}), and conclude with an overview of the treatment modalities implemented in the simulation (Section~\ref{sec:bg_treatments}).
 
 % ============================================================================
@@ -88,6 +90,10 @@ Serialization       & Not required            & \texttt{save()} / restore functi
 \end{table}
 
 The port to Repast4Py required significant restructuring. In Mesa, neighbor queries are handled by the grid object directly (e.g., \texttt{grid.get\_neighbors()}). In the Repast4Py implementation, a custom \texttt{spatial\_index} dictionary maps grid positions to agent lists, and utility functions in \texttt{grid\_utils} provide 3D neighborhood queries, empty-cell detection, and Moore neighborhood enumeration. Additionally, Repast4Py requires explicit \texttt{save()} methods on agents for MPI serialization, and the model manages agent lifecycle (creation, movement, removal) through centralized methods on the \texttt{RCCModel} class rather than through Mesa's scheduler.
+
+\begin{tcolorbox}[enhanced, colback=blue!3, colframe=blue!50!black, arc=3pt, boxrule=0.5pt, title={\textbf{Key Takeaway}}]
+Agent-based modeling captures what differential equations cannot: spatial heterogeneity, individual cell differences, and emergent behaviors. While equations treat tumors as uniform masses, ABM reveals how every cancer cell's unique genetics and position determines the battle's outcome.
+\end{tcolorbox}
 
 \begin{figure}[htbp]
 \centering

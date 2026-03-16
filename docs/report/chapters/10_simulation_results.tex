@@ -3,6 +3,8 @@
 
 \epigraph{In God we trust; all others must bring data.}{--- W. Edwards Deming}
 
+With 92 parameters tuned against clinical reality, we can finally ask the question that motivated this entire project: does sex matter in kidney cancer treatment? This chapter reveals how single-seed results can be catastrophically misleading --- and shows why 160 simulation runs are needed to uncover the truth.
+
 This chapter presents the results from systematic simulation of the RCC agent-based model across six scenarios: sex-specific baseline (no treatment) conditions and three treatment modalities (ICI, TKI, and combination therapy) stratified by biological sex. The results demonstrate significant differences in tumor progression patterns, treatment responses, and sex-specific effects that inform our understanding of renal cell carcinoma immunotherapy.
 
 % ======================================================================
@@ -469,6 +471,10 @@ The large standard deviations observed across all metrics (e.g., tumor counts sh
 The distribution of final tumor counts follows a characteristic bimodal pattern: simulations tend toward either complete tumor elimination (0 cells) or substantial progression (hundreds to thousands of cells). This bimodality emerges from the nonlinear dynamics of immune surveillance---once a tumor escapes initial immune control, positive feedback mechanisms (immune exhaustion, angiogenesis, immune suppression) accelerate progression. Conversely, early immune success often leads to complete tumor eradication.
 
 This stochastic behavior mirrors clinical observations of high inter-patient variability in treatment response, where seemingly similar patients may experience dramatically different outcomes despite identical treatment protocols~\cite{dagogo2018, litchfield2021}.
+
+\begin{tcolorbox}[enhanced, colback=blue!3, colframe=blue!50!black, arc=3pt, boxrule=0.5pt, title={\textbf{Key Takeaway}}]
+Single-seed simulation results can be catastrophically misleading. What looks like a clear treatment success in one run might actually be a statistical fluke. Only by running 160 simulations do the true patterns emerge --- revealing that female ICI+TKI patients achieve 65\% survival, the best outcome in our study.
+\end{tcolorbox}
 
 \subsection{Treatment Effectiveness Analysis}
 

@@ -3,6 +3,8 @@
 
 \epigraph{The art of medicine consists of amusing the patient while nature cures the disease.}{--- Voltaire}
 
+These genetic mutations create vulnerabilities that treatments can exploit. This chapter examines exactly how immune checkpoint inhibitors and targeted therapies work --- and reveals why the ICI+TKI combination is more than the sum of its parts.
+
 This chapter describes the pharmacological treatment layer of the model, which simulates Immune Checkpoint Inhibitors (ICI), Tyrosine Kinase Inhibitors (TKI), and their combination.  The treatment system is activated after a configurable number of simulation steps and modulates tumor and immune cell behaviors through drug-specific mechanisms.
 
 %% ====================================================================
@@ -185,6 +187,10 @@ The combination of ICI and TKI exploits complementary mechanisms that produce sy
   \item \textbf{Immunogenic cell death:} TKI-induced tumor cell death releases neoantigens, priming new adaptive immune responses.  ICI ensures that the T cells activated by these neoantigens remain functional.
   \item \textbf{Treg reduction:} TKI suppresses Treg differentiation, reducing the immunosuppressive component of the tumor microenvironment, while ICI restores the activity of effector T cells.
 \end{enumerate}
+
+\begin{tcolorbox}[enhanced, colback=blue!3, colframe=blue!50!black, arc=3pt, boxrule=0.5pt, title={\textbf{Key Takeaway}}]
+The ICI+TKI combination is more than the sum of its parts. TKI normalizes blood vessels to let immune cells infiltrate tumors, while ICI removes the brakes that prevent T cells from attacking. Together, they create a coordinated assault on cancer.
+\end{tcolorbox}
 
 \subsection{Clinical Evidence}
 

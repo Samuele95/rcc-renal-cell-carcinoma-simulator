@@ -148,7 +148,7 @@
 };
 
 % DNA influence indicator
-\node[draw, star, fill=dna, text=white] (dna) at (12,-2) {DNA};
+\node[draw, rounded corners=3pt, fill=dna, text=white] (dna) at (12,-2) {DNA};
 \draw[thick, ->, dashed] (dna) -- (division_check) node[midway, right] {\tiny Mutation effects};
 \draw[thick, ->, dashed] (dna) -- (pd_l1) node[midway, below] {\tiny CD274 expression};
 

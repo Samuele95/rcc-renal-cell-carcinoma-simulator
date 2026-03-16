@@ -3,6 +3,8 @@
 
 \epigraph{With four parameters I can fit an elephant.}{--- John von Neumann}
 
+A computational model is only as good as its parameters. This chapter reveals how 92 precisely tuned parameters --- optimized by Bayesian machine learning against real clinical trial data --- transform an abstract biological theory into a predictive medical tool.
+
 This chapter explores the parameter architecture that transforms a theoretical biological model into a calibratable computational system. Parameter design in agent-based biological models faces a fundamental challenge: balancing biological interpretability with optimization tractability while maintaining model identifiability. Our approach embodies a hierarchical parameter philosophy that separates concerns across biological, computational, and optimization scales, enabling systematic model calibration without sacrificing biological insight.
 
 % ======================================================================
@@ -431,6 +433,10 @@ study = optuna.create_study(direction="minimize")
 study.optimize(wrapped_objective, n_trials=250)
 \end{lstlisting}
 
+\begin{tcolorbox}[enhanced, colback=blue!3, colframe=blue!50!black, arc=3pt, boxrule=0.5pt, title={\textbf{Key Takeaway}}]
+Ninety-two parameters are tuned by Bayesian optimization (Optuna) against real ARON-1 clinical trial data. This isn't just model fitting --- it's teaching the virtual tumor to behave like real patient tumors, creating a bridge between computational biology and clinical medicine.
+\end{tcolorbox}
+
 % ======================================================================
 \section{Clinical Dataset}
 \label{sec:clinical-dataset}
@@ -474,3 +480,5 @@ Figure~\ref{fig:parameter_sensitivity} demonstrates the sensitivity of simulatio
 \end{figure}
 
 Each row of the dataset is used to parameterize a simulation run during optimization, with the patient's clinical features passed as keyword arguments to \texttt{RCCModel}. The simulation's survival prediction is then compared against the clinical outcome to compute the trial error.
+
+With 92 parameters tuned against clinical reality, we can finally ask the question that motivated this entire project: does sex matter in RCC treatment? The next chapter reveals surprising answers that challenge conventional treatment wisdom.

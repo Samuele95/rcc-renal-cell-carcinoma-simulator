@@ -3,6 +3,8 @@
 
 \epigraph{Cancer cells consume glucose at an abnormally high rate.}{--- Otto Warburg}
 
+Understanding how tumors starve the immune system is central to designing effective therapies. This chapter introduces the glucose field that models this metabolic warfare --- and reveals a critical tipping point that determines whether the immune system wins or loses.
+
 This chapter describes the glucose concentration field that overlays the discrete agent grid, modeling metabolic dynamics within the tumor microenvironment.  The system captures diffusion, source injection from blood vessels, consumption by tumor and immune cells, and gradient-based chemotaxis for immune cell navigation.
 
 %% ====================================================================
@@ -193,6 +195,10 @@ p_{\text{kill}}' = p_{\text{kill}} \cdot f_{\text{immune}}.
 \end{equation}
 
 \noindent This mechanism captures the biological observation that T cells and NK cells require glucose to sustain their cytotoxic machinery.
+
+\begin{tcolorbox}[enhanced, colback=blue!3, colframe=blue!50!black, arc=3pt, boxrule=0.5pt, title={\textbf{Key Takeaway}}]
+The glucose consumption rate has a critical tipping point between 2.0 and 4.0 that determines treatment success. Below this threshold, immune cells retain enough metabolic fuel to attack tumors effectively. Above it, the Warburg effect starves the immune system into submission.
+\end{tcolorbox}
 
 Figure~\ref{fig:glucose_system} illustrates the complete glucose system, showing the cyclic processes of injection, diffusion, consumption, and gradient computation that govern metabolic dynamics in the tumor microenvironment.
 

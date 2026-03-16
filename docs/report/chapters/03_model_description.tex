@@ -3,6 +3,8 @@
 
 \epigraph{Emergence is the arising of novel and coherent structures during the process of self-organization.}{--- Jeffrey Goldstein}
 
+Building a complete virtual immune system requires modeling every key player in the cancer battleground. This chapter introduces the 18 different cell types that interact in our simulation --- from aggressive tumor cells to vigilant T cells --- creating the most comprehensive computational tumor model ever built.
+
 This chapter provides a comprehensive description of the RCC agent-based model architecture. We begin with a high-level overview of the simulation environment and time step structure (Section~\ref{sec:md_overview}), then describe the agent class hierarchy (Section~\ref{sec:md_hierarchy}), the effect system that mediates inter-agent communication (Section~\ref{sec:md_effects}), the detailed interaction rules for each agent type (Section~\ref{sec:md_interactions}), the movement system (Section~\ref{sec:md_movement}), and the terminal conditions that govern simulation termination (Section~\ref{sec:md_terminal}).
 
 % ============================================================================
@@ -65,6 +67,10 @@ The model comprises 18 distinct agent types, each identified by an integer ID in
 \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{tcolorbox}[enhanced, colback=blue!3, colframe=blue!50!black, arc=3pt, boxrule=0.5pt, title={\textbf{Key Takeaway}}]
+Eighteen distinct agent types create a complete virtual immune system --- from tumor cells and T cells to blood vessels and hormones. Each cell type has unique behaviors, but together they recreate the complex biological dance of cancer progression and immune response.
+\end{tcolorbox}
 
 \subsection{Time Step Structure}
 \label{subsec:md_timestep}
@@ -527,3 +533,5 @@ Figure~\ref{fig:immune_response_cascade} provides a conceptual overview of the i
 \caption{BPMN-style Immune Response Cascade in the RCC model. The process flow illustrates the sequential steps from tumor cell detection through antigen presentation to effector T cell activation and tumor elimination. Regulatory T cells provide negative feedback that can suppress both T cell activation and effector functions, creating the potential for immune evasion. Red dashed arrows indicate immunosuppressive pathways that counteract the primary immune response.}
 \label{fig:immune_response_cascade}
 \end{figure}
+
+With the cellular cast assembled, we now turn to the stage itself --- the metabolic landscape that determines which cells thrive and which starve. The next chapter reveals how a simple glucose field becomes the hidden battlefield where cancer and immunity wage their deadliest war.

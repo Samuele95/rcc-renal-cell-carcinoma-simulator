@@ -3,6 +3,8 @@
 
 \epigraph{Any sufficiently advanced simulation is indistinguishable from an experiment.}{--- adapted from Arthur C. Clarke}
 
+Converting biological complexity into working code requires more than good programming --- it demands architectural vision. This chapter reveals how moving from Mesa to Repast4Py enabled true 3D simulation and MPI parallelism, transforming a proof-of-concept into a production-scale virtual tumor.
+
 This chapter examines the architectural decisions, design patterns, and implementation strategies that transform biological theory into executable software. Rather than cataloging code structure, we focus on the engineering problems encountered and the design patterns employed to solve them, revealing how computational constraints shape biological model design and vice versa.
 
 % ======================================================================
@@ -64,6 +66,10 @@ Treatment effects employ the Strategy pattern, where different drug types (\text
 \textit{[Comparison table showing differences between Mesa and Repast4Py frameworks in terms of parallelism, spatial grids, and agent management]}
 
 The most consequential difference for this project is the parallelism model. Mesa is inherently single-process: all agents live in a single Python interpreter, and there is no built-in mechanism for distributing computation across cores or nodes. Repast4Py, by contrast, is architected from the ground up around MPI, making it possible to scale the simulation to larger tissue volumes in the future without redesigning the agent management infrastructure.
+
+\begin{tcolorbox}[enhanced, colback=blue!3, colframe=blue!50!black, arc=3pt, boxrule=0.5pt, title={\textbf{Key Takeaway}}]
+Moving from Mesa to Repast4Py enabled true 3D tumor simulation and MPI parallelism. What started as a 2D proof-of-concept became a production-scale system capable of modeling realistic tissue volumes with millions of cellular interactions.
+\end{tcolorbox}
 
 % ======================================================================
 \section{Simulation Orchestration: The Main Event Loop}

@@ -45,7 +45,7 @@
 \node[draw, circle, fill=adaptive, text=white, minimum size=0.8cm] (th2) at (8,2) {Th2};
 
 % Tumor interaction
-\node[draw, star, fill=tumor, text=white, minimum size=1.2cm] (tumor_cell) at (11,4) {Tumor};
+\node[draw, rounded corners=3pt, fill=tumor, text=white, minimum size=1.2cm] (tumor_cell) at (11,4) {Tumor};
 
 % Cytotoxic killing
 \draw[thick, ->, red] (ctl) -- (tumor_cell) node[midway, above] {Kill};

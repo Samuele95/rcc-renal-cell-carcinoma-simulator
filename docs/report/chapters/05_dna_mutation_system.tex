@@ -3,6 +3,8 @@
 
 \epigraph{Nothing in biology makes sense except in the light of evolution.}{--- Theodosius Dobzhansky}
 
+Every cancer cell is genetically unique, and this diversity determines which treatments succeed or fail. This chapter reveals how 16 key genes create tumor fingerprints --- and shows why males start with three times more cancer-driving mutations than females.
+
 This chapter describes the gene-level representation used by tumor cells in the model.  The DNA system encodes 16 cancer-relevant genes, supports codon-level translation, introduces mutations during cell division with genomic-instability-dependent rates, and derives phenotypic parameters that govern tumor behavior and immune evasion.
 
 %% ====================================================================
@@ -200,6 +202,10 @@ p_{\text{AP}} = \max\!\left(0,\; 6 - \frac{\sum_{g \in \mathcal{G}_{\text{AP}}} 
 \end{equation}
 where $\mathcal{G}_{\text{AP}} = \{\text{MHC, JAK1, JAK2, B2M, TAP1, TAP2}\}$.  This represents the tumor cell's ability to present antigens on its surface.  Mutations in antigen presentation genes reduce this probability, enabling immune evasion.
 
+\begin{tcolorbox}[enhanced, colback=blue!3, colframe=blue!50!black, arc=3pt, boxrule=0.5pt, title={\textbf{Key Takeaway}}]
+Males start with three times more BRCA1 mutations than females, creating higher genomic instability from the very beginning. Each tumor cell carries a unique 16-gene fingerprint that determines its visibility to the immune system, growth rate, and treatment response.
+\end{tcolorbox}
+
 \paragraph{2.\ Checkpoint Pathway Inhibition Chance.}
 \begin{equation}
 \label{eq:checkpoint}
@@ -277,3 +283,5 @@ T cell receptors (TCRs) recognize neoantigens through a matching mechanism based
 \end{equation}
 
 \noindent where $h(a)$ is the 8-bit hash of antigen $a$, $r$ is the receptor value, $d_H$ denotes Hamming distance, and $\Delta_r$ is the \texttt{receptor\_threshold\_variation} parameter (default $1$, giving a threshold of $4$).  This mechanism ensures that T cells only respond to foreign (non-self) peptides and provides a stochastic, receptor-specific recognition model.
+
+These genetic mutations create vulnerabilities that treatments can exploit. The next chapter examines exactly how immune checkpoint inhibitors and targeted therapies turn cancer's own molecular weaknesses against itself.
