@@ -1,7 +1,7 @@
 \chapter{DNA and Mutation System}
 \label{ch:dna}
 
-\epigraph{Nothing in biology makes sense except in the light of evolution.}{--- Theodosius Dobzhansky}
+
 
 Every cancer cell is genetically unique, and this diversity determines which treatments succeed or fail. This chapter reveals how 16 key genes create tumor fingerprints --- and shows why males start with three times more cancer-driving mutations than females.
 
@@ -76,15 +76,7 @@ Each gene occupies a defined region within a synthetic DNA sequence.  The gene m
 \section{Codon Translation}
 \label{sec:codon-translation}
 
-The model implements the standard genetic code, mapping all 64 possible nucleotide triplets to the 20 amino acids and the stop signal.
-
-\subsection{Codon Table}
-
-The codon table is stored as a class-level dictionary in the \texttt{DNA} class, with keys being three-letter nucleotide strings (e.g., \texttt{ATG} $\to$ \texttt{M} for methionine) and the three stop codons (\texttt{TAA}, \texttt{TAG}, \texttt{TGA}) mapping to the sentinel character \texttt{\_}.
-
-\subsection{Translation: \texttt{gene\_to\_protein()}}
-
-Given a gene name, the \texttt{gene\_to\_protein()} method reads codons starting from the gene's start position, translating each triplet to its corresponding amino acid.  Translation terminates upon encountering a stop codon:
+The model implements the full 64-codon table mapping nucleotide triplets to amino acids and stop signals, with translation terminating upon encountering stop codons.
 
 \begin{lstlisting}[caption={Gene-to-protein translation.},label={lst:translation}]
 def gene_to_protein(self, gene_name: str) -> str:
@@ -96,53 +88,13 @@ def gene_to_protein(self, gene_name: str) -> str:
         if aa == '_':
             break
         protein += aa
-    return protein
-\end{lstlisting}
 
-\noindent Unknown codons (which should not arise in practice) are mapped to \texttt{X}.
-
-\subsection{Reverse Translation: \texttt{protein\_to\_gene()}}
-
-For constructing the initial wildtype DNA sequence, the \texttt{protein\_to\_gene()} static method performs reverse translation.  It uses an inverted codon table (amino acid $\to$ codon) to convert each amino acid back to a nucleotide triplet.  Since the genetic code is degenerate (multiple codons per amino acid), the inverse mapping selects the last codon encountered during dictionary inversion, yielding a deterministic but arbitrary choice among synonymous codons.
 
 %% ====================================================================
 \section{Mutation Mechanics}
 \label{sec:mutation-mechanics}
 
-Mutations accumulate through two mechanisms: injected mutations at initialization and stochastic point mutations during DNA duplication.
-
-\subsection{Genomic Instability}
-
-The mutation rate during cell division is controlled by the genomic instability parameter, which is derived from the BRCA1 gene's mutation status:
-
-\begin{equation}
-\label{eq:genomic-instability}
-\mu_{\text{instability}} = \bigl(s_{\text{BRCA1}}\bigr)^{\max(1,\; e_{\text{BRCA1}})} \times 0.05,
-\end{equation}
-
-\noindent where $s_{\text{BRCA1}}$ is the BRCA1 mutation score (see Section~\ref{sec:mutation-score}) and $e_{\text{BRCA1}}$ is the BRCA1 promoter expression level.  A wildtype BRCA1 ($s_{\text{BRCA1}} = 0$) yields zero instability, while a fully mutated BRCA1 ($s_{\text{BRCA1}} \to 1$) produces a base mutation rate of $0.05$ per nucleotide.  The exponentiation by the expression level amplifies the instability when the BRCA1 promoter is active.
-
-\subsection{DNA Duplication with Point Mutations}
-
-When a tumor cell divides, its DNA is duplicated with potential point mutations:
-
-\begin{equation}
-\label{eq:num-mutations}
-n_{\text{mut}} = \lfloor \mu_{\text{instability}} \times L \rfloor,
-\end{equation}
-
-\noindent where $L$ is the total length of the DNA sequence.  For each of the $n_{\text{mut}}$ mutations, a random position is selected, and the nucleotide at that position is replaced by one of the three alternative bases (chosen uniformly at random).  This process models single-nucleotide variants (SNVs), the most common form of somatic mutation.
-
-\subsection{Injected Mutations}
-
-The initial cancer cell is seeded with pre-existing BRCA1 mutations to establish genomic instability from the outset.  The number of injected mutations depends on the patient's sex:
-
-\begin{equation}
-\label{eq:injected-mutations}
-n_{\text{injected}} = \begin{cases} 3 & \text{if sex = Male,} \\ 1 & \text{if sex = Female.} \end{cases}
-\end{equation}
-
-\noindent These mutations are introduced by replacing a segment of the BRCA1 coding region (positions 730--790 in the DNA string) with a codon-encoded mutant protein that differs from the wildtype by exactly $n_{\text{injected}}$ amino acid substitutions.  The substitution positions are selected randomly, and each is replaced by a random alternative from the amino acid alphabet.
+Mutations accumulate through injected mutations at initialization and stochastic point mutations during DNA duplication. Genomic instability is controlled by BRCA1 mutation status, with mutation rate scaling with BRCA1 dysfunction. Initial mutations are sex-dependent: males start with 3 BRCA1 mutations, females with 1, establishing different baseline genomic instability patterns.
 
 %% ====================================================================
 \section{Gene Expression and Phenotypic Effects}
@@ -202,9 +154,7 @@ p_{\text{AP}} = \max\!\left(0,\; 6 - \frac{\sum_{g \in \mathcal{G}_{\text{AP}}} 
 \end{equation}
 where $\mathcal{G}_{\text{AP}} = \{\text{MHC, JAK1, JAK2, B2M, TAP1, TAP2}\}$.  This represents the tumor cell's ability to present antigens on its surface.  Mutations in antigen presentation genes reduce this probability, enabling immune evasion.
 
-\begin{tcolorbox}[enhanced, colback=blue!3, colframe=blue!50!black, arc=3pt, boxrule=0.5pt, title={\textbf{Key Takeaway}}]
-Males start with three times more BRCA1 mutations than females, creating higher genomic instability from the very beginning. Each tumor cell carries a unique 16-gene fingerprint that determines its visibility to the immune system, growth rate, and treatment response.
-\end{tcolorbox}
+
 
 \paragraph{2.\ Checkpoint Pathway Inhibition Chance.}
 \begin{equation}

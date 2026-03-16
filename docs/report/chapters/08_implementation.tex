@@ -1,7 +1,7 @@
 \chapter{Implementation}
 \label{ch:implementation}
 
-\epigraph{Any sufficiently advanced simulation is indistinguishable from an experiment.}{--- adapted from Arthur C. Clarke}
+
 
 Converting biological complexity into working code requires more than good programming --- it demands architectural vision. This chapter reveals how moving from Mesa to Repast4Py enabled true 3D simulation and MPI parallelism, transforming a proof-of-concept into a production-scale virtual tumor.
 
@@ -18,11 +18,7 @@ This chapter examines the architectural decisions, design patterns, and implemen
 \label{fig:architecture_overview}
 \end{figure}
 
-The transition from Mesa to Repast4Py exemplifies a fundamental principle in scientific software engineering: framework selection reflects not just current requirements but anticipated scaling challenges that may only emerge after years of model development. This decision embodies the tension between immediate development velocity and long-term architectural flexibility---a trade-off that permeates every aspect of the implementation.
-
-The choice of Repast4Py over Mesa was driven by three architectural imperatives that transcend simple feature comparison. First, the \textbf{dimensionality constraint}: tumor microenvironments are inherently three-dimensional systems where spatial relationships determine biological outcomes. Mesa's 2D-centric grid design would have forced either biological oversimplification or expensive architectural retrofitting. Second, the \textbf{parallelism imperative}: as model complexity increases, single-threaded execution becomes the bottleneck that prevents exploration of biologically relevant parameter spaces or tissue volumes. Repast4Py's MPI-native architecture provides a path to distributed computing without fundamental redesign. Third, the \textbf{data coupling challenge}: biological systems exhibit tight coupling between discrete agents and continuous fields (glucose, cytokines, mechanical forces), requiring seamless integration between agent frameworks and scientific computing libraries.
-
-These design pressures led to an architecture that prioritizes \textbf{composability over convenience}, \textbf{explicitness over abstraction}, and \textbf{future scaling over current simplicity}. The resulting system reflects a philosophy where computational architecture mirrors biological organization: modular, hierarchical, and capable of emergent behavior through local interactions.
+The transition from Mesa to Repast4Py was driven by three imperatives: (1) \emph{3D dimensionality} - tumor microenvironments require true spatial relationships; (2) \emph{parallelism} - MPI scaling for larger tissue volumes; (3) \emph{agent-field coupling} - seamless integration between discrete agents and continuous fields. The architecture prioritizes composability over convenience and future scaling over current simplicity.
 
 \subsection{Comparison with Mesa}
 
@@ -32,11 +28,7 @@ Table~\ref{tab:detailed-mesa-vs-repast4py} presents a comprehensive comparison b
 \section{Design Patterns in Biological Computing}
 \label{sec:design-patterns}
 
-The RCC model implementation employs several classical design patterns, each addressing specific challenges that arise when mapping biological processes to computational structures. These patterns emerged organically from the constraints of the biological domain rather than being imposed by software engineering dogma.
-
-\subsection{Command Pattern: Deferred Movement}
-
-Biological systems exhibit temporal coherence---all agents observe the same spatial configuration during their decision-making phase, with position updates occurring simultaneously. This requirement conflicts with the sequential nature of agent execution in single-threaded environments. The solution employs the Command pattern through deferred movement: agents record movement intentions during their \texttt{step()} method rather than executing moves immediately.
+The implementation employs several design patterns: the Command pattern for deferred movement (ensuring temporal coherence), the Observer pattern for data collection, and the Strategy pattern for treatment modalities. These patterns emerged from biological constraints rather than software engineering dogma.
 
 \begin{lstlisting}[caption={Command pattern for deferred movement ensures temporal coherence.}, label={lst:deferred-movement}]
 # In agent.step() method:
@@ -52,24 +44,14 @@ def move_all_agents(self):
             self.move_agent(agent, agent._desired_pos)  # Execute all commands
 \end{lstlisting}
 
-This pattern prevents order-of-execution artifacts where early-stepping agents could influence the spatial decisions of later-stepping agents, maintaining the biological principle that cellular decisions occur based on simultaneous environmental sensing.
 
-\subsection{Observer Pattern: Data Collection}
-
-The Observer pattern governs data collection, separating the concerns of biological simulation from measurement and analysis. The \texttt{Observer} class registers for model state changes and maintains statistical summaries without coupling the simulation logic to specific metrics.
-
-\subsection{Strategy Pattern: Treatment Modalities}
-
-Treatment effects employ the Strategy pattern, where different drug types (\texttt{ICIDrug}, \texttt{TKIDrug}) implement a common \texttt{Drug} interface. This design enables runtime composition of treatment regimens and simplifies the addition of novel therapeutic mechanisms without modifying core simulation logic.
 
 % TikZ table temporarily disabled - comparison table would show Mesa vs Repast4Py differences
 \textit{[Comparison table showing differences between Mesa and Repast4Py frameworks in terms of parallelism, spatial grids, and agent management]}
 
 The most consequential difference for this project is the parallelism model. Mesa is inherently single-process: all agents live in a single Python interpreter, and there is no built-in mechanism for distributing computation across cores or nodes. Repast4Py, by contrast, is architected from the ground up around MPI, making it possible to scale the simulation to larger tissue volumes in the future without redesigning the agent management infrastructure.
 
-\begin{tcolorbox}[enhanced, colback=blue!3, colframe=blue!50!black, arc=3pt, boxrule=0.5pt, title={\textbf{Key Takeaway}}]
-Moving from Mesa to Repast4Py enabled true 3D tumor simulation and MPI parallelism. What started as a 2D proof-of-concept became a production-scale system capable of modeling realistic tissue volumes with millions of cellular interactions.
-\end{tcolorbox}
+
 
 % ======================================================================
 \section{Simulation Orchestration: The Main Event Loop}
