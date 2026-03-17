@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.6)  17 MAR 2026 01:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.6)  17 MAR 2026 01:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1346,7 +1346,20 @@ LaTeX Font Info:    Trying to load font information for T1+ppl on input line 17
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ppl.fd
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
-) (./main.aux)
+) (./main.aux
+
+LaTeX Warning: Label `fig:agent_interactions' multiply defined.
+
+
+LaTeX Warning: Label `fig:immune_response_cascade' multiply defined.
+
+
+LaTeX Warning: Label `fig:model_architecture' multiply defined.
+
+
+LaTeX Warning: Label `fig:simulation_pipeline' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 177.
@@ -1367,8 +1380,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 177.
 LaTeX Font Info:    ... okay on input line 177.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 177.
 LaTeX Font Info:    ... okay on input line 177.
-
-(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count373
 \scratchdimen=\dimen350
@@ -1501,26 +1513,55 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-))
-\tf@toc=\write5
-\openout5 = `main.toc'.
+)
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 31
+.
 
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `pcr' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.211 \clearpage
-                 [1
+l.40 ...}Gradient and Chemotaxis}{25}{section.4.3}
+                                                  % [1
 
-] (./chapters/01_introduction.tex
+]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[2])
+\tf@toc=\write5
+\openout5 = `main.toc'.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[3] (./chapters/01_introduction.tex
 Chapter 1.
-<figures/rcc_epidemiology.pdf, id=99, 811.46933pt x 353.43166pt>
+<figures/rcc_epidemiology.pdf, id=571, 811.46933pt x 353.43166pt>
 File: figures/rcc_epidemiology.pdf Graphic file (type pdf)
 <use figures/rcc_epidemiology.pdf>
 Package pdftex.def Info: figures/rcc_epidemiology.pdf  used on input line 13.
 (pdftex.def)             Requested size: 386.96027pt x 168.5397pt.
-[2
+[4
 
 
  <./figures/rcc_epidemiology.pdf>]
@@ -1544,23 +1585,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[3]
+[5]
 Overfull \hbox (0.36613pt too wide) in paragraph at lines 56--57
 []\T1/ppl/b/n/12 Stochasticity. \T1/ppl/m/n/12 Bi-o-log-i-cal pro-cesses such a
 s cell di-vi-sion, apop-to-sis, im-mune recog-
  []
 
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 60
-.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `pcr' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
 
-Overfull \hbox (21.84921pt too wide) in paragraph at lines 60--61
+Overfull \hbox (15.84921pt too wide) in paragraph at lines 60--61
 \T1/ppl/m/n/12 such as Mesa [[]]. Repast4Py pro-vides core abstractions---\T1/p
 cr/m/n/12 SharedContext\T1/ppl/m/n/12 , \T1/pcr/m/n/12 SharedGrid\T1/ppl/m/n/12
  ,
@@ -1574,46 +1606,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[4]
+[6]
 Overfull \hbox (1.14552pt too wide) in paragraph at lines 74--75
 \T1/ppl/m/n/12 ates over the model's weight pa-ram-e-ters, in-clud-ing the newl
 y in-tro-duced glucose-
  []
-
-
-LaTeX Warning: Reference `ch:theoretical_background' on page 5 undefined on inp
-ut line 80.
-
-
-LaTeX Warning: Reference `ch:model_description' on page 5 undefined on input li
-ne 80.
-
-
-LaTeX Warning: Reference `ch:glucose' on page 5 undefined on input line 80.
-
-
-LaTeX Warning: Reference `ch:dna' on page 5 undefined on input line 80.
-
-
-LaTeX Warning: Reference `ch:treatment' on page 5 undefined on input line 80.
-
-
-LaTeX Warning: Reference `ch:sex-hormones' on page 5 undefined on input line 80
-.
-
-
-LaTeX Warning: Reference `ch:implementation' on page 5 undefined on input line 
-80.
-
-
-LaTeX Warning: Reference `ch:parameters' on page 5 undefined on input line 80.
-
-
-LaTeX Warning: Reference `ch:simulation-results' on page 5 undefined on input l
-ine 80.
-
-
-LaTeX Warning: Reference `ch:conclusion' on page 5 undefined on input line 80.
 
 )
 
@@ -1624,7 +1621,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[5] (./chapters/02_theoretical_background.tex
+[7] (./chapters/02_theoretical_background.tex
 Chapter 2.
 
 Overfull \hbox (35.29826pt too wide) in paragraph at lines 13--14
@@ -1636,188 +1633,101 @@ re, and non-lin-ear feed-back^^Vproperties
 LaTeX Info: Symbol \textrightarrow not provided by
             font family ppl in TS1 encoding.
             Default family used instead on input line 173.
-)
-Runaway argument?
-{figure> 
-! Paragraph ended before \end  was complete.
-<to be read again> 
-                   \par 
-l.25 
-     
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
+) [8
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 27--27
-|[]\T1/ppl/b/n/17.28 Immunology of Re-nal Cell Car-ci-noma|
- []
+]
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-! LaTeX Error: Not in outer par mode.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.33 \begin{table}[htbp]
-                        
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+[9])
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-Underfull \hbox (badness 10000) in paragraph at lines 61--61
-|[]\T1/ppl/b/n/17.28 Tumor Metabolism|
- []
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 68--68
-|[]\T1/ppl/b/n/17.28 Treatment Modal-i-ties|
- []
-
-) (./chapters/03_model_description.tex
+[10] (./chapters/03_model_description.tex
 Chapter 3.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/ppl/b/n/24.88 Chapter 3|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/ppl/b/n/24.88 Model De-scrip-tion|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 9--9
-|[]\T1/ppl/b/n/17.28 Overview|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 13--13
-|[]\T1/ppl/b/n/14.4 Spatial En-vi-ron-ment|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 18--18
-|[]\T1/ppl/b/n/14.4 Agent Types|
- []
-
-
-LaTeX Warning: Reference `tab:agent_types' on page 6 undefined on input line 21
-.
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.23 \begin{figure}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<figures/agent_population_pie.pdf, id=197, 790.13191pt x 715.54706pt>
+<figures/agent_population_pie.pdf, id=700, 790.13191pt x 715.54706pt>
 File: figures/agent_population_pie.pdf Graphic file (type pdf)
 <use figures/agent_population_pie.pdf>
 Package pdftex.def Info: figures/agent_population_pie.pdf  used on input line 2
 5.
 (pdftex.def)             Requested size: 386.96027pt x 350.42459pt.
+[11
 
-Underfull \hbox (badness 10000) in paragraph at lines 62--62
-|[]\T1/ppl/b/n/14.4 Time Step Struc-ture|
+
+]
+Overfull \vbox (114.55405pt too high) has occurred while \output is active []
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[12 <./figures/agent_population_pie.pdf>]
+Overfull \hbox (50.59941pt too wide) in paragraph at lines 65--66
+\T1/ppl/m/n/12 Each sim-u-la-tion step fol-lows a fixed se-quence of op-er-a-ti
+ons, ex-e-cuted by the \T1/pcr/m/n/12 RCCModel.step()
  []
 
 
-LaTeX Warning: Reference `sec:md_terminal' on page 6 undefined on input line 69
-.
+Overfull \hbox (98.26212pt too wide) in paragraph at lines 70--71
+\T1/ppl/m/n/12 neigh-bor-ing agents within the ef-fect ra-dius and sum them int
+o the agent's \T1/pcr/m/n/12 experienced_effects\T1/ppl/m/n/12 . 
+ []
 
 
-Underfull \hbox (badness 1292) in paragraph at lines 74--75
+Overfull \hbox (7.32657pt too wide) in paragraph at lines 74--75
 []\T1/ppl/b/n/12 Manage blood. \T1/ppl/m/n/12 Eval-u-ate an-gio-gen-e-sis con-d
-i-tions and cre-ate new tumor-
+i-tions and cre-ate new tumor-generated
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 82--82
-|[]\T1/ppl/b/n/17.28 Agent Hi-er-ar-chy|
+Overfull \hbox (9.45024pt too wide) in paragraph at lines 76--77
+\T1/ppl/m/n/12 to elim-i-nate ac-ti-va-tion or-der bias, and in-voke each agent
+'s \T1/pcr/m/n/12 step() \T1/ppl/m/n/12 method. Agents
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--88
-|[]\T1/ppl/b/n/14.4 Base Cell Class|
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Underfull \hbox (badness 10000) in paragraph at lines 93--93
-|[]\T1/ppl/b/n/14.4 TCell Base Class|
- []
+[13] (./figures/agent_hierarchy.tex)
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-Underfull \hbox (badness 10000) in paragraph at lines 98--98
-|[]\T1/ppl/b/n/14.4 Concrete Agent Classes|
- []
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[14] (./figures/agent_interactions.tex)
 
-LaTeX Warning: Reference `fig:agent_hierarchy' on page 6 undefined on input lin
-e 103.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.105 \begin{figure}[htbp]
-                          
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-(./figures/agent_hierarchy.tex)
-Underfull \hbox (badness 10000) in paragraph at lines 113--113
-|[]\T1/ppl/b/n/17.28 Effect Sys-tem|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 117--117
-|[]\T1/ppl/b/n/14.4 Effect Fields|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 139--139
-|[]\T1/ppl/b/n/14.4 BMI Nor-mal-iza-tion|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 158--158
-|[]\T1/ppl/b/n/14.4 Effect Col-lec-tion and Ag-gre-ga-tion|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 172--172
-|[]\T1/ppl/b/n/17.28 Agent In-ter-ac-tions|
- []
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.176 \begin{figure}[htbp]
-                          
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-(./figures/agent_interactions.tex)
-
-LaTeX Warning: Reference `tab:interactions' on page 6 undefined on input line 1
-83.
-
-
+[15]
 Underfull \hbox (badness 2318) in paragraph at lines 203--204
 []|\T1/ppl/m/n/12 Proliferate, evade via PD-L1, con-
  []
@@ -1848,106 +1758,77 @@ Overfull \hbox (4.26611pt too wide) in paragraph at lines 215--215
  []
 
 
-! LaTeX Error: Not in outer par mode.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.224 \begin{figure}[htbp]
-                          
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-(./figures/agent_interaction_network.tex)
+[16] (./figures/agent_interaction_network.tex)
 
-LaTeX Warning: Reference `fig:agent_interactions' on page 6 undefined on input 
-line 231.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.233 \begin{figure}[htbp]
-                          
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 242--242
-|[]\T1/ppl/b/n/17.28 Movement|
+[17]
+Overfull \hbox (69.51302pt too wide) in paragraph at lines 261--262
+\T1/ppl/m/n/12 The pri-mary move-ment mech-a-nism for most agents is \T1/pcr/m/
+n/12 move_towards(target_agent_type_id,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 246--246
-|[]\T1/ppl/b/n/14.4 Deferred Move-ment Pat-tern|
+Overfull \hbox (77.25737pt too wide) in paragraph at lines 275--276
+[]\T1/ppl/m/n/12 The \T1/pcr/m/n/12 look_up_size \T1/ppl/m/n/12 pa-ram-e-ter is
+ typ-i-cally de-rived from the model's \T1/pcr/m/n/12 cell_search_dimension\T1/
+ppl/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 258--258
-|[]\T1/ppl/b/n/14.4 Directed Move-ment: \T1/pcr/b/n/14.4 move_towards()|
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[18]
+Overfull \hbox (84.10326pt too wide) in paragraph at lines 304--305
+\T1/ppl/m/n/12 The sim-u-la-tion ter-mi-nates when any of the fol-low-ing con-d
+i-tions is met. The \T1/pcr/m/n/12 terminal_condition()
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 277--277
-|[]\T1/ppl/b/n/14.4 Glucose Chemo-taxis|
+Overfull \hbox (20.09496pt too wide) in paragraph at lines 309--310
+[]\T1/ppl/b/n/12 Tumor elim-i-na-tion. \T1/ppl/m/n/12 If the tu-mor cell count 
+drops to zero be-fore reach-ing \T1/pcr/m/n/12 max_steps\T1/ppl/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 289--289
-|[]\T1/ppl/b/n/14.4 Sex Hor-mone Dif-fu-sion|
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Underfull \hbox (badness 10000) in paragraph at lines 300--300
-|[]\T1/ppl/b/n/17.28 Terminal Con-di-tions|
- []
-
-
-Underfull \hbox (badness 1237) in paragraph at lines 317--319
+[19]
+Overfull \hbox (88.2209pt too wide) in paragraph at lines 317--319
 \T1/ppl/m/n/12 where $\OML/cmm/m/it/12 N[]$ \T1/ppl/m/n/12 is the tu-mor cell c
 ount, $\OML/cmm/m/it/12 g[]$ \T1/ppl/m/n/12 is the growth po-ten-tial (com-bin-
-ing
+ing \T1/pcr/m/n/12 tumour_growth_effect\T1/ppl/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 324--324
-|[]\T1/ppl/b/n/17.28 Immune Re-sponse Cas-cade Overview|
+Overfull \hbox (27.06392pt too wide) in paragraph at lines 317--319
+\T1/ppl/m/n/12 DNA-derived pro-lif-er-a-tion chance, blood ac-cess, and an-gio-
+gen-e-sis), $\OML/cmm/m/it/12 a[]$ \T1/ppl/m/n/12 is the apoptosis-
  []
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.328 \begin{figure}[htbp]
-                          
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
 
 (./figures/immune_response_cascade.tex)
-
-LaTeX Warning: Reference `fig:immune_response_cascade' on page 6 undefined on i
-nput line 335.
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.337 \begin{figure}[htbp]
-                          
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
 Overfull \hbox (0.90227pt too wide) in paragraph at lines 352--352
  []\T1/ppl/m/n/10.95 Phagocytosis 
  []
@@ -1962,35 +1843,25 @@ Overfull \hbox (167.59547pt too wide) in paragraph at lines 383--384
  [][] 
  []
 
-) (./chapters/04_glucose_system.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[20])
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[21] (./chapters/04_glucose_system.tex
 Chapter 4.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/ppl/b/n/24.88 Chapter 4|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/ppl/b/n/24.88 Glucose Mi-croen-vi-ron-ment Sys-tem|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 9--9
-|[]\T1/ppl/b/n/17.28 Biological Mo-ti-va-tion|
- []
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.12 \begin{figure}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
 (./figures/warburg_effect.tex
 Overfull \hbox (17.33098pt too wide) in paragraph at lines 44--44
  []\T1/ppl/m/n/12 Phosphorylation 
@@ -2001,148 +1872,65 @@ Overfull \hbox (7.9832pt too wide) in paragraph at lines 45--46
  []\T1/ppl/m/n/12 (Mitochondria) 
  []
 
-)
+) [22
 
-! LaTeX Error: Not in outer par mode.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 \begin{figure}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<figures/glucose_dynamics.pdf, id=198, 715.42784pt x 426.48834pt>
+]
+<figures/glucose_dynamics.pdf, id=888, 715.42784pt x 426.48834pt>
 File: figures/glucose_dynamics.pdf Graphic file (type pdf)
 <use figures/glucose_dynamics.pdf>
 Package pdftex.def Info: figures/glucose_dynamics.pdf  used on input line 23.
 (pdftex.def)             Requested size: 386.96027pt x 230.68422pt.
-Runaway argument?
-{figure> 
-! Paragraph ended before \end  was complete.
-<to be read again> 
-                   \par 
-l.27 
-     
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
+ (./figures/glucose_system.tex)
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-! LaTeX Error: Not in outer par mode.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.28 \begin{figure}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-(./figures/glucose_system.tex)
-Runaway argument?
-{figure> 
-! Paragraph ended before \end  was complete.
-<to be read again> 
-                   \par 
-l.34 
-     
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 36--36
-|[]\T1/ppl/b/n/17.28 Mathematical For-mu-la-tion|
+[23 <./figures/glucose_dynamics.pdf>]
+Overfull \hbox (58.06505pt too wide) in paragraph at lines 46--47
+\T1/ppl/m/n/12 where $\OML/cmm/m/it/12 C\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 x\OML
+/cmm/m/it/12 ; t\OT1/cmr/m/n/12 )$ \T1/ppl/m/n/12 is the glu-cose con-cen-tra-t
+ion, $\OML/cmm/m/it/12 D$ \T1/ppl/m/n/12 is the dif-fu-sion co-ef-fi-cient (\T1
+/pcr/m/n/12 w_glucose_diffusion\T1/ppl/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 50--50
-|[]\T1/ppl/b/n/14.4 Source and Con-sump-tion Mod-els|
+Overfull \hbox (88.3391pt too wide) in paragraph at lines 48--49
+\T1/ppl/m/n/12 the stan-dard 6-connected sten-cil, im-ple-mented as a 3D con-vo
+-lu-tion us-ing \T1/pcr/m/n/12 scipy.ndimage.convolve\T1/ppl/m/n/12 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 57--57
-|[]\T1/ppl/b/n/17.28 Gradient and Chemo-taxis|
+Overfull \hbox (59.29074pt too wide) in paragraph at lines 52--53
+\T1/ppl/m/n/12 Blood ves-sel agents in-ject glu-cose at their grid po-si-tions 
+at rate $\OML/cmm/m/it/12 r[]$ \T1/ppl/m/n/12 (\T1/pcr/m/n/12 w_glucose_source_
+rate\T1/ppl/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 63--63
-|[]\T1/ppl/b/n/17.28 Implementation|
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.76 \begin{figure}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<figures/glucose_timeseries.pdf, id=199, 809.42403pt x 578.16pt>
+[24]
+<figures/glucose_timeseries.pdf, id=961, 809.42403pt x 578.16pt>
 File: figures/glucose_timeseries.pdf Graphic file (type pdf)
 <use figures/glucose_timeseries.pdf>
 Package pdftex.def Info: figures/glucose_timeseries.pdf  used on input line 78.
 
 (pdftex.def)             Requested size: 386.96027pt x 276.40207pt.
-Runaway argument?
-{figure> 
-! Paragraph ended before \end  was complete.
-<to be read again> 
-                   \par 
-l.82 
-     
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.83 \begin{figure}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<figures/glucose_field_3d.pdf, id=200, 1064.40912pt x 352.67697pt>
+<figures/glucose_field_3d.pdf, id=962, 1064.40912pt x 352.67697pt>
 File: figures/glucose_field_3d.pdf Graphic file (type pdf)
 <use figures/glucose_field_3d.pdf>
 Package pdftex.def Info: figures/glucose_field_3d.pdf  used on input line 85.
 (pdftex.def)             Requested size: 386.96027pt x 128.2121pt.
-Runaway argument?
-{figure> 
-! Paragraph ended before \end  was complete.
-<to be read again> 
-                   \par 
-l.89 
-     
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.90 \begin{figure}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
 
 Overfull \hbox (15.50244pt too wide) in paragraph at lines 106--106
  []\T1/ppl/m/n/10.95 Consumption 
@@ -2158,23 +1946,35 @@ Overfull \hbox (6.33746pt too wide) in paragraph at lines 109--109
  []\T1/ppl/m/n/10.95 Chemotaxis 
  []
 
-) (./chapters/05_dna_mutation_system.tex
+)
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[25]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[26 <./figures/glucose_timeseries.pdf> <./figures/glucose_field_3d.pdf>]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[27] (./chapters/05_dna_mutation_system.tex
 Chapter 5.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/ppl/b/n/24.88 Chapter 5|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/ppl/b/n/24.88 DNA and Mu-ta-tion Sys-tem|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 9--9
-|[]\T1/ppl/b/n/17.28 Gene Model|
- []
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 30--31
 []|\T1/ppl/m/n/12 Major his-to-com-pat-i-bil-ity com-plex;
@@ -2195,196 +1995,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 41--42
 []|\T1/ppl/m/n/12 Transcription fac-tor pro-mot-ing cell
  []
 
-Runaway argument?
-{longtable> 
-! Paragraph ended before \end  was complete.
-<to be read again> 
-                   \par 
-l.47 
-     
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
+[28
 
 
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.48 \begin{figure}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<figures/dna_mutation_heatmap.pdf, id=201, 1076.16495pt x 569.48697pt>
+]
+<figures/dna_mutation_heatmap.pdf, id=1030, 1076.16495pt x 569.48697pt>
 File: figures/dna_mutation_heatmap.pdf Graphic file (type pdf)
 <use figures/dna_mutation_heatmap.pdf>
 Package pdftex.def Info: figures/dna_mutation_heatmap.pdf  used on input line 5
 0.
 (pdftex.def)             Requested size: 386.96027pt x 204.77184pt.
-! Misplaced \noalign.
-\caption ->\noalign 
-                    \bgroup \@ifnextchar [{\egroup \LT@c@ption \@firstofone ...
-l.51 \caption
-             {DNA mutation heatmap across the 16 modeled genes showing the d...
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-! Misplaced \noalign.
-\caption@LT@make #1->\noalign 
-                              {\caption@LT@config }\expandafter \LT@mcol \ex...
-l.51 ...rive clonal diversity and immune evasion.}
-                                                  
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-! Misplaced \omit.
-\multispan ->\omit 
-                   \@multispan 
-l.51 ...rive clonal diversity and immune evasion.}
-                                                  
-I expect to see \omit only after tab marks or the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.51 ...rive clonal diversity and immune evasion.}
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Extra }, or forgotten \endgroup.
-<template> ...do@row@strut \hfill \egroup \egroup 
-                                                  \begingroup \CT@setup \CT@...
-l.51 ...rive clonal diversity and immune evasion.}
-                                                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.51 ...rive clonal diversity and immune evasion.}
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.51 ...rive clonal diversity and immune evasion.}
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.51 ...rive clonal diversity and immune evasion.}
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.51 ...rive clonal diversity and immune evasion.}
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-Runaway argument?
-{figure> 
-! Paragraph ended before \end  was complete.
-<to be read again> 
-                   \par 
-l.54 
-     
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
 
 
-! LaTeX Error: Something's wrong--perhaps a missing \item.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.58 \section{Mutation Mechanics}
-                                 
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.58 \section{Mutation Mechanics}
-                                 
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package titlesec Error: Entered in horizontal mode.
-
-See the titlesec package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.58 \section{Mutation Mechanics}
-                                 
-The <format> argument cannot contain horizontal material
-such as text, \noindent, \makebox, etc.
-
-
-! Package titlesec Error: Entered in horizontal mode.
-
-See the titlesec package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.64 ...on{Gene Expression and Phenotypic Effects}
-                                                  
-The <format> argument cannot contain horizontal material
-such as text, \noindent, \makebox, etc.
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.67 \begin{figure}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
+[29 <./figures/dna_mutation_heatmap.pdf>]
 (./figures/tumor_cell_state_machine.tex
 Overfull \hbox (4.09265pt too wide) in paragraph at lines 10--11
  [][]\T1/ppl/b/n/12 Quiescent 
@@ -2471,155 +2101,25 @@ Overfull \hbox (22.98892pt too wide) in paragraph at lines 144--144
  []
 
 )
-! Misplaced \noalign.
-\caption ->\noalign 
-                    \bgroup \@ifnextchar [{\egroup \LT@c@ption \@firstofone ...
-l.70 \caption
-             {State machine diagram of tumor cell lifecycle}
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
 
-! Misplaced \noalign.
-\caption@LT@make #1->\noalign 
-                              {\caption@LT@config }\expandafter \LT@mcol \ex...
-l.70 ...e machine diagram of tumor cell lifecycle}
-                                                  
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-! Misplaced \omit.
-\multispan ->\omit 
-                   \@multispan 
-l.70 ...e machine diagram of tumor cell lifecycle}
-                                                  
-I expect to see \omit only after tab marks or the \cr of
-an alignment. Proceed, and I'll ignore this case.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.70 ...e machine diagram of tumor cell lifecycle}
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+[30])
 
-! Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.70 ...e machine diagram of tumor cell lifecycle}
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.70 ...e machine diagram of tumor cell lifecycle}
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-! Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.70 ...e machine diagram of tumor cell lifecycle}
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.72 \end{figure}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing \cr inserted.
-<inserted text> 
-                \cr 
-l.72 \end{figure}
-                 
-I'm guessing that you meant to end an alignment here.
-
-
-Overfull \hbox (4780.65575pt too wide) in alignment at lines 29--72
- [] [] [] 
- []
-
-! Extra }, or forgotten \endgroup.
-\color@endbox ->\color@endgroup \egroup 
-                                        
-l.72 \end{figure}
-                 
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-
-! LaTeX Error: \begin{longtable} on input line 14 ended by \end{figure}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.72 \end{figure}
-                 
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 87--87
-|[]\T1/ppl/b/n/17.28 Neoantigen Gen-er-a-tion|
- []
-
-) (./chapters/06_treatment_system.tex
+[31] (./chapters/06_treatment_system.tex
 Chapter 6.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/ppl/b/n/24.88 Chapter 6|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/ppl/b/n/24.88 Treatment Sys-tem|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 9--9
-|[]\T1/ppl/b/n/17.28 Drug Ar-chi-tec-ture|
- []
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.12 \begin{figure}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
 (./figures/treatment_mechanisms.tex)
 ! Missing $ inserted.
 <inserted text> 
@@ -2637,17 +2137,17 @@ l.20
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-Runaway argument?
-{itemize> 
-! Paragraph ended before \end  was complete.
-<to be read again> 
-                   \par 
-l.28 
-     
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
 
+Overfull \hbox (1.99832pt too wide) in paragraph at lines 19--20
+\T1/ppl/m/n/12 treatment$[]\OML/cmm/m/it/12 tartsteps\OT1/cmr/m/n/12 (\OML/cmm/
+m/it/12 default \OT1/cmr/m/n/12 : 100)\OML/cmm/m/it/12 ; establishingbaselinedi
+seasestatebeforeintervention:$ 
+ []
+
+[32
+
+
+]
 ! Missing $ inserted.
 <inserted text> 
                 $
@@ -2664,65 +2164,29 @@ l.34
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.34 
-     
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
 
-
-Underfull \hbox (badness 1286) in paragraph at lines 33--34
-\T1/ppl/m/n/12 PD-1/PD-L1 check-point in-ter-ac-tion sup-presses T cell cy-to-t
-ox-i-c-ity, and ICI
+Overfull \hbox (490.02277pt too wide) in paragraph at lines 33--34
+\T1/ppl/m/n/12 dis-abling check-point in-hi-bi-tion by set-ting ICI$[]\OML/cmm/
+m/it/12 ffectflagtoTrue\OT1/cmr/m/n/12 ; (2)\OML/cmm/m/it/12 Tcellactivationres
+torationacrossallsubtypesbyresettingt[]ctivation[]ffectto\OT1/cmr/m/n/12 1\OML/
+cmm/m/it/12 :\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; counteractingexhaustionfromPD 
+\OMS/cmsy/m/n/12 ^^@
  []
 
 
-Underfull \hbox (badness 1132) in paragraph at lines 33--34
-\T1/ppl/m/n/12 an-ti-bod-ies block this path-way to re-store T cell func-tion. 
-ICIDrug im-ple-
- []
-
-
-Overfull \hbox (299.46469pt too wide) in paragraph at lines 33--34
-\T1/ppl/m/n/12 ICI$[]\OML/cmm/m/it/12 ffectflagtoTrue\OT1/cmr/m/n/12 ; (2)\OML/
-cmm/m/it/12 Tcellactivationrestorationacrossallsubtypesbyresettingt[]ctivation[
-]ffectto\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; 
-counteractingexhaustionfromPD \OMS/cmsy/m/n/12 ^^@
- []
-
-
-Overfull \hbox (616.03116pt too wide) in paragraph at lines 33--34
+Overfull \hbox (586.65646pt too wide) in paragraph at lines 33--34
 \OML/cmm/m/it/12 L\OT1/cmr/m/n/12 1 + \OML/cmm/m/it/12 tumorencounters\OT1/cmr/
 m/n/12 ; \OML/cmm/m/it/12 and\OT1/cmr/m/n/12 (3)\OML/cmm/m/it/12 immuneinfiltra
 tionenhancementbyincrementingimmune[]nfiltration[]actorforTh\OT1/cmr/m/n/12 1\O
 ML/cmm/m/it/12 ; Th\OT1/cmr/m/n/12 2\OML/cmm/m/it/12 ; andMastCelltypes; modeli
-ngincreasedimmunecellinfiltrationintotumormasses:[]$ 
+ngincreasedimmunecellinfiltrationintotumormasses:$ 
  []
 
-! Extra }, or forgotten \endgroup.
-\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
-                                                  \fi 
-l.34 
-     
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten \endgroup.
+! Too many }'s.
 l.36 \section>Tyrosine Kinase Inhibitors (TKI)}
                                                
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
 
 ! Missing $ inserted.
 <inserted text> 
@@ -2740,85 +2204,29 @@ l.40
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.40 
-     
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
 
-
-Underfull \hbox (badness 1038) in paragraph at lines 39--40
-\T1/ppl/m/n/12 ing anti-angiogenic TKI ther-apy (ax-i-tinib, suni-tinib) a cor-
-ner-stone treat-ment by
+Overfull \hbox (1593.83235pt too wide) in paragraph at lines 39--40
+\T1/ppl/m/n/12 tional to ef-fec-tive-ness: (1) tu-mor growth sup-pres-sion by r
+e-duc-ing tumour$[]\OML/cmm/m/it/12 rowth[]ffect; \OT1/cmr/m/n/12 (2)\OML/cmm/m
+/it/12 angiogenesisinhibitionbyreducingangiogenesis[]ffecttosuppressbloodvessel
+recruitment; \OT1/cmr/m/n/12 (3)\OML/cmm/m/it/12 neoantigenreleasebysettingTKI[
+]ffectflagsoapoptotictumorcellsreleaseantigenstonearbydendriticcellsforimmuneac
+tivation; and\OT1/cmr/m/n/12 (4)\OML/cmm/m/it/12 Tregdifferentiationsuppression
+byreducingtreg[]ifferentiation[]ffectinCD\OT1/cmr/m/n/12 4 +
  []
 
 
-Overfull \hbox (1250.37224pt too wide) in paragraph at lines 39--40
-\T1/ppl/m/n/12 tumour$[]\OML/cmm/m/it/12 rowth[]ffect; \OT1/cmr/m/n/12 (2)\OML/
-cmm/m/it/12 angiogenesisinhibitionbyreducingangiogenesis[]ffecttosuppressbloodv
-esselrecruitment; \OT1/cmr/m/n/12 (3)\OML/cmm/m/it/12 neoantigenreleasebysettin
-gTKI[]ffectflagsoapoptotictumorcellsreleaseantigenstonearbydendriticcellsforimm
-uneactivation; and\OT1/cmr/m/n/12 (4)\OML/cmm/m/it/12 Tregdifferentiationsuppre
-ssionbyreducingtreg[]ifferentiation[]ffectinCD\OT1/cmr/m/n/12 4 +
+Overfull \hbox (28.48253pt too wide) in paragraph at lines 45--46
+\T1/ppl/m/n/12 (KEYNOTE-426, JAVELIN Re-nal 101) demon-strated com-bi-na-tion s
+u-pe-ri-or-ity over monother-
  []
 
-! Extra }, or forgotten \endgroup.
-\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
-                                                  \fi 
-l.40 
-     
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.47 \begin{figure}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<figures/treatment_timeline.pdf, id=202, 853.8818pt x 714.02698pt>
+<figures/treatment_timeline.pdf, id=1112, 853.8818pt x 714.02698pt>
 File: figures/treatment_timeline.pdf Graphic file (type pdf)
 <use figures/treatment_timeline.pdf>
 Package pdftex.def Info: figures/treatment_timeline.pdf  used on input line 49.
 
 (pdftex.def)             Requested size: 386.96027pt x 323.57536pt.
-Runaway argument?
-{figure> 
-! Paragraph ended before \end  was complete.
-<to be read again> 
-                   \par 
-l.53 
-     
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.54 \begin{figure}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
 
 Overfull \hbox (3.32222pt too wide) in paragraph at lines 72--72
  []\T1/ppl/m/n/10.95 Monotherapy 
@@ -2845,182 +2253,86 @@ Overfull \hbox (55.09834pt too wide) in paragraph at lines 104--105
  []
 
 )
-Runaway argument?
-{figure> 
-! File ended while scanning use of \end .
-<inserted text> 
-                \par 
-l.222 \input{chapters/06_treatment_system}
-                                          
-I suspect you have forgotten a `}', causing me
-to read past where you wanted me to stop.
-I'll try to recover; but if the error is serious,
-you'd better type `E' or `X' now and fix your file.
 
-(./chapters/07_sex_hormone_system.tex
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[33]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[34 <./figures/treatment_timeline.pdf>]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[35] (./chapters/07_sex_hormone_system.tex
 Chapter 7.
+[36
 
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/ppl/b/n/24.88 Chapter 7|
+
+]
+Overfull \hbox (104.70767pt too wide) in paragraph at lines 38--39
+\T1/ppl/m/n/12 tio-nar-ies of per-ceived hor-mone lev-els that de-cay by 10% pe
+r step. The \T1/pcr/m/n/12 CellHormonalInfluenceEffect
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/ppl/b/n/24.88 Sex Hor-mone Sys-tem|
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Underfull \hbox (badness 10000) in paragraph at lines 9--9
-|[]\T1/ppl/b/n/17.28 Biological Ba-sis|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 15--15
-|[]\T1/ppl/b/n/17.28 Hormone Agent Model|
- []
-
-Runaway argument?
-{table> 
-! Paragraph ended before \end  was complete.
-<to be read again> 
-                   \par 
-l.33 
-     
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 35--35
-|[]\T1/ppl/b/n/17.28 Hormone Ef-fects on T Cells|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 75--75
-|[]\T1/ppl/b/n/17.28 Sex Drift|
- []
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.85 \begin{figure}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<figures/hormone_dynamics.pdf, id=203, 1076.02441pt x 714.02698pt>
+[37]
+<figures/hormone_dynamics.pdf, id=1192, 1076.02441pt x 714.02698pt>
 File: figures/hormone_dynamics.pdf Graphic file (type pdf)
 <use figures/hormone_dynamics.pdf>
 Package pdftex.def Info: figures/hormone_dynamics.pdf  used on input line 87.
 (pdftex.def)             Requested size: 386.96027pt x 256.77713pt.
 )
-Runaway argument?
-{figure> 
-! File ended while scanning use of \end .
-<inserted text> 
-                \par 
-l.224 \input{chapters/07_sex_hormone_system}
-                                            
-I suspect you have forgotten a `}', causing me
-to read past where you wanted me to stop.
-I'll try to recover; but if the error is serious,
-you'd better type `E' or `X' now and fix your file.
 
-(./chapters/08_implementation.tex
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[38 <./figures/hormone_dynamics.pdf>] (./chapters/08_implementation.tex
 Chapter 8.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/ppl/b/n/24.88 Chapter 8|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/ppl/b/n/24.88 Implementation|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 11--11
-|[]\T1/ppl/b/n/17.28 Framework Mi-gra-tion: Mesa to Repast4Py|
- []
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 \begin{figure}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
 (./figures/architecture_overview.tex)
 
-LaTeX Warning: Reference `tab:detailed-mesa-vs-repast4py' on page 6 undefined o
-n input line 21.
+LaTeX Warning: Reference `tab:detailed-mesa-vs-repast4py' on page 39 undefined 
+on input line 21.
+
+[39
 
 
-Underfull \hbox (badness 1067) in paragraph at lines 28--28
-|[]\T1/ppl/b/n/17.28 Simulation Or-ches-tra-tion: The Main Event Loop|
- []
+] (./figures/simulation_pipeline.tex) (./figures/model_architecture.tex)
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-! LaTeX Error: Not in outer par mode.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.31 \begin{figure}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-(./figures/simulation_pipeline.tex)
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.40 \begin{figure}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-(./figures/model_architecture.tex)
-
-LaTeX Warning: Reference `fig:model_architecture' on page 6 undefined on input 
-line 49.
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.51 \begin{figure}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 60--60
-|[]\T1/ppl/b/n/17.28 Spatial In-dex De-sign|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 66--66
-|[]\T1/ppl/b/n/17.28 Agent Se-ri-al-iza-tion|
- []
-
+[40]
 ! Missing $ inserted.
 <inserted text> 
                 $
@@ -3038,19 +2350,22 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (111.33917pt too wide) in paragraph at lines 69--70
- \T1/ppl/m/n/12 state$[]\OML/cmm/m/it/12 uple\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 
-forserialization:Typeidentificationusesintegercomparisonofuid\OT1/cmr/m/n/12 [1
-]\OML/cmm/m/it/12 ratherthanisinstance\OT1/cmr/m/n/12 ()\OML/cmm/m/it/12 checks
-:$ 
+Overfull \hbox (342.10867pt too wide) in paragraph at lines 69--70
+\T1/ppl/m/n/12 im-ple-ments a save() method re-turn-ing (uid, state$[]\OML/cmm/
+m/it/12 uple\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 forserialization:Typeidentificati
+onusesintegercomparisonofuid\OT1/cmr/m/n/12 [1]\OML/cmm/m/it/12 ratherthanisins
+tance\OT1/cmr/m/n/12 ()\OML/cmm/m/it/12 checks:$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 72--72
-|[]\T1/ppl/b/n/17.28 Mesa to Repast4Py Port-ing|
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[41]
 Underfull \hbox (badness 10000) in paragraph at lines 83--84
 []|\T1/pcr/m/n/12 repast4py.core.Agent(id, type,
  []
@@ -3101,28 +2416,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 90--90
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 98--98
-|[]\T1/ppl/b/n/17.28 Glucose Field Im-ple-men-ta-tion|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 104--104
-|[]\T1/ppl/b/n/17.28 Entry Point and Ex-e-cu-tion|
- []
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.109 \begin{figure}[htbp]
-                          
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
 Overfull \hbox (1.76027pt too wide) in paragraph at lines 122--122
  [][]\T1/ppl/m/n/10.95 Simulation 
  []
@@ -3137,51 +2430,37 @@ Overfull \hbox (78.16617pt too wide) in paragraph at lines 161--162
  [][] 
  []
 
-) (./chapters/09_parameters.tex
+)
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[42]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[43] (./chapters/09_parameters.tex
 Chapter 9.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/ppl/b/n/24.88 Chapter 9|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/ppl/b/n/24.88 Parameters and Op-ti-miza-tion|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 9--9
-|[]\T1/ppl/b/n/17.28 Parameter Cat-e-gories|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 17--17
-|[]\T1/ppl/b/n/17.28 Weight Pa-ram-e-ters|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 24--24
-|[]\T1/ppl/b/n/14.4 Macrophage M1 Weights (6 weights + 2 bi-ases)|
- []
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 34--35
 []|\T1/ppl/m/n/12 M1 macrophage mu-ta-tion
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 47--47
-|[]\T1/ppl/b/n/14.4 Macrophage M2 Weights (5 weights + 1 bias)|
- []
+[44
 
 
+]
 Underfull \hbox (badness 10000) in paragraph at lines 57--58
 []|\T1/ppl/m/n/12 M2 macrophage mu-ta-tion
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 67--67
-|[]\T1/ppl/b/n/14.4 Tumor Cell Weights (8 weights + 3 bi-ases)|
  []
 
 
@@ -3205,11 +2484,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 88--89
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 93--93
-|[]\T1/ppl/b/n/14.4 CD4+ T Cell Weights (9 weights + 3 bi-ases)|
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[45]
 Underfull \hbox (badness 4940) in paragraph at lines 106--107
 []|\T1/ppl/m/n/12 Effect-driven Th1 pro-lif-er-a-
  []
@@ -3245,11 +2527,14 @@ Underfull \hbox (badness 1383) in paragraph at lines 114--115
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--120
-|[]\T1/ppl/b/n/14.4 Cytotoxic T Cell Weights (5 weights + 2 bi-ases)|
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[46]
 Underfull \hbox (badness 8000) in paragraph at lines 131--132
 []|\T1/ppl/m/n/12 Apoptosis prob-a-bil-ity scal-
  []
@@ -3260,26 +2545,27 @@ Underfull \hbox (badness 4168) in paragraph at lines 133--134
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--141
-|[]\T1/ppl/b/n/14.4 Mast Cell Weights (6 pa-ram-e-ters)|
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[47]
 Underfull \hbox (badness 10000) in paragraph at lines 156--157
 []|\T1/ppl/m/n/12 Mast cell prob-a-bil-ity of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 161--161
-|[]\T1/ppl/b/n/14.4 NK Cell Weights (3 weights + 1 bias)|
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--178
-|[]\T1/ppl/b/n/14.4 Plasmacytoid DC Weights (6 weights + 1 bias)|
- []
-
-
+[48]
 Underfull \hbox (badness 1931) in paragraph at lines 190--191
 []|\T1/ppl/m/n/12 pDC con-tri-bu-tion to an-gio-
  []
@@ -3290,16 +2576,14 @@ Underfull \hbox (badness 1189) in paragraph at lines 194--195
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 199--199
-|[]\T1/ppl/b/n/14.4 Treg Weights (5 pa-ram-e-ters)|
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--218
-|[]\T1/ppl/b/n/14.4 Global Weights (4+ pa-ram-e-ters)|
- []
-
-
+[49]
 Underfull \hbox (badness 2600) in paragraph at lines 228--229
 \T1/ppl/m/n/12 dius for agent in-ter-ac-tions:
  []
@@ -3331,11 +2615,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 238--239
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 244--244
-|[]\T1/ppl/b/n/17.28 Glucose Pa-ram-e-ters|
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[50]
 Overfull \hbox (18.71281pt too wide) in alignment at lines 249--254
  [] [] [] 
  []
@@ -3383,577 +2670,318 @@ Overfull \hbox (18.71281pt too wide) in alignment at lines 258--275
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 277--277
-|[]\T1/ppl/b/n/14.4 Parameter In-ter-ac-tions|
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[51]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[52]
+Overfull \hbox (62.93561pt too wide) in paragraph at lines 284--285
+\T1/ppl/m/n/12 ties can be scaled by an anal-o-gous glu-cose fac-tor us-ing \T1
+/pcr/m/n/12 w_glucose_immune_sensitivity\T1/ppl/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 284--285
-[]\T1/ppl/b/n/12 Immune func-tion mod-u-la-tion\T1/ppl/m/n/12 : Im-mune cell ki
-ll rates and ac-ti-va-
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Underfull \hbox (badness 5274) in paragraph at lines 284--285
-\T1/ppl/m/n/12 tion prob-a-bil-i-ties can be scaled by an anal-o-gous glu-cose 
-fac-tor us-ing
- []
-
-
-Underfull \hbox (badness 2469) in paragraph at lines 284--285
-\T1/pcr/m/n/12 w_glucose_immune_sensitivity\T1/ppl/m/n/12 , cou-pling metabolic
- re-source avail-abil-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 290--290
-|[]\T1/ppl/b/n/17.28 Bayesian Op-ti-miza-tion|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 293--293
-|[]\T1/ppl/b/n/14.4 Framework|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 297--297
-|[]\T1/ppl/b/n/14.4 Objective Func-tion|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 316--316
-|[]\T1/ppl/b/n/14.4 Search Space|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 324--325
+[53]
+Overfull \hbox (94.88248pt too wide) in paragraph at lines 324--325
 []\T1/ppl/b/n/12 Threshold weights\T1/ppl/m/n/12 : \T1/pcr/m/n/12 w_tumour_grow
 th_threshold \T1/ppl/m/n/12 in $\OT1/cmr/m/n/12 [0\OML/cmm/m/it/12 :\OT1/cmr/m/
 n/12 75\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 99
-]$\T1/ppl/m/n/12 ;
+]$\T1/ppl/m/n/12 ; \T1/pcr/m/n/12 w_cell_base_death_prob
  []
 
 
-Underfull \hbox (badness 4556) in paragraph at lines 324--325
-\T1/pcr/m/n/12 w_cell_base_death_prob \T1/ppl/m/n/12 in $\OT1/cmr/m/n/12 [0\OML
-/cmm/m/it/12 :\OT1/cmr/m/n/12 001\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m
-/it/12 :\OT1/cmr/m/n/12 1]$\T1/ppl/m/n/12 ; \T1/pcr/m/n/12 w_progressive_exhaus
-tion
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Underfull \hbox (badness 10000) in paragraph at lines 339--339
-|[]\T1/ppl/b/n/14.4 Optimization Con-fig-u-ra-tion|
- []
-
+[54]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 343.
 
-Underfull \hbox (badness 10000) in paragraph at lines 351--351
-|[]\T1/ppl/b/n/17.28 Clinical Dataset|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 354--354
-|[]\T1/ppl/b/n/14.4 ARON-1 Study|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 358--358
-|[]\T1/ppl/b/n/14.4 Dataset Struc-ture|
- []
-
-
-Underfull \hbox (badness 4556) in paragraph at lines 364--365
+Overfull \hbox (64.91476pt too wide) in paragraph at lines 364--365
 []\T1/ppl/b/n/12 Immune cell con-cen-tra-tions\T1/ppl/m/n/12 : 13 cell type con
--cen-tra-tions match-ing the
+-cen-tra-tions match-ing the \T1/pcr/m/n/12 PatientParameters
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 379--379
-|[]\T1/ppl/b/n/17.28 Parameter Sen-si-tiv-ity Anal-y-sis|
- []
-
-
-LaTeX Warning: Reference `fig:parameter_sensitivity' on page 6 undefined on inp
-ut line 383.
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.385 \begin{figure}[htbp]
-                          
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<figures/parameter_sensitivity.pdf, id=208, 1076.46355pt x 851.45734pt>
+<figures/parameter_sensitivity.pdf, id=1342, 1076.46355pt x 851.45734pt>
 File: figures/parameter_sensitivity.pdf Graphic file (type pdf)
 <use figures/parameter_sensitivity.pdf>
 Package pdftex.def Info: figures/parameter_sensitivity.pdf  used on input line 
 387.
 (pdftex.def)             Requested size: 386.96027pt x 306.08267pt.
-) (./chapters/10_simulation_results.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[55])
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[56 <./figures/parameter_sensitivity.pdf>]
+(./chapters/10_simulation_results.tex
 Chapter 10.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/ppl/b/n/24.88 Chapter 10|
+Overfull \hbox (9.93518pt too wide) in paragraph at lines 28--29
+[]\T1/ppl/b/n/12 ICI+TKI Com-bi-na-tion\T1/ppl/m/n/12 : Pro-duced sur-pris-ing 
+sex-specific dif-fer-ences. Males achieved
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/ppl/b/n/24.88 Simulation Re-sults|
- []
+[57
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 9--9
-|[]\T1/ppl/b/n/17.28 Baseline Sim-u-la-tion|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 19--19
-|[]\T1/ppl/b/n/17.28 Treatment Sce-nar-ios|
- []
-
-
-LaTeX Warning: Reference `tab:treatment-outcomes' on page 6 undefined on input 
-line 30.
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.32 \begin{table}[h]
-                     
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: Reference `fig:scenario-comparison-tumor' on page 6 undefined on
- input line 52.
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.54 \begin{figure}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<figures/scenario_comparison_tumor.pdf, id=209, 722.7pt x 433.62pt>
+]
+<figures/scenario_comparison_tumor.pdf, id=1433, 722.7pt x 433.62pt>
 File: figures/scenario_comparison_tumor.pdf Graphic file (type pdf)
 <use figures/scenario_comparison_tumor.pdf>
 Package pdftex.def Info: figures/scenario_comparison_tumor.pdf  used on input l
 ine 56.
 (pdftex.def)             Requested size: 386.96027pt x 232.1796pt.
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.61 \begin{figure}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<figures/scenario_comparison_glucose.pdf, id=210, 722.7pt x 433.62pt>
+<figures/scenario_comparison_glucose.pdf, id=1434, 722.7pt x 433.62pt>
 File: figures/scenario_comparison_glucose.pdf Graphic file (type pdf)
 <use figures/scenario_comparison_glucose.pdf>
 Package pdftex.def Info: figures/scenario_comparison_glucose.pdf  used on input
  line 63.
 (pdftex.def)             Requested size: 386.96027pt x 232.1796pt.
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.68 \begin{figure}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<figures/scenario_comparison_immune.pdf, id=211, 722.7pt x 433.62pt>
+<figures/scenario_comparison_immune.pdf, id=1435, 722.7pt x 433.62pt>
 File: figures/scenario_comparison_immune.pdf Graphic file (type pdf)
 <use figures/scenario_comparison_immune.pdf>
 Package pdftex.def Info: figures/scenario_comparison_immune.pdf  used on input 
 line 70.
 (pdftex.def)             Requested size: 386.96027pt x 232.1796pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--76
-|[]\T1/ppl/b/n/17.28 Sex-Specific Anal-y-sis|
- []
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--86
-|[]\T1/ppl/b/n/17.28 Glucose Field Dy-nam-ics|
- []
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[58 <./figures/scenario_comparison_tumor.pdf>]
 
-Underfull \hbox (badness 10000) in paragraph at lines 92--92
-|[]\T1/ppl/b/n/17.28 Parameter Sen-si-tiv-ity Anal-y-sis|
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.97 \begin{figure}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<figures/sensitivity_glucose_consumption.pdf, id=212, 1011.78pt x 397.485pt>
+[59 <./figures/scenario_comparison_glucose.pdf> <./figures/scenario_comparison_
+immune.pdf>]
+<figures/sensitivity_glucose_consumption.pdf, id=1571, 1011.78pt x 397.485pt>
 File: figures/sensitivity_glucose_consumption.pdf Graphic file (type pdf)
 <use figures/sensitivity_glucose_consumption.pdf>
 Package pdftex.def Info: figures/sensitivity_glucose_consumption.pdf  used on i
 nput line 99.
 (pdftex.def)             Requested size: 386.96027pt x 152.02235pt.
 
-LaTeX Warning: Reference `tab:empirical-results' on page 6 undefined on input l
-ine 110.
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[60]
 Overfull \hbox (116.52866pt too wide) in paragraph at lines 116--130
  [][] 
  []
 
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.136 \begin{figure}[htbp]
-                          
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<figures/empirical_tumor_boxplot.pdf, id=213, 867.24pt x 433.62pt>
+<figures/empirical_tumor_boxplot.pdf, id=1577, 867.24pt x 433.62pt>
 File: figures/empirical_tumor_boxplot.pdf Graphic file (type pdf)
 <use figures/empirical_tumor_boxplot.pdf>
 Package pdftex.def Info: figures/empirical_tumor_boxplot.pdf  used on input lin
 e 138.
 (pdftex.def)             Requested size: 386.96027pt x 193.47969pt.
 
-! LaTeX Error: Not in outer par mode.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.143 \begin{figure}[htbp]
-                          
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-<figures/empirical_survival_rate.pdf, id=214, 722.7pt x 361.35pt>
+[61 <./figures/sensitivity_glucose_consumption.pdf>]
+<figures/empirical_survival_rate.pdf, id=1647, 722.7pt x 361.35pt>
 File: figures/empirical_survival_rate.pdf Graphic file (type pdf)
 <use figures/empirical_survival_rate.pdf>
 Package pdftex.def Info: figures/empirical_survival_rate.pdf  used on input lin
 e 145.
 (pdftex.def)             Requested size: 364.19667pt x 182.0971pt.
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.150 \begin{figure}[htbp]
-                          
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<figures/empirical_growth_curves.pdf, id=215, 1011.78pt x 722.7pt>
+<figures/empirical_growth_curves.pdf, id=1648, 1011.78pt x 722.7pt>
 File: figures/empirical_growth_curves.pdf Graphic file (type pdf)
 <use figures/empirical_growth_curves.pdf>
 Package pdftex.def Info: figures/empirical_growth_curves.pdf  used on input lin
 e 152.
 (pdftex.def)             Requested size: 386.96027pt x 276.40428pt.
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.157 \begin{figure}[htbp]
-                          
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<figures/empirical_kills.pdf, id=216, 722.7pt x 361.35pt>
+<figures/empirical_kills.pdf, id=1649, 722.7pt x 361.35pt>
 File: figures/empirical_kills.pdf Graphic file (type pdf)
 <use figures/empirical_kills.pdf>
 Package pdftex.def Info: figures/empirical_kills.pdf  used on input line 159.
 (pdftex.def)             Requested size: 364.19667pt x 182.0971pt.
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.164 \begin{figure}[htbp]
-                          
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<figures/population_dynamics.pdf, id=217, 857.88051pt x 571.02838pt>
+<figures/population_dynamics.pdf, id=1650, 857.88051pt x 571.02838pt>
 File: figures/population_dynamics.pdf Graphic file (type pdf)
 <use figures/population_dynamics.pdf>
 Package pdftex.def Info: figures/population_dynamics.pdf  used on input line 16
 6.
 (pdftex.def)             Requested size: 386.96027pt x 257.57031pt.
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.171 \begin{figure}[htbp]
-                          
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<figures/tumor_growth.pdf, id=218, 715.36823pt x 426.48834pt>
+<figures/tumor_growth.pdf, id=1651, 715.36823pt x 426.48834pt>
 File: figures/tumor_growth.pdf Graphic file (type pdf)
 <use figures/tumor_growth.pdf>
 Package pdftex.def Info: figures/tumor_growth.pdf  used on input line 173.
 (pdftex.def)             Requested size: 386.96027pt x 230.70374pt.
-Runaway argument?
-{figure> 
-! Paragraph ended before \end  was complete.
-<to be read again> 
-                   \par 
-l.177 
-      
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.178 \begin{figure}[htbp]
-                          
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<figures/kill_distribution.pdf, id=219, 714.5928pt x 424.94698pt>
+<figures/kill_distribution.pdf, id=1652, 714.5928pt x 424.94698pt>
 File: figures/kill_distribution.pdf Graphic file (type pdf)
 <use figures/kill_distribution.pdf>
 Package pdftex.def Info: figures/kill_distribution.pdf  used on input line 180.
 
 (pdftex.def)             Requested size: 386.96027pt x 230.12283pt.
-Runaway argument?
-{figure> 
-! Paragraph ended before \end  was complete.
-<to be read again> 
-                   \par 
-l.184 
-      
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.185 \begin{figure}[htbp]
-                          
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<figures/kill_counts.pdf, id=220, 867.24pt x 520.34402pt>
+<figures/kill_counts.pdf, id=1653, 867.24pt x 520.34402pt>
 File: figures/kill_counts.pdf Graphic file (type pdf)
 <use figures/kill_counts.pdf>
 Package pdftex.def Info: figures/kill_counts.pdf  used on input line 187.
 (pdftex.def)             Requested size: 386.96027pt x 232.17563pt.
-Runaway argument?
-{figure> 
-! Paragraph ended before \end  was complete.
-<to be read again> 
-                   \par 
-l.191 
-      
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.192 \begin{figure}[htbp]
-                          
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<figures/kill_statistics.pdf, id=221, 715.30861pt x 426.58704pt>
+<figures/kill_statistics.pdf, id=1654, 715.30861pt x 426.58704pt>
 File: figures/kill_statistics.pdf Graphic file (type pdf)
 <use figures/kill_statistics.pdf>
 Package pdftex.def Info: figures/kill_statistics.pdf  used on input line 194.
 (pdftex.def)             Requested size: 386.96027pt x 230.77666pt.
-Runaway argument?
-{figure> 
-! Paragraph ended before \end  was complete.
-<to be read again> 
-                   \par 
-l.198 
-      
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-
-! LaTeX Error: Not in outer par mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.199 \begin{figure}[htbp]
-                          
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<figures/sex_stratified_results.pdf, id=222, 1075.94281pt x 858.56697pt>
+<figures/sex_stratified_results.pdf, id=1655, 1075.94281pt x 858.56697pt>
 File: figures/sex_stratified_results.pdf Graphic file (type pdf)
 <use figures/sex_stratified_results.pdf>
 Package pdftex.def Info: figures/sex_stratified_results.pdf  used on input line
  201.
 (pdftex.def)             Requested size: 386.96027pt x 308.76945pt.
 )
-Runaway argument?
-{figure> 
-! File ended while scanning use of \end .
-<inserted text> 
-                \par 
-l.230 \input{chapters/10_simulation_results}
-                                            
-I suspect you have forgotten a `}', causing me
-to read past where you wanted me to stop.
-I'll try to recover; but if the error is serious,
-you'd better type `E' or `X' now and fix your file.
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[62 <./figures/empirical_tumor_boxplot.pdf> <./figures/empirical_survival_rate.
+pdf>]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[63 <./figures/empirical_growth_curves.pdf> <./figures/empirical_kills.pdf>]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[64 <./figures/population_dynamics.pdf> <./figures/tumor_growth.pdf>]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[65 <./figures/kill_distribution.pdf> <./figures/kill_counts.pdf>]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[66 <./figures/kill_statistics.pdf> <./figures/sex_stratified_results.pdf>]
 (./chapters/11_conclusion.tex
 Chapter 11.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/ppl/b/n/24.88 Chapter 11|
+Overfull \hbox (3.30005pt too wide) in paragraph at lines 16--17
+[]\T1/ppl/b/n/12 Chapter 3 \T1/ppl/m/n/12 pre-sented the com-plete agent-based 
+ar-chi-tec-ture demon-strat-ing how com-
+ []
+
+[67
+
+
+]
+Overfull \hbox (1.6628pt too wide) in paragraph at lines 40--41
+[]\T1/ppl/b/n/12 No spa-tial im-mune in-fil-tra-tion pat-terns \T1/ppl/m/n/12 ^
+^V All im-mune cells ini-tial-ized ran-domly
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1--1
-|\T1/ppl/b/n/24.88 Conclusion|
+Overfull \hbox (1.09723pt too wide) in paragraph at lines 58--59
+[]\T1/ppl/m/n/12 Clonal evo-lu-tion track-ing with lin-eage re-la-tion-ships an
+d spa-tial com-pe-ti-tion mod-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 7--7
-|[]\T1/ppl/b/n/17.28 Summary of Con-tri-bu-tions|
+Overfull \hbox (2.237pt too wide) in paragraph at lines 65--66
+[]\T1/ppl/m/n/12 Prospective clin-i-cal trial in-te-gra-tion with reg-u-la-tory
+ ap-proval for AI-assisted treat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--33
-|[]\T1/ppl/b/n/17.28 Model Lim-i-ta-tions|
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Underfull \hbox (badness 10000) in paragraph at lines 46--46
-|[]\T1/ppl/b/n/17.28 Future Work|
- []
+[68])
 
-Runaway argument?
-{itemize> 
-! Paragraph ended before \end  was complete.
-<to be read again> 
-                   \par 
-l.55 
-     
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-Runaway argument?
-{itemize> 
-! Paragraph ended before \end  was complete.
-<to be read again> 
-                   \par 
-l.62 
-     
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Runaway argument?
-{itemize> 
-! Paragraph ended before \end  was complete.
-<to be read again> 
-                   \par 
-l.70 
-     
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
+[69] (./main.bbl [70
 
+]) [71
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--70
-[]\T1/ppl/m/n/12 Biomarker dis-cov-ery through com-pu-ta-tional screen-ing of h
-igh-
- []
-
-) (./main.bbl
-Underfull \hbox (badness 1354) in paragraph at lines 64--67
-[]\T1/ppl/m/n/12 Emanuela Merelli et al.  Agent-based mod-el-ing of can-cer im-
-
- []
-
-)
-
-! LaTeX Error: \begin{itemize} on input line 64 ended by \end{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.246 \end{document}
-                    
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-(./main.aux)
+] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -3963,46 +2991,45 @@ L3 programming layer <2024-01-22>
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 28930AA0ADEBD8608B7C707445230D9A;1484.
-! You can't use `\end' in internal vertical mode.
-\enddocument ...cument/end}\deadcycles \z@ \@@end 
-                                                  
-l.246 \end{document}
-                    
-Sorry, but I'm not programmed to handle this case;
-I'll just pretend that you didn't ask for it.
-If you're in the wrong mode, you might be able to
-return to the right one by typing `I}' or `I$' or `I\par'.
-
-
-! LaTeX Error: \begin{itemize} on input line 64 ended by \end{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.246 \end{document}
-                    
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-)
-! Emergency stop.
-<*> main.tex
-            
-*** (job aborted, no legal \end found)
-
- 
+(rerunfilecheck)             Checksum: 1124AFD30F5A3967D56F22887E9541B9;17628.
+ ) 
 Here is how much of TeX's memory you used:
- 51247 strings out of 476182
- 1167089 string characters out of 5795596
- 2144975 words of memory out of 5000000
- 72298 multiletter control sequences out of 15000+600000
- 593583 words of font info for 114 fonts, out of 8000000 for 9000
+ 51742 strings out of 476182
+ 1173956 string characters out of 5795596
+ 1980975 words of memory out of 5000000
+ 72496 multiletter control sequences out of 15000+600000
+ 599477 words of font info for 126 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 84i,34n,93p,1228b,3739s stack positions out of 10000i,1000n,20000p,200000b,200000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 84i,16n,93p,1228b,2224s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/u
+crr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on main.pdf (73 pages, 1515559 bytes).
+PDF statistics:
+ 2333 PDF objects out of 2487 (max. 8388607)
+ 1212 compressed objects within 13 object streams
+ 313 named destinations out of 1000 (max. 500000)
+ 22576 words of extra memory for PDF output out of 24883 (max. 10000000)
+
