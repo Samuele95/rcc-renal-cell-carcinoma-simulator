@@ -1,11 +1,9 @@
 \chapter{Glucose Microenvironment System}
 \label{ch:glucose}
 
-\epigraph{Cancer cells consume glucose at an abnormally high rate.}{--- Otto Warburg}
-
 Understanding how tumors starve the immune system is central to designing effective therapies. This chapter introduces the glucose field that models this metabolic warfare --- and reveals a critical tipping point that determines whether the immune system wins or loses.
 
-This chapter describes the glucose concentration field that overlays the discrete agent grid, modeling metabolic dynamics within the tumor microenvironment.  The system captures diffusion, source injection from blood vessels, consumption by tumor and immune cells, and gradient-based chemotaxis for immune cell navigation.
+This chapter describes the glucose concentration field that overlays the discrete agent grid, modeling metabolic dynamics within the tumor microenvironment. The system captures diffusion, source injection from blood vessels, consumption by tumor and immune cells, and gradient-based chemotaxis for immune cell navigation.
 
 %% ====================================================================
 \section{Biological Motivation}
@@ -18,354 +16,76 @@ This chapter describes the glucose concentration field that overlays the discret
 \label{fig:warburg_effect}
 \end{figure}
 
-The metabolic landscape of the tumor microenvironment plays a decisive role in determining the outcome of immune--tumor interactions.  Several biological phenomena motivate the inclusion of an explicit glucose field in the model.
-
-\paragraph{The Warburg Effect.}
-In the 1920s, Otto Warburg observed that tumor cells preferentially metabolize glucose through aerobic glycolysis---even in the presence of sufficient oxygen for oxidative phosphorylation~\cite{warburg1956}.  This metabolic reprogramming, now recognized as a hallmark of cancer~\cite{hanahan2011}, results in dramatically elevated glucose uptake by tumor cells (up to 200-fold compared to normal tissue) and the production of large quantities of lactate.  The Warburg effect is not merely a metabolic curiosity; it confers a selective advantage by generating biosynthetic precursors for rapid proliferation and by acidifying the local microenvironment, which impairs immune cell function.
-
-\paragraph{Metabolic Competition.}
-Because tumor cells consume glucose at a greatly accelerated rate, the regions immediately surrounding the tumor mass become nutrient-deprived.  This metabolic competition between tumor cells and infiltrating immune cells creates nutrient gradients that shape the spatial organization of the microenvironment.  Immune cells arriving at the tumor periphery may encounter glucose concentrations insufficient to sustain their effector functions.
+The metabolic landscape of the tumor microenvironment plays a decisive role in determining immune-tumor interactions. Otto Warburg observed that tumor cells preferentially metabolize glucose through aerobic glycolysis, resulting in dramatically elevated glucose uptake (up to 200-fold compared to normal tissue). This metabolic competition between tumor cells and infiltrating immune cells creates nutrient gradients that shape spatial organization, as regions surrounding tumor masses become nutrient-deprived. T cells and NK cells critically depend on glucose availability for cytotoxic activity — when glucose is scarce, T cell proliferation is impaired, IFN-$\gamma$ production decreases, and cytotoxic granule release is diminished. In the absence of direct cell-cell contact, immune cells can follow glucose concentration gradients as a proxy for proximity to functional vasculature and viable tissue, providing a chemotactic fallback behavior.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\textwidth]{figures/glucose_dynamics.pdf}
 \caption{Glucose field dynamics over time showing the evolution of glucose concentration patterns in response to tumor growth and treatment. The spatial distribution reveals zones of depletion around tumor masses and gradients extending from blood vessel sources.}
 \label{fig:glucose_dynamics}
-\end{figure}
+\end{figure>
 
 \begin{figure}[htbp]
 \centering
 \adjustbox{max width=0.85\textwidth, max height=0.7\textheight}{\input{figures/glucose_system.tex}}
 \caption{Glucose system architecture showing the diffusion field, sources from blood vessels, and consumption by cellular agents.}
 \label{fig:glucose_system}
-\end{figure}
-
-\paragraph{Impact on Immune Function.}
-T cells and Natural Killer (NK) cells are critically dependent on glucose availability for their cytotoxic activity.  Upon activation, T cells undergo a metabolic switch to aerobic glycolysis to support clonal expansion and effector function.  When glucose is scarce, T cell proliferation is impaired, interferon-gamma (IFN-$\gamma$) production decreases, and cytotoxic granule release is diminished.  Similarly, NK cell cytotoxicity is reduced under glucose-deprived conditions.  In the model, this dependency is captured by a glucose-dependent scaling factor applied to immune cell kill rates.
-
-\paragraph{Glucose Gradients as Chemotactic Signals.}
-In the absence of direct cell--cell contact with a target, immune cells can follow glucose concentration gradients as a proxy for proximity to blood vessels and viable tissue.  Regions of high glucose concentration tend to be near functional vasculature, while depleted regions indicate areas of heavy tumor metabolism.  The model exploits this gradient information to provide a chemotactic fallback behavior for immune cells that have not yet located a tumor target.
+\end{figure>
 
 %% ====================================================================
 \section{Mathematical Formulation}
 \label{sec:glucose-math}
 
-The glucose concentration field $C(\mathbf{x}, t)$ evolves according to a reaction--diffusion equation derived from Fick's second law~\cite{fick1855}:
+The glucose concentration field $C(\mathbf{x}, t)$ evolves according to a reaction--diffusion equation derived from Fick's second law:
 
 \begin{equation}
 \label{eq:glucose-pde}
 \frac{\partial C}{\partial t} = D\,\nabla^2 C \;-\; \lambda\,C \;+\; S(\mathbf{x}) \;-\; Q(\mathbf{x}),
 \end{equation}
 
-\noindent where:
-\begin{itemize}[nosep]
-  \item $C(\mathbf{x}, t)$ is the glucose concentration at position $\mathbf{x} = (x, y, z)$ and time $t$,
-  \item $D$ is the diffusion coefficient (\texttt{w\_glucose\_diffusion}, default $0.1$),
-  \item $\lambda$ is the natural decay rate (\texttt{w\_glucose\_decay}, default $0.01$),
-  \item $S(\mathbf{x})$ is the source term (glucose injection from blood vessels),
-  \item $Q(\mathbf{x})$ is the consumption term (uptake by tumor and immune cells).
-\end{itemize}
+\noindent where $C(\mathbf{x}, t)$ is the glucose concentration, $D$ is the diffusion coefficient (\texttt{w\_glucose\_diffusion}, default $0.1$), $\lambda$ is the natural decay rate (\texttt{w\_glucose\_decay}, default $0.01$), $S(\mathbf{x})$ is the source term (glucose injection from blood vessels), and $Q(\mathbf{x})$ is the consumption term (uptake by tumor and immune cells).
 
-\subsection{Discrete 3D Laplacian}
+The continuous Laplacian $\nabla^2 C$ is discretized on a regular 3D Cartesian grid using the standard 6-connected stencil, implemented as a 3D convolution using \texttt{scipy.ndimage.convolve}. The diffusion equation is advanced using explicit Euler integration with stability condition $D < 1/6$. Neumann (zero-flux) boundary conditions are enforced, corresponding to no glucose flux through simulation domain walls.
 
-The continuous Laplacian $\nabla^2 C$ is discretized on a regular 3D Cartesian grid using the standard 6-connected stencil.  For a grid point $(i, j, k)$ with unit spacing $\Delta x = 1$:
+\subsection{Source and Consumption Models}
 
-\begin{align}
-\label{eq:laplacian-discrete}
-\nabla^2 C(i,j,k) &= C(i{+}1,j,k) + C(i{-}1,j,k) \nonumber\\
-                   &\quad + C(i,j{+}1,k) + C(i,j{-}1,k) \nonumber\\
-                   &\quad + C(i,j,k{+}1) + C(i,j,k{-}1) \nonumber\\
-                   &\quad - 6\,C(i,j,k).
-\end{align}
+Blood vessel agents inject glucose at their grid positions at rate $r_{\text{source}}$ (\texttt{w\_glucose\_source\_rate}, default 5.0) per step. Tumor cells consume glucose reflecting the Warburg effect at rate $r_{\text{tumor}}$ (\texttt{w\_glucose\_tumor\_consumption}, default 2.0), while immune cells consume at lower rate $r_{\text{immune}}$ (\texttt{w\_glucose\_immune\_consumption}, default 0.5).
 
-This discrete Laplacian is implemented as a 3D convolution using \texttt{scipy.ndimage.convolve} with a $3 \times 3 \times 3$ kernel $K$ defined by:
-
-\begin{equation}
-\label{eq:kernel}
-K[1,1,1] = -6, \qquad K[\text{face neighbors}] = 1, \qquad K[\text{all others}] = 0,
-\end{equation}
-
-\noindent where the six face-neighbor entries correspond to the positions
-$(0,1,1)$, $(2,1,1)$, $(1,0,1)$, $(1,2,1)$, $(1,1,0)$, and $(1,1,2)$
-in the kernel array.  All remaining 20 entries (edges and corners) are zero.
-
-\subsection{Time Integration}
-
-The diffusion equation is advanced in time using explicit (forward) Euler integration:
-
-\begin{equation}
-\label{eq:euler}
-C^{n+1}(i,j,k) = C^{n}(i,j,k) + D \cdot \nabla^2 C^{n}(i,j,k).
-\end{equation}
-
-\subsection{Stability Analysis}
-
-By the von Neumann stability criterion for the explicit Euler scheme applied to the 3D diffusion equation on a unit grid, the stability condition is:
-
-\begin{equation}
-\label{eq:stability}
-D < \frac{1}{6} \approx 0.1\overline{6},
-\end{equation}
-
-\noindent which ensures that the amplification factor remains bounded.  The default value $D = 0.1$ satisfies this constraint.  After each diffusion step, the field is clamped to non-negative values to prevent unphysical negative concentrations.
-
-\subsection{Boundary Conditions}
-
-Neumann (zero-flux) boundary conditions are enforced by passing \texttt{mode='nearest'} to \texttt{scipy.ndimage.convolve}.  This mode replicates the boundary voxel values, effectively setting $\partial C / \partial \mathbf{n} = 0$ at all domain boundaries, which corresponds to no glucose flux through the walls of the simulation volume.
-
-%% ====================================================================
-\section{Source Model}
-\label{sec:glucose-source}
-
-Glucose enters the simulation domain through blood vessel agents, which act as point sources.
-
-\paragraph{Injection Mechanism.}
-At each simulation tick, every \texttt{Blood} agent injects glucose at its grid position:
-
-\begin{equation}
-\label{eq:injection}
-C(\mathbf{x}_v) \leftarrow C(\mathbf{x}_v) + r_{\text{source}},
-\end{equation}
-
-\noindent where $\mathbf{x}_v$ is the position of blood vessel agent $v$ and $r_{\text{source}}$ is the injection rate per step (\texttt{w\_glucose\_source\_rate}, default $5.0$).
-
-\paragraph{Blood Vessel Geometry.}
-Blood vessels are initialized along one edge of the simulation cube in a $4 \times 4$ cross-sectional arrangement (minus the four corner positions, yielding 12 vessel positions per slice along the $x$-axis).  This geometry creates a vascular channel that serves as the primary glucose supply for the entire domain.  Additional tumor-generated blood vessels (via angiogenesis) contribute further glucose sources during the simulation.
-
-%% ====================================================================
-\section{Consumption Model}
-\label{sec:glucose-consumption}
-
-Glucose is consumed by both tumor cells and immune cells, with consumption handled individually during each agent's \texttt{step()} method.
-
-\subsection{Tumor Cell Consumption}
-
-Tumor cells consume glucose at a rate reflecting the Warburg effect:
-
-\begin{equation}
-\label{eq:tumor-consumption}
-C(\mathbf{x}_t) \leftarrow \max\!\bigl(0,\; C(\mathbf{x}_t) - r_{\text{tumor}}\bigr),
-\end{equation}
-
-\noindent where $r_{\text{tumor}} = \texttt{w\_glucose\_tumor\_consumption}$ (default $2.0$ per step).  The clamping to zero ensures that glucose concentrations remain non-negative.
-
-\subsection{Immune Cell Consumption}
-
-All immune cells (cytotoxic T cells, NK cells, macrophages, dendritic cells) consume glucose at a lower rate:
-
-\begin{equation}
-\label{eq:immune-consumption}
-C(\mathbf{x}_i) \leftarrow \max\!\bigl(0,\; C(\mathbf{x}_i) - r_{\text{immune}}\bigr),
-\end{equation}
-
-\noindent where $r_{\text{immune}} = \texttt{w\_glucose\_immune\_consumption}$ (default $0.5$ per step).
-
-\subsection{Glucose-Dependent Growth Factor}
-
-Tumor cell proliferation probability is modulated by local glucose availability:
-
-\begin{equation}
-\label{eq:glucose-growth}
-f_{\text{glucose}} = \min\!\bigl(1.0,\; C(\mathbf{x}_t) \cdot w_{\text{growth\_sensitivity}}\bigr),
-\end{equation}
-
-\noindent where $w_{\text{growth\_sensitivity}} = \texttt{w\_glucose\_growth\_sensitivity}$ (default $1.0$).  The duplication probability is then scaled by this factor:
-
-\begin{equation}
-\label{eq:p-duplication-glucose}
-p_{\text{dup}}' = p_{\text{dup}} \cdot f_{\text{glucose}}.
-\end{equation}
-
-\noindent When glucose is abundant ($C \geq 1.0$), growth proceeds at the full rate.  As glucose drops below $1.0$, growth is proportionally suppressed.
-
-\subsection{Glucose-Dependent Immune Function}
-
-Immune cell kill rates are similarly modulated:
-
-\begin{equation}
-\label{eq:glucose-immune}
-f_{\text{immune}} = \min\!\bigl(1.0,\; C(\mathbf{x}_i) \cdot w_{\text{immune\_sensitivity}}\bigr),
-\end{equation}
-
-\noindent where $w_{\text{immune\_sensitivity}} = \texttt{w\_glucose\_immune\_sensitivity}$ (default $1.0$).  The effective kill probability becomes:
-
-\begin{equation}
-\label{eq:p-kill-glucose}
-p_{\text{kill}}' = p_{\text{kill}} \cdot f_{\text{immune}}.
-\end{equation}
-
-\noindent This mechanism captures the biological observation that T cells and NK cells require glucose to sustain their cytotoxic machinery.
-
-\begin{tcolorbox}[enhanced, colback=blue!3, colframe=blue!50!black, arc=3pt, boxrule=0.5pt, title={\textbf{Key Takeaway}}]
-The glucose consumption rate has a critical tipping point between 2.0 and 4.0 that determines treatment success. Below this threshold, immune cells retain enough metabolic fuel to attack tumors effectively. Above it, the Warburg effect starves the immune system into submission.
-\end{tcolorbox}
-
-Figure~\ref{fig:glucose_system} illustrates the complete glucose system, showing the cyclic processes of injection, diffusion, consumption, and gradient computation that govern metabolic dynamics in the tumor microenvironment.
-
-\begin{figure}[htbp]
-\centering
-% TikZ figure temporarily disabled - glucose system would show field dynamics
-\textit{[Glucose system diagram showing the cycle of injection, diffusion, consumption, and gradient computation with feedback loops between tumor cells, immune cells, and blood vessels]}
-
-The glucose field system is implemented through a carefully orchestrated sequence of operations executed each simulation step. The core algorithm balances biological realism with computational efficiency, leveraging vectorized NumPy operations for field updates while maintaining individual agent-level consumption behavior.
-\caption{Overview of the glucose system in the RCC model. The continuous glucose field $C(\mathbf{x}, t)$ is maintained through a cycle of: (1) glucose injection from blood vessels, (2) 3D diffusion via Fick's Law, (3) natural decay, (4) consumption by tumor and immune cells, and (5) gradient computation for chemotaxis. Feedback loops modulate cell growth and activity based on local glucose availability.}
-\label{fig:glucose_system}
-\end{figure}
+Tumor cell proliferation probability is modulated by glucose availability: $f_{\text{glucose}} = \min(1.0, C(\mathbf{x}_t) \cdot w_{\text{growth\_sensitivity}})$, and immune cell kill rates are similarly scaled: $f_{\text{immune}} = \min(1.0, C(\mathbf{x}_i) \cdot w_{\text{immune\_sensitivity}})$. When glucose is abundant ($C \geq 1.0$), activities proceed at full rate; as glucose drops below 1.0, functions are proportionally suppressed.
 
 %% ====================================================================
 \section{Gradient and Chemotaxis}
 \label{sec:glucose-chemotaxis}
 
-\subsection{Gradient Computation}
-
-The glucose gradient at position $(i, j, k)$ is computed using central finite differences:
-
-\begin{align}
-\label{eq:gradient}
-\frac{\partial C}{\partial x}\bigg|_{(i,j,k)} &= \frac{C(i{+}1,j,k) - C(i{-}1,j,k)}{2}, \nonumber\\[4pt]
-\frac{\partial C}{\partial y}\bigg|_{(i,j,k)} &= \frac{C(i,j{+}1,k) - C(i,j{-}1,k)}{2}, \\[4pt]
-\frac{\partial C}{\partial z}\bigg|_{(i,j,k)} &= \frac{C(i,j,k{+}1) - C(i,j,k{-}1)}{2}. \nonumber
-\end{align}
-
-\noindent At domain boundaries, the indices are clamped to the valid range (consistent with the Neumann boundary conditions), so the gradient naturally approaches zero near the walls.
-
-\subsection{Discretized Gradient Step}
-
-For agent movement on the integer grid, the continuous gradient is converted to a discrete step direction:
-
-\begin{equation}
-\label{eq:discrete-step}
-(\Delta x, \Delta y, \Delta z) = \bigl(\mathrm{sign}(\nabla_x C),\; \mathrm{sign}(\nabla_y C),\; \mathrm{sign}(\nabla_z C)\bigr),
-\end{equation}
-
-\noindent where $\mathrm{sign}(v) \in \{-1, 0, +1\}$.  The resulting step is further clamped to ensure the target position lies within the grid bounds.
-
-\subsection{Chemotaxis Behavior}
-
-Immune cells that implement glucose chemotaxis---specifically \texttt{CytotoxicTCell}, \texttt{MacrophageM1}, \texttt{DendriticCell}, and \texttt{NaturalKiller}---employ the following fallback strategy:
-
-\begin{enumerate}[nosep]
-  \item The agent first attempts to move directly towards a nearby tumor cell using the standard \texttt{move\_towards()} method.
-  \item If no tumor target is found (i.e., \texttt{move\_towards()} returns \texttt{False}), the agent evaluates the glucose gradient at its current position.
-  \item With probability $p_{\text{chemo}} = \texttt{w\_glucose\_chemotaxis\_strength}$ (default $0.3$), the agent moves one step in the direction of increasing glucose concentration.
-  \item If the gradient is zero (flat concentration), no movement occurs.
-\end{enumerate}
-
-\noindent This mechanism provides immune cells with a biologically motivated navigation strategy: in the absence of direct target detection, cells move towards areas of higher metabolic activity, which correlates with the presence of functional vasculature and, consequently, viable tissue where tumor cells may reside.
+The glucose gradient is computed using central finite differences, and for agent movement on the integer grid, the continuous gradient is converted to discrete step directions using the sign function. Immune cells that implement glucose chemotaxis (\texttt{CytotoxicTCell}, \texttt{MacrophageM1}, \texttt{DendriticCell}, \texttt{NaturalKiller}) employ a fallback strategy where they first attempt to move towards nearby tumor cells, and if no target is found, they move in the direction of increasing glucose concentration with probability $p_{\text{chemo}}$ (\texttt{w\_glucose\_chemotaxis\_strength}, default 0.3).
 
 %% ====================================================================
 \section{Implementation}
 \label{sec:glucose-impl}
 
-The glucose system is encapsulated in the \texttt{GlucoseField} class, located in \texttt{src/systems/glucose\_field.py}.
+The glucose system is encapsulated in the \texttt{GlucoseField} class. The glucose field is stored as a 3D NumPy array with \texttt{float64} precision, initialized uniformly to 1.0. Each simulation step executes three phases:
 
-\subsection{Data Structure}
-
-The glucose field is stored as a three-dimensional NumPy array of shape $(\texttt{width} \times \texttt{height} \times \texttt{depth})$ with \texttt{float64} precision, matching the dimensions of the agent grid.  The initial concentration is set uniformly to $1.0$.
-
-\subsection{Convolution Kernel}
-
-The 6-connected Laplacian kernel is constructed once during initialization as a $3 \times 3 \times 3$ NumPy array:
-
-\begin{lstlisting}[caption={Laplacian kernel construction.},label={lst:kernel}]
-self._kernel = np.zeros((3, 3, 3), dtype=np.float64)
-self._kernel[1, 1, 0] = 1.0   # z-1
-self._kernel[1, 1, 2] = 1.0   # z+1
-self._kernel[1, 0, 1] = 1.0   # y-1
-self._kernel[1, 2, 1] = 1.0   # y+1
-self._kernel[0, 1, 1] = 1.0   # x-1
-self._kernel[2, 1, 1] = 1.0   # x+1
-self._kernel[1, 1, 1] = -6.0  # center
-\end{lstlisting}
-
-\subsection{Step Function}
-
-The \texttt{step(model)} method executes the three phases of the glucose dynamics in sequence:
-
-\begin{enumerate}[nosep]
-  \item \textbf{Injection:} iterate over all \texttt{Blood} agents and call \texttt{inject(pos, rate)} for each.
-  \item \textbf{Diffusion:} apply the discrete Laplacian convolution and update the field via explicit Euler.
-  \item \textbf{Decay:} multiply the entire field by $(1 - \lambda)$ where $\lambda$ is the decay rate.
+\begin{enumerate}
+    \item \textbf{Injection}: Blood vessels inject glucose at their positions
+    \item \textbf{Diffusion}: Apply discrete Laplacian convolution and Euler integration  
+    \item \textbf{Decay}: Multiply field by $(1 - \lambda)$
 \end{enumerate}
 
-\noindent Agent-level consumption (by tumor and immune cells) is handled within each agent's own \texttt{step()} method, not within the \texttt{GlucoseField.step()} call.  This design ensures that consumption occurs at the correct point in the agent execution order and avoids double-counting.
-
-\begin{lstlisting}[caption={Glucose field step implementation from \texttt{glucose\_field.py}.}, label={lst:glucose-step}]
-def step(self, model):
-    """Perform one simulation step of the glucose field.
-    1. Blood vessels inject glucose (sources) -- vectorized.
-    2. Diffusion spreads glucose.
-    3. Natural decay.
-    Note: Consumption by agents is handled in their own step() methods.
-    """
-    wp = model.weight_params
-    
-    # 1. Source injection from blood vessels (vectorized)
-    if self._blood_positions_dirty:
-        self.update_blood_positions(model)
-    if len(self._blood_xs) > 0:
-        np.add.at(self.field, (self._blood_xs, self._blood_ys, self._blood_zs), 
-                 wp.w_glucose_source_rate)
-    
-    # 2. Diffusion
-    self.diffuse(wp.w_glucose_diffusion)
-    
-    # 3. Decay
-    self.decay(wp.w_glucose_decay)
-\end{lstlisting}
-
-The implementation demonstrates key design patterns that reflect both the biological constraints and computational requirements of the system. The vectorized injection strategy using NumPy's \texttt{add.at} function enables efficient batch updates to multiple grid positions simultaneously, avoiding the performance penalty of iterating over individual blood vessel agents. This architectural choice embodies the principle that field-level operations should be vectorized while agent-level behaviors remain individualized.
-
-\subsection{Statistics Methods}
-
-The \texttt{GlucoseField} class exposes four aggregate statistics, used by the data collection system to track metabolic dynamics over time:
-
-\begin{itemize}[nosep]
-  \item \texttt{mean\_concentration()} -- mean glucose across all voxels,
-  \item \texttt{total\_concentration()} -- total glucose in the domain,
-  \item \texttt{min\_concentration()} -- minimum glucose (identifies depletion zones),
-  \item \texttt{max\_concentration()} -- maximum glucose (identifies source neighborhoods).
-\end{itemize}
-
-\noindent These values are recorded at every simulation step and provide insight into the metabolic state of the microenvironment, including the formation and extent of glucose-deprived regions around the tumor mass.
-
-\begin{lstlisting}[caption={Tumor cell glucose consumption and growth modulation from \texttt{tumor\_cell.py}.}, label={lst:tumor-glucose}]
-def step(self):
-    # Glucose consumption (Warburg effect)
-    self.consume_glucose(self.model.weight_params.w_glucose_tumor_consumption)
-    
-    # Tumor Apoptosis (check first)
-    if self.model.rng.random() < self._apoptosis_probability():
-        # [apoptosis logic omitted for brevity]
-        return
-    
-    # Tumor Duplication with glucose modulation
-    p_duplication = self._growth_potential()
-    
-    if self.pos is not None:
-        glucose = self.model.glucose_field.get(self.pos)
-        glucose_factor = min(1.0, glucose * self.model.weight_params.w_glucose_growth_sensitivity)
-        p_duplication *= glucose_factor
-    
-    if self.model.rng.random() <= p_duplication:
-        self.duplicate()
-\end{lstlisting}
-
-This implementation illustrates a critical design principle: metabolic constraints operate as multiplicative modifiers of biological processes rather than absolute determinants. The glucose factor calculation \texttt{min(1.0, glucose * sensitivity)} ensures that glucose availability can only reduce growth rates, never enhance them beyond the baseline genetic potential. This reflects the biological reality that nutrient availability enables growth but cannot exceed the intrinsic proliferative capacity encoded in the cell's mutational profile.
+Agent-level consumption occurs within each agent's \texttt{step()} method. The implementation uses vectorized NumPy operations for field updates while maintaining individual agent-level consumption behavior. The class exposes aggregate statistics (mean, total, min, max concentrations) for tracking metabolic dynamics over time.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\textwidth]{figures/glucose_timeseries.pdf}
 \caption{Glucose concentration time series showing the temporal evolution of mean, minimum, and maximum glucose levels throughout the simulation. The dynamics reflect the balance between blood vessel injection, cellular consumption, and spatial diffusion.}
 \label{fig:glucose_timeseries}
-\end{figure}
+\end{figure>
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\textwidth]{figures/glucose_field_3d.pdf}
 \caption{Three-dimensional visualization of the glucose concentration field showing spatial heterogeneity within the tumor microenvironment. High-concentration regions (yellow) correspond to blood vessel locations, while low-concentration zones (blue) indicate areas of intensive cellular consumption.}
 \label{fig:glucose_field_3d}
-\end{figure}
+\end{figure>
 
 \begin{figure}[htbp]
 \centering
@@ -407,6 +127,6 @@ This implementation illustrates a critical design principle: metabolic constrain
 \node[font=\small\bfseries] at (0.5,0) {Glucose Dynamics};
 
 \end{tikzpicture}
-\caption{BPMN-style Glucose System Cycle illustrating the circular flow of glucose dynamics in the tumor microenvironment. Blood vessels inject glucose which diffuses spatially and is consumed preferentially by tumor cells (Warburg effect), creating concentration gradients that guide immune cell chemotaxis back toward glucose-rich regions near blood vessels. This creates a continuous cycle where metabolic competition shapes spatial organization.}
+\caption{Glucose System Cycle illustrating the circular flow of glucose dynamics in the tumor microenvironment.}
 \label{fig:glucose_system_cycle}
 \end{figure}

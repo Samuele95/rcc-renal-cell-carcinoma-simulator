@@ -1,11 +1,9 @@
 \chapter{Treatment System}
 \label{ch:treatment}
 
-
-
 These genetic mutations create vulnerabilities that treatments can exploit. This chapter examines exactly how immune checkpoint inhibitors and targeted therapies work --- and reveals why the ICI+TKI combination is more than the sum of its parts.
 
-This chapter describes the pharmacological treatment layer of the model, which simulates Immune Checkpoint Inhibitors (ICI), Tyrosine Kinase Inhibitors (TKI), and their combination.  The treatment system is activated after a configurable number of simulation steps and modulates tumor and immune cell behaviors through drug-specific mechanisms.
+This chapter describes the pharmacological treatment layer of the model, which simulates Immune Checkpoint Inhibitors (ICI), Tyrosine Kinase Inhibitors (TKI), and their combination. The treatment system is activated after a configurable number of simulation steps and modulates tumor and immune cell behaviors through drug-specific mechanisms.
 
 %% ====================================================================
 \section{Drug Architecture}
@@ -18,150 +16,40 @@ This chapter describes the pharmacological treatment layer of the model, which s
 \label{fig:treatment_mechanisms}
 \end{figure}
 
-The treatment system follows a composition-based design in which individual drugs are combined into a treatment regimen.
+The treatment system follows a composition-based design where individual drugs inherit from an abstract Drug base class with step() method and proportion parameter controlling treatment allocation fraction. The Treatment class distributes capacity equally among drugs: single drug therapy receives proportion = 1.0, combination therapy gives each drug 0.5, modeling clinical dose adjustments. Treatment activates after treatment_start steps (default: 100), establishing baseline disease state before intervention.
 
-\subsection{Abstract Drug Base Class}
-
-All drugs inherit from an abstract \texttt{Drug} base class with a \texttt{step()} method. The \texttt{proportion} parameter controls the treatment allocation fraction.
-
-\subsection{Treatment Composition}
-
-The \texttt{Treatment} class distributes capacity equally among drugs. With single drug therapy, proportion = 1.0; with combination therapy, each drug receives 0.5, modeling clinical dose adjustments.
-
-\subsection{Treatment Activation}
-
-Treatment does not begin at the start of the simulation.  Instead, it is activated after a configurable number of steps specified by the \texttt{treatment\_start} patient parameter (default: step 100).  Before this time point, the model simulates unperturbed tumor--immune dynamics, establishing a baseline disease state.  At each step from \texttt{treatment\_start} onward, \texttt{Treatment.step()} is called:
-
-\begin{equation}
-\label{eq:treatment-activation}
-\text{Treatment active at step } t \iff t \geq t_{\text{start}}.
-\end{equation}
-
-\noindent The available treatment configurations, selected via the \texttt{treatment} patient parameter, are:
-
-\begin{itemize}[nosep]
-  \item \texttt{"None"} -- no drugs (control),
-  \item \texttt{"ICI"} -- immune checkpoint inhibitor monotherapy,
-  \item \texttt{"TKI"} -- tyrosine kinase inhibitor monotherapy,
-  \item \texttt{"ICI+TKI"} -- combination therapy.
-\end{itemize}
+Available treatment configurations via treatment patient parameter:
+\begin{itemize}
+    \item "None" -- no drugs (control)
+    \item "ICI" -- immune checkpoint inhibitor monotherapy  
+    \item "TKI" -- tyrosine kinase inhibitor monotherapy
+    \item "ICI+TKI" -- combination therapy
+\end{itemize>
 
 %% ====================================================================
 \section{Immune Checkpoint Inhibitors (ICI)}
 \label{sec:ici}
 
-\subsection{Biological Basis}
-
-PD-1/PD-L1 checkpoint interaction suppresses T cell cytotoxicity. ICI antibodies block this pathway, restoring T cell function and demonstrating clinical benefits in RCC~\cite{pardoll2012,rini2019}.
-
-\subsection{Implementation}
-
-\texttt{ICIDrug} implements three mechanisms: (1) \emph{PD-L1 blockade} on tumor cells, disabling checkpoint inhibition; (2) \emph{T cell activation restoration} across all T cell subtypes; and (3) \emph{immune infiltration enhancement}. Each effect occurs with probability proportional to drug effectiveness.
-
-\begin{equation}
-\label{eq:ici-tcell}
-\texttt{t\_activation\_effect} \leftarrow 1.0.
-\end{equation}
-
-\noindent This resets the T cell's activation state to full capacity, counteracting the progressive exhaustion that occurs when T cells encounter PD-L1$^+$ tumor cells without treatment.
-
-\paragraph{3.\ Immune Infiltration Enhancement.}
-For immune cell types Th1, Th2, and MastCell, with the same probability, the \texttt{immune\_infiltration\_factor} is incremented:
-
-\begin{equation}
-\label{eq:ici-infiltration}
-\texttt{immune\_infiltration\_factor} \leftarrow \texttt{immune\_infiltration\_factor} + 1.
-\end{equation}
-
-\noindent This models the clinical observation that ICI therapy promotes immune cell infiltration into the tumor mass, as the restored immune microenvironment generates stronger chemotactic signals.
+PD-1/PD-L1 checkpoint interaction suppresses T cell cytotoxicity, and ICI antibodies block this pathway to restore T cell function. ICIDrug implements three mechanisms with probability proportional to drug effectiveness: (1) PD-L1 blockade on tumor cells, disabling checkpoint inhibition by setting ICI_effect flag to True; (2) T cell activation restoration across all subtypes by resetting t_activation_effect to 1.0, counteracting exhaustion from PD-L1+ tumor encounters; and (3) immune infiltration enhancement by incrementing immune_infiltration_factor for Th1, Th2, and MastCell types, modeling increased immune cell infiltration into tumor masses.
 
 %% ====================================================================
-\section{Tyrosine Kinase Inhibitors (TKI)}
+\section>Tyrosine Kinase Inhibitors (TKI)}
 \label{sec:tki}
 
-\subsection{Biological Basis}
-
-Vascular endothelial growth factor (VEGF) is a key driver of angiogenesis---the formation of new blood vessels that supply the tumor with nutrients and oxygen.  Renal cell carcinoma is particularly dependent on VEGF signaling due to frequent VHL gene inactivation, making anti-angiogenic therapy a cornerstone of RCC treatment.
-
-Tyrosine kinase inhibitors (e.g., axitinib, sunitinib) block the intracellular signaling domains of VEGF receptors and other receptor tyrosine kinases, thereby inhibiting tumor-driven angiogenesis and directly reducing tumor cell proliferation~\cite{rini2019}.
-
-\subsection{Implementation}
-
-The \texttt{TKIDrug} class (in \texttt{src/treatments/tki.py}) implements four effects:
-
-\paragraph{1.\ Tumor Growth Suppression.}
-For each tumor cell, with probability \texttt{proportion} $\times$ \texttt{w\_tki\_effectiveness}, the tumor growth effect is reduced:
-
-\begin{equation}
-\label{eq:tki-growth}
-\texttt{tumour\_growth\_effect} \leftarrow \texttt{tumour\_growth\_effect} \times (1 - \varepsilon),
-\end{equation}
-
-\noindent where $\varepsilon = p \cdot w_{\text{TKI}}$ is the effective TKI strength.
-
-\paragraph{2.\ Angiogenesis Inhibition.}
-With the same per-cell probability, the angiogenesis effect is reduced:
-
-\begin{equation}
-\label{eq:tki-angio}
-\texttt{angiogenesis\_effect} \leftarrow \texttt{angiogenesis\_effect} \times (1 - \varepsilon).
-\end{equation}
-
-\noindent This directly suppresses the tumor cell's ability to recruit new blood vessels, reducing nutrient supply and constraining spatial expansion.
-
-\paragraph{3.\ Neoantigen Release.}
-With probability $\varepsilon$, the tumor cell's \texttt{TKI\_effect} flag is set to \texttt{True}.  When a tumor cell with \texttt{TKI\_effect = True} subsequently undergoes apoptosis, it releases its neoantigens to nearby dendritic cells (within radius 3), facilitating antigen presentation and downstream T cell activation.  This models the immunogenic cell death induced by TKI therapy.
-
-\paragraph{4.\ Treg Differentiation Suppression.}
-For each CD4 naive T cell, with probability $\varepsilon$:
-
-\begin{equation}
-\label{eq:tki-treg}
-\texttt{treg\_differentiation\_effect} \leftarrow \texttt{treg\_differentiation\_effect} \times (1 - \varepsilon).
-\end{equation}
-
-\noindent TKI therapy reduces the differentiation of naive CD4$^+$ T cells into immunosuppressive regulatory T cells (Tregs), thereby shifting the immune balance towards anti-tumor activity.
+VEGF drives angiogenesis in RCC due to frequent VHL gene inactivation, making anti-angiogenic TKI therapy (axitinib, sunitinib) a cornerstone treatment by blocking VEGF receptor signaling. TKIDrug implements four effects with probability proportional to effectiveness: (1) tumor growth suppression by reducing tumour_growth_effect, (2) angiogenesis inhibition by reducing angiogenesis_effect to suppress blood vessel recruitment, (3) neoantigen release by setting TKI_effect flag so apoptotic tumor cells release antigens to nearby dendritic cells for immune activation, and (4) Treg differentiation suppression by reducing treg_differentiation_effect in CD4+ naive T cells, shifting immune balance toward anti-tumor activity.
 
 %% ====================================================================
 \section{Combination Therapy}
 \label{sec:combination}
 
-\subsection{ICI + TKI}
-
-When both ICI and TKI are administered simultaneously, the \texttt{Treatment} class creates both drug instances, each receiving \texttt{proportion} $= 0.5$:
-
-\begin{equation}
-\label{eq:combination}
-p_{\text{ICI}} = p_{\text{TKI}} = \frac{1}{2}.
-\end{equation}
-
-\noindent The effective strength of each drug is halved compared to monotherapy, reflecting the dose adjustments common in combination regimens.
-
-\subsection{Synergistic Mechanisms}
-
-The combination of ICI and TKI exploits complementary mechanisms that produce synergistic anti-tumor effects:
-
-\begin{enumerate}[nosep]
-  \item \textbf{Vascular normalization:} TKI reduces aberrant tumor vasculature, which paradoxically improves blood flow to the tumor center.  This normalized vasculature allows more immune cells to infiltrate the tumor mass.
-  \item \textbf{Restored immune function:} ICI blocks the PD-1/PD-L1 checkpoint, restoring the cytotoxic capacity of the infiltrating T cells.  Without ICI, even well-infiltrated T cells may be rendered anergic by PD-L1 engagement.
-  \item \textbf{Immunogenic cell death:} TKI-induced tumor cell death releases neoantigens, priming new adaptive immune responses.  ICI ensures that the T cells activated by these neoantigens remain functional.
-  \item \textbf{Treg reduction:} TKI suppresses Treg differentiation, reducing the immunosuppressive component of the tumor microenvironment, while ICI restores the activity of effector T cells.
-\end{enumerate}
-
-
-
-\subsection{Clinical Evidence}
-
-The clinical rationale for ICI + TKI combination therapy in RCC is well established.  The KEYNOTE-426 trial demonstrated that pembrolizumab (anti-PD-1) combined with axitinib (TKI) significantly improved overall survival and progression-free survival compared to sunitinib monotherapy in advanced RCC~\cite{rini2019}.  Similarly, the JAVELIN Renal 101 trial showed that avelumab (anti-PD-L1) plus axitinib improved progression-free survival over sunitinib~\cite{motzer2019}.  The ARON-1 study further examined sex-specific response patterns in this combination setting~\cite{santoni2024}.
-
-The model's treatment system is designed to reproduce the qualitative dynamics observed in these trials: combination therapy produces stronger tumor regression than either monotherapy, and the relative benefit depends on the patient's immune profile and sex-specific parameters (see Chapter~\ref{ch:sex-hormones}). The treatment architecture embodies a modular design philosophy where individual drug mechanisms can be combined arbitrarily, enabling exploration of novel combination strategies and personalized treatment protocols based on patient-specific immune landscapes and tumor characteristics.
+ICI+TKI combination therapy provides each drug proportion = 0.5, reflecting clinical dose adjustments. The combination exploits synergistic mechanisms: TKI normalizes aberrant tumor vasculature improving immune cell infiltration, ICI restores cytotoxic capacity of infiltrating T cells, TKI-induced immunogenic cell death releases neoantigens while ICI ensures activated T cells remain functional, and TKI suppresses immunosuppressive Tregs while ICI restores effector T cell activity. Clinical trials (KEYNOTE-426, JAVELIN Renal 101) demonstrated combination superiority over monotherapy, with ARON-1 examining sex-specific response patterns.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\textwidth]{figures/treatment_timeline.pdf}
-\caption{Treatment timeline showing the sequential application of ICI and TKI therapies across simulation steps. The figure illustrates drug administration schedules, onset of action, and temporal coordination in combination therapy protocols. Treatment typically begins after an initial observation period to establish baseline tumor dynamics.}
+\caption{Treatment timeline showing the sequential application of ICI and TKI therapies across simulation steps. The figure illustrates drug administration schedules, onset of action, and temporal coordination in combination therapy protocols.}
 \label{fig:treatment_timeline}
-\end{figure}
+\end{figure>
 
 \begin{figure}[htbp]
 \centering
@@ -214,6 +102,6 @@ The model's treatment system is designed to reproduce the qualitative dynamics o
 \node[font=\scriptsize] at ([xshift=1.5cm]combo_effect) {Synergistic Mechanisms};
 
 \end{tikzpicture}
-\caption{BPMN-style Treatment Decision Flow showing the four treatment modalities available in the RCC model. Each treatment path leads to distinct molecular mechanisms: ICI blocks checkpoint inhibition to restore T cell function, TKI reduces tumor growth and releases neoantigens through anti-angiogenic effects, combination therapy applies both mechanisms at half strength, and no treatment maintains baseline tumor-immune dynamics for comparison.}
+\caption{Treatment Decision Flow showing the four treatment modalities available in the RCC model.}
 \label{fig:treatment_decision_flow}
-\end{figure}
+\end{figure>

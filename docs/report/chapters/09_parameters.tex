@@ -1,7 +1,7 @@
 \chapter{Parameters and Optimization}
 \label{ch:parameters}
 
-\epigraph{With four parameters I can fit an elephant.}{--- John von Neumann}
+
 
 The model employs a 114-parameter hierarchy: 4 model parameters (volume, resolution, seed), 18 patient parameters (clinical variables), and 92 weight parameters (biological process rates) optimized via Bayesian methods against clinical trial data.
 
@@ -345,9 +345,7 @@ study = optuna.create_study(direction="minimize")
 study.optimize(wrapped_objective, n_trials=250)
 \end{lstlisting}
 
-\begin{tcolorbox}[enhanced, colback=blue!3, colframe=blue!50!black, arc=3pt, boxrule=0.5pt, title={\textbf{Key Takeaway}}]
-Ninety-two parameters are tuned by Bayesian optimization (Optuna) against real ARON-1 clinical trial data. This isn't just model fitting --- it's teaching the virtual tumor to behave like real patient tumors, creating a bridge between computational biology and clinical medicine.
-\end{tcolorbox}
+
 
 % ======================================================================
 \section{Clinical Dataset}
