@@ -3,7 +3,9 @@
 
 
 
-The model simulates 18 different cell types interacting in a 3D tumor microenvironment, from tumor cells to T cells, representing the most comprehensive computational cancer-immune model built to date.
+Building a complete virtual immune system requires modeling every key player in the cancer battleground. This chapter introduces the 18 different cell types that interact in our simulation --- from aggressive tumor cells to vigilant T cells --- creating the most comprehensive computational tumor model ever built.
+
+This chapter provides a comprehensive description of the RCC agent-based model architecture. We begin with a high-level overview of the simulation environment and time step structure (Section~\ref{sec:md_overview}), then describe the agent class hierarchy (Section~\ref{sec:md_hierarchy}), the effect system that mediates inter-agent communication (Section~\ref{sec:md_effects}), the detailed interaction rules for each agent type (Section~\ref{sec:md_interactions}), the movement system (Section~\ref{sec:md_movement}), and the terminal conditions that govern simulation termination (Section~\ref{sec:md_terminal}).
 
 % ============================================================================
 \section{Overview}
@@ -13,7 +15,16 @@ The model simulates 18 different cell types interacting in a 3D tumor microenvir
 \subsection{Spatial Environment}
 \label{subsec:md_spatial}
 
-The simulation uses a 3D discrete grid with dimensions computed from tumor volume, featuring sticky borders and multiple agent occupancy. A continuous glucose concentration field overlays the discrete grid.
+The simulation takes place in a three-dimensional discrete grid of dimensions $W \times H \times D$, where $W = H = D$ and the grid dimension is computed from the patient's tumor volume and a configurable block size parameter:
+\begin{equation}
+    W = \left\lfloor \sqrt[3]{\frac{V_{\text{tumor}}}{V_{\text{block}}}} \right\rfloor
+    \label{eq:grid_dim}
+\end{equation}
+where $V_{\text{tumor}}$ is the tumor volume in mm$^3$ and $V_{\text{block}}$ is the block size parameter.
+
+The grid uses \textbf{sticky borders}: agents that attempt to move beyond any grid boundary are clamped to the boundary coordinate. This prevents agents from wrapping around or disappearing, and it creates natural accumulation zones at the grid periphery that can represent tissue boundaries. The grid supports \textbf{multiple occupancy}: any number of agents can coexist at the same grid position, reflecting the dense packing of cells in the TME.
+
+A continuous 3D glucose concentration field (described in detail in Chapter~4) is overlaid on the discrete agent grid, sharing the same dimensions. This hybrid discrete-continuous architecture allows the model to capture both individual cell behaviors and the smooth diffusion of nutrients.
 
 \subsection{Agent Types}
 \label{subsec:md_agent_types}
@@ -57,7 +68,9 @@ The model comprises 18 distinct agent types, each identified by an integer ID in
 \end{tabular}
 \end{table}
 
-
+\begin{tcolorbox}[enhanced, colback=blue!3, colframe=blue!50!black, arc=3pt, boxrule=0.5pt, title={\textbf{Key Takeaway}}]
+Eighteen distinct agent types create a complete virtual immune system --- from tumor cells and T cells to blood vessels and hormones. Each cell type has unique behaviors, but together they recreate the complex biological dance of cancer progression and immune response.
+\end{tcolorbox}
 
 \subsection{Time Step Structure}
 \label{subsec:md_timestep}
@@ -88,17 +101,54 @@ The agent class hierarchy reflects the biological taxonomy of the cell types and
 \subsection{Base Cell Class}
 \label{subsec:md_cell}
 
-The Cell class provides common functionality for all cellular agents, including position tracking, deferred movement, effect collection, duplication, and neighborhood search methods.
+The \texttt{Cell} class (defined in \texttt{src/agents/cell.py}) is the abstract base class for all cellular agents. It inherits from both Python's \texttt{ABC} and \texttt{repast4py.core.Agent}, combining abstract method enforcement with Repast4Py's agent identity management.
+
+Key attributes and methods of \texttt{Cell}:
+
+\begin{itemize}
+    \item \texttt{pos}: The $(x, y, z)$ position tuple on the 3D grid.
+    \item \texttt{size\_diameter}: The spatial extent of the cell (default 1).
+    \item \texttt{\_desired\_pos}: The target position for deferred movement.
+    \item \texttt{experienced\_effects}: An \texttt{Effect} object accumulating all effects received from neighbors.
+    \item \texttt{search\_dimension}: The radius within which the agent searches for targets.
+    \item \texttt{\_alive}: Boolean flag; once set to \texttt{False}, the agent is considered dead and pending removal.
+    \item \texttt{base\_step()}: Common pre-step logic that applies a base death probability (\texttt{w\_cell\_base\_death\_prob}), removing the cell with a small random chance each step.
+    \item \texttt{move(new\_pos)}: Sets \texttt{\_desired\_pos} without immediately moving the agent.
+    \item \texttt{move\_towards(target\_type, look\_up\_size, distance)}: Finds the nearest agent of the specified type, computes a normalized direction vector, and sets a deferred move toward it.
+    \item \texttt{find\_one(agent\_type\_id, radius)}: Returns a single agent of the given type within the specified Moore neighborhood radius.
+    \item \texttt{collect\_effects()}: Gathers \texttt{Effect} objects from all neighboring \texttt{Cell} instances that \texttt{has\_effect()}.
+    \item \texttt{duplicate()}: Creates a copy of the agent in an empty neighboring position.
+    \item \texttt{sigmoid(x, k)}: Utility function returning $1 / (1 + e^{-kx})$, used for probability normalization.
+\end{itemize}
 
 \subsection{TCell Base Class}
 \label{subsec:md_tcell}
 
-The TCell class extends Cell with T lymphocyte-specific functionality: hormone perception and decay, TCR receptor matching using Hamming distance, and sex hormone modulation affecting 17 cellular behaviors.
+The \texttt{TCell} class (defined in \texttt{src/agents/t\_cell.py}) extends \texttt{Cell} with functionality specific to T lymphocytes:
+
+\begin{itemize}
+    \item \textbf{Hormone perception.} A dictionary \texttt{perceived\_sex\_hormone} tracks accumulated levels of estrogen, testosterone, progesterone, and androgen. The \texttt{perceive\_sex\_hormone()} method searches the neighborhood for sex hormone agents of the specified type, consumes them (removes from the model), and increments the perceived level. Hormone levels decay by 10\% per step via \texttt{apply\_hormonal\_decay()}.
+
+    \item \textbf{TCR receptor matching.} Each T cell carries an 8-bit integer \texttt{receptor} value, generated randomly at creation. Antigen recognition is determined by the \texttt{is\_matching(antigen, receptor)} method, which computes the Hamming distance between the receptor and the SHA-256 hash of the antigen peptide sequence (truncated to 8 bits via \texttt{amino\_to\_8bit\_hash()}). A match occurs if:
+    \begin{equation}
+        d_H\bigl(\text{hash}(\text{antigen}),\; \text{receptor}\bigr) \leq 3 + \Delta_{\text{threshold}}
+        \label{eq:hamming_match}
+    \end{equation}
+    where $d_H$ is the Hamming distance and $\Delta_{\text{threshold}}$ is the \texttt{receptor\_threshold\_variation} weight parameter. Additionally, the antigen must not be a self-antigen (i.e., not present in the wildtype protein sequences).
+
+    \item \textbf{Sex hormone modulation.} The method \texttt{compute\_sexhormone\_modulation()} computes composite effects from perceived estrogen, testosterone, and progesterone levels. Each hormone has three regimes (low, medium, high, defined by normalized level thresholds at 0.33 and 0.66) that map to different effect profiles. The effects are weighted by hormone-specific weights (estrogen: 0.45, testosterone: 0.30, progesterone: 0.25) and accumulated in the \texttt{accumulated\_effects} dictionary, which spans 17 hormonal influence categories including kill rate, proliferation, apoptosis, activation, differentiation, Th1/Th2 proliferation, cytokine production, MHC regulation, costimulation, and checkpoint effects.
+\end{itemize}
 
 \subsection{Concrete Agent Classes}
 \label{subsec:md_concrete}
 
-The 18 agent types inherit from TCell (5 T-cell types), Cell (11 cellular types), or Agent directly (2 signaling molecules).
+Each of the 18 agent types is implemented as a concrete class that inherits from either \texttt{Cell}, \texttt{TCell}, or \texttt{repast4py.core.Agent} directly:
+
+\begin{itemize}[nosep]
+    \item \textbf{Inheriting from \texttt{TCell}} (and thus \texttt{Cell}): \texttt{CytotoxicTCell}, \texttt{CD8NaiveTCell}, \texttt{CD4NaiveTCell}, \texttt{CD4Helper1TCell}, \texttt{CD4Helper2TCell}.
+    \item \textbf{Inheriting from \texttt{Cell}} directly: \texttt{TumorCell}, \texttt{TregCell}, \texttt{DendriticCell}, \texttt{PlasmacitoidDendriticCell}, \texttt{MacrophageM1}, \texttt{MacrophageM2}, \texttt{NaturalKiller}, \texttt{MastCell}, \texttt{Neutrophil}, \texttt{Adipocyte}, \texttt{Blood}.
+    \item \textbf{Inheriting from \texttt{repast4py.core.Agent}} directly: \texttt{SexHormone}, \texttt{Cytokine}. These non-cellular agents do not participate in the effect system and have simplified state (position, type-specific attributes, alive flag).
+\end{itemize}
 
 Figure~\ref{fig:agent_hierarchy} illustrates the complete agent class hierarchy, showing the inheritance relationships and categorization of the 18 agent types.
 

@@ -1,0 +1,557 @@
+\chapter{Implementation}
+\label{ch:implementation}
+
+
+
+Converting biological complexity into working code requires more than good programming --- it demands architectural vision. This chapter reveals how moving from Mesa to Repast4Py enabled true 3D simulation and MPI parallelism, transforming a proof-of-concept into a production-scale virtual tumor.
+
+This chapter examines the architectural decisions, design patterns, and implementation strategies that transform biological theory into executable software. Rather than cataloging code structure, we focus on the engineering problems encountered and the design patterns employed to solve them, revealing how computational constraints shape biological model design and vice versa.
+
+% ======================================================================
+\section{Architectural Philosophy: Beyond Framework Features}
+\label{sec:architecture-philosophy}
+
+\begin{figure}[htbp]
+\centering
+\adjustbox{max width=0.85\textwidth, max height=0.7\textheight}{\input{figures/architecture_overview.tex}}
+\caption{Software architecture overview of the RCC simulation system}
+\label{fig:architecture_overview}
+\end{figure}
+
+The transition from Mesa to Repast4Py was driven by three imperatives: (1) \emph{3D dimensionality} - tumor microenvironments require true spatial relationships; (2) \emph{parallelism} - MPI scaling for larger tissue volumes; (3) \emph{agent-field coupling} - seamless integration between discrete agents and continuous fields. The architecture prioritizes composability over convenience and future scaling over current simplicity.
+
+\subsection{Comparison with Mesa}
+
+Table~\ref{tab:detailed-mesa-vs-repast4py} presents a comprehensive comparison between Mesa and Repast4Py implementations, highlighting the key architectural differences and enhancements made during the porting process.
+
+% ======================================================================
+\section{Design Patterns in Biological Computing}
+\label{sec:design-patterns}
+
+The implementation employs several design patterns: the Command pattern for deferred movement (ensuring temporal coherence), the Observer pattern for data collection, and the Strategy pattern for treatment modalities. These patterns emerged from biological constraints rather than software engineering dogma.
+
+\begin{lstlisting}[caption={Command pattern for deferred movement ensures temporal coherence.}, label={lst:deferred-movement}]
+# In agent.step() method:
+def step(self):
+    # ... other behaviors ...
+    target_pos = self.find_target()
+    self._desired_pos = target_pos  # Command: record intention
+    
+# In model.step() method after all agents stepped:
+def move_all_agents(self):
+    for agent in self._all_agents:
+        if hasattr(agent, '_desired_pos') and agent._desired_pos != agent.pos:
+            self.move_agent(agent, agent._desired_pos)  # Execute all commands
+\end{lstlisting}
+
+
+
+% TikZ table temporarily disabled - comparison table would show Mesa vs Repast4Py differences
+\textit{[Comparison table showing differences between Mesa and Repast4Py frameworks in terms of parallelism, spatial grids, and agent management]}
+
+The most consequential difference for this project is the parallelism model. Mesa is inherently single-process: all agents live in a single Python interpreter, and there is no built-in mechanism for distributing computation across cores or nodes. Repast4Py, by contrast, is architected from the ground up around MPI, making it possible to scale the simulation to larger tissue volumes in the future without redesigning the agent management infrastructure.
+
+
+
+% ======================================================================
+\section{Simulation Orchestration: The Main Event Loop}
+\label{sec:simulation-orchestration}
+
+\begin{figure}[htbp]
+\centering
+\clearpage
+\adjustbox{max width=0.85\textwidth, max height=0.7\textheight}{\input{figures/simulation_pipeline.tex}}
+\caption{Simulation execution pipeline}
+\label{fig:simulation_pipeline}
+\end{figure}
+
+The heart of the system lies in the main simulation loop, which orchestrates the complex interplay between field dynamics, agent behaviors, and system-level state updates. This loop embodies a carefully designed sequence that respects biological causality while optimizing computational efficiency.
+
+\begin{lstlisting}[caption={Main simulation step sequence from \texttt{rcc\_model.py}.}, label={lst:main-loop}]
+def step(self):
+    """Execute one simulation step. Order: collect data -> check termination 
+    -> apply effects -> treatment -> sex drift -> glucose field step -> angiogenesis 
+    -> search dimension -> shuffle & step all agents -> deferred move -> spawn hormones"""
+    
+    self.collect_data()
+    if self.check_termination():
+        self.log_data()
+        return
+    
+    # Reset immune infiltration factor (boosted by ICI treatment each step)
+    for type_id in (AgentType.CD4_HELPER1_T_CELL, AgentType.CD4_HELPER2_T_CELL, AgentType.MAST_CELL):
+        for agent in self.iter_agents_by_type_id(type_id):
+            agent.immune_infiltration_factor = 1
+    
+    self.apply_effects()
+    if self.steps >= self.treatment_start:
+        self.treatment.step()
+    self.apply_sex_drift()
+    
+    # Glucose field step (source injection, diffusion, decay)
+    self.glucose_field.step(self)
+    self.manage_blood()
+    self.manage_search_dimension()
+    
+    # Shuffle and step all agents (snapshot to avoid mutation during iteration)
+    agents_snapshot = [a for a in self._all_agents.values() if a.has_step]
+    self.rng.shuffle(agents_snapshot)
+    for agent in agents_snapshot:
+        if agent.alive:
+            agent.step()
+    
+    self.move_all_agents()  # Execute deferred movements
+    self.spawn_hormones()   # Post-movement hormone generation
+\end{lstlisting}
+
+This sequence reflects deep biological insights encoded as computational constraints. Data collection occurs first to capture the system state before any modifications, ensuring measurement consistency. Effect propagation precedes agent stepping to simulate the instantaneous nature of cell-cell signaling, while glucose field updates occur before agent consumption to model the continuous nature of diffusion relative to cellular metabolism. The random shuffling of agents before stepping prevents systematic bias from execution order, maintaining the symmetry assumptions underlying the biological model.
+
+\subsection{Architectural Modularity}
+
+\begin{figure}[htbp]
+\centering
+\clearpage
+\adjustbox{max width=0.85\textwidth, max height=0.7\textheight}{\input{figures/model_architecture.tex}}
+\caption{Model architecture showing component relationships}
+\label{fig:model_architecture}
+\end{figure}
+
+\begin{lstlisting}[language={}, caption={Project directory tree.}, label={lst:project-tree}, basicstyle=\ttfamily\footnotesize, numbers=none, frame=single]
+rcc_repast4py/
+|-- run.py                        # Entry point
+|-- config/
+|   `-- default_params.yaml       # Default parameter file
+|-- src/
+|   |-- agents/
+|   |   |-- agent_types.py        # AgentType IntEnum (0-17)
+|   |   |-- cell.py               # Base Cell(ABC, Agent) class
+|   |   |-- tumor_cell.py         # TumorCell with Warburg glucose
+|   |   |-- cd8_cytotoxic_t_cell.py
+|   |   |-- cd8_t_cell.py
+|   |   |-- cd4_t_cell.py
+|   |   |-- cd4_t_cell_h1.py
+|   |   |-- cd4_t_cell_h2.py
+|   |   |-- regulatory_t_cell.py
+|   |   |-- dendritic_cell.py
+|   |   |-- plasmacitoid_dc.py
+|   |   |-- macrophage_m1.py
+|   |   |-- macrophage_m2.py
+|   |   |-- natural_killer.py
+|   |   |-- mast_cell.py
+|   |   |-- neutrophil.py
+|   |   |-- adipocyte.py
+|   |   |-- blood.py
+|   |   |-- sex_hormone.py
+|   |   |-- cytokine.py
+|   |   `-- t_cell.py             # Shared T-cell base
+|   |-- systems/
+|   |   |-- grid_utils.py         # 3D neighbor queries
+|   |   |-- glucose_field.py      # GlucoseField class
+|   |   |-- dna.py                # 16-gene DNA mutation system
+|   |   |-- effect.py             # Effect accumulator
+|   |   `-- hormonal_effect.py    # Hormonal effect system
+|   |-- treatments/
+|   |   |-- drug.py               # Drug base class
+|   |   |-- ici.py                # ICIDrug
+|   |   |-- tki.py                # TKIDrug
+|   |   `-- treatment.py          # Treatment container
+|   |-- parameters/
+|   |   |-- parameters.py         # Base Parameters dataclass
+|   |   |-- model_parameters.py   # ModelParameters (4 params)
+|   |   |-- patient_parameters.py # PatientParameters (18 params)
+|   |   `-- weight_parameters.py  # WeightParameters (92 params)
+|   |-- model/
+|   |   |-- rcc_model.py          # RCCModel main driver
+|   |   |-- cell_adder.py         # Agent initialization
+|   |   |-- observer.py           # Kill/event counters
+|   |   `-- measures_utils.py     # Volume/concentration helpers
+|   |-- data/
+|   |   `-- data_collector.py     # Data collection utilities
+|   |-- learning/
+|   |   |-- train_model.py        # Optuna optimization
+|   |   |-- best_parameters.py    # Best parameter storage
+|   |   `-- data/
+|   |       `-- ARON.csv          # ARON-1 clinical dataset
+|   `-- visualization/
+|       |-- plot_results.py       # Population dynamics plots
+|       `-- plot_glucose.py       # Glucose field visualization
+`-- tests/
+    |-- test_dna.py
+    |-- test_effects.py
+    |-- test_glucose_field.py
+    `-- test_single_step.py
+\end{lstlisting}
+
+\subsection{Plain Python Model Class}
+
+Unlike Mesa, which requires the model class to inherit from \texttt{mesa.Model} and use Mesa's scheduler abstraction, the Repast4Py implementation uses a plain Python class, \texttt{RCCModel}. This class does not inherit from any framework base class; instead, it manually manages:
+
+\begin{itemize}
+    \item A \texttt{SharedContext} instance for agent registration with Repast4Py.
+    \item A \texttt{SharedGrid} instance for spatial placement.
+    \item A custom \texttt{spatial\_index} dictionary for efficient neighbor queries.
+    \item A \texttt{GlucoseField} instance for metabolic dynamics.
+    \item Agent lifecycle methods: \texttt{add\_agent()}, \texttt{remove\_agent()}, \texttt{move\_agent()}.
+    \item A standard library \texttt{random.Random} instance (\texttt{self.rng}) seeded deterministically.
+\end{itemize}
+
+There is no framework-imposed scheduler. Instead, Repast4Py's \texttt{schedule.init\_schedule\_runner()} creates an event-driven runner that invokes \texttt{model.step()} at each tick. The \texttt{step()} method itself handles the ordering of sub-steps (effect collection, treatment application, glucose field update, agent stepping, deferred movement, and hormone spawning) explicitly, providing full control over the simulation loop.
+
+Figure~\ref{fig:model_architecture} illustrates the overall architecture of the RCCModel, showing the main components and their data flow relationships.
+
+\begin{figure}[htbp]
+\centering
+% TikZ figure temporarily disabled - architectural diagram would show main components
+\textit{[Architecture diagram showing RCCModel, GlucoseField, CellAdder, Observer, Treatment, SpatialIndex, and SharedGrid components with their interconnections]}
+\caption{Architecture of the RCCModel system. The main model coordinates interactions between the glucose field (3D diffusion), agent management (cell adder, spatial index, shared grid), data collection (observer), and treatment systems. The step sequence annotation shows the ordered execution of simulation phases.}
+\label{fig:model_architecture}
+\end{figure}
+
+% ======================================================================
+\section{Spatial Index Design}
+\label{sec:spatial-index}
+
+\subsection{Problem}
+
+Repast4Py's \texttt{SharedGrid} provides basic spatial placement and movement of agents, but it does \emph{not} expose the \texttt{get\_neighbors()} or \texttt{get\_neighborhood()} methods that Mesa's grids provide. This means there is no built-in mechanism to query which agents are adjacent to a given position---a fundamental operation in the RCC model, where every agent interaction (phagocytosis, antigen presentation, killing, effect propagation) depends on spatial proximity.
+
+\subsection{Solution}
+
+The model maintains a manual spatial index implemented as a \texttt{defaultdict(list)} that maps each \texttt{(x, y, z)} coordinate tuple to the list of agents currently occupying that position:
+
+\begin{lstlisting}[caption={Spatial index declaration in \texttt{RCCModel.\_\_init\_\_()}.}, label={lst:spatial-index}]
+from collections import defaultdict
+
+self.spatial_index = defaultdict(list)
+\end{lstlisting}
+
+This index is updated on every agent lifecycle operation:
+\begin{itemize}
+    \item \texttt{add\_agent(agent)}: appends the agent to \texttt{spatial\_index[agent.pos]}.
+    \item \texttt{remove\_agent(agent)}: removes the agent from \texttt{spatial\_index[agent.pos]}.
+    \item \texttt{move\_agent(agent, new\_pos)}: removes from the old position list and appends to the new one.
+\end{itemize}
+
+\subsection{Grid Utilities Module}
+
+The \texttt{src/systems/grid\_utils.py} module provides five functions that operate on the spatial index:
+
+\begin{enumerate}
+    \item \texttt{get\_neighborhood\_3d(width, height, depth, pos, radius, moore)}: Returns all coordinate tuples in the Moore (Chebyshev) or Von Neumann (Manhattan) neighborhood of a given position, excluding the center. For Moore neighborhoods at radius~1 in 3D, this yields up to 26 neighbors ($3^3 - 1$).
+
+    \item \texttt{get\_agents\_at\_3d(spatial\_index, pos)}: Returns the list of agents at a specific coordinate.
+
+    \item \texttt{get\_neighbors\_3d(spatial\_index, grid\_dims, pos, radius, moore)}: Returns all agents in the neighborhood of a position by iterating over the neighborhood coordinates and collecting agents from the spatial index.
+
+    \item \texttt{is\_cell\_empty\_3d(spatial\_index, pos)}: Returns \texttt{True} if no agents occupy the given position.
+
+    \item \texttt{get\_empty\_neighbors\_3d(spatial\_index, grid\_dims, pos, radius, moore)}: Returns the list of neighboring positions that have no agents, used for cell duplication and random movement.
+\end{enumerate}
+
+\begin{lstlisting}[caption={Moore neighborhood computation in 3D.}, label={lst:neighborhood-3d}]
+def get_neighborhood_3d(width, height, depth, pos, radius=1, moore=True):
+    x, y, z = pos
+    neighborhood = []
+    for dx in range(-radius, radius + 1):
+        for dy in range(-radius, radius + 1):
+            for dz in range(-radius, radius + 1):
+                if dx == 0 and dy == 0 and dz == 0:
+                    continue
+                if not moore and abs(dx) + abs(dy) + abs(dz) > radius:
+                    continue
+                nx, ny, nz = x + dx, y + dy, z + dz
+                if 0 <= nx < width and 0 <= ny < height and 0 <= nz < depth:
+                    neighborhood.append((nx, ny, nz))
+    return neighborhood
+\end{lstlisting}
+
+The boundary check (\texttt{0 <= nx < width}, etc.) ensures that the neighborhood is clipped at grid edges, consistent with the sticky border semantics of the \texttt{SharedGrid}.
+
+% ======================================================================
+\section{Agent Serialization}
+\label{sec:agent-serialization}
+
+\subsection{Agent Identity in Repast4Py}
+
+Repast4Py requires every agent to be constructed with three arguments: an integer \texttt{id}, an integer \texttt{type}, and an integer \texttt{rank} (the MPI rank that owns the agent). The framework stores these as a \texttt{uid} tuple \texttt{(id, type, rank)} on every agent. This design supports distributed serialization, as agents can be uniquely identified and routed across MPI ranks.
+
+\subsection{Agent Type Registry}
+
+The model defines an \texttt{AgentType} \texttt{IntEnum} that maps all 18 agent types to integer IDs in the range $[0, 17]$:
+
+\begin{lstlisting}[caption={Agent type registry (\texttt{src/agents/agent\_types.py}).}, label={lst:agent-types}]
+from enum import IntEnum
+
+class AgentType(IntEnum):
+    TUMOR_CELL = 0
+    CD8_CYTOTOXIC_T_CELL = 1
+    CD8_NAIVE_T_CELL = 2
+    CD4_NAIVE_T_CELL = 3
+    CD4_HELPER1_T_CELL = 4
+    CD4_HELPER2_T_CELL = 5
+    REGULATORY_T_CELL = 6
+    DENDRITIC_CELL = 7
+    PLASMACITOID_DC = 8
+    MACROPHAGE_M1 = 9
+    MACROPHAGE_M2 = 10
+    NATURAL_KILLER = 11
+    MAST_CELL = 12
+    NEUTROPHIL = 13
+    ADIPOCYTE = 14
+    BLOOD = 15
+    SEX_HORMONE = 16
+    CYTOKINE = 17
+\end{lstlisting}
+
+\subsection{The \texttt{save()} Method}
+
+Each agent implements a \texttt{save()} method that returns a tuple of \texttt{(uid, state\_tuple)} for distributed serialization. The base implementation in \texttt{Cell} is:
+
+\begin{lstlisting}[caption={Agent serialization via \texttt{save()}.}, label={lst:save-method}]
+def save(self):
+    return (self.uid, (self.pos, self._alive))
+\end{lstlisting}
+
+Subclasses extend the state tuple to include type-specific fields (e.g., the \texttt{TumorCell} includes its \texttt{DNA} state, blood access flag, and experienced effects).
+
+\subsection{Type Identification}
+
+Because Repast4Py agents carry their type as the second element of the \texttt{uid} tuple, type identification uses integer comparison rather than Python's \texttt{isinstance()} check:
+
+\begin{lstlisting}[caption={Type identification pattern.}, label={lst:type-id}]
+# Instead of isinstance(agent, TumorCell):
+if agent.uid[1] == AgentType.TUMOR_CELL:
+    # handle tumor cell
+\end{lstlisting}
+
+This approach is both faster (integer comparison vs.\ method resolution order traversal) and compatible with ghost agents that may not carry the full Python class hierarchy across MPI ranks.
+
+% ======================================================================
+\section{Mesa to Repast4Py Porting}
+\label{sec:porting}
+
+The original RCC model was implemented in Mesa~\cite{mesa, masl_paper_a}. Porting it to Repast4Py required systematic translation of Mesa idioms to their Repast4Py equivalents. Table~\ref{tab:porting-mapping} summarizes the key mappings.
+
+\begin{table}[H]
+\centering
+\caption{Key API mapping from Mesa to Repast4Py.}
+\label{tab:porting-mapping}
+\begin{tabular}{@{}p{6cm}p{7.5cm}@{}}
+\toprule
+\textbf{Mesa} & \textbf{Repast4Py} \\
+\midrule
+\texttt{mesa.Agent(model)} & \texttt{repast4py.core.Agent(id, type, rank)} \\
+\texttt{self.model.random} & \texttt{model.rng} (stdlib \texttt{random.Random}) \\
+\texttt{self.model.grid.get\_neighbors()} & \texttt{grid\_utils.get\_neighbors\_3d(spatial\_index, ...)} \\
+\texttt{isinstance(agent, TumorCell)} & \texttt{agent.uid[1] == AgentType.TUMOR\_CELL} \\
+\texttt{self.model.schedule.agents} & \texttt{model.\_all\_agents} \\
+\texttt{model.agents\_by\_type[Type]} & \texttt{model.get\_agents\_by\_type\_id(type\_id)} \\
+\texttt{TumorCell.blood\_source} (class var) & \texttt{model.tumor\_blood\_sources} \\
+\texttt{Cell.search\_dimension} (class var) & \texttt{model.cell\_search\_dimension} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Random Number Generation}
+
+Mesa provides a model-level \texttt{self.random} attribute backed by a NumPy random generator. In Repast4Py, no such attribute is provided, so the model creates a standard library \texttt{random.Random} instance seeded with \texttt{random\_seed + rank}:
+
+\begin{lstlisting}[caption={RNG initialization in RCCModel.}]
+import random
+self.rng = random.Random(self.model_params.random_seed + self.rank)
+\end{lstlisting}
+
+All agent behaviors reference \texttt{self.model.rng} for stochastic decisions, ensuring reproducibility at a given seed.
+
+\subsection{Class-Level State to Model-Level State}
+
+In the Mesa version, certain state was stored as class variables (e.g., \texttt{TumorCell.blood\_source} tracked all tumor cells with blood vessel access). In the Repast4Py version, this state is moved to the model instance to avoid issues with class-level state in a distributed setting:
+
+\begin{lstlisting}[caption={Class-level state moved to model.}]
+# In RCCModel.__init__():
+self.tumor_blood_sources = []
+self.cell_search_dimension = 5
+\end{lstlisting}
+
+\subsection{Deferred Movement}
+
+The deferred movement pattern from the Mesa version is preserved. During their \texttt{step()} method, agents set a \texttt{\_desired\_pos} attribute rather than moving immediately. After all agents have been stepped, the model calls \texttt{move\_all\_agents()}, which resolves all pending movements in a single pass:
+
+\begin{lstlisting}[caption={Deferred movement resolution.}, label={lst:deferred-move}]
+def move_all_agents(self):
+    for agent in list(self._all_agents):
+        if (getattr(agent, '_alive', True)
+                and isinstance(agent, Cell)
+                and hasattr(agent, '_desired_pos')
+                and agent._desired_pos is not None
+                and agent._desired_pos != agent.pos):
+            self.move_agent(agent, agent._desired_pos)
+\end{lstlisting}
+
+This approach prevents order-of-execution artifacts where early-stepping agents could influence the spatial configuration seen by later-stepping agents within the same tick.
+
+% ======================================================================
+\section{Glucose Field Implementation}
+\label{sec:glucose-field-impl}
+
+The glucose concentration field is implemented as a standalone class, \texttt{GlucoseField}, in \texttt{src/systems/glucose\_field.py}. It uses pure NumPy arrays and SciPy convolution rather than Repast4Py's built-in value layers, for two reasons: (i) full control over the diffusion kernel and boundary conditions, and (ii) performance, since NumPy operations are vectorized at the C level.
+
+\subsection{Data Structure}
+
+The field is stored as a NumPy 3D array of shape \texttt{(width, height, depth)} with \texttt{float64} precision:
+
+\begin{lstlisting}[caption={Glucose field initialization.}]
+self.field = np.full((width, height, depth), initial_concentration,
+                     dtype=np.float64)
+\end{lstlisting}
+
+\subsection{Diffusion Kernel}
+
+Diffusion is computed via the 3D discrete Laplacian, applied using \texttt{scipy.ndimage.convolve}. The kernel is a $3 \times 3 \times 3$ array with:
+\begin{itemize}
+    \item Center value: $-6$
+    \item Six face-adjacent neighbors (along $\pm x$, $\pm y$, $\pm z$): $+1$ each
+    \item All other entries: $0$ (edge and corner neighbors are not included in the 6-connected Laplacian)
+\end{itemize}
+
+\begin{lstlisting}[caption={Laplacian kernel construction.}]
+self._kernel = np.zeros((3, 3, 3), dtype=np.float64)
+self._kernel[1, 1, 0] = 1.0   # z-1
+self._kernel[1, 1, 2] = 1.0   # z+1
+self._kernel[1, 0, 1] = 1.0   # y-1
+self._kernel[1, 2, 1] = 1.0   # y+1
+self._kernel[0, 1, 1] = 1.0   # x-1
+self._kernel[2, 1, 1] = 1.0   # x+1
+self._kernel[1, 1, 1] = -6.0  # center
+\end{lstlisting}
+
+\subsection{Boundary Conditions}
+
+Zero-flux (Neumann) boundary conditions are enforced by passing \texttt{mode='nearest'} to the convolution function. This causes boundary voxels to replicate their own values when the kernel extends beyond the grid, effectively setting the normal derivative of the concentration to zero at all boundaries. The gradient computation uses clamped central finite differences with the same Neumann semantics.
+
+\subsection{Separation from Repast4Py Value Layers}
+
+Repast4Py provides its own \texttt{SharedValueLayer} for continuous fields. However, the glucose field implementation deliberately avoids this abstraction for several reasons:
+\begin{enumerate}
+    \item The \texttt{SharedValueLayer} is designed for distributed access patterns that introduce synchronization overhead unnecessary for single-rank execution.
+    \item Direct NumPy array access allows use of SciPy's optimized convolution routines without intermediate copying.
+    \item The pure-NumPy approach simplifies debugging and testing, as the field can be inspected and manipulated with standard array operations.
+\end{enumerate}
+
+% ======================================================================
+\section{Entry Point and Execution}
+\label{sec:entry-point}
+
+The simulation is launched from \texttt{run.py}, which follows the standard Repast4Py execution pattern:
+
+\begin{lstlisting}[caption={Simulation entry point (\texttt{run.py}).}, label={lst:run-py}]
+from mpi4py import MPI
+from repast4py import schedule
+from src.model.rcc_model import RCCModel
+
+def main():
+    comm = MPI.COMM_WORLD
+    rank = comm.Get_rank()
+
+    model = RCCModel(comm=comm)
+
+    runner = schedule.init_schedule_runner(comm)
+    runner.schedule_repeating_event(1, 1, model.step)
+    runner.schedule_stop(model.max_steps)
+    runner.schedule_end_event(model.log_data)
+
+    runner.execute()
+
+if __name__ == '__main__':
+    main()
+\end{lstlisting}
+
+\subsection{Execution Command}
+
+The simulation is invoked via MPI:
+
+\begin{lstlisting}[language=bash, numbers=none]
+mpirun -n 1 python run.py
+\end{lstlisting}
+
+The \texttt{-n 1} flag specifies a single MPI rank, which is the current target configuration. The architecture supports multi-rank execution by increasing the rank count; in that scenario, the \texttt{SharedContext} would distribute agents across ranks and the \texttt{SharedGrid} would handle ghost-agent synchronization via buffer regions.
+
+\subsection{Simulation Loop}
+
+The Repast4Py schedule runner calls \texttt{model.step()} at every tick (starting at tick 1, repeating every 1 tick). Within \texttt{step()}, the following sub-steps are executed in order:
+
+\begin{enumerate}
+    \item \textbf{Data collection}: Record current population counts and glucose field statistics.
+    \item \textbf{Termination check}: Evaluate whether the simulation should stop (tumor eliminated, maximum tumor count reached, growth threshold exceeded, or maximum steps reached).
+    \item \textbf{Effect propagation}: Cells collect and apply effects from their neighbors.
+    \item \textbf{Treatment}: If the current step exceeds the treatment start time, apply ICI and/or TKI drug effects.
+    \item \textbf{Sex drift}: Apply sex-specific CD8+ T cell population adjustment.
+    \item \textbf{Glucose field step}: Inject glucose from blood vessels, diffuse, and decay.
+    \item \textbf{Blood management}: Angiogenesis and blood access refresh for tumor cells.
+    \item \textbf{Search dimension update}: Adjust the agent search radius based on tumor population size.
+    \item \textbf{Agent stepping}: Shuffle all agents and execute their individual \texttt{step()} methods.
+    \item \textbf{Deferred movement}: Resolve all pending agent movements.
+    \item \textbf{Hormone spawning}: Spawn sex hormones from blood vessels.
+    \item \textbf{Step counter increment}.
+\end{enumerate}
+
+When the simulation terminates (either by the schedule runner reaching \texttt{max\_steps} or by the model setting \texttt{self.running = False}), the end event triggers \texttt{model.log\_data()}, which writes the collected time-series data to \texttt{logs/simulation\_log.csv}.
+
+Figure~\ref{fig:simulation_pipeline} provides a detailed view of the simulation pipeline, showing the complete sequence of operations executed in each time step and the decision points that control simulation flow.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    node distance=1.5cm and 2.0cm,
+    start/.style={ellipse, draw, fill=green!20, font=\small, minimum height=0.8cm, text width=1.8cm, text centered},
+    process/.style={rectangle, draw, fill=blue!15, font=\small, minimum height=1.0cm, text width=2.2cm, text centered, rounded corners=2pt},
+    decision/.style={diamond, draw, fill=orange!20, font=\scriptsize, minimum height=1.0cm, text width=1.5cm, text centered, inner sep=1pt, aspect=2},
+    terminal/.style={ellipse, draw, fill=red!20, font=\small, minimum height=0.8cm, text width=1.8cm, text centered},
+    arrow/.style={->,>=stealth,thick},
+    loop/.style={->,>=stealth,thick,rounded corners=3pt}
+]
+
+% Start
+\node[start] (init) {Simulation\\Initialization};
+
+% Main simulation loop
+\node[process, below=of init] (param_load) {Parameter\\Loading};
+\node[process, below=of param_load] (spawn_agents) {Agent\\Spawning};
+\node[process, below=of spawn_agents] (data_collect) {Data\\Collection};
+\node[decision, below=of data_collect] (check_term) {Terminal\\Condition?};
+
+% Loop body - arranged in columns
+\node[process, right=3cm of check_term] (effects) {Collect\\Effects};
+\node[process, right=of effects] (glucose_diff) {Glucose\\Diffusion};
+\node[process, below=of effects] (treatment) {Treatment\\Application};
+\node[process, below=of glucose_diff] (check_agents) {Agent\\Stepping};
+
+% Back to decision
+\node[process, left=of treatment] (move_agents) {Deferred\\Movement};
+\node[process, left=of move_agents] (spawn_hormones) {Hormone\\Spawning};
+
+% End
+\node[terminal, below=of check_term] (output) {Output\\Results};
+
+% Arrows - main flow
+\draw[arrow] (init) -- (param_load);
+\draw[arrow] (param_load) -- (spawn_agents);
+\draw[arrow] (spawn_agents) -- (data_collect);
+\draw[arrow] (data_collect) -- (check_term);
+\draw[arrow] (check_term) -- node[right, font=\scriptsize] {Yes} (output);
+
+% Loop arrows
+\draw[arrow] (check_term) -- node[above, font=\scriptsize] {No} (effects);
+\draw[arrow] (effects) -- (glucose_diff);
+\draw[arrow] (glucose_diff) -- (check_agents);
+\draw[arrow] (check_agents) -- (treatment);
+\draw[arrow] (treatment) -- (move_agents);
+\draw[arrow] (move_agents) -- (spawn_hormones);
+
+% Loop back
+\draw[loop] (spawn_hormones) -- ++(-4,0) |- (data_collect);
+
+\end{tikzpicture}
+\caption{BPMN-style Simulation Lifecycle for the RCC model. The simulation follows a deterministic sequence: initialization and parameter loading, then iterative execution of the main loop. Each step collects data, checks termination conditions, applies agent effects, performs glucose diffusion, executes treatment protocols, steps agents, and resolves movement. The loop continues until a terminal condition is met, at which point results are output.}
+\label{fig:simulation_pipeline}
+\end{figure}

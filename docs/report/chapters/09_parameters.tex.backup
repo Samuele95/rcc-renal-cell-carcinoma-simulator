@@ -3,23 +3,111 @@
 
 \epigraph{With four parameters I can fit an elephant.}{--- John von Neumann}
 
-The model employs a 114-parameter hierarchy: 4 model parameters (volume, resolution, seed), 18 patient parameters (clinical variables), and 92 weight parameters (biological process rates) optimized via Bayesian methods against clinical trial data.
+A computational model is only as good as its parameters. This chapter reveals how 92 precisely tuned parameters --- optimized by Bayesian machine learning against real clinical trial data --- transform an abstract biological theory into a predictive medical tool.
+
+This chapter explores the parameter architecture that transforms a theoretical biological model into a calibratable computational system. Parameter design in agent-based biological models faces a fundamental challenge: balancing biological interpretability with optimization tractability while maintaining model identifiability. Our approach embodies a hierarchical parameter philosophy that separates concerns across biological, computational, and optimization scales, enabling systematic model calibration without sacrificing biological insight.
+
+% ======================================================================
+\section{Parameter Design Philosophy}
+\label{sec:param-philosophy}
+
+The 92-parameter space represents a carefully designed hierarchy that separates biological interpretability from computational optimization concerns. This separation reflects a core principle in biological modeling: parameters should have clear biological meaning when possible, but optimization requires mathematical flexibility that may obscure biological interpretation. Our design resolves this tension through a three-tier architecture that isolates patient-specific clinical variables, system-level model configuration, and process-level behavioral weights.
+
+The parameter hierarchy embodies several design principles that emerged from the constraints of biological modeling and Bayesian optimization. \textbf{Separability}: patient parameters remain fixed for individual simulations while weight parameters vary during optimization, preventing biological confounding of optimization landscapes. \textbf{Dimensionality}: parameters are grouped by their biological role rather than their mathematical properties, enabling domain experts to reason about parameter interactions within familiar biological contexts. \textbf{Identifiability}: each parameter governs a distinct biological process or computational behavior, reducing the risk of parameter redundancy that can destabilize optimization procedures.
+
+This design philosophy ultimately serves the broader goal of model validation: parameters must be interpretable enough for biologists to assess their reasonableness while being mathematically structured enough for optimization algorithms to explore efficiently.
 
 % ======================================================================
 \section{Parameter Categories}
 \label{sec:param-categories}
 
-Parameters are organized into three dataclass objects: ModelParameters, PatientParameters, and WeightParameters.
+The model's parameter space is partitioned into three \texttt{dataclass}-based parameter objects, each inheriting from a common \texttt{Parameters} base class that provides serialization, XML loading, and keyword-argument initialization. This organizational structure reflects the distinct roles these parameter categories play in model configuration and optimization.
 
-ModelParameters: 4 simulation configuration parameters (volume, block size, random seed, max steps). PatientParameters: 18 patient-specific parameters (sex, BMI, treatment type, start time, plus 14 immune cell concentrations). WeightParameters: 92 biological process rate parameters optimized via Bayesian methods.
+\subsection{ModelParameters}
+
+\texttt{ModelParameters} controls the simulation geometry and execution. It contains 4 parameters:
+
+\begin{table}[H]
+\centering
+\caption{Model parameters.}
+\label{tab:model-params}
+\begin{tabular}{@{}llp{7cm}@{}}
+\toprule
+\textbf{Parameter} & \textbf{Default} & \textbf{Description} \\
+\midrule
+\texttt{volume} & 0.0001 & Simulated tissue volume in mL. Determines the 3D grid dimension via \texttt{get\_dimension\_from\_volume()}. \\
+\texttt{block\_size} & 10 & Spatial resolution in $\mu$m per grid cell. \\
+\texttt{random\_seed} & 1 & Seed for the \texttt{random.Random} instance; added to MPI rank for per-rank determinism. \\
+\texttt{max\_steps} & 500 & Maximum number of simulation ticks before termination. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{PatientParameters}
+
+\texttt{PatientParameters} encodes patient-specific clinical and biological features. It contains 18 parameters:
+
+\begin{table}[H]
+\centering
+\caption{Patient parameters.}
+\label{tab:patient-params}
+\begin{tabular}{@{}llp{6.5cm}@{}}
+\toprule
+\textbf{Parameter} & \textbf{Default} & \textbf{Description} \\
+\midrule
+\texttt{sex} & \texttt{'F'} & Patient sex (\texttt{'F'} or \texttt{'M'}). Controls hormone chances, CD8+ drift direction, and initial DNA mutations. \\
+\texttt{BMI} & 22.0 & Body mass index (kg/m$^2$). Modulates Treg differentiation, macrophage mutation, and NK cell kill rate via BMI weight parameters. \\
+\texttt{treatment} & \texttt{'ICI+TKI'} & Treatment modality: \texttt{'None'}, \texttt{'ICI'}, \texttt{'TKI'}, or \texttt{'ICI+TKI'}. \\
+\texttt{treatment\_start} & 100 & Simulation step at which treatment begins. \\
+\midrule
+\multicolumn{3}{@{}l}{\textit{Immune cell concentrations (cells/mL):}} \\
+\texttt{ctc\_concentration} & 80\,000 & Cytotoxic T cell (CD8+) concentration. \\
+\texttt{neutrophil\_concentration} & 40\,000 & Neutrophil concentration. \\
+\texttt{mast\_cell\_concentration} & 40\,000 & Mast cell concentration. \\
+\texttt{treg\_concentration} & 40\,000 & Regulatory T cell concentration. \\
+\texttt{pdc\_concentration} & 40\,000 & Plasmacytoid dendritic cell concentration. \\
+\texttt{th1\_concentration} & 40\,000 & CD4+ Th1 helper cell concentration. \\
+\texttt{th2\_concentration} & 40\,000 & CD4+ Th2 helper cell concentration. \\
+\texttt{dc\_concentration} & 80\,000 & Dendritic cell concentration. \\
+\texttt{m1\_concentration} & 40\,000 & M1 macrophage concentration. \\
+\texttt{m2\_concentration} & 40\,000 & M2 macrophage concentration. \\
+\texttt{nkl\_concentration} & 160\,000 & Natural killer cell concentration. \\
+\texttt{cd4\_concentration} & 80\,000 & Na\"ive CD4+ T cell concentration. \\
+\texttt{cd8\_concentration} & 80\,000 & Na\"ive CD8+ T cell concentration. \\
+\texttt{NKL\_delta} & 16\,000 & NK cell count difference (used in sex-specific adjustments). \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{WeightParameters}
+
+\texttt{WeightParameters} is the largest parameter class, containing all behavioral weights, biases, and system-level tuning knobs. In total, it comprises 84 original parameters plus 8 new glucose parameters, for a total of 92 tunable values. These are detailed in Sections~\ref{sec:weight-params} and~\ref{sec:glucose-params}.
 
 % ======================================================================
 \section{Weight Parameters}
 \label{sec:weight-params}
 
-The 84 weight parameters control probability thresholds and scaling factors for all agent behaviors, organized by cell type. These parameters are optimized via Bayesian methods to match clinical trial outcomes.
+Weight parameters control the probability thresholds, scaling factors, and biases that govern agent behaviors. They are organized by the agent type or subsystem they influence. Bias parameters (prefixed with \texttt{b\_}) are additive offsets to the corresponding weight's contribution, allowing the optimization to shift decision boundaries.
 
+\subsection{BMI Weights (4 parameters)}
 
+These weights modulate the influence of body mass index on immune cell behavior:
+
+\begin{table}[H]
+\centering
+\caption{BMI weight parameters.}
+\label{tab:bmi-weights}
+\begin{tabular}{@{}llp{6cm}@{}}
+\toprule
+\textbf{Parameter} & \textbf{Default} & \textbf{Description} \\
+\midrule
+\texttt{w\_BMI\_on\_treg\_diff} & 0.01 & BMI influence on Treg differentiation probability. \\
+\texttt{w\_BMI\_on\_m1\_mutation} & 0.01 & BMI influence on M1 macrophage mutation threshold. \\
+\texttt{w\_BMI\_on\_m2\_mutation} & 0.01 & BMI influence on M2 macrophage mutation threshold. \\
+\texttt{w\_BMI\_nkl\_kill\_rate} & 0.01 & BMI influence on NK cell kill rate. \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{Macrophage M1 Weights (6 weights + 2 biases)}
 
