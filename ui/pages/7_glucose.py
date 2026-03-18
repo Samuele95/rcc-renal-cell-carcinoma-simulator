@@ -62,13 +62,14 @@ if not snapshot_runs:
 
 # Run selector
 run_options = {}
-for run_dir, meta in snapshot_runs:
-    treatment = meta.get("treatment", "?")
-    sex = "F" if meta.get("sex") == "F" else "M"
-    outcome = meta.get("outcome", "?")
+for run_info in snapshot_runs:
+    run_dir = run_info["run_dir"]
+    treatment = run_info.get("treatment", "?")
+    sex = "F" if run_info.get("sex") == "F" else "M"
+    outcome = run_info.get("outcome", "?")
     outcome_icon = "✅" if outcome == "SURVIVAL" else ("❌" if outcome == "PROGRESSION" else "❓")
-    label = f"{outcome_icon} {TREATMENT_LABELS.get(treatment, treatment)} | {sex}, BMI {meta.get('BMI', '?')}"
-    run_options[label] = (run_dir, meta)
+    label = f"{outcome_icon} {TREATMENT_LABELS.get(treatment, treatment)} | {sex}, BMI {run_info.get('BMI', '?')}"
+    run_options[label] = (run_dir, run_info)
 
 if not run_options:
     st.error("No valid snapshot runs found.")
@@ -78,11 +79,12 @@ selected_label = st.selectbox(
     "Select a simulation run", list(run_options.keys()), key="glucose_run_select"
 )
 selected_run_dir, selected_meta = run_options[selected_label]
+selected_snapshot_dir = selected_meta["snapshot_dir"]
 
 # Get available snapshot steps
-snapshot_steps = list_snapshot_steps(selected_run_dir)
+snapshot_steps = list_snapshot_steps(selected_snapshot_dir)
 if not snapshot_steps:
-    st.error(f"No snapshots found for selected run: {selected_run_dir}")
+    st.error(f"No snapshots found for selected run: {selected_snapshot_dir}")
     st.stop()
 
 st.markdown(f"**{len(snapshot_steps)} snapshots available** (steps: {min(snapshot_steps)} to {max(snapshot_steps)})")
@@ -113,22 +115,24 @@ with info_col:
 # ---------------------------------------------------------------------------
 
 @st.cache_data(show_spinner="Loading snapshot data...")
-def load_glucose_data(run_dir: str, step: int):
+def load_glucose_data(snapshot_dir: str, step: int):
     """Load and cache agents, glucose array, and grid dimensions for a step."""
-    snapshot = load_snapshot(run_dir, step)
+    from pathlib import Path
+    snapshot_path = str(Path(snapshot_dir) / f"step_{step:05d}.npz")
+    snapshot = load_snapshot(snapshot_path)
     if not snapshot:
         return None, None, None
-    
+
     agents = snapshot["agents"]
     glucose = snapshot.get("glucose")
     grid_dims = snapshot["grid_dims"]
-    
+
     if glucose is None:
         return agents, None, grid_dims
-    
+
     return agents, glucose, grid_dims
 
-agents, glucose, grid_dims = load_glucose_data(selected_run_dir, selected_step)
+agents, glucose, grid_dims = load_glucose_data(selected_snapshot_dir, selected_step)
 
 if agents is None:
     st.error(f"Could not load snapshot for step {selected_step}")

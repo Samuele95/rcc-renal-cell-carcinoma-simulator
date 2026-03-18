@@ -110,6 +110,84 @@ The interface is organized into **8 pages**:
 | 📖 **About** | Scientific methods, model description, and literature references |
 | 🍬 **Glucose** | Dedicated glucose metabolism analysis and diffusion visualization |
 
+### UI Screenshots
+
+<details open>
+<summary><b>Home — Guided workflow</b></summary>
+<div align="center">
+<img src="docs/report/screenshots/01_home.png" alt="Home page with workflow cards" width="85%">
+</div>
+
+> *The Home page guides new users through the simulation workflow — configure, run, analyze, compare.*
+</details>
+
+<details>
+<summary><b>Configure — Patient profile and parameters</b></summary>
+<div align="center">
+<img src="docs/report/screenshots/02_configure_params.png" alt="Configuration page with patient profile" width="85%">
+</div>
+
+> *Set patient sex, BMI, and treatment modality. Advanced parameters are searchable with diff-from-default highlighting and bounds validation.*
+</details>
+
+<details>
+<summary><b>Run — Simulation execution</b></summary>
+<div align="center">
+<img src="docs/report/screenshots/03_run.png" alt="Simulation launch page" width="85%">
+</div>
+
+> *Review the parameter summary, launch the simulation, and monitor progress with cancel and timeout controls.*
+</details>
+
+<details>
+<summary><b>Results — Outcome analysis</b></summary>
+<div align="center">
+<img src="docs/report/screenshots/04_results.png" alt="Results dashboard" width="85%">
+</div>
+<br>
+<div align="center">
+<img src="docs/report/screenshots/04_results_charts.png" alt="Growth charts and suggestions" width="85%">
+</div>
+
+> *Outcome badge, summary statistics, and interactive Plotly charts for tumor dynamics, kill rates, and glucose levels. Context-dependent "What to Try Next" suggestions guide parameter exploration.*
+</details>
+
+<details>
+<summary><b>History — Multi-run comparison</b></summary>
+<div align="center">
+<img src="docs/report/screenshots/05_compare.png" alt="Simulation history table" width="85%">
+</div>
+
+> *Compare past runs with overlaid population and glucose curves. Attach notes and tags to organize experimental campaigns.*
+</details>
+
+<details>
+<summary><b>3D Environment — Spatial exploration</b></summary>
+<div align="center">
+<img src="docs/report/screenshots/06_3d_view_plot.png" alt="3D cell scatter plot" width="85%">
+</div>
+
+> *Interactive 3D scatter plot of the tumor microenvironment — red mass is the tumor, colored dots are immune cells. Filter by cell type, adjust camera, and overlay glucose cross-sections.*
+</details>
+
+<details>
+<summary><b>Glucose Field — Energy landscape</b></summary>
+<div align="center">
+<img src="docs/report/screenshots/07_glucose.png" alt="Glucose field explorer" width="85%">
+</div>
+
+> *Glucose concentration statistics, 3D isosurface visualization, 2D cross-section heatmaps, and spatial gradient analysis revealing how tumors create energy depletion zones.*
+</details>
+
+<details>
+<summary><b>About — Methods and references</b></summary>
+<div align="center">
+<img src="docs/report/screenshots/08_about.png" alt="About page" width="85%">
+</div>
+
+> *In-application documentation covering the biological model, agent types, interaction rules, and literature references.*
+</details>
+
 ---
 
 ## 📊 Results Gallery
@@ -446,7 +524,7 @@ If you use this simulator in your research, please cite:
 
 ## 📄 License
 
-Copyright (c) 2025 **Samuele Stronati**. Released under the [MIT License](LICENSE).
+Copyright (c) 2025 **Samuele95**. Released under the [MIT License](LICENSE).
 
 ---
 
@@ -470,6 +548,6 @@ Copyright (c) 2025 **Samuele Stronati**. Released under the [MIT License](LICENS
 
 <div align="center">
 
-Made with 🔬 and ❤️ by [Samuele Stronati](https://github.com/Samuele95)
+Made with 🔬 and ❤️ by [Samuele95](https://github.com/Samuele95)
 
 </div>
