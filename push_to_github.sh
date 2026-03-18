@@ -1,7 +1,10 @@
 #!/bin/bash
 # Push the RCC Simulator to GitHub.
 # - First run: creates the repo and pushes.
-# - Subsequent runs: commits staged/unstaged changes and pushes.
+# - Subsequent runs: commits tracked changes and pushes.
+#
+# Only stages files already tracked by git plus new files that pass
+# .gitignore rules. Never force-adds ignored content.
 #
 # Requires: gh (GitHub CLI), authenticated via `gh auth login`.
 #
@@ -49,35 +52,57 @@ if ! git remote get-url "$REMOTE" >/dev/null 2>&1; then
     exit 0
 fi
 
-# ── 3. Stage & commit any pending changes ────────────────────────
-CHANGES="$(git status --porcelain)"
-if [ -n "$CHANGES" ]; then
-    echo "  [*] Staging changes..."
-    git add -A
+# ── 3. Stage changes selectively ─────────────────────────────────
+#   - Update all tracked files (modifications + deletions)
+#   - Add new untracked files that pass .gitignore (no --force)
+echo "  [*] Staging changes..."
+git add --update                  # tracked modifications & deletions
+git add --ignore-errors . 2>/dev/null || true   # new files respecting .gitignore
 
-    # Build commit message
-    if [ $# -ge 1 ]; then
-        MSG="$1"
-    else
-        # Auto-generate a summary from changed files
-        ADDED=$(git diff --cached --diff-filter=A --name-only | wc -l)
-        MODIFIED=$(git diff --cached --diff-filter=M --name-only | wc -l)
-        DELETED=$(git diff --cached --diff-filter=D --name-only | wc -l)
-        PARTS=""
-        [ "$ADDED" -gt 0 ]    && PARTS="${PARTS}${ADDED} added, "
-        [ "$MODIFIED" -gt 0 ] && PARTS="${PARTS}${MODIFIED} modified, "
-        [ "$DELETED" -gt 0 ]  && PARTS="${PARTS}${DELETED} deleted, "
-        PARTS="${PARTS%, }"  # trim trailing comma
-        MSG="Update: ${PARTS:-minor changes}"
-    fi
-
-    echo "  [*] Committing: $MSG"
-    git commit -m "$MSG"
-else
+# Check if anything was actually staged
+if git diff --cached --quiet; then
     echo "  [*] Working tree clean — nothing to commit."
+    echo ""
+
+    # Still push in case local commits haven't been pushed yet
+    UNPUSHED=$(git log "$REMOTE/$BRANCH..$BRANCH" --oneline 2>/dev/null | wc -l)
+    if [ "$UNPUSHED" -gt 0 ]; then
+        echo "  [*] Pushing $UNPUSHED unpushed commit(s)..."
+        git push "$REMOTE" "$BRANCH"
+        echo ""
+        echo "  Done! Pushed to: https://github.com/Samuele95/$REPO_NAME"
+    else
+        echo "  Nothing to push — already up to date."
+    fi
+    echo ""
+    exit 0
 fi
 
-# ── 4. Push ──────────────────────────────────────────────────────
+# ── 4. Show what will be committed ───────────────────────────────
+echo ""
+echo "  Files to commit:"
+git diff --cached --stat | sed 's/^/    /'
+echo ""
+
+# ── 5. Commit ────────────────────────────────────────────────────
+if [ $# -ge 1 ]; then
+    MSG="$1"
+else
+    ADDED=$(git diff --cached --diff-filter=A --name-only | wc -l)
+    MODIFIED=$(git diff --cached --diff-filter=M --name-only | wc -l)
+    DELETED=$(git diff --cached --diff-filter=D --name-only | wc -l)
+    PARTS=""
+    [ "$ADDED" -gt 0 ]    && PARTS="${PARTS}${ADDED} added, "
+    [ "$MODIFIED" -gt 0 ] && PARTS="${PARTS}${MODIFIED} modified, "
+    [ "$DELETED" -gt 0 ]  && PARTS="${PARTS}${DELETED} deleted, "
+    PARTS="${PARTS%, }"
+    MSG="Update: ${PARTS:-minor changes}"
+fi
+
+echo "  [*] Committing: $MSG"
+git commit -m "$MSG"
+
+# ── 6. Push ──────────────────────────────────────────────────────
 echo "  [*] Pushing $BRANCH to $REMOTE..."
 git push "$REMOTE" "$BRANCH"
 
