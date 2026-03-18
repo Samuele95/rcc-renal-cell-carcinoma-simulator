@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Tests for the GlucoseField system."""
 import unittest
 import numpy as np

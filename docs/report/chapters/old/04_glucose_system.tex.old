@@ -1,9 +1,7 @@
 \chapter{Glucose Microenvironment System}
 \label{ch:glucose}
 
-Understanding how tumors starve the immune system is central to designing effective therapies. This chapter introduces the glucose field that models this metabolic warfare --- and reveals a critical tipping point that determines whether the immune system wins or loses.
-
-This chapter describes the glucose concentration field that overlays the discrete agent grid, modeling metabolic dynamics within the tumor microenvironment. The system captures diffusion, source injection from blood vessels, consumption by tumor and immune cells, and gradient-based chemotaxis for immune cell navigation.
+\lettrine[lines=2]{T}{his chapter} describes the glucose concentration field that overlays the discrete agent grid, modeling metabolic dynamics within the tumor microenvironment. The system captures diffusion, source injection from blood vessels, consumption by tumor and immune cells, and gradient-based chemotaxis for immune cell navigation.
 
 %% ====================================================================
 \section{Biological Motivation}
@@ -16,12 +14,12 @@ This chapter describes the glucose concentration field that overlays the discret
 \label{fig:warburg_effect}
 \end{figure}
 
-The metabolic landscape of the tumor microenvironment plays a decisive role in determining immune-tumor interactions. Otto Warburg observed that tumor cells preferentially metabolize glucose through aerobic glycolysis, resulting in dramatically elevated glucose uptake (up to 200-fold compared to normal tissue). This metabolic competition between tumor cells and infiltrating immune cells creates nutrient gradients that shape spatial organization, as regions surrounding tumor masses become nutrient-deprived. T cells and NK cells critically depend on glucose availability for cytotoxic activity — when glucose is scarce, T cell proliferation is impaired, IFN-$\gamma$ production decreases, and cytotoxic granule release is diminished. In the absence of direct cell-cell contact, immune cells can follow glucose concentration gradients as a proxy for proximity to functional vasculature and viable tissue, providing a chemotactic fallback behavior.
+The metabolic landscape of the tumor microenvironment plays a decisive role in determining immune-tumor interactions. Otto Warburg observed that tumor cells preferentially metabolize glucose through aerobic glycolysis, resulting in substantially elevated glucose uptake (up to 200-fold compared to normal tissue). This metabolic competition between tumor cells and infiltrating immune cells creates nutrient gradients that shape spatial organization, as regions surrounding tumor masses become nutrient-deprived. T cells and NK cells critically depend on glucose availability for cytotoxic activity — when glucose is scarce, T cell proliferation is impaired, IFN-$\gamma$ production decreases, and cytotoxic granule release is diminished. In the absence of direct cell-cell contact, immune cells can follow glucose concentration gradients as a proxy for proximity to functional vasculature and viable tissue, providing a chemotactic fallback behavior.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\textwidth]{figures/glucose_dynamics.pdf}
-\caption{Glucose field dynamics over time showing the evolution of glucose concentration patterns in response to tumor growth and treatment. The spatial distribution reveals zones of depletion around tumor masses and gradients extending from blood vessel sources.}
+\caption{Glucose field dynamics over time showing the evolution of glucose concentration patterns in response to tumor growth and treatment. The spatial distribution shows zones of depletion around tumor masses and gradients extending from blood vessel sources.}
 \label{fig:glucose_dynamics}
 \end{figure}
 
@@ -46,6 +44,10 @@ The glucose concentration field $C(\mathbf{x}, t)$ evolves according to a reacti
 \noindent where $C(\mathbf{x}, t)$ is the glucose concentration, $D$ is the diffusion coefficient (\texttt{w\_glucose\_diffusion}, default $0.1$), $\lambda$ is the natural decay rate (\texttt{w\_glucose\_decay}, default $0.01$), $S(\mathbf{x})$ is the source term (glucose injection from blood vessels), and $Q(\mathbf{x})$ is the consumption term (uptake by tumor and immune cells).
 
 The continuous Laplacian $\nabla^2 C$ is discretized on a regular 3D Cartesian grid using the standard 6-connected stencil, implemented as a 3D convolution using \texttt{scipy.ndimage.convolve}. The diffusion equation is advanced using explicit Euler integration with stability condition $D < 1/6$. Neumann (zero-flux) boundary conditions are enforced, corresponding to no glucose flux through simulation domain walls.
+
+\begin{keyinsight}
+The explicit Euler stability constraint $D < 1/6 \approx 0.167$ for the 3D Laplacian limits the diffusion coefficient to moderate values. The default $D = 0.1$ provides biologically plausible diffusion rates while remaining safely within the stable regime. Violating this constraint causes numerical oscillations that propagate through the glucose field.
+\end{keyinsight}
 
 \subsection{Source and Consumption Models}
 
@@ -130,3 +132,12 @@ Agent-level consumption occurs within each agent's \texttt{step()} method. The i
 \caption{Glucose System Cycle illustrating the circular flow of glucose dynamics in the tumor microenvironment.}
 \label{fig:glucose_system_cycle}
 \end{figure}
+
+\begin{chaptersum}
+\begin{itemize}[nosep]
+\item Reaction-diffusion glucose field with Fick's law, explicit Euler integration ($D < 1/6$ stability)
+\item Blood vessels inject glucose; tumor cells consume at 4$\times$ immune cell rate (Warburg effect)
+\item Glucose availability modulates both tumor proliferation and immune effector function
+\item Gradient-based chemotaxis provides fallback navigation for immune cells
+\end{itemize}
+\end{chaptersum}

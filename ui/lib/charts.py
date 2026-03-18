@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Plotly chart builders and color constants for RCC simulation results."""
 
 from __future__ import annotations
@@ -19,6 +22,7 @@ if TYPE_CHECKING:
 # Load AgentType directly from the module file, bypassing src.agents.__init__
 # which transitively imports repast4py → numpy (incompatible C-extensions).
 def _load_agent_type():
+    """Load AgentType enum directly from file, bypassing heavy transitive imports."""
     from pathlib import Path
     spec = importlib.util.spec_from_file_location(
         "agent_types",
@@ -107,6 +111,7 @@ LAYOUT_DEFAULTS = dict(
 
 
 def _base_layout(**overrides):
+    """Return a copy of LAYOUT_DEFAULTS merged with any overrides."""
     layout = copy.deepcopy(LAYOUT_DEFAULTS)
     layout.update(overrides)
     return layout
@@ -118,6 +123,16 @@ def _base_layout(**overrides):
 
 def population_dynamics(df: pd.DataFrame, selected_types: list[str] | None = None,
                         log_scale: bool = False) -> go.Figure:
+    """Line chart of all cell populations over simulation steps.
+
+    Args:
+        df: Simulation log DataFrame with a 'step' column and cell count columns.
+        selected_types: Subset of column names to plot, or None for all.
+        log_scale: Use logarithmic y-axis.
+
+    Returns:
+        Plotly Figure with one trace per cell type.
+    """
     cell_cols = [c for c in df.columns if c not in NON_CELL_COLS]
     if selected_types:
         cell_cols = [c for c in cell_cols if c in selected_types]
@@ -149,6 +164,15 @@ def population_dynamics(df: pd.DataFrame, selected_types: list[str] | None = Non
 # ---------------------------------------------------------------------------
 
 def tumor_growth(df: pd.DataFrame, treatment_start: int | None = None) -> go.Figure:
+    """Area chart of tumor cell count over time with peak annotation.
+
+    Args:
+        df: Simulation log DataFrame.
+        treatment_start: Step at which treatment begins (adds vertical line).
+
+    Returns:
+        Plotly Figure showing tumor growth trajectory.
+    """
     fig = go.Figure()
     tumor_color = CELL_COLORS["tumor_cells"]
 
@@ -193,6 +217,15 @@ def tumor_growth(df: pd.DataFrame, treatment_start: int | None = None) -> go.Fig
 # ---------------------------------------------------------------------------
 
 def kill_counts(df: pd.DataFrame, stacked: bool = False) -> go.Figure:
+    """Cumulative kill count chart by immune cell type.
+
+    Args:
+        df: Simulation log DataFrame.
+        stacked: Stack traces to show total immune activity.
+
+    Returns:
+        Plotly Figure with one trace per kill column.
+    """
     existing = [c for c in KILL_COLS if c in df.columns]
     fig = go.Figure()
 
@@ -245,6 +278,7 @@ def kill_rate(df: pd.DataFrame) -> go.Figure:
 # ---------------------------------------------------------------------------
 
 def glucose_dashboard(df: pd.DataFrame) -> go.Figure:
+    """2x2 subplot dashboard of basic glucose metrics over time."""
     existing = [c for c in GLUCOSE_COLS if c in df.columns]
     if not existing:
         fig = go.Figure()

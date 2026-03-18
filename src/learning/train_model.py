@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Optuna-based parameter optimization for the RCC model.
 
 Adapted from Mesa version. Uses RCCModel with MPI.COMM_SELF for single-rank training.
@@ -22,6 +25,14 @@ from src.agents.agent_types import AgentType
 
 
 def suggest_parameters(trial: optuna.Trial) -> dict:
+    """Build the full weight/bias parameter dict from an Optuna trial.
+
+    Args:
+        trial: Active Optuna trial used to sample hyperparameters.
+
+    Returns:
+        Dict mapping parameter names to suggested values.
+    """
     params = {}
 
     # === Positive floats (weights)
@@ -96,6 +107,7 @@ global_seed = 0
 
 
 def get_next_seed():
+    """Return the next sequential seed and increment the global counter."""
     global global_seed
     seed = global_seed
     global_seed += 1
@@ -103,6 +115,15 @@ def get_next_seed():
 
 
 def simulate(**params) -> Tuple[bool, int]:
+    """Run a single RCC simulation to completion.
+
+    Args:
+        **params: Combined model, patient, and weight parameters.
+
+    Returns:
+        Tuple of (survival, steps) where survival is True if the
+        patient survived and steps is the number of simulation ticks.
+    """
     model = RCCModel(comm=MPI.COMM_SELF, **params)
 
     while model.running:
@@ -112,6 +133,20 @@ def simulate(**params) -> Tuple[bool, int]:
 
 
 def evaluate_case(row, params, n_repeats=N_REPEATS):
+    """Evaluate a single patient case against ground truth.
+
+    Runs the simulation n_repeats times with different seeds and
+    returns the mean squared error.  A wrong survival outcome
+    incurs a HIGH_PENALTY squared penalty.
+
+    Args:
+        row: DataFrame row with patient data including 'death' and 'OS'.
+        params: Weight parameter dict to evaluate.
+        n_repeats: Number of stochastic repeats per case.
+
+    Returns:
+        Mean squared error across repeats.
+    """
     case_errors = []
     for i in range(n_repeats):
         try:
@@ -128,6 +163,15 @@ def evaluate_case(row, params, n_repeats=N_REPEATS):
 
 
 def objective(trial: optuna.Trial, df) -> float:
+    """Optuna objective function: mean error across all patient cases.
+
+    Args:
+        trial: Active Optuna trial.
+        df: Patient dataset DataFrame.
+
+    Returns:
+        Mean squared error over all cases (lower is better).
+    """
     params = suggest_parameters(trial)
     errors = []
     for i, row in df.iterrows():
@@ -154,6 +198,17 @@ def objective(trial: optuna.Trial, df) -> float:
 
 
 def load_dataset(file_path: str) -> pd.DataFrame:
+    """Load the patient dataset CSV for training.
+
+    Args:
+        file_path: Path to the CSV file (e.g. ``data/ARON.csv``).
+
+    Returns:
+        DataFrame with treatment column parsed as a list of strings.
+
+    Raises:
+        FileNotFoundError: If the CSV does not exist.
+    """
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"Dataset file {file_path} does not exist.")
 

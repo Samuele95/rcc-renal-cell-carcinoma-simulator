@@ -1,15 +1,17 @@
 \chapter{Sex Hormone System}
 \label{ch:sex-hormones}
 
-Why do females respond better to some cancer treatments while males benefit more from others? This chapter reveals how sex hormones orchestrate immune responses --- and shows how estrogen at moderate levels actually boosts the immune system, explaining the female advantage in cancer survival.
-
-This chapter describes the sex hormone subsystem, which models the immunomodulatory effects of estrogen, testosterone, and progesterone on the tumor microenvironment. Sex-specific differences in hormone profiles produce distinct immune dynamics, contributing to the well-documented sex disparity in RCC incidence and treatment response.
+\lettrine[lines=2]{T}{his chapter} describes the sex hormone subsystem, which models the immunomodulatory effects of estrogen, testosterone, and progesterone on the tumor microenvironment. Sex-specific differences in hormone profiles produce distinct immune dynamics, contributing to the well-documented sex disparity in RCC incidence and treatment response.
 
 %% ====================================================================
 \section{Biological Basis}
 \label{sec:hormone-bio}
 
 Renal cell carcinoma exhibits a pronounced sex disparity with males affected approximately twice as often as females, yet treatment efficacy varies significantly between sexes. Estrogen exerts complex, concentration-dependent effects: at low to moderate levels, it promotes Th1-type immune responses, enhances IFN-$\gamma$ production, and stimulates T cell activation; at high concentrations, it shifts towards Th2-type responses and increases inhibitory checkpoint engagement. Testosterone is generally immunosuppressive at elevated levels, reducing Th1 proliferation, decreasing IFN-$\gamma$ production, and promoting immune checkpoint engagement. Progesterone has minimal effects at low levels, mildly enhances checkpoint inhibition at moderate levels, and strongly suppresses Th1 proliferation while promoting Th2 differentiation at high concentrations. These clinical observations suggest that sex hormones modulate the immune response in ways that affect both tumor susceptibility and treatment efficacy.
+
+\begin{clinical}
+Estrogen's biphasic effect on immunity---enhancing Th1 responses at low-to-moderate levels but promoting immunosuppression at high concentrations---may partially explain the observed female advantage in RCC treatment outcomes. This concentration-dependent behavior suggests that hormonal status at treatment initiation could influence therapeutic efficacy.
+\end{clinical}
 
 %% ====================================================================
 \section{Hormone Agent Model}
@@ -88,3 +90,12 @@ The model implements population-level sex drift that adjusts CD8+ naive T cell p
 \caption{Sex hormone dynamics over time showing the evolution of estrogen, testosterone, and progesterone levels in the tumor microenvironment. The hormone concentrations fluctuate based on sex-specific spawning rates, cellular consumption, and spatial diffusion patterns.}
 \label{fig:hormone_dynamics}
 \end{figure}
+
+\begin{chaptersum}
+\begin{itemize}[nosep]
+\item Estrogen, testosterone, and progesterone modeled as discrete diffusing agents
+\item 17 hormonal effect channels modulate T cell behavior across concentration regimes
+\item Sex-specific spawn rates create distinct hormonal microenvironments
+\item Population-level sex drift adjusts CD8+ naive T cell counts by $\pm$25\% over 15 steps
+\end{itemize}
+\end{chaptersum}

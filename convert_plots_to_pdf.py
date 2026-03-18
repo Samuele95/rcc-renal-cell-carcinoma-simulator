@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Convert simulation plots to PDF format for LaTeX inclusion."""
 
 import os

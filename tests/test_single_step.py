@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Integration test: minimal model runs without crashing."""
 import unittest
 import sys

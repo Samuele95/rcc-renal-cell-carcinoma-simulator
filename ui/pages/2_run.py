@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Simulation execution — live dashboard with 3D visualization.
 
 Monitors the battle between tumor and immune cells in real time,
@@ -56,6 +59,7 @@ _HUD_LAYOUT = dict(
 # ---------------------------------------------------------------------------
 
 def _termination_reason(hist_tumor, initial_tumor):
+    """Return a human-readable reason for early simulation termination."""
     if not hist_tumor:
         return "Simulation complete"
     final = hist_tumor[-1]

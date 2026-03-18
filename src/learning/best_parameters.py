@@ -1,3 +1,12 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
+"""Best weight parameters discovered by Optuna optimization.
+
+This dictionary is loaded at runtime to initialize WeightParameters
+when no custom configuration is provided.  Glucose parameters retain
+their defaults as they have not yet been optimized.
+"""
 best_params = \
     {"w_BMI_on_treg_diff": 0.9004570599015521,
      "w_BMI_on_m1_mutation": 0.4078176945252388,

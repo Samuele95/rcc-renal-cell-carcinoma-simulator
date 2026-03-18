@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """RCC Simulation Dashboard — Streamlit entry point."""
 
 import sys

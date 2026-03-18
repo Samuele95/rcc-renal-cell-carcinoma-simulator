@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Subprocess management for running simulations."""
 
 import os
@@ -20,6 +23,7 @@ PROGRESS_RE = re.compile(
 
 
 def make_run_id(seed: int) -> str:
+    """Generate a unique run identifier from the current timestamp and seed."""
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     return f"{ts}_seed{seed}"
 

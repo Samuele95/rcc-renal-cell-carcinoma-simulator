@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Abstract Drug base class for treatments."""
 from abc import ABC, abstractmethod
 
@@ -6,6 +9,11 @@ class Drug(ABC):
     """Abstract base for drugs applied during treatment."""
 
     def __init__(self, model):
+        """Initialize the drug with a reference to the simulation model.
+
+        Args:
+            model: The RCCModel instance this drug acts upon.
+        """
         self.model = model
 
     def apply_to_type(self, type_id, effectiveness, action):
@@ -22,4 +30,9 @@ class Drug(ABC):
 
     @abstractmethod
     def step(self, proportion=1.0):
+        """Execute one treatment step.
+
+        Args:
+            proportion: Fraction of full effectiveness to apply (0.0-1.0).
+        """
         ...

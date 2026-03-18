@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """TCell base class for all T cell agents.
 
 Ported from Mesa to Repast4Py. Provides hormone perception,

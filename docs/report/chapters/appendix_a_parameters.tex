@@ -1,0 +1,168 @@
+\chapter{Parameter Reference Tables}
+\label{ch:appendix-params}
+
+This appendix provides the complete listing of all weight parameters used in the agent-based model, organized by cell type. For a high-level summary, see Chapter~\ref{ch:parameters}.
+
+% ----------------------------------------------------------------------
+\section*{Hormonal Influence Effect Channels}
+
+\begin{table}[htbp]
+\centering
+\caption{The 17 hormonal influence effect channels through which sex hormones modulate T cell behavior.}
+\label{tab:hormonal-effects}
+{\scriptsize
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Effect} & \textbf{Description} \\
+\midrule
+KILL\_RATE            & Cytotoxic kill rate modulation \\
+PROLIFERATION         & General proliferation rate \\
+APOPTOSIS             & Programmed cell death susceptibility \\
+ACTIVATION            & T cell activation state \\
+DIFFERENTIATION       & Differentiation probability \\
+TH1\_PROLIFERATION    & Th1-specific proliferation \\
+TH2\_PROLIFERATION    & Th2-specific proliferation \\
+IL\_4 / IL\_6 / IL\_13 & Interleukin signaling effects \\
+IFN\_GAMMA            & Interferon-gamma signaling \\
+TNF\_ALPHA            & Tumor necrosis factor alpha \\
+MHC\_I\_UPREGULATION  & MHC class I expression \\
+MHC\_II\_UPREGULATION & MHC class II expression \\
+COSTIMULATION\_CD28   & CD28 costimulatory signal \\
+CTLA4\_SUPPRESSION    & CTLA-4 checkpoint engagement \\
+PD1\_INHIBITION       & PD-1 checkpoint engagement \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+% ----------------------------------------------------------------------
+\section*{Macrophage and Tumor Cell Weights}
+
+{\scriptsize
+\begin{table}[htbp]
+\centering
+\caption{Macrophage (M1/M2) and tumor cell weight parameters.}
+\label{tab:app-macrophage-tumor-weights}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Parameter} & \textbf{Default} \\
+\midrule
+\multicolumn{2}{@{}l}{\textit{M1 Macrophage (7 weights + 2 biases)}} \\
+\texttt{w\_m1\_mutation} / \texttt{b\_m1\_mutation} & 1.0 / 0.0 \\
+\texttt{w\_m1\_move} & 1.0 \\
+\texttt{w\_m1\_phagocytosis} & 1.0 \\
+\texttt{w\_m1\_digest} & 1.0 \\
+\texttt{w\_m1\_t\_kill\_rate} & 1.0 \\
+\texttt{w\_m1\_th1\_proliferation} & 1.0 \\
+\texttt{w\_th1\_proliferation} / \texttt{b\_th1\_proliferation} & 1.0 / 0.0 \\
+\midrule
+\multicolumn{2}{@{}l}{\textit{M2 Macrophage (5 weights + 1 bias)}} \\
+\texttt{w\_m2\_mutation} / \texttt{b\_m2\_mutation} & 1.0 / 0.0 \\
+\texttt{w\_m2\_move} & 1.0 \\
+\texttt{w\_m2\_t\_kill\_rate} & 1.0 \\
+\texttt{w\_m2\_tumor\_growth} & 1.0 \\
+\texttt{w\_m2\_angiogenesis} & 1.0 \\
+\midrule
+\multicolumn{2}{@{}l}{\textit{Tumor Cell (8 weights + 4 biases)}} \\
+\texttt{w\_tumor\_apoptosis\_eff} / \texttt{w\_tumor\_apoptosis\_dna} & 1.0 / 1.0 \\
+\texttt{b\_tumor\_apoptosis} & 0.0 \\
+\texttt{w\_tumor\_growth\_eff} / \texttt{w\_tumor\_growth\_dna} & 0.6 / 1.0 \\
+\texttt{b\_tumor\_growth} & 0.0 \\
+\texttt{w\_tumor\_angiogenesis} / \texttt{b\_tumor\_angiogenesis} & 1.0 / 0.0 \\
+\texttt{w\_antigen\_presentation} / \texttt{b\_antigen\_presentation} & 1.0 / 0.0 \\
+\texttt{w\_angiogenesis\_tumor\_\allowbreak growth} & 1.0 \\
+\texttt{w\_gene\_pd1\_\allowbreak inhibition} & 1.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+}
+
+% ----------------------------------------------------------------------
+\section*{T Cell and Innate Immune Cell Weights}
+
+{\scriptsize
+\begin{table}[htbp]
+\centering
+\caption{T cell (CD4+, CD8+, Treg) and innate immune cell (mast, NK, pDC) weight parameters.}
+\label{tab:app-tcell-innate-weights}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Parameter} & \textbf{Default} \\
+\midrule
+\multicolumn{2}{@{}l}{\textit{CD4+ (10 weights + 3 biases)}} \\
+\texttt{w\_cd4\_treg\_diff\_effect} / \texttt{w\_cd4\_treg\_diff\_horm} & 1.0 / 1.0 \\
+\texttt{b\_cd4\_treg\_diff} & 0.0 \\
+\texttt{w\_cd4\_th1\_proliferation\_\allowbreak effect} / \texttt{\_horm} & 1.0 / 1.0 \\
+\texttt{b\_cd4\_th1\_proliferation} & 0.0 \\
+\texttt{w\_cd4\_th1\_spawn\_m1} / \texttt{w\_cd4\_th1\_spawn\_dc} & 1.0 / 1.0 \\
+\texttt{w\_cd4\_th2\_spawn\_m1} / \texttt{w\_cd4\_th2\_spawn\_t} & 1.0 / 1.0 \\
+\texttt{w\_cd4\_th2\_proliferation\_\allowbreak effect} / \texttt{\_horm} & 1.0 / 1.0 \\
+\texttt{b\_cd4\_th2\_proliferation} & 0.0 \\
+\midrule
+\multicolumn{2}{@{}l}{\textit{Cytotoxic T Cell / CD8+ (5 weights + 2 biases)}} \\
+\texttt{w\_cytotoxic\_proliferation} & 1.0 \\
+\texttt{w\_cytotoxic\_apoptosis} / \texttt{b\_cytotoxic\_apoptosis} & 1.0 / 0.0 \\
+\texttt{w\_cytotoxic\_kill} / \texttt{b\_cytotoxic\_kill} & 1.0 / 0.0 \\
+\texttt{w\_cytotoxic\_pd1\_\allowbreak inhibition} & 1.0 \\
+\texttt{w\_cytotoxic\_move} & 1.0 \\
+\midrule
+\multicolumn{2}{@{}l}{\textit{Regulatory T Cell (5 parameters)}} \\
+\texttt{w\_treg\_t\_kill\_rate} / \texttt{w\_treg\_t\_proliferation} & 1.0 / 1.0 \\
+\texttt{w\_treg\_t\_apoptosis} / \texttt{w\_treg\_activation} & 1.0 / 1.0 \\
+\texttt{w\_treg\_dc\_phagocytosis} & 1.0 \\
+\midrule
+\multicolumn{2}{@{}l}{\textit{Mast Cell (6 parameters)}} \\
+\texttt{w\_mast\_cell\_\allowbreak angiogenesis} / \texttt{w\_mast\_cell\_m1\_mutation} & 1.0 / 1.0 \\
+\texttt{w\_mast\_cell\_t\_kill\_rate} / \texttt{w\_mast\_cell\_tumor\_\allowbreak apoptosis} & 1.0 / 1.0 \\
+\texttt{w\_mast\_cell\_tumor\_growth} / \texttt{w\_mast\_cell\_spawn\_dc} & 1.0 / 1.0 \\
+\midrule
+\multicolumn{2}{@{}l}{\textit{NK Cell (2 weights + 1 bias)}} \\
+\texttt{w\_natural\_killer\_kill\_\allowbreak rate} / \texttt{b\_natural\_killer\_kill\_\allowbreak rate} & 1.0 / 0.0 \\
+\texttt{w\_nkl\_t\_kill\_rate} & 1.0 \\
+\midrule
+\multicolumn{2}{@{}l}{\textit{Plasmacytoid DC (6 weights + 1 bias)}} \\
+\texttt{w\_pdc\_nkl\_spawn} / \texttt{b\_pdc\_nkl\_spawn} & 1.0 / 0.0 \\
+\texttt{w\_pdc\_angiogenesis} / \texttt{w\_pdc\_treg\_diff} & 1.0 / 1.0 \\
+\texttt{w\_pdc\_t\_proliferation} / \texttt{w\_pdc\_t\_kill} & 1.0 / 1.0 \\
+\texttt{w\_pdc\_nkl\_kill} & 1.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+}
+
+% ----------------------------------------------------------------------
+\section*{Global and Glucose Weights}
+
+{\scriptsize
+\begin{table}[htbp]
+\centering
+\caption{Global and glucose weight parameters.}
+\label{tab:app-global-glucose-weights}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Parameter} & \textbf{Default} \\
+\midrule
+\multicolumn{2}{@{}l}{\textit{Global}} \\
+\texttt{w\_search\_dimension} & 0.5 \\
+\texttt{w\_tumor\_growth\_threshold} & 1.0 \\
+\texttt{w\_cell\_base\_death\_prob} & 0.009 \\
+\texttt{w\_progressive\_exhaustion} & 0.05 \\
+\texttt{w\_ici\_effectiveness} / \texttt{w\_tki\_effectiveness} & 1.0 / 1.0 \\
+\texttt{w\_sex\_hormone\_cd8} & 1.0 \\
+\texttt{w\_dc\_phagocytosis\_effect} / \texttt{b\_dc\_phagocytosis} & 1.0 / 0.0 \\
+\texttt{w\_max\_drift} & 0.25 \\
+\texttt{receptor\_threshold\_\allowbreak variation} & 1 \\
+\midrule
+\multicolumn{2}{@{}l}{\textit{Glucose}} \\
+\texttt{w\_glucose\_diffusion} & 0.1 \\
+\texttt{w\_glucose\_decay} & 0.01 \\
+\texttt{w\_glucose\_source\_rate} & 5.0 \\
+\texttt{w\_glucose\_tumor\_\allowbreak consumption} & 2.0 \\
+\texttt{w\_glucose\_immune\_\allowbreak consumption} & 0.5 \\
+\texttt{w\_glucose\_growth\_\allowbreak sensitivity} & 1.0 \\
+\texttt{w\_glucose\_immune\_\allowbreak sensitivity} & 1.0 \\
+\texttt{w\_glucose\_chemotaxis\_\allowbreak strength} & 0.3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+}

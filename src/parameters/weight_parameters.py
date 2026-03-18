@@ -1,9 +1,27 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
+"""Biological weight and bias parameters for the RCC model.
+
+Contains 80+ tuneable weights (prefixed ``w_``) and biases (prefixed
+``b_``) that scale agent behaviours: kill rates, proliferation,
+mutation thresholds, glucose metabolism, drug effectiveness, etc.
+These values are the primary target of Bayesian optimization.
+"""
 from dataclasses import dataclass
 from src.parameters.parameters import Parameters
 
 
 @dataclass
 class WeightParameters(Parameters):
+    """Weights and biases governing agent interactions and metabolism.
+
+    Each ``w_`` field is a multiplicative scale factor and each ``b_``
+    field is an additive bias.  Glucose parameters control the
+    diffusion-reaction glucose field.  Treatment effectiveness weights
+    gate the probability that ICI/TKI drugs affect individual agents.
+    """
+
     # BMI weights
     w_BMI_on_treg_diff: float = 0.01
     w_BMI_on_m1_mutation: float = 0.01

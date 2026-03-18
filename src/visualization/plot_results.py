@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Post-hoc visualization of simulation results.
 
 Usage:
@@ -13,7 +16,17 @@ import pandas as pd
 
 
 def plot_population_dynamics(csv_path="logs/simulation_log.csv", output_dir="plots"):
-    """Plot cell population time series from simulation log."""
+    """Plot cell population time series from a simulation log CSV.
+
+    Generates three PNG files in output_dir:
+    - population_dynamics.png -- all cell types over time
+    - tumor_growth.png -- tumor cell count with filled area
+    - kill_counts.png -- cumulative kill counts by mechanism
+
+    Args:
+        csv_path: Path to the simulation CSV log.
+        output_dir: Directory to save generated plots.
+    """
     os.makedirs(output_dir, exist_ok=True)
     df = pd.read_csv(csv_path)
 

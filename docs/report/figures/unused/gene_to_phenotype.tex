@@ -1,5 +1,5 @@
 % Gene-to-Phenotype Mapping Diagram
-\begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}]
+\begin{tikzpicture}[]
 
 % Title
 \node[text width=18cm, text centered] at (9,14) {
@@ -137,14 +137,14 @@
 
 % Specific examples
 \node[draw, rounded corners=3pt, fill=yellow!70] at (1,6) {Example 1};
-\node[below] at (1,5.5) {\tiny VHL=1, CD274=2};
-\node[below] at (1,5.2) {\tiny Fast growth};
-\node[below] at (1,4.9) {\tiny High PD-L1};
+\node[below] at (1,5.5) {\footnotesize VHL=1, CD274=2};
+\node[below] at (1,5.2) {\footnotesize Fast growth};
+\node[below] at (1,4.9) {\footnotesize High PD-L1};
 
 \node[draw, rounded corners=3pt, fill=yellow!70] at (17,6) {Example 2};
-\node[below] at (17,5.5) {\tiny TP53=1, B2M=1};
-\node[below] at (17,5.2) {\tiny Apoptosis resist};
-\node[below] at (17,4.9) {\tiny Immune invisible};
+\node[below] at (17,5.5) {\footnotesize TP53=1, B2M=1};
+\node[below] at (17,5.2) {\footnotesize Apoptosis resist};
+\node[below] at (17,4.9) {\footnotesize Immune invisible};
 
 % Hamming distance for TCR matching
 \node[draw, rounded corners, fill=orange!40, text width=4cm] at (1,9) {
@@ -155,4 +155,4 @@
     $d_H \leq 3$ = match
 };
 
-\end{tikzpicture}nd{tikzpicture}
+\end{tikzpicture}

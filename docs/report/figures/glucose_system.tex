@@ -1,73 +1,67 @@
+% Glucose System Block Diagram
 \begin{tikzpicture}[
-  node/.style={circle, minimum size=1.5cm, align=center, font=\footnotesize, thick},
-  source/.style={node, fill=red!20, draw=red!80},
-  process/.style={rectangle, rounded corners, minimum width=2.5cm, minimum height=1cm, align=center, font=\footnotesize, fill=blue!15, draw=blue!80, thick},
-  field/.style={rectangle, rounded corners, minimum width=3cm, minimum height=2cm, align=center, font=\footnotesize, fill=green!15, draw=green!80, thick},
-  consumer/.style={node, fill=orange!20, draw=orange!80},
-  arrow/.style={->, >=stealth, thick, shorten >=2pt, shorten <=2pt}
+  block/.style={draw, rounded corners=3pt, minimum width=2.4cm, minimum height=0.9cm,
+                align=center, font=\small, thick},
+  field/.style={draw, rounded corners=4pt, minimum width=3.4cm, minimum height=1.6cm,
+                align=center, font=\small, thick, fill=yellow!15, line width=1.2pt},
+  src/.style={block, fill=red!15, draw=red!60},
+  proc/.style={block, fill=blue!12, draw=blue!60},
+  cons/.style={block, fill=orange!15, draw=orange!60},
+  arrow/.style={->, >=stealth, thick},
+  dasharrow/.style={->, >=stealth, thick, dashed, purple!70},
 ]
 
-% Central glucose field
-\node[field] (field) at (0, 0) {\textbf{Glucose Field}\\ 3D continuous\\ concentration\\ $C(\mathbf{x}, t)$};
+% Central field
+\node[field] (F) at (0, 0) {\textbf{Glucose Field}\\$C(\mathbf{x},t)$};
 
-% Sources
-\node[source] (blood) at (-4, 2) {\textbf{Blood}\\Vessels};
-\node[source] (inject) at (-4, -2) {\textbf{Injection}\\Rate};
+% Top: Diffusion
+\node[proc] (diff) at (0, 2.6) {\textbf{Diffusion}\\Fick's law $D\nabla^2 C$};
+\draw[arrow, blue!60] (F.north) -- (diff.south) node[midway, right, font=\footnotesize] {spread};
+\draw[arrow, blue!60] (diff.south west) -- (F.north west);
 
-% Processes
-\node[process] (diffusion) at (0, 3) {\textbf{Diffusion}\\Fick's Law\\$\nabla^2 C$};
-\node[process] (decay) at (0, -3) {\textbf{Natural Decay}\\$-\lambda C$};
-\node[process] (gradient) at (4, 0) {\textbf{Gradient}\\$\nabla C$\\Chemotaxis};
+% Left: Blood Vessels source
+\node[src] (bv) at (-4.2, 1.2) {\textbf{Blood Vessels}\\source $S(\mathbf{x})$};
+\draw[arrow, red!60] (bv.east) -- (F.west |- bv) -- (F.west)
+  node[midway, above, font=\footnotesize] {injection $+S$};
 
-% Consumers
-\node[consumer] (tumor) at (-2, -5) {\textbf{Tumor}\\Warburg};
-\node[consumer] (immune) at (2, -5) {\textbf{Immune}\\Cells};
+% Right: Gradient & Chemotaxis
+\node[proc, text width=2.4cm] (grad) at (4.2, 1.2) {\textbf{Gradient} $\nabla C$};
+\node[proc, text width=2.4cm] (chem) at (4.2, -0.6) {\textbf{Chemotaxis}\\immune guidance};
+\draw[arrow, green!60!black] (F.east) -- (grad.west) node[midway, above, font=\footnotesize] {compute};
+\draw[arrow, green!60!black] (grad) -- (chem);
 
-% Arrows showing the cycle
-% Sources to field
-\draw[arrow, red!70] (blood) -- (field) node[midway, above, sloped] {\scriptsize inject};
-\draw[arrow, red!70] (inject) -- (field) node[midway, below, sloped] {\scriptsize $+w_{glucose\_injection}$};
+% Bottom-left: Tumor consumer
+\node[cons, fill=red!15, draw=red!50] (tum) at (-3.0, -2.6) {\textbf{Tumor}\\Warburg 200$\times$};
+\draw[arrow, red!50] (tum.north east) -- (F.south west)
+  node[midway, below, sloped, font=\footnotesize] {consume $-Q_T$};
 
-% Field processes
-\draw[arrow, blue!70] (field) -- (diffusion) node[midway, right] {\scriptsize $\frac{\partial C}{\partial t}$};
-\draw[arrow, blue!70] (diffusion) -- (field);
-\draw[arrow, blue!70] (field) -- (decay);
-\draw[arrow, blue!70] (decay) -- (field) node[midway, left] {\scriptsize $-w_{glucose\_decay}$};
+% Bottom-right: Immune consumer
+\node[cons, fill=blue!12, draw=blue!50] (imm) at (3.0, -2.6) {\textbf{Immune Cells}\\normal rate};
+\draw[arrow, blue!50] (imm.north west) -- (F.south east)
+  node[midway, below, sloped, font=\footnotesize] {consume $-Q_I$};
 
-% Gradient computation
-\draw[arrow, green!70] (field) -- (gradient) node[midway, above] {\scriptsize compute};
-\draw[arrow, green!70] (gradient) to [bend right=20] ($(field.east) + (0, -0.5)$) node[midway, below] {\scriptsize guide movement};
+% Below center: Decay
+\node[proc, fill=gray!12, draw=gray!60, minimum width=2.0cm] (dec) at (0, -2.6) {Decay $-\lambda C$};
+\draw[arrow, gray!60] (F.south) -- (dec.north);
 
-% Consumption
-\draw[arrow, orange!70] (tumor) -- (field) node[midway, below, sloped] {\scriptsize $-w_{tumor\_consumption}$};
-\draw[arrow, orange!70] (immune) -- (field) node[midway, below, sloped] {\scriptsize $-w_{immune\_consumption}$};
+% Dashed feedback arrows
+\draw[dasharrow] (F.south west) ++(-0.1, 0) to[bend right=25]
+  node[midway, left, font=\footnotesize, text=purple!70] {growth modulation} (tum.north);
+\draw[dasharrow] (F.south east) ++(0.1, 0) to[bend left=25]
+  node[midway, right, font=\footnotesize, text=purple!70] {activity modulation} (imm.north);
 
-% Feedback to consumers
-\draw[arrow, dashed, purple] (field) to [bend left=30] (tumor) node[midway, left] {\scriptsize growth modulation};
-\draw[arrow, dashed, purple] (field) to [bend right=30] (immune) node[midway, right] {\scriptsize activity modulation};
+% Chemotaxis feedback
+\draw[arrow, green!60!black, dashed] (chem.south) to[bend left=20] (imm.east)
+  node[midway, right, font=\footnotesize] {guide};
 
-% Equations box
-\begin{scope}[xshift=7cm, yshift=1cm]
-\node[text width=4cm, font=\tiny, fill=gray!10, rounded corners, draw] {
-\textbf{Glucose PDE:}\\[0.1cm]
-$\frac{\partial C}{\partial t} = D \nabla^2 C + S - \lambda C - R$\\[0.2cm]
-where:\\
-$D$ = diffusion coefficient\\
-$S$ = blood injection\\
-$\lambda$ = decay rate\\
-$R$ = consumption rate
-};
-\end{scope}
-
-% Legend
-\begin{scope}[xshift=-6cm, yshift=-6cm]
-\node[text width=3cm, font=\tiny] {
-\textcolor{red!70}{\textbf{Sources}}\\
-\textcolor{blue!70}{\textbf{Physical processes}}\\
-\textcolor{green!70}{\textbf{Spatial computation}}\\
-\textcolor{orange!70}{\textbf{Consumption}}\\
-\textcolor{purple}{\textbf{Feedback loops}}
-};
-\end{scope}
+% PDE equation box
+\node[draw, rounded corners=3pt, fill=gray!8, inner sep=5pt, font=\footnotesize,
+      text width=5.6cm, align=left] (pde) at (0, -4.6) {%
+\textbf{Glucose PDE:}\quad
+$\displaystyle\frac{\partial C}{\partial t} = D\nabla^2 C - \lambda C + S - Q$\\[2pt]
+$D$\,=\,diffusion coeff.\enspace
+$S$\,=\,blood injection\enspace
+$\lambda$\,=\,decay\enspace
+$Q$\,=\,consumption};
 
 \end{tikzpicture}

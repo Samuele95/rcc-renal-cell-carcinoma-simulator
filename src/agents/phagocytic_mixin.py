@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Mixin for phagocytic cells (Template Method pattern).
 
 Provides common phagocytosis state machine:

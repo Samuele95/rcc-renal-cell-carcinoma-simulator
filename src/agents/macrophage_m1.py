@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """M1 Macrophage — pro-inflammatory, phagocytoses tumors, glucose chemotaxis."""
 from src.agents.cell import Cell
 from src.agents.phagocytic_mixin import PhagocyticMixin
@@ -6,6 +9,18 @@ from src.systems.effect import Effect
 
 
 class MacrophageM1(PhagocyticMixin, Cell):
+    """M1 (classically activated) macrophage with anti-tumor activity.
+
+    Phagocytoses tumor cells and presents antigens to naive T cells.
+    Boosts T cell kill rate and Th1 proliferation via local effects.
+    Can polarize into pro-tumorigenic M2 under microenvironment pressure.
+
+    Attributes:
+        melt_chance: Probability of digesting phagocytosed cell per tick.
+        phagocytosis_chance: Base probability of engulfing a nearby tumor.
+        initial_mutation_chance: Base probability of M1-to-M2 polarization.
+    """
+
     melt_chance = 0.2
     phagocytosis_chance = 0.5
     initial_mutation_chance = 0.1
@@ -13,6 +28,7 @@ class MacrophageM1(PhagocyticMixin, Cell):
     my_th1_proliferation_effect = 0.01
 
     def __init__(self, local_id, rank, model, pos):
+        """Initialize an M1 macrophage with phagocytosis state and effect cache."""
         super().__init__(local_id, AgentType.MACROPHAGE_M1, rank, model, pos)
         self.experienced_effects.macrophage_m1_mutation_effect += self.initial_mutation_chance
         self._init_phagocytosis(t_cell_types=[AgentType.CD4_NAIVE_T_CELL])
@@ -24,6 +40,7 @@ class MacrophageM1(PhagocyticMixin, Cell):
         )
 
     def step(self):
+        """Check M2 polarization, hunt/phagocytose tumors, digest or present antigen."""
         if self.base_step():
             return
 
@@ -62,6 +79,7 @@ class MacrophageM1(PhagocyticMixin, Cell):
             self._ticks_since_phago = 0
 
     def _transform_to_macrophage_m2(self):
+        """Polarize into an M2 macrophage at the same position."""
         from src.agents.macrophage_m2 import MacrophageM2
         self.transform_into(MacrophageM2)
 

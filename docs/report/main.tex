@@ -1,74 +1,66 @@
-\documentclass[12pt,a4paper]{report}
+\documentclass{unicam_thesis}
 
-% Packages
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{palatino}  % Palatino for body text — more readable than Computer Modern
-\usepackage[english]{babel}
-\usepackage{amsmath,amssymb,amsfonts}
-\usepackage{graphicx}
+% ============================================================================
+% Additional packages (not provided by the cls)
+% ============================================================================
+
+% Tables
 \usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{hyperref}
-\usepackage{listings}
-\usepackage{xcolor}
-%\usepackage{algorithm}
-%\usepackage{algpseudocode}
-\usepackage{subcaption}
 \usepackage{multirow}
-\usepackage[margin=2.5cm]{geometry}
-\setlength{\parskip}{0.2em plus 0.1em minus 0.1em}
-\setlength{\parindent}{1.5em}
-\usepackage{float}
+
+% Layout
 \usepackage{enumitem}
 \usepackage[section]{placeins}
+\usepackage{float}
+
+% Chapter styling
 \usepackage{epigraph}
+\usepackage{lettrine}
+
+% TikZ and diagrams
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,calc,decorations.pathmorphing,shapes.symbols,shadows}
-\usepackage{xcolor}
-\usepackage{mdframed}
-\usepackage{adjustbox}
-
-% New packages for beautiful formatting
-\usepackage{fancyhdr}      % Professional headers/footers
-\usepackage{titlesec}       % Custom chapter/section titles
-\usepackage{pgfplots}       % Better plots integration
-\usepackage{pdfpages}       % Include PDF pages if needed
-\usepackage[protrusion=true,expansion=false]{microtype} % Better typography
-\usepackage[most]{tcolorbox} % Advanced tcolorbox features
-\usepackage{colortbl}       % For table coloring
-
-% PGF plots compatibility
-\pgfplotsset{compat=1.18}
-
-% TikZ libraries for advanced diagrams
 \usetikzlibrary{patterns,backgrounds,decorations.pathreplacing}
 \usetikzlibrary{mindmap,trees,decorations.text}
 \usetikzlibrary{matrix,chains,scopes}
 
-% Custom chapter style - make chapter titles beautiful
-\titleformat{\chapter}[display]
-  {\normalfont\huge\bfseries\color{blue!70!black}}
-  {\chaptertitlename\ \thechapter}{20pt}{\Huge}
-\titlespacing*{\chapter}{0pt}{-20pt}{40pt}
+% Figure wrappers
+\usepackage{mdframed}
+\usepackage{adjustbox}
 
-% Fancy headers and footers
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[LE,RO]{\thepage}
-\fancyhead[RE]{\leftmark}
-\fancyhead[LO]{\rightmark}
-\renewcommand{\headrulewidth}{0.4pt}
+% Plots
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 
-% Beautiful section headers
-\titleformat{\section}
-  {\normalfont\Large\bfseries\color{blue!60!black}}
-  {\thesection}{1em}{}
-\titleformat{\subsection}
-  {\normalfont\large\bfseries\color{blue!50!black}}
-  {\thesubsection}{1em}{}
+% Advanced boxes
+\usepackage[most]{tcolorbox}
 
-% Color definitions for consistent theming
+% Better typography
+\usepackage[protrusion=true,expansion=false]{microtype}
+
+% Code listings
+\usepackage{longtable}
+
+
+% ============================================================================
+% Graphics paths
+% ============================================================================
+\graphicspath{{figures/},{images/},{Images/}}
+
+% ============================================================================
+% Override hyperref colors (cls sets all to black)
+% ============================================================================
+\hypersetup{
+  linkcolor=blue!70!black,
+  citecolor=green!50!black,
+  urlcolor=blue!60!black
+}
+
+% ============================================================================
+% Color definitions
+% ============================================================================
+
+% Cell-type colors
 \definecolor{tumorcell}{RGB}{220,20,60}
 \definecolor{immunecell}{RGB}{30,144,255}
 \definecolor{bloodvessel}{RGB}{255,69,0}
@@ -76,18 +68,34 @@
 \definecolor{dna}{RGB}{138,43,226}
 \definecolor{treatment}{RGB}{34,139,34}
 
-% Professional color palette for diagrams
-\definecolor{primary}{RGB}{67, 56, 202}      % Indigo
-\definecolor{secondary}{RGB}{16, 185, 129}   % Emerald
-\definecolor{accent}{RGB}{245, 158, 11}      % Amber
-\definecolor{neutral}{RGB}{107, 114, 128}    % Cool gray
-\definecolor{background}{RGB}{249, 250, 251} % Light gray
+% Professional palette for diagrams
+\definecolor{primary}{RGB}{67, 56, 202}
+\definecolor{secondary}{RGB}{16, 185, 129}
+\definecolor{accent}{RGB}{245, 158, 11}
+\definecolor{neutral}{RGB}{107, 114, 128}
+\definecolor{background}{RGB}{249, 250, 251}
 
-% Define beautiful tcolorbox styles
+% ============================================================================
+% Shared TikZ styles for consistent figure appearance
+% ============================================================================
+\tikzset{
+  rcc/node/.style={font=\small, thick},
+  rcc/label/.style={font=\footnotesize},
+  rcc/tumor/.style={fill=red!15, draw=red!60!black},
+  rcc/immune/.style={fill=blue!15, draw=blue!60!black},
+  rcc/vessel/.style={fill=orange!15, draw=orange!60!black},
+  rcc/glucose/.style={fill=yellow!15, draw=yellow!60!black},
+  rcc/process/.style={fill=green!15, draw=green!60!black},
+  rcc/signal/.style={fill=purple!15, draw=purple!60!black},
+}
+
+% ============================================================================
+% tcolorbox style definitions
+% ============================================================================
 \newtcolorbox{keyinsight}{
-  colback=blue!5!white, 
-  colframe=blue!75!black, 
-  title=Key Insight, 
+  colback=blue!5!white,
+  colframe=blue!75!black,
+  title=Key Insight,
   fonttitle=\bfseries,
   arc=3pt,
   enhanced,
@@ -95,9 +103,9 @@
 }
 
 \newtcolorbox{keyfinding}{
-  colback=green!5!white, 
-  colframe=green!50!black, 
-  title=Key Finding, 
+  colback=green!5!white,
+  colframe=green!50!black,
+  title=Key Finding,
   fonttitle=\bfseries,
   arc=3pt,
   enhanced,
@@ -105,8 +113,8 @@
 }
 
 \newtcolorbox{definition}{
-  colback=gray!5!white, 
-  colframe=gray!75!black, 
+  colback=gray!5!white,
+  colframe=gray!75!black,
   fonttitle=\bfseries,
   arc=3pt,
   enhanced,
@@ -114,9 +122,9 @@
 }
 
 \newtcolorbox{chaptersum}{
-  colback=orange!5!white, 
-  colframe=orange!60!black, 
-  title=Chapter Summary, 
+  colback=orange!5!white,
+  colframe=orange!60!black,
+  title=Chapter Summary,
   fonttitle=\bfseries,
   arc=3pt,
   enhanced,
@@ -124,19 +132,23 @@
 }
 
 \newtcolorbox{clinical}{
-  colback=purple!5!white, 
-  colframe=purple!60!black, 
-  title=Clinical Insight, 
+  colback=purple!5!white,
+  colframe=purple!60!black,
+  title=Clinical Insight,
   fonttitle=\bfseries,
   arc=3pt,
   enhanced,
   shadow={1mm}{-1mm}{0mm}{black!30}
 }
 
-% Table styling improvements
-\renewcommand{\arraystretch}{1.2}
+% ============================================================================
+% Table styling
+% ============================================================================
+\renewcommand{\arraystretch}{1.3}
 
-% Listing style
+% ============================================================================
+% Code listing style
+% ============================================================================
 \lstset{
   language=Python,
   basicstyle=\ttfamily\footnotesize,
@@ -155,17 +167,19 @@
   columns=flexible,
   captionpos=b,
   tabsize=4,
-  showstringspaces=false
+  showstringspaces=false,
+  xleftmargin=1em,
+  framexleftmargin=5mm,
+  framextopmargin=2mm,
+  framexbottommargin=2mm
 }
 
-\hypersetup{
-  colorlinks=true,
-  linkcolor=blue!70!black,
-  citecolor=green!50!black,
-  urlcolor=blue!60!black
-}
+% Allow line breaks in monospace parameter names
+\newcommand{\param}[1]{\texttt{\small #1}}
 
-% More generous float placement
+% ============================================================================
+% Float placement
+% ============================================================================
 \renewcommand{\topfraction}{0.85}
 \renewcommand{\bottomfraction}{0.85}
 \renewcommand{\textfraction}{0.10}
@@ -174,73 +188,87 @@
 \setcounter{bottomnumber}{3}
 \setcounter{totalnumber}{6}
 
+% Paragraph spacing
+\setlength{\parskip}{0.2em plus 0.1em minus 0.1em}
+\setlength{\parindent}{1.5em}
+
+% TOC depth
+\setcounter{tocdepth}{2}
+
+% Prevent widow and orphan lines
+\widowpenalty=10000
+\clubpenalty=10000
+
+% ============================================================================
+% Title page metadata
+% ============================================================================
+\university{University of Camerino}
+\school{Science and Technology}
+\course{MSc in Computer Science --- Multi Agent Systems Lab}
+\title{Agent-Based Modeling of Renal Cell Carcinoma Tumor Microenvironment with Glucose Sensing}
+\author{Samuele Stronati}
+\contacta{samuele.stronati@studenti.unicam.it}
+\matricola{128002}
+\advisor{Prof.\ Emanuela Merelli}
+\academicyear{2025/2026}
+
+% ============================================================================
+% Bibliography style
+% ============================================================================
+\bibliographystyle{plainnat}
+
+% ============================================================================
+% Document
+% ============================================================================
 \begin{document}
 
-% Custom cover page
-\begin{titlepage}
-\centering
-\vspace*{1cm}
-{\Large University of Camerino}\\[0.5cm]
-{\large School of Science and Technology}\\[0.3cm]
-{\large Master's Degree in Computer Science}\\[2cm]
-{\Huge\bfseries Agent-Based Modeling of Renal Cell Carcinoma\\Tumor Microenvironment with Glucose Sensing}\\[1cm]
-{\Large A Repast4Py Implementation with Metabolic Microenvironment Dynamics}\\[2cm]
-{\large\textbf{Course:} MASL — Modeling and Simulation Languages}\\[0.5cm]
-{\large\textbf{Author:} Samuele Stronati}\\[0.5cm]
-{\large\textbf{Academic Year:} 2025/2026}\\[2cm]
-\vfill
-{\large March 2026}
-\end{titlepage}
+\maketitle
 
-% Professional page headers are set above with fancyhdr
-
-\begin{abstract}
-Renal cell carcinoma (RCC) strikes 400,000 people annually worldwide, with metastatic disease carrying a devastating 15\% five-year survival rate. Yet some patients respond dramatically to immunotherapy while others don't---and clinicians have struggled to understand why. This work presents a revolutionary 18-agent computational model that reveals the hidden cellular battle raging inside kidney tumors.
-
-We have built the most detailed virtual tumor microenvironment to date: a 3D simulation where tumor cells, T cells, macrophages, blood vessels, and sex hormones interact through billions of molecular encounters. Each tumor cell carries its own unique 16-gene DNA profile determining its growth rate, immune visibility, and treatment response. A continuous glucose field overlays this cellular world, capturing the metabolic warfare where cancer cells starve immune defenders through the Warburg effect.
-
-Ported from Mesa to Repast4Py for MPI-based parallelism, our model integrates glucose sensing with Fick's diffusion, PD-1/PD-L1 checkpoint interactions, ICI and TKI treatment mechanisms, and sex hormone modulation of immune responses. Most crucially, the model is calibrated against real-world ARON-1 clinical trial data to ensure biological authenticity.
-
-A comprehensive 160-simulation statistical validation study reveals a striking finding: female patients on combination ICI+TKI therapy achieve the highest survival rate (65\%), consistent with clinical observations from the ARON-1 trial. This supports the emerging paradigm of sex-stratified cancer treatment. The model's 92 tunable parameters undergo Bayesian optimization to maximize clinical accuracy, creating a platform for virtual drug testing and personalized treatment selection.
-
-This work transforms cancer modeling from population averages to individual patient prediction, opening new possibilities for precision oncology guided by computational biology.
-\end{abstract}
+\frontmatter
+\input{chapters/01_abstract}
 
 \tableofcontents
 
-\clearpage
-\input{chapters/01_introduction}
-\clearpage
-\input{chapters/02_theoretical_background}
-\clearpage
-\input{chapters/03_model_description}
-\clearpage
-\input{chapters/04_glucose_system}
-\clearpage
-\input{chapters/05_dna_mutation_system}
-\clearpage
+\begin{acronyms}
+\acronym{ABM}{Agent-Based Model}
+\acronym{BMI}{Body Mass Index}
+\acronym{ccRCC}{Clear Cell Renal Cell Carcinoma}
+\acronym{CTL}{Cytotoxic T Lymphocyte}
+\acronym{DAMPs}{Damage-Associated Molecular Patterns}
+\acronym{DC}{Dendritic Cell}
+\acronym{HIF}{Hypoxia-Inducible Factor}
+\acronym{ICI}{Immune Checkpoint Inhibitor}
+\acronym{IMDC}{International Metastatic RCC Database Consortium}
+\acronym{MPI}{Message Passing Interface}
+\acronym{NK}{Natural Killer (cell)}
+\acronym{ODD}{Overview, Design concepts, and Details (protocol)}
+\acronym{OS}{Overall Survival}
+\acronym{PD-1}{Programmed Cell Death Protein 1}
+\acronym{PD-L1}{Programmed Death-Ligand 1}
+\acronym{pDC}{Plasmacytoid Dendritic Cell}
+\acronym{RCC}{Renal Cell Carcinoma}
+\acronym{TCR}{T Cell Receptor}
+\acronym{TKI}{Tyrosine Kinase Inhibitor}
+\acronym{TME}{Tumor Microenvironment}
+\acronym{TPE}{Tree-structured Parzen Estimator}
+\acronym{VEGF}{Vascular Endothelial Growth Factor}
+\acronym{VHL}{von Hippel--Lindau}
+\end{acronyms}
+
+\mainmatter
+\input{chapters/02_introduction}
+\input{chapters/03_theoretical_background}
+\input{chapters/04_model_description}
+\input{chapters/05_biological_subsystems}
 \input{chapters/06_treatment_system}
-\clearpage
-\input{chapters/07_sex_hormone_system}
-\clearpage
-\input{chapters/08_implementation}
-\clearpage
-\input{chapters/09_parameters}
-\clearpage
-\input{chapters/10_simulation_results}
-\clearpage
-\input{chapters/11_conclusion}
+\input{chapters/07_implementation}
+\input{chapters/08_parameters}
+\input{chapters/09_simulation_results}
+\input{chapters/10_conclusion}
 
-\chapter*{Acknowledgments}
-\addcontentsline{toc}{chapter}{Acknowledgments}
+\appendix
+\input{chapters/appendix_a_parameters}
 
-I would like to express my gratitude to the course professor for providing the theoretical foundation and guidance that made this computational oncology project possible. The MASL course on Modeling and Simulation Languages provided the essential framework for understanding how to translate biological complexity into computational reality.
-
-Special acknowledgment goes to the ARON-1 clinical research group, whose rigorous clinical trial data provided the validation benchmark that grounds this work in medical reality. Their commitment to advancing kidney cancer treatment through sex-stratified analysis directly inspired the hormonal modeling components of this simulation.
-
-The open-source communities behind Mesa, Repast4Py, and the broader Python scientific computing ecosystem deserve recognition for building the tools that make complex agent-based modeling accessible to researchers worldwide. This work stands on the shoulders of these computational giants.
-
-\bibliographystyle{plain}
 \bibliography{bibliography}
 
 \end{document}

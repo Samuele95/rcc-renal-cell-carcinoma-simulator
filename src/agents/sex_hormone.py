@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Sex Hormone agent — diffuses through the microenvironment."""
 from enum import Enum
 
@@ -7,6 +10,8 @@ from src.systems import grid_utils
 
 
 class SexHormoneType(Enum):
+    """Enumeration of sex hormone types modulating immune cell behavior."""
+
     TESTOSTERONE = "testosterone"
     ESTROGEN = "estrogen"
     PROGESTERONE = "progesterone"
@@ -25,10 +30,20 @@ class SexHormone(Cell):
     possible_moves_2 = [(0, 0, 1), (0, 1, 0)]
 
     def __init__(self, local_id, rank, model, init_pos, hormone_type):
+        """Initialize a sex hormone agent.
+
+        Args:
+            local_id: Unique agent ID.
+            rank: MPI rank.
+            model: The RCCModel instance.
+            init_pos: (x, y, z) initial grid position.
+            hormone_type: SexHormoneType or string value.
+        """
         super().__init__(local_id, AgentType.SEX_HORMONE, rank, model, init_pos)
         self.hormone_type = hormone_type if isinstance(hormone_type, SexHormoneType) else SexHormoneType(hormone_type)
 
     def step(self):
+        """Diffuse through the grid using one of two biased random walk strategies."""
         if self.pos is not None:
             if self.model.rng.random() < 0.5:
                 self.diffuse()
@@ -95,4 +110,5 @@ class SexHormone(Cell):
             self.model.move_agent(self, new_pos)
 
     def save(self):
+        """Save agent state including hormone type for Repast4Py serialization."""
         return (self.uid, (self.pos, self.hormone_type))

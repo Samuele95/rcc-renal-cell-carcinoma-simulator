@@ -1,0 +1,170 @@
+% Movement decision flowchart for RCC ABM agents
+\begin{tikzpicture}[
+  % Node styles
+  process/.style={
+    rectangle, rounded corners=4pt, draw=green!60!black, fill=green!10,
+    text width=5.8cm, minimum height=1cm, align=center,
+    font=\small, line width=0.8pt
+  },
+  decision/.style={
+    diamond, draw=yellow!60!black, fill=yellow!15,
+    text width=3.2cm, minimum height=1.2cm, align=center,
+    font=\small, line width=0.8pt, inner sep=1pt,
+    aspect=2
+  },
+  deferred/.style={
+    rectangle, rounded corners=4pt, draw=blue!60!black, fill=blue!10,
+    text width=5.8cm, minimum height=1cm, align=center,
+    font=\small, line width=0.8pt
+  },
+  hormone/.style={
+    rectangle, rounded corners=4pt, draw=orange!70!black, fill=orange!10,
+    text width=5cm, minimum height=1cm, align=center,
+    font=\small, line width=0.8pt
+  },
+  terminal/.style={
+    rectangle, rounded corners=8pt, draw=red!60!black, fill=red!10,
+    minimum width=2.4cm, minimum height=0.7cm, align=center,
+    font=\small, line width=0.8pt
+  },
+  hormdecision/.style={
+    diamond, draw=orange!70!black, fill=orange!10,
+    text width=2.6cm, minimum height=1cm, align=center,
+    font=\small, line width=0.8pt, inner sep=1pt,
+    aspect=2
+  },
+  % Arrow style
+  arr/.style={-{Stealth[length=5pt]}, line width=0.7pt},
+  lbl/.style={font=\footnotesize, fill=white, inner sep=1.5pt}
+]
+
+% ===== Main column (left/center) =====
+
+% Start
+\node[terminal] (start) {Agent.step() called};
+
+% Decision: has target type?
+\node[decision, below=1.0cm of start] (hastarget)
+  {Has target type?\\{\footnotesize (e.g.\ CTL $\to$ TumorCell)}};
+
+% move_towards process
+\node[process, below=1.2cm of hastarget] (movetowards)
+  {\textbf{move\_towards()}\\[2pt]
+   {\footnotesize Expanding radius search: $1, 2, 4, 8, \dots$ up to max\_radius}\\
+   {\footnotesize Find closest target by Manhattan distance: $|\Delta x|{+}|\Delta y|{+}|\Delta z|$}\\
+   {\footnotesize Compute normalized direction vector}\\
+   {\footnotesize Scale by distance parameter (default\,=\,1)}\\
+   {\footnotesize Clamp to grid boundaries}};
+
+% Decision: target found?
+\node[decision, below=1.0cm of movetowards] (targetfound)
+  {Target found?};
+
+% Set desired pos (target)
+\node[deferred, below left=1.0cm and -0.5cm of targetfound] (setpos1)
+  {Set \texttt{\_desired\_pos}\\{\footnotesize $\to$ Deferred movement (step 5)}};
+
+% Decision: immune cell?
+\node[decision, below=2.8cm of targetfound] (isimmune)
+  {Immune cell?\\{\footnotesize (CTL, M1, DC, NK)}};
+
+% Glucose chemotaxis
+\node[process, below=1.2cm of isimmune] (chemotaxis)
+  {\textbf{Glucose Chemotaxis}\\[2pt]
+   {\footnotesize Roll probability: \texttt{random()} $<$ \texttt{w\_glucose\_chemotaxis\_strength}}\\
+   {\footnotesize Compute discretized gradient: $\operatorname{sign}(\nabla C)$}\\
+   {\footnotesize Move one step along gradient}};
+
+% Set desired pos (chemotaxis)
+\node[deferred, below=0.8cm of chemotaxis] (setpos2)
+  {Set \texttt{\_desired\_pos}\\{\footnotesize $\to$ Deferred movement (step 5)}};
+
+% Stay in place
+\node[terminal, right=2.5cm of chemotaxis] (stay) {Stay in place};
+
+% ===== Deferred movement phase (bottom) =====
+
+\node[deferred, below=1.2cm of setpos2, text width=10cm] (deferphase)
+  {\textbf{5. Deferred Movement Phase}\\[2pt]
+   {\footnotesize Model iterates all agents with \texttt{\_desired\_pos} $\neq$ current pos}\\
+   {\footnotesize Updates spatial index}\\
+   {\footnotesize All decisions based on same spatial snapshot}};
+
+\node[terminal, below=0.8cm of deferphase] (endmain) {Movement complete};
+
+% ===== Hormone column (right) =====
+
+\node[hormone, right=4.5cm of hastarget, yshift=0.5cm] (hormtitle)
+  {\textbf{Special Case: Sex Hormone Diffusion}\\[2pt]
+   {\footnotesize (Separate from agent movement)}};
+
+\node[hormdecision, below=0.8cm of hormtitle] (hormcoin)
+  {50/50 coin flip};
+
+\node[hormone, below left=1.0cm and -0.8cm of hormcoin] (biased)
+  {\textbf{Biased diffusion}\\[2pt]
+   {\footnotesize Away from blood vessels}\\
+   {\footnotesize drift\_strength = 0.25}};
+
+\node[hormone, below right=1.0cm and -0.8cm of hormcoin] (simple)
+  {\textbf{Simple diffusion}\\[2pt]
+   {\footnotesize Biased toward $+y$/$+z$}};
+
+\node[hormone, below=1.5cm of hormcoin, yshift=-1.8cm] (immhorm)
+  {\textbf{Immediate move}\\{\footnotesize (not deferred---applied directly)}};
+
+\node[hormdecision, below=0.8cm of immhorm] (oob)
+  {Out of bounds?};
+
+\node[terminal, below left=0.8cm and -0.3cm of oob] (remove)
+  {Remove from\\simulation};
+
+\node[terminal, below right=0.8cm and -0.3cm of oob] (hormend)
+  {Hormone\\placed};
+
+% ===== Arrows: Main column =====
+
+\draw[arr] (start) -- (hastarget);
+
+\draw[arr] (hastarget) -- node[lbl, right] {Yes} (movetowards);
+
+\draw[arr] (movetowards) -- (targetfound);
+
+\draw[arr] (targetfound) -| node[lbl, above left] {Yes} (setpos1);
+
+% No target → fall through to immune check
+\draw[arr] (targetfound.south) -- node[lbl, right] {No} (isimmune);
+
+% No target type → fall through to immune check
+\draw[arr] (hastarget.west) -| node[lbl, above, pos=0.25] {No}
+  ([xshift=-1.8cm]isimmune.west) -- (isimmune.west);
+
+\draw[arr] (isimmune) -- node[lbl, right] {Yes} (chemotaxis);
+
+\draw[arr] (chemotaxis) -- (setpos2);
+
+% Not immune → stay
+\draw[arr] (isimmune.east) -| node[lbl, above, pos=0.25] {No} (stay);
+
+% Deferred positions feed into deferred phase
+\draw[arr] (setpos1.south) |- ([yshift=0.6cm]deferphase.north west) -- ([xshift=-2cm]deferphase.north);
+\draw[arr] (setpos2) -- (deferphase);
+
+\draw[arr] (deferphase) -- (endmain);
+
+% ===== Arrows: Hormone column =====
+
+\draw[arr] (hormtitle) -- (hormcoin);
+
+\draw[arr] (hormcoin) -| node[lbl, above left] {50\%} (biased);
+\draw[arr] (hormcoin) -| node[lbl, above right] {50\%} (simple);
+
+\draw[arr] (biased) |- (immhorm);
+\draw[arr] (simple) |- (immhorm);
+
+\draw[arr] (immhorm) -- (oob);
+
+\draw[arr] (oob) -| node[lbl, above left] {Yes} (remove);
+\draw[arr] (oob) -| node[lbl, above right] {No} (hormend);
+
+\end{tikzpicture}

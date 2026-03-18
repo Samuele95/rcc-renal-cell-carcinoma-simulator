@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Interactive 3D Environment — explore the tumor microenvironment."""
 
 from pathlib import Path
@@ -44,6 +47,7 @@ DEFAULT_HIDDEN = {AgentType.SEX_HORMONE, AgentType.CYTOKINE}
 
 @st.cache_data(show_spinner=False)
 def _cached_load_snapshot(path: str) -> dict:
+    """Load and cache a snapshot file to avoid repeated disk I/O."""
     return load_snapshot(path)
 
 
@@ -95,6 +99,7 @@ except Exception:
     pass
 
 def _step_label(s):
+    """Format a step number with treatment phase annotation."""
     label = f"Step {s}"
     if _treatment_start is not None:
         if s < _treatment_start:
@@ -114,11 +119,13 @@ if _cur_step not in steps:
 _cur_idx = steps.index(_cur_step)
 
 def _go_prev():
+    """Navigate to the previous snapshot step."""
     idx = steps.index(st.session_state["env_step"])
     if idx > 0:
         st.session_state["env_step"] = steps[idx - 1]
 
 def _go_next():
+    """Navigate to the next snapshot step."""
     idx = steps.index(st.session_state["env_step"])
     if idx < len(steps) - 1:
         st.session_state["env_step"] = steps[idx + 1]
@@ -331,6 +338,7 @@ with tab_compare:
         snap_b = _cached_load_snapshot(str(Path(snapshot_dir) / f"step_{step_b:05d}.npz"))
 
         def _snap_metrics(s):
+            """Extract summary cell counts and glucose from a snapshot dict."""
             ag = s["agents"]
             n = ag.shape[0]
             if n > 0:

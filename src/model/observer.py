@@ -1,3 +1,11 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
+"""Data collection observer for tracking tumor cell kills during simulation.
+
+Maintains per-immune-cell-type kill counters and provides aggregate statistics
+used by the model's data logging and the UI's results charts.
+"""
 from dataclasses import dataclass, field, asdict
 
 from src.agents.agent_types import AgentType
@@ -17,6 +25,12 @@ _KILL_FIELD_MAP = {
 
 @dataclass
 class Observer:
+    """Tracks kill events by immune cell type throughout a simulation run.
+
+    Each field counts the number of tumor cells killed by the corresponding
+    immune cell type. Supports dict-like access via ``__getitem__``.
+    """
+
     apoptosis_count: int = field(default=0)
     m1_macrophage_kills: int = field(default=0)
     dendritic_cell_kills: int = field(default=0)
@@ -42,7 +56,9 @@ class Observer:
                 self.nkl_kill_count + self.neutrophil_kills)
 
     def to_dict(self):
+        """Return all kill counters as a plain dictionary."""
         return asdict(self)
 
     def __getitem__(self, item):
+        """Allow dict-style access to kill counters by field name."""
         return getattr(self, item)

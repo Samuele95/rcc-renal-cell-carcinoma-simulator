@@ -1,0 +1,39 @@
+% Treatment Decision Flow — clean decision tree
+\begin{tikzpicture}[
+    start/.style={ellipse, draw, fill=treatment!20, font=\small\bfseries,
+                  minimum height=0.7cm, inner sep=4pt},
+    decision/.style={diamond, draw, fill=accent!20, font=\small,
+                     inner sep=2pt, aspect=2.2},
+    outcome/.style={rectangle, draw, rounded corners=3pt, fill=primary!10,
+                    font=\small, text width=2.8cm, text centered, inner sep=4pt},
+    arrow/.style={->, >=stealth, thick}
+]
+
+% Start node
+\node[start] (start) at (5,7.5) {Treatment Decision};
+
+% Decision diamond
+\node[decision] (decide) at (5,5.8) {Treatment Type?};
+\draw[arrow] (start) -- (decide);
+
+% Four branches — evenly spaced
+% None
+\node[outcome] (none) at (0,3.5) {\textbf{None}\\[2pt]
+    Baseline dynamics\\No drug effects};
+% ICI
+\node[outcome] (ici) at (3.3,3.5) {\textbf{ICI}\\[2pt]
+    Block PD-1/PD-L1\\Restore T cell killing};
+% TKI
+\node[outcome] (tki) at (6.7,3.5) {\textbf{TKI}\\[2pt]
+    Inhibit VEGF\\Release neoantigens};
+% Combo
+\node[outcome] (combo) at (10,3.5) {\textbf{ICI\,+\,TKI}\\[2pt]
+    Combined effects\\Synergistic feedback};
+
+% Arrows from decision to outcomes
+\draw[arrow] (decide) -| (none)  node[pos=0.25, above, font=\footnotesize] {None};
+\draw[arrow] (decide) -- (ici)   node[midway, left,  font=\footnotesize] {ICI};
+\draw[arrow] (decide) -- (tki)   node[midway, right, font=\footnotesize] {TKI};
+\draw[arrow] (decide) -| (combo) node[pos=0.25, above, font=\footnotesize] {Combo};
+
+\end{tikzpicture}

@@ -1,9 +1,7 @@
 \chapter{Model Description}
 \label{ch:model_description}
 
-
-
-The model simulates 18 different cell types interacting in a 3D tumor microenvironment, from tumor cells to T cells, representing the most comprehensive computational cancer-immune model built to date.
+\lettrine[lines=2]{T}{his chapter} presents a detailed description of the agent-based model architecture, including the spatial environment, the 18 agent types and their class hierarchy, the effect system for paracrine signaling, movement mechanics, and terminal conditions that determine simulation outcomes.
 
 % ============================================================================
 \section{Overview}
@@ -230,13 +228,6 @@ Fibroblast & Stromal support & Structural component \\
 
 Figure~\ref{fig:agent_interactions} provides a visual overview of the key interactions between agent types, showing the complex network of cytotoxic killing, activation pathways, suppression mechanisms, and recruitment cascades that govern tumor microenvironment dynamics.
 
-\begin{figure}[htbp]
-\centering
-% TikZ figure temporarily disabled - agent interactions would show communication pathways
-\textit{[Agent interaction diagram showing tumor-immune interactions, effect propagation, and spatial relationships]}
-\caption{Agent interaction network in the RCC model. Arrows indicate the direction and type of interaction: red for cytotoxic killing, blue for activation/differentiation, gray dashed for suppression, green for recruitment/spawning, and purple dotted for signaling/production. Agent types are color-coded by functional category.}
-\label{fig:agent_interactions}
-\end{figure}
 
 % ============================================================================
 \section{Movement}
@@ -254,6 +245,10 @@ To prevent order-dependent artifacts---where an agent that moves early in the st
 \end{enumerate}
 
 This two-phase approach ensures that all agents make movement decisions based on the same spatial snapshot, and it eliminates bias arising from the random activation order.
+
+\begin{keyinsight}
+Deferred movement prevents order-dependent artifacts by ensuring all agents make movement decisions based on the same spatial snapshot. Without this pattern, agents processed early in the step would occupy positions that later agents expect to be empty, introducing systematic bias that compounds over simulation time.
+\end{keyinsight}
 
 \subsection{Directed Movement: \texttt{move\_towards()}}
 \label{subsec:md_move_towards}
@@ -336,53 +331,17 @@ Figure~\ref{fig:immune_response_cascade} provides a conceptual overview of the i
 
 \begin{figure}[htbp]
 \centering
-\begin{tikzpicture}[
-    node distance=2.0cm and 3.0cm,
-    actor/.style={ellipse, draw, fill=blue!20, font=\small, minimum height=1.0cm, text width=1.8cm, text centered},
-    action/.style={rectangle, draw, fill=green!15, font=\small, minimum height=1.0cm, text width=2.2cm, text centered, rounded corners=2pt},
-    decision/.style={diamond, draw, fill=orange!20, font=\scriptsize, minimum height=1.0cm, text width=1.5cm, text centered, inner sep=1pt, aspect=2},
-    feedback/.style={rectangle, draw, fill=red!15, font=\small, minimum height=1.0cm, text width=2.0cm, text centered, rounded corners=2pt},
-    arrow/.style={->,>=stealth,thick},
-    feedback_arrow/.style={->,>=stealth,thick,red,dashed}
-]
-
-% Main cascade flow
-\node[action] (tumor_growth) {Tumor Cell\\Proliferation};
-\node[actor, below=of tumor_growth] (dc) {Dendritic\\Cell};
-\node[action, below=of dc] (phagocytosis) {Tumor\\Phagocytosis};
-\node[action, below=of phagocytosis] (antigen_present) {Antigen\\Presentation};
-\node[actor, below=of antigen_present] (t_activation) {T Cell\\Activation};
-
-% Branch to effector responses
-\node[actor, right=of t_activation] (ctl) {Cytotoxic\\T Cell};
-\node[action, right=of ctl] (tumor_killing) {Tumor Cell\\Killing};
-
-% Immunosuppressive feedback
-\node[feedback, left=of t_activation] (treg) {Regulatory\\T Cell};
-\node[feedback, above=of treg] (suppression) {Immune\\Suppression};
-
-% Arrows - main cascade
-\draw[arrow] (tumor_growth) -- (dc);
-\draw[arrow] (dc) -- (phagocytosis);
-\draw[arrow] (phagocytosis) -- (antigen_present);
-\draw[arrow] (antigen_present) -- (t_activation);
-\draw[arrow] (t_activation) -- (ctl);
-\draw[arrow] (ctl) -- (tumor_killing);
-
-% Feedback loops
-\draw[arrow] (t_activation) -- (treg);
-\draw[arrow] (treg) -- (suppression);
-\draw[feedback_arrow] (suppression) -- (t_activation);
-\draw[feedback_arrow] (suppression) -- ++(2,0) |- (tumor_killing);
-
-% Additional annotations  
-\node[font=\scriptsize] at ([xshift=1cm, yshift=0.5cm]tumor_growth) {Initial Event};
-\node[font=\scriptsize] at ([xshift=1cm, yshift=0.5cm]tumor_killing) {Effector Response};
-\node[font=\scriptsize] at ([xshift=-1cm]suppression) {Negative Feedback};
-
-\end{tikzpicture}
-\caption{BPMN-style Immune Response Cascade in the RCC model. The process flow illustrates the sequential steps from tumor cell detection through antigen presentation to effector T cell activation and tumor elimination. Regulatory T cells provide negative feedback that can suppress both T cell activation and effector functions, creating the potential for immune evasion. Red dashed arrows indicate immunosuppressive pathways that counteract the primary immune response.}
-\label{fig:immune_response_cascade}
+\adjustbox{max width=0.85\textwidth, max height=0.7\textheight}{\input{figures/immune_cascade_bpmn.tex}}
+\caption{BPMN-style immune response cascade illustrating sequential steps from tumor detection through antigen presentation to T cell activation. Regulatory T cells provide negative feedback (red dashed arrows) that can suppress effector functions.}
+\label{fig:immune_cascade_bpmn}
 \end{figure}
 
-With the cellular cast assembled, we now turn to the stage itself --- the metabolic landscape that determines which cells thrive and which starve. The next chapter reveals how a simple glucose field becomes the hidden battlefield where cancer and immunity wage their deadliest war.
+\begin{chaptersum}
+\begin{itemize}[nosep]
+\item 18 agent types on a 3D discrete grid with continuous glucose overlay
+\item 14-field effect system mediates paracrine signaling between agents
+\item Deferred movement pattern eliminates activation-order bias
+\item Four terminal conditions ensure definitive simulation outcomes
+\end{itemize}
+\end{chaptersum}
+

@@ -1,115 +1,79 @@
 \begin{tikzpicture}[
-  box/.style={rectangle, rounded corners, minimum width=2.8cm, minimum height=1cm, text centered, font=\footnotesize, draw=black, thick},
-  databox/.style={box, fill=blue!15},
-  processbox/.style={box, fill=green!15},
-  agentbox/.style={box, fill=orange!15},
-  controlbox/.style={box, fill=red!15},
-  arrow/.style={->, >=stealth, thick, shorten >=2pt, shorten <=2pt},
-  decision/.style={diamond, aspect=2, minimum width=2cm, minimum height=0.8cm, text centered, font=\tiny, draw=black, thick, fill=yellow!15}
+  node distance=0.55cm,
+  % Base styles
+  stepbox/.style={rectangle, rounded corners=3pt, minimum width=4.2cm, minimum height=0.6cm,
+               text centered, font=\small, draw=black!70, thick, text=black},
+  % Color categories
+  data/.style={stepbox, fill=blue!12, draw=blue!40},
+  bio/.style={stepbox, fill=green!12, draw=green!40},
+  agent/.style={stepbox, fill=orange!12, draw=orange!40},
+  treat/.style={stepbox, fill=red!12, draw=red!40},
+  % Decision diamond
+  decide/.style={diamond, aspect=2.8, minimum width=3.2cm, inner sep=1pt,
+                 text centered, font=\small, draw=blue!40, thick, fill=blue!12},
+  % Termination box
+  exitbox/.style={rectangle, rounded corners=3pt, minimum width=2cm, minimum height=0.5cm,
+                  font=\small, draw=red!60, thick, fill=red!20, text=red!70!black},
+  % Arrow
+  arr/.style={-{Stealth[length=4pt]}, thick, draw=black!60},
+  % Annotation
+  note/.style={font=\footnotesize, text=black!60, anchor=west},
 ]
 
-% Main pipeline flow (vertical)
-\node[databox] (collect) at (0, 8) {\textbf{1. Collect Data}\par Population counts\par Glucose statistics};
+% --- Steps ---
+\node[data]   (s1)  at (0,0)      {\textbf{1.} Collect Data};
+\node[decide] (s2)  at (0,-1.1)   {\textbf{2.} Termination?};
+\node[bio]    (s3)  at (0,-2.3)   {\textbf{3.} Reset Immune Infiltration};
+\node[bio]    (s4)  at (0,-3.2)   {\textbf{4.} Apply Effects};
+\node[treat]  (s5)  at (0,-4.1)   {\textbf{5.} Treatment Step};
+\node[bio]    (s6)  at (0,-5.0)   {\textbf{6.} Sex Drift};
+\node[bio]    (s7)  at (0,-5.9)   {\textbf{7.} Glucose Field Step};
+\node[bio]    (s8)  at (0,-6.8)   {\textbf{8.} Manage Blood};
+\node[bio]    (s9)  at (0,-7.7)   {\textbf{9.} Search Dimension};
+\node[agent]  (s10) at (0,-8.6)   {\textbf{10.} Shuffle \& Step Agents};
+\node[agent]  (s11) at (0,-9.5)   {\textbf{11.} Deferred Movement};
+\node[bio]    (s12) at (0,-10.4)  {\textbf{12.} Spawn Hormones};
+\node[agent]  (s13) at (0,-11.3)  {\textbf{13.} Increment Step Counter};
 
-\node[decision] (terminate) at (0, 6.5) {\textbf{2. Check}\par Termination\par Conditions};
+% --- Exit branch from diamond ---
+\node[exitbox] (exit) at (4.5,-1.1) {Terminate};
+\draw[arr, red!60] (s2.east) -- (exit.west) node[midway, above, font=\footnotesize] {Yes};
 
-\node[processbox] (effects) at (0, 5) {\textbf{3. Apply Effects}\par Collect \& sum\par neighbor effects};
+% --- "No" label on downward path ---
+\draw[arr] (s2.south) -- (s3.north) node[midway, right, font=\footnotesize] {No};
 
-\node[controlbox] (treatment) at (0, 3.5) {\textbf{4. Treatment}\par ICI \& TKI\par drug effects};
+% --- Main vertical arrows ---
+\draw[arr] (s1)  -- (s2);
+\draw[arr] (s3)  -- (s4);
+\draw[arr] (s4)  -- (s5);
+\draw[arr] (s5)  -- (s6);
+\draw[arr] (s6)  -- (s7);
+\draw[arr] (s7)  -- (s8);
+\draw[arr] (s8)  -- (s9);
+\draw[arr] (s9)  -- (s10);
+\draw[arr] (s10) -- (s11);
+\draw[arr] (s11) -- (s12);
+\draw[arr] (s12) -- (s13);
 
-\node[controlbox] (sexdrift) at (0, 2) {\textbf{5. Sex Drift}\par CD8+ modulation\par by sex};
+% --- Loop-back arrow from step 13 to step 1 ---
+\draw[arr, black!50] (s13.west) -- ++(-2.2,0) |- (s1.west);
 
-\node[processbox] (glucose) at (0, 0.5) {\textbf{6. Glucose Step}\par Diffusion \& decay\par Blood injection};
+% --- Right-side annotations ---
+\node[note] at (2.5,-3.2)  {Moore neighborhood ($r\!=\!1$), sum 14 fields};
+\node[note] at (2.5,-5.9)  {inject $\to$ diffuse $\to$ decay};
+\node[note] at (2.5,-7.7)  {$\max(5,\; N_{\mathrm{tumor}} / (10 \cdot w))$};
+\node[note] at (2.5,-8.6)  {random order; each sets \texttt{\_desired\_pos}};
 
-\node[processbox] (blood) at (0, -1) {\textbf{7. Manage Blood}\par Angiogenesis\par BFS refresh};
-
-\node[processbox] (search) at (0, -2.5) {\textbf{8. Search Dimension}\par Update cell\par search radius};
-
-\node[agentbox] (agents) at (0, -4) {\textbf{9. Agent Steps}\par Individual agent\par behaviors (shuffled)};
-
-\node[agentbox] (move) at (0, -5.5) {\textbf{10. Deferred Move}\par Batch movement\par Update positions};
-
-\node[controlbox] (hormones) at (0, -7) {\textbf{11. Spawn Hormones}\par Sex hormone\par generation};
-
-% Terminal paths
-\node[controlbox] (log) at (4, 6.5) {\textbf{Write Log}\par\textbf{Terminate}};
-\node[controlbox] (continue) at (-4, 5) {\textbf{Next Step}\par$t \leftarrow t+1$};
-
-% Main flow arrows
-\draw[arrow] (collect) -- (terminate);
-\draw[arrow] (terminate) -- (effects);
-\draw[arrow] (effects) -- (treatment);
-\draw[arrow] (treatment) -- (sexdrift);
-\draw[arrow] (sexdrift) -- (glucose);
-\draw[arrow] (glucose) -- (blood);
-\draw[arrow] (blood) -- (search);
-\draw[arrow] (search) -- (agents);
-\draw[arrow] (agents) -- (move);
-\draw[arrow] (move) -- (hormones);
-
-% Termination decision
-\draw[arrow] (terminate) -- (log) node[midway, above] {\scriptsize yes};
-\draw[arrow] (terminate) -- (effects) node[midway, right] {\scriptsize no};
-
-% Loop back
-\draw[arrow] (hormones) to [out=180, in=270] (continue);
-\draw[arrow] (continue) to [out=90, in=180] (collect);
-
-% Side annotations
-\begin{scope}[xshift=6cm]
-% Data collection details
-\node[text width=3cm, font=\tiny, fill=gray!5, rounded corners, draw] at (0, 8) {
-\textbf{Data collected:}\par
-• Agent counts by type\par
-• Glucose: mean, min, max\par
-• Kill statistics\par
-• Growth rates
-};
-
-% Termination conditions
-\node[text width=3cm, font=\tiny, fill=gray!5, rounded corners, draw] at (0, 6) {
-\textbf{Terminal conditions:}\par
-• Max steps reached\par
-• Tumor eliminated\par
-• Tumor $>$ threshold\par
-• Growth rate $>$ limit
-};
-
-% Agent behaviors
-\node[text width=3cm, font=\tiny, fill=gray!5, rounded corners, draw] at (0, -4) {
-\textbf{Agent behaviors:}\par
-• Move towards targets\par
-• Kill/proliferate\par
-• Differentiate\par
-• Apply hormones\par
-• Set desired position
-};
+% --- Legend ---
+\begin{scope}[shift={(-2.6,-12.8)}, every node/.style={font=\footnotesize, anchor=west}]
+  \fill[blue!12, draw=blue!40, thick, rounded corners=2pt] (0,0) rectangle (0.35,0.25);
+  \node at (0.5,0.12) {Data/monitoring};
+  \fill[green!12, draw=green!40, thick, rounded corners=2pt] (2.8,0) rectangle (3.15,0.25);
+  \node at (3.3,0.12) {Biological};
+  \fill[orange!12, draw=orange!40, thick, rounded corners=2pt] (5.2,0) rectangle (5.55,0.25);
+  \node at (5.7,0.12) {Agent execution};
+  \fill[red!12, draw=red!40, thick, rounded corners=2pt] (7.8,0) rectangle (8.15,0.25);
+  \node at (8.3,0.12) {Treatment};
 \end{scope}
-
-% Parallel processes annotation
-\begin{scope}[xshift=-6cm]
-\node[text width=3cm, font=\tiny, fill=gray!5, rounded corners, draw] at (0, 0) {
-\textbf{Glucose field:}\par
-• 3D diffusion (PDE)\par
-• Blood injection\par
-• Cell consumption\par
-• Natural decay\par
-• Gradient computation
-};
-
-\node[text width=3cm, font=\tiny, fill=gray!5, rounded corners, draw] at (0, -2.5) {
-\textbf{Spatial management:}\par
-• Moore neighborhoods\par
-• 3D distance queries\par
-• BFS from blood vessels\par
-• Deferred movement\par
-• Collision handling
-};
-\end{scope}
-
-% Time annotation
-\node[text width=8cm, font=\footnotesize, text centered] at (0, -8.5) {
-\textbf{One Simulation Step} --- Process repeats until termination condition met
-};
 
 \end{tikzpicture}

@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Tests for the Effect system."""
 import unittest
 from src.systems.effect import Effect

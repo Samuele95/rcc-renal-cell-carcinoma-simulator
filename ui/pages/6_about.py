@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """About page — model assumptions, methods, and references."""
 
 import streamlit as st

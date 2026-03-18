@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Parameter configuration page — user-friendly simulation setup."""
 
 import streamlit as st
@@ -268,6 +271,7 @@ BMI_CATEGORIES = [
 # ---------------------------------------------------------------------------
 
 def _bmi_category(bmi: float) -> tuple[str, str]:
+    """Return (category_name, hex_color) for the given BMI value."""
     for lo, hi, name, color in BMI_CATEGORIES:
         if lo <= bmi < hi:
             return name, color

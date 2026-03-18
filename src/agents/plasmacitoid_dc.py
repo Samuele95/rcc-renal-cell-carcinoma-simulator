@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Plasmacitoid Dendritic Cell — phagocytoses, activates T cells, spawns NK."""
 from src.agents.cell import Cell
 from src.agents.phagocytic_mixin import PhagocyticMixin
@@ -6,6 +9,14 @@ from src.systems.effect import Effect
 
 
 class PlasmacitoidDendriticCell(PhagocyticMixin, Cell):
+    """Plasmacytoid dendritic cell with dual immune modulation.
+
+    Phagocytoses tumors and presents antigens like conventional DCs, but
+    also spawns NK cells upon successful presentation. Emits mixed effects:
+    boosts T cell and NK kill rates while promoting Treg differentiation
+    and angiogenesis.
+    """
+
     my_angiogenesis_effect = 0.01
     my_treg_differentiation_effect = 0.02
     my_t_proliferation_effect = -0.01
@@ -15,6 +26,7 @@ class PlasmacitoidDendriticCell(PhagocyticMixin, Cell):
     activation_range = 1
 
     def __init__(self, local_id, rank, model, pos):
+        """Initialize a pDC with phagocytosis state and mixed immune effects."""
         super().__init__(local_id, AgentType.PLASMACITOID_DC, rank, model, pos)
         self.experienced_effects.dc_phagocytosis_effect += self.initial_phagocytosis_chance
         self.search_dimension += 10
@@ -29,6 +41,7 @@ class PlasmacitoidDendriticCell(PhagocyticMixin, Cell):
         )
 
     def step(self):
+        """Hunt tumors, phagocytose, present antigen to T cells, and spawn NK cells."""
         if self.base_step():
             return
 
@@ -43,6 +56,7 @@ class PlasmacitoidDendriticCell(PhagocyticMixin, Cell):
             self.reset_phagocytosis()
 
     def _try_spawn_nkl(self):
+        """Attempt to spawn an NK cell in an adjacent empty position."""
         wp = self.model.weight_params
         p_spawn = self.spawn_nkl_chance * wp.w_pdc_nkl_spawn + wp.b_pdc_nkl_spawn
         if self.model.rng.random() < p_spawn:

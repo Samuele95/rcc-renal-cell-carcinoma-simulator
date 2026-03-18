@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Main RCC simulation driver for Repast4Py.
 
 Replaces Mesa's Model class with a plain Python class that manages:
@@ -154,6 +157,7 @@ class RCCModel:
         self.data_log = []
 
     def _setup_hormone_chances(self):
+        """Set sex-dependent hormone spawn probabilities."""
         if self.patient_params.sex == Sex.MALE:
             self.estrogen_hormone_chance = 0.2
             self.progesterone_hormone_chance = 0.1
@@ -164,6 +168,7 @@ class RCCModel:
             self.testosterone_hormone_chance = 0.2
 
     def _setup_treatment(self):
+        """Initialize the treatment regimen based on patient parameters."""
         drug_map = {
             TreatmentType.NONE: [],
             TreatmentType.ICI: [ICIDrug(self)],
@@ -175,6 +180,7 @@ class RCCModel:
         self.treatment_start = self.patient_params.treatment_start
 
     def _initialize_agents(self):
+        """Populate the grid with initial immune cells, blood vessels, and a seed tumor."""
         def number(concentration):
             return get_number_of_cells_from_concentration(concentration, self.model_params.volume)
 
@@ -317,11 +323,18 @@ class RCCModel:
     # ------------------------------------------------------------------
 
     def init_sex_drift(self, max_drift=0.25, n_steps=10):
+        """Initialize sex-based immune drift parameters.
+
+        Args:
+            max_drift: Maximum cumulative drift fraction applied to CD8 naive T cells.
+            n_steps: Number of simulation steps over which to apply the drift.
+        """
         self._remaining_drift_steps = n_steps
         self._drift_per_step = max_drift / n_steps
         self._drift_sign = -1 if self.patient_params.sex == Sex.FEMALE else +1
 
     def apply_sex_drift(self):
+        """Apply one step of sex-dependent CD8 naive T cell population drift."""
         if self._remaining_drift_steps <= 0:
             return
 
@@ -349,6 +362,7 @@ class RCCModel:
         self.glucose_field.mark_blood_dirty()
 
     def spawn_hormones(self):
+        """Spawn sex hormone agents at random blood vessel positions."""
         if self._cached_blood_list is None:
             self._cached_blood_list = self.get_agents_by_type_id(AgentType.BLOOD)
         vessels = self._cached_blood_list
@@ -376,6 +390,7 @@ class RCCModel:
     _ANGIOGENESIS_EFFECT_COLLECTION_RADIUS = 3
 
     def manage_blood(self):
+        """Run angiogenesis logic and refresh tumor cell blood access."""
         self._try_angiogenesis()
         self._refresh_blood_access()
 
@@ -456,6 +471,7 @@ class RCCModel:
                 self.tumor_blood_sources.discard(t)
 
     def manage_search_dimension(self):
+        """Update the cell search radius based on current tumor population size."""
         n_tumor = self.count_agents(AgentType.TUMOR_CELL)
         self.cell_search_dimension = max(5, int(n_tumor // (10 * self.weight_params.w_search_dimension)))
 
@@ -478,6 +494,7 @@ class RCCModel:
     )
 
     def apply_effects(self):
+        """Collect and apply microenvironment effects for all effect-receiving agents."""
         for type_id in self._EFFECT_RECEIVER_TYPES:
             for agent in list(self._agents_by_type.get(type_id, {}).values()):
                 if agent.alive:
@@ -488,6 +505,7 @@ class RCCModel:
     # ------------------------------------------------------------------
 
     def move_all_agents(self):
+        """Execute all deferred agent moves accumulated during the current step."""
         for agent in list(self._pending_moves):
             if agent.alive and agent.desired_pos != agent.pos:
                 self.move_agent(agent, agent.desired_pos)
@@ -498,6 +516,13 @@ class RCCModel:
     # ------------------------------------------------------------------
 
     def terminal_condition(self):
+        """Evaluate whether the simulation should terminate.
+
+        Returns:
+            Tuple of (terminated, survival) where terminated is True if the
+            simulation should stop, and survival is True if the immune system
+            eliminated all tumor cells.
+        """
         if self.steps >= self.max_steps:
             return True, False
 
@@ -515,6 +540,7 @@ class RCCModel:
         return False, False
 
     def check_termination(self):
+        """Check termination and update model running state. Returns True if terminated."""
         terminated, survival = self.terminal_condition()
         if terminated:
             self.running = False
@@ -612,6 +638,12 @@ class RCCModel:
     # ------------------------------------------------------------------
 
     def current_mean_mutation_mask(self):
+        """Compute the per-position mean mutation frequency across all tumor cells.
+
+        Returns:
+            List of floats in [0, 1] representing mutation frequency at each
+            DNA position, or an empty list if no tumor cells remain.
+        """
         tumor_cells = self.get_agents_by_type_id(AgentType.TUMOR_CELL)
         if not tumor_cells:
             return []

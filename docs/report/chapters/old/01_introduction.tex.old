@@ -6,7 +6,7 @@
 \section{Renal Cell Carcinoma: Clinical Significance}
 \label{sec:intro_epidemiology}
 
-Renal cell carcinoma (RCC) affects 400,000 people annually worldwide, with metastatic disease carrying a devastating 15\% five-year survival rate \cite{santoni2024}. Clear cell RCC (ccRCC) constitutes 70--80\% of cases and is characterized by \emph{VHL} mutations leading to VEGF overexpression---making it both a target for anti-angiogenic therapies and one of the tumors most responsive to immunotherapy due to its high immunogenicity \cite{pardoll2012}.
+\lettrine[lines=2]{R}{enal cell carcinoma} (RCC) affects 400,000 people annually worldwide, with metastatic disease carrying a five-year survival rate of approximately 15\% \cite{santoni2024}. Clear cell RCC (ccRCC) constitutes 70--80\% of cases and is characterized by \emph{VHL} mutations leading to VEGF overexpression---making it both a target for anti-angiogenic therapies and one of the tumors most responsive to immunotherapy due to its high immunogenicity \cite{pardoll2012}.
 
 \begin{figure}[htbp]
 \centering
@@ -34,7 +34,7 @@ The complexity of the RCC tumor microenvironment---with heterogeneous cell popul
 
 Computational modeling enables: (1) \emph{in silico} experimentation with thousands of virtual patients, (2) systematic parameter exploration, (3) treatment optimization via algorithms, and (4) hypothesis generation for experimental validation.
 
-Previous work by Merelli et al.\ \cite{merelli2021} demonstrated the feasibility of agent-based RCC modeling. This work extends that foundation substantially.
+Previous work by Merelli et al.\ \cite{merelli2021} demonstrated the feasibility of agent-based RCC modeling using the Mesa framework. Their model represented the tumor microenvironment on a two-dimensional lattice with tumor cells and a simplified set of immune cell types, demonstrating that ABM approaches could reproduce qualitative features of RCC progression including initial immune containment followed by eventual immune escape. The present work extends that foundation in five directions: porting the simulation to the Repast4Py framework for MPI-based parallelism, adding a continuous three-dimensional glucose concentration field based on Fick's diffusion, introducing a 16-gene DNA system with codon-level mutation mechanics, incorporating sex hormone modulation of immune responses, and calibrating the model against ARON-1 clinical trial data using Bayesian optimization.
 
 \begin{figure}[htbp]
 \centering
@@ -78,3 +78,12 @@ The work presented in this report pursues four principal objectives:
 \label{sec:intro_structure}
 
 The remainder of this report is organized as follows. Chapter~\ref{ch:theoretical_background} provides the theoretical background on agent-based modeling, RCC immunology, tumor metabolism, and treatment modalities. Chapter~\ref{ch:model_description} presents a detailed description of the model architecture, including the agent hierarchy, effect system, interaction rules, and terminal conditions. Chapter~\ref{ch:glucose} describes the glucose concentration field and its integration with agent behavior. Chapter~\ref{ch:dna} details the DNA mutation system that governs tumor evolution and antigen presentation. Chapter~\ref{ch:treatment} covers the treatment system, including ICI and TKI drug mechanisms. Chapter~\ref{ch:sex-hormones} describes the sex hormone system and its modulation of immune responses. Chapter~\ref{ch:implementation} discusses implementation details and the software architecture. Chapter~\ref{ch:parameters} catalogs the full parameter set. Chapter~\ref{ch:simulation-results} presents simulation results and validation against clinical data. Chapter~\ref{ch:conclusion} concludes with a summary and directions for future work.
+
+\begin{chaptersum}
+\begin{itemize}[nosep]
+\item RCC affects 400,000 annually; metastatic 5-year survival $\sim$15\%
+\item ABM chosen for natural representation of heterogeneity, spatial dynamics, and stochasticity
+\item Four objectives: Repast4Py port, glucose layer, ARON-1 validation, Bayesian optimization
+\item Extends Merelli et al.\ Mesa model with five major additions
+\end{itemize}
+\end{chaptersum}

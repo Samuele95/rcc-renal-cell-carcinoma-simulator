@@ -1,94 +1,99 @@
-% Immune Response Cascade Diagram for Chapter 2
-\begin{tikzpicture}[scale=0.9, every node/.style={scale=0.9}]
+% Immune Response Cascade — 4-Phase Horizontal Timeline
+\begin{tikzpicture}[
+    cell/.style={draw, circle, font=\footnotesize, text=white,
+        minimum size=0.85cm, inner sep=0pt},
+    cytokine/.style={draw, diamond, fill=glucose!70, font=\footnotesize,
+        minimum size=0.55cm, inner sep=1pt},
+    phaselabel/.style={font=\small\bfseries, anchor=south},
+    arr/.style={->, >=stealth, thick},
+    sarr/.style={->, >=stealth, thin, dashed}
+]
 
-% Define colors for immune cell types
-\definecolor{innate}{RGB}{255,165,0}
-\definecolor{adaptive}{RGB}{30,144,255}
-\definecolor{tumor}{RGB}{220,20,60}
-\definecolor{suppressor}{RGB}{128,128,128}
-
-% Timeline
-\draw[thick, ->] (0,0) -- (14,0);
-\node[below] at (14,0) {Time};
-
-% Phases
-\node[above] at (2,0) {\textbf{Recognition}};
-\node[above] at (6,0) {\textbf{Activation}};
-\node[above] at (10,0) {\textbf{Effector}};
-\node[above] at (13,0) {\textbf{Resolution}};
-
-% Phase separators
-\foreach \x in {4, 8, 11.5} {
-    \draw[dashed, gray] (\x,-3) -- (\x,8);
+% ── Phase separators (vertical dashed lines) ────────────────
+\foreach \x in {3.4, 6.8, 10.2} {
+    \draw[densely dashed, gray!45] (\x,-0.4) -- (\x,6.8);
 }
 
-% Innate immune response (early)
-\node[draw, circle, fill=innate, text=white, minimum size=1cm] (nk) at (1,6) {NK};
-\node[draw, circle, fill=innate, text=white, minimum size=0.8cm] (macro) at (2,4) {M$\phi$};
-\node[draw, circle, fill=innate, text=white, minimum size=0.8cm] (dc) at (3,5) {DC};
+% ── Phase labels ────────────────────────────────────────────
+\node[phaselabel] at (1.7, 6.8) {Phase 1};
+\node[font=\footnotesize, anchor=north] at (1.7,6.7) {Recognition};
 
-% Antigen presentation
-\draw[thick, ->] (dc) -- (5,5) node[midway, above] {Ag presentation};
+\node[phaselabel] at (5.1, 6.8) {Phase 2};
+\node[font=\footnotesize, anchor=north] at (5.1,6.7) {Activation};
 
-% Adaptive immune response (later)
-\node[draw, circle, fill=adaptive, text=white, minimum size=0.8cm] (cd8naive) at (5,5) {CD8$^+$};
-\node[draw, circle, fill=adaptive, text=white, minimum size=0.8cm] (cd4naive) at (5,3) {CD4$^+$};
+\node[phaselabel] at (8.5, 6.8) {Phase 3};
+\node[font=\footnotesize, anchor=north] at (8.5,6.7) {Effector};
 
-% T cell differentiation
-\draw[thick, ->] (cd8naive) -- (8,6) node[midway, above] {Activation};
-\draw[thick, ->] (cd4naive) -- (8,4) node[midway, above] {Th1};
-\draw[thick, ->] (cd4naive) -- (8,2) node[midway, below] {Th2};
+\node[phaselabel] at (11.9, 6.8) {Phase 4};
+\node[font=\footnotesize, anchor=north] at (11.9,6.7) {Resolution};
 
-% Effector cells
-\node[draw, circle, fill=adaptive, text=white, minimum size=1cm] (ctl) at (8,6) {CTL};
-\node[draw, circle, fill=adaptive, text=white, minimum size=0.8cm] (th1) at (8,4) {Th1};
-\node[draw, circle, fill=adaptive, text=white, minimum size=0.8cm] (th2) at (8,2) {Th2};
+% ── Timeline arrow ──────────────────────────────────────────
+\draw[arr, gray!60] (0,0) -- (13.6,0);
+\node[font=\footnotesize, gray!70, anchor=west] at (13.7,0) {time};
 
-% Tumor interaction
-\node[draw, rounded corners=3pt, fill=tumor, text=white, minimum size=1.2cm] (tumor_cell) at (11,4) {Tumor};
+% ══ Phase 1 — Innate Recognition ════════════════════════════
+\node[cell, fill=bloodvessel]  (nk)    at (0.8, 4.5) {NK};
+\node[cell, fill=bloodvessel]  (macro) at (1.7, 2.8) {M$\phi$};
+\node[cell, fill=bloodvessel]  (dc)    at (2.6, 4.5) {DC};
 
-% Cytotoxic killing
-\draw[thick, ->, red] (ctl) -- (tumor_cell) node[midway, above] {Kill};
-\draw[thick, ->, red] (nk) to[bend left=30] (tumor_cell);
+\node[font=\footnotesize, gray, anchor=north] at (1.7,2.1) {innate cells};
 
-% Helper functions
-\draw[thick, ->, blue] (th1) -- (tumor_cell) node[midway, below right] {Support};
+% ══ Phase 2 — Activation ════════════════════════════════════
+\node[cell, fill=immunecell]  (cd8) at (4.6, 4.5) {CD8$^+$};
+\node[cell, fill=immunecell]  (cd4) at (5.6, 2.8) {CD4$^+$};
 
-% Immunosuppressive elements
-\node[draw, circle, fill=suppressor, text=white, minimum size=0.8cm] (treg) at (6,1) {Treg};
-\node[draw, circle, fill=suppressor, text=white, minimum size=0.8cm] (m2) at (10,1) {M2};
+% DC → presents antigen
+\draw[arr] (dc) -- (cd8)
+    node[midway, above, font=\footnotesize] {Ag};
+\draw[arr] (dc.east) ++(0.1,0) -- ++(0.5,0) |- (cd4.west)
+    node[near start, above, font=\footnotesize] {};
 
-% Suppression
-\draw[thick, ->, dashed, suppressor] (treg) to[bend right=30] (ctl) node[midway, below] {Suppress};
-\draw[thick, ->, dashed, suppressor] (m2) -- (tumor_cell) node[midway, below] {Protect};
+% ══ Phase 3 — Effector ══════════════════════════════════════
+\node[cell, fill=immunecell]  (ctl) at (7.8, 5.2) {CTL};
+\node[cell, fill=immunecell]  (th1) at (8.2, 3.4) {Th1};
+\node[cell, fill=immunecell]  (th2) at (8.8, 1.8) {Th2};
 
-% Memory formation
-\node[draw, circle, fill=adaptive!50, text=white, minimum size=0.8cm] (memory) at (12,6) {T$_M$};
-\draw[thick, ->] (ctl) -- (memory) node[midway, above] {Memory};
+% Tumour target
+\node[cell, fill=tumorcell, minimum size=1cm, font=\footnotesize]
+    (tumour) at (10.0, 3.4) {TC};
 
-% Cytokine network
-\node[draw, diamond, fill=yellow!80, minimum size=0.6cm] (ifng) at (9,5) {IFN-$\gamma$};
-\node[draw, diamond, fill=yellow!80, minimum size=0.6cm] (il2) at (9,3.5) {IL-2};
-\node[draw, diamond, fill=yellow!80, minimum size=0.6cm] (tnfa) at (9,2.5) {TNF-$\alpha$};
+% Activation → effector
+\draw[arr] (cd8) -- (ctl);
+\draw[arr] (cd4) -- (th1);
+\draw[arr] (cd4.east) ++(0.1,0) -- ++(0.4,0) |- (th2.west);
 
-% Cytokine production
-\draw[dashed, ->] (ctl) -- (ifng);
-\draw[dashed, ->] (th1) -- (il2);
-\draw[dashed, ->] (th1) -- (tnfa);
+% Killing arrows
+\draw[arr, tumorcell]  (ctl) -- (tumour)
+    node[midway, above, font=\footnotesize] {kill};
+\draw[arr, tumorcell]  (nk) to[bend left=18] (tumour);
+\draw[arr, immunecell, thin] (th1) -- (tumour)
+    node[midway, below, font=\footnotesize] {support};
 
-% Title and legend
-\node[text width=14cm, text centered] at (7,8.5) {
-    \Large\textbf{Immune Response Cascade in RCC}
-};
+% Cytokine diamonds
+\node[cytokine] (ifng) at (9.0, 5.6) {\scriptsize IFN-$\gamma$};
+\node[cytokine] (il2)  at (9.6, 2.6) {\scriptsize IL-2};
+\node[cytokine] (tnfa) at (7.4, 1.6) {\scriptsize TNF-$\alpha$};
 
-% Legend
-\node[draw, rounded corners, fill=white, text width=3cm] at (1,7.5) {
-    \textbf{Legend}\\
-    \textcolor{innate}{\textbullet} Innate\\
-    \textcolor{adaptive}{\textbullet} Adaptive\\
-    \textcolor{tumor}{\textbullet} Tumor\\
-    \textcolor{suppressor}{\textbullet} Suppressor\\
-    \textcolor{yellow!80}{\textbullet} Cytokines
-};
+\draw[sarr] (ctl) -- (ifng);
+\draw[sarr] (th1) -- (il2);
+\draw[sarr] (th1) -- (tnfa);
+
+% ══ Phase 4 — Resolution ════════════════════════════════════
+\node[cell, fill=immunecell!50] (tmem)  at (11.4, 5.2) {T$_M$};
+\node[cell, fill=gray!60]       (treg)  at (12.2, 2.8) {Treg};
+
+\draw[arr] (ctl) -- (tmem)
+    node[midway, above, font=\footnotesize] {memory};
+\draw[sarr, gray!70] (treg) to[bend right=20] (ctl)
+    node[near start, below, font=\footnotesize] {suppress};
+
+% ── Compact legend ──────────────────────────────────────────
+\node[draw, rounded corners=2pt, fill=white, inner sep=4pt,
+      font=\footnotesize, anchor=south west] at (0,-0.3) {%
+    \textcolor{bloodvessel}{$\bullet$}\;Innate\quad
+    \textcolor{immunecell}{$\bullet$}\;Adaptive\quad
+    \textcolor{tumorcell}{$\bullet$}\;Tumor\quad
+    \textcolor{gray}{$\bullet$}\;Suppressor\quad
+    \textcolor{glucose!80!black}{$\diamond$}\;Cytokine};
 
 \end{tikzpicture}

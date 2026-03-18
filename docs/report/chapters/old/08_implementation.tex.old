@@ -1,0 +1,144 @@
+\chapter{Implementation}
+\label{ch:implementation}
+
+
+
+\lettrine[lines=2]{T}{his chapter} examines the architectural decisions, design patterns, and implementation strategies employed to translate the biological model described in preceding chapters into executable software. The discussion focuses on the engineering problems encountered during development and the design patterns used to address them, with particular attention to how computational constraints influenced biological model design.
+
+% ======================================================================
+\section{Framework Migration: Mesa to Repast4Py}
+\label{sec:framework-migration}
+
+\begin{figure}[htbp]
+\centering
+\adjustbox{max width=0.85\textwidth, max height=0.7\textheight}{\input{figures/architecture_overview.tex}}
+\caption{Software architecture overview of the RCC simulation system}
+\label{fig:architecture_overview}
+\end{figure}
+
+The migration from Mesa to Repast4Py required substantial architectural changes, detailed in Table~\ref{tab:porting-mapping}. Three design patterns structure the core simulation logic: the Command pattern, the Observer pattern, and the Strategy pattern.
+
+The Command pattern governs agent movement. During each simulation step, agents do not move immediately upon deciding their next position. Instead, each agent stores its desired destination as a movement request. Once all agents have completed their decision phase, the model executes these requests in a batch deferred-move phase. This two-phase approach prevents order-dependent artifacts that would otherwise arise if early-moving agents altered the spatial landscape before later agents had evaluated their own neighborhoods. By decoupling the decision from the execution, the simulation produces results that are invariant to the internal iteration order over agents within a single step.
+
+The Observer pattern decouples data collection from agent behavior. A dedicated data-collection observer records population counts by cell type, glucose field statistics (mean, minimum, standard deviation), and cumulative kill tallies at the conclusion of each simulation step. These observations are written to CSV log files independently of the agent logic itself. This separation ensures that instrumenting the simulation for analysis introduces no side effects into the model dynamics and permits the logging granularity to be modified without altering any agent class.
+
+The Strategy pattern enables runtime selection of treatment modalities. Each treatment type---immune checkpoint inhibitor (ICI) therapy, tyrosine kinase inhibitor (TKI) therapy, and combination therapy---implements a common Drug interface exposing a \texttt{step()} method that applies the drug's per-tick effects to the simulation state. The model holds a reference to the active treatment strategy and invokes its \texttt{step()} method during the treatment phase of the main loop. Adding a new treatment modality requires only implementing the Drug interface; no modifications to the simulation core or execution pipeline are necessary.
+
+
+
+% ======================================================================
+\section{Simulation Orchestration: The Main Event Loop}
+\label{sec:simulation-orchestration}
+
+\begin{figure}[htbp]
+\centering
+\adjustbox{max width=0.85\textwidth, max height=0.7\textheight}{\input{figures/simulation_pipeline.tex}}
+\caption{Simulation execution pipeline}
+\label{fig:simulation_pipeline}
+\end{figure}
+
+The main simulation loop executes a fixed sequence: data collection, termination check, effect application, treatment, glucose field updates, agent stepping, and deferred movement execution. This ordering respects biological causality while preventing execution order bias.
+
+\begin{figure}[htbp]
+\centering
+\adjustbox{max width=0.85\textwidth, max height=0.7\textheight}{\input{figures/model_architecture.tex}}
+\caption{Model architecture showing component relationships}
+\label{fig:model_architecture}
+\end{figure}
+
+The codebase is organized into agent classes (17 cell types), system modules (glucose field, DNA mutations, effect accumulation), treatment implementations, and parameter management. Repast4Py's RCCModel class directly manages SharedContext, SharedGrid, and agent lifecycle without framework inheritance.
+
+Figure~\ref{fig:model_architecture} illustrates the overall architecture of the RCCModel, showing the main components and their data flow relationships.
+
+
+% ======================================================================
+\section{Spatial Index Design}
+\label{sec:spatial-index}
+
+Repast4Py lacks built-in neighbor queries, so the model maintains a manual spatial index using defaultdict(list) that maps coordinates to agent lists. Grid utilities provide 3D neighborhood computation using Moore or Von Neumann neighborhoods with boundary checking.
+
+Repast4Py's \texttt{SharedGrid} provides position tracking and MPI-aware ghost-agent synchronization, but it does not expose spatial search functionality such as radius-based neighbor queries. Agents can be placed on and moved within the grid, yet determining which agents occupy a given cell or its surroundings requires application-level bookkeeping. The implementation therefore maintains a dictionary-based spatial index that maps each occupied coordinate tuple to a list of resident agents. This design provides O(1) lookup time for any grid cell, which is essential given that neighbor queries occur multiple times per agent per step across thousands of agents. The tradeoff is that the index must be manually updated on every agent addition, removal, and movement: failure to synchronize the index with the grid constitutes a correctness bug rather than merely a performance issue. Wrapper functions in the grid utilities module encapsulate these updates to minimize the risk of desynchronization, and all agent lifecycle operations (spawning, death, movement) route through these wrappers rather than manipulating the grid directly.
+
+% ======================================================================
+\section{Agent Serialization}
+\label{sec:agent-serialization}
+
+Repast4Py agents require (id, type, rank) construction and maintain uid tuples for MPI distribution. The AgentType IntEnum maps 18 cell types to integer IDs, and each agent implements a \texttt{save()} method returning \texttt{(uid, state\_tuple)} for serialization. Type identification uses integer comparison of uid[1] rather than isinstance() checks.
+
+% ======================================================================
+\section{Mesa to Repast4Py Porting}
+\label{sec:porting}
+
+\begin{table}[H]
+\centering
+\caption{Key API mapping from Mesa to Repast4Py.}
+\label{tab:porting-mapping}
+\begin{tabular}{@{}p{6cm}p{7.5cm}@{}}
+\toprule
+\textbf{Mesa} & \textbf{Repast4Py} \\
+\midrule
+\texttt{mesa.Agent(model)} & \texttt{repast4py.core.Agent(id, type, rank)} \\
+\texttt{self.model.random} & \texttt{model.rng} (stdlib \texttt{random.Random}) \\
+\texttt{self.model.grid.get\_neighbors()} & \texttt{grid\_utils.get\_neighbors\_3d(spatial\_index, ...)} \\
+\texttt{isinstance(agent, TumorCell)} & \texttt{agent.uid[1] == AgentType.TUMOR\_CELL} \\
+\texttt{self.model.schedule.agents} & \texttt{model.\_all\_agents} \\
+\texttt{model.agents\_by\_type[Type]} & \texttt{model.get\_agents\_by\_type\_id(type\_id)} \\
+\texttt{TumorCell.blood\_source} (class var) & \texttt{model.tumor\_blood\_sources} \\
+\texttt{Cell.search\_dimension} (class var) & \texttt{model.cell\_search\_dimension} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The porting required moving class-level state to model instances, implementing custom random number generation, and preserving deferred movement patterns to prevent execution order artifacts.
+
+% ======================================================================
+\section{Glucose Field Implementation}
+\label{sec:glucose-field-impl}
+
+The GlucoseField class uses NumPy 3D arrays and SciPy convolution for performance and control. Diffusion uses a 6-connected discrete Laplacian kernel with zero-flux boundary conditions via mode='nearest'. The implementation avoids Repast4Py's SharedValueLayer for simplicity and debugging convenience.
+
+% ======================================================================
+\section{Streamlit User Interface}
+\label{sec:streamlit-ui}
+
+The simulation is accompanied by a multi-page Streamlit application that provides an integrated environment for parameter configuration, simulation execution, result visualization, and historical run management. The interface is organized into distinct pages, each addressing a specific phase of the simulation workflow.
+
+The Configure page presents all model, patient, and weight parameters in an editable form, grouped by biological category. Default values are loaded from the parameter dataclasses, and users may import or export complete parameter sets as YAML files to facilitate reproducibility. A search field allows rapid location of individual parameters, and a toggle displays only those parameters whose current values differ from their defaults, enabling efficient review of experimental modifications. Parameter bounds validation prevents the submission of biologically implausible values.
+
+The Run page manages simulation execution via subprocess invocation. The Streamlit application spawns the MPI-based simulation as a child process and monitors its standard output to display real-time progress, including the current simulation step, tumor cell count, and estimated time remaining. A cancel button allows early termination of long-running simulations, and a 30-minute timeout guard prevents abandoned processes from consuming resources indefinitely. Upon completion, the application stores run metadata---including parameter snapshots, outcome classification, and wall-clock duration---for later retrieval.
+
+The Results page renders Plotly interactive charts covering tumor population dynamics, glucose field statistics over time, immune cell kill rates (including a derivative chart for rate-of-change analysis), and population curves for all tracked cell types. A stochastic variability disclaimer reminds users that individual trajectories are subject to random-seed dependence. The History page supports comparison across multiple completed runs: users may select two or more runs and overlay their population or glucose curves on shared axes. Each run may be annotated with free-text notes and categorical tags to organize experimental campaigns. Run metadata, including parameter differences between selected runs, is displayed to support systematic comparison.
+
+% ======================================================================
+\section{Testing and Correctness Verification}
+\label{sec:testing}
+
+Verification of the simulation relies on a combination of automated checks and manual inspection. Parameter bounds validation, enforced both in the user interface and at model initialization, ensures that all input values fall within biologically meaningful ranges. Single-step regression tests execute one tick of the simulation with a fixed random seed and compare the resulting agent counts, glucose field state, and kill tallies against known-good baseline values, detecting unintended behavioral changes introduced during refactoring. For broader validation, single-seed simulation outputs are compared against archived reference trajectories to confirm that population dynamics remain consistent across code revisions. Additionally, population trajectories from representative parameter configurations are manually inspected for biological plausibility: tumor growth curves are expected to exhibit initial exponential expansion followed by resource-limited plateau or immune-mediated regression, and immune cell populations should respond to treatment onset with dynamics consistent with the modeled drug mechanisms.
+
+% ======================================================================
+\section{Computational Performance}
+\label{sec:performance}
+
+A typical simulation run completes in 2--5 minutes on a single MPI rank executing on commodity hardware (Intel Core i7 processor, 32\,GB RAM). The two primary computational bottlenecks are the glucose field update---which applies a 3D discrete Laplacian convolution via SciPy across the full grid volume at each step---and the agent stepping phase, in which each agent evaluates its neighborhood, computes state transitions, and registers movement requests. Memory usage scales as $O(N^3)$ for the glucose field, where $N$ is the linear grid dimension, plus $O(A)$ for agent state, where $A$ is the total number of active agents. In practice, peak memory consumption remains below 2\,GB for the default grid size and typical agent populations. The 160-simulation empirical study described in Chapter~\ref{ch:simulation-results} completed in approximately 8 hours of cumulative wall-clock time, with individual runs parallelized across available cores.
+
+% ======================================================================
+\section{Entry Point and Execution}
+\label{sec:entry-point}
+
+The simulation runs via `mpirun -n 1 python run.py` using Repast4Py's schedule runner to execute the main step() loop with data collection, termination checking, effect propagation, treatment, glucose updates, agent stepping, and deferred movement.
+
+\begin{figure}[htbp]
+\centering
+\adjustbox{max width=0.85\textwidth, max height=0.7\textheight}{\input{figures/simulation_lifecycle.tex}}
+\caption{Simulation lifecycle showing the deterministic execution sequence: initialization, parameter loading, and iterative main loop with data collection, termination checks, effect application, glucose diffusion, treatment, agent stepping, and deferred movement.}
+\label{fig:simulation_lifecycle}
+\end{figure}
+
+\begin{chaptersum}
+\begin{itemize}[nosep]
+\item Mesa-to-Repast4Py port using Command, Observer, and Strategy design patterns
+\item Custom spatial index with O(1) lookup compensates for Repast4Py's lack of neighbor queries
+\item Streamlit UI provides configuration, execution, visualization, and history management
+\item Typical runtime 2--5 minutes per simulation; 160-run study completed in $\sim$8 hours
+\end{itemize}
+\end{chaptersum}

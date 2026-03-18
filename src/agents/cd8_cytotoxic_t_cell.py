@@ -1,19 +1,36 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Cytotoxic T Cell (activated CD8+) with glucose chemotaxis fallback."""
 from src.agents.t_cell import TCell
 from src.agents.agent_types import AgentType
 
 
 class CytotoxicTCell(TCell):
+    """Activated CD8+ cytotoxic T cell, the primary adaptive tumor killer.
+
+    Seeks tumor cells via chemotaxis, kills on contact subject to PD-1
+    checkpoint inhibition, and undergoes progressive exhaustion after kills.
+    Hormone levels modulate kill rate, proliferation, and apoptosis.
+
+    Attributes:
+        initial_kill_chance: Base kill probability before effect modulation.
+        proliferation_chance: Base self-replication probability per tick.
+        pd1_inhibition: Activation penalty when PD-1 inhibited by tumor.
+    """
+
     initial_kill_chance = 0.25
     proliferation_chance = 0.015
     pd1_inhibition = 0.5
 
     def __init__(self, local_id, rank, model, pos):
+        """Initialize a cytotoxic T cell with baseline kill and activation effects."""
         super().__init__(local_id, AgentType.CD8_CYTOTOXIC_T_CELL, rank, model, pos)
         self.experienced_effects.t_kill_rate_effect += self.initial_kill_chance
         self.experienced_effects.t_activation_effect = self.initial_t_activation_effect
 
     def step(self):
+        """Hunt tumors, attempt kills with glucose/hormone modulation, and proliferate."""
         if self.base_step():
             return
 

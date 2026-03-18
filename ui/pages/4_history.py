@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """History page — compare past simulation runs side by side."""
 
 import streamlit as st

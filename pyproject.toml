@@ -1,0 +1,57 @@
+[project]
+name = "rcc-renal-cell-carcinoma-simulator"
+version = "1.0.0"
+description = "Agent-based model of renal cell carcinoma with glucose sensing, sex-stratified treatment response, and Bayesian optimization"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Samuele Stronati"},
+]
+keywords = [
+    "agent-based-model",
+    "renal-cell-carcinoma",
+    "kidney-cancer",
+    "tumor-microenvironment",
+    "immunotherapy",
+    "simulation",
+    "computational-biology",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+]
+
+dependencies = [
+    "mpi4py>=4.0",
+    "repast4py>=1.2",
+    "numpy>=2.0",
+    "scipy>=1.11",
+    "Levenshtein>=0.25",
+    "PyYAML>=6.0",
+    "matplotlib>=3.8",
+    "pandas>=2.0",
+    "streamlit>=1.40",
+    "plotly>=5.18",
+]
+
+[project.optional-dependencies]
+optimization = ["optuna>=3.0"]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "scikit-learn>=1.3.0",
+    "seaborn>=0.12.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/Samuele95/rcc-renal-cell-carcinoma-simulator"
+Repository = "https://github.com/Samuele95/rcc-renal-cell-carcinoma-simulator"
+Issues = "https://github.com/Samuele95/rcc-renal-cell-carcinoma-simulator/issues"

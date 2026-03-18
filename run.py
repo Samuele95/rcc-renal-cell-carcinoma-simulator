@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Entry point for the RCC Repast4Py simulation.
 
 Usage:

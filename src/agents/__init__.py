@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Agent module with restore function registry for Repast4Py."""
 from .agent_types import AgentType
 from .adipocyte import Adipocyte

@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Tyrosine Kinase Inhibitor (TKI) drug.
 
 Inhibits tumor proliferation, angiogenesis, releases neoantigens, reduces Tregs.
@@ -7,8 +10,18 @@ from src.treatments.drug import Drug
 
 
 class TKIDrug(Drug):
+    """Tyrosine Kinase Inhibitor drug.
+
+    Reduces tumor proliferation and angiogenesis, triggers neoantigen
+    release (TKI_effect flag), and suppresses Treg differentiation.
+    """
 
     def step(self, proportion=1.0):
+        """Apply TKI effects for one simulation step.
+
+        Args:
+            proportion: Fraction of full effectiveness (set by Treatment).
+        """
         effectiveness = proportion * self.model.weight_params.w_tki_effectiveness
         reduction = 1 - effectiveness
 

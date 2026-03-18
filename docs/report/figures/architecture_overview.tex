@@ -1,187 +1,50 @@
-% Complete Architecture Overview Diagram
-\begin{tikzpicture}[scale=0.7, every node/.style={scale=0.7}]
+% Architecture Overview — compact 5-layer stack
+\begin{tikzpicture}[
+    layer/.style={rectangle, rounded corners=4pt, draw, thick,
+                  minimum width=13cm, minimum height=1.4cm, text centered, font=\small},
+    arrow/.style={->, >=stealth, very thick},
+    iobox/.style={rectangle, rounded corners=3pt, draw, font=\small,
+                  fill=accent!15, minimum width=2.2cm, minimum height=1cm,
+                  align=center, inner sep=4pt}
+]
 
-% Define colors
-\definecolor{hardware}{RGB}{139,69,19}
-\definecolor{framework}{RGB}{70,130,180}
-\definecolor{core}{RGB}{34,139,34}
-\definecolor{systems}{RGB}{255,140,0}
-\definecolor{agents}{RGB}{220,20,60}
-\definecolor{ui}{RGB}{138,43,226}
+% Layer 1 — Hardware (bottom)
+\node[layer, fill=brown!15] (hw) at (7,0)
+    {\textbf{Hardware}: MPI + Multi-core CPUs};
 
-% Title
-\node[text width=20cm, text centered] at (10,16) {
-    \Large\textbf{RCC Model Architecture: From Hardware to User Interface}
-};
+% Layer 2 — Framework
+\node[layer, fill=immunecell!12] (fw) at (7,2)
+    {\textbf{Framework}: Repast4Py (SharedContext, SharedGrid, MPI Comm)};
 
-% Layer 1: Hardware (bottom)
-\node[draw, rounded corners, fill=hardware!20, text width=18cm, minimum height=2cm, text centered] at (10,1.5) {
-    \textbf{\Large Hardware Layer}\\[0.3cm]
-    MPI Cluster , Multi-core CPUs , Distributed Memory , Network Interconnect\\
-    OpenMPI , Process Communication , Load Balancing
-};
+% Layer 3 — Core Model
+\node[layer, fill=treatment!12] (core) at (7,4)
+    {\textbf{Core Model}: RCCModel, Agent Factory, Spatial Index, Grid Utils};
 
-% Layer 2: Framework
-\node[draw, rounded corners, fill=framework!20, text width=16cm, minimum height=2.5cm, text centered] at (10,4.5) {
-    \textbf{\Large Framework Layer (Repast4Py)}\\[0.3cm]
-    SharedContext , SharedGrid , MPI Communication , Agent Serialization\\
-    Schedule Runner , Distributed Spatial Queries , Ghost Agent Sync\\
-    Python Integration , NumPy/SciPy Bridge
-};
+% Layer 4 — Subsystems (row of 6 small boxes inside a container)
+\node[layer, fill=accent!12, minimum height=1.8cm] (sys) at (7,6.2) {};
+\node[font=\small\bfseries, anchor=south] at (7,6.9) {Subsystems};
 
-% Layer 3: Core Model
-\node[draw, rounded corners, fill=core!20, text width=14cm, minimum height=2.5cm, text centered] at (10,7.5) {
-    \textbf{\Large Core Model Layer}\\[0.3cm]
-    RCCModel Class , Agent Factory , Spatial Index , Grid Utils\\
-    Model.step() , Terminal Conditions , Data Collection\\
-    Parameter Management , Random Seeding
-};
+\foreach \lbl/\xpos in {Glucose/2.2, DNA/4.2, Effects/6.2, Treatment/8.2, Hormones/10.2, Movement/12.2} {
+    \node[rectangle, rounded corners=2pt, draw, fill=white, font=\footnotesize,
+          minimum width=1.6cm, minimum height=0.55cm, text centered]
+        at (\xpos,5.85) {\lbl};
+}
 
-% Layer 4: Systems
-\node[draw, rounded corners, fill=systems!20, text width=18cm, minimum height=3cm] at (10,11) {
-    \textbf{\Large Systems Layer}\\[0.3cm]
-    \begin{minipage}{17cm}
-    \begin{tabular}{ccc}
-        \textbf{Glucose System} & \textbf{DNA System} & \textbf{Effect System} \\
-        3D Field Management & 16-Gene Mutations & Paracrine Signaling \\
-        Diffusion PDE & Phenotype Mapping & BMI Normalization \\
-        Chemotaxis & Hamming Distance & 14 Effect Fields \\[0.3cm]
-        \textbf{Treatment System} & \textbf{Hormone System} & \textbf{Movement System} \\
-        ICI/TKI Drugs & Sex Hormone Dynamics & Deferred Movement \\
-        Drug Scheduling & 3-Hormone Model & Spatial Queries \\
-        Combination Therapy & Male/Female Profiles & Collision Avoidance
-    \end{tabular}
-    \end{minipage}
-};
+% Layer 5 — Agents (top)
+\node[layer, fill=tumorcell!12] (ag) at (7,8.4)
+    {\textbf{Agents}: 18 Types (Tumor\;|\;T Cells\;|\;Innate Immune\;|\;Stromal)};
 
-% Layer 5: Agents
-\node[draw, rounded corners, fill=agents!20, text width=18cm, minimum height=2.8cm] at (10,14.2) {
-    \textbf{\Large Agent Layer (18 Types)}\\[0.3cm]
-    \begin{minipage}{17cm}
-    \begin{tabular}{cccc}
-        \textbf{Tumor} & \textbf{T Cells} & \textbf{Innate Immune} & \textbf{Stromal/Signaling} \\
-        TumorCell & CytotoxicTCell & MacrophageM1/M2 & Blood \\
-         & CD8/CD4 Naive & NaturalKiller & Adipocyte \\
-         & Th1/Th2 & DendriticCell & SexHormone \\
-         & TregCell & PlasmacitoidDC & Cytokine \\
-         &  & MastCell/Neutrophil & 
-    \end{tabular}
-    \end{minipage}
-};
+% Vertical arrows between layers
+\draw[arrow, brown!60]       (7,0.7)  -- (7,1.3);
+\draw[arrow, immunecell!60]  (7,2.7)  -- (7,3.3);
+\draw[arrow, treatment!60]   (7,4.7)  -- (7,5.3);
+\draw[arrow, accent!70]      (7,7.1)  -- (7,7.7);
 
-% Side components
-% Input/Output
-\node[draw, rounded corners, fill=yellow!20, text width=4cm, minimum height=3cm] at (2,7.5) {
-    \textbf{Input}\\[0.3cm]
-    YAML Config\\
-    Patient Parameters\\
-    Treatment Protocol\\
-    Random Seeds\\
-    ARON-1 Data
-};
+% Input / Output
+\node[iobox] (inp) at (0.5,4) {\textbf{Input}\\ YAML Config};
+\node[iobox] (out) at (13.5,4) {\textbf{Output}\\ CSV Logs};
 
-\node[draw, rounded corners, fill=yellow!20, text width=4cm, minimum height=3cm] at (18,7.5) {
-    \textbf{Output}\\[0.3cm]
-    CSV Data Logs\\
-    Population Counts\\
-    Kill Statistics\\
-    Survival Metrics\\
-    Visualization Data
-};
-
-% Data flow arrows between layers
-\draw[very thick, ->, hardware] (10,2.5) -- (10,3.5);
-\draw[very thick, ->, framework] (10,5.5) -- (10,6.5);
-\draw[very thick, ->, core] (10,8.5) -- (10,9.5);
-\draw[very thick, ->, systems] (10,12.5) -- (10,13.2);
-
-% Horizontal arrows
-\draw[thick, ->] (4,7.5) -- (6,7.5);
-\draw[thick, ->] (14,7.5) -- (16,7.5);
-
-% Detailed component boxes
-% MPI Communication detail
-\node[draw, rounded corners, fill=hardware!30, text width=3.5cm] at (1,4) {
-    \textbf{MPI Details}\\
-    , rank 0 coordination\\
-    , ghost cell sync\\
-    , collective operations\\
-    , distributed RNG
-};
-
-% Agent serialization detail
-\node[draw, rounded corners, fill=framework!30, text width=3.5cm] at (19,4) {
-    \textbf{Agent Serialization}\\
-    , save() methods\\
-    , state preservation\\
-    , cross-rank moves\\
-    , lifecycle mgmt
-};
-
-% Spatial index detail
-\node[draw, rounded corners, fill=core!30, text width=3.5cm] at (1,10.5) {
-    \textbf{Spatial Index}\\
-    , dict\{pos: [agents]\}\\
-    , Moore neighborhood\\
-    , O(1) lookups\\
-    , 3D coordinates
-};
-
-% Performance optimization
-\node[draw, rounded corners, fill=systems!30, text width=3.5cm] at (19,10.5) {
-    \textbf{Performance}\\
-    , dict over list\\
-    , deferred moves\\
-    , vectorized ops\\
-    , memory pooling
-};
-
-% Memory usage indicator
-\node[draw, rounded corners=3pt, fill=red!30] at (15.5,2) {Memory};
-\node[draw, rounded corners=3pt, fill=orange!30] at (16.5,3) {CPU};
-\node[draw, rounded corners=3pt, fill=blue!30] at (17.5,4) {Network};
-
-% Data structures
-\node[draw, rounded corners, fill=purple!10, text width=6cm] at (5,0.5) {
-    \textbf{Key Data Structures}\\
-    , \texttt{SharedContext} (agent container)\\
-    , \texttt{SharedGrid} (spatial projection)\\
-    , \texttt{spatial\_index} (dict mapping)\\
-    , \texttt{glucose\_field} (3D numpy array)\\
-    , \texttt{Effect} (paracrine signals)
-};
-
-% Threading model
-\node[draw, rounded corners, fill=green!10, text width=6cm] at (15,0.5) {
-    \textbf{Execution Model}\\
-    , Single-threaded per rank\\
-    , MPI parallelism across ranks\\
-    , Synchronized time stepping\\
-    , Collective communication\\
-    , Deterministic with seeding
-};
-
-% Arrows to detail boxes
-\draw[dashed, ->] (6,4.5) -- (1,4);
-\draw[dashed, ->] (14,4.5) -- (19,4);
-\draw[dashed, ->] (6,7.5) -- (1,10.5);
-\draw[dashed, ->] (14,7.5) -- (19,10.5);
-
-% Layer labels on the side
-\node[rotate=90] at (0.3,1.5) {\textbf{HARDWARE}};
-\node[rotate=90] at (0.3,4.5) {\textbf{FRAMEWORK}};
-\node[rotate=90] at (0.3,7.5) {\textbf{CORE}};
-\node[rotate=90] at (0.3,11) {\textbf{SYSTEMS}};
-\node[rotate=90] at (0.3,14.2) {\textbf{AGENTS}};
-
-% Version/tech stack
-\node[fill=gray!20, rounded corners, text width=3cm] at (19.5,13.5) {
-    \textbf{Tech Stack}\\
-    Python 3.9+\\
-    Repast4Py 1.0\\
-    NumPy/SciPy\\
-    OpenMPI 4.0\\
-    Optuna ML
-};
+\draw[arrow] (inp) -- (core.west);
+\draw[arrow] (core.east) -- (out);
 
 \end{tikzpicture}

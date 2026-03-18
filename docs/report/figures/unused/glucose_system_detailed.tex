@@ -1,5 +1,5 @@
 % Detailed Glucose System Diagram for Chapter 4
-\begin{tikzpicture}[scale=0.85, every node/.style={scale=0.85}]
+\begin{tikzpicture}[]
 
 % Define colors
 \definecolor{glucose}{RGB}{255,215,0}
@@ -141,7 +141,7 @@
 \draw[thick, ->, yellow] (pde) -- (gradient);
 
 % Consumption arrows
-\draw[thick, ->, tumor] (6,7.5) -- (tumor_cell) node[midway, above] {\tiny High consumption};
-\draw[thick, ->, immune] (6,7) -- (immune_cell) node[midway, above] {\tiny Normal consumption};
+\draw[thick, ->, tumor] (6,7.5) -- (tumor_cell) node[midway, above] {\footnotesize High consumption};
+\draw[thick, ->, immune] (6,7) -- (immune_cell) node[midway, above] {\footnotesize Normal consumption};
 
 \end{tikzpicture}

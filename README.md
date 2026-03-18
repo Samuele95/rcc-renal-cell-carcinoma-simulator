@@ -1,268 +1,460 @@
-# RCC Tumor Microenvironment Simulation
+<div align="center">
 
-An agent-based model of renal cell carcinoma (kidney cancer) that simulates the battle between tumor cells and the immune system in 3D tissue.
+# 🧬 RCC Renal Cell Carcinoma Simulator
 
-![Simulation Preview](docs/screenshots/simulation_preview.png) *(Screenshot placeholder)*
+### Agent-Based Model of the Kidney Cancer Tumor Microenvironment
+
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.40%2B-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io)
+[![MPI](https://img.shields.io/badge/MPI-Repast4Py-0078D4?style=for-the-badge)](https://repast.github.io/repast4py.site/)
+
+*Simulate the battle between tumor cells and the immune system in a 3D tissue microenvironment — with glucose metabolism, sex-hormone dynamics, and real treatment strategies.*
+
+[Quick Start](#-quick-start) · [Web UI](#%EF%B8%8F-web-ui) · [Results Gallery](#-results-gallery) · [How It Works](#-how-it-works) · [Configuration](#%EF%B8%8F-configuration) · [CLI Reference](#-cli-reference)
+
+</div>
+
+---
 
 ## 🎯 What Does This Simulate?
 
-This tool models a small piece of kidney tissue as a 3D grid where:
-- **🔴 Tumor cells** try to grow, divide, and evade immune detection
-- **🔵 Immune cells** (T-cells, NK cells, macrophages, etc.) hunt and destroy tumor cells  
-- **🩸 Blood vessels** supply glucose (energy) to all cells
-- **💊 Treatment drugs** boost the immune system's ability to fight
+This simulator recreates a small volume of kidney tissue as a **3D cellular battlefield** where **18 distinct agent types** interact every time step:
 
-**Two possible outcomes:**
-- **✅ Survival** — Immune system eliminates all tumor cells
-- **❌ Progression** — Tumor grows beyond 2,000+ cells
+- 🔴 **Tumor cells** proliferate, mutate, hijack glucose via the Warburg effect, and evade immune detection through PD-L1 expression
+- 🔵 **Immune cells** — cytotoxic T-cells, natural killers, macrophages, dendritic cells, and more — patrol the tissue, recognize threats, and mount coordinated attacks
+- 🩸 **Blood vessels** deliver glucose through angiogenesis driven by VEGF signaling from the tumor
+- 💊 **Treatments** (immunotherapy, targeted therapy, or both) shift the balance by unleashing the immune system or starving the tumor
+
+Every simulation ends in one of two outcomes:
+
+| Outcome | Condition |
+|---------|-----------|
+| ✅ **Survival** | The immune system eliminates all tumor cells before critical mass |
+| ❌ **Tumor Progression** | The tumor grows beyond 2,000 cells, overwhelming immune defenses |
+
+The model captures **sex-stratified hormone effects**, **BMI-dependent immune modulation**, and **glucose competition** — making it a rich tool for exploring patient-specific cancer dynamics.
+
+---
+
+## ✨ Features
+
+- 🧫 **18 biologically distinct cell types** with individualized behavior rules
+- 🌐 **3D spatial simulation** on a shared grid with multi-occupancy and sticky borders
+- 🍬 **Glucose field** with diffusion, vascular sourcing, and competitive consumption (Warburg effect)
+- 💉 **4 treatment modes**: None, ICI (immunotherapy), TKI (anti-angiogenic), and ICI+TKI combination
+- ⚤ **Sex-hormone dynamics** — estrogen and testosterone modulate immune and tumor behavior
+- 📊 **Interactive Streamlit dashboard** with real-time charts, run history, and parameter tuning
+- 🔬 **80+ tunable weight parameters** for fine-grained biological calibration
+- 🎲 **Reproducible results** via configurable random seeds
+- 📦 **YAML-driven configuration** with CLI overrides for scriptable experiments
+- 🧠 **Bayesian parameter optimization** support via Optuna integration
+- 🖥️ **MPI-ready** through Repast4Py for scalable execution
+
+---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
+You need **Python 3.10+** and an **MPI** implementation:
+
 ```bash
-# Install system dependencies (Ubuntu/Debian)
+# Ubuntu / Debian
 sudo apt install python3-dev libopenmpi-dev
 
-# Or on macOS with Homebrew
+# macOS (Homebrew)
 brew install open-mpi
 ```
 
-### Installation
+### Install
 
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd rcc_repast4py
+git clone https://github.com/Samuele95/rcc-renal-cell-carcinoma-simulator.git
+cd rcc-renal-cell-carcinoma-simulator
 
-# Install Python dependencies  
-pip install -r requirements.txt
+# Option A: Automated installer (recommended)
+bash install.sh
 
-# Alternative: Create virtual environment
-python3 -m venv .venv
-source .venv/bin/activate
+# Option B: Manual
+python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Usage Options
+### Run
 
-#### 1. 🖥️ Web UI (Recommended)
 ```bash
-# Launch the Streamlit web interface
+# Launch the web UI
 python run.py --ui
 
-# Or directly:
-streamlit run ui/app.py
-```
-Then open your browser to http://localhost:8501
-
-#### 2. 🔧 Command Line
-```bash
-# Run with defaults
-mpirun -n 1 python run.py
-
-# Customize parameters
-mpirun -n 1 python run.py --sex M --bmi 28 --treatment ICI --max-steps 300
-
-# Use custom config file
-mpirun -n 1 python run.py --config my_config.yaml --plot
+# Or run a simulation from the command line
+mpirun -n 1 python run.py --sex F --bmi 22 --treatment ICI+TKI --plot
 ```
 
-#### 3. ⚙️ Configuration File
+---
+
+## 🖥️ Web UI
+
+Launch the full-featured Streamlit dashboard with `python run.py --ui` or `streamlit run ui/app.py`, then open http://localhost:8501.
+
+The interface is organized into **8 pages**:
+
+| Page | Description |
+|------|-------------|
+| 🏠 **Home** | Project overview and quick-start guidance |
+| ⚙️ **Configure** | Set patient parameters, treatment, and advanced weights — with YAML import, search, and diff-from-default |
+| ▶️ **Run** | Launch simulations with real-time progress, cancel support, and completion notifications |
+| 📊 **Results** | Interactive Plotly charts for population dynamics, kill-rate derivatives, glucose levels, and outcome analysis |
+| 📜 **History** | Compare past runs side-by-side — population curves, glucose traces, and notes/tagging |
+| 🌍 **Environment** | 3D environment snapshots and spatial cell distribution |
+| 📖 **About** | Scientific methods, model description, and literature references |
+| 🍬 **Glucose** | Dedicated glucose metabolism analysis and diffusion visualization |
+
+---
+
+## 📊 Results Gallery
+
+### Treatment Comparison — Tumor Growth by Sex and Treatment
+
+<div align="center">
+<img src="docs/images/scenario_comparison_tumor.png" alt="Tumor growth curves across 8 treatment-sex scenarios" width="85%">
+</div>
+
+> *Tumor cell count over 300 simulation steps for all treatment-sex combinations. Untreated males (solid red) progress rapidly past the 2,000-cell threshold, while combination therapy (ICI+TKI) controls tumor growth in both sexes.*
+
+### Survival Rates by Scenario
+
+<div align="center">
+<img src="docs/images/empirical_survival_rate.png" alt="Bar chart of survival rates across treatment scenarios" width="85%">
+</div>
+
+> *Survival rates across 20 random seeds per scenario. Combination therapy (ICI+TKI) achieves the highest survival rates (55–65%), while untreated males survive in only 30% of simulations.*
+
+### Sex-Stratified Treatment Analysis
+
+<div align="center">
+<img src="docs/images/sex_stratified_results.png" alt="Four-panel analysis of sex differences in treatment response" width="85%">
+</div>
+
+> *Four-panel analysis: survival rates, median survival time, treatment benefit over control, and outcome distribution by sex — revealing consistent female advantage across all treatment arms.*
+
+### Treatment Response Profiles & Mechanism Timeline
+
+<div align="center">
+<img src="docs/images/treatment_timeline.png" alt="Treatment response curves and mechanism timeline" width="70%">
+</div>
+
+> *Top: tumor cell trajectories under each treatment (log scale). Bottom: mechanism timeline showing how ICI and TKI effects unfold over time after treatment initiation.*
+
+### 3D Glucose Field Visualization
+
+<div align="center">
+<img src="docs/images/glucose_field_3d.png" alt="3D glucose field surface, contour map, and gradient vectors" width="85%">
+</div>
+
+> *Left: 3D surface plot of glucose concentration with peaks at blood vessel locations. Center: contour map showing tumor cells (black squares) in glucose-rich regions. Right: gradient vector field driving immune cell chemotaxis.*
+
+### Immune Kill Distribution
+
+<div align="center">
+<img src="docs/images/kill_distribution.png" alt="Kill distribution by immune cell type" width="75%">
+</div>
+
+> *Average kills per simulation by immune cell type. CD8+ cytotoxic T-cells are the dominant tumor killers (45 kills/sim), followed by NK cells (25) and M1 macrophages (15).*
+
+---
+
+## 🔬 How It Works
+
+### Architecture Overview
+
+```mermaid
+block-beta
+    columns 1
+    block:agents["🧫 Agents — 18 Types (Tumor | T Cells | Innate Immune | Stromal)"]
+    end
+    block:subsystems["⚙️ Subsystems"]
+        Glucose DNA Effects Treatment Hormones Movement
+    end
+    block:core["🏗️ Core Model — RCCModel, Agent Factory, Spatial Index, Grid Utils"]
+    end
+    block:framework["📦 Framework — Repast4Py (SharedContext, SharedGrid, MPI Comm)"]
+    end
+    block:hardware["💻 Hardware — MPI + Multi-core CPUs"]
+    end
+
+    agents --> subsystems
+    subsystems --> core
+    core --> framework
+    framework --> hardware
+```
+
+### Simulation Step Pipeline
+
+Each time step executes this 13-stage pipeline:
+
+```mermaid
+flowchart TD
+    S1["📋 1. Collect Data"] --> S2{"🛑 2. Termination?"}
+    S2 -- "Yes" --> EXIT["❌ End Simulation"]
+    S2 -- "No" --> S3["🔄 3. Reset Immune Infiltration"]
+    S3 --> S4["⚡ 4. Apply Effects"]
+    S4 --> S5["💊 5. Treatment Step"]
+    S5 --> S6["⚤ 6. Sex Drift"]
+    S6 --> S7["🍬 7. Glucose Field Step"]
+    S7 --> S8["🩸 8. Manage Blood Vessels"]
+    S8 --> S9["🔍 9. Search Dimension"]
+    S9 --> S10["🎲 10. Shuffle & Step Agents"]
+    S10 --> S11["🚶 11. Deferred Movement"]
+    S11 --> S12["♀️♂️ 12. Spawn Hormones"]
+    S12 --> S13["➕ 13. Increment Step Counter"]
+    S13 -.-> S1
+
+    style EXIT fill:#ff6b6b,color:#fff
+```
+
+### The 18 Agent Types
+
+| Category | Agents | Role |
+|----------|--------|------|
+| **🔴 Tumor** | Tumor Cell | Proliferates, mutates, expresses PD-L1, consumes glucose voraciously |
+| **🔵 Adaptive Immunity** | CD8 Cytotoxic T-Cell, CD8 Naive T-Cell, CD4 Naive T-Cell, CD4 Th1, CD4 Th2, Regulatory T-Cell (Treg) | Antigen-specific killing, immune coordination, and suppression |
+| **🟢 Innate Immunity** | Natural Killer, Macrophage M1, Macrophage M2, Dendritic Cell, Plasmacytoid DC, Neutrophil, Mast Cell | Rapid response, phagocytosis, antigen presentation, inflammation |
+| **🟤 Microenvironment** | Adipocyte, Blood Vessel, Sex Hormone, Cytokine | Metabolic context, vascular supply, hormonal modulation, signaling |
+
+### Key Biological Mechanisms
+
+```mermaid
+flowchart LR
+    subgraph TME["Tumor Microenvironment"]
+        TC["🔴 Tumor Cell"]
+        BV["🩸 Blood Vessel"]
+        GF["🍬 Glucose Field"]
+        IC["🔵 Immune Cells"]
+        SH["⚤ Sex Hormones"]
+    end
+
+    TC -- "VEGF signaling" --> BV
+    BV -- "glucose injection" --> GF
+    GF -- "2-4x consumption\n(Warburg effect)" --> TC
+    GF -- "chemotaxis &\nenergy supply" --> IC
+    IC -- "cytotoxic killing" --> TC
+    TC -- "PD-L1 expression" -.-> IC
+    SH -- "modulates efficacy" --> IC
+    SH -- "modulates growth" --> TC
+```
+
+- **Warburg Effect** — Tumor cells consume glucose at 2–4x the rate of normal cells, creating local energy depletion that impairs immune function
+- **Glucose Diffusion** — A 3D diffusion field models glucose transport from blood vessels through tissue, with decay, consumption, and source terms at each step
+- **Immune Checkpoint (PD-1/PD-L1)** — Tumor cells upregulate PD-L1 to inhibit T-cell killing; ICI treatment blocks this pathway
+- **Angiogenesis** — Tumor-secreted VEGF drives new blood vessel formation; TKI treatment inhibits this process
+- **Sex-Hormone Modulation** — Estrogen and testosterone agents influence immune cell efficacy and tumor growth rates differently, reflecting known sex-based disparities in RCC outcomes
+- **BMI Effects** — Higher BMI increases adipocyte density and alters the hormonal and metabolic microenvironment
+
+---
+
+## 💊 Treatment Options
+
+| Treatment | Mechanism | Effect in Model |
+|-----------|-----------|-----------------|
+| **None** | No intervention (control) | Natural immune response only |
+| **ICI** (Immune Checkpoint Inhibitor) | Blocks PD-1/PD-L1 signaling | Restores T-cell cytotoxicity against PD-L1+ tumor cells |
+| **TKI** (Tyrosine Kinase Inhibitor) | Inhibits VEGF-driven angiogenesis | Reduces blood vessel formation, starving the tumor of glucose |
+| **ICI+TKI** | Combination therapy | Simultaneously unleashes immune attack and cuts tumor supply |
+
+Treatment begins at the configured `treatment_start` step, allowing observation of natural dynamics before intervention.
+
+---
+
+## ⚙️ Configuration
+
+All parameters are defined in YAML and organized into three sections:
+
+<details>
+<summary><b>model</b> — Simulation Parameters</summary>
+
 ```yaml
-# my_config.yaml
-patient:
-  sex: "F"
-  BMI: 25.0
-  treatment: "ICI+TKI" 
-  treatment_start: 50
+model:
+  volume: 0.0001        # Tissue volume in mL (determines 3D grid size)
+  block_size: 10        # Grid block size in micrometers
+  random_seed: 1        # RNG seed for reproducibility
+  max_steps: 500        # Maximum simulation steps
+```
+</details>
 
-simulation:
-  max_steps: 200
-  random_seed: 42
-  volume: 0.000008
+<details>
+<summary><b>patient</b> — Patient & Immune Profile</summary>
+
+```yaml
+patient:
+  sex: F                        # Patient sex (F or M)
+  BMI: 22.0                     # Body Mass Index
+  treatment: ICI+TKI            # Treatment: None, ICI, TKI, ICI+TKI
+  treatment_start: 100          # Step when treatment begins
+
+  # Immune cell concentrations (cells/mL)
+  ctc_concentration: 80000      # CD8 cytotoxic T-cells
+  nkl_concentration: 160000     # Natural killer cells
+  dc_concentration: 80000       # Dendritic cells
+  # ... 11 immune cell types total
+```
+</details>
+
+<details>
+<summary><b>glucose</b> — Metabolic Parameters</summary>
+
+```yaml
+glucose:
+  w_glucose_diffusion: 0.1             # Diffusion coefficient (< 1/6)
+  w_glucose_decay: 0.01                # Natural decay rate
+  w_glucose_source_rate: 5.0           # Blood vessel injection rate
+  w_glucose_tumor_consumption: 2.0     # Tumor consumption (Warburg)
+  w_glucose_immune_consumption: 0.5    # Immune cell consumption
+  w_glucose_growth_sensitivity: 1.0    # Tumor growth sensitivity
+  w_glucose_immune_sensitivity: 1.0    # Immune function sensitivity
+  w_glucose_chemotaxis_strength: 0.3   # Immune chemotaxis strength
+```
+</details>
+
+> **Tip:** Use the Web UI's **Configure** page to explore all 80+ weight parameters with search, reference ranges, and diff-from-default highlighting.
+
+---
+
+## 🔧 CLI Reference
+
+```
+usage: run.py [-h] [--config CONFIG] [--seed SEED] [--max-steps MAX_STEPS]
+              [--sex {F,M}] [--bmi BMI] [--treatment {None,ICI,TKI,ICI+TKI}]
+              [--treatment-start TREATMENT_START] [--volume VOLUME]
+              [--plot] [--progress N] [--quiet] [--snapshot N] [--ui]
 ```
 
-## 📊 Understanding Results
+| Flag | Default | Description |
+|------|---------|-------------|
+| `--config`, `-c` | `config/default_params.yaml` | Path to YAML configuration file |
+| `--seed` | from config | Random seed for reproducibility |
+| `--max-steps` | from config | Maximum number of simulation steps |
+| `--sex` | from config | Patient sex (`F` or `M`) |
+| `--bmi` | from config | Patient BMI (kg/m²) |
+| `--treatment` | from config | Treatment type: `None`, `ICI`, `TKI`, or `ICI+TKI` |
+| `--treatment-start` | from config | Step at which treatment begins |
+| `--volume` | from config | Simulated tissue volume in mL |
+| `--plot` | off | Generate Matplotlib plots after simulation |
+| `--progress N` | `50` | Print progress every N steps (0 to disable) |
+| `--quiet`, `-q` | off | Suppress all output except errors |
+| `--snapshot N` | `0` | Save environment snapshots every N steps |
+| `--ui` | off | Launch the Streamlit web interface |
 
-### Treatment Options
-- **None** — Natural immunity only (control)
-- **ICI** — Immunotherapy (blocks PD-1/PD-L1 checkpoints) 
-- **TKI** — Targeted therapy (cuts off tumor blood supply)
-- **ICI+TKI** — Combination therapy (strongest option)
+**Examples:**
 
-### Key Metrics
-- **Tumor Growth** — How fast the red mass expands
-- **Immune Kills** — Which cell types are most effective
-- **Glucose Levels** — Energy distribution in the tissue
-- **Cell Populations** — Balance of tumor vs immune cells over time
+```bash
+# Compare treatments for the same patient
+mpirun -n 1 python run.py --sex F --bmi 22 --treatment None  --seed 42
+mpirun -n 1 python run.py --sex F --bmi 22 --treatment ICI   --seed 42
+mpirun -n 1 python run.py --sex F --bmi 22 --treatment ICI+TKI --seed 42
 
-### 3D Visualization
-The simulator shows:
-- Red dots = Tumor cells
-- Blue/Purple dots = Immune cells  
-- Green dots = Blood vessels
-- The tissue can be rotated and zoomed in the 3D view
+# Study BMI effects on immunotherapy
+mpirun -n 1 python run.py --bmi 22 --treatment ICI --seed 1   # Normal
+mpirun -n 1 python run.py --bmi 28 --treatment ICI --seed 1   # Overweight
+mpirun -n 1 python run.py --bmi 35 --treatment ICI --seed 1   # Obese
+```
 
-## 🧬 Model Details
-
-### Cell Types (18 total)
-- **Tumor**: Cancerous cells that grow and divide
-- **CD8 T-cells**: Primary tumor killers
-- **NK cells**: Innate immune response
-- **Macrophages**: M1 (anti-tumor) vs M2 (pro-tumor)
-- **Dendritic cells**: Activate other immune cells
-- **Regulatory T-cells**: Suppress immune response
-- **Helper T-cells**: Coordinate immune response
-- **Neutrophils**: Early inflammatory response
-- **Mast cells**: Release inflammatory signals
-- **Adipocytes**: Fat cells (affect immune function)
-
-### Key Biological Processes
-- **Angiogenesis**: Tumor-driven blood vessel formation
-- **Glucose metabolism**: Warburg effect modeling
-- **Immune checkpoints**: PD-1/PD-L1 inhibition
-- **Sex hormone effects**: BMI and hormonal influences
-- **Cell movement**: Chemotaxis and random walk
-
-### Spatial Structure
-- 3D cubic grid (dimensions depend on tissue volume)
-- Each voxel can contain multiple cells
-- Glucose diffusion across neighboring voxels
-- Cell movement limited to adjacent voxels
-
-## 🔬 Research Applications
-
-This model is designed for:
-- **Treatment comparison**: Which therapy works best for which patient?
-- **Biomarker discovery**: What immune patterns predict success?
-- **Combination therapy**: How do ICI + TKI interact?
-- **Patient stratification**: BMI, sex, and immune status effects
-- **Educational demos**: Visualizing tumor-immune dynamics
+---
 
 ## 📁 Project Structure
 
 ```
 rcc_repast4py/
-├── README.md                    # This file
-├── run.py                       # CLI entry point
-├── requirements.txt             # Dependencies
+├── run.py                        # CLI entry point
+├── install.sh                    # Automated installer
+├── requirements.txt              # Python dependencies
+├── pyproject.toml                # PEP 621 project metadata
 ├── config/
-│   └── default_params.yaml     # Default simulation parameters
+│   └── default_params.yaml       # Default simulation parameters
 ├── src/
+│   ├── agents/                   # 18 cell-type agent classes
+│   │   ├── tumor_cell.py         #   Tumor cell (Warburg, PD-L1, division)
+│   │   ├── cd8_cytotoxic_t_cell.py  # Primary tumor killer
+│   │   ├── natural_killer.py     #   Innate immune killing
+│   │   ├── macrophage_m1.py      #   Anti-tumor macrophage
+│   │   └── ...                   #   (20 agent files total)
 │   ├── model/
-│   │   └── rcc_model.py        # Main simulation engine
-│   ├── agents/                  # Cell type definitions
-│   └── visualization/           # Plotting utilities
-├── ui/                          # Streamlit web interface
-│   ├── app.py                  # Main UI entry point
-│   ├── pages/                  # UI pages (home, configure, run, results, etc.)
-│   └── lib/                    # UI support functions
-├── logs/                        # Simulation outputs
-└── tests/                       # Unit tests
+│   │   ├── rcc_model.py          # Main simulation engine
+│   │   ├── observer.py           # Kill counts & CSV logger
+│   │   └── cell_adder.py         # Agent factory
+│   ├── parameters/               # Dataclass-based parameter sets
+│   ├── systems/                  # Glucose diffusion, DNA, effects, grid
+│   ├── treatments/               # ICI, TKI, combination therapy
+│   ├── learning/                 # Bayesian optimization (Optuna)
+│   └── visualization/            # Matplotlib plotting utilities
+├── ui/
+│   ├── app.py                    # Streamlit main entry point
+│   ├── pages/                    # 8 Streamlit pages (Home → Glucose)
+│   └── lib/                      # State, runner, charts, formatting
+├── tests/                        # Pytest test suite
+└── docs/                         # LaTeX thesis report & figures
 ```
 
-## 🎛️ Parameters
+---
 
-### Patient Parameters
-- `sex`: "F" or "M" (affects hormone levels)
-- `BMI`: Body mass index (higher BMI weakens immune response)
-- `treatment`: "None", "ICI", "TKI", or "ICI+TKI"
-- `treatment_start`: Step when treatment begins
+## 🧪 Testing
 
-### Simulation Parameters  
-- `max_steps`: Maximum simulation duration
-- `random_seed`: For reproducible results
-- `volume`: Tissue size in mL (affects grid dimensions)
-- Cell concentrations for 11 immune cell types
-- 80+ biological weight parameters for fine-tuning
-
-## 🧪 Examples
-
-### Compare Treatments
 ```bash
-# Female, BMI 22, no treatment
-mpirun -n 1 python run.py --sex F --bmi 22 --treatment None --seed 1
+# Run the full test suite
+pytest tests/ -v
 
-# Same patient with immunotherapy
-mpirun -n 1 python run.py --sex F --bmi 22 --treatment ICI --seed 1
+# With coverage report
+pytest tests/ --cov=src --cov-report=term-missing
 
-# Same patient with combination therapy  
-mpirun -n 1 python run.py --sex F --bmi 22 --treatment ICI+TKI --seed 1
+# Run a specific test
+pytest tests/test_glucose_field.py -v
 ```
 
-### Study BMI Effects
-```bash
-# Normal weight
-mpirun -n 1 python run.py --bmi 22 --treatment ICI --seed 1
+---
 
-# Overweight  
-mpirun -n 1 python run.py --bmi 28 --treatment ICI --seed 1
+## 📚 Citation
 
-# Obese
-mpirun -n 1 python run.py --bmi 35 --treatment ICI --seed 1
-```
-
-## 🐛 Troubleshooting
-
-### Import Errors
-```bash
-# If you see "ModuleNotFoundError: No module named 'mpi4py'"
-pip install mpi4py
-
-# If you see MPI compilation errors:
-# Ubuntu/Debian:
-sudo apt install libopenmpi-dev python3-dev
-
-# macOS:
-brew install open-mpi
-export MPICC=/opt/homebrew/bin/mpicc  # if needed
-```
-
-### Performance Issues
-- Use smaller tissue volumes for faster runs
-- Reduce `max_steps` for quicker testing
-- Disable snapshots (`--snapshot 0`) for speed
-- Use fewer immune cell types in custom configs
-
-### Memory Issues
-- Reduce grid dimensions by lowering `volume`
-- Increase system swap space
-- Run on a machine with more RAM
-
-## 📚 References
-
-1. **Repast4Py**: Agent-based modeling framework
-   - https://repast.github.io/repast4py.site/
-2. **Kidney Cancer Biology**: RCC tumor microenvironment  
-3. **Immunotherapy**: PD-1/PD-L1 checkpoint inhibition
-4. **Targeted Therapy**: Angiogenesis inhibition
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🎓 Citation
-
-If you use this simulator in research, please cite:
+If you use this simulator in your research, please cite:
 
 ```bibtex
-@software{rcc_simulation_2024,
-  title = {RCC Tumor Microenvironment Simulation},
-  author = {[Author Name]},
-  year = {2024},
-  url = {[Repository URL]}
+@software{stronati2025rcc,
+  title     = {RCC Renal Cell Carcinoma Simulator: An Agent-Based Model of the
+               Kidney Cancer Tumor Microenvironment},
+  author    = {Stronati, Samuele},
+  year      = {2025},
+  url       = {https://github.com/Samuele95/rcc-renal-cell-carcinoma-simulator},
+  license   = {MIT}
 }
 ```
 
 ---
 
-**For questions or support, please open an issue or contact [contact@email.com]**
+## 📄 License
+
+Copyright (c) 2025 **Samuele Stronati**. Released under the [MIT License](LICENSE).
+
+---
+
+## 📖 References
+
+1. Collier, N. T., Ozik, J., & Macal, C. M. (2020). **Repast4Py: A Python-based distributed agent-based modeling framework.** *Journal of Open Source Software.* https://repast.github.io/repast4py.site/
+
+2. Motzer, R. J., Jonasch, E., Agarwal, N., et al. (2022). **Kidney Cancer, Version 3.2022, NCCN Clinical Practice Guidelines in Oncology.** *Journal of the National Comprehensive Cancer Network, 20*(1), 71-90.
+
+3. Xu, W., Atkins, M. B., & McDermott, D. F. (2020). **Checkpoint inhibitor immunotherapy in kidney cancer.** *Nature Reviews Urology, 17*(3), 137-150.
+
+4. Choueiri, T. K., & Motzer, R. J. (2017). **Systemic therapy for metastatic renal-cell carcinoma.** *New England Journal of Medicine, 376*(4), 354-366.
+
+5. Warburg, O. (1956). **On the origin of cancer cells.** *Science, 123*(3191), 309-314.
+
+6. Hanahan, D., & Weinberg, R. A. (2011). **Hallmarks of cancer: The next generation.** *Cell, 144*(5), 646-674.
+
+7. Conti, I., & Bhatt, D. L. (2022). **Impact of sex and gender on immunotherapy outcomes.** *European Heart Journal, 43*(19), 1828-1830.
+
+---
+
+<div align="center">
+
+Made with 🔬 and ❤️ by [Samuele Stronati](https://github.com/Samuele95)
+
+</div>

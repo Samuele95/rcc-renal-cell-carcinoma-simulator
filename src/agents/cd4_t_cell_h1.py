@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """CD4+ Helper 1 T Cell — produces IFN-gamma, activates M1 macrophages and DCs."""
 from src.agents.t_cell import TCell
 from src.agents.agent_types import AgentType
@@ -5,18 +8,27 @@ from src.systems.effect import Effect
 
 
 class CD4Helper1TCell(TCell):
+    """CD4+ Th1 helper T cell promoting pro-inflammatory anti-tumor responses.
+
+    Produces IFN-gamma-like signals that recruit M1 macrophages and dendritic
+    cells, and emits a tumour apoptosis effect on neighboring tumor cells.
+    Proliferation is modulated by sex hormones (suppressed by estrogen).
+    """
+
     spawn_m1_chance = 0.01
     spawn_dc_chance = 0.01
     initial_proliferation_chance = 0.01
     my_tumour_apoptosis_effect = 1
 
     def __init__(self, local_id, rank, model, pos):
+        """Initialize a Th1 helper cell with proliferation and apoptosis effects."""
         super().__init__(local_id, AgentType.CD4_HELPER1_T_CELL, rank, model, pos)
         self.experienced_effects.th1_proliferation_effect += self.initial_proliferation_chance
         self.experienced_effects.t_activation_effect = self.initial_t_activation_effect
         self._cached_effect = Effect.create(tumour_apoptosis_effect=self.my_tumour_apoptosis_effect)
 
     def step(self):
+        """Proliferate, recruit M1 macrophages and DCs, and move towards tumor."""
         if self.base_step():
             return
 

@@ -1,0 +1,125 @@
+\chapter{Implementation}
+\label{ch:implementation}
+
+\epigraph{Programs must be written for people to read, and only incidentally for machines to execute.}{--- Harold Abelson}
+
+\lettrine[lines=2]{T}{his chapter} examines the architectural decisions, design patterns, and implementation strategies employed to translate the biological model described in preceding chapters into executable software. The discussion focuses on the engineering problems encountered during development and the design patterns used to address them, with particular attention to how computational constraints influenced biological model design.
+
+% ======================================================================
+\section{Framework Migration: Mesa to Repast4Py}
+\label{sec:framework-migration}
+
+\begin{figure}[htbp]
+\centering
+\adjustbox{max width=0.85\textwidth, max height=0.7\textheight}{\input{figures/architecture_overview.tex}}
+\caption{Software architecture overview of the RCC simulation system, showing the five-layer stack from hardware through the framework and core model to the biological subsystems and agent types.}
+\label{fig:architecture_overview}
+\end{figure}
+
+Figure~\ref{fig:architecture_overview} presents the overall software architecture of the simulation system, showing the five-layer stack from hardware through the framework and core model to the biological subsystems. The original RCC agent-based model was implemented in Mesa, a Python framework that provides a synchronous step-based scheduler, implicit spatial indexing, and single-process execution.  While Mesa's simplicity facilitated rapid prototyping, its single-threaded architecture imposed hard limits on grid size and agent population.  Repast4Py was selected as the target framework because it provides MPI-based distributed execution through the \texttt{SharedContext} and \texttt{SharedGrid} abstractions, enabling future scaling to multi-rank configurations without rewriting the simulation core.
+
+The migration required substantial restructuring.  Table~\ref{tab:porting-mapping} summarizes the key API correspondences between the two frameworks.  Three recurring architectural differences drove the majority of the porting effort.  First, Mesa agents inherit from a single \texttt{mesa.Agent} base class and receive their model reference automatically, whereas Repast4Py agents require explicit \texttt{(id, type, rank)} construction and maintain \texttt{uid} tuples for MPI-aware identity.  Second, Mesa stores agents in Python lists and provides built-in spatial queries, while Repast4Py's \texttt{SharedGrid} tracks positions but does not expose radius-based neighbor search, necessitating a custom spatial index (Section~\ref{sec:spatial-index}).  Third, class-level shared state---common in Mesa agents---had to be refactored into model-level instance attributes to avoid cross-rank inconsistencies in distributed execution.
+
+\begin{table}[htbp]
+\centering
+\caption{Key API mapping from Mesa to Repast4Py.}
+\label{tab:porting-mapping}
+\begin{tabular}{@{}p{6cm}p{7.5cm}@{}}
+\toprule
+\textbf{Mesa} & \textbf{Repast4Py} \\
+\midrule
+\texttt{mesa.Agent(model)} & \texttt{repast4py.core.Agent(id, type, rank)} \\
+\texttt{self.model.random} & \texttt{model.rng} (stdlib \texttt{random.Random}) \\
+{\small\texttt{self.model.grid.get\_neighbors()}} & {\small\texttt{grid\_utils.get\_neighbors\_3d(\allowbreak spatial\_index, ...)}} \\
+\texttt{isinstance(agent, TumorCell)} & \texttt{agent.uid[1] == AgentType.TUMOR\_CELL} \\
+\texttt{self.model.schedule.agents} & \texttt{model.\_all\_agents} \\
+\texttt{model.agents\_by\_type[Type]} & \texttt{model.get\_agents\_by\_type\_id(type\_id)} \\
+\texttt{TumorCell.blood\_source} (class var) & \texttt{model.tumor\_blood\_sources} \\
+\texttt{Cell.search\_dimension} (class var) & \texttt{model.cell\_search\_dimension} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Three design patterns structure the core simulation logic. The Command pattern governs agent movement: during each step, agents store their desired destination as a movement request (\texttt{\_desired\_pos}), and the model executes all requests in a single batch after the decision phase, preventing order-dependent artifacts. The Observer pattern decouples data collection from agent behavior through a dedicated observer that records population counts, glucose statistics, and kill tallies to CSV at each step's conclusion without introducing side effects. The Strategy pattern enables runtime selection of treatment modalities, where each treatment type implements a common \texttt{Drug} interface with a \texttt{step()} method, allowing new modalities to be added without modifying the simulation core.
+
+% ======================================================================
+\section{Simulation Orchestration}
+\label{sec:simulation-orchestration}
+
+The main simulation loop executes a fixed 13-step sequence (see Figure~\ref{fig:simulation_pipeline} in Chapter~\ref{ch:model_description}): data collection, termination check, effect application, treatment, glucose field updates, agent stepping, and deferred movement execution.  This ordering respects biological causality while preventing execution-order bias.
+
+\begin{figure}[htbp]
+\centering
+\adjustbox{max width=0.85\textwidth, max height=0.7\textheight}{\input{figures/model_architecture.tex}}
+\caption{Model architecture showing component relationships between the \texttt{RCCModel} class, agent hierarchy, biological subsystems, and data collection pipeline.}
+\label{fig:model_architecture}
+\end{figure}
+
+The codebase is organized into four layers (Figure~\ref{fig:model_architecture}).  Agent classes implement the 18 cell types described in Chapter~\ref{ch:model_description}, each encoding its own behavioral rules and effect production.  System modules---glucose field, DNA mutations, effect accumulation, and treatment---encapsulate the biological subsystems that operate on the agent population as a whole.  The \texttt{RCCModel} class orchestrates these components, directly managing \texttt{SharedContext}, \texttt{SharedGrid}, and agent lifecycle without framework inheritance.  A parameter management layer handles loading, serialization, and YAML export of the three-tier parameter hierarchy described in Chapter~\ref{ch:parameters}.
+
+% ======================================================================
+\section{Spatial Index}
+\label{sec:spatial-index}
+
+Repast4Py's \texttt{SharedGrid} provides position tracking and MPI-aware ghost-agent synchronization, but it does not expose spatial search functionality such as radius-based neighbor queries.  Agents can be placed on and moved within the grid, yet determining which agents occupy a given cell or its surroundings requires application-level bookkeeping.
+
+The implementation maintains a dictionary-based spatial index that maps each occupied coordinate tuple to a list of resident agents.  This design provides O(1) lookup time for any grid cell, which is essential given that neighbor queries occur multiple times per agent per step across thousands of agents.  The trade-off is that the index must be manually updated on every agent addition, removal, and movement: failure to synchronize the index with the grid constitutes a correctness bug rather than merely a performance issue.  Wrapper functions in the \texttt{grid\_utils} module encapsulate these updates to minimize the risk of desynchronization, and all agent lifecycle operations (spawning, death, movement) route through these wrappers rather than manipulating the grid directly.
+
+Neighborhood computation supports both Moore (26 neighbors in 3D) and von Neumann (6 neighbors) topologies at configurable radii.  Boundary checking is performed at each query to handle the grid's sticky-border semantics, where agents at edges see a reduced neighborhood rather than wrapping around.
+
+% ======================================================================
+\section{Glucose Field Implementation}
+\label{sec:glucose-field-impl}
+
+The \texttt{GlucoseField} class stores the concentration field as a 3D NumPy array with \texttt{float64} precision, initialized uniformly to~1.0.  Diffusion uses a 6-connected discrete Laplacian convolution via \param{scipy.\allowbreak ndimage.\allowbreak convolve} with \texttt{mode=\textquotesingle nearest\textquotesingle} for Neumann (zero-flux) boundary conditions.
+
+The implementation deliberately avoids Repast4Py's \texttt{Shared\-Value\-Layer} abstraction: while it provides MPI-aware field distribution, its API does not support the vectorized operations needed for efficient diffusion and gradient computation.  Using raw NumPy arrays instead provides both performance---a single \texttt{convolve} call updates the entire field---and debugging convenience, since the field can be inspected as a standard 3D array without framework indirection.
+
+Blood vessel source positions are cached at initialization and updated only when new vessels are created by angiogenesis, avoiding per-step iteration over all \texttt{Blood} agents.  Agent-level glucose consumption occurs within each agent's \texttt{step()} method by directly decrementing the field at the agent's grid position.  The class exposes aggregate statistics (mean, minimum, maximum, total concentration) that are recorded by the data collection observer at each step.
+
+% ======================================================================
+\section{Streamlit User Interface}
+\label{sec:streamlit-ui}
+
+The simulation is accompanied by a multi-page Streamlit application organized around four workflow phases. The \textbf{Configure} page presents all parameters in an editable form with YAML import/export, a search field, a defaults-diff toggle, and bounds validation. The \textbf{Run} page spawns the MPI-based simulation as a subprocess, displaying real-time progress with cancel and timeout controls, and stores run metadata upon completion. The \textbf{Results} page renders interactive Plotly charts covering tumor dynamics, glucose statistics, immune kill rates with derivative analysis, and population curves for all cell types. The \textbf{History} page supports multi-run comparison on shared axes, with free-text notes and categorical tags for organizing experimental campaigns.
+
+% ======================================================================
+\section{Testing and Correctness Verification}
+\label{sec:testing}
+
+Verification relies on three complementary strategies. Parameter bounds validation, enforced at both the UI and model initialization layers, catches configuration errors before they propagate. Single-step regression tests execute one simulation tick with a fixed random seed and compare agent counts, glucose field state, and kill tallies against known-good baselines, providing deterministic detection of behavioral changes introduced during refactoring. Finally, population trajectories from representative configurations are manually inspected for biological plausibility---tumor growth should exhibit initial exponential expansion followed by resource-limited plateau or immune-mediated regression---catching errors that produce numerically correct but biologically implausible behavior.
+
+% ======================================================================
+\section{Computational Performance}
+\label{sec:performance}
+
+A typical simulation run completes in 2--5 minutes on a single MPI rank executing on commodity hardware (Intel Core i7 processor, 32\,GB RAM).  The two primary computational bottlenecks are the glucose field update---which applies a 3D discrete Laplacian convolution via SciPy across the full grid volume at each step---and the agent stepping phase, in which each agent evaluates its neighborhood, computes state transitions, and registers movement requests.
+
+Memory usage scales as $O(L^3)$ for the glucose field, where $L$ is the linear grid dimension, plus $O(A)$ for agent state, where $A$ is the total number of active agents.  In practice, peak memory consumption remains below 2\,GB for the default grid size and typical agent populations.  The 160-simulation empirical study described in Chapter~\ref{ch:simulation-results} completed in approximately 8 hours of cumulative wall-clock time, with individual runs parallelized across available cores via independent process invocations.
+
+% ======================================================================
+\section{Entry Point and Execution}
+\label{sec:entry-point}
+
+The simulation is invoked via \texttt{mpirun -n 1 python run.py}, which initialises the MPI communicator, constructs the \texttt{RCCModel} with parameters loaded from YAML or command-line arguments, and enters Repast4Py's schedule runner loop. Figure~\ref{fig:simulation_lifecycle} illustrates the complete lifecycle from initialization through the iterative main loop to output.  The runner calls \texttt{model.step()} at each tick, which executes the 13-step sequence described in Chapter~\ref{ch:model_description}.  Upon termination, the model writes a final log entry containing the outcome classification (survival or death), the total number of steps completed, and aggregate statistics.
+
+\begin{figure}[htbp]
+\centering
+\adjustbox{max width=0.85\textwidth, max height=0.7\textheight}{\input{figures/simulation_lifecycle.tex}}
+\caption{Simulation lifecycle from initialization through the iterative main loop to output.  The lifecycle follows a deterministic sequence: parameter loading, agent spawning, and the 13-step main loop with termination checking at each iteration.}
+\label{fig:simulation_lifecycle}
+\end{figure}
+
+% ======================================================================
+\section{Design Trade-offs}
+\label{sec:design-tradeoffs}
+
+A recurring theme is the tension between correctness and performance. The dictionary-based spatial index must be manually synchronized with the \texttt{SharedGrid} on every agent lifecycle event, but its O(1) lookup is critical for throughput when thousands of agents each query their neighborhood multiple times per step. Routing all operations through dedicated \texttt{grid\_utils} wrapper functions converts this pervasive correctness risk into a localized maintenance burden.
+
+\begin{keyinsight}
+The dictionary-based spatial index exemplifies a fundamental correctness-vs-performance trade-off: manual synchronization with the \texttt{SharedGrid} on every agent lifecycle event risks desynchronization bugs, but the O(1) lookup it provides is essential for throughput when thousands of agents each query their neighborhood multiple times per step. Routing all operations through dedicated wrapper functions converts a pervasive correctness risk into a localized maintenance burden.
+\end{keyinsight}
+
+Similarly, raw NumPy arrays were chosen over Repast4Py's \texttt{Shared\-Value\-Layer} for the glucose field because a single \param{scipy.\allowbreak ndimage.\allowbreak convolve} call updates the entire 3D field in one operation, whereas the framework API would require per-cell iteration. This constrains the glucose subsystem to single-rank execution; multi-rank scaling would require domain-decomposed convolution with halo exchanges. The Streamlit UI spawns simulations as child processes to prevent MPI conflicts with Streamlit's event loop and to enable timeout enforcement and cancellation, at the cost of progress reporting via stdout parsing rather than direct state inspection.
+
+With the implementation architecture established, the next chapter describes the parameter hierarchy and the Bayesian optimization process used to calibrate the model against clinical data.

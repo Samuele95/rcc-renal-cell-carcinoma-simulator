@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Mast Cell — dual role in tumor microenvironment (pro/anti-tumorigenic)."""
 from src.agents.cell import Cell
 from src.agents.agent_types import AgentType
@@ -5,6 +8,14 @@ from src.systems.effect import Effect
 
 
 class MastCell(Cell):
+    """Mast cell with stochastic dual pro- and anti-tumorigenic roles.
+
+    Each mast cell randomly selects a subset of its possible effects at
+    creation (coin-flip per effect channel), reflecting the biological
+    heterogeneity of mast cell phenotypes in the tumor microenvironment.
+    Can recruit dendritic cells.
+    """
+
     my_angiogenesis_effect = 0.01
     my_macrophage_m1_mutation_effect = 0.01
     my_t_kill_rate_effect = -0.1
@@ -12,6 +23,7 @@ class MastCell(Cell):
     spawn_dc_chance = 0.01
 
     def __init__(self, local_id, rank, model, pos):
+        """Initialize a mast cell with randomly selected effect channels."""
         super().__init__(local_id, AgentType.MAST_CELL, rank, model, pos)
         wp = self.model.weight_params
         rng = self.model.rng
@@ -25,6 +37,7 @@ class MastCell(Cell):
         )
 
     def step(self):
+        """Consume glucose, potentially spawn dendritic cells, and move towards tumor."""
         if self.base_step():
             return
 

@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Base Cell class for all agents in the RCC model.
 
 Ported from Mesa to Repast4Py. Inherits repast4py.core.Agent.

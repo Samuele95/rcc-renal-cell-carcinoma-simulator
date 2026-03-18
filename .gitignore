@@ -23,6 +23,25 @@ env/
 logs/
 plots/
 
+# Backups
+.venv_py313_backup/
+logs_backup/
+
+# Logs
+*.log
+
+# LaTeX build artifacts
+docs/report/*.aux
+docs/report/*.bbl
+docs/report/*.blg
+docs/report/*.out
+docs/report/*.toc
+docs/report/*.lof
+docs/report/*.lot
+docs/report/*.fdb_latexmk
+docs/report/*.fls
+docs/report/*.synctex.gz
+
 # OS
 .DS_Store
 Thumbs.db

@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Glucose Field Visualization — 3D and 2D views of energy distribution in tissue."""
 
 from pathlib import Path
@@ -111,6 +114,7 @@ with info_col:
 
 @st.cache_data(show_spinner="Loading snapshot data...")
 def load_glucose_data(run_dir: str, step: int):
+    """Load and cache agents, glucose array, and grid dimensions for a step."""
     snapshot = load_snapshot(run_dir, step)
     if not snapshot:
         return None, None, None
@@ -222,6 +226,7 @@ if z_slice is not None:
 # Create 3D visualization
 @st.cache_data(show_spinner="Generating 3D visualization...")
 def create_glucose_3d(agents, glucose, grid_dims, show_cells, cell_size, glucose_slices, glucose_threshold, glucose_opacity):
+    """Build a 3D Plotly figure with glucose isosurface and optional cell scatter."""
     # Filter agents if showing cells
     visible_agents = agents if show_cells else np.array([]).reshape(0, 4)
     
@@ -297,6 +302,7 @@ slice_pos = st.slider(f"Slice position along {axis_name[-1]} axis", 0, max_slice
 # Create 2D slice
 @st.cache_data(show_spinner="Creating 2D slice...")
 def create_glucose_2d(glucose, slice_axis, slice_pos, view_axis):
+    """Create a 2D heatmap of a glucose cross-section along the chosen axis."""
     # Extract 2D slice
     if slice_axis == 0:  # YZ view
         slice_2d = glucose[slice_pos, :, :]

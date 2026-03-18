@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.6)  17 MAR 2026 01:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.6)  18 MAR 2026 00:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,10 +6,19 @@ entering extended mode
 (./main.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
-(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
-Document Class: report 2023/05/17 v1.4n Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
-File: size12.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
+(./unicam_thesis.cls
+Document Class: unicam_thesis 2010/06/30 - LaTeX class for composing thesis at 
+University of Camerino - School of Science and Technologies
+*************************************************************************
+****** Document Class 'unicam_thesis' <June 30, 2010> *******************
+****** Please report bugs, comments, suggestions, and improvements ******
+****** to Andrea Polini <andrea.polini@unicam.it> ***********************
+****** or Francesco De Angelis <francesco.deangelis@unicam.it> **********
+*************************************************************************
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2023/05/17 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/bk11.clo
+File: bk11.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count187
 \c@chapter=\count188
@@ -24,130 +33,40 @@ File: size12.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 \belowcaptionskip=\skip49
 \bibindent=\dimen140
 )
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-Package: inputenc 2021/02/14 v1.3d Input encoding file
-\inpenc@prehook=\toks17
-\inpenc@posthook=\toks18
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/palatino.sty
-Package: palatino 2020/03/25 PSNFSS-v9.3 (SPQR) 
-)
-(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2024/01/07 v24.1 The Babel package
-\babel@savecnt=\count196
-\U@D=\dimen141
-\l@unhyphenated=\language5
-
-(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
-\bbl@readstream=\read2
-\bbl@dirlevel=\count197
-
-(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
-Language: english 2017/06/06 v3.3r English support from the babel system
-Package babel Info: Hyphen rules for 'british' set to \l@english
-(babel)             (\language0). Reported on input line 82.
-Package babel Info: Hyphen rules for 'UKenglish' set to \l@english
-(babel)             (\language0). Reported on input line 83.
-Package babel Info: Hyphen rules for 'canadian' set to \l@english
-(babel)             (\language0). Reported on input line 102.
-Package babel Info: Hyphen rules for 'australian' set to \l@english
-(babel)             (\language0). Reported on input line 105.
-Package babel Info: Hyphen rules for 'newzealand' set to \l@english
-(babel)             (\language0). Reported on input line 108.
-))
-(/usr/share/texlive/texmf-dist/tex/generic/babel/locale/en/babel-english.tex
-Package babel Info: Importing font and identification data for english
-(babel)             from babel-en.ini. Reported on input line 11.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2023/05/13 v2.17o AMS math features
-\@mathmargin=\skip50
-
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-Package: amstext 2021/08/26 v2.01 AMS text
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
-File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks19
-\ex@=\dimen142
-))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
-Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen143
-)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
-Package: amsopn 2022/04/08 v2.04 operator names
-)
-\inf@bad=\count198
-LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count199
-\leftroot@=\count266
-LaTeX Info: Redefining \overline on input line 399.
-LaTeX Info: Redefining \colon on input line 410.
-\classnum@=\count267
-\DOTSCASE@=\count268
-LaTeX Info: Redefining \ldots on input line 496.
-LaTeX Info: Redefining \dots on input line 499.
-LaTeX Info: Redefining \cdots on input line 620.
-\Mathstrutbox@=\box51
-\strutbox@=\box52
-LaTeX Info: Redefining \big on input line 722.
-LaTeX Info: Redefining \Big on input line 723.
-LaTeX Info: Redefining \bigg on input line 724.
-LaTeX Info: Redefining \Bigg on input line 725.
-\big@size=\dimen144
-LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count269
-LaTeX Info: Redefining \bmod on input line 905.
-LaTeX Info: Redefining \pmod on input line 910.
-LaTeX Info: Redefining \smash on input line 940.
-LaTeX Info: Redefining \relbar on input line 970.
-LaTeX Info: Redefining \Relbar on input line 971.
-\c@MaxMatrixCols=\count270
-\dotsspace@=\muskip16
-\c@parentequation=\count271
-\dspbrk@lvl=\count272
-\tag@help=\toks20
-\row@=\count273
-\column@=\count274
-\maxfields@=\count275
-\andhelp@=\toks21
-\eqnshift@=\dimen145
-\alignsep@=\dimen146
-\tagshift@=\dimen147
-\tagwidth@=\dimen148
-\totwidth@=\dimen149
-\lineht@=\dimen150
-\@envbody=\toks22
-\multlinegap=\skip51
-\multlinetaggap=\skip52
-\mathdisplay@stack=\toks23
-LaTeX Info: Redefining \[ on input line 2953.
-LaTeX Info: Redefining \] on input line 2954.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-Package: amssymb 2013/01/14 v3.01 AMS font symbols
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
-Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\symAMSa=\mathgroup4
-\symAMSb=\mathgroup5
-LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
-LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
-(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-))
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks24
+\KV@toks@=\toks17
 )
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+))
+\Gm@cnth=\count196
+\Gm@cntv=\count197
+\c@Gm@tempcnt=\count198
+\Gm@bindingoffset=\dimen141
+\Gm@wd@mp=\dimen142
+\Gm@odd@mp=\dimen143
+\Gm@even@mp=\dimen144
+\Gm@layoutwidth=\dimen145
+\Gm@layoutheight=\dimen146
+\Gm@layouthoffset=\dimen147
+\Gm@layoutvoffset=\dimen148
+\Gm@dimlist=\toks18
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks19
+\inpenc@posthook=\toks20
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
 
@@ -162,54 +81,138 @@ Package graphics Info: Driver file: pdftex.def on input line 107.
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen151
-\Gin@req@width=\dimen152
+\Gin@req@height=\dimen149
+\Gin@req@width=\dimen150
 )
-(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
-Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen153
-\lightrulewidth=\dimen154
-\cmidrulewidth=\dimen155
-\belowrulesep=\dimen156
-\belowbottomsep=\dimen157
-\aboverulesep=\dimen158
-\abovetopsep=\dimen159
-\cmidrulesep=\dimen160
-\cmidrulekern=\dimen161
-\defaultaddspace=\dimen162
-\@cmidla=\count276
-\@cmidlb=\count277
-\@aboverulesep=\dimen163
-\@belowrulesep=\dimen164
-\@thisruleclass=\count278
-\@lastruleclass=\count279
-\@thisrulewidth=\dimen165
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty
+Package: makeidx 2021/10/04 v1.0m Standard LaTeX package
 )
-(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
-Package: longtable 2023-11-01 v4.19 Multi-page Table package (DPC)
-\LTleft=\skip53
-\LTright=\skip54
-\LTpre=\skip55
-\LTpost=\skip56
-\LTchunksize=\count280
-\LTcapwidth=\dimen166
-\LT@head=\box53
-\LT@firsthead=\box54
-\LT@foot=\box55
-\LT@lastfoot=\box56
-\LT@gbox=\box57
-\LT@cols=\count281
-\LT@rows=\count282
-\c@LT@tables=\count283
-\c@LT@chunks=\count284
-\LT@p@ftn=\toks25
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen151
+\WF@size=\dimen152
+\c@WF@wrappedlines=\count199
+\WF@box=\box51
+\WF@everypar=\toks21
+Package: wrapfig 2003/01/31  v 3.6
+)
+(/usr/share/texlive/texmf-dist/tex/latex/arydshln/arydshln.sty
+Package: arydshln 2019/02/21 v1.76 
+\dashlinedash=\dimen153
+\dashlinegap=\dimen154
+\adl@box=\box52
+\adl@height=\dimen155
+\adl@heightsave=\dimen156
+\adl@depth=\dimen157
+\adl@depthsave=\dimen158
+\adl@finaldepth=\dimen159
+\adl@columns=\count266
+\adl@ncol=\count267
+\adl@currentcolumn=\count268
+\adl@currentcolumnsave=\count269
+\adl@totalheight=\count270
+\adl@totalheightsave=\count271
+\adl@dash=\count272
+\adl@gap=\count273
+\adl@cla=\count274
+\adl@clb=\count275
+\adl@everyvbox=\toks22
+\adl@LTpagetotal=\dimen160
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks23
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2023/05/13 v2.17o AMS math features
+\@mathmargin=\skip50
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks24
+\ex@=\dimen161
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen162
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count276
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count277
+\leftroot@=\count278
+LaTeX Info: Redefining \overline on input line 399.
+LaTeX Info: Redefining \colon on input line 410.
+\classnum@=\count279
+\DOTSCASE@=\count280
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box53
+\strutbox@=\box54
+LaTeX Info: Redefining \big on input line 722.
+LaTeX Info: Redefining \Big on input line 723.
+LaTeX Info: Redefining \bigg on input line 724.
+LaTeX Info: Redefining \Bigg on input line 725.
+\big@size=\dimen163
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count281
+LaTeX Info: Redefining \bmod on input line 905.
+LaTeX Info: Redefining \pmod on input line 910.
+LaTeX Info: Redefining \smash on input line 940.
+LaTeX Info: Redefining \relbar on input line 970.
+LaTeX Info: Redefining \Relbar on input line 971.
+\c@MaxMatrixCols=\count282
+\dotsspace@=\muskip16
+\c@parentequation=\count283
+\dspbrk@lvl=\count284
+\tag@help=\toks25
+\row@=\count285
+\column@=\count286
+\maxfields@=\count287
+\andhelp@=\toks26
+\eqnshift@=\dimen164
+\alignsep@=\dimen165
+\tagshift@=\dimen166
+\tagwidth@=\dimen167
+\totwidth@=\dimen168
+\lineht@=\dimen169
+\@envbody=\toks27
+\multlinegap=\skip51
+\multlinetaggap=\skip52
+\mathdisplay@stack=\toks28
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks29
+\thm@bodyfont=\toks30
+\thm@headfont=\toks31
+\thm@notefont=\toks32
+\thm@headpunct=\toks33
+\thm@preskip=\skip53
+\thm@postskip=\skip54
+\thm@headsep=\skip55
+\dth@everypar=\toks34
 )
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2024-01-20 v7.01h Hypertext links for LaTeX
 
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2022/02/03 v1.0f TeX engine tests
-)
 (/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 )
@@ -251,15 +254,15 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 (/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count285
+\c@section@level=\count288
 )
 (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count286
+\etb@tempcnta=\count289
 )
-\@linkdim=\dimen167
-\Hy@linkcounter=\count287
-\Hy@pagecounter=\count288
+\@linkdim=\dimen170
+\Hy@linkcounter=\count290
+\Hy@pagecounter=\count291
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2024-01-20 v7.01h Hyperref: PDFDocEncoding definition (HO)
@@ -269,13 +272,15 @@ Now handling font encoding PD1 ...
 (/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count289
+\Hy@SavedSpaceFactor=\count292
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2024-01-20 v7.01h Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
+Package hyperref Info: Option `bookmarks' set `true' on input line 4062.
+Package hyperref Info: Option `colorlinks' set `true' on input line 4062.
 Package hyperref Info: Hyper figures OFF on input line 4179.
 Package hyperref Info: Link nesting OFF on input line 4184.
 Package hyperref Info: Hyper index ON on input line 4187.
@@ -283,14 +288,14 @@ Package hyperref Info: Plain pages OFF on input line 4194.
 Package hyperref Info: Backreferencing OFF on input line 4199.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4446.
-\c@Hy@tempcnt=\count290
+\c@Hy@tempcnt=\count293
 
 (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4784.
-\XeTeXLinkMargin=\dimen168
+\XeTeXLinkMargin=\dimen171
 
 (/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -299,14 +304,14 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count291
-\Field@Width=\dimen169
-\Fld@charsize=\dimen170
+\Fld@menulength=\count294
+\Field@Width=\dimen172
+\Fld@charsize=\dimen173
 Package hyperref Info: Hyper figures OFF on input line 6063.
 Package hyperref Info: Link nesting OFF on input line 6068.
 Package hyperref Info: Hyper index ON on input line 6071.
 Package hyperref Info: backreferencing OFF on input line 6078.
-Package hyperref Info: Link coloring OFF on input line 6083.
+Package hyperref Info: Link coloring ON on input line 6081.
 Package hyperref Info: Link coloring with OCG OFF on input line 6088.
 Package hyperref Info: PDF/A mode OFF on input line 6093.
 
@@ -314,9 +319,9 @@ Package hyperref Info: PDF/A mode OFF on input line 6093.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count292
-\c@Item=\count293
-\c@Hfootnote=\count294
+\Hy@abspage=\count295
+\c@Item=\count296
+\c@Hfootnote=\count297
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
@@ -328,8 +333,8 @@ Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
 kage
 with kernel methods
 )
-\Fld@listcount=\count295
-\c@bookmark@seq@number=\count296
+\Fld@listcount=\count298
+\c@bookmark@seq@number=\count299
 
 (/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
@@ -340,129 +345,204 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 85.
 )
-\Hy@SectionHShift=\skip57
+\Hy@SectionHShift=\skip56
 )
-(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count297
-\lst@gtempboxa=\box58
-\lst@token=\toks26
-\lst@length=\count298
-\lst@currlwidth=\dimen171
-\lst@column=\count299
-\lst@pos=\count300
-\lst@lostspace=\dimen172
-\lst@width=\dimen173
-\lst@newlines=\count301
-\lst@lineno=\count302
-\lst@maxwidth=\dimen174
-
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
-\c@lstnumber=\count303
-\lst@skipnumbers=\count304
-\lst@framebox=\box59
-)
-(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2023/02/27 1.9 listings configuration
-))
-Package: listings 2023/02/27 1.9 (Carsten Heinz)
-
-(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
-)
-Package xcolor Info: Driver file: pdftex.def on input line 274.
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx)
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
-Package xcolor Info: Model `RGB' extended on input line 1366.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
-Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
+(/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen175
-\captionmargin=\dimen176
-\caption@leftmargin=\dimen177
-\caption@rightmargin=\dimen178
-\caption@width=\dimen179
-\caption@indent=\dimen180
-\caption@parindent=\dimen181
-\caption@hangindent=\dimen182
+\caption@tempdima=\dimen174
+\captionmargin=\dimen175
+\caption@leftmargin=\dimen176
+\caption@rightmargin=\dimen177
+\caption@width=\dimen178
+\caption@indent=\dimen179
+\caption@parindent=\dimen180
+\caption@hangindent=\dimen181
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count305
-\c@continuedfloat=\count306
+\c@caption@flags=\count300
+\c@continuedfloat=\count301
 Package caption Info: hyperref package is loaded.
-Package caption Info: listings package is loaded.
-Package caption Info: longtable package is loaded.
+Package caption Info: wrapfig package is loaded.
+)
+\c@KVtest=\count302
+\sf@farskip=\skip57
+\sf@captopadj=\dimen182
+\sf@capskip=\skip58
+\sf@nearskip=\skip59
+\c@subfigure=\count303
+\c@subfigure@save=\count304
+\c@lofdepth=\count305
+\c@subtable=\count306
+\c@subtable@save=\count307
+\c@lotdepth=\count308
+\sf@top=\skip60
+\sf@bottom=\skip61
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen183
+\ar@mcellbox=\box55
+\extrarowheight=\dimen184
+\NC@list=\toks35
+\extratabsurround=\skip62
+\backup@length=\skip63
+\ar@cellbox=\box56
+)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty
+Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
 
-(/usr/share/texlive/texmf-dist/tex/latex/caption/ltcaption.sty
-Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+\f@nch@headwidth=\skip64
+\f@nch@O@elh=\skip65
+\f@nch@O@erh=\skip66
+\f@nch@O@olh=\skip67
+\f@nch@O@orh=\skip68
+\f@nch@O@elf=\skip69
+\f@nch@O@erf=\skip70
+\f@nch@O@olf=\skip71
+\f@nch@O@orf=\skip72
+)
+\@indexfile=\write3
+\openout3 = `main.idx'.
+
+
+Writing index file main.idx
+(/usr/share/texlive/texmf-dist/tex/latex/tools/varioref.sty
+Package: varioref 2022/01/09 v1.6f package for extended references (FMi)
+\c@vrcnt=\count309
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2024/01/07 v24.1 The Babel package
+\babel@savecnt=\count310
+\U@D=\dimen185
+\l@unhyphenated=\language5
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count311
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: Hyphen rules for 'british' set to \l@english
+(babel)             (\language0). Reported on input line 82.
+Package babel Info: Hyphen rules for 'UKenglish' set to \l@english
+(babel)             (\language0). Reported on input line 83.
+Package babel Info: Hyphen rules for 'canadian' set to \l@english
+(babel)             (\language0). Reported on input line 102.
+Package babel Info: Hyphen rules for 'australian' set to \l@english
+(babel)             (\language0). Reported on input line 105.
+Package babel Info: Hyphen rules for 'newzealand' set to \l@english
+(babel)             (\language0). Reported on input line 108.
 ))
-Package caption Info: New subtype `subfigure' on input line 238.
-\c@subfigure=\count307
-Package caption Info: New subtype `subtable' on input line 238.
-\c@subtable=\count308
+(/usr/share/texlive/texmf-dist/tex/generic/babel/locale/en/babel-english.tex
+Package babel Info: Importing font and identification data for english
+(babel)             from babel-en.ini. Reported on input line 11.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2022/06/20 v1.0f Color table columns (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2022/01/06 v1.3d Standard LaTeX Color (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 149.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+\everycr=\toks36
+\minrowclearance=\skip73
+\rownum=\count312
+)
+(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip74
+\bibsep=\skip75
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count313
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count314
+\lst@gtempboxa=\box57
+\lst@token=\toks37
+\lst@length=\count315
+\lst@currlwidth=\dimen186
+\lst@column=\count316
+\lst@pos=\count317
+\lst@lostspace=\dimen187
+\lst@width=\dimen188
+\lst@newlines=\count318
+\lst@lineno=\count319
+\lst@maxwidth=\dimen189
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
+\c@lstnumber=\count320
+\lst@skipnumbers=\count321
+\lst@framebox=\box58
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2023/02/27 1.9 listings configuration
+))
+Package: listings 2023/02/27 1.9 (Carsten Heinz)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen190
+\lightrulewidth=\dimen191
+\cmidrulewidth=\dimen192
+\belowrulesep=\dimen193
+\belowbottomsep=\dimen194
+\aboverulesep=\dimen195
+\abovetopsep=\dimen196
+\cmidrulesep=\dimen197
+\cmidrulekern=\dimen198
+\defaultaddspace=\dimen199
+\@cmidla=\count322
+\@cmidlb=\count323
+\@aboverulesep=\dimen256
+\@belowrulesep=\dimen257
+\@thisruleclass=\count324
+\@lastruleclass=\count325
+\@thisrulewidth=\dimen258
 )
 (/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
-\multirow@colwidth=\skip58
-\multirow@cntb=\count309
-\multirow@dima=\skip59
-\bigstrutjot=\dimen183
-)
-(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2020/01/02 v5.9 Page Geometry
-
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
-Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
-)
-\Gm@cnth=\count310
-\Gm@cntv=\count311
-\c@Gm@tempcnt=\count312
-\Gm@bindingoffset=\dimen184
-\Gm@wd@mp=\dimen185
-\Gm@odd@mp=\dimen186
-\Gm@even@mp=\dimen187
-\Gm@layoutwidth=\dimen188
-\Gm@layoutheight=\dimen189
-\Gm@layouthoffset=\dimen190
-\Gm@layoutvoffset=\dimen191
-\Gm@dimlist=\toks27
-)
-(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count313
-\float@exts=\toks28
-\float@box=\box60
-\@float@everytoks=\toks29
-\@floatcapt=\box61
+\multirow@colwidth=\skip76
+\multirow@cntb=\count326
+\multirow@dima=\skip77
+\bigstrutjot=\dimen259
 )
 (/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
-\labelindent=\skip60
-\enit@outerparindent=\dimen192
-\enit@toks=\toks30
-\enit@inbox=\box62
-\enit@count@id=\count314
-\enitdp@description=\count315
+\labelindent=\skip78
+\enit@outerparindent=\dimen260
+\enit@toks=\toks38
+\enit@inbox=\box59
+\enit@count@id=\count327
+\enitdp@description=\count328
 )
 (/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
+)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count329
+\float@exts=\toks39
+\float@box=\box60
+\@float@everytoks=\toks40
+\@floatcapt=\box61
 )
 (/usr/share/texlive/texmf-dist/tex/latex/epigraph/epigraph.sty
 Package: epigraph 2020/01/02 v1.5e typesetting epigraphs
@@ -470,21 +550,67 @@ Package: epigraph 2020/01/02 v1.5e typesetting epigraphs
 (/usr/share/texlive/texmf-dist/tex/latex/nextpage/nextpage.sty
 Package: nextpage 2009/09/03 v1.1a additional page commands
 )
-\beforeepigraphskip=\skip61
-\afterepigraphskip=\skip62
-\epigraphwidth=\skip63
-\epigraphrule=\skip64
+\beforeepigraphskip=\skip79
+\afterepigraphskip=\skip80
+\epigraphwidth=\skip81
+\epigraphrule=\skip82
+)
+(/usr/share/texlive/texmf-dist/tex/latex/lettrine/lettrine.sty
+File: lettrine.sty 2024-01-20 v2.60 (Daniel Flipo)
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xfp/xfp.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2024-01-22 L3 programming layer (loader) 
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count330
+\l__pdf_internal_box=\box62
+))
+Package: xfp 2023-10-10 L3 Floating point unit
+)
+\c@DefaultLines=\count331
+\c@DefaultDepth=\count332
+\DefaultFindent=\dimen261
+\DefaultNindent=\dimen262
+\DefaultSlope=\dimen263
+\DiscardVskip=\dimen264
+\L@lettrine=\box63
+\L@lbox=\box64
+\L@tbox=\box65
+\c@L@lines=\count333
+\c@L@depth=\count334
+\L@Pindent=\dimen265
+\L@Findent=\dimen266
+\L@Nindent=\dimen267
+\L@lraise=\dimen268
+\L@first=\dimen269
+\L@next=\dimen270
+\L@slope=\dimen271
+\L@height=\dimen272
+\L@novskip=\dimen273
+\L@ruleht=\dimen274
+\L@target@ht=\dimen275
+\L@target@dp=\dimen276
+\L@target@tht=\dimen277
+\LettrineWidth=\dimen278
+\LettrineHeight=\dimen279
+\LettrineDepth=\dimen280
+
+Loading lettrine.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/lettrine/lettrine.cfg)
+\Llist@everypar=\toks41
 )
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks31
-\pgfutil@tempdima=\dimen193
-\pgfutil@tempdimb=\dimen194
+\pgfutil@everybye=\toks42
+\pgfutil@tempdima=\dimen281
+\pgfutil@tempdimb=\dimen282
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box63
+\pgfutil@abb=\box66
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)
@@ -498,33 +624,33 @@ Package: pgf 2023-01-15 v3.1.10 (3.1.10)
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks32
-\pgfkeys@temptoks=\toks33
+\pgfkeys@pathtoks=\toks43
+\pgfkeys@temptoks=\toks44
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered
 .code.tex
-\pgfkeys@tmptoks=\toks34
+\pgfkeys@tmptoks=\toks45
 ))
-\pgf@x=\dimen195
-\pgf@y=\dimen196
-\pgf@xa=\dimen197
-\pgf@ya=\dimen198
-\pgf@xb=\dimen199
-\pgf@yb=\dimen256
-\pgf@xc=\dimen257
-\pgf@yc=\dimen258
-\pgf@xd=\dimen259
-\pgf@yd=\dimen260
-\w@pgf@writea=\write3
+\pgf@x=\dimen283
+\pgf@y=\dimen284
+\pgf@xa=\dimen285
+\pgf@ya=\dimen286
+\pgf@xb=\dimen287
+\pgf@yb=\dimen288
+\pgf@xc=\dimen289
+\pgf@yc=\dimen290
+\pgf@xd=\dimen291
+\pgf@yd=\dimen292
+\w@pgf@writea=\write4
 \r@pgf@reada=\read3
-\c@pgf@counta=\count316
-\c@pgf@countb=\count317
-\c@pgf@countc=\count318
-\c@pgf@countd=\count319
-\t@pgf@toka=\toks35
-\t@pgf@tokb=\toks36
-\t@pgf@tokc=\toks37
-\pgf@sys@id@count=\count320
+\c@pgf@counta=\count335
+\c@pgf@countb=\count336
+\c@pgf@countc=\count337
+\c@pgf@countd=\count338
+\t@pgf@toka=\toks46
+\t@pgf@tokb=\toks47
+\t@pgf@tokc=\toks48
+\pgf@sys@id@count=\count339
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
@@ -539,25 +665,44 @@ File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
 tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count321
-\pgfsyssoftpath@bigbuffer@items=\count322
+\pgfsyssoftpath@smallbuffer@items=\count340
+\pgfsyssoftpath@bigbuffer@items=\count341
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
 tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))
+)) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+LaTeX Info: Redefining \color on input line 758.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
+Package xcolor Info: Model `RGB' extended on input line 1366.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen261
-\pgfmath@count=\count323
-\pgfmath@box=\box64
-\pgfmath@toks=\toks38
-\pgfmath@stack@operand=\toks39
-\pgfmath@stack@operation=\toks40
+\pgfmath@dimen=\dimen293
+\pgfmath@count=\count342
+\pgfmath@box=\box67
+\pgfmath@toks=\toks49
+\pgfmath@stack@operand=\toks50
+\pgfmath@stack@operation=\toks51
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
@@ -578,58 +723,58 @@ tex)
 thmetics.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count324
+\c@pgfmathroundto@lastzeros=\count343
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
 x
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@picminx=\dimen262
-\pgf@picmaxx=\dimen263
-\pgf@picminy=\dimen264
-\pgf@picmaxy=\dimen265
-\pgf@pathminx=\dimen266
-\pgf@pathmaxx=\dimen267
-\pgf@pathminy=\dimen268
-\pgf@pathmaxy=\dimen269
-\pgf@xx=\dimen270
-\pgf@xy=\dimen271
-\pgf@yx=\dimen272
-\pgf@yy=\dimen273
-\pgf@zx=\dimen274
-\pgf@zy=\dimen275
+\pgf@picminx=\dimen294
+\pgf@picmaxx=\dimen295
+\pgf@picminy=\dimen296
+\pgf@picmaxy=\dimen297
+\pgf@pathminx=\dimen298
+\pgf@pathmaxx=\dimen299
+\pgf@pathminy=\dimen300
+\pgf@pathmaxy=\dimen301
+\pgf@xx=\dimen302
+\pgf@xy=\dimen303
+\pgf@yx=\dimen304
+\pgf@yy=\dimen305
+\pgf@zx=\dimen306
+\pgf@zy=\dimen307
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
 code.tex
 File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@path@lastx=\dimen276
-\pgf@path@lasty=\dimen277
+\pgf@path@lastx=\dimen308
+\pgf@path@lasty=\dimen309
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
 .tex
 File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@shorten@end@additional=\dimen278
-\pgf@shorten@start@additional=\dimen279
+\pgf@shorten@end@additional=\dimen310
+\pgf@shorten@start@additional=\dimen311
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
 x
 File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfpic=\box65
-\pgf@hbox=\box66
-\pgf@layerbox@main=\box67
-\pgf@picture@serial@count=\count325
+\pgfpic=\box68
+\pgf@hbox=\box69
+\pgf@layerbox@main=\box70
+\pgf@picture@serial@count=\count344
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
 ode.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgflinewidth=\dimen280
+\pgflinewidth=\dimen312
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
 s.code.tex
 File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@pt@x=\dimen281
-\pgf@pt@y=\dimen282
-\pgf@pt@temp=\dimen283
+\pgf@pt@x=\dimen313
+\pgf@pt@y=\dimen314
+\pgf@pt@temp=\dimen315
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
@@ -645,13 +790,13 @@ File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
 x
 File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowsep=\dimen284
+\pgfarrowsep=\dimen316
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@max=\dimen285
-\pgf@sys@shading@range@num=\count326
-\pgf@shadingcount=\count327
+\pgf@max=\dimen317
+\pgf@sys@shading@range@num=\count345
+\pgf@shadingcount=\count346
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
@@ -659,7 +804,7 @@ File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
 tex
 File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfexternal@startupbox=\box68
+\pgfexternal@startupbox=\box71
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
 x
@@ -678,15 +823,15 @@ File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfnodeparttextbox=\box69
+\pgfnodeparttextbox=\box72
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
 .sty
 Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
-\pgf@nodesepstart=\dimen286
-\pgf@nodesepend=\dimen287
+\pgf@nodesepstart=\dimen318
+\pgf@nodesepend=\dimen319
 )
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
 .sty
@@ -698,10 +843,10 @@ Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
-\pgffor@iter=\dimen288
-\pgffor@skip=\dimen289
-\pgffor@stack=\toks41
-\pgffor@toks=\toks42
+\pgffor@iter=\dimen320
+\pgffor@skip=\dimen321
+\pgffor@stack=\toks52
+\pgffor@toks=\toks53
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
@@ -709,33 +854,33 @@ Package: tikz 2023-01-15 v3.1.10 (3.1.10)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
 .code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count328
-\pgfplotmarksize=\dimen290
+\pgf@plot@mark@count=\count347
+\pgfplotmarksize=\dimen322
 )
-\tikz@lastx=\dimen291
-\tikz@lasty=\dimen292
-\tikz@lastxsaved=\dimen293
-\tikz@lastysaved=\dimen294
-\tikz@lastmovetox=\dimen295
-\tikz@lastmovetoy=\dimen296
-\tikzleveldistance=\dimen297
-\tikzsiblingdistance=\dimen298
-\tikz@figbox=\box70
-\tikz@figbox@bg=\box71
-\tikz@tempbox=\box72
-\tikz@tempbox@bg=\box73
-\tikztreelevel=\count329
-\tikznumberofchildren=\count330
-\tikznumberofcurrentchild=\count331
-\tikz@fig@count=\count332
+\tikz@lastx=\dimen323
+\tikz@lasty=\dimen324
+\tikz@lastxsaved=\dimen325
+\tikz@lastysaved=\dimen326
+\tikz@lastmovetox=\dimen327
+\tikz@lastmovetoy=\dimen328
+\tikzleveldistance=\dimen329
+\tikzsiblingdistance=\dimen330
+\tikz@figbox=\box73
+\tikz@figbox@bg=\box74
+\tikz@tempbox=\box75
+\tikz@tempbox@bg=\box76
+\tikztreelevel=\count348
+\tikznumberofchildren=\count349
+\tikznumberofcurrentchild=\count350
+\tikz@fig@count=\count351
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count333
-\pgfmatrixcurrentcolumn=\count334
-\pgf@matrix@numberofcolumns=\count335
+\pgfmatrixcurrentrow=\count352
+\pgfmatrixcurrentcolumn=\count353
+\pgf@matrix@numberofcolumns=\count354
 )
-\tikz@expandcount=\count336
+\tikz@expandcount=\count355
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarytopaths.code.tex
@@ -744,10 +889,10 @@ File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.
 code.tex
 File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowinset=\dimen299
-\pgfarrowlength=\dimen300
-\pgfarrowwidth=\dimen301
-\pgfarrowlinewidth=\dimen302
+\pgfarrowinset=\dimen331
+\pgfarrowlength=\dimen332
+\pgfarrowwidth=\dimen333
+\pgfarrowlinewidth=\dimen334
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarypositioning.code.tex
@@ -775,16 +920,16 @@ zlibrarydecorations.pathmorphing.code.tex
 zlibrarydecorations.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.cod
 e.tex
-\pgfdecoratedcompleteddistance=\dimen303
-\pgfdecoratedremainingdistance=\dimen304
-\pgfdecoratedinputsegmentcompleteddistance=\dimen305
-\pgfdecoratedinputsegmentremainingdistance=\dimen306
-\pgf@decorate@distancetomove=\dimen307
-\pgf@decorate@repeatstate=\count337
-\pgfdecorationsegmentamplitude=\dimen308
-\pgfdecorationsegmentlength=\dimen309
+\pgfdecoratedcompleteddistance=\dimen335
+\pgfdecoratedremainingdistance=\dimen336
+\pgfdecoratedinputsegmentcompleteddistance=\dimen337
+\pgfdecoratedinputsegmentremainingdistance=\dimen338
+\pgf@decorate@distancetomove=\dimen339
+\pgf@decorate@repeatstate=\count356
+\pgfdecorationsegmentamplitude=\dimen340
+\pgfdecorationsegmentlength=\dimen341
 )
-\tikz@lib@dec@box=\box74
+\tikz@lib@dec@box=\box77
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
 decorations.pathmorphing.code.tex))
@@ -807,18 +952,57 @@ File: tikzlibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code
 .tex
 File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarypatterns.code.tex
+File: tikzlibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.cod
+e.tex
+File: pgflibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarybackgrounds.code.tex
+File: tikzlibrarybackgrounds.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@layerbox@background=\box78
+\pgf@layerboxsaved@background=\box79
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarydecorations.pathreplacing.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
+decorations.pathreplacing.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarymindmap.code.tex
+File: tikzlibrarymindmap.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytrees.code.tex
+File: tikzlibrarytrees.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarydecorations.text.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
+decorations.text.code.tex
+\pgf@lib@dec@text@box=\box80
+)
+\tikz@lib@dec@te@box=\box81
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarymatrix.code.tex
+File: tikzlibrarymatrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarychains.code.tex
+File: tikzlibrarychains.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryscopes.code.tex
+File: tikzlibraryscopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
 Package: mdframed 2013/07/01 1.9b: mdframed
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2024-01-22 L3 programming layer (loader) 
-
-(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count338
-\l__pdf_internal_box=\box75
-))
 Package: xparse 2023-10-10 L3 Experimental document command parser
 )
 (/usr/share/texlive/texmf-dist/tex/latex/zref/zref-abspage.sty
@@ -834,99 +1018,99 @@ Package zref Info: New property list: main on input line 767.
 Package zref Info: New property: default on input line 768.
 Package zref Info: New property: page on input line 769.
 )
-\c@abspage=\count339
+\c@abspage=\count357
 Package zref Info: New property: abspage on input line 67.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty
 Package: needspace 2010/09/12 v1.3d reserve vertical space
 )
-\mdf@templength=\skip65
-\c@mdf@globalstyle@cnt=\count340
-\mdf@skipabove@length=\skip66
-\mdf@skipbelow@length=\skip67
-\mdf@leftmargin@length=\skip68
-\mdf@rightmargin@length=\skip69
-\mdf@innerleftmargin@length=\skip70
-\mdf@innerrightmargin@length=\skip71
-\mdf@innertopmargin@length=\skip72
-\mdf@innerbottommargin@length=\skip73
-\mdf@splittopskip@length=\skip74
-\mdf@splitbottomskip@length=\skip75
-\mdf@outermargin@length=\skip76
-\mdf@innermargin@length=\skip77
-\mdf@linewidth@length=\skip78
-\mdf@innerlinewidth@length=\skip79
-\mdf@middlelinewidth@length=\skip80
-\mdf@outerlinewidth@length=\skip81
-\mdf@roundcorner@length=\skip82
-\mdf@footenotedistance@length=\skip83
-\mdf@userdefinedwidth@length=\skip84
-\mdf@needspace@length=\skip85
-\mdf@frametitleaboveskip@length=\skip86
-\mdf@frametitlebelowskip@length=\skip87
-\mdf@frametitlerulewidth@length=\skip88
-\mdf@frametitleleftmargin@length=\skip89
-\mdf@frametitlerightmargin@length=\skip90
-\mdf@shadowsize@length=\skip91
-\mdf@extratopheight@length=\skip92
-\mdf@subtitleabovelinewidth@length=\skip93
-\mdf@subtitlebelowlinewidth@length=\skip94
-\mdf@subtitleaboveskip@length=\skip95
-\mdf@subtitlebelowskip@length=\skip96
-\mdf@subtitleinneraboveskip@length=\skip97
-\mdf@subtitleinnerbelowskip@length=\skip98
-\mdf@subsubtitleabovelinewidth@length=\skip99
-\mdf@subsubtitlebelowlinewidth@length=\skip100
-\mdf@subsubtitleaboveskip@length=\skip101
-\mdf@subsubtitlebelowskip@length=\skip102
-\mdf@subsubtitleinneraboveskip@length=\skip103
-\mdf@subsubtitleinnerbelowskip@length=\skip104
+\mdf@templength=\skip83
+\c@mdf@globalstyle@cnt=\count358
+\mdf@skipabove@length=\skip84
+\mdf@skipbelow@length=\skip85
+\mdf@leftmargin@length=\skip86
+\mdf@rightmargin@length=\skip87
+\mdf@innerleftmargin@length=\skip88
+\mdf@innerrightmargin@length=\skip89
+\mdf@innertopmargin@length=\skip90
+\mdf@innerbottommargin@length=\skip91
+\mdf@splittopskip@length=\skip92
+\mdf@splitbottomskip@length=\skip93
+\mdf@outermargin@length=\skip94
+\mdf@innermargin@length=\skip95
+\mdf@linewidth@length=\skip96
+\mdf@innerlinewidth@length=\skip97
+\mdf@middlelinewidth@length=\skip98
+\mdf@outerlinewidth@length=\skip99
+\mdf@roundcorner@length=\skip100
+\mdf@footenotedistance@length=\skip101
+\mdf@userdefinedwidth@length=\skip102
+\mdf@needspace@length=\skip103
+\mdf@frametitleaboveskip@length=\skip104
+\mdf@frametitlebelowskip@length=\skip105
+\mdf@frametitlerulewidth@length=\skip106
+\mdf@frametitleleftmargin@length=\skip107
+\mdf@frametitlerightmargin@length=\skip108
+\mdf@shadowsize@length=\skip109
+\mdf@extratopheight@length=\skip110
+\mdf@subtitleabovelinewidth@length=\skip111
+\mdf@subtitlebelowlinewidth@length=\skip112
+\mdf@subtitleaboveskip@length=\skip113
+\mdf@subtitlebelowskip@length=\skip114
+\mdf@subtitleinneraboveskip@length=\skip115
+\mdf@subtitleinnerbelowskip@length=\skip116
+\mdf@subsubtitleabovelinewidth@length=\skip117
+\mdf@subsubtitlebelowlinewidth@length=\skip118
+\mdf@subsubtitleaboveskip@length=\skip119
+\mdf@subsubtitlebelowskip@length=\skip120
+\mdf@subsubtitleinneraboveskip@length=\skip121
+\mdf@subsubtitleinnerbelowskip@length=\skip122
 
 (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-0.mdf
 File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
 )
-\mdf@frametitlebox=\box76
-\mdf@footnotebox=\box77
-\mdf@splitbox@one=\box78
-\mdf@splitbox@two=\box79
-\mdf@splitbox@save=\box80
-\mdfsplitboxwidth=\skip105
-\mdfsplitboxtotalwidth=\skip106
-\mdfsplitboxheight=\skip107
-\mdfsplitboxdepth=\skip108
-\mdfsplitboxtotalheight=\skip109
-\mdfframetitleboxwidth=\skip110
-\mdfframetitleboxtotalwidth=\skip111
-\mdfframetitleboxheight=\skip112
-\mdfframetitleboxdepth=\skip113
-\mdfframetitleboxtotalheight=\skip114
-\mdffootnoteboxwidth=\skip115
-\mdffootnoteboxtotalwidth=\skip116
-\mdffootnoteboxheight=\skip117
-\mdffootnoteboxdepth=\skip118
-\mdffootnoteboxtotalheight=\skip119
-\mdftotallinewidth=\skip120
-\mdfboundingboxwidth=\skip121
-\mdfboundingboxtotalwidth=\skip122
-\mdfboundingboxheight=\skip123
-\mdfboundingboxdepth=\skip124
-\mdfboundingboxtotalheight=\skip125
-\mdf@freevspace@length=\skip126
-\mdf@horizontalwidthofbox@length=\skip127
-\mdf@verticalmarginwhole@length=\skip128
-\mdf@horizontalspaceofbox=\skip129
-\mdfsubtitleheight=\skip130
-\mdfsubsubtitleheight=\skip131
-\c@mdfcountframes=\count341
+\mdf@frametitlebox=\box82
+\mdf@footnotebox=\box83
+\mdf@splitbox@one=\box84
+\mdf@splitbox@two=\box85
+\mdf@splitbox@save=\box86
+\mdfsplitboxwidth=\skip123
+\mdfsplitboxtotalwidth=\skip124
+\mdfsplitboxheight=\skip125
+\mdfsplitboxdepth=\skip126
+\mdfsplitboxtotalheight=\skip127
+\mdfframetitleboxwidth=\skip128
+\mdfframetitleboxtotalwidth=\skip129
+\mdfframetitleboxheight=\skip130
+\mdfframetitleboxdepth=\skip131
+\mdfframetitleboxtotalheight=\skip132
+\mdffootnoteboxwidth=\skip133
+\mdffootnoteboxtotalwidth=\skip134
+\mdffootnoteboxheight=\skip135
+\mdffootnoteboxdepth=\skip136
+\mdffootnoteboxtotalheight=\skip137
+\mdftotallinewidth=\skip138
+\mdfboundingboxwidth=\skip139
+\mdfboundingboxtotalwidth=\skip140
+\mdfboundingboxheight=\skip141
+\mdfboundingboxdepth=\skip142
+\mdfboundingboxtotalheight=\skip143
+\mdf@freevspace@length=\skip144
+\mdf@horizontalwidthofbox@length=\skip145
+\mdf@verticalmarginwhole@length=\skip146
+\mdf@horizontalspaceofbox=\skip147
+\mdfsubtitleheight=\skip148
+\mdfsubsubtitleheight=\skip149
+\c@mdfcountframes=\count359
 
 ****** mdframed patching \endmdf@trivlist
 
 ****** -- success******
 
-\mdf@envdepth=\count342
-\c@mdf@env@i=\count343
-\c@mdf@env@ii=\count344
-\c@mdf@zref@counter=\count345
+\mdf@envdepth=\count360
+\c@mdf@env@i=\count361
+\c@mdf@env@ii=\count362
+\c@mdf@zref@counter=\count363
 Package zref Info: New property: mdf@pagevalue on input line 895.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjustbox.sty
@@ -937,10 +1121,10 @@ Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 
 (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks43
-\XKV@tempa@toks=\toks44
+\XKV@toks=\toks54
+\XKV@tempa@toks=\toks55
 )
-\XKV@depth=\count346
+\XKV@depth=\count364
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjcalc.sty
@@ -952,74 +1136,49 @@ Package: trimclip 2020/08/19 v1.2 Trim and clip general TeX material
 
 (/usr/share/texlive/texmf-dist/tex/latex/collectbox/collectbox.sty
 Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
-\collectedbox=\box81
+\collectedbox=\box87
 )
-\tc@llx=\dimen310
-\tc@lly=\dimen311
-\tc@urx=\dimen312
-\tc@ury=\dimen313
+\tc@llx=\dimen342
+\tc@lly=\dimen343
+\tc@urx=\dimen344
+\tc@ury=\dimen345
 Package trimclip Info: Using driver 'tc-pdftex.def'.
 
 (/usr/share/texlive/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
 File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
 ))
-\adjbox@Width=\dimen314
-\adjbox@Height=\dimen315
-\adjbox@Depth=\dimen316
-\adjbox@Totalheight=\dimen317
-\adjbox@pwidth=\dimen318
-\adjbox@pheight=\dimen319
-\adjbox@pdepth=\dimen320
-\adjbox@ptotalheight=\dimen321
+\adjbox@Width=\dimen346
+\adjbox@Height=\dimen347
+\adjbox@Depth=\dimen348
+\adjbox@Totalheight=\dimen349
+\adjbox@pwidth=\dimen350
+\adjbox@pheight=\dimen351
+\adjbox@pdepth=\dimen352
+\adjbox@ptotalheight=\dimen353
 
 (/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
-\c@checkoddpage=\count347
+\c@checkoddpage=\count365
 )
 (/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box82
-\sift@deathcycles=\count348
-\@vwid@loff=\dimen322
-\@vwid@roff=\dimen323
+\@vwid@box=\box88
+\sift@deathcycles=\count366
+\@vwid@loff=\dimen354
+\@vwid@roff=\dimen355
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
-
-\f@nch@headwidth=\skip132
-\f@nch@O@elh=\skip133
-\f@nch@O@erh=\skip134
-\f@nch@O@olh=\skip135
-\f@nch@O@orh=\skip136
-\f@nch@O@elf=\skip137
-\f@nch@O@erf=\skip138
-\f@nch@O@olf=\skip139
-\f@nch@O@orf=\skip140
-)
-(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
-Package: titlesec 2023/10/27 v2.16 Sectioning titles
-\ttl@box=\box83
-\beforetitleunit=\skip141
-\aftertitleunit=\skip142
-\ttl@plus=\dimen324
-\ttl@minus=\dimen325
-\ttl@toksa=\toks45
-\titlewidth=\dimen326
-\titlewidthlast=\dimen327
-\titlewidthfirst=\dimen328
-)
 (/usr/share/texlive/texmf-dist/tex/latex/pgfplots/pgfplots.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
 Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
-\t@pgfplots@toka=\toks46
-\t@pgfplots@tokb=\toks47
-\t@pgfplots@tokc=\toks48
-\pgfplots@tmpa=\dimen329
-\c@pgfplots@coordindex=\count349
-\c@pgfplots@scanlineindex=\count350
+\t@pgfplots@toka=\toks56
+\t@pgfplots@tokb=\toks57
+\t@pgfplots@tokc=\toks58
+\pgfplots@tmpa=\dimen356
+\c@pgfplots@coordindex=\count367
+\c@pgfplots@scanlineindex=\count368
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code
 .tex))
@@ -1030,9 +1189,9 @@ gfsupp_loader.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex
 )
 Package pgfplots: loading complementary utilities for your pgf version...
-\t@pgf@toka=\toks49
-\t@pgf@tokb=\toks50
-\t@pgf@tokc=\toks51
+\t@pgf@toka=\toks59
+\t@pgf@tokb=\toks60
+\t@pgf@tokc=\toks61
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
 gfsupp_pgfutil-common-lists.tex))
@@ -1043,14 +1202,14 @@ tructure.code.tex)
 tructureext.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray
 .code.tex
-\c@pgfplotsarray@tmp=\count351
+\c@pgfplotsarray@tmp=\count369
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatri
 x.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshare
 d.code.tex
-\c@pgfplotstable@counta=\count352
-\t@pgfplotstable@a=\toks52
+\c@pgfplotstable@counta=\count370
+\t@pgfplotstable@a=\toks62
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque
 .code.tex)
@@ -1062,7 +1221,7 @@ de.tex))
 .tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.sur
 fshading.code.tex
-\c@pgfplotslibrarysurf@no=\count353
+\c@pgfplotslibrarysurf@no=\count371
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surf
 shading.pgfsys-pdftex.def)))
@@ -1085,19 +1244,15 @@ e.tex)
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.tex
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibrarydecorations.pathreplacing.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
-decorations.pathreplacing.code.tex))
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.co
 ntourlua.code.tex)
-\pgfplots@numplots=\count354
-\pgfplots@xmin@reg=\dimen330
-\pgfplots@xmax@reg=\dimen331
-\pgfplots@ymin@reg=\dimen332
-\pgfplots@ymax@reg=\dimen333
-\pgfplots@zmin@reg=\dimen334
-\pgfplots@zmax@reg=\dimen335
+\pgfplots@numplots=\count372
+\pgfplots@xmin@reg=\dimen357
+\pgfplots@xmax@reg=\dimen358
+\pgfplots@ymin@reg=\dimen359
+\pgfplots@ymax@reg=\dimen360
+\pgfplots@zmin@reg=\dimen361
+\pgfplots@zmax@reg=\dimen362
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryplotmarks.code.tex
@@ -1106,79 +1261,13 @@ File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.co
 de.tex
 File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))) (/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
-Package: pdfpages 2024/01/21 v0.5y Insert pages of external PDF documents (AM)
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
-Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count355
-\calc@Bcount=\count356
-\calc@Adimen=\dimen336
-\calc@Bdimen=\dimen337
-\calc@Askip=\skip143
-\calc@Bskip=\skip144
-LaTeX Info: Redefining \setlength on input line 80.
-LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count357
-\calc@Cskip=\skip145
-)
-(/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty
-Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
-\ESO@tempdima=\dimen338
-\ESO@tempdimb=\dimen339
-)
-\AM@pagewidth=\dimen340
-\AM@pageheight=\dimen341
-\AM@fboxrule=\dimen342
-
-(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pppdftex.def
-File: pppdftex.def 2024/01/21 v0.5y Pdfpages driver for pdfTeX (AM)
-)
-\pdfpages@includegraphics@status=\count358
-\AM@pagebox=\box84
-\AM@global@opts=\toks53
-\AM@pagecnt=\count359
-\AM@toc@title=\toks54
-\AM@lof@heading=\toks55
-\c@AM@survey=\count360
-\AM@templatesizebox=\box85
-)
-(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
-Package: microtype 2023/03/13 v3.1a Micro-typographical refinements (RS)
-\MT@toks=\toks56
-\MT@tempbox=\box86
-\MT@count=\count361
-LaTeX Info: Redefining \noprotrusionifhmode on input line 1059.
-LaTeX Info: Redefining \leftprotrusion on input line 1060.
-\MT@prot@toks=\toks57
-LaTeX Info: Redefining \rightprotrusion on input line 1078.
-LaTeX Info: Redefining \textls on input line 1368.
-\MT@outer@kern=\dimen343
-LaTeX Info: Redefining \textmicrotypecontext on input line 1988.
-\MT@listname@count=\count362
-
-(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype-pdftex.def
-File: microtype-pdftex.def 2023/03/13 v3.1a Definitions specific to pdftex (RS)
-
-LaTeX Info: Redefining \lsstyle on input line 902.
-LaTeX Info: Redefining \lslig on input line 902.
-\MT@outer@space=\skip146
-)
-Package microtype Info: Loading configuration file microtype.cfg.
-
-(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.cfg
-File: microtype.cfg 2023/03/13 v3.1a microtype main configuration file (RS)
-))
-(/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+))) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
 Package: tcolorbox 2024/01/10 version 6.2.0 text color boxes
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2023-11-06 v1.5v LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks58
-\verbatim@line=\toks59
+\every@verbatim=\toks63
+\verbatim@line=\toks64
 \verbatim@in@stream=\read4
 )
 (/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty
@@ -1187,26 +1276,26 @@ Package: environ 2014/05/04 v0.3 A new way to define environments
 (/usr/share/texlive/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
-\tcb@titlebox=\box87
-\tcb@upperbox=\box88
-\tcb@lowerbox=\box89
-\tcb@phantombox=\box90
-\c@tcbbreakpart=\count363
-\c@tcblayer=\count364
-\c@tcolorbox@number=\count365
-\l__tcobox_tmpa_box=\box91
-\l__tcobox_tmpa_dim=\dimen344
-\tcb@temp=\box92
-\tcb@temp=\box93
+\tcb@titlebox=\box89
+\tcb@upperbox=\box90
+\tcb@lowerbox=\box91
+\tcb@phantombox=\box92
+\c@tcbbreakpart=\count373
+\c@tcblayer=\count374
+\c@tcolorbox@number=\count375
+\l__tcobox_tmpa_box=\box93
+\l__tcobox_tmpa_dim=\dimen363
 \tcb@temp=\box94
 \tcb@temp=\box95
+\tcb@temp=\box96
+\tcb@temp=\box97
 
 (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbraster.code.tex
 Library (tcolorbox): 'tcbraster.code.tex' version '6.2.0'
-\c@tcbrastercolumn=\count366
-\c@tcbrasterrow=\count367
-\c@tcbrasternum=\count368
-\c@tcbraster=\count369
+\c@tcbrastercolumn=\count376
+\c@tcbrasterrow=\count377
+\c@tcbrasternum=\count378
+\c@tcbraster=\count379
 ) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
 Library (tcolorbox): 'tcbskins.code.tex' version '6.2.0'
 (/usr/share/texlive/texmf-dist/tex/latex/tikzfill/tikzfill.image.sty
@@ -1218,7 +1307,7 @@ Package: tikzfill-common 2023/08/08 v1.0.1 Auxiliary code for tikzfill
 (/usr/share/texlive/texmf-dist/tex/latex/tikzfill/tikzlibraryfill.image.code.te
 x
 File: tikzlibraryfill.image.code.tex 2023/08/08 v1.0.1 Image filling library
-\l__tikzfill_img_box=\box96
+\l__tikzfill_img_box=\box98
 )) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
 Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.2.0'
 )) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
@@ -1227,9 +1316,9 @@ Library (tcolorbox): 'tcbbreakable.code.tex' version '6.2.0'
 Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
 )
 Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
-\tcb@testbox=\box97
-\tcb@totalupperbox=\box98
-\tcb@totallowerbox=\box99
+\tcb@testbox=\box99
+\tcb@totalupperbox=\box100
+\tcb@totallowerbox=\box101
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbhooks.code.tex
 Library (tcolorbox): 'tcbhooks.code.tex' version '6.2.0'
@@ -1237,10 +1326,10 @@ Library (tcolorbox): 'tcbhooks.code.tex' version '6.2.0'
 Library (tcolorbox): 'tcbtheorems.code.tex' version '6.2.0'
 ) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbfitting.code.tex
 Library (tcolorbox): 'tcbfitting.code.tex' version '6.2.0'
-\tcbfitdim=\dimen345
-\tcb@lowerfitdim=\dimen346
-\tcb@upperfitdim=\dimen347
-\tcb@cur@hbadness=\count370
+\tcbfitdim=\dimen364
+\tcb@lowerfitdim=\dimen365
+\tcb@upperfitdim=\dimen366
+\tcb@cur@hbadness=\count380
 ) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcblistingsutf8.code.tex
 Library (tcolorbox): 'tcblistingsutf8.code.tex' version '6.2.0'
 (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcblistings.code.tex
@@ -1250,7 +1339,7 @@ Library (tcolorbox): 'tcblistingscore.code.tex' version '6.2.0'
 (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbprocessing.code.tex
 Library (tcolorbox): 'tcbprocessing.code.tex' version '6.2.0'
 )
-\c@tcblisting=\count371
+\c@tcblisting=\count381
 )) (/usr/share/texlive/texmf-dist/tex/latex/listingsutf8/listingsutf8.sty
 Package: listingsutf8 2019-12-10 v1.5 Allow UTF-8 in listings input (HO)
 
@@ -1266,133 +1355,122 @@ Library (tcolorbox): 'tcbmagazine.code.tex' version '6.2.0'
 Library (tcolorbox): 'tcbvignette.code.tex' version '6.2.0'
 ) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbposter.code.tex
 Library (tcolorbox): 'tcbposter.code.tex' version '6.2.0'
-)) (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
-Package: colortbl 2022/06/20 v1.0f Color table columns (DPC)
+)) (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2023/03/13 v3.1a Micro-typographical refinements (RS)
+\MT@toks=\toks65
+\MT@tempbox=\box102
+\MT@count=\count382
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1059.
+LaTeX Info: Redefining \leftprotrusion on input line 1060.
+\MT@prot@toks=\toks66
+LaTeX Info: Redefining \rightprotrusion on input line 1078.
+LaTeX Info: Redefining \textls on input line 1368.
+\MT@outer@kern=\dimen367
+LaTeX Info: Redefining \textmicrotypecontext on input line 1988.
+\MT@listname@count=\count383
 
-(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
-Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
-\col@sep=\dimen348
-\ar@mcellbox=\box100
-\extrarowheight=\dimen349
-\NC@list=\toks60
-\extratabsurround=\skip147
-\backup@length=\skip148
-\ar@cellbox=\box101
-)
-\everycr=\toks61
-\minrowclearance=\skip149
-\rownum=\count372
-)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibrarypatterns.code.tex
-File: tikzlibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype-pdftex.def
+File: microtype-pdftex.def 2023/03/13 v3.1a Definitions specific to pdftex (RS)
 
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.cod
-e.tex
-File: pgflibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+LaTeX Info: Redefining \lsstyle on input line 902.
+LaTeX Info: Redefining \lslig on input line 902.
+\MT@outer@space=\skip150
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2023/03/13 v3.1a microtype main configuration file (RS)
 ))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibrarybackgrounds.code.tex
-File: tikzlibrarybackgrounds.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@layerbox@background=\box102
-\pgf@layerboxsaved@background=\box103
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2023-11-01 v4.19 Multi-page Table package (DPC)
+\LTleft=\skip151
+\LTright=\skip152
+\LTpre=\skip153
+\LTpost=\skip154
+\LTchunksize=\count384
+\LTcapwidth=\dimen368
+\LT@head=\box103
+\LT@firsthead=\box104
+\LT@foot=\box105
+\LT@lastfoot=\box106
+\LT@gbox=\box107
+\LT@cols=\count385
+\LT@rows=\count386
+\c@LT@tables=\count387
+\c@LT@chunks=\count388
+\LT@p@ftn=\toks67
 )
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibrarymindmap.code.tex
-File: tikzlibrarymindmap.code.tex 2023-01-15 v3.1.10 (3.1.10)
-
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibrarytrees.code.tex
-File: tikzlibrarytrees.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibrarydecorations.text.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
-decorations.text.code.tex
-\pgf@lib@dec@text@box=\box104
-)
-\tikz@lib@dec@te@box=\box105
-)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibrarymatrix.code.tex
-File: tikzlibrarymatrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibrarychains.code.tex
-File: tikzlibrarychains.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibraryscopes.code.tex
-File: tikzlibraryscopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)
-
-Package fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less.
-(fancyhdr)                Please consider using the `twoside' option on input l
-ine 58.
-
-
-Package fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less.
-(fancyhdr)                Please consider using the `twoside' option on input l
-ine 59.
-
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
-)
-Package hyperref Info: Option `colorlinks' set `true' on input line 166.
-LaTeX Font Info:    Trying to load font information for T1+ppl on input line 17
-7.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ppl.fd
-File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
-) (./main.aux
-
-LaTeX Warning: Label `fig:agent_interactions' multiply defined.
-
-
-LaTeX Warning: Label `fig:immune_response_cascade' multiply defined.
-
-
-LaTeX Warning: Label `fig:model_architecture' multiply defined.
-
-
-LaTeX Warning: Label `fig:simulation_pipeline' multiply defined.
-
-)
+) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 177.
-LaTeX Font Info:    ... okay on input line 177.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 177.
-LaTeX Font Info:    ... okay on input line 177.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 177.
-LaTeX Font Info:    ... okay on input line 177.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 177.
-LaTeX Font Info:    ... okay on input line 177.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 177.
-LaTeX Font Info:    ... okay on input line 177.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 177.
-LaTeX Font Info:    ... okay on input line 177.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 177.
-LaTeX Font Info:    ... okay on input line 177.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 177.
-LaTeX Font Info:    ... okay on input line 177.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 177.
-LaTeX Font Info:    ... okay on input line 177.
- (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 223.
+LaTeX Font Info:    ... okay on input line 223.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 223.
+LaTeX Font Info:    ... okay on input line 223.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 223.
+LaTeX Font Info:    ... okay on input line 223.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 223.
+LaTeX Font Info:    ... okay on input line 223.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 223.
+LaTeX Font Info:    ... okay on input line 223.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 223.
+LaTeX Font Info:    ... okay on input line 223.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 223.
+LaTeX Font Info:    ... okay on input line 223.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 223.
+LaTeX Font Info:    ... okay on input line 223.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 223.
+LaTeX Font Info:    ... okay on input line 223.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(99.58464pt, 412.56497pt, 85.35826pt)
+* v-part:(T,H,B)=(85.35826pt, 674.33032pt, 85.35826pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=412.56497pt
+* \textheight=674.33032pt
+* \oddsidemargin=27.31465pt
+* \evensidemargin=13.08827pt
+* \topmargin=-18.78552pt
+* \headheight=15.0pt
+* \headsep=19.8738pt
+* \topskip=11.0pt
+* \footskip=27.46295pt
+* \marginparwidth=106.0pt
+* \marginparsep=7.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count373
-\scratchdimen=\dimen350
-\scratchbox=\box106
-\nofMPsegments=\count374
-\nofMParguments=\count375
-\everyMPshowfont=\toks62
-\MPscratchCnt=\count376
-\MPscratchDim=\dimen351
-\MPnumerator=\count377
-\makeMPintoPDFobject=\count378
-\everyMPtoPDFconversion=\toks63
+\scratchcounter=\count389
+\scratchdimen=\dimen369
+\scratchbox=\box108
+\nofMPsegments=\count390
+\nofMParguments=\count391
+\everyMPshowfont=\toks68
+\MPscratchCnt=\count392
+\MPscratchDim=\dimen370
+\MPnumerator=\count393
+\makeMPintoPDFobject=\count394
+\everyMPtoPDFconversion=\toks69
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -1402,72 +1480,33 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring ON on input line 177.
+Package hyperref Info: Link coloring ON on input line 223.
 
 (./main.out) (./main.out)
-\@outlinefile=\write4
-\openout4 = `main.out'.
+\@outlinefile=\write5
+\openout5 = `main.out'.
 
-\c@lstlisting=\count379
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: float package is loaded.
-Package caption Info: End \AtBeginDocument code.
+Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
 
-*geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
-*geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
-* paper: a4paper
-* layout: <same size as paper>
-* layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: 
-* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
-* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
-* \paperwidth=597.50787pt
-* \paperheight=845.04684pt
-* \textwidth=455.24411pt
-* \textheight=702.78308pt
-* \oddsidemargin=-1.1381pt
-* \evensidemargin=-1.1381pt
-* \topmargin=-38.1381pt
-* \headheight=12.0pt
-* \headsep=25.0pt
-* \topskip=12.0pt
-* \footskip=30.0pt
-* \marginparwidth=35.0pt
-* \marginparsep=10.0pt
-* \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
-* \hoffset=0.0pt
-* \voffset=0.0pt
-* \mag=1000
-* \@twocolumnfalse
-* \@twosidefalse
-* \@mparswitchfalse
-* \@reversemarginfalse
-* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+)
+Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count395
 
 Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
-(/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape.sty
-Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
-
-(/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
-Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PD
-F (HO)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty
-Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
-)
-Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
-))
-LaTeX Info: Redefining \microtypecontext on input line 177.
-Package microtype Info: Applying patch `item' on input line 177.
-Package microtype Info: Applying patch `toc' on input line 177.
-Package microtype Info: Applying patch `eqnum' on input line 177.
-Package microtype Info: Applying patch `footnote' on input line 177.
-Package microtype Info: Applying patch `verbatim' on input line 177.
+LaTeX Info: Redefining \microtypecontext on input line 223.
+Package microtype Info: Applying patch `item' on input line 223.
+Package microtype Info: Applying patch `toc' on input line 223.
+Package microtype Info: Applying patch `eqnum' on input line 223.
+Package microtype Info: Applying patch `footnote' on input line 223.
+Package microtype Info: Applying patch `verbatim' on input line 223.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1475,30 +1514,38 @@ Package microtype Info: No font expansion.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
-
-(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-ppl.cfg
-File: mt-ppl.cfg 2005/11/16 v1.6 microtype config. file: Palatino (RS)
-) [1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-di
-st/fonts/enc/dvips/base/8r.enc}]
-Overfull \hbox (0.47452pt too wide) in paragraph at lines 198--199
-\T1/ppl/m/n/12 Renal cell car-ci-noma (RCC) strikes 400,000 peo-ple an-nu-ally 
-world-wide, with metastatic
- []
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.207 \end{abstract}
-                     [1] (./main.toc
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 3.
+<images/logo.png, id=441, 83.3514pt x 103.587pt>
+File: images/logo.png Graphic file (type png)
+<use images/logo.png>
+Package pdftex.def Info: images/logo.png  used on input line 225.
+(pdftex.def)             Requested size: 71.13188pt x 88.40816pt.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 2
+25.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `pcr' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-di
+st/fonts/enc/dvips/base/8r.enc} <./images/logo.png (PNG copy)>] [2
+
+
+] (./chapters/01_abstract.tex
+Underfull \hbox (badness 1460) in paragraph at lines 13--13
+[]\OT1/cmr/m/n/10.95 These re-sults demon-strate that mech-a-nis-tic agent-base
+d mod-els in-cor-po-rat-ing
+ []
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 13.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1506,7 +1553,8 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 3.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 13.
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1514,1522 +1562,666 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 31
-.
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
 
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+ []
+
 )
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `pcr' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
+Overfull \hbox (3.41359pt too wide) in paragraph at lines 17--229
+[]   
+ []
+
+[1
+
+
+] [2
+
+
+] (./main.toc [3
+
+]
+Underfull \vbox (badness 1009) has occurred while \output is active []
+
+ [4])
+\tf@toc=\write6
+\openout6 = `main.toc'.
+
+
+[5] [6
+
+
+]
+Overfull \hbox (30.8905pt too wide) in paragraph at lines 232--257
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 232--257
+
+ []
+
+[7
+
+] [8
+
+
+] (./chapters/02_introduction.tex
+Chapter 1.
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <19.22708> not available
+(Font)              size <20.74> substituted on input line 9.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <26.09016> not available
+(Font)              size <24.88> substituted on input line 9.
+
+Package lettrine.sty Info: Targeted height = 19.22708pt
+(lettrine.sty)             (for loversize=0, accent excluded),
+(lettrine.sty)             Lettrine height = 16.99782pt (R);
+(lettrine.sty)             reported on input line 9.
+<figures/rcc_epidemiology.pdf, id=595, 811.46933pt x 353.43166pt>
+File: figures/rcc_epidemiology.pdf Graphic file (type pdf)
+<use figures/rcc_epidemiology.pdf>
+Package pdftex.def Info: figures/rcc_epidemiology.pdf  used on input line 13.
+(pdftex.def)             Requested size: 350.68274pt x 152.73843pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.40 ...}Gradient and Chemotaxis}{25}{section.4.3}
-                                                  % [1
+l.22 
+      [1
 
-]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[2])
-\tf@toc=\write5
-\openout5 = `main.toc'.
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[3] (./chapters/01_introduction.tex
-Chapter 1.
-<figures/rcc_epidemiology.pdf, id=571, 811.46933pt x 353.43166pt>
-File: figures/rcc_epidemiology.pdf Graphic file (type pdf)
-<use figures/rcc_epidemiology.pdf>
-Package pdftex.def Info: figures/rcc_epidemiology.pdf  used on input line 13.
-(pdftex.def)             Requested size: 386.96027pt x 168.5397pt.
-[4
 
 
  <./figures/rcc_epidemiology.pdf>]
-Overfull \hbox (1.90273pt too wide) in paragraph at lines 33--34
-\T1/ppl/m/n/12 monal modulation---presents a chal-lenge for tra-di-tional ex-pe
-r-i-men-tal ap-proaches. Clin-
- []
-
-(./figures/conceptual_overview.tex
-LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 1
-4.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ppl.fd
-File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
-))
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[5]
-Overfull \hbox (0.36613pt too wide) in paragraph at lines 56--57
-[]\T1/ppl/b/n/12 Stochasticity. \T1/ppl/m/n/12 Bi-o-log-i-cal pro-cesses such a
-s cell di-vi-sion, apop-to-sis, im-mune recog-
+Overfull \hbox (14.11037pt too wide) in paragraph at lines 25--26
+\OT1/cmr/m/n/10.95 tribute to stronger base-line im-mune surveil-lance in fe-ma
+les. De-spite these well-documented
  []
 
 
-Overfull \hbox (15.84921pt too wide) in paragraph at lines 60--61
-\T1/ppl/m/n/12 such as Mesa [[]]. Repast4Py pro-vides core abstractions---\T1/p
-cr/m/n/12 SharedContext\T1/ppl/m/n/12 , \T1/pcr/m/n/12 SharedGrid\T1/ppl/m/n/12
- ,
+pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.31 
+      [2] (./figures/conceptual_overview.tex)
+Overfull \hbox (0.4521pt too wide) in paragraph at lines 46--47
+\OT1/cmr/m/n/10.95 vides core abstractions---\OT1/pcr/m/n/10.95 SharedContext\O
+T1/cmr/m/n/10.95 , \OT1/pcr/m/n/10.95 SharedGrid\OT1/cmr/m/n/10.95 , and MPI-aw
+are scheduling---
  []
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[6]
-Overfull \hbox (1.14552pt too wide) in paragraph at lines 74--75
-\T1/ppl/m/n/12 ates over the model's weight pa-ram-e-ters, in-clud-ing the newl
-y in-tro-duced glucose-
- []
-
-)
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[7] (./chapters/02_theoretical_background.tex
+[3]) (./chapters/03_theoretical_background.tex [4]
 Chapter 2.
-
-Overfull \hbox (35.29826pt too wide) in paragraph at lines 13--14
-\T1/ppl/m/n/12 sys-tems char-ac-ter-ized by het-ero-gene-ity, spa-tial struc-tu
-re, and non-lin-ear feed-back^^Vproperties
- []
-
-(./figures/abm_vs_ode.tex
-LaTeX Info: Symbol \textrightarrow not provided by
-            font family ppl in TS1 encoding.
-            Default family used instead on input line 173.
-) [8
+Package lettrine.sty Info: Targeted height = 19.22708pt
+(lettrine.sty)             (for loversize=0, accent excluded),
+(lettrine.sty)             Lettrine height = 16.99782pt (T);
+(lettrine.sty)             reported on input line 6.
+(./figures/abm_vs_ode.tex) [5
 
 
-]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+] (./figures/immune_response_cascade.tex)
+(./figures/immune_cascade_bpmn.tex) [6] [7]
+Underfull \vbox (badness 2351) has occurred while \output is active []
 
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[9])
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[10] (./chapters/03_model_description.tex
+ [8]
+[9]) (./chapters/04_model_description.tex [10]
 Chapter 3.
-<figures/agent_population_pie.pdf, id=700, 790.13191pt x 715.54706pt>
-File: figures/agent_population_pie.pdf Graphic file (type pdf)
-<use figures/agent_population_pie.pdf>
-Package pdftex.def Info: figures/agent_population_pie.pdf  used on input line 2
-5.
-(pdftex.def)             Requested size: 386.96027pt x 350.42459pt.
+Package lettrine.sty Info: Targeted height = 19.22708pt
+(lettrine.sty)             (for loversize=0, accent excluded),
+(lettrine.sty)             Lettrine height = 16.99782pt (T);
+(lettrine.sty)             reported on input line 6.
 [11
 
 
-]
-Overfull \vbox (114.55405pt too high) has occurred while \output is active []
 
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[12 <./figures/agent_population_pie.pdf>]
-Overfull \hbox (50.59941pt too wide) in paragraph at lines 65--66
-\T1/ppl/m/n/12 Each sim-u-la-tion step fol-lows a fixed se-quence of op-er-a-ti
-ons, ex-e-cuted by the \T1/pcr/m/n/12 RCCModel.step()
+] (./figures/agent_hierarchy.tex) [12] (./figures/agent_interactions.tex
+Overfull \hbox (3.19809pt too wide) in paragraph at lines 28--28
+ []\OT1/cmr/bx/n/10 Naive 
  []
 
 
-Overfull \hbox (98.26212pt too wide) in paragraph at lines 70--71
-\T1/ppl/m/n/12 neigh-bor-ing agents within the ef-fect ra-dius and sum them int
-o the agent's \T1/pcr/m/n/12 experienced_effects\T1/ppl/m/n/12 . 
+Overfull \hbox (3.19809pt too wide) in paragraph at lines 29--29
+ []\OT1/cmr/bx/n/10 Naive 
  []
 
 
-Overfull \hbox (7.32657pt too wide) in paragraph at lines 74--75
-[]\T1/ppl/b/n/12 Manage blood. \T1/ppl/m/n/12 Eval-u-ate an-gio-gen-e-sis con-d
-i-tions and cre-ate new tumor-generated
+Overfull \hbox (4.29532pt too wide) in paragraph at lines 38--38
+ [][]\OT1/cmr/bx/n/10 Blood 
  []
 
 
-Overfull \hbox (9.45024pt too wide) in paragraph at lines 76--77
-\T1/ppl/m/n/12 to elim-i-nate ac-ti-va-tion or-der bias, and in-voke each agent
-'s \T1/pcr/m/n/12 step() \T1/ppl/m/n/12 method. Agents
+Overfull \hbox (4.42545pt too wide) in paragraph at lines 39--39
+ []\OT1/cmr/bx/n/10 Horm. 
  []
 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[13] (./figures/agent_hierarchy.tex)
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[14] (./figures/agent_interactions.tex)
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[15]
-Underfull \hbox (badness 2318) in paragraph at lines 203--204
-[]|\T1/ppl/m/n/12 Proliferate, evade via PD-L1, con-
+Overfull \hbox (6.60448pt too wide) in paragraph at lines 40--40
+ [][]\OT1/cmr/bx/n/10 Adipo- 
  []
 
-
-Underfull \hbox (badness 2529) in paragraph at lines 204--205
-[]|\T1/ppl/m/n/12 Kill tu-mors, ex-haus-tion, hormone-
+)
+Underfull \hbox (badness 1755) in paragraph at lines 107--108
+[]|\OT1/cmr/m/n/10 TCR-matched killing; glucose/hormone-
  []
 
-
-Underfull \hbox (badness 3407) in paragraph at lines 205--206
-[]|\T1/ppl/m/n/12 Phagocytosis, anti-gen pre-sen-ta-tion,
+[13] [14]
+Overfull \hbox (25.35202pt too wide) in paragraph at lines 133--134
+\OT1/cmr/m/n/10.95 one an-other with-out di-rect con-tact. Each \OT1/pcr/m/n/10
+.95 Cell \OT1/cmr/m/n/10.95 agent main-tains an \OT1/pcr/m/n/10.95 experienced[
+]effects
  []
 
+(./figures/effect_system.tex) [15]
+Underfull \vbox (badness 2478) has occurred while \output is active []
 
-Underfull \hbox (badness 10000) in paragraph at lines 206--207
-[]|\T1/ppl/m/n/12 Growth pro-mo-tion, an-gio-gen-e-sis,
- []
-
-
-Overfull \hbox (4.26611pt too wide) in paragraph at lines 214--214
-[]|\T1/ppl/m/n/12 CD4Helper1TCell| 
- []
-
-
-Overfull \hbox (4.26611pt too wide) in paragraph at lines 215--215
-[]|\T1/ppl/m/n/12 CD4Helper2TCell| 
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[16] (./figures/agent_interaction_network.tex)
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[17]
-Overfull \hbox (69.51302pt too wide) in paragraph at lines 261--262
-\T1/ppl/m/n/12 The pri-mary move-ment mech-a-nism for most agents is \T1/pcr/m/
-n/12 move_towards(target_agent_type_id,
- []
-
-
-Overfull \hbox (77.25737pt too wide) in paragraph at lines 275--276
-[]\T1/ppl/m/n/12 The \T1/pcr/m/n/12 look_up_size \T1/ppl/m/n/12 pa-ram-e-ter is
- typ-i-cally de-rived from the model's \T1/pcr/m/n/12 cell_search_dimension\T1/
-ppl/m/n/12 ,
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[18]
-Overfull \hbox (84.10326pt too wide) in paragraph at lines 304--305
-\T1/ppl/m/n/12 The sim-u-la-tion ter-mi-nates when any of the fol-low-ing con-d
-i-tions is met. The \T1/pcr/m/n/12 terminal_condition()
- []
-
-
-Overfull \hbox (20.09496pt too wide) in paragraph at lines 309--310
-[]\T1/ppl/b/n/12 Tumor elim-i-na-tion. \T1/ppl/m/n/12 If the tu-mor cell count 
-drops to zero be-fore reach-ing \T1/pcr/m/n/12 max_steps\T1/ppl/m/n/12 ,
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[19]
-Overfull \hbox (88.2209pt too wide) in paragraph at lines 317--319
-\T1/ppl/m/n/12 where $\OML/cmm/m/it/12 N[]$ \T1/ppl/m/n/12 is the tu-mor cell c
-ount, $\OML/cmm/m/it/12 g[]$ \T1/ppl/m/n/12 is the growth po-ten-tial (com-bin-
-ing \T1/pcr/m/n/12 tumour_growth_effect\T1/ppl/m/n/12 ,
- []
-
-
-Overfull \hbox (27.06392pt too wide) in paragraph at lines 317--319
-\T1/ppl/m/n/12 DNA-derived pro-lif-er-a-tion chance, blood ac-cess, and an-gio-
-gen-e-sis), $\OML/cmm/m/it/12 a[]$ \T1/ppl/m/n/12 is the apoptosis-
- []
-
-(./figures/immune_response_cascade.tex)
-Overfull \hbox (0.90227pt too wide) in paragraph at lines 352--352
- []\T1/ppl/m/n/10.95 Phagocytosis 
- []
-
-
-Overfull \hbox (2.8041pt too wide) in paragraph at lines 362--362
- []\T1/ppl/m/n/10.95 Suppression 
- []
-
-
-Overfull \hbox (167.59547pt too wide) in paragraph at lines 383--384
- [][] 
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[20])
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[21] (./chapters/04_glucose_system.tex
+ [16]
+(./figures/movement_mechanics.tex) [17] [18] (./figures/simulation_pipeline.tex
+) [19]) (./chapters/05_biological_subsystems.tex [20]
 Chapter 4.
+Package lettrine.sty Info: Targeted height = 19.22708pt
+(lettrine.sty)             (for loversize=0, accent excluded),
+(lettrine.sty)             Lettrine height = 16.99782pt (T);
+(lettrine.sty)             reported on input line 6.
 (./figures/warburg_effect.tex
-Overfull \hbox (17.33098pt too wide) in paragraph at lines 44--44
- []\T1/ppl/m/n/12 Phosphorylation 
+Overfull \hbox (3.32487pt too wide) in paragraph at lines 38--38
+ []\OT1/cmr/m/n/10 Phosphorylation 
  []
 
+)
+Underfull \vbox (badness 1043) has occurred while \output is active []
 
-Overfull \hbox (7.9832pt too wide) in paragraph at lines 45--46
- []\T1/ppl/m/n/12 (Mitochondria) 
- []
+ [21
 
-) [22
 
 
 ]
-<figures/glucose_dynamics.pdf, id=888, 715.42784pt x 426.48834pt>
+<figures/glucose_dynamics.pdf, id=876, 715.42784pt x 426.48834pt>
 File: figures/glucose_dynamics.pdf Graphic file (type pdf)
 <use figures/glucose_dynamics.pdf>
-Package pdftex.def Info: figures/glucose_dynamics.pdf  used on input line 23.
-(pdftex.def)             Requested size: 386.96027pt x 230.68422pt.
- (./figures/glucose_system.tex)
+Package pdftex.def Info: figures/glucose_dynamics.pdf  used on input line 31.
+(pdftex.def)             Requested size: 350.68274pt x 209.05269pt.
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[23 <./figures/glucose_dynamics.pdf>]
-Overfull \hbox (58.06505pt too wide) in paragraph at lines 46--47
-\T1/ppl/m/n/12 where $\OML/cmm/m/it/12 C\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 x\OML
-/cmm/m/it/12 ; t\OT1/cmr/m/n/12 )$ \T1/ppl/m/n/12 is the glu-cose con-cen-tra-t
-ion, $\OML/cmm/m/it/12 D$ \T1/ppl/m/n/12 is the dif-fu-sion co-ef-fi-cient (\T1
-/pcr/m/n/12 w_glucose_diffusion\T1/ppl/m/n/12 ,
+(./figures/glucose_system.tex) [22 <./figures/glucose_dynamics.pdf>]
+Overfull \hbox (9.23618pt too wide) in paragraph at lines 65--66
+[]\OT1/cmr/m/n/10.95 (1\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 0\OML/cmm/m/it/1
+0.95 ; C\OT1/cmr/m/n/10.95 (\OT1/cmr/bx/n/10.95 x[]\OT1/cmr/m/n/10.95 ) \OMS/cm
+sy/m/n/10.95 ^^A \OML/cmm/m/it/10.95 w[]\OT1/cmr/m/n/10.95 )$, and im-mune cell
+ kill rates are sim-i-larly scaled: $\OML/cmm/m/it/10.95 f[] \OT1/cmr/m/n/10.95
+ =
  []
 
-
-Overfull \hbox (88.3391pt too wide) in paragraph at lines 48--49
-\T1/ppl/m/n/12 the stan-dard 6-connected sten-cil, im-ple-mented as a 3D con-vo
--lu-tion us-ing \T1/pcr/m/n/12 scipy.ndimage.convolve\T1/ppl/m/n/12 .
- []
-
-
-Overfull \hbox (59.29074pt too wide) in paragraph at lines 52--53
-\T1/ppl/m/n/12 Blood ves-sel agents in-ject glu-cose at their grid po-si-tions 
-at rate $\OML/cmm/m/it/12 r[]$ \T1/ppl/m/n/12 (\T1/pcr/m/n/12 w_glucose_source_
-rate\T1/ppl/m/n/12 ,
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[24]
-<figures/glucose_timeseries.pdf, id=961, 809.42403pt x 578.16pt>
+[23]
+<figures/glucose_timeseries.pdf, id=944, 809.42403pt x 578.16pt>
 File: figures/glucose_timeseries.pdf Graphic file (type pdf)
 <use figures/glucose_timeseries.pdf>
-Package pdftex.def Info: figures/glucose_timeseries.pdf  used on input line 78.
+Package pdftex.def Info: figures/glucose_timeseries.pdf  used on input line 85.
 
-(pdftex.def)             Requested size: 386.96027pt x 276.40207pt.
-<figures/glucose_field_3d.pdf, id=962, 1064.40912pt x 352.67697pt>
+(pdftex.def)             Requested size: 350.68274pt x 250.49185pt.
+<figures/glucose_field_3d.pdf, id=946, 1064.40912pt x 352.67697pt>
 File: figures/glucose_field_3d.pdf Graphic file (type pdf)
 <use figures/glucose_field_3d.pdf>
-Package pdftex.def Info: figures/glucose_field_3d.pdf  used on input line 85.
-(pdftex.def)             Requested size: 386.96027pt x 128.2121pt.
-
-Overfull \hbox (15.50244pt too wide) in paragraph at lines 106--106
- []\T1/ppl/m/n/10.95 Consumption 
- []
-
-
-Overfull \hbox (17.85657pt too wide) in paragraph at lines 108--108
- [][]\T1/ppl/m/n/10.95 Concentration 
- []
-
-
-Overfull \hbox (6.33746pt too wide) in paragraph at lines 109--109
- []\T1/ppl/m/n/10.95 Chemotaxis 
- []
-
-)
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[25]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[26 <./figures/glucose_timeseries.pdf> <./figures/glucose_field_3d.pdf>]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[27] (./chapters/05_dna_mutation_system.tex
-Chapter 5.
-
-Underfull \hbox (badness 10000) in paragraph at lines 30--31
-[]|\T1/ppl/m/n/12 Major his-to-com-pat-i-bil-ity com-plex;
- []
-
-
-Underfull \hbox (badness 1210) in paragraph at lines 30--31
-\T1/ppl/m/n/12 presents pep-tide anti-gens on the cell
- []
-
-
-Underfull \hbox (badness 1661) in paragraph at lines 40--41
-[]|\T1/ppl/m/n/12 Cyclin-dependent ki-nase in-hibitor 2A
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 41--42
-[]|\T1/ppl/m/n/12 Transcription fac-tor pro-mot-ing cell
- []
-
-[28
-
-
-]
-<figures/dna_mutation_heatmap.pdf, id=1030, 1076.16495pt x 569.48697pt>
+Package pdftex.def Info: figures/glucose_field_3d.pdf  used on input line 94.
+(pdftex.def)             Requested size: 350.68274pt x 116.19002pt.
+ (./figures/glucose_system_cycle.tex) [24 <./figures/glucose_timeseries.pdf>] [
+25 <./figures/glucose_field_3d.pdf>]
+<figures/dna_mutation_heatmap.pdf, id=1003, 1076.16495pt x 569.48697pt>
 File: figures/dna_mutation_heatmap.pdf Graphic file (type pdf)
 <use figures/dna_mutation_heatmap.pdf>
-Package pdftex.def Info: figures/dna_mutation_heatmap.pdf  used on input line 5
-0.
-(pdftex.def)             Requested size: 386.96027pt x 204.77184pt.
+Package pdftex.def Info: figures/dna_mutation_heatmap.pdf  used on input line 1
+26.
+(pdftex.def)             Requested size: 350.68274pt x 185.56769pt.
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[29 <./figures/dna_mutation_heatmap.pdf>]
 (./figures/tumor_cell_state_machine.tex
-Overfull \hbox (4.09265pt too wide) in paragraph at lines 10--11
- [][]\T1/ppl/b/n/12 Quiescent 
+Overfull \hbox (1.24982pt too wide) in paragraph at lines 50--50
+[]\OT1/pcr/m/n/9 tumour[]growth[]effect  
  []
 
 
-Overfull \hbox (10.8962pt too wide) in paragraph at lines 12--12
- \T1/ppl/m/n/12 metabolism 
- []
-
-
-Overfull \hbox (18.72005pt too wide) in paragraph at lines 19--20
- []\T1/ppl/m/n/12 consumption 
- []
-
-
-Overfull \hbox (8.98828pt too wide) in paragraph at lines 28--29
- [][]\T1/ppl/b/n/12 Aggressive 
- []
-
-
-Overfull \hbox (20.17203pt too wide) in paragraph at lines 30--30
- []\T1/ppl/m/n/12 Angiogenesis 
- []
-
-
-Overfull \hbox (2.97644pt too wide) in paragraph at lines 34--35
- [][]\T1/ppl/b/n/12 Apoptotic 
- []
-
-
-Overfull \hbox (4.14688pt too wide) in paragraph at lines 41--42
- [][]\T1/ppl/m/n/12 Growth 
- []
-
-
-Overfull \hbox (4.08685pt too wide) in paragraph at lines 43--44
- []\T1/ppl/m/n/12 signals? 
- []
-
-
-Overfull \hbox (1.4468pt too wide) in paragraph at lines 48--49
- []\T1/ppl/m/n/12 divide? 
- []
-
-
-Overfull \hbox (4.08685pt too wide) in paragraph at lines 53--54
- []\T1/ppl/m/n/12 signals? 
- []
-
-
-Overfull \hbox (8.21494pt too wide) in paragraph at lines 56--57
- [][]\T1/ppl/m/n/12 Immune 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 142--142
-[]\TS1/ppl/m/n/12 ˆ 
- []
-
-
-Overfull \hbox (30.18892pt too wide) in paragraph at lines 142--142
-\T1/pcr/m/n/12 tumour_growth_effect  
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 143--143
-[]\TS1/ppl/m/n/12 ˆ 
- []
-
-
-Overfull \hbox (51.78891pt too wide) in paragraph at lines 143--143
-\T1/pcr/m/n/12 tumour_apoptosis_effect  
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 144--144
-[]\TS1/ppl/m/n/12 ˆ 
- []
-
-
-Overfull \hbox (22.98892pt too wide) in paragraph at lines 144--144
-\T1/pcr/m/n/12 angiogenesis_effect  
+Overfull \hbox (17.4498pt too wide) in paragraph at lines 51--51
+[]\OT1/pcr/m/n/9 tumour[]apoptosis[]effect  
  []
 
 )
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[30])
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[31] (./chapters/06_treatment_system.tex
-Chapter 6.
-(./figures/treatment_mechanisms.tex)
-! Missing $ inserted.
-<inserted text> 
-                $
-l.19 ...ents. Treatment activates after treatment_
-                                                  start steps (default: 100)...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.20 
-     
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-Overfull \hbox (1.99832pt too wide) in paragraph at lines 19--20
-\T1/ppl/m/n/12 treatment$[]\OML/cmm/m/it/12 tartsteps\OT1/cmr/m/n/12 (\OML/cmm/
-m/it/12 default \OT1/cmr/m/n/12 : 100)\OML/cmm/m/it/12 ; establishingbaselinedi
-seasestatebeforeintervention:$ 
+Overfull \hbox (28.25017pt too wide) in paragraph at lines 154--155
+[]\OT1/cmr/bx/n/10.95 Antigen Pre-sen-ta-tion Chance\OT1/cmr/m/n/10.95 : $\OML/
+cmm/m/it/10.95 p[] \OT1/cmr/m/n/10.95 = [](0\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/
+10.95 6 \OMS/cmsy/m/n/10.95 ^^@ []\OT1/cmr/m/n/10.95 )$
  []
 
-[32
-
-
-]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.33 ...ling checkpoint inhibition by setting ICI_
-                                                  effect flag to True; (2) T...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.34 
-     
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-Overfull \hbox (490.02277pt too wide) in paragraph at lines 33--34
-\T1/ppl/m/n/12 dis-abling check-point in-hi-bi-tion by set-ting ICI$[]\OML/cmm/
-m/it/12 ffectflagtoTrue\OT1/cmr/m/n/12 ; (2)\OML/cmm/m/it/12 Tcellactivationres
-torationacrossallsubtypesbyresettingt[]ctivation[]ffectto\OT1/cmr/m/n/12 1\OML/
-cmm/m/it/12 :\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; counteractingexhaustionfromPD 
-\OMS/cmsy/m/n/12 ^^@
+[26 <./figures/dna_mutation_heatmap.pdf>]
+Overfull \hbox (8.64555pt too wide) in paragraph at lines 177--178
+\OT1/cmr/m/n/10.95 hor-mone pro-files pro-duce dis-tinct im-mune dy-nam-ics, co
+n-tribut-ing to the well-documented
  []
 
-
-Overfull \hbox (586.65646pt too wide) in paragraph at lines 33--34
-\OML/cmm/m/it/12 L\OT1/cmr/m/n/12 1 + \OML/cmm/m/it/12 tumorencounters\OT1/cmr/
-m/n/12 ; \OML/cmm/m/it/12 and\OT1/cmr/m/n/12 (3)\OML/cmm/m/it/12 immuneinfiltra
-tionenhancementbyincrementingimmune[]nfiltration[]actorforTh\OT1/cmr/m/n/12 1\O
-ML/cmm/m/it/12 ; Th\OT1/cmr/m/n/12 2\OML/cmm/m/it/12 ; andMastCelltypes; modeli
-ngincreasedimmunecellinfiltrationintotumormasses:$ 
- []
-
-! Too many }'s.
-l.36 \section>Tyrosine Kinase Inhibitors (TKI)}
-                                               
-You've closed more groups than you opened.
-Such booboos are generally harmless, so keep going.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.39 ...mor growth suppression by reducing tumour_
-                                                  growth_effect, (2) angioge...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.40 
-     
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-Overfull \hbox (1593.83235pt too wide) in paragraph at lines 39--40
-\T1/ppl/m/n/12 tional to ef-fec-tive-ness: (1) tu-mor growth sup-pres-sion by r
-e-duc-ing tumour$[]\OML/cmm/m/it/12 rowth[]ffect; \OT1/cmr/m/n/12 (2)\OML/cmm/m
-/it/12 angiogenesisinhibitionbyreducingangiogenesis[]ffecttosuppressbloodvessel
-recruitment; \OT1/cmr/m/n/12 (3)\OML/cmm/m/it/12 neoantigenreleasebysettingTKI[
-]ffectflagsoapoptotictumorcellsreleaseantigenstonearbydendriticcellsforimmuneac
-tivation; and\OT1/cmr/m/n/12 (4)\OML/cmm/m/it/12 Tregdifferentiationsuppression
-byreducingtreg[]ifferentiation[]ffectinCD\OT1/cmr/m/n/12 4 +
- []
-
-
-Overfull \hbox (28.48253pt too wide) in paragraph at lines 45--46
-\T1/ppl/m/n/12 (KEYNOTE-426, JAVELIN Re-nal 101) demon-strated com-bi-na-tion s
-u-pe-ri-or-ity over monother-
- []
-
-<figures/treatment_timeline.pdf, id=1112, 853.8818pt x 714.02698pt>
-File: figures/treatment_timeline.pdf Graphic file (type pdf)
-<use figures/treatment_timeline.pdf>
-Package pdftex.def Info: figures/treatment_timeline.pdf  used on input line 49.
-
-(pdftex.def)             Requested size: 386.96027pt x 323.57536pt.
-
-Overfull \hbox (3.32222pt too wide) in paragraph at lines 72--72
- []\T1/ppl/m/n/10.95 Monotherapy 
- []
-
-
-Overfull \hbox (3.32222pt too wide) in paragraph at lines 76--76
- []\T1/ppl/m/n/10.95 Monotherapy 
- []
-
-
-Overfull \hbox (1.01175pt too wide) in paragraph at lines 80--80
- []\T1/ppl/m/n/10.95 Combination 
- []
-
-
-Overfull \hbox (4.46834pt too wide) in paragraph at lines 81--81
- [][]\T1/ppl/m/n/10.95 Proportional 
- []
-
-
-Overfull \hbox (55.09834pt too wide) in paragraph at lines 104--105
- [][] 
- []
-
-)
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[33]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[34 <./figures/treatment_timeline.pdf>]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[35] (./chapters/07_sex_hormone_system.tex
-Chapter 7.
-[36
-
-
-]
-Overfull \hbox (104.70767pt too wide) in paragraph at lines 38--39
-\T1/ppl/m/n/12 tio-nar-ies of per-ceived hor-mone lev-els that de-cay by 10% pe
-r step. The \T1/pcr/m/n/12 CellHormonalInfluenceEffect
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[37]
-<figures/hormone_dynamics.pdf, id=1192, 1076.02441pt x 714.02698pt>
+[27]
+<figures/hormone_dynamics.pdf, id=1081, 1076.02441pt x 714.02698pt>
 File: figures/hormone_dynamics.pdf Graphic file (type pdf)
 <use figures/hormone_dynamics.pdf>
-Package pdftex.def Info: figures/hormone_dynamics.pdf  used on input line 87.
-(pdftex.def)             Requested size: 386.96027pt x 256.77713pt.
-)
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[38 <./figures/hormone_dynamics.pdf>] (./chapters/08_implementation.tex
-Chapter 8.
-(./figures/architecture_overview.tex)
-
-LaTeX Warning: Reference `tab:detailed-mesa-vs-repast4py' on page 39 undefined 
-on input line 21.
-
-[39
-
-
-] (./figures/simulation_pipeline.tex) (./figures/model_architecture.tex)
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[40]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.69 ...nts a save() method returning (uid, state_
-                                                  tuple) for serialization. ...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.70 
-     
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-Overfull \hbox (342.10867pt too wide) in paragraph at lines 69--70
-\T1/ppl/m/n/12 im-ple-ments a save() method re-turn-ing (uid, state$[]\OML/cmm/
-m/it/12 uple\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 forserialization:Typeidentificati
-onusesintegercomparisonofuid\OT1/cmr/m/n/12 [1]\OML/cmm/m/it/12 ratherthanisins
-tance\OT1/cmr/m/n/12 ()\OML/cmm/m/it/12 checks:$ 
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[41]
-Underfull \hbox (badness 10000) in paragraph at lines 83--84
-[]|\T1/pcr/m/n/12 repast4py.core.Agent(id, type,
- []
-
-
-Overfull \hbox (52.48338pt too wide) in paragraph at lines 85--85
-[]|\T1/pcr/m/n/12 self.model.grid.get_neighbors()| 
- []
-
-
-Overfull \hbox (85.4042pt too wide) in paragraph at lines 85--86
-[]|\T1/pcr/m/n/12 grid_utils.get_neighbors_3d(spatial_index,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 86--86
-[]|\T1/pcr/m/n/12 isinstance(agent,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 86--87
-[]|\T1/pcr/m/n/12 agent.uid[1] ==
- []
-
-
-Overfull \hbox (16.4834pt too wide) in paragraph at lines 87--87
-[]|\T1/pcr/m/n/12 self.model.schedule.agents| 
- []
-
-
-Overfull \hbox (16.4834pt too wide) in paragraph at lines 88--88
-[]|\T1/pcr/m/n/12 model.agents_by_type[Type]| 
- []
-
-
-Overfull \hbox (45.80423pt too wide) in paragraph at lines 88--89
-[]|\T1/pcr/m/n/12 model.get_agents_by_type_id(type_id)| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 89--89
-[]|\T1/pcr/m/n/12 TumorCell.blood_source
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 90--90
-[]|\T1/pcr/m/n/12 Cell.search_dimension
- []
-
-
-Overfull \hbox (1.76027pt too wide) in paragraph at lines 122--122
- [][]\T1/ppl/m/n/10.95 Simulation 
- []
-
-
-Overfull \hbox (10.6952pt too wide) in paragraph at lines 122--122
- []\T1/ppl/m/n/10.95 Initialization 
- []
-
-
-Overfull \hbox (78.16617pt too wide) in paragraph at lines 161--162
- [][] 
- []
-
-)
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[42]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[43] (./chapters/09_parameters.tex
-Chapter 9.
-
-Underfull \hbox (badness 10000) in paragraph at lines 34--35
-[]|\T1/ppl/m/n/12 M1 macrophage mu-ta-tion
- []
-
-[44
+Package pdftex.def Info: figures/hormone_dynamics.pdf  used on input line 224.
+(pdftex.def)             Requested size: 350.68274pt x 232.70973pt.
+) (./chapters/06_treatment_system.tex [28] [29 <./figures/hormone_dynamics.pdf>
+] [30
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 57--58
-[]|\T1/ppl/m/n/12 M2 macrophage mu-ta-tion
+Chapter 5.
+Package lettrine.sty Info: Targeted height = 19.22708pt
+(lettrine.sty)             (for loversize=0, accent excluded),
+(lettrine.sty)             Lettrine height = 16.99782pt (T);
+(lettrine.sty)             reported on input line 6.
+(./figures/treatment_mechanisms.tex) [31
+
+] [32]
+Overfull \hbox (21.6907pt too wide) in paragraph at lines 43--44
+\OT1/cmr/m/n/10.95 strated that pem-brolizumab plus ax-i-tinib sig-nif-i-cantly
+ im-proved over-all sur-vival, progression-
  []
 
 
-Underfull \hbox (badness 3803) in paragraph at lines 78--79
-[]|\T1/ppl/m/n/12 DNA-driven ex-tra sup-pres-
+Overfull \hbox (2.24663pt too wide) in paragraph at lines 43--44
+\OT1/cmr/m/n/10.95 naive ad-vanced RCC [[]]. The JAVELIN Re-nal 101 trial sim-i
+-larly showed that avelumab
+ []
+
+<figures/treatment_timeline.pdf, id=1173, 853.8818pt x 714.02698pt>
+File: figures/treatment_timeline.pdf Graphic file (type pdf)
+<use figures/treatment_timeline.pdf>
+Package pdftex.def Info: figures/treatment_timeline.pdf  used on input line 47.
+
+(pdftex.def)             Requested size: 350.68274pt x 293.24324pt.
+(./figures/treatment_decision_flow.tex) [33] [34 <./figures/treatment_timeline.
+pdf>] [35]) (./chapters/07_implementation.tex [36]
+Chapter 6.
+Package lettrine.sty Info: Targeted height = 19.22708pt
+(lettrine.sty)             (for loversize=0, accent excluded),
+(lettrine.sty)             Lettrine height = 16.99782pt (T);
+(lettrine.sty)             reported on input line 6.
+(./figures/architecture_overview.tex) [37
+
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 31--32
+[]|\OT1/pcr/m/n/10.95 repast4py.core.Agent(id, type,
  []
 
 
-Underfull \hbox (badness 1975) in paragraph at lines 80--81
-[]|\T1/ppl/m/n/12 Effect-driven growth prob-a-
+Overfull \hbox (12.88348pt too wide) in paragraph at lines 33--33
+[]|\OT1/pcr/m/n/10 self.model.grid.get[]neighbors()| 
  []
 
 
-Underfull \hbox (badness 1297) in paragraph at lines 81--82
-[]|\T1/ppl/m/n/12 DNA-driven ex-tra pro-lif-er-a-
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+[]|\OT1/pcr/m/n/10 grid[]utils.get[]neighbors[]3d(
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--89
-[]|\T1/ppl/m/n/12 PD-1/PD-L1 check-point
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+[]|\OT1/pcr/m/n/10.95 isinstance(agent,
  []
 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[45]
-Underfull \hbox (badness 4940) in paragraph at lines 106--107
-[]|\T1/ppl/m/n/12 Effect-driven Th1 pro-lif-er-a-
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+[]|\OT1/pcr/m/n/10.95 agent.uid[1] ==
  []
 
 
-Underfull \hbox (badness 1383) in paragraph at lines 107--108
-[]|\T1/ppl/m/n/12 Hormone-driven Th1 pro-lif-
+Overfull \hbox (9.98402pt too wide) in paragraph at lines 36--37
+[]|\OT1/pcr/m/n/10.95 model.get[]agents[]by[]type[]id(type[]id)| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 109--110
-[]|\T1/ppl/m/n/12 Th1 spawn-ing of M1
+Underfull \hbox (badness 2653) in paragraph at lines 38--38
+[]|\OT1/pcr/m/n/10.95 Cell.search[]dimension \OT1/cmr/m/n/10.95 (class
  []
 
 
-Underfull \hbox (badness 2503) in paragraph at lines 110--111
-[]|\T1/ppl/m/n/12 Th1 spawn-ing of den-dritic
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [38]
+(./figures/model_architecture.tex)
+Underfull \hbox (badness 1769) in paragraph at lines 54--54
+[]\OT1/cmr/m/n/10.95 Figure 6.2: |Model ar-chi-tec-ture show-ing com-po-nent re
+-la-tion-ships be-tween the
+ []
+
+[39]
+LaTeX Font Info:    Trying to load font information for TS1+pcr on input line 7
+4.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1pcr.fd
+File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `pcr' (encoding: TS1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [40]
+(./figures/simulation_lifecycle.tex) [41]) (./chapters/08_parameters.tex
+Underfull \vbox (badness 1281) has occurred while \output is active []
+
+ [42]
+[43] [44
+
+
+]
+Chapter 7.
+Package lettrine.sty Info: Targeted height = 19.22708pt
+(lettrine.sty)             (for loversize=0, accent excluded),
+(lettrine.sty)             Lettrine height = 16.99782pt (T);
+(lettrine.sty)             reported on input line 6.
+
+Overfull \hbox (13.44098pt too wide) in paragraph at lines 12--13
+\OT1/cmr/m/n/10.95 im-mune cell con-cen-tra-tions read di-rectly from the ARON-
+1 dataset. \OT1/pcr/m/n/10.95 WeightParameters
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--112
-[]|\T1/ppl/m/n/12 Th2 spawn-ing of M1
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
+[]|\OT1/pcr/m/n/10.95 w[]m1[]phagocytosis\OT1/cmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 4940) in paragraph at lines 113--114
-[]|\T1/ppl/m/n/12 Effect-driven Th2 pro-lif-er-a-
+Underfull \hbox (badness 10000) in paragraph at lines 30--31
+[]|\OT1/pcr/m/n/10.95 w[]m2[]tumor[]growth\OT1/cmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 1383) in paragraph at lines 114--115
-[]|\T1/ppl/m/n/12 Hormone-driven Th2 pro-lif-
+Underfull \hbox (badness 10000) in paragraph at lines 31--32
+[]|\OT1/pcr/m/n/10.95 w[]tumor[]growth[]eff\OT1/cmr/m/n/10.95 ,
  []
 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[46]
-Underfull \hbox (badness 8000) in paragraph at lines 131--132
-[]|\T1/ppl/m/n/12 Apoptosis prob-a-bil-ity scal-
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+[]|\OT1/pcr/m/n/10.95 w[]cd4[]treg[]diff[]effect\OT1/cmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 4168) in paragraph at lines 133--134
-[]|\T1/ppl/m/n/12 Tumor cell kill prob-a-bil-ity
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+[]|\OT1/pcr/m/n/10.95 w[]cytotoxic[]kill\OT1/cmr/m/n/10.95 ,
  []
 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+[]|\OT1/pcr/m/n/10.95 w[]mast[]cell[]angiogenesis\OT1/cmr/m/n/10.95 ,
+ []
 
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
+[]|\OT1/pcr/m/n/10.95 w[]natural[]killer[]kill[]rate\OT1/cmr/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--37
+[]|\OT1/pcr/m/n/10.95 w[]pdc[]nkl[]spawn\OT1/cmr/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--38
+[]|\OT1/pcr/m/n/10.95 w[]treg[]t[]kill[]rate\OT1/cmr/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
+[]|\OT1/pcr/m/n/10.95 w[]ici[]effectiveness\OT1/cmr/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--40
+[]|\OT1/pcr/m/n/10.95 w[]glucose[]diffusion\OT1/cmr/m/n/10.95 ,
+ []
+
+
+Overfull \hbox (4.1512pt too wide) in paragraph at lines 39--40
+\OT1/pcr/m/n/10.95 w[]glucose[]tumor[]consumption| 
+ []
+
+[45
+
+] [46]
+Overfull \hbox (21.35239pt too wide) in paragraph at lines 88--89
+\OT1/cmr/m/n/10.95 ters are sam-pled uni-formly in $[\OMS/cmsy/m/n/10.95 ^^@\OT
+1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 ;
+ \OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 0]$. Drug ef-fec-t
+ive-ness weights (\OT1/pcr/m/n/10 w[]ici[]effectiveness\OT1/cmr/m/n/10.95 ,
+ []
+
+
+Overfull \hbox (23.35484pt too wide) in paragraph at lines 88--89
+\OT1/cmr/m/n/10.95 bounds: \OT1/pcr/m/n/10 w[]tumor[]growth[]threshold \OT1/cmr
+/m/n/10.95 in $[0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 75\OML/cmm/m/it/10.95 
+; \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 99]$, \OT1/pcr/m/
+n/10 w[]cell[]base[]death[]prob \OT1/cmr/m/n/10.95 in $[0\OML/cmm/m/it/10.95 :\
+OT1/cmr/m/n/10.95 001\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10
+.95 :\OT1/cmr/m/n/10.95 1]$,
+ []
+
+
+Overfull \hbox (104.25386pt too wide) in paragraph at lines 88--89
+\OT1/cmr/m/n/10.95 and \OT1/pcr/m/n/10 w[]progressive[]exhaustion \OT1/cmr/m/n/
+10.95 in $[0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 005\OML/cmm/m/it/10.95 ; \O
+T1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 3]$. The in-te-ger pa
+-ram-e-ter \OT1/pcr/m/n/10.95 receptor[]threshold[]variation
+ []
 
 [47]
-Underfull \hbox (badness 10000) in paragraph at lines 156--157
-[]|\T1/ppl/m/n/12 Mast cell prob-a-bil-ity of
+Overfull \hbox (17.2054pt too wide) in paragraph at lines 109--110
+\OT1/cmr/m/n/10.95 ICI+TKI), 13 im-mune cell con-cen-tra-tion mea-sure-ments ma
+tch-ing the \OT1/pcr/m/n/10 Patient-Parameters
  []
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[48]
-Underfull \hbox (badness 1931) in paragraph at lines 190--191
-[]|\T1/ppl/m/n/12 pDC con-tri-bu-tion to an-gio-
- []
-
-
-Underfull \hbox (badness 1189) in paragraph at lines 194--195
-[]|\T1/ppl/m/n/12 pDC ef-fect on NK cell kill
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[49]
-Underfull \hbox (badness 2600) in paragraph at lines 228--229
-\T1/ppl/m/n/12 dius for agent in-ter-ac-tions:
- []
-
-
-Underfull \hbox (badness 1515) in paragraph at lines 228--229
-[] \OT1/cmr/m/n/12 = [](5\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 b\OML/cmm/m/it/12 
-n[]=\OT1/cmr/m/n/12 (10 \OMS/cmsy/m/n/12 ^^A
- []
-
-
-Underfull \hbox (badness 2435) in paragraph at lines 232--233
-[]|\T1/ppl/m/n/12 ICI drug ef-fec-tive-ness scal-
- []
-
-
-Underfull \hbox (badness 1137) in paragraph at lines 233--234
-[]|\T1/ppl/m/n/12 TKI drug ef-fec-tive-ness scal-
- []
-
-
-Underfull \hbox (badness 4168) in paragraph at lines 234--235
-[]|\T1/ppl/m/n/12 Sex hor-mone in-flu-ence on
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 238--239
-[]|\T1/ppl/m/n/12 Integer vari-a-tion in TCR
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[50]
-Overfull \hbox (18.71281pt too wide) in alignment at lines 249--254
- [] [] [] 
- []
-
-
-Overfull \hbox (18.71281pt too wide) in alignment at lines 254--258
- [] [] [] 
- []
-
-
-Underfull \hbox (badness 1629) in paragraph at lines 259--259
-[]|\T1/ppl/m/n/12 Diffusion co-ef-fi-cient $\OML/cmm/m/it/12 D$ \T1/ppl/m/n/12 
-for the 3D
- []
-
-
-Underfull \hbox (badness 1342) in paragraph at lines 265--265
-\T1/ppl/m/n/12 prox-i-mately 4$\OMS/cmsy/m/n/12 ^^B$ \T1/ppl/m/n/12 the glu-cos
-e of im-
- []
-
-
-Underfull \hbox (badness 1122) in paragraph at lines 269--269
-[]|\T1/ppl/m/n/12 Sensitivity of tu-mor growth prob-a-
- []
-
-
-Underfull \hbox (badness 1132) in paragraph at lines 269--269
-\T1/ppl/m/n/12 The glu-cose fac-tor is com-puted as
- []
-
-
-Underfull \hbox (badness 1688) in paragraph at lines 271--271
-[]|\T1/ppl/m/n/12 Sensitivity of im-mune cell ef-fec-tor
- []
-
-
-Underfull \hbox (badness 1888) in paragraph at lines 273--274
-\T1/ppl/m/n/12 lows the glu-cose gra-di-ent (chemo-
- []
-
-
-Overfull \hbox (18.71281pt too wide) in alignment at lines 258--275
- [] [] [] 
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[51]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[52]
-Overfull \hbox (62.93561pt too wide) in paragraph at lines 284--285
-\T1/ppl/m/n/12 ties can be scaled by an anal-o-gous glu-cose fac-tor us-ing \T1
-/pcr/m/n/12 w_glucose_immune_sensitivity\T1/ppl/m/n/12 ,
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[53]
-Overfull \hbox (94.88248pt too wide) in paragraph at lines 324--325
-[]\T1/ppl/b/n/12 Threshold weights\T1/ppl/m/n/12 : \T1/pcr/m/n/12 w_tumour_grow
-th_threshold \T1/ppl/m/n/12 in $\OT1/cmr/m/n/12 [0\OML/cmm/m/it/12 :\OT1/cmr/m/
-n/12 75\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 99
-]$\T1/ppl/m/n/12 ; \T1/pcr/m/n/12 w_cell_base_death_prob
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[54]
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 343.
-
-Overfull \hbox (64.91476pt too wide) in paragraph at lines 364--365
-[]\T1/ppl/b/n/12 Immune cell con-cen-tra-tions\T1/ppl/m/n/12 : 13 cell type con
--cen-tra-tions match-ing the \T1/pcr/m/n/12 PatientParameters
- []
-
-<figures/parameter_sensitivity.pdf, id=1342, 1076.46355pt x 851.45734pt>
+<figures/parameter_sensitivity.pdf, id=1329, 1076.46355pt x 851.45734pt>
 File: figures/parameter_sensitivity.pdf Graphic file (type pdf)
 <use figures/parameter_sensitivity.pdf>
 Package pdftex.def Info: figures/parameter_sensitivity.pdf  used on input line 
-387.
-(pdftex.def)             Requested size: 386.96027pt x 306.08267pt.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[55])
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[56 <./figures/parameter_sensitivity.pdf>]
-(./chapters/10_simulation_results.tex
-Chapter 10.
-
-Overfull \hbox (9.93518pt too wide) in paragraph at lines 28--29
-[]\T1/ppl/b/n/12 ICI+TKI Com-bi-na-tion\T1/ppl/m/n/12 : Pro-duced sur-pris-ing 
-sex-specific dif-fer-ences. Males achieved
- []
-
-[57
+120.
+(pdftex.def)             Requested size: 350.68274pt x 277.38295pt.
+) (./chapters/09_simulation_results.tex [48] [49 <./figures/parameter_sensitivi
+ty.pdf>] [50
 
 
 ]
-<figures/scenario_comparison_tumor.pdf, id=1433, 722.7pt x 433.62pt>
-File: figures/scenario_comparison_tumor.pdf Graphic file (type pdf)
-<use figures/scenario_comparison_tumor.pdf>
-Package pdftex.def Info: figures/scenario_comparison_tumor.pdf  used on input l
-ine 56.
-(pdftex.def)             Requested size: 386.96027pt x 232.1796pt.
-<figures/scenario_comparison_glucose.pdf, id=1434, 722.7pt x 433.62pt>
-File: figures/scenario_comparison_glucose.pdf Graphic file (type pdf)
-<use figures/scenario_comparison_glucose.pdf>
-Package pdftex.def Info: figures/scenario_comparison_glucose.pdf  used on input
- line 63.
-(pdftex.def)             Requested size: 386.96027pt x 232.1796pt.
-<figures/scenario_comparison_immune.pdf, id=1435, 722.7pt x 433.62pt>
-File: figures/scenario_comparison_immune.pdf Graphic file (type pdf)
-<use figures/scenario_comparison_immune.pdf>
-Package pdftex.def Info: figures/scenario_comparison_immune.pdf  used on input 
-line 70.
-(pdftex.def)             Requested size: 386.96027pt x 232.1796pt.
+Chapter 8.
+Package lettrine.sty Info: Targeted height = 19.22708pt
+(lettrine.sty)             (for loversize=0, accent excluded),
+(lettrine.sty)             Lettrine height = 16.99782pt (T);
+(lettrine.sty)             reported on input line 6.
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[58 <./figures/scenario_comparison_tumor.pdf>]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[59 <./figures/scenario_comparison_glucose.pdf> <./figures/scenario_comparison_
-immune.pdf>]
-<figures/sensitivity_glucose_consumption.pdf, id=1571, 1011.78pt x 397.485pt>
-File: figures/sensitivity_glucose_consumption.pdf Graphic file (type pdf)
-<use figures/sensitivity_glucose_consumption.pdf>
-Package pdftex.def Info: figures/sensitivity_glucose_consumption.pdf  used on i
-nput line 99.
-(pdftex.def)             Requested size: 386.96027pt x 152.02235pt.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[60]
-Overfull \hbox (116.52866pt too wide) in paragraph at lines 116--130
+Overfull \hbox (27.06952pt too wide) in paragraph at lines 25--39
  [][] 
  []
 
-<figures/empirical_tumor_boxplot.pdf, id=1577, 867.24pt x 433.62pt>
+<figures/scenario_comparison_tumor.pdf, id=1411, 722.7pt x 433.62pt>
+File: figures/scenario_comparison_tumor.pdf Graphic file (type pdf)
+<use figures/scenario_comparison_tumor.pdf>
+Package pdftex.def Info: figures/scenario_comparison_tumor.pdf  used on input l
+ine 47.
+(pdftex.def)             Requested size: 350.68274pt x 210.4113pt.
+[51
+
+]
+<figures/scenario_comparison_glucose.pdf, id=1418, 722.7pt x 433.62pt>
+File: figures/scenario_comparison_glucose.pdf Graphic file (type pdf)
+<use figures/scenario_comparison_glucose.pdf>
+Package pdftex.def Info: figures/scenario_comparison_glucose.pdf  used on input
+ line 54.
+(pdftex.def)             Requested size: 350.68274pt x 210.4113pt.
+<figures/scenario_comparison_immune.pdf, id=1419, 722.7pt x 433.62pt>
+File: figures/scenario_comparison_immune.pdf Graphic file (type pdf)
+<use figures/scenario_comparison_immune.pdf>
+Package pdftex.def Info: figures/scenario_comparison_immune.pdf  used on input 
+line 61.
+(pdftex.def)             Requested size: 350.68274pt x 210.4113pt.
+ [52 <./figures/scenario_comparison_tumor.pdf>] [53 <./figures/scenario_compari
+son_glucose.pdf> <./figures/scenario_comparison_immune.pdf>]
+<figures/sensitivity_glucose_consumption.pdf, id=1554, 1011.78pt x 397.485pt>
+File: figures/sensitivity_glucose_consumption.pdf Graphic file (type pdf)
+<use figures/sensitivity_glucose_consumption.pdf>
+Package pdftex.def Info: figures/sensitivity_glucose_consumption.pdf  used on i
+nput line 82.
+(pdftex.def)             Requested size: 350.68274pt x 137.7693pt.
+ [54 <./figures/sensitivity_glucose_consumption.pdf>]
+<figures/empirical_tumor_boxplot.pdf, id=1625, 867.24pt x 433.62pt>
 File: figures/empirical_tumor_boxplot.pdf Graphic file (type pdf)
 <use figures/empirical_tumor_boxplot.pdf>
 Package pdftex.def Info: figures/empirical_tumor_boxplot.pdf  used on input lin
-e 138.
-(pdftex.def)             Requested size: 386.96027pt x 193.47969pt.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[61 <./figures/sensitivity_glucose_consumption.pdf>]
-<figures/empirical_survival_rate.pdf, id=1647, 722.7pt x 361.35pt>
+e 120.
+(pdftex.def)             Requested size: 350.68274pt x 175.34386pt.
+<figures/empirical_survival_rate.pdf, id=1627, 722.7pt x 361.35pt>
 File: figures/empirical_survival_rate.pdf Graphic file (type pdf)
 <use figures/empirical_survival_rate.pdf>
 Package pdftex.def Info: figures/empirical_survival_rate.pdf  used on input lin
-e 145.
-(pdftex.def)             Requested size: 364.19667pt x 182.0971pt.
-<figures/empirical_growth_curves.pdf, id=1648, 1011.78pt x 722.7pt>
+e 129.
+(pdftex.def)             Requested size: 350.68274pt x 175.34276pt.
+<figures/empirical_growth_curves.pdf, id=1629, 1011.78pt x 722.7pt>
 File: figures/empirical_growth_curves.pdf Graphic file (type pdf)
 <use figures/empirical_growth_curves.pdf>
 Package pdftex.def Info: figures/empirical_growth_curves.pdf  used on input lin
-e 152.
-(pdftex.def)             Requested size: 386.96027pt x 276.40428pt.
-<figures/empirical_kills.pdf, id=1649, 722.7pt x 361.35pt>
+e 138.
+(pdftex.def)             Requested size: 350.68274pt x 250.48965pt.
+ [55 <./figures/empirical_tumor_boxplot.pdf>] [56 <./figures/empirical_survival
+_rate.pdf> <./figures/empirical_growth_curves.pdf>]
+<figures/empirical_kills.pdf, id=1788, 722.7pt x 361.35pt>
 File: figures/empirical_kills.pdf Graphic file (type pdf)
 <use figures/empirical_kills.pdf>
-Package pdftex.def Info: figures/empirical_kills.pdf  used on input line 159.
-(pdftex.def)             Requested size: 364.19667pt x 182.0971pt.
-<figures/population_dynamics.pdf, id=1650, 857.88051pt x 571.02838pt>
+Package pdftex.def Info: figures/empirical_kills.pdf  used on input line 148.
+(pdftex.def)             Requested size: 350.68274pt x 175.34276pt.
+<figures/population_dynamics.pdf, id=1790, 857.88051pt x 571.02838pt>
 File: figures/population_dynamics.pdf Graphic file (type pdf)
 <use figures/population_dynamics.pdf>
-Package pdftex.def Info: figures/population_dynamics.pdf  used on input line 16
-6.
-(pdftex.def)             Requested size: 386.96027pt x 257.57031pt.
-<figures/tumor_growth.pdf, id=1651, 715.36823pt x 426.48834pt>
-File: figures/tumor_growth.pdf Graphic file (type pdf)
-<use figures/tumor_growth.pdf>
-Package pdftex.def Info: figures/tumor_growth.pdf  used on input line 173.
-(pdftex.def)             Requested size: 386.96027pt x 230.70374pt.
-<figures/kill_distribution.pdf, id=1652, 714.5928pt x 424.94698pt>
+Package pdftex.def Info: figures/population_dynamics.pdf  used on input line 15
+7.
+(pdftex.def)             Requested size: 350.68274pt x 233.41739pt.
+<figures/kill_distribution.pdf, id=1792, 714.5928pt x 424.94698pt>
 File: figures/kill_distribution.pdf Graphic file (type pdf)
 <use figures/kill_distribution.pdf>
-Package pdftex.def Info: figures/kill_distribution.pdf  used on input line 180.
+Package pdftex.def Info: figures/kill_distribution.pdf  used on input line 167.
 
-(pdftex.def)             Requested size: 386.96027pt x 230.12283pt.
-<figures/kill_counts.pdf, id=1653, 867.24pt x 520.34402pt>
+(pdftex.def)             Requested size: 350.68274pt x 208.54355pt.
+<figures/kill_counts.pdf, id=1794, 867.24pt x 520.34402pt>
 File: figures/kill_counts.pdf Graphic file (type pdf)
 <use figures/kill_counts.pdf>
-Package pdftex.def Info: figures/kill_counts.pdf  used on input line 187.
-(pdftex.def)             Requested size: 386.96027pt x 232.17563pt.
-<figures/kill_statistics.pdf, id=1654, 715.30861pt x 426.58704pt>
-File: figures/kill_statistics.pdf Graphic file (type pdf)
-<use figures/kill_statistics.pdf>
-Package pdftex.def Info: figures/kill_statistics.pdf  used on input line 194.
-(pdftex.def)             Requested size: 386.96027pt x 230.77666pt.
-<figures/sex_stratified_results.pdf, id=1655, 1075.94281pt x 858.56697pt>
+Package pdftex.def Info: figures/kill_counts.pdf  used on input line 176.
+(pdftex.def)             Requested size: 350.68274pt x 210.41264pt.
+ [57 <./figures/empirical_kills.pdf> <./figures/population_dynamics.pdf>] [58 <
+./figures/kill_distribution.pdf> <./figures/kill_counts.pdf>]
+<figures/sex_stratified_results.pdf, id=1960, 1075.94281pt x 858.56697pt>
 File: figures/sex_stratified_results.pdf Graphic file (type pdf)
 <use figures/sex_stratified_results.pdf>
 Package pdftex.def Info: figures/sex_stratified_results.pdf  used on input line
- 201.
-(pdftex.def)             Requested size: 386.96027pt x 308.76945pt.
-)
+ 186.
+(pdftex.def)             Requested size: 350.68274pt x 279.8301pt.
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[62 <./figures/empirical_tumor_boxplot.pdf> <./figures/empirical_survival_rate.
-pdf>]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[63 <./figures/empirical_growth_curves.pdf> <./figures/empirical_kills.pdf>]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[64 <./figures/population_dynamics.pdf> <./figures/tumor_growth.pdf>]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[65 <./figures/kill_distribution.pdf> <./figures/kill_counts.pdf>]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[66 <./figures/kill_statistics.pdf> <./figures/sex_stratified_results.pdf>]
-(./chapters/11_conclusion.tex
-Chapter 11.
-
-Overfull \hbox (3.30005pt too wide) in paragraph at lines 16--17
-[]\T1/ppl/b/n/12 Chapter 3 \T1/ppl/m/n/12 pre-sented the com-plete agent-based 
-ar-chi-tec-ture demon-strat-ing how com-
+Overfull \hbox (2.92595pt too wide) in paragraph at lines 198--199
+\OT1/cmr/m/n/10.95 check-point block-ade, while the larger TKI ad-van-tage (109
+ steps) sug-gests anti-angiogenic
  []
 
-[67
+) (./chapters/10_conclusion.tex [59 <./figures/sex_stratified_results.pdf>]
+[60
 
 
 ]
-Overfull \hbox (1.6628pt too wide) in paragraph at lines 40--41
-[]\T1/ppl/b/n/12 No spa-tial im-mune in-fil-tra-tion pat-terns \T1/ppl/m/n/12 ^
-^V All im-mune cells ini-tial-ized ran-domly
- []
+Chapter 9.
+Package lettrine.sty Info: Targeted height = 19.22708pt
+(lettrine.sty)             (for loversize=0, accent excluded),
+(lettrine.sty)             Lettrine height = 16.99782pt (T);
+(lettrine.sty)             reported on input line 6.
+[61
+
+]
+Underfull \vbox (badness 2310) has occurred while \output is active []
+
+ [62])
+(./chapters/appendix_a_parameters.tex [63] [64
 
 
-Overfull \hbox (1.09723pt too wide) in paragraph at lines 58--59
-[]\T1/ppl/m/n/12 Clonal evo-lu-tion track-ing with lin-eage re-la-tion-ships an
-d spa-tial com-pe-ti-tion mod-
- []
+]
+Appendix A.
+[65
+
+] [66] [67]) (./main.bbl [68] [69
 
 
-Overfull \hbox (2.237pt too wide) in paragraph at lines 65--66
-[]\T1/ppl/m/n/12 Prospective clin-i-cal trial in-te-gra-tion with reg-u-la-tory
- ap-proval for AI-assisted treat-
- []
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[68])
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[69] (./main.bbl [70
-
-]) [71
-
-] (./main.aux)
+] [70]) [71] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 
 
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 1.51292pt have occurred.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 1124AFD30F5A3967D56F22887E9541B9;17628.
- ) 
+(rerunfilecheck)             Checksum: 95897F628BC9F5888C45880DB2825973;17074.
+ )
+(\end occurred when \ifnum on line 1 was incomplete)
+(\end occurred when \iffalse on line 1 was incomplete)
+(\end occurred when \ifnum on line 1 was incomplete)
+(\end occurred when \iffalse on line 1 was incomplete)
+(\end occurred when \ifnum on line 1 was incomplete)
+(\end occurred when \iffalse on line 1 was incomplete)
+(\end occurred when \ifnum on line 1 was incomplete)
+(\end occurred when \iffalse on line 1 was incomplete)
+(\end occurred when \ifnum on line 1 was incomplete)
+(\end occurred when \iffalse on line 1 was incomplete)
+(\end occurred when \ifnum on line 1 was incomplete)
+(\end occurred when \iffalse on line 1 was incomplete)
+(\end occurred when \ifnum on line 1 was incomplete)
+(\end occurred when \iffalse on line 1 was incomplete)
+(\end occurred when \ifnum on line 1 was incomplete)
+(\end occurred when \iffalse on line 1 was incomplete)
+(\end occurred when \ifnum on line 1 was incomplete)
+(\end occurred when \iffalse on line 1 was incomplete)
+(\end occurred when \ifnum on line 1 was incomplete)
+(\end occurred when \iffalse on line 1 was incomplete) 
 Here is how much of TeX's memory you used:
- 51742 strings out of 476182
- 1173956 string characters out of 5795596
- 1980975 words of memory out of 5000000
- 72496 multiletter control sequences out of 15000+600000
- 599477 words of font info for 126 fonts, out of 8000000 for 9000
+ 51316 strings out of 476182
+ 1165085 string characters out of 5795596
+ 1987975 words of memory out of 5000000
+ 72087 multiletter control sequences out of 15000+600000
+ 575596 words of font info for 101 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 84i,16n,93p,1228b,2224s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/u
-crr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (73 pages, 1515559 bytes).
+ 90i,13n,93p,1555b,1091s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/talino/.texlive20
+23/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk> </home/talino/.texlive
+2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0900.600pk></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cmextra/cmex8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+mextra/cmex9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/urw/courier/ucrr8a.pfb>
+Output written on main.pdf (81 pages, 1613234 bytes).
 PDF statistics:
- 2333 PDF objects out of 2487 (max. 8388607)
- 1212 compressed objects within 13 object streams
- 313 named destinations out of 1000 (max. 500000)
- 22576 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 2272 PDF objects out of 2487 (max. 8388607)
+ 1284 compressed objects within 13 object streams
+ 291 named destinations out of 1000 (max. 500000)
+ 19492 words of extra memory for PDF output out of 20736 (max. 10000000)
 

@@ -1,17 +1,33 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """CD4+ Naive T Cell — differentiates into Treg, activates TH1/TH2."""
 from src.agents.t_cell import TCell
 from src.agents.agent_types import AgentType
 
 
 class CD4NaiveTCell(TCell):
+    """Naive CD4+ T cell that differentiates into Treg, Th1, or Th2.
+
+    Without antigen activation, may spontaneously differentiate into a
+    regulatory T cell (Treg) under hormonal influence. Upon antigen
+    recognition, transforms into either a Th1 or Th2 helper cell based
+    on the w_cd4_th1_ratio weight parameter.
+
+    Attributes:
+        receptor: Randomly generated 8-bit TCR receptor for antigen matching.
+    """
+
     initial_treg_differentiation = 0.005
 
     def __init__(self, local_id, rank, model, pos):
+        """Initialize a naive CD4+ T cell with a random receptor."""
         super().__init__(local_id, AgentType.CD4_NAIVE_T_CELL, rank, model, pos)
         self.receptor = self.generate_receptor()
         self.experienced_effects.treg_differentiation_effect += self.initial_treg_differentiation
 
     def step(self):
+        """Perceive hormones and attempt Treg differentiation each tick."""
         if self.base_step():
             return
 
@@ -31,6 +47,7 @@ class CD4NaiveTCell(TCell):
             return
 
     def activate(self, tumour_cell):
+        """Activate into Th1 or Th2 helper cell if antigen matches receptor."""
         antigen = tumour_cell.get_antigen()
         if self.pos is not None and antigen is not None and self.is_matching(antigen, self.receptor):
             if self.model.rng.random() < self.model.weight_params.w_cd4_th1_ratio:

@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Run metadata I/O, parameter loading, CSV loading."""
 
 import functools

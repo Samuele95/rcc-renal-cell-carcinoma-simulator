@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """CD4+ Helper 2 T Cell — produces IL-4/IL-5/IL-13, recruits CT and M1."""
 from src.agents.t_cell import TCell
 from src.agents.agent_types import AgentType
@@ -5,6 +8,13 @@ from src.systems.effect import Effect
 
 
 class CD4Helper2TCell(TCell):
+    """CD4+ Th2 helper T cell with mixed pro/anti-tumor effects.
+
+    Produces IL-4/IL-5/IL-13-like signals that recruit cytotoxic T cells and
+    M1 macrophages, but also emits a mild tumour growth effect. Proliferation
+    is enhanced by estrogen via a sigmoid gene factor.
+    """
+
     spawn_m1_chance = 0.01
     spawn_t_chance = 0.01
     initial_proliferation_chance = 0.01
@@ -12,6 +22,7 @@ class CD4Helper2TCell(TCell):
     my_tumour_growth_effect = 0.01
 
     def __init__(self, local_id, rank, model, pos):
+        """Initialize a Th2 helper cell with proliferation and mixed effects."""
         super().__init__(local_id, AgentType.CD4_HELPER2_T_CELL, rank, model, pos)
         self.experienced_effects.th2_proliferation_effect += self.initial_proliferation_chance
         self.experienced_effects.t_activation_effect = self.initial_t_activation_effect
@@ -21,6 +32,7 @@ class CD4Helper2TCell(TCell):
         )
 
     def step(self):
+        """Proliferate, recruit cytotoxic T cells and M1 macrophages, and move towards tumor."""
         if self.base_step():
             return
 

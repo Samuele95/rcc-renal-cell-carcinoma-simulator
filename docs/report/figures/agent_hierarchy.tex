@@ -1,102 +1,119 @@
+% Agent class hierarchy for the RCC agent-based model
+% Wrapped externally in \adjustbox{max width=0.85\textwidth}
 \begin{tikzpicture}[
-  level 1/.style={sibling distance=8cm, level distance=1.5cm},
-  level 2/.style={sibling distance=2.5cm, level distance=2cm},
-  level 3/.style={sibling distance=2cm, level distance=1.8cm},
-  node/.style={rectangle, rounded corners, minimum width=2.2cm, minimum height=0.8cm, text centered, draw=black, font=\footnotesize},
-  abstract/.style={node, fill=gray!20, dashed},
-  concrete/.style={node, fill=blue!10},
-  tcell/.style={node, fill=green!15},
-  other/.style={node, fill=orange!10}
+  >=Stealth,
+  every node/.style={
+    rectangle, rounded corners=3pt, draw, align=center,
+    minimum height=0.65cm, inner sep=4pt, font=\small
+  },
+  abstract/.style={fill=gray!20, dashed, draw=gray!70},
+  tcellnode/.style={fill=treatment!15, draw=treatment!50},
+  tumornode/.style={fill=tumorcell!15, draw=tumorcell!50},
+  innatenode/.style={fill=immunecell!15, draw=immunecell!50},
+  stromalnode/.style={fill=accent!15, draw=accent!50},
+  bus/.style={thick, gray!60},
+  arr/.style={->, thick, gray!60},
+  annot/.style={draw=none, fill=none, minimum height=0pt, inner sep=1pt,
+                font=\footnotesize\itshape},
 ]
 
-% Root
-\node[abstract] (agent) {\texttt{repast4py.Agent}}
-  child {
-    node[abstract] (cell) {\texttt{Cell}}
-    child {
-      node[abstract] (tcell) {\texttt{TCell}}
-      child {
-        node[tcell] (ctc) {\texttt{CytotoxicTCell}}
-      }
-      child {
-        node[tcell] (cd8naive) {\texttt{CD8NaiveTCell}}
-      }
-      child {
-        node[tcell] (cd4naive) {\texttt{CD4NaiveTCell}}
-      }
-      child {
-        node[tcell] (th1) {\texttt{CD4Helper1TCell}}
-      }
-      child {
-        node[tcell] (th2) {\texttt{CD4Helper2TCell}}
-      }
-    }
-    child {
-      node[concrete] (tumor) {\texttt{TumorCell}}
-    }
-    child {
-      node[concrete] (treg) {\texttt{TregCell}}
-    }
-    child {
-      node[concrete] (dc) {\texttt{DendriticCell}}
-    }
-    child {
-      node[concrete] (pdc) {\texttt{PlasmacitoidDC}}
-    }
-    child {
-      node[concrete] (m1) {\texttt{MacrophageM1}}
-    }
-    child {
-      node[concrete] (m2) {\texttt{MacrophageM2}}
-    }
-    child {
-      node[concrete] (nk) {\texttt{NaturalKiller}}
-    }
-    child {
-      node[concrete] (mast) {\texttt{MastCell}}
-    }
-    child {
-      node[concrete] (neutro) {\texttt{Neutrophil}}
-    }
-    child {
-      node[concrete] (adipo) {\texttt{Adipocyte}}
-    }
-    child {
-      node[concrete] (blood) {\texttt{Blood}}
-    }
-  }
-  child {
-    node[other] (sexhormone) {\texttt{SexHormone}}
-  }
-  child {
-    node[other] (cytokine) {\texttt{Cytokine}}
-  };
+% ===== Row 0: Root =====
+\node[abstract] (root) at (5, 0) {\texttt{repast4py.Agent}};
 
-% Position adjustments for better layout
-\node[tcell] at ([yshift=-1cm]tcell.south) (tcells) {};
+% ===== Row 1: Cell + SexHormone / Cytokine =====
+\node[abstract]    (cell)     at (2, -1.8) {\texttt{Cell}};
+\node[stromalnode] (hormone)  at (11, -1.8) {\texttt{SexHormone}};
+\node[stromalnode] (cytokine) at (11, -3.2) {\texttt{Cytokine}};
 
-% Separate positioning for T-cells to avoid overlap
-\begin{scope}[xshift=0cm, yshift=-4cm]
-\node[tcell] (ctc2) at (-6, 0) {\texttt{CytotoxicTCell}};
-\node[tcell] (cd8naive2) at (-3, 0) {\texttt{CD8NaiveTCell}};
-\node[tcell] (cd4naive2) at (0, 0) {\texttt{CD4NaiveTCell}};
-\node[tcell] (th12) at (3, 0) {\texttt{CD4Helper1TCell}};
-\node[tcell] (th22) at (6, 0) {\texttt{CD4Helper2TCell}};
+% Root -> level-1 bus
+\draw[bus] (root.south) -- (5, -0.8);
+\draw[bus] (2, -0.8) -- (11, -0.8);
+\draw[arr] (2, -0.8) -- (cell.north);
+\draw[arr] (11, -0.8) -- (hormone.north);
+\draw[arr, dashed] (11, -0.8) -- (11, -1.2) -- (cytokine.north);
 
-% Connect TCell to its subclasses
-\draw[->] ([yshift=-0.1cm]tcell.south) -- (ctc2.north);
-\draw[->] ([yshift=-0.1cm]tcell.south) -- (cd8naive2.north);
-\draw[->] ([yshift=-0.1cm]tcell.south) -- (cd4naive2.north);
-\draw[->] ([yshift=-0.1cm]tcell.south) -- (th12.north);
-\draw[->] ([yshift=-0.1cm]tcell.south) -- (th22.north);
-\end{scope}
+\node[annot] at (cell.west)      [left=2pt]  {abstract};
+\node[annot] at (hormone.east)   [right=2pt] {immediate moves};
+\node[annot] at (cytokine.east)  [right=2pt] {placeholder};
 
-% Legend
-\begin{scope}[xshift=8cm, yshift=-1cm]
-\node[abstract] at (0, 0.5) {\footnotesize Abstract};
-\node[tcell] at (0, 0) {\footnotesize T Cell};
-\node[concrete] at (0, -0.5) {\footnotesize Cellular};
-\node[other] at (0, -1) {\footnotesize Non-cellular};
+% ===== Row 2: Cell's direct children (first tier) =====
+\coordinate (cbus) at (2, -2.7);
+\draw[bus] (cell.south) -- (cbus);
+\draw[bus] (-2.5, -2.7) -- (8, -2.7);
+
+\node[abstract]   (tcell) at (-2.5, -3.8) {\texttt{TCell}};
+\node[tumornode]  (tumor) at (0.2,  -3.8) {\texttt{TumorCell}};
+\node[innatenode] (treg)  at (2.5,  -3.8) {\texttt{TregCell}};
+\node[innatenode] (dc)    at (5,    -3.8) {\texttt{DendriticCell}};
+\node[innatenode] (pdc)   at (8,    -3.8) {\texttt{PlasmacitoidDC}};
+
+\foreach \n in {tcell, tumor, treg, dc, pdc} {
+  \draw[arr] (\n.north |- cbus) -- (\n.north);
+}
+
+\node[annot] at (tcell.south) [below=1pt] {hormone perception, TCR};
+\node[annot, font=\footnotesize\color{immunecell}] at (dc.south) [below=1pt]
+     {+\,PhagocyticMixin};
+\node[annot, font=\footnotesize\color{immunecell}] at (pdc.south) [below=1pt]
+     {+\,PhagocyticMixin};
+
+% ===== Row 3: Cell's direct children (second tier) =====
+\coordinate (bus2drop) at (5, -2.7);
+\coordinate (bus2) at (5, -5.4);
+\draw[bus] (bus2drop) -- (bus2);
+\draw[bus] (0.2, -5.4) -- (13.2, -5.4);
+
+\node[innatenode]  (m1)     at (0.2,  -6.5) {\texttt{MacrophageM1}};
+\node[innatenode]  (m2)     at (2.5,  -6.5) {\texttt{MacrophageM2}};
+\node[innatenode]  (nk)     at (4.8,  -6.5) {\texttt{NaturalKiller}};
+\node[innatenode]  (mast)   at (6.8,  -6.5) {\texttt{MastCell}};
+\node[innatenode]  (neutro) at (8.8,  -6.5) {\texttt{Neutrophil}};
+\node[stromalnode] (adipo)  at (10.8, -6.5) {\texttt{Adipocyte}};
+\node[stromalnode] (blood)  at (13.2, -6.5) {\texttt{Blood}};
+
+\foreach \n in {m1, m2, nk, mast, neutro, adipo, blood} {
+  \draw[arr] (\n.north |- bus2) -- (\n.north);
+}
+
+\node[annot, font=\footnotesize\color{immunecell}] at (m1.south) [below=1pt]
+     {+\,PhagocyticMixin};
+\node[annot] at (blood.south) [below=1pt] {has\_step\,=\,False};
+
+% ===== Row 3 (left): T-cell subclasses =====
+\coordinate (tbusy) at (-2.5, -7.2);
+\draw[bus] (tcell.south) -- ++(0, -1.3);
+\draw[bus] (-8, -7.2) -- (3, -7.2);
+
+\node[tcellnode] (cd8n) at (-8,   -8.3) {\texttt{CD8NaiveTCell}};
+\node[tcellnode] (ctc)  at (-5.3, -8.3) {\texttt{CytotoxicTCell}};
+\node[tcellnode] (cd4n) at (-2.5, -8.3) {\texttt{CD4NaiveTCell}};
+\node[tcellnode] (th1)  at (0.3,  -8.3) {\texttt{CD4Helper1TCell}};
+\node[tcellnode] (th2)  at (3,    -8.3) {\texttt{CD4Helper2TCell}};
+
+\foreach \n in {cd8n, ctc, cd4n, th1, th2} {
+  \draw[arr] (\n.north |- tbusy) -- (\n.north);
+}
+
+\node[annot] at (ctc.south) [below=1pt] {CD8+};
+\node[annot] at (th1.south) [below=1pt] {Th1};
+\node[annot] at (th2.south) [below=1pt] {Th2};
+
+% ===== Legend (bottom-right) =====
+\begin{scope}[shift={(11.5, -7.5)}]
+  \node[draw=none, fill=none, font=\small\bfseries, minimum height=0pt,
+        inner sep=0pt, anchor=north west] at (-0.2, 0) {Legend};
+  \node[abstract, font=\footnotesize, minimum width=2.2cm]
+        at (1, -0.6) {Abstract};
+  \node[tcellnode, font=\footnotesize, minimum width=2.2cm]
+        at (1, -1.3) {T~cells\,(5)};
+  \node[tumornode, font=\footnotesize, minimum width=2.2cm]
+        at (1, -2.0) {Tumor\,(1)};
+  \node[innatenode, font=\footnotesize, minimum width=2.2cm]
+        at (1, -2.7) {Innate\,(7)};
+  \node[stromalnode, font=\footnotesize, minimum width=2.2cm]
+        at (1, -3.4) {Stromal / signal\,(4)};
+  \draw[gray!50, rounded corners=4pt]
+        (-0.4, 0.3) rectangle (2.5, -3.8);
 \end{scope}
 
 \end{tikzpicture}

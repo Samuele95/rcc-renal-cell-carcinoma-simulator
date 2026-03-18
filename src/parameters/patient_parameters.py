@@ -1,3 +1,11 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
+"""Patient-specific parameters for the RCC simulation.
+
+Includes biological sex, BMI, treatment selection, treatment start
+time, and initial immune/tumor cell concentrations (cells/mL).
+"""
 from dataclasses import dataclass
 from enum import Enum
 
@@ -5,11 +13,15 @@ from src.parameters.parameters import Parameters
 
 
 class Sex(str, Enum):
+    """Biological sex of the patient."""
+
     FEMALE = 'F'
     MALE = 'M'
 
 
 class TreatmentType(str, Enum):
+    """Available treatment drug combinations."""
+
     NONE = 'None'
     ICI = 'ICI'
     TKI = 'TKI'
@@ -18,6 +30,12 @@ class TreatmentType(str, Enum):
 
 @dataclass
 class PatientParameters(Parameters):
+    """Patient attributes and initial cell concentrations.
+
+    Concentrations are in cells/mL and are scaled by model volume
+    during initialization to determine actual agent counts.
+    """
+
     sex: Sex = Sex.FEMALE
     BMI: float = 22.0
     treatment: TreatmentType = TreatmentType.ICI_TKI

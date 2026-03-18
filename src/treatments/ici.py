@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Immune Checkpoint Inhibitor (ICI) drug.
 
 Blocks PD-1/PD-L1, restores T cell activity, increases immune infiltration.
@@ -7,8 +10,19 @@ from src.treatments.drug import Drug
 
 
 class ICIDrug(Drug):
+    """Immune Checkpoint Inhibitor drug.
+
+    Blocks the PD-1/PD-L1 pathway on tumor cells, restores T cell
+    activation, and boosts immune infiltration of helper T cells
+    and mast cells.
+    """
 
     def step(self, proportion=1.0):
+        """Apply ICI effects for one simulation step.
+
+        Args:
+            proportion: Fraction of full effectiveness (set by Treatment).
+        """
         effectiveness = proportion * self.model.weight_params.w_ici_effectiveness
 
         # Set PD-1/PD-L1 inhibition for X% of tumor cells

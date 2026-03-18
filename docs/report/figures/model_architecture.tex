@@ -1,56 +1,47 @@
+% Model Architecture — component diagram
 \begin{tikzpicture}[
-  box/.style={rectangle, rounded corners, minimum width=2.5cm, minimum height=1.2cm, text centered, draw=black, font=\footnotesize, thick},
-  mainbox/.style={box, fill=blue!20, minimum width=3.5cm, minimum height=1.8cm},
-  component/.style={box, fill=green!15},
-  data/.style={box, fill=orange!15, minimum width=2cm, minimum height=0.8cm},
-  arrow/.style={->, >=stealth, thick}
+    main/.style={rectangle, rounded corners=4pt, draw, thick, fill=primary!15,
+                 font=\small\bfseries, minimum width=2.8cm, minimum height=1.2cm,
+                 text centered},
+    comp/.style={rectangle, rounded corners=3pt, draw, fill=secondary!12,
+                 font=\small, minimum width=2.4cm, minimum height=0.9cm,
+                 align=center, inner sep=3pt},
+    arrow/.style={->, >=stealth, thick}
 ]
 
-% Main model
-\node[mainbox] (model) at (0, 0) {\textbf{RCCModel}\par\footnotesize Main controller\par Repast4Py model};
+% Central node
+\node[main] (model) at (5,4) {RCCModel};
 
-% Core components
-\node[component] (glucose) at (-4, 2.5) {\textbf{GlucoseField}\par 3D diffusion\par Warburg effect};
-\node[component] (adder) at (-4, 0) {\textbf{CellAdder}\par Agent spawning\par Initialization};
-\node[component] (observer) at (-4, -2.5) {\textbf{Observer}\par Data collection\par Logging};
+% Left — Agent Hierarchy
+\node[comp] (agents) at (0.5,4) {Agent Hierarchy\\ 18 types};
+\draw[arrow] (model) -- (agents) node[midway, above, font=\footnotesize] {manages};
 
-\node[component] (treatment) at (4, 2.5) {\textbf{Treatment}\par ICI \& TKI\par Drug effects};
-\node[component] (spatial) at (4, 0) {\textbf{SpatialIndex}\par 3D queries\par Neighbors};
-\node[component] (grid) at (4, -2.5) {\textbf{SharedGrid}\par Agent positions\par 3D space};
+% Top — Glucose Field
+\node[comp] (glucose) at (5,7) {Glucose Field\\ 3D diffusion};
+\draw[arrow] (model) -- (glucose) node[midway, right, font=\footnotesize] {updates};
 
-% Data structures
-\node[data] (params) at (0, 3.5) {Parameters\par(YAML)};
-\node[data] (effects) at (-7, 0) {Effects\par System};
-\node[data] (agents) at (0, -4) {Agent\par Context};
-\node[data] (logs) at (7, 0) {Logs \&\par Output};
+% Right — Effect System
+\node[comp] (effects) at (9.5,5.5) {Effect System\\ 14 paracrine fields};
+\draw[arrow] (model) -- (effects) node[midway, above, font=\footnotesize, sloped] {collects};
 
-% Arrows - Data flow
-\draw[arrow] (params) -- (model);
-\draw[arrow] (model) -- (glucose);
-\draw[arrow] (model) -- (adder);
-\draw[arrow] (model) -- (observer);
-\draw[arrow] (model) -- (treatment);
-\draw[arrow] (model) -- (spatial);
-\draw[arrow] (model) -- (grid);
+% Bottom-right — Treatment
+\node[comp] (treat) at (9.5,2.5) {Treatment\\ ICI / TKI};
+\draw[arrow] (model) -- (treat) node[midway, below, font=\footnotesize, sloped] {applies};
 
-% Cross-component interactions
-\draw[arrow, dashed] (glucose) -- (spatial);
-\draw[arrow, dashed] (adder) -- (grid);
-\draw[arrow, dashed] (observer) -- (logs);
-\draw[arrow, dashed] (treatment) -- (effects);
-\draw[arrow, dashed] (spatial) -- (grid);
+% Bottom — Parameter Management
+\node[comp] (params) at (5,1) {Parameters\\ YAML config};
+\draw[arrow] (params) -- (model) node[midway, right, font=\footnotesize] {configures};
 
-% External connections
-\draw[arrow] (effects) -- (adder);
-\draw[arrow] (agents) -- (grid);
-\draw[arrow] (observer) -- (logs);
+% Bottom-left — Data Collection
+\node[comp] (data) at (0.5,1.5) {Data Collection\\ CSV logging};
+\draw[arrow] (model) -- (data) node[midway, left, font=\footnotesize] {records};
 
-% Step sequence annotations
-\begin{scope}[xshift=0cm, yshift=-6.5cm]
-\node[text width=12cm, font=\footnotesize] {
-\textbf{Main Step Sequence:}
-1. collect\_data $\rightarrow$ 2. check\_termination $\rightarrow$ 3. apply\_effects $\rightarrow$ 4. treatment $\rightarrow$ 5. sex\_drift $\rightarrow$ 6. glucose\_step $\rightarrow$ 7. manage\_blood $\rightarrow$ 8. agent\_steps $\rightarrow$ 9. move $\rightarrow$ 10. spawn\_hormones
-};
-\end{scope}
+% Cross-component flows (dashed)
+\draw[arrow, dashed, neutral] (effects) -- (agents)
+    node[midway, above, font=\footnotesize] {modifies};
+\draw[arrow, dashed, neutral] (glucose) -| (agents)
+    node[pos=0.25, above, font=\footnotesize] {feeds};
+\draw[arrow, dashed, neutral] (treat) -- (effects)
+    node[midway, right, font=\footnotesize] {alters};
 
 \end{tikzpicture}

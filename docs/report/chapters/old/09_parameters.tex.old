@@ -1,0 +1,185 @@
+\chapter{Parameters and Optimization}
+\label{ch:parameters}
+
+
+
+\lettrine[lines=2]{T}{he model} employs a three-tier parameter hierarchy comprising 114 parameters in total. This separation reflects a deliberate design decision grounded in the distinct roles that different parameter classes play in the simulation. At the highest level, 4 model parameters govern simulation infrastructure concerns such as spatial volume, grid resolution, random seed, and maximum step count; these are fixed by the modeler and do not vary across patient cases. The second tier consists of 18 patient parameters that encode clinical variables specific to each individual, including sex, BMI, treatment regimen, treatment start time, and 14 immune cell concentration measurements. These parameters are not subject to optimization because they are directly determined by clinical data from the ARON-1 dataset. The third and largest tier comprises 92 weight parameters that control the probability thresholds and scaling factors governing all biological processes in the model, from tumor cell proliferation and immune cell kill rates to glucose metabolism and drug effectiveness. These weight parameters are the target of Bayesian optimization, as they represent the biological quantities that cannot be directly measured from patient data and must instead be inferred by calibrating the model against observed clinical outcomes.
+
+% ======================================================================
+\section{Parameter Categories}
+\label{sec:param-categories}
+
+Parameters are organized into three dataclass objects: ModelParameters, PatientParameters, and WeightParameters.
+
+ModelParameters: 4 simulation configuration parameters (volume, block size, random seed, max steps). PatientParameters: 18 patient-specific parameters (sex, BMI, treatment type, start time, plus 14 immune cell concentrations). WeightParameters: 92 biological process rate parameters optimized via Bayesian methods.
+
+% ======================================================================
+\section{Weight Parameters}
+\label{sec:weight-params}
+
+The 92 weight parameters control probability thresholds and scaling factors for all agent behaviors, organized by cell type. These parameters are optimized via Bayesian methods to match clinical trial outcomes. Table~\ref{tab:param-summary} provides a high-level overview; the complete per-parameter listings with defaults and descriptions are given in Appendix~\ref{ch:appendix-params}.
+
+\begin{table}[H]
+\centering
+\caption{Summary of weight parameters by category.}
+\label{tab:param-summary}
+\begin{tabular}{@{}lclp{5.8cm}@{}}
+\toprule
+\textbf{Category} & \textbf{Count} & \textbf{Description} & \textbf{Example Parameters} \\
+\midrule
+M1 Macrophage & 8 & Pro-inflammatory macrophage behavior & \texttt{w\_m1\_phagocytosis}, \texttt{w\_m1\_t\_kill\_rate} \\
+M2 Macrophage & 6 & Anti-inflammatory macrophage behavior & \texttt{w\_m2\_tumour\_growth}, \texttt{w\_m2\_angiogenesis} \\
+Tumor Cell & 11 & Tumor growth, apoptosis, and immune evasion & \texttt{w\_tumor\_growth\_eff}, \texttt{w\_gene\_pd1\_inhibition} \\
+CD4+ T Cell & 12 & Helper T cell differentiation and spawning & \texttt{w\_cd4\_treg\_diff\_effect}, \texttt{w\_cd4\_th1\_spawn\_m1} \\
+Cytotoxic T Cell & 7 & CD8+ killing, proliferation, and PD-1 response & \texttt{w\_cytotoxic\_kill}, \texttt{w\_cytotoxic\_pd1\_inhibition} \\
+Mast Cell & 6 & Angiogenesis, immune modulation, DC spawning & \texttt{w\_mast\_cell\_angiogenesis}, \texttt{w\_mast\_cell\_spawn\_dc} \\
+NK Cell & 3 & Natural killer direct and indirect cytotoxicity & \texttt{w\_natural\_killer\_kill\_rate}, \texttt{w\_nkl\_t\_kill\_rate} \\
+pDC & 7 & Dendritic cell immune orchestration & \texttt{w\_pdc\_nkl\_spawn}, \texttt{w\_pdc\_t\_kill} \\
+Treg & 5 & Regulatory T cell immunosuppression & \texttt{w\_treg\_t\_kill\_rate}, \texttt{w\_treg\_activation} \\
+Global & 11 & Simulation-wide thresholds and drug effects & \texttt{w\_ici\_effectiveness}, \texttt{w\_cell\_base\_death\_prob} \\
+Glucose & 8 & Metabolic microenvironment dynamics & \texttt{w\_glucose\_diffusion}, \texttt{w\_glucose\_tumor\_consumption} \\
+\midrule
+\textbf{Total} & \textbf{84} & \multicolumn{2}{l}{\textit{Plus 8 glucose parameters = 92 optimizable weights}} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ======================================================================
+\section{Glucose Parameters}
+\label{sec:glucose-params}
+
+The glucose microenvironment system introduces 8 weight parameters, all prefixed with \texttt{w\_glucose\_}. These parameters control the physical dynamics of glucose diffusion, the metabolic consumption rates, and the coupling between glucose availability and agent behavior (see Appendix~\ref{ch:appendix-params} for the full table).
+
+\subsection{Parameter Interactions}
+
+The glucose parameters interact with the existing weight parameters in several ways:
+
+\begin{itemize}
+    \item \textbf{Tumor growth modulation}: The tumor cell duplication probability (governed by \texttt{w\_tumor\_growth\_eff} and \texttt{w\_tumor\_growth\_dna}) is multiplied by a glucose factor $\min(1, C \cdot \texttt{w\_glucose\_growth\_sensitivity})$. When glucose is abundant, this factor approaches 1 and growth proceeds at the base rate; when glucose is depleted, growth is suppressed.
+
+    \item \textbf{Immune function modulation}: Immune cell kill rates and activation probabilities can be scaled by an analogous glucose factor using \texttt{w\_glucose\_immune\_sensitivity}, coupling metabolic resource availability to immune effectiveness.
+
+    \item \textbf{Spatial competition}: The balance between \texttt{w\_glucose\_source\_rate} (supply from blood vessels) and \texttt{w\_glucose\_tumor\_consumption} (demand from tumor cells) determines the spatial glucose profile. High tumor consumption relative to supply creates depletion zones that impair both further tumor growth and immune infiltration.
+\end{itemize}
+
+% ======================================================================
+\section{Bayesian Optimization}
+\label{sec:bayesian-optimization}
+
+The optimization of 92 weight parameters presents a substantial search problem that precludes naive exploration strategies. Grid search, even with only 3 values per parameter, would require $3^{92}$ evaluations---a number that exceeds computational feasibility by many orders of magnitude. Random search, while more tractable, is inefficient in high-dimensional spaces where parameters exhibit correlations and where only specific regions of the parameter space yield biologically plausible behavior. Bayesian optimization addresses these limitations by constructing a probabilistic surrogate model of the objective function and using it to guide sampling toward the most promising regions of the parameter space. Specifically, the Tree-structured Parzen Estimator (TPE) algorithm models the distribution of parameter values that produce good versus poor objective values, progressively concentrating evaluations in regions where improvement is most likely. This approach is particularly well suited to the present problem, where each objective function evaluation requires running a full simulation for every patient in the clinical dataset, making each trial computationally expensive and rendering sample efficiency a primary concern.
+
+\subsection{Framework}
+
+The model uses Optuna~\cite{optuna} for Bayesian hyperparameter optimization. Optuna's TPE sampler implements the surrogate-based strategy described above, efficiently exploring the 92-dimensional weight space by building and refining probabilistic models of the objective function landscape at each trial.
+
+\subsection{Objective Function}
+
+The optimization objective is to minimize the prediction error of the model against the ARON-1 clinical dataset. For each Optuna trial, the following process is executed:
+
+\begin{enumerate}
+    \item A set of weight parameters is suggested by the TPE sampler within predefined bounds.
+    \item For each patient case in the ARON-1 dataset, a simulation is run with the patient's clinical features (sex, BMI, treatment, immune cell concentrations) and the suggested weight parameters.
+    \item The simulation outcome (survival/death, number of steps) is compared against the clinical outcome.
+    \item The per-case error is computed as:
+    \begin{equation}
+        \text{error}_i = \begin{cases}
+            (\text{steps}_i - \text{OS}_i)^2 & \text{if prediction matches outcome} \\
+            \text{HIGH\_PENALTY}^2 & \text{if prediction contradicts outcome}
+        \end{cases}
+    \end{equation}
+    where $\text{OS}_i$ is the observed overall survival (in steps) and $\text{HIGH\_PENALTY} = 500$.
+    \item The trial objective value is the mean error across all cases.
+\end{enumerate}
+
+\subsection{Search Space}
+
+The search space is defined in the \texttt{suggest\_parameters()} function and covers the full 92-parameter weight space:
+
+\begin{itemize}
+    \item \textbf{Positive weights} (62 parameters): Sampled log-uniformly in $[0.25, 4.0]$. The log-uniform distribution ensures adequate exploration of both small and large scaling factors.
+    \item \textbf{Biases} (15 parameters): Sampled uniformly in $[-1.0, 1.0]$.
+    \item \textbf{Effectiveness weights}: \texttt{w\_ici\_effectiveness} and \texttt{w\_tki\_effectiveness} in $[0.0, 1.0]$.
+    \item \textbf{Threshold weights}: \texttt{w\_tumour\_growth\_threshold} in $[0.75, 0.99]$; \texttt{w\_cell\_base\_death\_prob} in $[0.001, 0.1]$; \texttt{w\_progressive\_exhaustion} in $[0.005, 0.3]$.
+    \item \textbf{Integer parameters}: \texttt{receptor\_threshold\_variation} in $\{0, 1, 2, 3\}$.
+    \item \textbf{Glucose parameters} (8 parameters):
+    \begin{itemize}
+        \item \texttt{w\_glucose\_diffusion} in $[0.01, 0.16]$ (respecting the $D < 1/6$ stability constraint).
+        \item \texttt{w\_glucose\_decay} in $[0.001, 0.1]$.
+        \item \texttt{w\_glucose\_source\_rate} in $[1.0, 20.0]$.
+        \item \texttt{w\_glucose\_tumor\_consumption} in $[0.5, 10.0]$.
+        \item \texttt{w\_glucose\_immune\_consumption} in $[0.1, 2.0]$.
+        \item \texttt{w\_glucose\_growth\_sensitivity} in $[0.1, 5.0]$.
+        \item \texttt{w\_glucose\_immune\_sensitivity} in $[0.1, 5.0]$.
+        \item \texttt{w\_glucose\_chemotaxis\_strength} in $[0.05, 0.8]$.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Optimization Configuration}
+
+The optimization runs for $N = 250$ trials, each evaluating every patient case in the ARON-1 dataset. Training uses \texttt{MPI.COMM\_SELF} to create isolated single-rank model instances, avoiding MPI communication overhead during optimization. Trial errors and the best-so-far error are logged to \texttt{data/trial\_errors.csv} for convergence analysis.
+
+\begin{lstlisting}[caption={Optuna study creation and execution.}, label={lst:optuna-study}]
+study = optuna.create_study(direction="minimize")
+study.optimize(wrapped_objective, n_trials=250)
+\end{lstlisting}
+
+
+
+% ======================================================================
+\section{Clinical Dataset}
+\label{sec:clinical-dataset}
+
+\subsection{ARON-1 Study}
+
+The ARON-1 study is a clinical trial of advanced renal cell carcinoma patients treated with immune checkpoint inhibitors (ICI), tyrosine kinase inhibitors (TKI), or their combination~\cite{rini2019, motzer2019}. The dataset provides the ground truth against which the model is calibrated.
+
+\subsection{Dataset Structure}
+
+The clinical dataset is stored in \texttt{src/learning/data/ARON.csv} and contains the following features for each patient case:
+
+\begin{itemize}
+    \item \textbf{Patient features}: sex (\texttt{'F'}/\texttt{'M'}), BMI, treatment type (ICI, TKI, or ICI+TKI).
+    \item \textbf{Immune cell concentrations}: 13 cell type concentrations matching the \texttt{PatientParameters} fields.
+    \item \textbf{Outcome}: Overall survival (OS) in time units, and a binary death indicator.
+\end{itemize}
+
+The dataset is loaded with Pandas, with the treatment column parsed as a list of strings to support combination therapies:
+
+\begin{lstlisting}[caption={Dataset loading.}]
+def load_dataset(file_path: str) -> pd.DataFrame:
+    def treatment_to_list(treatment_str):
+        return [t.strip() for t in treatment_str.split('+')]
+    return pd.read_csv(file_path,
+                       converters={"treatment": treatment_to_list})
+\end{lstlisting}
+
+% ============================================================================
+\section{Parameter Sensitivity Analysis}
+\label{sec:parameter_sensitivity}
+% ============================================================================
+
+Figure~\ref{fig:parameter_sensitivity} demonstrates the sensitivity of simulation outcomes to key parameter variations within the defined ranges. This analysis identifies which parameters have the strongest influence on tumor dynamics and treatment efficacy, providing guidance for parameter selection and model robustness assessment.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/parameter_sensitivity.pdf}
+\caption{Parameter sensitivity analysis showing the impact of key model parameters on tumor cell population dynamics. The analysis varies parameters within their defined ranges while keeping others at baseline values. Most sensitive parameters include glucose consumption rates, treatment effectiveness weights, and immune cell interaction parameters. Error bars represent variance across multiple simulation runs.}
+\label{fig:parameter_sensitivity}
+\end{figure}
+
+Each row of the dataset is used to parameterize a simulation run during optimization, with the patient's clinical features passed as keyword arguments to \texttt{RCCModel}. The simulation's survival prediction is then compared against the clinical outcome to compute the trial error.
+
+\begin{keyinsight}
+Log-uniform sampling for positive weights ensures that the optimizer explores multiplicative scaling factors symmetrically: halving and doubling a weight receive equal prior probability. This is appropriate because many biological rate parameters span orders of magnitude, and uniform sampling would over-represent values near the upper bound.
+\end{keyinsight}
+
+\begin{chaptersum}
+\begin{itemize}[nosep]
+\item 114 parameters organized in three tiers: model (4), patient (18), and weight (92)
+\item Bayesian optimization via Optuna TPE sampler over 250 trials against ARON-1 data
+\item Log-uniform sampling for weights, uniform for biases, respecting physical constraints
+\item Parameter sensitivity analysis identifies glucose consumption and treatment effectiveness as most influential
+\end{itemize}
+\end{chaptersum}
+
+The next chapter presents simulation results and validates the calibrated model against ARON-1 clinical data.

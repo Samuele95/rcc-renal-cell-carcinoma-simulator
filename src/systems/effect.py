@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Effect value object representing cell-to-cell influence in the microenvironment.
 
 Uses Factory Method pattern: Effect() creates a zero-effect,
@@ -9,6 +12,13 @@ _ZERO_EFFECT = None  # Initialized after class definition
 
 
 class Effect:
+    """Immutable-style value object representing accumulated microenvironment effects.
+
+    Each slot corresponds to a signalling channel (e.g., T cell kill rate,
+    tumour growth) whose value is summed from neighbouring cell contributions.
+    Uses ``__slots__`` for memory efficiency since many instances are created
+    per simulation step.
+    """
 
     __slots__ = (
         't_kill_rate_effect', 't_proliferation_effect', 't_apoptosis_effect',
@@ -19,6 +29,7 @@ class Effect:
     )
 
     def __init__(self):
+        """Create a zero-valued effect (all channels set to 0)."""
         self.t_kill_rate_effect = 0
         self.t_proliferation_effect = 0
         self.t_apoptosis_effect = 0
@@ -71,6 +82,14 @@ class Effect:
 
     @staticmethod
     def _normalized_bmi(model) -> float:
+        """Compute a sex-adjusted z-score for the patient's BMI.
+
+        Args:
+            model: RCCModel instance providing patient_params.
+
+        Returns:
+            Z-score of BMI relative to sex-specific population mean and std.
+        """
         from src.parameters.patient_parameters import Sex
         bmi = model.patient_params.BMI
         is_female = model.patient_params.sex == Sex.FEMALE

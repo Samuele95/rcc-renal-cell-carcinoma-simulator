@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Home page — welcoming overview for non-technical users."""
 
 import streamlit as st

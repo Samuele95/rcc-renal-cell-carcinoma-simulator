@@ -1,0 +1,245 @@
+\chapter{Model Description}
+\label{ch:model_description}
+
+\epigraph{The purpose of abstraction is not to be vague, but to create a new semantic level in which one can be absolutely precise.}{--- Edsger W. Dijkstra}
+
+\lettrine[lines=2]{T}{his chapter} presents the architecture of the agent-based model from the ground up: the spatial environment in which agents operate, the class hierarchy that organizes 18 agent types into a coherent inheritance tree, the paracrine effect system that mediates cell--cell signaling, the movement mechanics that govern spatial behavior, the step-by-step execution loop that advances the simulation, and the terminal conditions that determine patient outcomes.
+
+% ============================================================================
+\section{Spatial Environment}
+\label{sec:md_spatial}
+% ============================================================================
+
+The simulation takes place on a three-dimensional discrete grid whose side length is derived from the patient's tumor volume.  Given a volume $V$ in cm$^3$ and a block size $\Delta = 10\;\mu\text{m}$, the grid dimension is
+\begin{equation}
+    L = \left\lfloor \frac{(V \times 10^{12})^{1/3}}{\Delta} \right\rfloor
+    \label{eq:grid_dim}
+\end{equation}
+producing a cubic $L \times L \times L$ lattice (e.g., $L = 100$ for $V = 0.001\;\text{cm}^3$).  Multiple agents may occupy the same voxel; boundaries are \emph{sticky}.  A continuous glucose concentration field $C(\mathbf{x}, t) \in \mathbb{R}_{\geq 0}$ overlays the grid and evolves according to a reaction--diffusion equation (Chapter~\ref{ch:biological-subsystems}), providing the metabolic context for proliferation, killing, and chemotactic navigation.
+
+% ============================================================================
+\section{Agent Architecture}
+\label{sec:md_architecture}
+% ============================================================================
+
+\subsection{Class Hierarchy}
+\label{subsec:md_hierarchy}
+
+The 18 agent types are organized into a four-level inheritance tree rooted at Repast4Py's \texttt{Agent} class (Figure~\ref{fig:agent_hierarchy}).  Two abstract base classes introduce the shared functionality that makes the hierarchy tractable.  \textbf{Cell} provides position tracking, deferred movement, effect collection, neighborhood queries, and duplication logic for every spatially embodied agent.  \textbf{TCell} extends \texttt{Cell} with T~lymphocyte-specific behaviors: a 16-bit TCR, antigen matching via Hamming distance ($d_H \leq 3$), hormone perception with exponential decay, and 17 sex-hormone modulation channels.  Five T~cell types inherit from \texttt{TCell}; eleven cellular agents inherit directly from \texttt{Cell}; and two non-cellular agents (\texttt{SexHormone}, \texttt{Cytokine}) inherit from the framework's \texttt{Agent} without spatial semantics.  Three cellular agents (\texttt{DendriticCell}, \texttt{PlasmacitoidDendriticCell}, \texttt{MacrophageM1}) additionally incorporate a \texttt{PhagocyticMixin} for antigen processing.
+
+\begin{figure}[htbp]
+\centering
+\adjustbox{max width=0.85\textwidth, max height=0.7\textheight}{\input{figures/agent_hierarchy.tex}}
+\caption{Agent class hierarchy.  Abstract bases are shown with dashed borders.  Color encodes functional category: T~cells (green), tumor (red), innate immune (blue), and stromal/signaling (orange).  Agents marked \emph{+\,PhagocyticMixin} gain a hunt--engulf--present state machine.}
+\label{fig:agent_hierarchy}
+\end{figure}
+
+\FloatBarrier
+\subsection{Agent Types}
+\label{subsec:md_agent_types}
+
+Table~\ref{tab:agent_types} lists all 18 agent types with their enumeration IDs and functional categories.  Each type is identified at runtime by an integer from the \texttt{AgentType} enumeration, enabling O(1) type checks during neighborhood queries and effect collection.
+
+\begin{table}[htbp]
+\centering
+\caption{Agent types in the RCC model, with enumeration IDs and functional categories.}
+\label{tab:agent_types}
+{\footnotesize
+\begin{tabular}{@{}clll@{}}
+\toprule
+\textbf{ID} & \textbf{Agent Type} & \textbf{Class Name} & \textbf{Category} \\
+\midrule
+0  & Tumor Cell            & \texttt{TumorCell}                   & Neoplastic \\
+1  & Cytotoxic T Cell       & \texttt{CytotoxicTCell}              & Adaptive \\
+2  & CD8$^+$ Na\"ive T Cell & \texttt{CD8NaiveTCell}               & Adaptive \\
+3  & CD4$^+$ Na\"ive T Cell & \texttt{CD4NaiveTCell}               & Adaptive \\
+4  & CD4$^+$ Th1 Cell       & \texttt{CD4Helper1TCell}             & Adaptive \\
+5  & CD4$^+$ Th2 Cell       & \texttt{CD4Helper2TCell}             & Adaptive \\
+6  & Regulatory T Cell      & \texttt{TregCell}                    & Adaptive \\
+7  & Dendritic Cell         & \texttt{DendriticCell}               & Innate \\
+8  & Plasmacytoid DC        & \texttt{PlasmacitoidDendriticCell}   & Innate \\
+9  & M1 Macrophage          & \texttt{MacrophageM1}                & Innate \\
+10 & M2 Macrophage          & \texttt{MacrophageM2}                & Innate \\
+11 & Natural Killer         & \texttt{NaturalKiller}               & Innate \\
+12 & Mast Cell              & \texttt{MastCell}                    & Innate \\
+13 & Neutrophil             & \texttt{Neutrophil}                  & Innate \\
+14 & Adipocyte              & \texttt{Adipocyte}                   & Stromal \\
+15 & Blood Vessel           & \texttt{Blood}                       & Vasculature \\
+16 & Sex Hormone            & \texttt{SexHormone}                  & Signaling \\
+17 & Cytokine               & \texttt{Cytokine}                    & Signaling \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+\FloatBarrier
+\subsection{Behavioral Flags}
+\label{subsec:md_flags}
+
+Three boolean class-level flags govern loop participation: \texttt{has\_effect} (10 types emit paracrine effects), \texttt{needs\_effect} (8 types collect neighbor effects), and \texttt{has\_step} (all except \texttt{Blood}, which is static).  These flags let the model skip unnecessary work per tick.
+
+% ============================================================================
+\section{Agent Interactions}
+\label{sec:md_interactions}
+% ============================================================================
+
+The 18 agent types interact through four principal mechanisms (Figure~\ref{fig:agent_interactions}). \emph{Cytotoxic killing}: CTLs, NK cells, M1 macrophages, and dendritic cells can directly destroy tumor cells, with kill probability modulated by the local effect field, glucose availability, and---for CTLs---TCR--neoantigen affinity (Hamming distance). \emph{Activation and differentiation}: dendritic cells activate na\"ive CD8$^+$ and CD4$^+$ T cells upon phagocytosis; activated CD8$^+$ cells become CTLs, while CD4$^+$ cells differentiate into Th1, Th2, or Treg depending on the local cytokine milieu. \emph{Immunosuppression}: Tregs suppress CTL killing ($-0.3$ on \param{t\_kill\_rate\_effect}) and DC phagocytosis; M2 macrophages shield tumor cells and promote angiogenesis; tumor cells themselves inhibit CTLs via PD-L1 (CD274-dependent). \emph{Promotion and recruitment}: Th1 cells recruit M1 macrophages and DCs; pDCs spawn NK cells; M2 macrophages promote angiogenesis; adipocytes drive M2 polarization.
+
+\begin{figure}[htbp]
+\centering
+\adjustbox{max width=0.85\textwidth, max height=0.7\textheight}{\input{figures/agent_interactions.tex}}
+\caption{Hub-and-spoke interaction network.  The tumor cell sits at the center; the inner ring contains the four direct killer types; the outer ring holds support and regulatory cells.  Edge color encodes interaction type: cytotoxic (red), activation (blue), suppression (grey dashed), and promotion (green dotted).}
+\label{fig:agent_interactions}
+\end{figure}
+
+Table~\ref{tab:interactions} summarizes the key interactions by agent type.
+
+\begin{table}[htbp]
+\centering
+\caption{Summary of agent interactions in the RCC model.}
+\label{tab:interactions}
+{\small
+\begin{tabular}{@{}llp{6.5cm}@{}}
+\toprule
+\textbf{Agent} & \textbf{Role} & \textbf{Key Effects} \\
+\midrule
+TumorCell       & Neoplastic     & DNA-driven growth; PD-L1 evasion; 200$\times$ glucose uptake \\
+CTL             & Cytotoxic      & TCR-matched killing; glucose/hormone-modulated \\
+CD8/CD4 Na\"ive & Precursor      & Differentiate upon DC activation \\
+Th1             & Pro-inflam.    & Recruits M1, DC; boosts tumor apoptosis \\
+Th2             & Mixed          & Mild growth boost; recruits CTLs \\
+Treg            & Suppressive    & Inhibits CTL ($-0.3$), proliferation, DC phagocytosis \\
+DC              & APC            & Phagocytoses tumor; activates na\"ive T cells \\
+pDC             & Specialized    & Spawns NK; boosts killing; promotes Treg diff. \\
+M1              & Anti-tumor     & Phagocytoses tumor; boosts Th1; can polarize to M2 \\
+M2              & Pro-tumor      & Inhibits killing; promotes growth \& angiogenesis \\
+NK              & Innate cyto.   & Kills tumor; glucose-dependent \\
+MastCell        & Dual role      & 50/50 pro-/anti-tumor phenotype per step \\
+Neutrophil      & Sentinel       & Age-limited lifespan \\
+Adipocyte       & Stromal        & Mild tumor promotion; M2 polarization \\
+Blood           & Vasculature    & Glucose source; static; angiogenesis target \\
+SexHormone      & Signaling      & 17 immune modulation channels \\
+Cytokine        & Signaling      & Reserved for future extension \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+% ============================================================================
+\section{Effect System}
+\label{sec:md_effects}
+% ============================================================================
+
+The paracrine effect system is the primary mechanism through which agents influence one another without direct contact.  Each \texttt{Cell} agent maintains an \texttt{experienced\_effects} object containing 14 floating-point fields (Figure~\ref{fig:effect_system}), grouped into five functional categories: T~cell modulation (4 fields controlling kill rate, proliferation, apoptosis, and activation), helper-specific effects (2 fields for Th1/Th2 proliferation), regulatory effects (3 fields governing Treg differentiation and M1/M2 macrophage polarization), tumor and vasculature effects (3 fields for tumor growth, apoptosis, and angiogenesis), and specialized effects (2 fields for DC phagocytosis and NK kill rate).
+
+\subsection{Effect Production and Collection}
+\label{subsec:md_effect_pipeline}
+
+At each step, the model iterates over agents with \texttt{needs\_effect} set, querying the Moore neighborhood at radius~1, retrieving cached effect objects, and aggregating via element-wise addition.  The aggregation is additive: a Treg ($-0.3$ on kill rate) and an M1 macrophage ($+0.1$) near a CTL produce a net $-0.2$.  This superposition means no agent requires global knowledge; phenomena such as immune exclusion zones emerge from the spatial arrangement of producers.
+
+\begin{figure}[htbp]
+\centering
+\adjustbox{max width=0.85\textwidth, max height=0.7\textheight}{\input{figures/effect_system.tex}}
+\caption{The paracrine effect system.  Ten producer types (left) emit effects into the Moore neighborhood.  The 14 effect fields (center) accumulate via element-wise addition.  Eight consumer types (right) read the aggregated effects to modulate their behavior.  BMI normalization (bottom) provides baseline offsets for four fields.}
+\label{fig:effect_system}
+\end{figure}
+
+\FloatBarrier
+\subsection{BMI Normalization}
+\label{subsec:md_bmi}
+
+Four of the 14 effect fields receive BMI-dependent baseline offsets.  The normalized BMI $\hat{B} = (\text{BMI} - \mu)/\sigma$ uses sex-specific parameters ($\mu = 26.5$, $\sigma = 5.5$ for females; $\mu = 27.5$, $\sigma = 4.5$ for males).  The offset is applied as $\pm\hat{B} \times w_i$ to Treg differentiation ($-$), M1 polarization ($-$), M2 polarization ($+$), and NK kill rate ($-$).  A positive $\hat{B}$ (above-average BMI) therefore shifts the microenvironment toward immunosuppression---more M2, more Treg, less NK killing---consistent with clinical evidence linking obesity to poorer RCC prognosis.
+
+% ============================================================================
+\section{Movement Mechanics}
+\label{sec:md_movement}
+% ============================================================================
+
+Spatial behavior in the model follows a two-phase \emph{deferred movement} pattern: during the agent-stepping phase, each agent computes its desired next position and stores it in \texttt{\_desired\_pos}; after all agents have stepped, the model batch-processes all pending moves in a single pass.  This ensures that every agent makes its movement decision based on the same spatial snapshot, eliminating bias from the random activation order.
+
+\subsection{Directed Movement}
+\label{subsec:md_directed}
+
+The primary navigation method, \texttt{move\_towards()}, uses an expanding-radius search: it queries the spatial index at radii 1, 2, 4, 8, \ldots\ (doubling each iteration), finds the closest target by Manhattan distance $d_M(\mathbf{a}, \mathbf{b}) = |a_x - b_x| + |a_y - b_y| + |a_z - b_z|$, computes the normalized Euclidean direction vector, and moves one step along it (clamped to grid boundaries).  The doubling strategy guarantees $O(\log L)$ worst-case iterations.  The maximum search radius scales dynamically with tumor population as $\max(5,\; N_{\text{tumor}} / (10 \cdot w_{\text{search\_dim}}))$, allowing immune cells to detect growing tumor masses at increasing distances.
+
+\FloatBarrier
+\subsection{Glucose Chemotaxis}
+\label{subsec:md_chemotaxis}
+
+When an immune cell (CTL, M1, DC, or NK) fails to find a direct target, it may fall back to glucose chemotaxis.  With probability $w_{\text{glucose\_chemotaxis\_strength}}$, the agent queries the glucose field for the discretized gradient at its position:
+\begin{equation}
+    (\Delta x, \Delta y, \Delta z) = \operatorname{sign}\bigl(\nabla C(\mathbf{x})\bigr)
+    \label{eq:chemotaxis}
+\end{equation}
+where the gradient is computed via central finite differences with Neumann (zero-flux) boundary conditions.  The agent then moves one step along the gradient direction, migrating toward glucose-rich regions---typically areas near blood vessels and active tumor growth fronts---providing a biologically plausible navigation strategy in the absence of direct antigen detection.
+
+\FloatBarrier
+\subsection{Sex Hormone Diffusion}
+\label{subsec:md_hormone}
+
+Sex hormone agents follow a \emph{non-deferred} movement model: each step, a hormone randomly selects (50/50) between biased diffusion away from vasculature (drift strength 0.25, weighting 26 Moore neighbors by Manhattan distance to the nearest blood vessel) and simple diffusion biased toward $+y$/$+z$ that removes the hormone upon grid exit.  Moves execute immediately since hormones do not depend on each other's positions.
+
+Figure~\ref{fig:movement_mechanics} summarizes the complete movement decision process as a flowchart.
+
+\begin{figure}[htbp]
+\centering
+\adjustbox{max width=0.85\textwidth, max height=0.7\textheight}{\input{figures/movement_mechanics.tex}}
+\caption{Movement decision flowchart.  Cellular agents (left branch) attempt directed movement toward a target type, falling back to glucose chemotaxis if no target is found.  All cellular moves are deferred.  Sex hormones (right branch) use a biased random walk with immediate execution.}
+\label{fig:movement_mechanics}
+\end{figure}
+
+% ============================================================================
+\section{Simulation Step}
+\label{sec:md_step}
+% ============================================================================
+
+Each call to \texttt{RCCModel.step()} advances the simulation by one discrete time unit through 13 operations executed in a fixed sequence (Figure~\ref{fig:simulation_pipeline}).  The ordering reflects three design constraints: (i) effects must be collected before agents act on them, (ii) treatment must be applied at the correct simulation time, and (iii) spatial updates must be deferred to prevent order-dependent artifacts.
+
+\begin{enumerate}
+    \item \textbf{Collect data.}  Record population counts by agent type, glucose field statistics (mean, min, max), and cumulative kill tallies.  These are written to the data log at the end of each step.
+
+    \item \textbf{Check termination.}  Evaluate the four terminal conditions (Section~\ref{sec:md_terminal}).  If any is met, write the final log entry and halt the simulation.
+
+    \item \textbf{Reset immune infiltration.}  Set the immune infiltration factor to 1 for Th1, Th2, and MastCell types, ensuring that these agents begin each step with a clean baseline before effects accumulate.
+
+    \item \textbf{Apply effects.}  For each agent with \texttt{needs\_effect = True}, collect \texttt{Effect} objects from the Moore neighborhood (radius 1) and aggregate them into the agent's \texttt{experienced\_effects} via element-wise addition.
+
+    \item \textbf{Treatment step.}  If the current step $t \geq t_{\text{start}}$, apply all active drug effects (ICI, TKI, or combination).  Drug mechanisms are detailed in Chapter~\ref{ch:treatment}.
+
+    \item \textbf{Sex drift.}  Apply sex-dependent modulation to the CD8$^+$ na\"ive T~cell population: duplication for male patients, removal for female patients, with the magnitude decremented each step.
+
+    \item \textbf{Glucose field step.}  Blood vessels inject glucose at cached positions; the field is diffused via a 3D discrete Laplacian ($6$-connected stencil, Neumann boundaries); natural decay reduces concentrations by factor $(1 - \lambda)$.
+
+    \item \textbf{Manage blood.}  Evaluate angiogenesis conditions and spawn new blood vessels if warranted (minimum separation 30 cells, effect radius 3).  Refresh tumor cell blood access via breadth-first search from vessel-connected sources.
+
+    \item \textbf{Update search dimension.}  Recompute the global cell search dimension as $\max(5,\; N_{\text{tumor}} / (10 \cdot w_{\text{search\_dim}}))$, ensuring that immune cells can detect tumors at ranges proportional to tumor burden.
+
+    \item \textbf{Shuffle and step agents.}  Take a snapshot of all living agents with \texttt{has\_step = True}, shuffle randomly, and invoke each agent's \texttt{step()} method.  Agents set \texttt{\_desired\_pos} during this phase but are not yet moved.
+
+    \item \textbf{Deferred movement.}  Batch-move all agents in the \texttt{\_pending\_moves} set whose \texttt{\_desired\_pos} differs from their current position, updating the spatial index in a single pass.
+
+    \item \textbf{Spawn hormones.}  Generate sex hormone agents at blood vessel locations according to sex-specific hormone production probabilities.
+
+    \item \textbf{Increment step counter.}  Advance $t \leftarrow t + 1$ and loop back to step~1.
+\end{enumerate}
+
+\begin{figure}[htbp]
+\centering
+\adjustbox{max width=0.85\textwidth, max height=0.7\textheight}{\input{figures/simulation_pipeline.tex}}
+\caption{The 13-step simulation loop.  Color encodes functional category: data and monitoring (blue), biological processes (green), agent execution (orange), and treatment (red).  Step~2 is a decision point that terminates the simulation if any terminal condition is satisfied.}
+\label{fig:simulation_pipeline}
+\end{figure}
+
+% ============================================================================
+\section{Terminal Conditions}
+\label{sec:md_terminal}
+% ============================================================================
+
+The simulation terminates when any of four conditions is met: maximum steps reached ($t \geq t_{\max}$, death), tumor elimination (count $= 0$, survival), critical mass ($\geq 2000$ cells, death), or uncontrolled growth ($\bar{G} \geq w_{\text{growth\_threshold}}$, death).  The growth metric is
+\begin{equation}
+    \bar{G} = \frac{1}{N_T} \sum_{i=1}^{N_T} \sigma\bigl(g_i + a_i;\; k{=}10\bigr)
+    \label{eq:growth_rate}
+\end{equation}
+combines effect-driven growth, DNA-derived proliferation, blood access, and apoptosis components.  This last condition detects rapid acceleration even when absolute cell counts remain below critical mass.
+
+With the model's spatial, behavioral, and interaction architecture established, the next chapter examines the three biological subsystems---glucose metabolism, DNA mutation, and sex hormones---that drive the emergent dynamics within this framework.

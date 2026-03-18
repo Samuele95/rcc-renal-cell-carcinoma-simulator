@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Glucose field visualization.
 
 Usage:
@@ -14,7 +17,12 @@ import pandas as pd
 
 
 def plot_glucose_timeseries(csv_path="logs/simulation_log.csv", output_dir="plots"):
-    """Plot glucose statistics over time from simulation log."""
+    """Plot mean, total, min, and max glucose over time.
+
+    Args:
+        csv_path: Path to the simulation CSV log.
+        output_dir: Directory to save glucose_timeseries.png.
+    """
     os.makedirs(output_dir, exist_ok=True)
     df = pd.read_csv(csv_path)
 
@@ -77,7 +85,13 @@ def plot_glucose_field_slice(field_3d, slice_axis='z', slice_index=None, output_
 
 
 def plot_glucose_gradient(field_3d, slice_z=None, output_path="plots/glucose_gradient.png"):
-    """Plot glucose gradient vectors on a z-slice."""
+    """Plot glucose gradient vectors overlaid on a z-slice heatmap.
+
+    Args:
+        field_3d: 3D numpy array of glucose concentrations (W, H, D).
+        slice_z: Z-index to slice at (default: middle).
+        output_path: File path for the saved plot.
+    """
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     if slice_z is None:
@@ -104,7 +118,13 @@ def plot_glucose_gradient(field_3d, slice_z=None, output_path="plots/glucose_gra
 
 
 def plot_glucose_presence_analysis(glucose_field, threshold=0.01, output_dir="plots"):
-    """Plot glucose presence verification analysis results."""
+    """Plot glucose presence verification: presence map, threshold overlay, stats, and histogram.
+
+    Args:
+        glucose_field: GlucoseField instance with a ``verify_glucose_presence`` method.
+        threshold: Minimum concentration considered "present".
+        output_dir: Directory to save glucose_presence_analysis.png.
+    """
     os.makedirs(output_dir, exist_ok=True)
     
     # Get presence analysis
@@ -165,7 +185,13 @@ Standard deviation: {stats['std_concentration']:.3f}"""
 
 
 def plot_glucose_gradient_analysis(glucose_field, output_dir="plots", slice_z=None):
-    """Plot comprehensive gradient analysis."""
+    """Plot a 6-panel gradient analysis: concentration, magnitude, vectors, X/Y components, and stats.
+
+    Args:
+        glucose_field: GlucoseField instance with ``analyze_concentration_gradient``.
+        output_dir: Directory to save glucose_gradient_analysis.png.
+        slice_z: Z-index to visualize (default: middle).
+    """
     os.makedirs(output_dir, exist_ok=True)
     
     if slice_z is None:
@@ -247,7 +273,13 @@ Uniformity index: {global_stats['gradient_uniformity']:.3f}"""
 
 
 def plot_glucose_hotspots(glucose_field, percentile=90, output_dir="plots"):
-    """Plot glucose hotspot analysis."""
+    """Plot glucose hotspot positions (3D scatter), slice overlay, and statistics.
+
+    Args:
+        glucose_field: GlucoseField instance with ``find_glucose_hotspots``.
+        percentile: Percentile threshold defining a hotspot (default: 90).
+        output_dir: Directory to save glucose_hotspots.png.
+    """
     os.makedirs(output_dir, exist_ok=True)
     
     hotspots = glucose_field.find_glucose_hotspots(percentile)

@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Agent type registry for Repast4Py.
 
 Each agent type gets an integer ID required by repast4py.core.Agent(id, type, rank).
@@ -6,6 +9,11 @@ from enum import IntEnum
 
 
 class AgentType(IntEnum):
+    """Integer enum of all agent types in the RCC model.
+
+    Each value is the ``type`` argument passed to ``repast4py.core.Agent``.
+    """
+
     TUMOR_CELL = 0
     CD8_CYTOTOXIC_T_CELL = 1
     CD8_NAIVE_T_CELL = 2

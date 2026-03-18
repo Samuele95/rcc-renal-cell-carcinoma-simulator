@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Results visualization page — understand what happened in your simulation."""
 
 import streamlit as st
@@ -48,6 +51,7 @@ if last_dir:
             break
 
 def _format_run_label(i):
+    """Format a run index into a human-readable label for the selectbox."""
     r = runs[i]
     outcome = r.get("outcome", "?")
     icon = "\u2705" if outcome == "SURVIVAL" else ("\u274c" if outcome == "PROGRESSION" else "\u2753")

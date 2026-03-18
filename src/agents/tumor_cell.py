@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """TumorCell agent with glucose consumption (Warburg effect).
 
 Ported from Mesa to Repast4Py with added glucose system integration.
@@ -9,6 +12,20 @@ from src.systems import grid_utils
 
 
 class TumorCell(Cell):
+    """Renal cell carcinoma tumor cell agent.
+
+    Models the Warburg effect (aerobic glycolysis), angiogenesis signaling,
+    immune evasion via PD-1 checkpoint inhibition, and DNA-driven mutation
+    dynamics. Growth and apoptosis are modulated by local glucose, neighboring
+    cell effects, and treatment state (ICI/TKI).
+
+    Attributes:
+        dna: DNA instance encoding mutations, neoantigens, and suppression.
+        blood_access: Whether this cell is adjacent to a blood vessel.
+        ICI_effect: Whether immune checkpoint inhibitor treatment is active.
+        TKI_effect: Whether tyrosine kinase inhibitor treatment is active.
+    """
+
     angiogenesis_effect = 0.0005
     default_injected_mutations = 3
 
@@ -17,6 +34,15 @@ class TumorCell(Cell):
     # NOTE: ICI_effect and TKI_effect are initialized per-instance in __init__
 
     def __init__(self, local_id, rank, model, pos, dna=None):
+        """Initialize a tumor cell.
+
+        Args:
+            local_id: Unique agent ID.
+            rank: MPI rank.
+            model: The RCCModel instance.
+            pos: (x, y, z) grid position.
+            dna: Optional DNA instance; generates new DNA if None.
+        """
         super().__init__(local_id, AgentType.TUMOR_CELL, rank, model, pos)
         injected = getattr(model, 'injected_mutations', self.default_injected_mutations)
         self.dna = dna if dna else DNA(model.rng, injected_mutations=injected)
@@ -28,6 +54,7 @@ class TumorCell(Cell):
         self.experienced_effects.angiogenesis_effect += self.angiogenesis_effect
 
     def step(self):
+        """Execute one simulation tick: consume glucose, check apoptosis, attempt duplication."""
         # Glucose consumption (Warburg effect)
         self.consume_glucose(self.model.weight_params.w_glucose_tumor_consumption)
 
@@ -60,6 +87,7 @@ class TumorCell(Cell):
             self.duplicate()
 
     def duplicate(self):
+        """Duplicate into an adjacent empty position, passing mutated DNA to the daughter cell."""
         if self.pos is None:
             return
         empty_ngbhs = self.get_empty_ngbhs()

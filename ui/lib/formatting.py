@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Samuele Stronati
+# SPDX-License-Identifier: MIT
+
 """Shared formatting helpers for the RCC Simulation UI."""
 
 import functools
@@ -24,6 +27,7 @@ TREATMENT_INFO = {
 
 
 def treatment_badge_html(treatment: str) -> str:
+    """Return HTML for a colored treatment badge pill."""
     desc, cls = TREATMENT_INFO.get(treatment, ("", "treatment-none"))
     label = TREATMENT_LABELS.get(treatment, treatment)
     return f'<span class="treatment-badge {cls}" role="status" aria-label="Treatment: {label}">{treatment}</span>'
@@ -64,6 +68,7 @@ def outcome_badge_html(outcome: str, font_size: str = "1.1rem", padding: str = "
 # ---------------------------------------------------------------------------
 
 def format_sex(sex: str) -> str:
+    """Convert single-letter sex code to display string ('F' -> 'Female')."""
     if sex == "F":
         return "Female"
     if sex == "M":

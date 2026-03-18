@@ -1,9 +1,7 @@
 \chapter{DNA and Mutation System}
 \label{ch:dna}
 
-Every cancer cell is genetically unique, and this diversity determines which treatments succeed or fail. This chapter reveals how 16 key genes create tumor fingerprints --- and shows why males start with three times more cancer-driving mutations than females.
-
-This chapter describes the gene-level representation used by tumor cells in the model. The DNA system encodes 16 cancer-relevant genes, supports codon-level translation, introduces mutations during cell division with genomic-instability-dependent rates, and derives phenotypic parameters that govern tumor behavior and immune evasion.
+\lettrine[lines=2]{T}{his chapter} describes the gene-level representation used by tumor cells in the model. The DNA system encodes 16 cancer-relevant genes, supports codon-level translation, introduces mutations during cell division with genomic-instability-dependent rates, and derives phenotypic parameters that govern tumor behavior and immune evasion.
 
 %% ====================================================================
 \section{Gene Model}
@@ -58,7 +56,13 @@ Each gene occupies a defined region within a synthetic DNA sequence assembled by
 \section{Mutation Mechanics}
 \label{sec:mutation-mechanics}
 
-Mutations accumulate through injected mutations at initialization and stochastic point mutations during DNA duplication. Genomic instability is controlled by BRCA1 mutation status, with mutation rate scaling as $\mu = (s_{BRCA1})^{\max(1, e_{BRCA1})} \times 0.05$. Initial mutations are sex-dependent: males start with 3 BRCA1 mutations, females with 1, establishing different baseline genomic instability patterns. Point mutations occur during DNA duplication at rate $\mu$ per nucleotide, introducing base substitutions that may alter codon identity and protein sequence.
+Mutations accumulate through injected mutations at initialization and stochastic point mutations during DNA duplication. Genomic instability is controlled by BRCA1 mutation status, with mutation rate scaling as $\mu = (s_{BRCA1})^{\max(1, e_{BRCA1})} \times 0.05$. Initial mutations are sex-dependent: males start with 3 BRCA1 mutations, females with 1, establishing different baseline genomic instability patterns.
+
+\begin{keyinsight}
+The sex-dependent initial mutation count (3 for males, 1 for females) reflects the higher baseline genomic instability observed clinically in male RCC patients. This asymmetry compounds over simulation time: higher initial BRCA1 dysfunction increases the mutation rate during subsequent cell divisions, leading to greater clonal diversity and faster immune evasion in male tumors.
+\end{keyinsight}
+
+Point mutations occur during DNA duplication at rate $\mu$ per nucleotide, introducing base substitutions that may alter codon identity and protein sequence.
 
 %% ====================================================================
 \section{Gene Expression and Phenotypic Effects}
@@ -89,4 +93,13 @@ Each gene's phenotypic contribution is determined by promoter expression (TATA m
 
 Neoantigens are 10-mer subsequences extracted from each translated mutated protein, representing molecular targets for T cell recognition. Self-antigens are similarly computed from wildtype sequences to establish immune tolerance. T cell receptors recognize neoantigens through Hamming distance-based matching between antigen hashes and receptor values, with successful recognition requiring non-self status and distance within threshold.
 
-These genetic mutations create vulnerabilities that treatments can exploit. The next chapter examines exactly how immune checkpoint inhibitors and targeted therapies turn cancer's own molecular weaknesses against itself.
+\begin{chaptersum}
+\begin{itemize}[nosep]
+\item 16 cancer-relevant genes with codon-level translation and mutation mechanics
+\item Sex-dependent initial mutations: males 3 BRCA1 mutations, females 1
+\item Five phenotypic parameters derived from gene expression and mutation scores
+\item Neoantigen generation enables T cell recognition via Hamming distance matching
+\end{itemize}
+\end{chaptersum}
+
+The next chapter describes how the treatment system exploits these genetic vulnerabilities through immune checkpoint inhibitors and tyrosine kinase inhibitors.
