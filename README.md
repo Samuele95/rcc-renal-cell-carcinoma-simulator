@@ -168,25 +168,31 @@ The interface is organized into **8 pages**:
 
 ### Architecture Overview
 
-```mermaid
-block-beta
-    columns 1
-    block:agents["🧫 Agents — 18 Types (Tumor | T Cells | Innate Immune | Stromal)"]
-    end
-    block:subsystems["⚙️ Subsystems"]
-        Glucose DNA Effects Treatment Hormones Movement
-    end
-    block:core["🏗️ Core Model — RCCModel, Agent Factory, Spatial Index, Grid Utils"]
-    end
-    block:framework["📦 Framework — Repast4Py (SharedContext, SharedGrid, MPI Comm)"]
-    end
-    block:hardware["💻 Hardware — MPI + Multi-core CPUs"]
-    end
-
-    agents --> subsystems
-    subsystems --> core
-    core --> framework
-    framework --> hardware
+```
+ ┌─────────────────────────────────────────────────────────────────┐
+ │  Agents — 18 Types (Tumor | T Cells | Innate Immune | Stromal) │
+ └────────────────────────────┬────────────────────────────────────┘
+                              │
+ ┌────────────────────────────▼────────────────────────────────────┐
+ │  Subsystems                                                     │
+ │  ┌─────────┐ ┌─────┐ ┌─────────┐ ┌───────────┐ ┌─────────┐   │
+ │  │ Glucose │ │ DNA │ │ Effects │ │ Treatment │ │Hormones │   │
+ │  └─────────┘ └─────┘ └─────────┘ └───────────┘ └─────────┘   │
+ └────────────────────────────┬────────────────────────────────────┘
+                              │
+ ┌────────────────────────────▼────────────────────────────────────┐
+ │  Core Model — RCCModel, Agent Factory, Spatial Index, Grid Utils│
+ ├────────────┬───────────────────────────────────┬────────────────┤
+ │ YAML Input │                                   │  CSV Output    │
+ └────────────┴───────────────┬───────────────────┴────────────────┘
+                              │
+ ┌────────────────────────────▼────────────────────────────────────┐
+ │  Framework — Repast4Py (SharedContext, SharedGrid, MPI Comm)    │
+ └────────────────────────────┬────────────────────────────────────┘
+                              │
+ ┌────────────────────────────▼────────────────────────────────────┐
+ │  Hardware — MPI + Multi-core CPUs                               │
+ └─────────────────────────────────────────────────────────────────┘
 ```
 
 ### Simulation Step Pipeline
@@ -195,22 +201,25 @@ Each time step executes this 13-stage pipeline:
 
 ```mermaid
 flowchart TD
-    S1["📋 1. Collect Data"] --> S2{"🛑 2. Termination?"}
-    S2 -- "Yes" --> EXIT["❌ End Simulation"]
-    S2 -- "No" --> S3["🔄 3. Reset Immune Infiltration"]
-    S3 --> S4["⚡ 4. Apply Effects"]
-    S4 --> S5["💊 5. Treatment Step"]
-    S5 --> S6["⚤ 6. Sex Drift"]
-    S6 --> S7["🍬 7. Glucose Field Step"]
-    S7 --> S8["🩸 8. Manage Blood Vessels"]
-    S8 --> S9["🔍 9. Search Dimension"]
-    S9 --> S10["🎲 10. Shuffle & Step Agents"]
-    S10 --> S11["🚶 11. Deferred Movement"]
-    S11 --> S12["♀️♂️ 12. Spawn Hormones"]
-    S12 --> S13["➕ 13. Increment Step Counter"]
+    S1[1. Collect Data] --> S2{2. Termination?}
+    S2 -- Yes --> EXIT[End Simulation]
+    S2 -- No --> S3[3. Reset Immune Infiltration]
+    S3 --> S4[4. Apply Effects]
+    S4 --> S5[5. Treatment Step]
+    S5 --> S6[6. Sex Drift]
+    S6 --> S7[7. Glucose Field Step]
+    S7 --> S8[8. Manage Blood Vessels]
+    S8 --> S9[9. Search Dimension]
+    S9 --> S10[10. Shuffle and Step Agents]
+    S10 --> S11[11. Deferred Movement]
+    S11 --> S12[12. Spawn Hormones]
+    S12 --> S13[13. Increment Step Counter]
     S13 -.-> S1
 
     style EXIT fill:#ff6b6b,color:#fff
+    style S5 fill:#ffe0e0
+    style S7 fill:#e0ffe0
+    style S10 fill:#e0e8ff
 ```
 
 ### The 18 Agent Types
@@ -226,22 +235,28 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    subgraph TME["Tumor Microenvironment"]
-        TC["🔴 Tumor Cell"]
-        BV["🩸 Blood Vessel"]
-        GF["🍬 Glucose Field"]
-        IC["🔵 Immune Cells"]
-        SH["⚤ Sex Hormones"]
+    subgraph TME[Tumor Microenvironment]
+        TC(Tumor Cell)
+        BV(Blood Vessel)
+        GF(Glucose Field)
+        IC(Immune Cells)
+        SH(Sex Hormones)
     end
 
-    TC -- "VEGF signaling" --> BV
-    BV -- "glucose injection" --> GF
-    GF -- "2-4x consumption\n(Warburg effect)" --> TC
-    GF -- "chemotaxis &\nenergy supply" --> IC
-    IC -- "cytotoxic killing" --> TC
-    TC -- "PD-L1 expression" -.-> IC
-    SH -- "modulates efficacy" --> IC
-    SH -- "modulates growth" --> TC
+    TC -- VEGF signaling --> BV
+    BV -- glucose injection --> GF
+    GF -- Warburg consumption --> TC
+    GF -- chemotaxis + energy --> IC
+    IC -- cytotoxic killing --> TC
+    TC -. PD-L1 inhibition .-> IC
+    SH -- modulates efficacy --> IC
+    SH -- modulates growth --> TC
+
+    style TC fill:#ff6b6b,color:#fff
+    style IC fill:#6b9fff,color:#fff
+    style BV fill:#c06060,color:#fff
+    style GF fill:#66bb6a,color:#fff
+    style SH fill:#ce93d8
 ```
 
 - **Warburg Effect** — Tumor cells consume glucose at 2–4x the rate of normal cells, creating local energy depletion that impairs immune function
