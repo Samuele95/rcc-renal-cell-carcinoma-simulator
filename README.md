@@ -22,18 +22,6 @@
 
 <br>
 
-<table>
-<tr>
-<td align="center">
-
-**Developed for the Multiagent Systems Lab course**
-**Laurea Magistrale in Computer Science (M.Sc. in Computer Science)**
-**Supervisor: Prof. Emanuela Merelli**
-
-</td>
-</tr>
-</table>
-
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.40%2B-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io)
