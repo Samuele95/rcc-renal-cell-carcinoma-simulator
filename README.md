@@ -11,9 +11,9 @@
 <tr>
 <td align="center">
 
-**Developed for the Multiagent Systems Lab course**
-**Laurea Magistrale in Computer Science (M.Sc. in Computer Science)**
-**Supervisor: Prof. Emanuela Merelli**
+This project was developed as part of the **Multiagent Systems Lab** course
+within the *Laurea Magistrale in Computer Science* (M.Sc. in Computer Science),
+under the supervision of **Prof. Emanuela Merelli**.
 
 </td>
 </tr>
