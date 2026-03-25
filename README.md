@@ -17,6 +17,12 @@
 
 ---
 
+
+> **Academic Context**
+> This project was developed as part of the **Multiagent Systems Lab** course
+> within the *Laurea Magistrale in Computer Science* (M.Sc. in Computer Science),
+> under the supervision of **Prof. Emanuela Merelli**.
+
 ## 🎯 What Does This Simulate?
 
 This simulator recreates a small volume of kidney tissue as a **3D cellular battlefield** where **18 distinct agent types** interact every time step:
@@ -516,6 +522,7 @@ If you use this simulator in your research, please cite:
   author    = {Stronati, Samuele},
   year      = {2025},
   url       = {https://github.com/Samuele95/rcc-renal-cell-carcinoma-simulator},
+  note      = {Developed for the Multiagent Systems Lab course, M.Sc. in Computer Science, supervised by Prof. Emanuela Merelli},
   license   = {MIT}
 }
 ```
